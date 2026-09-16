@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>PhoenixmlDb.Core</id>
+    <version>1.6.7</version>
+    <authors>Endpoint Systems</authors>
+    <license type="expression">Apache-2.0</license>
+    <licenseUrl>https://licenses.nuget.org/Apache-2.0</licenseUrl>
+    <icon>icon.png</icon>
+    <readme>PACKAGE.md</readme>
+    <projectUrl>https://phoenixml.dev/</projectUrl>
+    <description>Core types, XDM data model, and interfaces for PhoenixmlDb document database</description>
+    <releaseNotes>### Changed
+
+- **The reserved metadata namespace's conventional prefix is now `dbxml`, was `phxm`.** Prefix
+  only — the URI is unchanged at `https://schemas.phoenixml.dev/2026/meta`, so the namespace's
+  identity, every stored key and every `NamespaceId` are untouched. Metadata keys encode the
+  numeric namespace id rather than the URI, so nothing on disk moves.
+
+  Visible in `MetadataProperty.ToString()`, which now renders `dbxml:status` where it rendered
+  `phxm:status`, and anywhere a caller declares the prefix in an XQuery prolog. `dbxml` is the
+  prefix this project used before the namespace rework, and it reads as what it is.</releaseNotes>
+    <copyright>Copyright © Endpoint Systems 2026. All rights reserved.</copyright>
+    <tags>xml json database xquery xdm embedded ios android mobile maui</tags>
+    <repository type="git" url="https://github.com/phoenixmldb/phoenixmldb-core" commit="e0704affe9a48a2178ab669666a6d06feeeb7067" />
+    <dependencies>
+      <group targetFramework="net10.0" />
+      <group targetFramework="net8.0" />
+    </dependencies>
+  </metadata>
+</package>

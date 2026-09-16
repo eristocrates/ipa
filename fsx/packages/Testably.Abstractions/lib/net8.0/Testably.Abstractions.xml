@@ -1,0 +1,1411 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Testably.Abstractions</name>
+    </assembly>
+    <members>
+        <member name="P:Testably.Abstractions.FileSystem.DirectoryInfoFactory.FileSystem">
+            <inheritdoc cref="P:System.IO.Abstractions.IFileSystemEntity.FileSystem" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.DirectoryInfoFactory.New(System.String)">
+            <inheritdoc cref="M:System.IO.Abstractions.IDirectoryInfoFactory.New(System.String)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.DirectoryInfoFactory.Wrap(System.IO.DirectoryInfo)">
+            <inheritdoc cref="M:System.IO.Abstractions.IDirectoryInfoFactory.Wrap(System.IO.DirectoryInfo)" />
+        </member>
+        <member name="P:Testably.Abstractions.FileSystem.DirectoryInfoWrapper.Parent">
+            <inheritdoc cref="P:System.IO.Abstractions.IDirectoryInfo.Parent" />
+        </member>
+        <member name="P:Testably.Abstractions.FileSystem.DirectoryInfoWrapper.Root">
+            <inheritdoc cref="P:System.IO.Abstractions.IDirectoryInfo.Root" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.DirectoryInfoWrapper.Create">
+            <inheritdoc cref="M:System.IO.Abstractions.IDirectoryInfo.Create" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.DirectoryInfoWrapper.CreateSubdirectory(System.String)">
+            <inheritdoc cref="M:System.IO.Abstractions.IDirectoryInfo.CreateSubdirectory(System.String)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.DirectoryInfoWrapper.Delete(System.Boolean)">
+            <inheritdoc cref="M:System.IO.Abstractions.IDirectoryInfo.Delete(System.Boolean)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.DirectoryInfoWrapper.EnumerateDirectories">
+            <inheritdoc cref="M:System.IO.Abstractions.IDirectoryInfo.EnumerateDirectories" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.DirectoryInfoWrapper.EnumerateDirectories(System.String)">
+            <inheritdoc cref="M:System.IO.Abstractions.IDirectoryInfo.EnumerateDirectories(System.String)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.DirectoryInfoWrapper.EnumerateDirectories(System.String,System.IO.SearchOption)">
+            <inheritdoc cref="M:System.IO.Abstractions.IDirectoryInfo.EnumerateDirectories(System.String,System.IO.SearchOption)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.DirectoryInfoWrapper.EnumerateDirectories(System.String,System.IO.EnumerationOptions)">
+            <inheritdoc cref="M:System.IO.Abstractions.IDirectoryInfo.EnumerateDirectories(System.String,System.IO.EnumerationOptions)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.DirectoryInfoWrapper.EnumerateFiles">
+            <inheritdoc cref="M:System.IO.Abstractions.IDirectoryInfo.EnumerateFiles" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.DirectoryInfoWrapper.EnumerateFiles(System.String)">
+            <inheritdoc cref="M:System.IO.Abstractions.IDirectoryInfo.EnumerateFiles(System.String)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.DirectoryInfoWrapper.EnumerateFiles(System.String,System.IO.SearchOption)">
+            <inheritdoc cref="M:System.IO.Abstractions.IDirectoryInfo.EnumerateFiles(System.String,System.IO.SearchOption)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.DirectoryInfoWrapper.EnumerateFiles(System.String,System.IO.EnumerationOptions)">
+            <inheritdoc cref="M:System.IO.Abstractions.IDirectoryInfo.EnumerateFiles(System.String,System.IO.EnumerationOptions)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.DirectoryInfoWrapper.EnumerateFileSystemInfos">
+            <inheritdoc cref="M:System.IO.Abstractions.IDirectoryInfo.EnumerateFileSystemInfos" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.DirectoryInfoWrapper.EnumerateFileSystemInfos(System.String)">
+            <inheritdoc cref="M:System.IO.Abstractions.IDirectoryInfo.EnumerateFileSystemInfos(System.String)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.DirectoryInfoWrapper.EnumerateFileSystemInfos(System.String,System.IO.SearchOption)">
+            <inheritdoc cref="M:System.IO.Abstractions.IDirectoryInfo.EnumerateFileSystemInfos(System.String,System.IO.SearchOption)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.DirectoryInfoWrapper.EnumerateFileSystemInfos(System.String,System.IO.EnumerationOptions)">
+            <inheritdoc cref="M:System.IO.Abstractions.IDirectoryInfo.EnumerateFileSystemInfos(System.String,System.IO.EnumerationOptions)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.DirectoryInfoWrapper.GetDirectories">
+            <inheritdoc cref="M:System.IO.Abstractions.IDirectoryInfo.GetDirectories" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.DirectoryInfoWrapper.GetDirectories(System.String)">
+            <inheritdoc cref="M:System.IO.Abstractions.IDirectoryInfo.GetDirectories(System.String)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.DirectoryInfoWrapper.GetDirectories(System.String,System.IO.SearchOption)">
+            <inheritdoc cref="M:System.IO.Abstractions.IDirectoryInfo.GetDirectories(System.String,System.IO.SearchOption)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.DirectoryInfoWrapper.GetDirectories(System.String,System.IO.EnumerationOptions)">
+            <inheritdoc cref="M:System.IO.Abstractions.IDirectoryInfo.GetDirectories(System.String,System.IO.EnumerationOptions)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.DirectoryInfoWrapper.GetFiles">
+            <inheritdoc cref="M:System.IO.Abstractions.IDirectoryInfo.GetFiles" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.DirectoryInfoWrapper.GetFiles(System.String)">
+            <inheritdoc cref="M:System.IO.Abstractions.IDirectoryInfo.GetFiles(System.String)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.DirectoryInfoWrapper.GetFiles(System.String,System.IO.SearchOption)">
+            <inheritdoc cref="M:System.IO.Abstractions.IDirectoryInfo.GetFiles(System.String,System.IO.SearchOption)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.DirectoryInfoWrapper.GetFiles(System.String,System.IO.EnumerationOptions)">
+            <inheritdoc cref="M:System.IO.Abstractions.IDirectoryInfo.GetFiles(System.String,System.IO.EnumerationOptions)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.DirectoryInfoWrapper.GetFileSystemInfos">
+            <inheritdoc cref="M:System.IO.Abstractions.IDirectoryInfo.GetFileSystemInfos" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.DirectoryInfoWrapper.GetFileSystemInfos(System.String)">
+            <inheritdoc cref="M:System.IO.Abstractions.IDirectoryInfo.GetFileSystemInfos(System.String)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.DirectoryInfoWrapper.GetFileSystemInfos(System.String,System.IO.SearchOption)">
+            <inheritdoc cref="M:System.IO.Abstractions.IDirectoryInfo.GetFileSystemInfos(System.String,System.IO.SearchOption)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.DirectoryInfoWrapper.GetFileSystemInfos(System.String,System.IO.EnumerationOptions)">
+            <inheritdoc cref="M:System.IO.Abstractions.IDirectoryInfo.GetFileSystemInfos(System.String,System.IO.EnumerationOptions)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.DirectoryInfoWrapper.MoveTo(System.String)">
+            <inheritdoc cref="M:System.IO.Abstractions.IDirectoryInfo.MoveTo(System.String)" />
+        </member>
+        <member name="P:Testably.Abstractions.FileSystem.DirectoryWrapper.FileSystem">
+            <inheritdoc cref="P:System.IO.Abstractions.IFileSystemEntity.FileSystem" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.DirectoryWrapper.CreateDirectory(System.String)">
+            <inheritdoc cref="M:System.IO.Abstractions.IDirectory.CreateDirectory(System.String)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.DirectoryWrapper.CreateDirectory(System.String,System.IO.UnixFileMode)">
+            <inheritdoc cref="M:System.IO.Abstractions.IDirectory.CreateDirectory(System.String,System.IO.UnixFileMode)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.DirectoryWrapper.CreateSymbolicLink(System.String,System.String)">
+            <inheritdoc cref="M:System.IO.Abstractions.IDirectory.CreateSymbolicLink(System.String,System.String)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.DirectoryWrapper.CreateTempSubdirectory(System.String)">
+            <inheritdoc cref="M:System.IO.Abstractions.IDirectory.CreateTempSubdirectory(System.String)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.DirectoryWrapper.Delete(System.String)">
+            <inheritdoc cref="M:System.IO.Abstractions.IDirectory.Delete(System.String)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.DirectoryWrapper.Delete(System.String,System.Boolean)">
+            <inheritdoc cref="M:System.IO.Abstractions.IDirectory.Delete(System.String,System.Boolean)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.DirectoryWrapper.EnumerateDirectories(System.String)">
+            <inheritdoc cref="M:System.IO.Abstractions.IDirectory.EnumerateDirectories(System.String)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.DirectoryWrapper.EnumerateDirectories(System.String,System.String)">
+            <inheritdoc cref="M:System.IO.Abstractions.IDirectory.EnumerateDirectories(System.String,System.String)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.DirectoryWrapper.EnumerateDirectories(System.String,System.String,System.IO.SearchOption)">
+            <inheritdoc cref="M:System.IO.Abstractions.IDirectory.EnumerateDirectories(System.String,System.String,System.IO.SearchOption)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.DirectoryWrapper.EnumerateDirectories(System.String,System.String,System.IO.EnumerationOptions)">
+            <inheritdoc cref="M:System.IO.Abstractions.IDirectory.EnumerateDirectories(System.String,System.String,System.IO.EnumerationOptions)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.DirectoryWrapper.EnumerateFiles(System.String)">
+            <inheritdoc cref="M:System.IO.Abstractions.IDirectory.EnumerateFiles(System.String)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.DirectoryWrapper.EnumerateFiles(System.String,System.String)">
+            <inheritdoc cref="M:System.IO.Abstractions.IDirectory.EnumerateFiles(System.String,System.String)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.DirectoryWrapper.EnumerateFiles(System.String,System.String,System.IO.SearchOption)">
+            <inheritdoc cref="M:System.IO.Abstractions.IDirectory.EnumerateFiles(System.String,System.String,System.IO.SearchOption)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.DirectoryWrapper.EnumerateFiles(System.String,System.String,System.IO.EnumerationOptions)">
+            <inheritdoc cref="M:System.IO.Abstractions.IDirectory.EnumerateFiles(System.String,System.String,System.IO.EnumerationOptions)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.DirectoryWrapper.EnumerateFileSystemEntries(System.String)">
+            <inheritdoc cref="M:System.IO.Abstractions.IDirectory.EnumerateFileSystemEntries(System.String)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.DirectoryWrapper.EnumerateFileSystemEntries(System.String,System.String)">
+            <inheritdoc cref="M:System.IO.Abstractions.IDirectory.EnumerateFileSystemEntries(System.String,System.String)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.DirectoryWrapper.EnumerateFileSystemEntries(System.String,System.String,System.IO.SearchOption)">
+            <inheritdoc cref="M:System.IO.Abstractions.IDirectory.EnumerateFileSystemEntries(System.String,System.String,System.IO.SearchOption)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.DirectoryWrapper.EnumerateFileSystemEntries(System.String,System.String,System.IO.EnumerationOptions)">
+            <inheritdoc cref="M:System.IO.Abstractions.IDirectory.EnumerateFileSystemEntries(System.String,System.String,System.IO.EnumerationOptions)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.DirectoryWrapper.Exists(System.String)">
+            <inheritdoc cref="M:System.IO.Abstractions.IDirectory.Exists(System.String)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.DirectoryWrapper.GetCreationTime(System.String)">
+            <inheritdoc cref="M:System.IO.Abstractions.IDirectory.GetCreationTime(System.String)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.DirectoryWrapper.GetCreationTimeUtc(System.String)">
+            <inheritdoc cref="M:System.IO.Abstractions.IDirectory.GetCreationTimeUtc(System.String)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.DirectoryWrapper.GetCurrentDirectory">
+            <inheritdoc cref="M:System.IO.Abstractions.IDirectory.GetCurrentDirectory" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.DirectoryWrapper.GetDirectories(System.String)">
+            <inheritdoc cref="M:System.IO.Abstractions.IDirectory.GetDirectories(System.String)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.DirectoryWrapper.GetDirectories(System.String,System.String)">
+            <inheritdoc cref="M:System.IO.Abstractions.IDirectory.GetDirectories(System.String,System.String)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.DirectoryWrapper.GetDirectories(System.String,System.String,System.IO.SearchOption)">
+            <inheritdoc cref="M:System.IO.Abstractions.IDirectory.GetDirectories(System.String,System.String,System.IO.SearchOption)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.DirectoryWrapper.GetDirectories(System.String,System.String,System.IO.EnumerationOptions)">
+            <inheritdoc cref="M:System.IO.Abstractions.IDirectory.GetDirectories(System.String,System.String,System.IO.EnumerationOptions)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.DirectoryWrapper.GetDirectoryRoot(System.String)">
+            <inheritdoc cref="M:System.IO.Abstractions.IDirectory.GetDirectoryRoot(System.String)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.DirectoryWrapper.GetFiles(System.String)">
+            <inheritdoc cref="M:System.IO.Abstractions.IDirectory.GetFiles(System.String)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.DirectoryWrapper.GetFiles(System.String,System.String)">
+            <inheritdoc cref="M:System.IO.Abstractions.IDirectory.GetFiles(System.String,System.String)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.DirectoryWrapper.GetFiles(System.String,System.String,System.IO.SearchOption)">
+            <inheritdoc cref="M:System.IO.Abstractions.IDirectory.GetFiles(System.String,System.String,System.IO.SearchOption)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.DirectoryWrapper.GetFiles(System.String,System.String,System.IO.EnumerationOptions)">
+            <inheritdoc cref="M:System.IO.Abstractions.IDirectory.GetFiles(System.String,System.String,System.IO.EnumerationOptions)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.DirectoryWrapper.GetFileSystemEntries(System.String)">
+            <inheritdoc cref="M:System.IO.Abstractions.IDirectory.GetFileSystemEntries(System.String)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.DirectoryWrapper.GetFileSystemEntries(System.String,System.String)">
+            <inheritdoc cref="M:System.IO.Abstractions.IDirectory.GetFileSystemEntries(System.String,System.String)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.DirectoryWrapper.GetFileSystemEntries(System.String,System.String,System.IO.SearchOption)">
+            <inheritdoc cref="M:System.IO.Abstractions.IDirectory.GetFileSystemEntries(System.String,System.String,System.IO.SearchOption)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.DirectoryWrapper.GetFileSystemEntries(System.String,System.String,System.IO.EnumerationOptions)">
+            <inheritdoc cref="M:System.IO.Abstractions.IDirectory.GetFileSystemEntries(System.String,System.String,System.IO.EnumerationOptions)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.DirectoryWrapper.GetLastAccessTime(System.String)">
+            <inheritdoc cref="M:System.IO.Abstractions.IDirectory.GetLastAccessTime(System.String)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.DirectoryWrapper.GetLastAccessTimeUtc(System.String)">
+            <inheritdoc cref="M:System.IO.Abstractions.IDirectory.GetLastAccessTimeUtc(System.String)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.DirectoryWrapper.GetLastWriteTime(System.String)">
+            <inheritdoc cref="M:System.IO.Abstractions.IDirectory.GetLastWriteTime(System.String)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.DirectoryWrapper.GetLastWriteTimeUtc(System.String)">
+            <inheritdoc cref="M:System.IO.Abstractions.IDirectory.GetLastWriteTimeUtc(System.String)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.DirectoryWrapper.GetLogicalDrives">
+            <inheritdoc cref="M:System.IO.Abstractions.IDirectory.GetLogicalDrives" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.DirectoryWrapper.GetParent(System.String)">
+            <inheritdoc cref="M:System.IO.Abstractions.IDirectory.GetParent(System.String)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.DirectoryWrapper.Move(System.String,System.String)">
+            <inheritdoc cref="M:System.IO.Abstractions.IDirectory.Move(System.String,System.String)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.DirectoryWrapper.ResolveLinkTarget(System.String,System.Boolean)">
+            <inheritdoc cref="M:System.IO.Abstractions.IDirectory.ResolveLinkTarget(System.String,System.Boolean)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.DirectoryWrapper.SetCreationTime(System.String,System.DateTime)">
+            <inheritdoc cref="M:System.IO.Abstractions.IDirectory.SetCreationTime(System.String,System.DateTime)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.DirectoryWrapper.SetCreationTimeUtc(System.String,System.DateTime)">
+            <inheritdoc cref="M:System.IO.Abstractions.IDirectory.SetCreationTimeUtc(System.String,System.DateTime)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.DirectoryWrapper.SetCurrentDirectory(System.String)">
+            <inheritdoc cref="M:System.IO.Abstractions.IDirectory.SetCurrentDirectory(System.String)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.DirectoryWrapper.SetLastAccessTime(System.String,System.DateTime)">
+            <inheritdoc cref="M:System.IO.Abstractions.IDirectory.SetLastAccessTime(System.String,System.DateTime)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.DirectoryWrapper.SetLastAccessTimeUtc(System.String,System.DateTime)">
+            <inheritdoc cref="M:System.IO.Abstractions.IDirectory.SetLastAccessTimeUtc(System.String,System.DateTime)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.DirectoryWrapper.SetLastWriteTime(System.String,System.DateTime)">
+            <inheritdoc cref="M:System.IO.Abstractions.IDirectory.SetLastWriteTime(System.String,System.DateTime)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.DirectoryWrapper.SetLastWriteTimeUtc(System.String,System.DateTime)">
+            <inheritdoc cref="M:System.IO.Abstractions.IDirectory.SetLastWriteTimeUtc(System.String,System.DateTime)" />
+        </member>
+        <member name="P:Testably.Abstractions.FileSystem.DriveInfoFactory.FileSystem">
+            <inheritdoc cref="P:System.IO.Abstractions.IFileSystemEntity.FileSystem" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.DriveInfoFactory.GetDrives">
+            <inheritdoc cref="M:System.IO.Abstractions.IDriveInfoFactory.GetDrives" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.DriveInfoFactory.New(System.String)">
+            <inheritdoc cref="M:System.IO.Abstractions.IDriveInfoFactory.New(System.String)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.DriveInfoFactory.Wrap(System.IO.DriveInfo)">
+            <inheritdoc cref="M:System.IO.Abstractions.IDriveInfoFactory.Wrap(System.IO.DriveInfo)" />
+        </member>
+        <member name="P:Testably.Abstractions.FileSystem.DriveInfoWrapper.AvailableFreeSpace">
+            <inheritdoc cref="P:System.IO.Abstractions.IDriveInfo.AvailableFreeSpace" />
+        </member>
+        <member name="P:Testably.Abstractions.FileSystem.DriveInfoWrapper.DriveFormat">
+            <inheritdoc cref="P:System.IO.Abstractions.IDriveInfo.DriveFormat" />
+        </member>
+        <member name="P:Testably.Abstractions.FileSystem.DriveInfoWrapper.DriveType">
+            <inheritdoc cref="P:System.IO.Abstractions.IDriveInfo.DriveType" />
+        </member>
+        <member name="P:Testably.Abstractions.FileSystem.DriveInfoWrapper.FileSystem">
+            <inheritdoc cref="P:System.IO.Abstractions.IFileSystemEntity.FileSystem" />
+        </member>
+        <member name="P:Testably.Abstractions.FileSystem.DriveInfoWrapper.IsReady">
+            <inheritdoc cref="P:System.IO.Abstractions.IDriveInfo.IsReady" />
+        </member>
+        <member name="P:Testably.Abstractions.FileSystem.DriveInfoWrapper.Name">
+            <inheritdoc cref="P:System.IO.Abstractions.IDriveInfo.Name" />
+        </member>
+        <member name="P:Testably.Abstractions.FileSystem.DriveInfoWrapper.RootDirectory">
+            <inheritdoc cref="P:System.IO.Abstractions.IDriveInfo.RootDirectory" />
+        </member>
+        <member name="P:Testably.Abstractions.FileSystem.DriveInfoWrapper.TotalFreeSpace">
+            <inheritdoc cref="P:System.IO.Abstractions.IDriveInfo.TotalFreeSpace" />
+        </member>
+        <member name="P:Testably.Abstractions.FileSystem.DriveInfoWrapper.TotalSize">
+            <inheritdoc cref="P:System.IO.Abstractions.IDriveInfo.TotalSize" />
+        </member>
+        <member name="P:Testably.Abstractions.FileSystem.DriveInfoWrapper.VolumeLabel">
+            <inheritdoc cref="P:System.IO.Abstractions.IDriveInfo.VolumeLabel" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.DriveInfoWrapper.ToString">
+            <inheritdoc cref="M:System.Object.ToString" />
+        </member>
+        <member name="P:Testably.Abstractions.FileSystem.FileInfoFactory.FileSystem">
+            <inheritdoc cref="P:System.IO.Abstractions.IFileSystemEntity.FileSystem" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileInfoFactory.New(System.String)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFileInfoFactory.New(System.String)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileInfoFactory.Wrap(System.IO.FileInfo)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFileInfoFactory.Wrap(System.IO.FileInfo)" />
+        </member>
+        <member name="P:Testably.Abstractions.FileSystem.FileInfoWrapper.Directory">
+            <inheritdoc cref="P:System.IO.Abstractions.IFileInfo.Directory" />
+        </member>
+        <member name="P:Testably.Abstractions.FileSystem.FileInfoWrapper.DirectoryName">
+            <inheritdoc cref="P:System.IO.Abstractions.IFileInfo.DirectoryName" />
+        </member>
+        <member name="P:Testably.Abstractions.FileSystem.FileInfoWrapper.IsReadOnly">
+            <inheritdoc cref="P:System.IO.Abstractions.IFileInfo.IsReadOnly" />
+        </member>
+        <member name="P:Testably.Abstractions.FileSystem.FileInfoWrapper.Length">
+            <inheritdoc cref="P:System.IO.Abstractions.IFileInfo.Length" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileInfoWrapper.AppendText">
+            <inheritdoc cref="M:System.IO.Abstractions.IFileInfo.AppendText" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileInfoWrapper.CopyTo(System.String)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFileInfo.CopyTo(System.String)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileInfoWrapper.CopyTo(System.String,System.Boolean)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFileInfo.CopyTo(System.String,System.Boolean)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileInfoWrapper.Create">
+            <inheritdoc cref="M:System.IO.Abstractions.IFileInfo.Create" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileInfoWrapper.CreateText">
+            <inheritdoc cref="M:System.IO.Abstractions.IFileInfo.CreateText" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileInfoWrapper.Decrypt">
+            <inheritdoc cref="M:System.IO.Abstractions.IFileInfo.Decrypt" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileInfoWrapper.Encrypt">
+            <inheritdoc cref="M:System.IO.Abstractions.IFileInfo.Encrypt" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileInfoWrapper.MoveTo(System.String)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFileInfo.MoveTo(System.String)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileInfoWrapper.MoveTo(System.String,System.Boolean)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFileInfo.MoveTo(System.String,System.Boolean)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileInfoWrapper.Open(System.IO.FileMode)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFileInfo.Open(System.IO.FileMode)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileInfoWrapper.Open(System.IO.FileMode,System.IO.FileAccess)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFileInfo.Open(System.IO.FileMode,System.IO.FileAccess)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileInfoWrapper.Open(System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFileInfo.Open(System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileInfoWrapper.Open(System.IO.FileStreamOptions)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFileInfo.Open(System.IO.FileStreamOptions)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileInfoWrapper.OpenRead">
+            <inheritdoc cref="M:System.IO.Abstractions.IFileInfo.OpenRead" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileInfoWrapper.OpenText">
+            <inheritdoc cref="M:System.IO.Abstractions.IFileInfo.OpenText" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileInfoWrapper.OpenWrite">
+            <inheritdoc cref="M:System.IO.Abstractions.IFileInfo.OpenWrite" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileInfoWrapper.Replace(System.String,System.String)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFileInfo.Replace(System.String,System.String)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileInfoWrapper.Replace(System.String,System.String,System.Boolean)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFileInfo.Replace(System.String,System.String,System.Boolean)" />
+        </member>
+        <member name="P:Testably.Abstractions.FileSystem.FileStreamFactory.FileSystem">
+            <inheritdoc cref="P:System.IO.Abstractions.IFileSystemEntity.FileSystem" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileStreamFactory.New(System.String,System.IO.FileMode)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFileStreamFactory.New(System.String,System.IO.FileMode)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileStreamFactory.New(System.String,System.IO.FileMode,System.IO.FileAccess)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFileStreamFactory.New(System.String,System.IO.FileMode,System.IO.FileAccess)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileStreamFactory.New(System.String,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFileStreamFactory.New(System.String,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileStreamFactory.New(System.String,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare,System.Int32)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFileStreamFactory.New(System.String,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare,System.Int32)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileStreamFactory.New(System.String,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare,System.Int32,System.Boolean)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFileStreamFactory.New(System.String,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare,System.Int32,System.Boolean)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileStreamFactory.New(System.String,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare,System.Int32,System.IO.FileOptions)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFileStreamFactory.New(System.String,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare,System.Int32,System.IO.FileOptions)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileStreamFactory.New(Microsoft.Win32.SafeHandles.SafeFileHandle,System.IO.FileAccess)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFileStreamFactory.New(Microsoft.Win32.SafeHandles.SafeFileHandle,System.IO.FileAccess)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileStreamFactory.New(Microsoft.Win32.SafeHandles.SafeFileHandle,System.IO.FileAccess,System.Int32)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFileStreamFactory.New(Microsoft.Win32.SafeHandles.SafeFileHandle,System.IO.FileAccess,System.Int32)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileStreamFactory.New(Microsoft.Win32.SafeHandles.SafeFileHandle,System.IO.FileAccess,System.Int32,System.Boolean)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFileStreamFactory.New(Microsoft.Win32.SafeHandles.SafeFileHandle,System.IO.FileAccess,System.Int32,System.Boolean)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileStreamFactory.New(System.String,System.IO.FileStreamOptions)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFileStreamFactory.New(System.String,System.IO.FileStreamOptions)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileStreamFactory.Wrap(System.IO.FileStream)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFileStreamFactory.Wrap(System.IO.FileStream)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileStreamWrapper.RetrieveMetadata``1(System.String)">
+            <inheritdoc cref="M:Testably.Abstractions.FileSystem.FileStreamWrapper.RetrieveMetadata``1(System.String)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileStreamWrapper.StoreMetadata``1(System.String,``0)">
+            <inheritdoc cref="M:Testably.Abstractions.FileSystem.FileStreamWrapper.StoreMetadata``1(System.String,``0)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileStreamWrapper.TryGetWrappedInstance``1(``0@)">
+            <inheritdoc cref="M:Testably.Abstractions.Helpers.IFileSystemExtensibility.TryGetWrappedInstance``1(``0@)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileSystemExtensibility.RetrieveMetadata``1(System.String)">
+            <inheritdoc cref="M:Testably.Abstractions.FileSystem.FileSystemExtensibility.RetrieveMetadata``1(System.String)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileSystemExtensibility.StoreMetadata``1(System.String,``0)">
+            <inheritdoc cref="M:Testably.Abstractions.FileSystem.FileSystemExtensibility.StoreMetadata``1(System.String,``0)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileSystemExtensibility.TryGetWrappedInstance``1(``0@)">
+            <inheritdoc cref="M:Testably.Abstractions.Helpers.IFileSystemExtensibility.TryGetWrappedInstance``1(``0@)" />
+        </member>
+        <member name="P:Testably.Abstractions.FileSystem.FileSystemInfoWrapper.Attributes">
+            <inheritdoc cref="P:System.IO.Abstractions.IFileSystemInfo.Attributes" />
+        </member>
+        <member name="P:Testably.Abstractions.FileSystem.FileSystemInfoWrapper.CreationTime">
+            <inheritdoc cref="P:System.IO.Abstractions.IFileSystemInfo.CreationTime" />
+        </member>
+        <member name="P:Testably.Abstractions.FileSystem.FileSystemInfoWrapper.CreationTimeUtc">
+            <inheritdoc cref="P:System.IO.Abstractions.IFileSystemInfo.CreationTimeUtc" />
+        </member>
+        <member name="P:Testably.Abstractions.FileSystem.FileSystemInfoWrapper.Exists">
+            <inheritdoc cref="P:System.IO.Abstractions.IFileSystemInfo.Exists" />
+        </member>
+        <member name="P:Testably.Abstractions.FileSystem.FileSystemInfoWrapper.Extension">
+            <inheritdoc cref="P:System.IO.Abstractions.IFileSystemInfo.Extension" />
+        </member>
+        <member name="P:Testably.Abstractions.FileSystem.FileSystemInfoWrapper.FileSystem">
+            <inheritdoc cref="P:System.IO.Abstractions.IFileSystemEntity.FileSystem" />
+        </member>
+        <member name="P:Testably.Abstractions.FileSystem.FileSystemInfoWrapper.FullName">
+            <inheritdoc cref="P:System.IO.Abstractions.IFileSystemInfo.FullName" />
+        </member>
+        <member name="P:Testably.Abstractions.FileSystem.FileSystemInfoWrapper.LastAccessTime">
+            <inheritdoc cref="P:System.IO.Abstractions.IFileSystemInfo.LastAccessTime" />
+        </member>
+        <member name="P:Testably.Abstractions.FileSystem.FileSystemInfoWrapper.LastAccessTimeUtc">
+            <inheritdoc cref="P:System.IO.Abstractions.IFileSystemInfo.LastAccessTimeUtc" />
+        </member>
+        <member name="P:Testably.Abstractions.FileSystem.FileSystemInfoWrapper.LastWriteTime">
+            <inheritdoc cref="P:System.IO.Abstractions.IFileSystemInfo.LastWriteTime" />
+        </member>
+        <member name="P:Testably.Abstractions.FileSystem.FileSystemInfoWrapper.LastWriteTimeUtc">
+            <inheritdoc cref="P:System.IO.Abstractions.IFileSystemInfo.LastWriteTimeUtc" />
+        </member>
+        <member name="P:Testably.Abstractions.FileSystem.FileSystemInfoWrapper.LinkTarget">
+            <inheritdoc cref="P:System.IO.Abstractions.IFileSystemInfo.LinkTarget" />
+        </member>
+        <member name="P:Testably.Abstractions.FileSystem.FileSystemInfoWrapper.Name">
+            <inheritdoc cref="P:System.IO.Abstractions.IFileSystemInfo.Name" />
+        </member>
+        <member name="P:Testably.Abstractions.FileSystem.FileSystemInfoWrapper.UnixFileMode">
+            <inheritdoc cref="P:System.IO.Abstractions.IFileSystemInfo.UnixFileMode" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileSystemInfoWrapper.CreateAsSymbolicLink(System.String)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFileSystemInfo.CreateAsSymbolicLink(System.String)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileSystemInfoWrapper.Delete">
+            <inheritdoc cref="M:System.IO.Abstractions.IFileSystemInfo.Delete" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileSystemInfoWrapper.Refresh">
+            <inheritdoc cref="M:System.IO.Abstractions.IFileSystemInfo.Refresh" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileSystemInfoWrapper.ResolveLinkTarget(System.Boolean)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFileSystemInfo.ResolveLinkTarget(System.Boolean)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileSystemInfoWrapper.ToString">
+            <inheritdoc cref="M:System.IO.FileSystemInfo.ToString" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileSystemInfoWrapper.TryGetWrappedInstance``1(``0@)">
+            <inheritdoc cref="M:Testably.Abstractions.Helpers.IFileSystemExtensibility.TryGetWrappedInstance``1(``0@)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileSystemInfoWrapper.StoreMetadata``1(System.String,``0)">
+            <inheritdoc cref="M:Testably.Abstractions.FileSystem.FileSystemInfoWrapper.StoreMetadata``1(System.String,``0)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileSystemInfoWrapper.RetrieveMetadata``1(System.String)">
+            <inheritdoc cref="M:Testably.Abstractions.FileSystem.FileSystemInfoWrapper.RetrieveMetadata``1(System.String)" />
+        </member>
+        <member name="P:Testably.Abstractions.FileSystem.FileSystemWatcherFactory.FileSystem">
+            <inheritdoc cref="P:System.IO.Abstractions.IFileSystemEntity.FileSystem" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileSystemWatcherFactory.New">
+            <inheritdoc cref="M:System.IO.Abstractions.IFileSystemWatcherFactory.New" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileSystemWatcherFactory.New(System.String)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFileSystemWatcherFactory.New(System.String)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileSystemWatcherFactory.New(System.String,System.String)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFileSystemWatcherFactory.New(System.String,System.String)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileSystemWatcherFactory.Wrap(System.IO.FileSystemWatcher)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFileSystemWatcherFactory.Wrap(System.IO.FileSystemWatcher)" />
+        </member>
+        <member name="P:Testably.Abstractions.FileSystem.FileSystemWatcherWrapper.Container">
+            <inheritdoc cref="P:System.IO.Abstractions.IFileSystemWatcher.Container" />
+        </member>
+        <member name="P:Testably.Abstractions.FileSystem.FileSystemWatcherWrapper.EnableRaisingEvents">
+            <inheritdoc cref="P:System.IO.Abstractions.IFileSystemWatcher.EnableRaisingEvents" />
+        </member>
+        <member name="P:Testably.Abstractions.FileSystem.FileSystemWatcherWrapper.FileSystem">
+            <inheritdoc cref="P:System.IO.Abstractions.IFileSystemEntity.FileSystem" />
+        </member>
+        <member name="P:Testably.Abstractions.FileSystem.FileSystemWatcherWrapper.Filter">
+            <inheritdoc cref="P:System.IO.Abstractions.IFileSystemWatcher.Filter" />
+        </member>
+        <member name="P:Testably.Abstractions.FileSystem.FileSystemWatcherWrapper.Filters">
+            <inheritdoc cref="P:System.IO.Abstractions.IFileSystemWatcher.Filters" />
+        </member>
+        <member name="P:Testably.Abstractions.FileSystem.FileSystemWatcherWrapper.IncludeSubdirectories">
+            <inheritdoc cref="P:System.IO.Abstractions.IFileSystemWatcher.IncludeSubdirectories" />
+        </member>
+        <member name="P:Testably.Abstractions.FileSystem.FileSystemWatcherWrapper.InternalBufferSize">
+            <inheritdoc cref="P:System.IO.Abstractions.IFileSystemWatcher.InternalBufferSize" />
+        </member>
+        <member name="P:Testably.Abstractions.FileSystem.FileSystemWatcherWrapper.NotifyFilter">
+            <inheritdoc cref="P:System.IO.Abstractions.IFileSystemWatcher.NotifyFilter" />
+        </member>
+        <member name="P:Testably.Abstractions.FileSystem.FileSystemWatcherWrapper.Path">
+            <inheritdoc cref="P:System.IO.Abstractions.IFileSystemWatcher.Path" />
+        </member>
+        <member name="P:Testably.Abstractions.FileSystem.FileSystemWatcherWrapper.Site">
+            <inheritdoc cref="P:System.IO.Abstractions.IFileSystemWatcher.Site" />
+        </member>
+        <member name="P:Testably.Abstractions.FileSystem.FileSystemWatcherWrapper.SynchronizingObject">
+            <inheritdoc cref="P:System.IO.Abstractions.IFileSystemWatcher.SynchronizingObject" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileSystemWatcherWrapper.BeginInit">
+            <inheritdoc cref="M:System.IO.Abstractions.IFileSystemWatcher.BeginInit" />
+        </member>
+        <member name="E:Testably.Abstractions.FileSystem.FileSystemWatcherWrapper.Changed">
+            <inheritdoc cref="E:System.IO.Abstractions.IFileSystemWatcher.Changed" />
+        </member>
+        <member name="E:Testably.Abstractions.FileSystem.FileSystemWatcherWrapper.Created">
+            <inheritdoc cref="E:System.IO.Abstractions.IFileSystemWatcher.Created" />
+        </member>
+        <member name="E:Testably.Abstractions.FileSystem.FileSystemWatcherWrapper.Deleted">
+            <inheritdoc cref="E:System.IO.Abstractions.IFileSystemWatcher.Deleted" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileSystemWatcherWrapper.Dispose">
+            <inheritdoc cref="M:System.IDisposable.Dispose" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileSystemWatcherWrapper.EndInit">
+            <inheritdoc cref="M:System.IO.Abstractions.IFileSystemWatcher.EndInit" />
+        </member>
+        <member name="E:Testably.Abstractions.FileSystem.FileSystemWatcherWrapper.Error">
+            <inheritdoc cref="E:System.IO.Abstractions.IFileSystemWatcher.Error" />
+        </member>
+        <member name="E:Testably.Abstractions.FileSystem.FileSystemWatcherWrapper.Renamed">
+            <inheritdoc cref="E:System.IO.Abstractions.IFileSystemWatcher.Renamed" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileSystemWatcherWrapper.WaitForChanged(System.IO.WatcherChangeTypes)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFileSystemWatcher.WaitForChanged(System.IO.WatcherChangeTypes)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileSystemWatcherWrapper.WaitForChanged(System.IO.WatcherChangeTypes,System.Int32)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFileSystemWatcher.WaitForChanged(System.IO.WatcherChangeTypes,System.Int32)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileSystemWatcherWrapper.WaitForChanged(System.IO.WatcherChangeTypes,System.TimeSpan)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFileSystemWatcher.WaitForChanged(System.IO.WatcherChangeTypes,System.TimeSpan)" />
+        </member>
+        <member name="P:Testably.Abstractions.FileSystem.FileSystemWatcherWrapper.WaitForChangedResultWrapper.ChangeType">
+            <inheritdoc cref="P:System.IO.Abstractions.IWaitForChangedResult.ChangeType" />
+        </member>
+        <member name="P:Testably.Abstractions.FileSystem.FileSystemWatcherWrapper.WaitForChangedResultWrapper.Name">
+            <inheritdoc cref="P:System.IO.Abstractions.IWaitForChangedResult.Name" />
+        </member>
+        <member name="P:Testably.Abstractions.FileSystem.FileSystemWatcherWrapper.WaitForChangedResultWrapper.OldName">
+            <inheritdoc cref="P:System.IO.Abstractions.IWaitForChangedResult.OldName" />
+        </member>
+        <member name="P:Testably.Abstractions.FileSystem.FileSystemWatcherWrapper.WaitForChangedResultWrapper.TimedOut">
+            <inheritdoc cref="P:System.IO.Abstractions.IWaitForChangedResult.TimedOut" />
+        </member>
+        <member name="P:Testably.Abstractions.FileSystem.FileVersionInfoFactory.FileSystem">
+            <inheritdoc cref="P:System.IO.Abstractions.IFileSystemEntity.FileSystem" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileVersionInfoFactory.GetVersionInfo(System.String)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFileVersionInfoFactory.GetVersionInfo(System.String)" />
+        </member>
+        <member name="P:Testably.Abstractions.FileSystem.FileVersionInfoWrapper.FileSystem">
+            <inheritdoc cref="P:System.IO.Abstractions.IFileSystemEntity.FileSystem" />
+        </member>
+        <member name="P:Testably.Abstractions.FileSystem.FileVersionInfoWrapper.Comments">
+            <inheritdoc cref="P:System.IO.Abstractions.IFileVersionInfo.Comments" />
+        </member>
+        <member name="P:Testably.Abstractions.FileSystem.FileVersionInfoWrapper.CompanyName">
+            <inheritdoc cref="P:System.IO.Abstractions.IFileVersionInfo.CompanyName" />
+        </member>
+        <member name="P:Testably.Abstractions.FileSystem.FileVersionInfoWrapper.FileBuildPart">
+            <inheritdoc cref="P:System.IO.Abstractions.IFileVersionInfo.FileBuildPart" />
+        </member>
+        <member name="P:Testably.Abstractions.FileSystem.FileVersionInfoWrapper.FileDescription">
+            <inheritdoc cref="P:System.IO.Abstractions.IFileVersionInfo.FileDescription" />
+        </member>
+        <member name="P:Testably.Abstractions.FileSystem.FileVersionInfoWrapper.FileMajorPart">
+            <inheritdoc cref="P:System.IO.Abstractions.IFileVersionInfo.FileMajorPart" />
+        </member>
+        <member name="P:Testably.Abstractions.FileSystem.FileVersionInfoWrapper.FileMinorPart">
+            <inheritdoc cref="P:System.IO.Abstractions.IFileVersionInfo.FileMinorPart" />
+        </member>
+        <member name="P:Testably.Abstractions.FileSystem.FileVersionInfoWrapper.FileName">
+            <inheritdoc cref="P:System.IO.Abstractions.IFileVersionInfo.FileName" />
+        </member>
+        <member name="P:Testably.Abstractions.FileSystem.FileVersionInfoWrapper.FilePrivatePart">
+            <inheritdoc cref="P:System.IO.Abstractions.IFileVersionInfo.FilePrivatePart" />
+        </member>
+        <member name="P:Testably.Abstractions.FileSystem.FileVersionInfoWrapper.FileVersion">
+            <inheritdoc cref="P:System.IO.Abstractions.IFileVersionInfo.FileVersion" />
+        </member>
+        <member name="P:Testably.Abstractions.FileSystem.FileVersionInfoWrapper.InternalName">
+            <inheritdoc cref="P:System.IO.Abstractions.IFileVersionInfo.InternalName" />
+        </member>
+        <member name="P:Testably.Abstractions.FileSystem.FileVersionInfoWrapper.IsDebug">
+            <inheritdoc cref="P:System.IO.Abstractions.IFileVersionInfo.IsDebug" />
+        </member>
+        <member name="P:Testably.Abstractions.FileSystem.FileVersionInfoWrapper.IsPatched">
+            <inheritdoc cref="P:System.IO.Abstractions.IFileVersionInfo.IsPatched" />
+        </member>
+        <member name="P:Testably.Abstractions.FileSystem.FileVersionInfoWrapper.IsPreRelease">
+            <inheritdoc cref="P:System.IO.Abstractions.IFileVersionInfo.IsPreRelease" />
+        </member>
+        <member name="P:Testably.Abstractions.FileSystem.FileVersionInfoWrapper.IsPrivateBuild">
+            <inheritdoc cref="P:System.IO.Abstractions.IFileVersionInfo.IsPrivateBuild" />
+        </member>
+        <member name="P:Testably.Abstractions.FileSystem.FileVersionInfoWrapper.IsSpecialBuild">
+            <inheritdoc cref="P:System.IO.Abstractions.IFileVersionInfo.IsSpecialBuild" />
+        </member>
+        <member name="P:Testably.Abstractions.FileSystem.FileVersionInfoWrapper.Language">
+            <inheritdoc cref="P:System.IO.Abstractions.IFileVersionInfo.Language" />
+        </member>
+        <member name="P:Testably.Abstractions.FileSystem.FileVersionInfoWrapper.LegalCopyright">
+            <inheritdoc cref="P:System.IO.Abstractions.IFileVersionInfo.LegalCopyright" />
+        </member>
+        <member name="P:Testably.Abstractions.FileSystem.FileVersionInfoWrapper.LegalTrademarks">
+            <inheritdoc cref="P:System.IO.Abstractions.IFileVersionInfo.LegalTrademarks" />
+        </member>
+        <member name="P:Testably.Abstractions.FileSystem.FileVersionInfoWrapper.OriginalFilename">
+            <inheritdoc cref="P:System.IO.Abstractions.IFileVersionInfo.OriginalFilename" />
+        </member>
+        <member name="P:Testably.Abstractions.FileSystem.FileVersionInfoWrapper.PrivateBuild">
+            <inheritdoc cref="P:System.IO.Abstractions.IFileVersionInfo.PrivateBuild" />
+        </member>
+        <member name="P:Testably.Abstractions.FileSystem.FileVersionInfoWrapper.ProductBuildPart">
+            <inheritdoc cref="P:System.IO.Abstractions.IFileVersionInfo.ProductBuildPart" />
+        </member>
+        <member name="P:Testably.Abstractions.FileSystem.FileVersionInfoWrapper.ProductMajorPart">
+            <inheritdoc cref="P:System.IO.Abstractions.IFileVersionInfo.ProductMajorPart" />
+        </member>
+        <member name="P:Testably.Abstractions.FileSystem.FileVersionInfoWrapper.ProductMinorPart">
+            <inheritdoc cref="P:System.IO.Abstractions.IFileVersionInfo.ProductMinorPart" />
+        </member>
+        <member name="P:Testably.Abstractions.FileSystem.FileVersionInfoWrapper.ProductName">
+            <inheritdoc cref="P:System.IO.Abstractions.IFileVersionInfo.ProductName" />
+        </member>
+        <member name="P:Testably.Abstractions.FileSystem.FileVersionInfoWrapper.ProductPrivatePart">
+            <inheritdoc cref="P:System.IO.Abstractions.IFileVersionInfo.ProductPrivatePart" />
+        </member>
+        <member name="P:Testably.Abstractions.FileSystem.FileVersionInfoWrapper.ProductVersion">
+            <inheritdoc cref="P:System.IO.Abstractions.IFileVersionInfo.ProductVersion" />
+        </member>
+        <member name="P:Testably.Abstractions.FileSystem.FileVersionInfoWrapper.SpecialBuild">
+            <inheritdoc cref="P:System.IO.Abstractions.IFileVersionInfo.SpecialBuild" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileVersionInfoWrapper.ToString">
+            <inheritdoc cref="M:System.Object.ToString" />
+        </member>
+        <member name="P:Testably.Abstractions.FileSystem.FileWrapper.FileSystem">
+            <inheritdoc cref="P:System.IO.Abstractions.IFileSystemEntity.FileSystem" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileWrapper.AppendAllLines(System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <inheritdoc cref="M:System.IO.Abstractions.IFile.AppendAllLines(System.String,System.Collections.Generic.IEnumerable{System.String})" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileWrapper.AppendAllLines(System.String,System.Collections.Generic.IEnumerable{System.String},System.Text.Encoding)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFile.AppendAllLines(System.String,System.Collections.Generic.IEnumerable{System.String},System.Text.Encoding)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileWrapper.AppendAllLinesAsync(System.String,System.Collections.Generic.IEnumerable{System.String},System.Threading.CancellationToken)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFile.AppendAllLinesAsync(System.String,System.Collections.Generic.IEnumerable{System.String},System.Threading.CancellationToken)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileWrapper.AppendAllLinesAsync(System.String,System.Collections.Generic.IEnumerable{System.String},System.Text.Encoding,System.Threading.CancellationToken)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFile.AppendAllLinesAsync(System.String,System.Collections.Generic.IEnumerable{System.String},System.Text.Encoding,System.Threading.CancellationToken)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileWrapper.AppendAllText(System.String,System.String)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFile.AppendAllText(System.String,System.String)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileWrapper.AppendAllText(System.String,System.String,System.Text.Encoding)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFile.AppendAllText(System.String,System.String,System.Text.Encoding)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileWrapper.AppendAllTextAsync(System.String,System.String,System.Threading.CancellationToken)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFile.AppendAllTextAsync(System.String,System.String,System.Threading.CancellationToken)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileWrapper.AppendAllTextAsync(System.String,System.String,System.Text.Encoding,System.Threading.CancellationToken)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFile.AppendAllTextAsync(System.String,System.String,System.Text.Encoding,System.Threading.CancellationToken)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileWrapper.AppendText(System.String)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFile.AppendText(System.String)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileWrapper.Copy(System.String,System.String)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFile.Copy(System.String,System.String)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileWrapper.Copy(System.String,System.String,System.Boolean)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFile.Copy(System.String,System.String,System.Boolean)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileWrapper.Create(System.String)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFile.Create(System.String)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileWrapper.Create(System.String,System.Int32)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFile.Create(System.String,System.Int32)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileWrapper.Create(System.String,System.Int32,System.IO.FileOptions)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFile.Create(System.String,System.Int32,System.IO.FileOptions)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileWrapper.CreateSymbolicLink(System.String,System.String)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFile.CreateSymbolicLink(System.String,System.String)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileWrapper.CreateText(System.String)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFile.CreateText(System.String)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileWrapper.Decrypt(System.String)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFile.Decrypt(System.String)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileWrapper.Delete(System.String)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFile.Delete(System.String)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileWrapper.Encrypt(System.String)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFile.Encrypt(System.String)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileWrapper.Exists(System.String)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFile.Exists(System.String)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileWrapper.GetAttributes(System.String)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFile.GetAttributes(System.String)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileWrapper.GetAttributes(Microsoft.Win32.SafeHandles.SafeFileHandle)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFile.GetAttributes(Microsoft.Win32.SafeHandles.SafeFileHandle)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileWrapper.GetCreationTime(System.String)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFile.GetCreationTime(System.String)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileWrapper.GetCreationTime(Microsoft.Win32.SafeHandles.SafeFileHandle)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFile.GetCreationTime(Microsoft.Win32.SafeHandles.SafeFileHandle)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileWrapper.GetCreationTimeUtc(System.String)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFile.GetCreationTimeUtc(System.String)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileWrapper.GetCreationTimeUtc(Microsoft.Win32.SafeHandles.SafeFileHandle)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFile.GetCreationTimeUtc(Microsoft.Win32.SafeHandles.SafeFileHandle)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileWrapper.GetLastAccessTime(System.String)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFile.GetLastAccessTime(System.String)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileWrapper.GetLastAccessTime(Microsoft.Win32.SafeHandles.SafeFileHandle)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFile.GetLastAccessTime(Microsoft.Win32.SafeHandles.SafeFileHandle)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileWrapper.GetLastAccessTimeUtc(System.String)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFile.GetLastAccessTimeUtc(System.String)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileWrapper.GetLastAccessTimeUtc(Microsoft.Win32.SafeHandles.SafeFileHandle)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFile.GetLastAccessTimeUtc(Microsoft.Win32.SafeHandles.SafeFileHandle)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileWrapper.GetLastWriteTime(System.String)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFile.GetLastWriteTime(System.String)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileWrapper.GetLastWriteTime(Microsoft.Win32.SafeHandles.SafeFileHandle)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFile.GetLastWriteTime(Microsoft.Win32.SafeHandles.SafeFileHandle)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileWrapper.GetLastWriteTimeUtc(System.String)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFile.GetLastWriteTimeUtc(System.String)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileWrapper.GetLastWriteTimeUtc(Microsoft.Win32.SafeHandles.SafeFileHandle)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFile.GetLastWriteTimeUtc(Microsoft.Win32.SafeHandles.SafeFileHandle)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileWrapper.GetUnixFileMode(System.String)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFile.GetUnixFileMode(System.String)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileWrapper.GetUnixFileMode(Microsoft.Win32.SafeHandles.SafeFileHandle)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFile.GetUnixFileMode(Microsoft.Win32.SafeHandles.SafeFileHandle)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileWrapper.Move(System.String,System.String)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFile.Move(System.String,System.String)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileWrapper.Move(System.String,System.String,System.Boolean)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFile.Move(System.String,System.String,System.Boolean)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileWrapper.Open(System.String,System.IO.FileMode)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFile.Open(System.String,System.IO.FileMode)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileWrapper.Open(System.String,System.IO.FileMode,System.IO.FileAccess)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFile.Open(System.String,System.IO.FileMode,System.IO.FileAccess)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileWrapper.Open(System.String,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFile.Open(System.String,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileWrapper.Open(System.String,System.IO.FileStreamOptions)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFile.Open(System.String,System.IO.FileStreamOptions)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileWrapper.OpenRead(System.String)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFile.OpenRead(System.String)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileWrapper.OpenText(System.String)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFile.OpenText(System.String)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileWrapper.OpenWrite(System.String)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFile.OpenWrite(System.String)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileWrapper.ReadAllBytes(System.String)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFile.ReadAllBytes(System.String)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileWrapper.ReadAllBytesAsync(System.String,System.Threading.CancellationToken)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFile.ReadAllBytesAsync(System.String,System.Threading.CancellationToken)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileWrapper.ReadAllLines(System.String)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFile.ReadAllLines(System.String)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileWrapper.ReadAllLines(System.String,System.Text.Encoding)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFile.ReadAllLines(System.String,System.Text.Encoding)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileWrapper.ReadAllLinesAsync(System.String,System.Threading.CancellationToken)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFile.ReadAllLinesAsync(System.String,System.Threading.CancellationToken)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileWrapper.ReadAllLinesAsync(System.String,System.Text.Encoding,System.Threading.CancellationToken)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFile.ReadAllLinesAsync(System.String,System.Text.Encoding,System.Threading.CancellationToken)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileWrapper.ReadAllText(System.String)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFile.ReadAllText(System.String)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileWrapper.ReadAllText(System.String,System.Text.Encoding)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFile.ReadAllText(System.String,System.Text.Encoding)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileWrapper.ReadAllTextAsync(System.String,System.Threading.CancellationToken)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFile.ReadAllTextAsync(System.String,System.Threading.CancellationToken)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileWrapper.ReadAllTextAsync(System.String,System.Text.Encoding,System.Threading.CancellationToken)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFile.ReadAllTextAsync(System.String,System.Text.Encoding,System.Threading.CancellationToken)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileWrapper.ReadLines(System.String)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFile.ReadLines(System.String)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileWrapper.ReadLines(System.String,System.Text.Encoding)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFile.ReadLines(System.String,System.Text.Encoding)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileWrapper.ReadLinesAsync(System.String,System.Threading.CancellationToken)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFile.ReadLinesAsync(System.String,System.Threading.CancellationToken)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileWrapper.ReadLinesAsync(System.String,System.Text.Encoding,System.Threading.CancellationToken)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFile.ReadLinesAsync(System.String,System.Text.Encoding,System.Threading.CancellationToken)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileWrapper.Replace(System.String,System.String,System.String)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFile.Replace(System.String,System.String,System.String)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileWrapper.Replace(System.String,System.String,System.String,System.Boolean)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFile.Replace(System.String,System.String,System.String,System.Boolean)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileWrapper.ResolveLinkTarget(System.String,System.Boolean)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFile.ResolveLinkTarget(System.String,System.Boolean)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileWrapper.SetAttributes(System.String,System.IO.FileAttributes)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFile.SetAttributes(System.String,System.IO.FileAttributes)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileWrapper.SetAttributes(Microsoft.Win32.SafeHandles.SafeFileHandle,System.IO.FileAttributes)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFile.SetAttributes(Microsoft.Win32.SafeHandles.SafeFileHandle,System.IO.FileAttributes)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileWrapper.SetCreationTime(System.String,System.DateTime)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFile.SetCreationTime(System.String,System.DateTime)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileWrapper.SetCreationTime(Microsoft.Win32.SafeHandles.SafeFileHandle,System.DateTime)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFile.SetCreationTime(Microsoft.Win32.SafeHandles.SafeFileHandle,System.DateTime)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileWrapper.SetCreationTimeUtc(System.String,System.DateTime)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFile.SetCreationTimeUtc(System.String,System.DateTime)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileWrapper.SetCreationTimeUtc(Microsoft.Win32.SafeHandles.SafeFileHandle,System.DateTime)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFile.SetCreationTimeUtc(Microsoft.Win32.SafeHandles.SafeFileHandle,System.DateTime)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileWrapper.SetLastAccessTime(System.String,System.DateTime)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFile.SetLastAccessTime(System.String,System.DateTime)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileWrapper.SetLastAccessTime(Microsoft.Win32.SafeHandles.SafeFileHandle,System.DateTime)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFile.SetLastAccessTime(Microsoft.Win32.SafeHandles.SafeFileHandle,System.DateTime)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileWrapper.SetLastAccessTimeUtc(System.String,System.DateTime)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFile.SetLastAccessTimeUtc(System.String,System.DateTime)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileWrapper.SetLastAccessTimeUtc(Microsoft.Win32.SafeHandles.SafeFileHandle,System.DateTime)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFile.SetLastAccessTimeUtc(Microsoft.Win32.SafeHandles.SafeFileHandle,System.DateTime)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileWrapper.SetLastWriteTime(System.String,System.DateTime)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFile.SetLastWriteTime(System.String,System.DateTime)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileWrapper.SetLastWriteTime(Microsoft.Win32.SafeHandles.SafeFileHandle,System.DateTime)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFile.SetLastWriteTime(Microsoft.Win32.SafeHandles.SafeFileHandle,System.DateTime)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileWrapper.SetLastWriteTimeUtc(System.String,System.DateTime)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFile.SetLastWriteTimeUtc(System.String,System.DateTime)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileWrapper.SetLastWriteTimeUtc(Microsoft.Win32.SafeHandles.SafeFileHandle,System.DateTime)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFile.SetLastWriteTimeUtc(Microsoft.Win32.SafeHandles.SafeFileHandle,System.DateTime)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileWrapper.SetUnixFileMode(System.String,System.IO.UnixFileMode)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFile.SetUnixFileMode(System.String,System.IO.UnixFileMode)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileWrapper.SetUnixFileMode(Microsoft.Win32.SafeHandles.SafeFileHandle,System.IO.UnixFileMode)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFile.SetUnixFileMode(Microsoft.Win32.SafeHandles.SafeFileHandle,System.IO.UnixFileMode)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileWrapper.WriteAllBytes(System.String,System.Byte[])">
+            <inheritdoc cref="M:System.IO.Abstractions.IFile.WriteAllBytes(System.String,System.Byte[])" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileWrapper.WriteAllBytesAsync(System.String,System.Byte[],System.Threading.CancellationToken)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFile.WriteAllBytesAsync(System.String,System.Byte[],System.Threading.CancellationToken)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileWrapper.WriteAllLines(System.String,System.String[])">
+            <inheritdoc cref="M:System.IO.Abstractions.IFile.WriteAllLines(System.String,System.String[])" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileWrapper.WriteAllLines(System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <inheritdoc cref="M:System.IO.Abstractions.IFile.WriteAllLines(System.String,System.Collections.Generic.IEnumerable{System.String})" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileWrapper.WriteAllLines(System.String,System.String[],System.Text.Encoding)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFile.WriteAllLines(System.String,System.String[],System.Text.Encoding)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileWrapper.WriteAllLines(System.String,System.Collections.Generic.IEnumerable{System.String},System.Text.Encoding)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFile.WriteAllLines(System.String,System.Collections.Generic.IEnumerable{System.String},System.Text.Encoding)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileWrapper.WriteAllLinesAsync(System.String,System.Collections.Generic.IEnumerable{System.String},System.Threading.CancellationToken)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFile.WriteAllLinesAsync(System.String,System.Collections.Generic.IEnumerable{System.String},System.Threading.CancellationToken)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileWrapper.WriteAllLinesAsync(System.String,System.Collections.Generic.IEnumerable{System.String},System.Text.Encoding,System.Threading.CancellationToken)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFile.WriteAllLinesAsync(System.String,System.Collections.Generic.IEnumerable{System.String},System.Text.Encoding,System.Threading.CancellationToken)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileWrapper.WriteAllText(System.String,System.String)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFile.WriteAllText(System.String,System.String)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileWrapper.WriteAllText(System.String,System.String,System.Text.Encoding)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFile.WriteAllText(System.String,System.String,System.Text.Encoding)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileWrapper.WriteAllTextAsync(System.String,System.String,System.Threading.CancellationToken)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFile.WriteAllTextAsync(System.String,System.String,System.Threading.CancellationToken)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.FileWrapper.WriteAllTextAsync(System.String,System.String,System.Text.Encoding,System.Threading.CancellationToken)">
+            <inheritdoc cref="M:System.IO.Abstractions.IFile.WriteAllTextAsync(System.String,System.String,System.Text.Encoding,System.Threading.CancellationToken)" />
+        </member>
+        <member name="P:Testably.Abstractions.FileSystem.PathWrapper.AltDirectorySeparatorChar">
+            <inheritdoc cref="P:System.IO.Abstractions.IPath.AltDirectorySeparatorChar" />
+        </member>
+        <member name="P:Testably.Abstractions.FileSystem.PathWrapper.DirectorySeparatorChar">
+            <inheritdoc cref="P:System.IO.Abstractions.IPath.DirectorySeparatorChar" />
+        </member>
+        <member name="P:Testably.Abstractions.FileSystem.PathWrapper.FileSystem">
+            <inheritdoc cref="P:System.IO.Abstractions.IFileSystemEntity.FileSystem" />
+        </member>
+        <member name="P:Testably.Abstractions.FileSystem.PathWrapper.PathSeparator">
+            <inheritdoc cref="P:System.IO.Abstractions.IPath.PathSeparator" />
+        </member>
+        <member name="P:Testably.Abstractions.FileSystem.PathWrapper.VolumeSeparatorChar">
+            <inheritdoc cref="P:System.IO.Abstractions.IPath.VolumeSeparatorChar" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.PathWrapper.ChangeExtension(System.String,System.String)">
+            <inheritdoc cref="M:System.IO.Abstractions.IPath.ChangeExtension(System.String,System.String)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.PathWrapper.Combine(System.String,System.String)">
+            <inheritdoc cref="M:System.IO.Abstractions.IPath.Combine(System.String,System.String)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.PathWrapper.Combine(System.String,System.String,System.String)">
+            <inheritdoc cref="M:System.IO.Abstractions.IPath.Combine(System.String,System.String,System.String)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.PathWrapper.Combine(System.String,System.String,System.String,System.String)">
+            <inheritdoc cref="M:System.IO.Abstractions.IPath.Combine(System.String,System.String,System.String,System.String)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.PathWrapper.Combine(System.String[])">
+            <inheritdoc cref="M:System.IO.Abstractions.IPath.Combine(System.String[])" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.PathWrapper.EndsInDirectorySeparator(System.ReadOnlySpan{System.Char})">
+            <inheritdoc cref="M:System.IO.Abstractions.IPath.EndsInDirectorySeparator(System.ReadOnlySpan{System.Char})" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.PathWrapper.EndsInDirectorySeparator(System.String)">
+            <inheritdoc cref="M:System.IO.Abstractions.IPath.EndsInDirectorySeparator(System.String)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.PathWrapper.Exists(System.String)">
+            <inheritdoc cref="M:System.IO.Abstractions.IPath.Exists(System.String)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.PathWrapper.GetDirectoryName(System.ReadOnlySpan{System.Char})">
+            <inheritdoc cref="M:System.IO.Abstractions.IPath.GetDirectoryName(System.ReadOnlySpan{System.Char})" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.PathWrapper.GetDirectoryName(System.String)">
+            <inheritdoc cref="M:System.IO.Abstractions.IPath.GetDirectoryName(System.String)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.PathWrapper.GetExtension(System.ReadOnlySpan{System.Char})">
+            <inheritdoc cref="M:System.IO.Abstractions.IPath.GetExtension(System.ReadOnlySpan{System.Char})" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.PathWrapper.GetExtension(System.String)">
+            <inheritdoc cref="M:System.IO.Abstractions.IPath.GetExtension(System.String)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.PathWrapper.GetFileName(System.ReadOnlySpan{System.Char})">
+            <inheritdoc cref="M:System.IO.Abstractions.IPath.GetFileName(System.ReadOnlySpan{System.Char})" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.PathWrapper.GetFileName(System.String)">
+            <inheritdoc cref="M:System.IO.Abstractions.IPath.GetFileName(System.String)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.PathWrapper.GetFileNameWithoutExtension(System.ReadOnlySpan{System.Char})">
+            <inheritdoc cref="M:System.IO.Abstractions.IPath.GetFileNameWithoutExtension(System.ReadOnlySpan{System.Char})" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.PathWrapper.GetFileNameWithoutExtension(System.String)">
+            <inheritdoc cref="M:System.IO.Abstractions.IPath.GetFileNameWithoutExtension(System.String)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.PathWrapper.GetFullPath(System.String)">
+            <inheritdoc cref="M:System.IO.Abstractions.IPath.GetFullPath(System.String)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.PathWrapper.GetFullPath(System.String,System.String)">
+            <inheritdoc cref="M:System.IO.Abstractions.IPath.GetFullPath(System.String,System.String)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.PathWrapper.GetInvalidFileNameChars">
+            <inheritdoc cref="M:System.IO.Abstractions.IPath.GetInvalidFileNameChars" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.PathWrapper.GetInvalidPathChars">
+            <inheritdoc cref="M:System.IO.Abstractions.IPath.GetInvalidPathChars" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.PathWrapper.GetPathRoot(System.ReadOnlySpan{System.Char})">
+            <inheritdoc cref="M:System.IO.Abstractions.IPath.GetPathRoot(System.ReadOnlySpan{System.Char})" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.PathWrapper.GetPathRoot(System.String)">
+            <inheritdoc cref="M:System.IO.Abstractions.IPath.GetPathRoot(System.String)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.PathWrapper.GetRandomFileName">
+            <inheritdoc cref="M:System.IO.Abstractions.IPath.GetRandomFileName" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.PathWrapper.GetRelativePath(System.String,System.String)">
+            <inheritdoc cref="M:System.IO.Abstractions.IPath.GetRelativePath(System.String,System.String)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.PathWrapper.GetTempFileName">
+            <inheritdoc cref="M:System.IO.Abstractions.IPath.GetTempFileName" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.PathWrapper.GetTempPath">
+            <inheritdoc cref="M:System.IO.Abstractions.IPath.GetTempPath" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.PathWrapper.HasExtension(System.ReadOnlySpan{System.Char})">
+            <inheritdoc cref="M:System.IO.Abstractions.IPath.HasExtension(System.ReadOnlySpan{System.Char})" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.PathWrapper.HasExtension(System.String)">
+            <inheritdoc cref="M:System.IO.Abstractions.IPath.HasExtension(System.String)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.PathWrapper.IsPathFullyQualified(System.ReadOnlySpan{System.Char})">
+            <inheritdoc cref="M:System.IO.Abstractions.IPath.IsPathFullyQualified(System.ReadOnlySpan{System.Char})" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.PathWrapper.IsPathFullyQualified(System.String)">
+            <inheritdoc cref="M:System.IO.Abstractions.IPath.IsPathFullyQualified(System.String)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.PathWrapper.IsPathRooted(System.ReadOnlySpan{System.Char})">
+            <inheritdoc cref="M:System.IO.Abstractions.IPath.IsPathRooted(System.ReadOnlySpan{System.Char})" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.PathWrapper.IsPathRooted(System.String)">
+            <inheritdoc cref="M:System.IO.Abstractions.IPath.IsPathRooted(System.String)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.PathWrapper.Join(System.ReadOnlySpan{System.Char},System.ReadOnlySpan{System.Char})">
+            <inheritdoc cref="M:System.IO.Abstractions.IPath.Join(System.ReadOnlySpan{System.Char},System.ReadOnlySpan{System.Char})" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.PathWrapper.Join(System.ReadOnlySpan{System.Char},System.ReadOnlySpan{System.Char},System.ReadOnlySpan{System.Char})">
+            <inheritdoc cref="M:System.IO.Abstractions.IPath.Join(System.ReadOnlySpan{System.Char},System.ReadOnlySpan{System.Char},System.ReadOnlySpan{System.Char})" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.PathWrapper.Join(System.ReadOnlySpan{System.Char},System.ReadOnlySpan{System.Char},System.ReadOnlySpan{System.Char},System.ReadOnlySpan{System.Char})">
+            <inheritdoc cref="M:System.IO.Abstractions.IPath.Join(System.ReadOnlySpan{System.Char},System.ReadOnlySpan{System.Char},System.ReadOnlySpan{System.Char},System.ReadOnlySpan{System.Char})" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.PathWrapper.Join(System.String,System.String)">
+            <inheritdoc cref="M:System.IO.Abstractions.IPath.Join(System.String,System.String)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.PathWrapper.Join(System.String,System.String,System.String)">
+            <inheritdoc cref="M:System.IO.Abstractions.IPath.Join(System.String,System.String,System.String)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.PathWrapper.Join(System.String,System.String,System.String,System.String)">
+            <inheritdoc cref="M:System.IO.Abstractions.IPath.Join(System.String,System.String,System.String,System.String)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.PathWrapper.Join(System.String[])">
+            <inheritdoc cref="M:System.IO.Abstractions.IPath.Join(System.String[])" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.PathWrapper.TrimEndingDirectorySeparator(System.ReadOnlySpan{System.Char})">
+            <inheritdoc cref="M:System.IO.Abstractions.IPath.TrimEndingDirectorySeparator(System.ReadOnlySpan{System.Char})" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.PathWrapper.TrimEndingDirectorySeparator(System.String)">
+            <inheritdoc cref="M:System.IO.Abstractions.IPath.TrimEndingDirectorySeparator(System.String)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.PathWrapper.TryJoin(System.ReadOnlySpan{System.Char},System.ReadOnlySpan{System.Char},System.Span{System.Char},System.Int32@)">
+            <inheritdoc cref="M:System.IO.Abstractions.IPath.TryJoin(System.ReadOnlySpan{System.Char},System.ReadOnlySpan{System.Char},System.Span{System.Char},System.Int32@)" />
+        </member>
+        <member name="M:Testably.Abstractions.FileSystem.PathWrapper.TryJoin(System.ReadOnlySpan{System.Char},System.ReadOnlySpan{System.Char},System.ReadOnlySpan{System.Char},System.Span{System.Char},System.Int32@)">
+            <inheritdoc cref="M:System.IO.Abstractions.IPath.TryJoin(System.ReadOnlySpan{System.Char},System.ReadOnlySpan{System.Char},System.ReadOnlySpan{System.Char},System.Span{System.Char},System.Int32@)" />
+        </member>
+        <member name="M:Testably.Abstractions.RandomSystem.GuidWrapper.NewGuid">
+            <inheritdoc cref="M:Testably.Abstractions.RandomSystem.IGuid.NewGuid" />
+        </member>
+        <member name="P:Testably.Abstractions.RandomSystem.RandomFactory.RandomSystem">
+            <inheritdoc cref="P:Testably.Abstractions.RandomSystem.IRandomSystemEntity.RandomSystem" />
+        </member>
+        <member name="P:Testably.Abstractions.RandomSystem.RandomFactory.Shared">
+            <inheritdoc cref="P:Testably.Abstractions.RandomSystem.IRandomFactory.Shared" />
+        </member>
+        <member name="M:Testably.Abstractions.RandomSystem.RandomFactory.New">
+            <inheritdoc cref="M:Testably.Abstractions.RandomSystem.IRandomFactory.New" />
+        </member>
+        <member name="M:Testably.Abstractions.RandomSystem.RandomFactory.New(System.Int32)">
+            <inheritdoc cref="M:Testably.Abstractions.RandomSystem.IRandomFactory.New(System.Int32)" />
+        </member>
+        <member name="M:Testably.Abstractions.RandomSystem.RandomFactory.CreateThreadSafeRandomWrapper">
+            <summary>
+                <see href="https://andrewlock.net/building-a-thread-safe-random-implementation-for-dotnet-framework/" />
+            </summary>
+        </member>
+        <member name="T:Testably.Abstractions.RealFileSystem">
+            <summary>
+                Default implementation for file-related system dependencies.
+                <para />
+                Implements <seealso cref="T:System.IO.Abstractions.IFileSystem" />
+            </summary>
+        </member>
+        <member name="M:Testably.Abstractions.RealFileSystem.#ctor">
+            <summary>
+                Initializes a new instance of <see cref="T:Testably.Abstractions.RealFileSystem" />
+                which wraps the file-related system dependencies from <see cref="T:System.IO.Abstractions.IFileSystem" />.
+            </summary>
+        </member>
+        <member name="P:Testably.Abstractions.RealFileSystem.Directory">
+            <inheritdoc cref="P:System.IO.Abstractions.IFileSystem.Directory" />
+        </member>
+        <member name="P:Testably.Abstractions.RealFileSystem.DirectoryInfo">
+            <inheritdoc cref="P:System.IO.Abstractions.IFileSystem.DirectoryInfo" />
+        </member>
+        <member name="P:Testably.Abstractions.RealFileSystem.DriveInfo">
+            <inheritdoc cref="P:System.IO.Abstractions.IFileSystem.DriveInfo" />
+        </member>
+        <member name="P:Testably.Abstractions.RealFileSystem.File">
+            <inheritdoc cref="P:System.IO.Abstractions.IFileSystem.File" />
+        </member>
+        <member name="P:Testably.Abstractions.RealFileSystem.FileInfo">
+            <inheritdoc cref="P:System.IO.Abstractions.IFileSystem.FileInfo" />
+        </member>
+        <member name="P:Testably.Abstractions.RealFileSystem.FileStream">
+            <inheritdoc cref="P:System.IO.Abstractions.IFileSystem.FileStream" />
+        </member>
+        <member name="P:Testably.Abstractions.RealFileSystem.FileSystemWatcher">
+            <inheritdoc cref="P:System.IO.Abstractions.IFileSystem.FileSystemWatcher" />
+        </member>
+        <member name="P:Testably.Abstractions.RealFileSystem.FileVersionInfo">
+            <inheritdoc cref="P:System.IO.Abstractions.IFileSystem.FileVersionInfo" />
+        </member>
+        <member name="P:Testably.Abstractions.RealFileSystem.Path">
+            <inheritdoc cref="P:System.IO.Abstractions.IFileSystem.Path" />
+        </member>
+        <member name="T:Testably.Abstractions.RealRandomSystem">
+            <summary>
+                Default implementation for random-related system dependencies.
+                <para />
+                Implements <seealso cref="T:Testably.Abstractions.IRandomSystem" />
+            </summary>
+        </member>
+        <member name="M:Testably.Abstractions.RealRandomSystem.#ctor">
+            <summary>
+                Initializes a new instance of <see cref="T:Testably.Abstractions.RealRandomSystem" />
+                which wraps the random-related system dependencies from <see cref="T:Testably.Abstractions.IRandomSystem" />.
+            </summary>
+        </member>
+        <member name="P:Testably.Abstractions.RealRandomSystem.Guid">
+            <inheritdoc cref="P:Testably.Abstractions.IRandomSystem.Guid" />
+        </member>
+        <member name="P:Testably.Abstractions.RealRandomSystem.Random">
+            <inheritdoc cref="P:Testably.Abstractions.IRandomSystem.Random" />
+        </member>
+        <member name="T:Testably.Abstractions.RealTimeSystem">
+            <summary>
+                Default implementation for time-related system dependencies.
+                <para />
+                Implements <seealso cref="T:Testably.Abstractions.ITimeSystem" />
+            </summary>
+        </member>
+        <member name="M:Testably.Abstractions.RealTimeSystem.#ctor">
+            <summary>
+                Initializes a new instance of <see cref="T:Testably.Abstractions.RealTimeSystem" />
+                which wraps the time-related system dependencies from <see cref="T:Testably.Abstractions.ITimeSystem" />.
+            </summary>
+        </member>
+        <member name="P:Testably.Abstractions.RealTimeSystem.DateTime">
+            <inheritdoc cref="P:Testably.Abstractions.ITimeSystem.DateTime" />
+        </member>
+        <member name="P:Testably.Abstractions.RealTimeSystem.DateTimeOffset">
+            <inheritdoc cref="P:Testably.Abstractions.ITimeSystem.DateTimeOffset" />
+        </member>
+        <member name="P:Testably.Abstractions.RealTimeSystem.PeriodicTimer">
+            <inheritdoc cref="P:Testably.Abstractions.ITimeSystem.PeriodicTimer" />
+        </member>
+        <member name="P:Testably.Abstractions.RealTimeSystem.Stopwatch">
+            <inheritdoc cref="P:Testably.Abstractions.ITimeSystem.Stopwatch" />
+        </member>
+        <member name="P:Testably.Abstractions.RealTimeSystem.Task">
+            <inheritdoc cref="P:Testably.Abstractions.ITimeSystem.Task" />
+        </member>
+        <member name="P:Testably.Abstractions.RealTimeSystem.Thread">
+            <inheritdoc cref="P:Testably.Abstractions.ITimeSystem.Thread" />
+        </member>
+        <member name="P:Testably.Abstractions.RealTimeSystem.Timer">
+            <inheritdoc cref="P:Testably.Abstractions.ITimeSystem.Timer" />
+        </member>
+        <member name="P:Testably.Abstractions.RealTimeSystem.TimeZoneInfo">
+            <inheritdoc cref="P:Testably.Abstractions.ITimeSystem.TimeZoneInfo" />
+        </member>
+        <member name="P:Testably.Abstractions.TimeSystem.DateTimeOffsetWrapper.MaxValue">
+            <inheritdoc cref="P:Testably.Abstractions.TimeSystem.IDateTimeOffset.MaxValue" />
+        </member>
+        <member name="P:Testably.Abstractions.TimeSystem.DateTimeOffsetWrapper.MinValue">
+            <inheritdoc cref="P:Testably.Abstractions.TimeSystem.IDateTimeOffset.MinValue" />
+        </member>
+        <member name="P:Testably.Abstractions.TimeSystem.DateTimeOffsetWrapper.UnixEpoch">
+            <inheritdoc cref="P:Testably.Abstractions.TimeSystem.IDateTimeOffset.UnixEpoch" />
+        </member>
+        <member name="P:Testably.Abstractions.TimeSystem.DateTimeOffsetWrapper.Now">
+            <inheritdoc cref="P:Testably.Abstractions.TimeSystem.IDateTimeOffset.Now" />
+        </member>
+        <member name="P:Testably.Abstractions.TimeSystem.DateTimeOffsetWrapper.UtcNow">
+            <inheritdoc cref="P:Testably.Abstractions.TimeSystem.IDateTimeOffset.UtcNow" />
+        </member>
+        <member name="P:Testably.Abstractions.TimeSystem.DateTimeOffsetWrapper.TimeSystem">
+            <inheritdoc cref="P:Testably.Abstractions.TimeSystem.ITimeSystemEntity.TimeSystem" />
+        </member>
+        <member name="P:Testably.Abstractions.TimeSystem.DateTimeWrapper.MaxValue">
+            <inheritdoc cref="P:Testably.Abstractions.TimeSystem.IDateTime.MaxValue" />
+        </member>
+        <member name="P:Testably.Abstractions.TimeSystem.DateTimeWrapper.MinValue">
+            <inheritdoc cref="P:Testably.Abstractions.TimeSystem.IDateTime.MinValue" />
+        </member>
+        <member name="P:Testably.Abstractions.TimeSystem.DateTimeWrapper.UnixEpoch">
+            <inheritdoc cref="P:Testably.Abstractions.TimeSystem.IDateTime.UnixEpoch" />
+        </member>
+        <member name="P:Testably.Abstractions.TimeSystem.DateTimeWrapper.Now">
+            <inheritdoc cref="P:Testably.Abstractions.TimeSystem.IDateTime.Now" />
+        </member>
+        <member name="P:Testably.Abstractions.TimeSystem.DateTimeWrapper.UtcNow">
+            <inheritdoc cref="P:Testably.Abstractions.TimeSystem.IDateTime.UtcNow" />
+        </member>
+        <member name="P:Testably.Abstractions.TimeSystem.DateTimeWrapper.Today">
+            <inheritdoc cref="P:Testably.Abstractions.TimeSystem.IDateTime.Today" />
+        </member>
+        <member name="P:Testably.Abstractions.TimeSystem.DateTimeWrapper.TimeSystem">
+            <inheritdoc cref="P:Testably.Abstractions.TimeSystem.ITimeSystemEntity.TimeSystem" />
+        </member>
+        <member name="P:Testably.Abstractions.TimeSystem.PeriodicTimerFactory.TimeSystem">
+            <inheritdoc cref="P:Testably.Abstractions.TimeSystem.ITimeSystemEntity.TimeSystem" />
+        </member>
+        <member name="M:Testably.Abstractions.TimeSystem.PeriodicTimerFactory.New(System.TimeSpan)">
+            <inheritdoc cref="M:Testably.Abstractions.TimeSystem.IPeriodicTimerFactory.New(System.TimeSpan)" />
+        </member>
+        <member name="M:Testably.Abstractions.TimeSystem.PeriodicTimerFactory.Wrap(System.Threading.PeriodicTimer)">
+            <inheritdoc cref="M:Testably.Abstractions.TimeSystem.IPeriodicTimerFactory.Wrap(System.Threading.PeriodicTimer)" />
+        </member>
+        <member name="P:Testably.Abstractions.TimeSystem.PeriodicTimerWrapper.Period">
+            <inheritdoc cref="P:Testably.Abstractions.TimeSystem.IPeriodicTimer.Period" />
+        </member>
+        <member name="P:Testably.Abstractions.TimeSystem.PeriodicTimerWrapper.TimeSystem">
+            <inheritdoc cref="P:Testably.Abstractions.TimeSystem.ITimeSystemEntity.TimeSystem" />
+        </member>
+        <member name="M:Testably.Abstractions.TimeSystem.PeriodicTimerWrapper.Dispose">
+            <inheritdoc cref="M:System.IDisposable.Dispose" />
+        </member>
+        <member name="M:Testably.Abstractions.TimeSystem.PeriodicTimerWrapper.WaitForNextTickAsync(System.Threading.CancellationToken)">
+            <inheritdoc cref="M:Testably.Abstractions.TimeSystem.IPeriodicTimer.WaitForNextTickAsync(System.Threading.CancellationToken)" />
+        </member>
+        <member name="P:Testably.Abstractions.TimeSystem.StopwatchFactory.Frequency">
+            <inheritdoc cref="P:Testably.Abstractions.TimeSystem.IStopwatchFactory.Frequency" />
+        </member>
+        <member name="P:Testably.Abstractions.TimeSystem.StopwatchFactory.IsHighResolution">
+            <inheritdoc cref="P:Testably.Abstractions.TimeSystem.IStopwatchFactory.IsHighResolution" />
+        </member>
+        <member name="P:Testably.Abstractions.TimeSystem.StopwatchFactory.TimeSystem">
+            <inheritdoc cref="P:Testably.Abstractions.TimeSystem.ITimeSystemEntity.TimeSystem" />
+        </member>
+        <member name="M:Testably.Abstractions.TimeSystem.StopwatchFactory.GetElapsedTime(System.Int64)">
+            <inheritdoc cref="M:Testably.Abstractions.TimeSystem.IStopwatchFactory.GetElapsedTime(System.Int64)" />
+        </member>
+        <member name="M:Testably.Abstractions.TimeSystem.StopwatchFactory.GetElapsedTime(System.Int64,System.Int64)">
+            <inheritdoc cref="M:Testably.Abstractions.TimeSystem.IStopwatchFactory.GetElapsedTime(System.Int64,System.Int64)" />
+        </member>
+        <member name="M:Testably.Abstractions.TimeSystem.StopwatchFactory.GetTimestamp">
+            <inheritdoc cref="M:Testably.Abstractions.TimeSystem.IStopwatchFactory.GetTimestamp" />
+        </member>
+        <member name="M:Testably.Abstractions.TimeSystem.StopwatchFactory.New">
+            <inheritdoc cref="M:Testably.Abstractions.TimeSystem.IStopwatchFactory.New" />
+        </member>
+        <member name="M:Testably.Abstractions.TimeSystem.StopwatchFactory.StartNew">
+            <inheritdoc cref="M:Testably.Abstractions.TimeSystem.IStopwatchFactory.StartNew" />
+        </member>
+        <member name="M:Testably.Abstractions.TimeSystem.StopwatchFactory.Wrap(System.Diagnostics.Stopwatch)">
+            <inheritdoc cref="M:Testably.Abstractions.TimeSystem.IStopwatchFactory.Wrap(System.Diagnostics.Stopwatch)" />
+        </member>
+        <member name="P:Testably.Abstractions.TimeSystem.StopwatchWrapper.Elapsed">
+            <inheritdoc cref="P:Testably.Abstractions.TimeSystem.IStopwatch.Elapsed" />
+        </member>
+        <member name="P:Testably.Abstractions.TimeSystem.StopwatchWrapper.ElapsedMilliseconds">
+            <inheritdoc cref="P:Testably.Abstractions.TimeSystem.IStopwatch.ElapsedMilliseconds" />
+        </member>
+        <member name="P:Testably.Abstractions.TimeSystem.StopwatchWrapper.ElapsedTicks">
+            <inheritdoc cref="P:Testably.Abstractions.TimeSystem.IStopwatch.ElapsedTicks" />
+        </member>
+        <member name="P:Testably.Abstractions.TimeSystem.StopwatchWrapper.IsRunning">
+            <inheritdoc cref="P:Testably.Abstractions.TimeSystem.IStopwatch.IsRunning" />
+        </member>
+        <member name="P:Testably.Abstractions.TimeSystem.StopwatchWrapper.TimeSystem">
+            <inheritdoc cref="P:Testably.Abstractions.TimeSystem.ITimeSystemEntity.TimeSystem" />
+        </member>
+        <member name="M:Testably.Abstractions.TimeSystem.StopwatchWrapper.Reset">
+            <inheritdoc cref="M:Testably.Abstractions.TimeSystem.IStopwatch.Reset" />
+        </member>
+        <member name="M:Testably.Abstractions.TimeSystem.StopwatchWrapper.Restart">
+            <inheritdoc cref="M:Testably.Abstractions.TimeSystem.IStopwatch.Restart" />
+        </member>
+        <member name="M:Testably.Abstractions.TimeSystem.StopwatchWrapper.Start">
+            <inheritdoc cref="M:Testably.Abstractions.TimeSystem.IStopwatch.Start" />
+        </member>
+        <member name="M:Testably.Abstractions.TimeSystem.StopwatchWrapper.Stop">
+            <inheritdoc cref="M:Testably.Abstractions.TimeSystem.IStopwatch.Stop" />
+        </member>
+        <member name="P:Testably.Abstractions.TimeSystem.TaskWrapper.TimeSystem">
+            <inheritdoc cref="P:Testably.Abstractions.TimeSystem.ITimeSystemEntity.TimeSystem" />
+        </member>
+        <member name="M:Testably.Abstractions.TimeSystem.TaskWrapper.Delay(System.Int32)">
+            <inheritdoc cref="M:Testably.Abstractions.TimeSystem.ITask.Delay(System.Int32)" />
+        </member>
+        <member name="M:Testably.Abstractions.TimeSystem.TaskWrapper.Delay(System.Int32,System.Threading.CancellationToken)">
+            <inheritdoc cref="M:Testably.Abstractions.TimeSystem.ITask.Delay(System.Int32,System.Threading.CancellationToken)" />
+        </member>
+        <member name="M:Testably.Abstractions.TimeSystem.TaskWrapper.Delay(System.TimeSpan)">
+            <inheritdoc cref="M:Testably.Abstractions.TimeSystem.ITask.Delay(System.TimeSpan)" />
+        </member>
+        <member name="M:Testably.Abstractions.TimeSystem.TaskWrapper.Delay(System.TimeSpan,System.Threading.CancellationToken)">
+            <inheritdoc cref="M:Testably.Abstractions.TimeSystem.ITask.Delay(System.TimeSpan,System.Threading.CancellationToken)" />
+        </member>
+        <member name="P:Testably.Abstractions.TimeSystem.ThreadWrapper.TimeSystem">
+            <inheritdoc cref="P:Testably.Abstractions.TimeSystem.ITimeSystemEntity.TimeSystem" />
+        </member>
+        <member name="M:Testably.Abstractions.TimeSystem.ThreadWrapper.Sleep(System.Int32)">
+            <inheritdoc cref="M:Testably.Abstractions.TimeSystem.IThread.Sleep(System.Int32)" />
+        </member>
+        <member name="M:Testably.Abstractions.TimeSystem.ThreadWrapper.Sleep(System.TimeSpan)">
+            <inheritdoc cref="M:Testably.Abstractions.TimeSystem.IThread.Sleep(System.TimeSpan)" />
+        </member>
+        <member name="P:Testably.Abstractions.TimeSystem.TimerFactory.TimeSystem">
+            <inheritdoc cref="P:Testably.Abstractions.TimeSystem.ITimeSystemEntity.TimeSystem" />
+        </member>
+        <member name="M:Testably.Abstractions.TimeSystem.TimerFactory.New(System.Threading.TimerCallback)">
+            <inheritdoc cref="M:Testably.Abstractions.TimeSystem.ITimerFactory.New(System.Threading.TimerCallback)" />
+        </member>
+        <member name="M:Testably.Abstractions.TimeSystem.TimerFactory.New(System.Threading.TimerCallback,System.Object,System.Int32,System.Int32)">
+            <inheritdoc cref="M:Testably.Abstractions.TimeSystem.ITimerFactory.New(System.Threading.TimerCallback,System.Object,System.Int32,System.Int32)" />
+        </member>
+        <member name="M:Testably.Abstractions.TimeSystem.TimerFactory.New(System.Threading.TimerCallback,System.Object,System.Int64,System.Int64)">
+            <inheritdoc cref="M:Testably.Abstractions.TimeSystem.ITimerFactory.New(System.Threading.TimerCallback,System.Object,System.Int64,System.Int64)" />
+        </member>
+        <member name="M:Testably.Abstractions.TimeSystem.TimerFactory.New(System.Threading.TimerCallback,System.Object,System.TimeSpan,System.TimeSpan)">
+            <inheritdoc cref="M:Testably.Abstractions.TimeSystem.ITimerFactory.New(System.Threading.TimerCallback,System.Object,System.TimeSpan,System.TimeSpan)" />
+        </member>
+        <member name="M:Testably.Abstractions.TimeSystem.TimerFactory.Wrap(System.Threading.Timer)">
+            <inheritdoc cref="M:Testably.Abstractions.TimeSystem.ITimerFactory.Wrap(System.Threading.Timer)" />
+        </member>
+        <member name="P:Testably.Abstractions.TimeSystem.TimerWrapper.TimeSystem">
+            <inheritdoc cref="P:Testably.Abstractions.TimeSystem.ITimeSystemEntity.TimeSystem" />
+        </member>
+        <member name="M:Testably.Abstractions.TimeSystem.TimerWrapper.Change(System.Int32,System.Int32)">
+            <inheritdoc cref="M:Testably.Abstractions.TimeSystem.ITimer.Change(System.Int32,System.Int32)" />
+        </member>
+        <member name="M:Testably.Abstractions.TimeSystem.TimerWrapper.Change(System.Int64,System.Int64)">
+            <inheritdoc cref="M:Testably.Abstractions.TimeSystem.ITimer.Change(System.Int64,System.Int64)" />
+        </member>
+        <member name="M:Testably.Abstractions.TimeSystem.TimerWrapper.Change(System.TimeSpan,System.TimeSpan)">
+            <inheritdoc cref="M:Testably.Abstractions.TimeSystem.ITimer.Change(System.TimeSpan,System.TimeSpan)" />
+        </member>
+        <member name="M:Testably.Abstractions.TimeSystem.TimerWrapper.Dispose">
+            <inheritdoc cref="M:System.IDisposable.Dispose" />
+        </member>
+        <member name="M:Testably.Abstractions.TimeSystem.TimerWrapper.Dispose(System.Threading.WaitHandle)">
+            <inheritdoc cref="M:Testably.Abstractions.TimeSystem.ITimer.Dispose(System.Threading.WaitHandle)" />
+        </member>
+        <member name="M:Testably.Abstractions.TimeSystem.TimerWrapper.DisposeAsync">
+            <inheritdoc cref="M:System.IAsyncDisposable.DisposeAsync" />
+        </member>
+        <member name="P:Testably.Abstractions.TimeSystem.TimeZoneInfoWrapper.Local">
+            <inheritdoc cref="P:Testably.Abstractions.TimeSystem.ITimeZoneInfo.Local" />
+        </member>
+        <member name="P:Testably.Abstractions.TimeSystem.TimeZoneInfoWrapper.TimeSystem">
+            <inheritdoc cref="P:Testably.Abstractions.TimeSystem.ITimeSystemEntity.TimeSystem" />
+        </member>
+        <member name="P:Testably.Abstractions.TimeSystem.TimeZoneInfoWrapper.Utc">
+            <inheritdoc cref="P:Testably.Abstractions.TimeSystem.ITimeZoneInfo.Utc" />
+        </member>
+        <member name="M:Testably.Abstractions.TimeSystem.TimeZoneInfoWrapper.FindSystemTimeZoneById(System.String)">
+            <inheritdoc cref="M:Testably.Abstractions.TimeSystem.ITimeZoneInfo.FindSystemTimeZoneById(System.String)" />
+        </member>
+        <member name="M:Testably.Abstractions.TimeSystem.TimeZoneInfoWrapper.GetSystemTimeZones">
+            <inheritdoc cref="M:Testably.Abstractions.TimeSystem.ITimeZoneInfo.GetSystemTimeZones" />
+        </member>
+    </members>
+</doc>

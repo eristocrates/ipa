@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>Waher.Events</id>
+    <version>1.4.7</version>
+    <authors>Peter Waher</authors>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <license type="file">LICENSE.txt</license>
+    <licenseUrl>https://aka.ms/deprecateLicenseUrl</licenseUrl>
+    <icon>Icon_64x64.png</icon>
+    <projectUrl>https://github.com/PeterWaher/IoTGateway/tree/master/Events/Waher.Events</projectUrl>
+    <description>The Waher.Events project provides the basic architecture and framework for event logging in applications.</description>
+    <releaseNotes>The Waher.Events library uses a static class Log as a hub for all type of event logging in applications. To this hub you can register any number of Event Sinks that receive events and distribute them according to implementation details in each one. By logging all events to Log you have a configurable environment where you can change logging according to specific needs of the project.</releaseNotes>
+    <copyright>Copyright © Waher Data AB 2015-2026. All rights reserved.</copyright>
+    <tags>logger logging logs events eventlogging eventlogs</tags>
+    <repository type="GitHub" url="https://github.com/PeterWaher/IoTGateway" commit="6557784e8995691eb349c7d70485f8cac0420dc9" />
+    <dependencies>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="Waher.Runtime.Collections" version="1.0.3" exclude="Build,Analyzers" />
+        <dependency id="System.Net.Http" version="4.3.4" exclude="Build,Analyzers" />
+        <dependency id="System.Text.RegularExpressions" version="4.3.1" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

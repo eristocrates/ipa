@@ -1,0 +1,16 @@
+D: /lib
+D: /lib/netstandard2.0
+F: /lib/netstandard2.0/Rsft.Net.DomainParser.dll
+F: /lib/netstandard2.0/Rsft.Net.DomainParser.xml
+D: /package
+D: /package/services
+D: /package/services/metadata
+D: /package/services/metadata/core-properties
+F: /package/services/metadata/core-properties/e56e2347ef044548bba17abb812493c7.psmdcp
+D: /_rels
+F: /_rels/.rels
+F: /.signature.p7s
+F: /rolosoft128x128.png
+F: /rsft.net.domainparser.1.3.237.nupkg
+F: /Rsft.Net.DomainParser.nuspec
+F: /[Content_Types].xml

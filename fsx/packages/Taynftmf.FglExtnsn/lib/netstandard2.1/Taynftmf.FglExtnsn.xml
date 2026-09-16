@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doc>
+<assembly><name>Taynftmf.FglExtnsn</name></assembly>
+<members>
+<member name="M:Taynftmf.FglExtnsn.Lib.order``3(Microsoft.FSharp.Collections.FSharpMap{``0,System.Tuple{Microsoft.FSharp.Collections.FSharpMap{``0,``2},``1,Microsoft.FSharp.Collections.FSharpMap{``0,``2}}})">
+<summary>
+ Partially order vertices in a graph such that leaves appear first, then vertices pointing
+ to leaves, then vertices pointing to these vertices and so on.
+ Returns the full contexts.
+ If viewing the given directed graph as modelling dependencies, this gives such vertices
+ first which don&apos;t depend on any other vertices, making possible actions in a
+ meaningful order.
+ If the graph contains cycles, all vertices participating in a cycle are not part of the result.
+ Check the number of returned contexts against the original number if that is important for you.
+</summary>
+</member>
+<member name="M:Taynftmf.FglExtnsn.Lib.removeContexts``6(System.Collections.Generic.IEnumerable{System.Tuple{``0,``1,``2,``3}},Microsoft.FSharp.Collections.FSharpMap{``1,System.Tuple{Microsoft.FSharp.Collections.FSharpMap{``1,``5},``4,Microsoft.FSharp.Collections.FSharpMap{``1,``5}}})">
+<summary>
+ Remove all vertices associated with the given contexts from the graph, along
+ with all edges connecting them.
+</summary>
+</member>
+<member name="M:Taynftmf.FglExtnsn.Lib.allPredecessors``3(Microsoft.FSharp.Collections.FSharpMap{``0,System.Tuple{Microsoft.FSharp.Collections.FSharpMap{``0,``2},``1,Microsoft.FSharp.Collections.FSharpMap{``0,``2}}},Microsoft.FSharp.Collections.FSharpList{System.Tuple{``0,``2}},``0,``1,Microsoft.FSharp.Collections.FSharpList{System.Tuple{``0,``2}})">
+<summary>
+ All predecessors reachable when following edges leading to the given context
+ in the graph. Note that for cyclic graphs, this may eventually include the
+ starting context or even successors. Endless cycles are detected and prevented.
+</summary>
+</member>
+<member name="M:Taynftmf.FglExtnsn.Lib.allSuccessors``3(Microsoft.FSharp.Collections.FSharpMap{``0,System.Tuple{Microsoft.FSharp.Collections.FSharpMap{``0,``2},``1,Microsoft.FSharp.Collections.FSharpMap{``0,``2}}},Microsoft.FSharp.Collections.FSharpList{System.Tuple{``0,``2}},``0,``1,Microsoft.FSharp.Collections.FSharpList{System.Tuple{``0,``2}})">
+<summary>
+ All successors reachable when following edges away from the given context
+ in the graph. Note that for cyclic graphs, this may eventually include the
+ starting context or even predecessors. Endless cycles are detected and prevented.
+</summary>
+</member>
+<member name="M:Taynftmf.FglExtnsn.Lib.getVertex``4(``0,``1,``2,``3)">
+<summary>
+ Retrieve the vertex from the given context.
+</summary>
+</member>
+<member name="M:Taynftmf.FglExtnsn.Lib.sourceContexts``3(Microsoft.FSharp.Collections.FSharpMap{``0,System.Tuple{Microsoft.FSharp.Collections.FSharpMap{``0,``2},``1,Microsoft.FSharp.Collections.FSharpMap{``0,``2}}})">
+<summary>
+ Return all sources (i.e., contexts whose inwardDegree equals 0)
+ for the given graph.
+</summary>
+</member>
+<member name="M:Taynftmf.FglExtnsn.Lib.sinkContexts``3(Microsoft.FSharp.Collections.FSharpMap{``0,System.Tuple{Microsoft.FSharp.Collections.FSharpMap{``0,``2},``1,Microsoft.FSharp.Collections.FSharpMap{``0,``2}}})">
+<summary>
+ Return all sinks (i.e., contexts whose outwardDegree equals 0)
+ for the given graph.
+</summary>
+</member>
+<member name="M:Taynftmf.FglExtnsn.Lib.foldContextsWithSelector``3(Microsoft.FSharp.Core.FSharpFunc{System.Tuple{Microsoft.FSharp.Collections.FSharpList{System.Tuple{``0,``2}},``0,``1,Microsoft.FSharp.Collections.FSharpList{System.Tuple{``0,``2}}},System.Boolean},Microsoft.FSharp.Collections.FSharpMap{``0,System.Tuple{Microsoft.FSharp.Collections.FSharpMap{``0,``2},``1,Microsoft.FSharp.Collections.FSharpMap{``0,``2}}})">
+<summary>
+ Fold all contexts in the graph with the given selector. If the selector evaluates
+ to true for a given context, the context is added to the folding result.
+ Else, it is ignored.
+</summary>
+</member>
+<member name="M:Taynftmf.FglExtnsn.Lib.createSimpleDirectedGraph``1(System.Collections.Generic.IEnumerable{System.Tuple{``0,``0}})">
+<summary>
+ Create a simple directed graph (unit vertex and edge labels) from a sequence
+ of edges (source, destination). Vertices are derived from the edges.
+</summary>
+</member>
+</members>
+</doc>

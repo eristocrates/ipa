@@ -1,0 +1,17 @@
+D: /lib
+D: /lib/netstandard2.0
+F: /lib/netstandard2.0/Waher.Content.Markdown.dll
+F: /lib/netstandard2.0/Waher.Content.Markdown.xml
+D: /package
+D: /package/services
+D: /package/services/metadata
+D: /package/services/metadata/core-properties
+F: /package/services/metadata/core-properties/dc4f541cddfd42129ac0ad3822867bca.psmdcp
+D: /_rels
+F: /_rels/.rels
+F: /.signature.p7s
+F: /Icon_64x64.png
+F: /LICENSE.txt
+F: /waher.content.markdown.6.4.0.nupkg
+F: /Waher.Content.Markdown.nuspec
+F: /[Content_Types].xml

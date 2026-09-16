@@ -1,0 +1,17 @@
+D: /lib
+D: /lib/netstandard2.0
+F: /lib/netstandard2.0/Waher.Runtime.Threading.dll
+F: /lib/netstandard2.0/Waher.Runtime.Threading.xml
+D: /package
+D: /package/services
+D: /package/services/metadata
+D: /package/services/metadata/core-properties
+F: /package/services/metadata/core-properties/ffd945eba854410d8b63d2245b1f0540.psmdcp
+D: /_rels
+F: /_rels/.rels
+F: /.signature.p7s
+F: /Icon_64x64.png
+F: /LICENSE.txt
+F: /waher.runtime.threading.2.2.0.nupkg
+F: /Waher.Runtime.Threading.nuspec
+F: /[Content_Types].xml

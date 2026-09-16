@@ -1,0 +1,16 @@
+D: /lib
+D: /lib/net10.0
+F: /lib/net10.0/Phoenixml.Platform.Editor.Xml.dll
+F: /lib/net10.0/Phoenixml.Platform.Editor.Xml.xml
+D: /package
+D: /package/services
+D: /package/services/metadata
+D: /package/services/metadata/core-properties
+F: /package/services/metadata/core-properties/d921d61089284d9184bc2cbd480123f9.psmdcp
+D: /_rels
+F: /_rels/.rels
+F: /.signature.p7s
+F: /PACKAGE.md
+F: /phoenixml.platform.editor.xml.0.1.0.nupkg
+F: /Phoenixml.Platform.Editor.Xml.nuspec
+F: /[Content_Types].xml

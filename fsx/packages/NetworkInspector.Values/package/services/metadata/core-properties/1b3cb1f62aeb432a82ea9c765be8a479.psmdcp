@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<coreProperties xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.openxmlformats.org/package/2006/metadata/core-properties">
+  <dc:creator>DevAM</dc:creator>
+  <dc:description>Strongly-typed network address and timestamp value types for NetworkInspector. Provides MacAddress, IPv4Address, IPv6Address, Eui64, Uuid, and Timestamp structs.</dc:description>
+  <dc:identifier>NetworkInspector.Values</dc:identifier>
+  <version>0.11.0</version>
+  <keywords>network address mac ipv4 ipv6 values</keywords>
+  <lastModifiedBy>NuGet.Packaging, Version=7.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35;.NET 8.0</lastModifiedBy>
+</coreProperties>

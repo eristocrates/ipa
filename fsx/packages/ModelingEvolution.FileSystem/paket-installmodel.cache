@@ -1,0 +1,15 @@
+D: /lib
+D: /lib/net10.0
+F: /lib/net10.0/ModelingEvolution.FileSystem.dll
+D: /package
+D: /package/services
+D: /package/services/metadata
+D: /package/services/metadata/core-properties
+F: /package/services/metadata/core-properties/f61cb11800ee4e2dad1a98c3a4386083.psmdcp
+D: /_rels
+F: /_rels/.rels
+F: /.signature.p7s
+F: /modelingevolution.filesystem.2.3.1.nupkg
+F: /ModelingEvolution.FileSystem.nuspec
+F: /README.md
+F: /[Content_Types].xml

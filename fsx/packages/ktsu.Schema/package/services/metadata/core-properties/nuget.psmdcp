@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<coreProperties xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.openxmlformats.org/package/2006/metadata/core-properties">
+  <dc:creator>ktsu.dev contributors</dc:creator>
+  <dc:description>A .NET library for defining, managing, and editing data structure schemas with a rich type system, type-safe identifiers, and polymorphic JSON serialization. Define structured data models programmatically or visually and serialize them to .schema.json files, providing a metadata foundation for code generation, data validation, and tooling that needs to reason about your data structures. Ships with an accompanying Dear ImGui desktop editor for visual schema authoring.</dc:description>
+  <dc:identifier>ktsu.Schema</dc:identifier>
+  <version>1.35.0</version>
+  <keywords>schema;data schema;type system;polymorphic serialization;json schema;schema editor;imgui;data modeling;code generation;dotnet;csharp</keywords>
+  <lastModifiedBy>NuGet.Packaging, Version=7.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35;.NET 8.0</lastModifiedBy>
+</coreProperties>

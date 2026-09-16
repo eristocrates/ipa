@@ -1,0 +1,17 @@
+D: /lib
+D: /lib/netstandard2.0
+F: /lib/netstandard2.0/Waher.Runtime.Collections.dll
+F: /lib/netstandard2.0/Waher.Runtime.Collections.xml
+D: /package
+D: /package/services
+D: /package/services/metadata
+D: /package/services/metadata/core-properties
+F: /package/services/metadata/core-properties/f433e1a6d6e54da9bc89e019edef3aa7.psmdcp
+D: /_rels
+F: /_rels/.rels
+F: /.signature.p7s
+F: /Icon_64x64.png
+F: /LICENSE.txt
+F: /waher.runtime.collections.1.0.4.nupkg
+F: /Waher.Runtime.Collections.nuspec
+F: /[Content_Types].xml

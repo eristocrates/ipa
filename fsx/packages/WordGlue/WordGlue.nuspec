@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>WordGlue</id>
+    <version>4.1.1</version>
+    <title>WordGlue .NET</title>
+    <authors>WebSupergoo</authors>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <license type="file">License.md</license>
+    <licenseUrl>https://aka.ms/deprecateLicenseUrl</licenseUrl>
+    <icon>icon.png</icon>
+    <readme>docs\readme.md</readme>
+    <projectUrl>https://www.websupergoo.com/wordglue-1.htm</projectUrl>
+    <description>WordGlue is a generic layout engine which supports DOC and DOCX conversion and rendering for converting Microsoft Office formats.
+
+100% managed, 100% thread safe and 100% independent of applications like MS Word and OpenOffice.org. Compatible with .NET 4.X, .NET 5.0, .NET 6.0, .NET 7.0, .NET 8.0, .NET 9.0 and .NET 10.0.
+
+Designed to convert semantic formats like DOC and DOCX documents to PDF, XPS, SVG and also to raster formats like PNG and JPEG.
+
+The DOC and DOCX rendering engine is general purpose so it can be easily extended to support other formats like HTML and RTF.
+
+WordGlue comes with a viewer application for opening, viewing and converting documents. So it's easy for you to test. Just open your test documents, see what they look like, save them in an appropriate format.
+
+The code for the viewing application comes included with WordGlue and is extremely compact. So once you're happy with the basic functionality it's simple to create your own conversions. In fact so simple it's trivial.
+
+Your code can be as simple as this,
+
+	using (var doc = new WebSupergoo.WordGlue4.Doc(@"c:\test.docx"))
+		doc.SaveAs(@"c:\output.pdf");
+	
+WordGlue uses WPF so your project needs to target Windows. In Visual Studio right click on the project and select Properties. Set the "Target OS" to Windows. Then run.
+			
+See the documentation for more details.</description>
+    <summary>Super efficient MS Word (DOC &amp; DOCX) conversion engine for .NET.</summary>
+    <copyright>2012-2026 WebSupergoo Software</copyright>
+    <language></language>
+    <tags>docx doc xps pdf Word WordGlue Office</tags>
+    <dependencies>
+      <group targetFramework=".NETFramework4.5" />
+      <group targetFramework="net5.0">
+        <dependency id="System.Drawing.Common" version="5.0.0" />
+        <dependency id="System.Configuration.ConfigurationManager" version="5.0.0" />
+        <dependency id="System.IO.Packaging" version="5.0.0" />
+        <dependency id="System.Text.Encoding.CodePages" version="5.0.0" />
+      </group>
+      <group targetFramework="net6.0">
+        <dependency id="System.Drawing.Common" version="6.0.0" />
+        <dependency id="System.Configuration.ConfigurationManager" version="6.0.1" />
+        <dependency id="System.IO.Packaging" version="6.0.0" />
+        <dependency id="System.Text.Encoding.CodePages" version="6.0.0" />
+      </group>
+      <group targetFramework="net7.0">
+        <dependency id="System.Drawing.Common" version="7.0.0" />
+        <dependency id="System.Configuration.ConfigurationManager" version="7.0.0" />
+        <dependency id="System.IO.Packaging" version="7.0.0" />
+        <dependency id="System.Text.Encoding.CodePages" version="7.0.0" />
+      </group>
+      <group targetFramework="net8.0">
+        <dependency id="System.Drawing.Common" version="8.0.19" />
+        <dependency id="System.Configuration.ConfigurationManager" version="8.0.1" />
+        <dependency id="System.IO.Packaging" version="8.0.1" />
+        <dependency id="System.Text.Encoding.CodePages" version="8.0.0" />
+      </group>
+      <group targetFramework="net9.0">
+        <dependency id="System.Drawing.Common" version="9.0.8" />
+        <dependency id="System.Configuration.ConfigurationManager" version="9.0.8" />
+        <dependency id="System.IO.Packaging" version="9.0.8" />
+        <dependency id="System.Text.Encoding.CodePages" version="9.0.8" />
+      </group>
+      <group targetFramework="net10.0">
+        <dependency id="System.Drawing.Common" version="10.0.0" />
+        <dependency id="System.Configuration.ConfigurationManager" version="10.0.0" />
+        <dependency id="System.IO.Packaging" version="10.0.0" />
+        <dependency id="System.Text.Encoding.CodePages" version="10.0.0" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

@@ -1,0 +1,290 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>UriTemplateString</name>
+    </assembly>
+    <members>
+        <member name="T:UriTemplateString.Spec.Explode">
+            <summary>
+            Represents the explode expression modifier
+            </summary>
+            <seealso cref="T:UriTemplateString.Spec.IModifier" />
+        </member>
+        <member name="M:UriTemplateString.Spec.Explode.ToString">
+            <summary>
+            Returns a <see cref="T:System.String" /> that represents this instance.
+            </summary>
+            <returns>
+            A <see cref="T:System.String" /> that represents this instance.
+            </returns>
+        </member>
+        <member name="T:UriTemplateString.Spec.Expression">
+            <summary>
+            Represents an expression part of an URI Template
+            </summary>
+            <seealso cref="T:UriTemplateString.Spec.ITemplatePart" />
+        </member>
+        <member name="M:UriTemplateString.Spec.Expression.#ctor(UriTemplateString.Spec.Operator,System.Collections.Generic.IEnumerable{UriTemplateString.Spec.VariableSpec})">
+            <summary>
+            Initializes a new instance of the <see cref="T:UriTemplateString.Spec.Expression"/> struct.
+            </summary>
+            <param name="operator">The operator.</param>
+            <param name="variableList">The variable list.</param>
+        </member>
+        <member name="P:UriTemplateString.Spec.Expression.Operator">
+            <summary>
+            Gets the operator.
+            </summary>
+        </member>
+        <member name="P:UriTemplateString.Spec.Expression.VariableList">
+            <summary>
+            Gets the variable list.
+            </summary>
+        </member>
+        <member name="M:UriTemplateString.Spec.Expression.ToString">
+            <summary>
+            Returns a <see cref="T:System.String" /> that represents this instance.
+            </summary>
+        </member>
+        <member name="T:UriTemplateString.Spec.IModifier">
+            <summary>
+            Represents a modifier of a template variable
+            </summary>
+        </member>
+        <member name="T:UriTemplateString.Spec.ITemplatePart">
+            <summary>
+            Marker interface for template parts
+            </summary>
+        </member>
+        <member name="T:UriTemplateString.Spec.Literal">
+            <summary>
+            Represents a literal part of an URI Template
+            </summary>
+            <seealso cref="T:UriTemplateString.Spec.ITemplatePart" />
+        </member>
+        <member name="M:UriTemplateString.Spec.Literal.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:UriTemplateString.Spec.Literal"/> struct.
+            </summary>
+            <param name="literal">The literal value.</param>
+        </member>
+        <member name="M:UriTemplateString.Spec.Literal.ToString">
+            <summary>
+            Returns a <see cref="T:System.String" /> that represents this instance.
+            </summary>
+        </member>
+        <member name="T:UriTemplateString.Spec.MaxLength">
+            <summary>
+            Represents the max-length variable modifier
+            </summary>
+            <seealso cref="T:UriTemplateString.Spec.IModifier" />
+        </member>
+        <member name="M:UriTemplateString.Spec.MaxLength.#ctor(System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:UriTemplateString.Spec.MaxLength"/> struct.
+            </summary>
+            <param name="maxLength">The maximum length.</param>
+        </member>
+        <member name="P:UriTemplateString.Spec.MaxLength.Value">
+            <summary>
+            Gets the modifier value.
+            </summary>
+        </member>
+        <member name="M:UriTemplateString.Spec.MaxLength.ToString">
+            <summary>
+            Returns a <see cref="T:System.String" /> that represents this instance.
+            </summary>
+            <returns>
+            A <see cref="T:System.String" /> that represents this instance.
+            </returns>
+        </member>
+        <member name="T:UriTemplateString.Spec.Operator">
+            <summary>
+            Represents a URI Template expression operator
+            </summary>
+        </member>
+        <member name="F:UriTemplateString.Spec.Operator.QueryContinuation">
+            <summary>
+            Gets the query continuation operator.
+            </summary>
+        </member>
+        <member name="F:UriTemplateString.Spec.Operator.PathParameter">
+            <summary>
+            Gets the path parameter operator.
+            </summary>
+        </member>
+        <member name="F:UriTemplateString.Spec.Operator.PathSegment">
+            <summary>
+            Gets the path segment operator.
+            </summary>
+        </member>
+        <member name="F:UriTemplateString.Spec.Operator.DotPrefixedName">
+            <summary>
+            Gets the dot prefix operator
+            </summary>
+        </member>
+        <member name="F:UriTemplateString.Spec.Operator.HashFragment">
+            <summary>
+            Gets the hash fragment operator.
+            </summary>
+        </member>
+        <member name="F:UriTemplateString.Spec.Operator.ReservedCharacterString">
+            <summary>
+            Gets the reserved character string operator.
+            </summary>
+        </member>
+        <member name="F:UriTemplateString.Spec.Operator.QueryComponent">
+            <summary>
+            Gets the query string operator.
+            </summary>
+        </member>
+        <member name="M:UriTemplateString.Spec.Operator.FromString(System.String)">
+            <summary>
+            Creates an oeprator from the string representation
+            </summary>
+            <param name="operatorCharacter">A string containing the operator character (excluding values reserved in RFC6570 for future use)</param>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            When the parameter is not a single-character string containing one of valid operators
+            </exception>
+        </member>
+        <member name="M:UriTemplateString.Spec.Operator.ToString">
+            <summary>
+            Returns a <see cref="T:System.String" /> that represents this instance.
+            </summary>
+        </member>
+        <member name="T:UriTemplateString.Spec.TemplateSyntax">
+            <summary>
+            Regular expressions which represent the URI Template syntax
+            </summary>
+        </member>
+        <member name="F:UriTemplateString.Spec.TemplateSyntax.OperatorRegex">
+            <summary>
+            The operator regex
+            </summary>
+        </member>
+        <member name="F:UriTemplateString.Spec.TemplateSyntax.VariableSpecRegex">
+            <summary>
+            The variable spec regex
+            </summary>
+        </member>
+        <member name="F:UriTemplateString.Spec.TemplateSyntax.LiteralRegex">
+            <summary>
+            The literal regex
+            </summary>
+        </member>
+        <member name="F:UriTemplateString.Spec.TemplateSyntax.ExpressionRegex">
+            <summary>
+            The expression regex
+            </summary>
+        </member>
+        <member name="F:UriTemplateString.Spec.TemplateSyntax.TemplateRegex">
+            <summary>
+            The complete template regex
+            </summary>
+        </member>
+        <member name="T:UriTemplateString.Spec.VariableSpec">
+            <summary>
+            Represents a variable specification as defined by URI Templates RFC
+            </summary>
+        </member>
+        <member name="M:UriTemplateString.Spec.VariableSpec.#ctor(System.String,UriTemplateString.Spec.IModifier)">
+            <summary>
+            Initializes a new instance of the <see cref="T:UriTemplateString.Spec.VariableSpec"/> struct.
+            </summary>
+            <param name="variable">The variable name.</param>
+            <param name="modifier">The modifier.</param>
+        </member>
+        <member name="M:UriTemplateString.Spec.VariableSpec.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:UriTemplateString.Spec.VariableSpec"/> struct.
+            </summary>
+            <param name="name">The name.</param>
+        </member>
+        <member name="P:UriTemplateString.Spec.VariableSpec.Name">
+            <summary>
+            Gets the name.
+            </summary>
+        </member>
+        <member name="P:UriTemplateString.Spec.VariableSpec.Modifier">
+            <summary>
+            Gets the modifier.
+            </summary>
+        </member>
+        <member name="M:UriTemplateString.Spec.VariableSpec.ToString">
+            <summary>
+            Returns a <see cref="T:System.String" /> that represents this instance.
+            </summary>
+        </member>
+        <member name="T:UriTemplateString.UriTemplatePartFactory">
+            <summary>
+            Factory which creates URI Template parts (literals and expressions)
+            </summary>
+        </member>
+        <member name="M:UriTemplateString.UriTemplatePartFactory.GetParts(System.Text.RegularExpressions.CaptureCollection)">
+            <summary>
+            Gets the template parts from RegEx captures.
+            </summary>
+        </member>
+        <member name="M:UriTemplateString.UriTemplatePartFactory.CreatePart(System.String)">
+            <summary>
+            Creates a part.
+            </summary>
+        </member>
+        <member name="T:UriTemplateString.UriTemplateString">
+            <summary>
+            Represents an URI Template parsed according to the RFC specification
+            </summary>
+        </member>
+        <member name="M:UriTemplateString.UriTemplateString.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:UriTemplateString.UriTemplateString"/> class.
+            </summary>
+            <param name="value">The template string.</param>
+        </member>
+        <member name="P:UriTemplateString.UriTemplateString.Parts">
+            <summary>
+            Gets the parts (literal or expressions).
+            </summary>
+        </member>
+        <member name="M:UriTemplateString.UriTemplateString.op_Implicit(System.String)~UriTemplateString.UriTemplateString">
+            <summary>
+            Performs an implicit conversion from <see cref="T:System.String"/> to <see cref="T:UriTemplateString.UriTemplateString"/>.
+            </summary>
+            <param name="uriTemplate">The URI Template.</param>
+            <returns>
+            The result of the conversion.
+            </returns>
+        </member>
+        <member name="M:UriTemplateString.UriTemplateString.op_Addition(UriTemplateString.UriTemplateString,UriTemplateString.UriTemplateString)">
+            <summary>
+            Concatenates two templates
+            </summary>
+        </member>
+        <member name="M:UriTemplateString.UriTemplateString.op_Addition(System.String,UriTemplateString.UriTemplateString)">
+            <summary>
+            Concatenates two templates
+            </summary>
+        </member>
+        <member name="M:UriTemplateString.UriTemplateString.op_Addition(UriTemplateString.UriTemplateString,System.String)">
+            <summary>
+            Concatenates two templates
+            </summary>
+        </member>
+        <member name="M:UriTemplateString.UriTemplateString.ToString">
+            <summary>
+            Returns the URI Template string as concatentation of its <see cref="P:UriTemplateString.UriTemplateString.Parts"/>.
+            </summary>
+            <returns>
+            A <see cref="T:System.String" /> that represents this instance.
+            </returns>
+        </member>
+        <member name="M:UriTemplateString.UriTemplateString.AppendQueryParam(System.String,System.Boolean)">
+            <summary>
+            Appends a query parameter variable to query string.
+            </summary>
+            <param name="name">The variable name.</param>
+            <param name="explode">if set to <c>true</c> adds an exploded variable.</param>
+            <returns>A new instance of <see cref="T:UriTemplateString.UriTemplateString"/> with appended query string parameter</returns>
+        </member>
+    </members>
+</doc>

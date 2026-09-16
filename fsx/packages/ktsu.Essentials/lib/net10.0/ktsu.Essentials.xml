@@ -1,0 +1,3031 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ktsu.Essentials</name>
+    </assembly>
+    <members>
+        <member name="M:Polyfills.Polyfill.Except``1(System.Collections.Generic.IEnumerable{``0},``0)">
+            <summary>
+            Produces a set items excluding <paramref name="item"/> by using the default equality comparer to compare values.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.Except``1(System.Collections.Generic.IEnumerable{``0},``0,System.Collections.Generic.IEqualityComparer{``0})">
+            <summary>
+            Produces a set items excluding <paramref name="item"/> by using <paramref name="comparer"/> to compare values.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.Except``1(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEqualityComparer{``0},``0[])">
+            <summary>
+            Produces the set difference of two sequences by <paramref name="comparer"/> to compare values.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.IsGenericMethodParameter(System.Type)">
+            <summary>
+            Gets a value that indicates whether the current Type represents a type parameter in the definition of a generic method.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.IsAssignableTo``1(System.Type)">
+            <summary>
+            Generic version of Type.IsAssignableTo https://learn.microsoft.com/en-us/dotnet/api/system.type.isassignableto.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.IsAssignableFrom``1(System.Type)">
+            <summary>
+            Generic version of Type.IsAssignableFrom https://learn.microsoft.com/en-us/dotnet/api/system.type.isassignablefrom.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.Append(System.Text.StringBuilder,System.Text.StringBuilder.AppendInterpolatedStringHandler@)">
+            <summary>Appends the specified interpolated string to this instance.</summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.Append(System.Text.StringBuilder,System.IFormatProvider,System.Text.StringBuilder.AppendInterpolatedStringHandler@)">
+            <summary>Appends the specified interpolated string to this instance.</summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.AppendLine(System.Text.StringBuilder,System.Text.StringBuilder.AppendInterpolatedStringHandler@)">
+            <summary>Appends the specified interpolated string followed by the default line terminator to the end of the current StringBuilder object.</summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.AppendLine(System.Text.StringBuilder,System.IFormatProvider,System.Text.StringBuilder.AppendInterpolatedStringHandler@)">
+            <summary>Appends the specified interpolated string followed by the default line terminator to the end of the current StringBuilder object.</summary>
+        </member>
+        <member name="M:Polyfills.Ensure.Equal``1(``0,``0,System.String)">
+            <summary>Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is not equal to <paramref name="other"/>.</summary>
+            <param name="value">The argument to validate as equal to <paramref name="other"/>.</param>
+            <param name="other">The value to compare with <paramref name="value"/>.</param>
+            <param name="name">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+        </member>
+        <member name="M:Polyfills.Ensure.NotEqual``1(``0,``0,System.String)">
+            <summary>Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is equal to <paramref name="other"/>.</summary>
+            <param name="value">The argument to validate as not equal to <paramref name="other"/>.</param>
+            <param name="other">The value to compare with <paramref name="value"/>.</param>
+            <param name="name">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+        </member>
+        <member name="M:Polyfills.Ensure.NotGreaterThan``1(``0,``0,System.String)">
+            <summary>Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is greater than <paramref name="other"/>.</summary>
+            <param name="value">The argument to validate as less or equal than <paramref name="other"/>.</param>
+            <param name="other">The value to compare with <paramref name="value"/>.</param>
+            <param name="name">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+        </member>
+        <member name="M:Polyfills.Ensure.NotGreaterThanOrEqual``1(``0,``0,System.String)">
+            <summary>Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is greater than or equal <paramref name="other"/>.</summary>
+            <param name="value">The argument to validate as less than <paramref name="other"/>.</param>
+            <param name="other">The value to compare with <paramref name="value"/>.</param>
+            <param name="name">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+        </member>
+        <member name="M:Polyfills.Ensure.NotLessThan``1(``0,``0,System.String)">
+            <summary>Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is less than <paramref name="other"/>.</summary>
+            <param name="value">The argument to validate as greater than or equal than <paramref name="other"/>.</param>
+            <param name="other">The value to compare with <paramref name="value"/>.</param>
+            <param name="name">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+        </member>
+        <member name="M:Polyfills.Ensure.NotLessThanOrEqual``1(``0,``0,System.String)">
+            <summary>Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is less than or equal <paramref name="other"/>.</summary>
+            <param name="value">The argument to validate as greater than <paramref name="other"/>.</param>
+            <param name="other">The value to compare with <paramref name="value"/>.</param>
+            <param name="name">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+        </member>
+        <member name="M:Polyfills.Ensure.NotNegative``1(``0,System.String)">
+            <summary>Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is negative.</summary>
+            <param name="value">The argument to validate as non-negative.</param>
+            <param name="name">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+        </member>
+        <member name="M:Polyfills.Ensure.NotNegativeOrZero``1(``0,System.String)">
+            <summary>Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is negative or zero.</summary>
+            <param name="value">The argument to validate as non-zero or non-negative.</param>
+            <param name="name">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+        </member>
+        <member name="M:Polyfills.Ensure.NotZero``1(``0,System.String)">
+            <summary>Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is zero.</summary>
+            <param name="value">The argument to validate as non-zero.</param>
+            <param name="name">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+        </member>
+        <member name="T:ktsu.Essentials.BufferingIncrementalHash">
+            <summary>
+            An <see cref="T:ktsu.Essentials.IIncrementalHash"/> that accumulates every appended byte and hashes the result in
+            one pass, for providers that do not supply a genuinely incremental implementation.
+            </summary>
+            <remarks>
+            Correct for any provider, but it holds the whole input in memory, which is the cost this feature
+            exists to avoid. It backs the default body of <see cref="M:ktsu.Essentials.IHashProvider.CreateIncremental"/> so that
+            adding the member breaks no existing implementer; providers are expected to override it.
+            </remarks>
+            <param name="provider">The provider whose one-shot stream hashing is used to produce the digest.</param>
+        </member>
+        <member name="M:ktsu.Essentials.BufferingIncrementalHash.#ctor(ktsu.Essentials.IHashProvider)">
+            <summary>
+            An <see cref="T:ktsu.Essentials.IIncrementalHash"/> that accumulates every appended byte and hashes the result in
+            one pass, for providers that do not supply a genuinely incremental implementation.
+            </summary>
+            <remarks>
+            Correct for any provider, but it holds the whole input in memory, which is the cost this feature
+            exists to avoid. It backs the default body of <see cref="M:ktsu.Essentials.IHashProvider.CreateIncremental"/> so that
+            adding the member breaks no existing implementer; providers are expected to override it.
+            </remarks>
+            <param name="provider">The provider whose one-shot stream hashing is used to produce the digest.</param>
+        </member>
+        <member name="P:ktsu.Essentials.BufferingIncrementalHash.HashLengthBytes">
+            <inheritdoc/>
+        </member>
+        <member name="M:ktsu.Essentials.BufferingIncrementalHash.Append(System.ReadOnlySpan{System.Byte})">
+            <inheritdoc/>
+        </member>
+        <member name="M:ktsu.Essentials.BufferingIncrementalHash.TryGetHashAndReset(System.Span{System.Byte},System.Int32@)">
+            <inheritdoc/>
+        </member>
+        <member name="M:ktsu.Essentials.BufferingIncrementalHash.Dispose">
+            <inheritdoc/>
+        </member>
+        <member name="T:ktsu.Essentials.BufferingKeyedIncrementalHash">
+            <summary>
+            An <see cref="T:ktsu.Essentials.IIncrementalHash"/> that accumulates every appended byte and hashes the result in
+            one pass, for keyed hash providers that do not supply a genuinely incremental implementation.
+            </summary>
+            <remarks>
+            Correct for any provider, but it holds the whole input in memory, which is the cost incremental
+            hashing exists to avoid. It backs the default body of
+            <see cref="M:ktsu.Essentials.IKeyedHashProvider.CreateIncremental(System.ReadOnlySpan{System.Byte})"/> so that implementers need only write the two
+            required primitives; providers are expected to override it. The key is copied on construction and
+            zeroed on disposal, so the instance must be disposed.
+            </remarks>
+        </member>
+        <member name="M:ktsu.Essentials.BufferingKeyedIncrementalHash.#ctor(ktsu.Essentials.IKeyedHashProvider,System.ReadOnlySpan{System.Byte})">
+            <summary>
+            Initializes a new instance of the <see cref="T:ktsu.Essentials.BufferingKeyedIncrementalHash"/> class.
+            </summary>
+            <param name="keyedHashProvider">The provider whose one-shot stream hashing produces the digest.</param>
+            <param name="key">The key, copied into this instance and zeroed on disposal.</param>
+        </member>
+        <member name="P:ktsu.Essentials.BufferingKeyedIncrementalHash.HashLengthBytes">
+            <inheritdoc/>
+        </member>
+        <member name="M:ktsu.Essentials.BufferingKeyedIncrementalHash.Append(System.ReadOnlySpan{System.Byte})">
+            <inheritdoc/>
+        </member>
+        <member name="M:ktsu.Essentials.BufferingKeyedIncrementalHash.TryGetHashAndReset(System.Span{System.Byte},System.Int32@)">
+            <inheritdoc/>
+        </member>
+        <member name="M:ktsu.Essentials.BufferingKeyedIncrementalHash.Dispose">
+            <inheritdoc/>
+        </member>
+        <member name="T:ktsu.Essentials.FixedTimeComparison">
+            <summary>
+            Compares byte sequences in an amount of time that does not depend on their contents.
+            </summary>
+            <remarks>
+            Comparing an authentication tag with <c>==</c>, <c>SequenceEqual</c>, or any comparison that
+            returns early on the first differing byte leaks where the difference is. An attacker who can
+            measure that can recover a valid tag one byte at a time. Prefer
+            <see cref="M:ktsu.Essentials.IKeyedHashProvider.Verify(System.ReadOnlySpan{System.Byte},System.ReadOnlySpan{System.Byte},System.ReadOnlySpan{System.Byte})"/>, which computes and compares in one step; use this only
+            when the tag to compare against was produced elsewhere.
+            <para>
+            The member is named <see cref="M:ktsu.Essentials.FixedTimeComparison.FixedTimeEquals(System.ReadOnlySpan{System.Byte},System.ReadOnlySpan{System.Byte})"/> rather than <c>Equals</c> because a static
+            class inherits <see cref="M:System.Object.Equals(System.Object,System.Object)"/>. That overload accepts any two
+            arguments, so a call spelled <c>FixedTimeComparison.Equals(a, b)</c> would compile and silently
+            resolve to boxed reference equality for anything that does not implicitly convert to
+            <see cref="T:System.ReadOnlySpan`1"/>, never reaching the fixed-time path.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:ktsu.Essentials.FixedTimeComparison.FixedTimeEquals(System.ReadOnlySpan{System.Byte},System.ReadOnlySpan{System.Byte})">
+            <summary>
+            Determines whether two byte sequences are equal, in a time that does not vary with their contents.
+            </summary>
+            <param name="left">The first sequence.</param>
+            <param name="right">The second sequence.</param>
+            <returns>True if the sequences have the same length and contents, false otherwise.</returns>
+        </member>
+        <member name="T:ktsu.Essentials.ICacheProvider`2">
+            <summary>
+            Interface for cache providers that can store, retrieve, and manage cached key-value pairs with optional expiration.
+            </summary>
+            <typeparam name="TKey">The type of the cache key.</typeparam>
+            <typeparam name="TValue">The type of the cached value.</typeparam>
+        </member>
+        <member name="M:ktsu.Essentials.ICacheProvider`2.TryGet(`0,`1@)">
+            <summary>
+            Tries to get a cached value by key.
+            </summary>
+            <param name="key">The cache key.</param>
+            <param name="value">When this method returns, contains the cached value if found, or the default value if not found.</param>
+            <returns>True if the value was found in the cache, false otherwise.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.ICacheProvider`2.Set(`0,`1,System.Nullable{System.TimeSpan})">
+            <summary>
+            Sets a value in the cache with an optional expiration time.
+            </summary>
+            <param name="key">The cache key.</param>
+            <param name="value">The value to cache.</param>
+            <param name="expiration">The optional time-to-live for the cached entry. If null, the entry does not expire.</param>
+        </member>
+        <member name="M:ktsu.Essentials.ICacheProvider`2.Remove(`0)">
+            <summary>
+            Removes a cached value by key.
+            </summary>
+            <param name="key">The cache key to remove.</param>
+            <returns>True if the value was found and removed, false if it didn't exist.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.ICacheProvider`2.Clear">
+            <summary>
+            Clears all entries from the cache.
+            </summary>
+        </member>
+        <member name="M:ktsu.Essentials.ICacheProvider`2.Get(`0)">
+            <summary>
+            Gets a cached value by key, throwing if not found.
+            </summary>
+            <param name="key">The cache key.</param>
+            <returns>The cached value.</returns>
+            <exception cref="T:System.Collections.Generic.KeyNotFoundException">Thrown when the key is not found in the cache.</exception>
+        </member>
+        <member name="M:ktsu.Essentials.ICacheProvider`2.GetOrAdd(`0,System.Func{`0,`1},System.Nullable{System.TimeSpan})">
+            <summary>
+            Gets a cached value by key, or adds it using the provided factory if not found.
+            </summary>
+            <param name="key">The cache key.</param>
+            <param name="factory">A factory function to create the value if not found in cache.</param>
+            <param name="expiration">The optional time-to-live for the cached entry if it is created.</param>
+            <returns>The cached or newly created value.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.ICacheProvider`2.TryGetAsync(`0,System.Threading.CancellationToken)">
+            <summary>
+            Tries to get a cached value by key asynchronously.
+            </summary>
+            <param name="key">The cache key.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>A tuple containing a boolean indicating success and the cached value.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.ICacheProvider`2.GetAsync(`0,System.Threading.CancellationToken)">
+            <summary>
+            Gets a cached value by key asynchronously, throwing if not found.
+            </summary>
+            <param name="key">The cache key.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>The cached value.</returns>
+            <exception cref="T:System.Collections.Generic.KeyNotFoundException">Thrown when the key is not found in the cache.</exception>
+        </member>
+        <member name="M:ktsu.Essentials.ICacheProvider`2.SetAsync(`0,`1,System.Nullable{System.TimeSpan},System.Threading.CancellationToken)">
+            <summary>
+            Sets a value in the cache asynchronously with an optional expiration time.
+            </summary>
+            <param name="key">The cache key.</param>
+            <param name="value">The value to cache.</param>
+            <param name="expiration">The optional time-to-live for the cached entry.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>A task that represents the asynchronous set operation.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.ICacheProvider`2.RemoveAsync(`0,System.Threading.CancellationToken)">
+            <summary>
+            Removes a cached value by key asynchronously.
+            </summary>
+            <param name="key">The cache key to remove.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>True if the value was found and removed, false if it didn't exist.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.ICacheProvider`2.ClearAsync(System.Threading.CancellationToken)">
+            <summary>
+            Clears all entries from the cache asynchronously.
+            </summary>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>A task that represents the asynchronous clear operation.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.ICacheProvider`2.GetOrAddAsync(`0,System.Func{`0,`1},System.Nullable{System.TimeSpan},System.Threading.CancellationToken)">
+            <summary>
+            Gets a cached value by key asynchronously, or adds it using the provided factory if not found.
+            </summary>
+            <param name="key">The cache key.</param>
+            <param name="factory">A factory function to create the value if not found in cache.</param>
+            <param name="expiration">The optional time-to-live for the cached entry if it is created.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>The cached or newly created value.</returns>
+        </member>
+        <member name="T:ktsu.Essentials.CommandResult">
+            <summary>
+            Represents the result of executing a command, including exit code, standard output, and standard error.
+            </summary>
+            <param name="exitCode">The exit code of the command.</param>
+            <param name="standardOutput">The standard output produced by the command.</param>
+            <param name="standardError">The standard error output produced by the command.</param>
+        </member>
+        <member name="M:ktsu.Essentials.CommandResult.#ctor(System.Int32,System.String,System.String)">
+            <summary>
+            Represents the result of executing a command, including exit code, standard output, and standard error.
+            </summary>
+            <param name="exitCode">The exit code of the command.</param>
+            <param name="standardOutput">The standard output produced by the command.</param>
+            <param name="standardError">The standard error output produced by the command.</param>
+        </member>
+        <member name="P:ktsu.Essentials.CommandResult.ExitCode">
+            <summary>
+            Gets the exit code of the command. A value of 0 typically indicates success.
+            </summary>
+        </member>
+        <member name="P:ktsu.Essentials.CommandResult.StandardOutput">
+            <summary>
+            Gets the standard output produced by the command.
+            </summary>
+        </member>
+        <member name="P:ktsu.Essentials.CommandResult.StandardError">
+            <summary>
+            Gets the standard error output produced by the command.
+            </summary>
+        </member>
+        <member name="P:ktsu.Essentials.CommandResult.Success">
+            <summary>
+            Gets a value indicating whether the command executed successfully (exit code is 0).
+            </summary>
+        </member>
+        <member name="T:ktsu.Essentials.ICommandExecutor">
+            <summary>
+            Interface for command executors that can run shell commands and capture their output.
+            This provides a unified abstraction for executing external processes.
+            </summary>
+        </member>
+        <member name="M:ktsu.Essentials.ICommandExecutor.ExecuteAsync(System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Executes a command asynchronously and returns the result.
+            </summary>
+            <param name="command">The command to execute.</param>
+            <param name="workingDirectory">The optional working directory for the command. If null, uses the current directory.</param>
+            <param name="cancellationToken">A cancellation token to cancel the operation.</param>
+            <returns>A <see cref="T:ktsu.Essentials.CommandResult"/> containing the exit code, standard output, and standard error.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.ICommandExecutor.ExecuteAsync(System.String,System.Collections.Generic.IReadOnlyDictionary{System.String,System.String},System.String,System.Threading.CancellationToken)">
+            <summary>
+            Executes a command asynchronously with custom environment variables and returns the result.
+            </summary>
+            <param name="command">The command to execute.</param>
+            <param name="environmentVariables">Optional environment variables to set for the command. If null, inherits the current environment.</param>
+            <param name="workingDirectory">The optional working directory for the command. If null, uses the current directory.</param>
+            <param name="cancellationToken">A cancellation token to cancel the operation.</param>
+            <returns>A <see cref="T:ktsu.Essentials.CommandResult"/> containing the exit code, standard output, and standard error.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.ICommandExecutor.Execute(System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Executes a command synchronously and returns the result.
+            </summary>
+            <param name="command">The command to execute.</param>
+            <param name="workingDirectory">The optional working directory for the command. If null, uses the current directory.</param>
+            <param name="cancellationToken">A cancellation token to cancel the operation.</param>
+            <returns>A <see cref="T:ktsu.Essentials.CommandResult"/> containing the exit code, standard output, and standard error.</returns>
+            <remarks>Composes over the synchronous primitive, so overriding that converts this too.</remarks>
+        </member>
+        <member name="M:ktsu.Essentials.ICommandExecutor.Execute(System.String,System.Collections.Generic.IReadOnlyDictionary{System.String,System.String},System.String,System.Threading.CancellationToken)">
+            <summary>
+            Executes a command synchronously with custom environment variables and returns the result.
+            </summary>
+            <param name="command">The command to execute.</param>
+            <param name="environmentVariables">Optional environment variables to set for the command. If null, inherits the current environment.</param>
+            <param name="workingDirectory">The optional working directory for the command. If null, uses the current directory.</param>
+            <param name="cancellationToken">A cancellation token to cancel the operation.</param>
+            <returns>A <see cref="T:ktsu.Essentials.CommandResult"/> containing the exit code, standard output, and standard error.</returns>
+            <remarks>
+            This is the synchronous primitive: every other synchronous member composes over it. The default
+            implementation bridges to <see cref="M:ktsu.Essentials.ICommandExecutor.ExecuteAsync(System.String,System.Collections.Generic.IReadOnlyDictionary{System.String,System.String},System.String,System.Threading.CancellationToken)"/>
+            and therefore blocks a thread for the lifetime of the child process. A provider that can run a
+            process synchronously should declare this member itself, which replaces the default and converts
+            every synchronous overload at once.
+            <para>
+            The bridge uses <c>GetAwaiter().GetResult()</c> rather than <c>.Result</c> so a failure surfaces as
+            the original exception with its stack trace intact, not wrapped in an <see cref="T:System.AggregateException"/>.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:ktsu.Essentials.ICommandExecutor.ExecuteAndGetOutputAsync(System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Executes a command asynchronously and returns just the standard output, throwing if the command fails.
+            </summary>
+            <param name="command">The command to execute.</param>
+            <param name="workingDirectory">The optional working directory for the command. If null, uses the current directory.</param>
+            <param name="cancellationToken">A cancellation token to cancel the operation.</param>
+            <returns>The standard output of the command.</returns>
+            <exception cref="T:System.InvalidOperationException">Thrown when the command exits with a non-zero exit code.</exception>
+        </member>
+        <member name="M:ktsu.Essentials.ICommandExecutor.ExecuteAndGetOutput(System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Executes a command synchronously and returns just the standard output, throwing if the command fails.
+            </summary>
+            <param name="command">The command to execute.</param>
+            <param name="workingDirectory">The optional working directory for the command. If null, uses the current directory.</param>
+            <param name="cancellationToken">A cancellation token to cancel the operation.</param>
+            <returns>The standard output of the command.</returns>
+            <exception cref="T:System.InvalidOperationException">Thrown when the command exits with a non-zero exit code.</exception>
+            <remarks>Composes over the synchronous primitive, so the failure surfaces as <see cref="T:System.InvalidOperationException"/> rather than wrapped in an <see cref="T:System.AggregateException"/>.</remarks>
+        </member>
+        <member name="T:ktsu.Essentials.ICompressionProvider">
+            <summary>
+            Interface for compression providers that can compress and decompress data.
+            </summary>
+        </member>
+        <member name="M:ktsu.Essentials.ICompressionProvider.GetMaxCompressedLength(System.Int32)">
+            <summary>
+            Gets the largest number of bytes <see cref="M:ktsu.Essentials.ICompressionProvider.TryCompress(System.ReadOnlySpan{System.Byte},System.Span{System.Byte},System.Int32@)"/>
+            can produce for an input of the given length.
+            </summary>
+            <param name="sourceLength">The length of the data to compress.</param>
+            <returns>The buffer size required to guarantee the compress succeeds.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.ICompressionProvider.TryCompress(System.ReadOnlySpan{System.Byte},System.Span{System.Byte},System.Int32@)">
+            <summary>
+            Tries to compress the data from the span and write the result to the destination.
+            </summary>
+            <param name="data">The data to compress.</param>
+            <param name="destination">The destination to write the compressed data to.</param>
+            <param name="bytesWritten">The number of bytes written to <paramref name="destination"/>.</param>
+            <returns>True if the compression was successful, false otherwise.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.ICompressionProvider.TryCompress(System.IO.Stream,System.IO.Stream)">
+            <summary>
+            Tries to compress the data from the stream and write the result to the destination.
+            </summary>
+            <param name="data">The data to compress.</param>
+            <param name="destination">The destination to write the compressed data to.</param>
+            <returns>True if the compression was successful, false otherwise.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.ICompressionProvider.TryCompress(System.ReadOnlySpan{System.Byte},System.IO.Stream)">
+            <summary>
+            Tries to compress the data from the span and write the result to the destination stream.
+            </summary>
+            <param name="data">The data to compress.</param>
+            <param name="destination">The destination stream to write the compressed data to.</param>
+            <returns>True if the compression was successful, false otherwise.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.ICompressionProvider.Compress(System.ReadOnlySpan{System.Byte})">
+            <summary>
+            Compresses the data from the span and returns the result.
+            </summary>
+            <param name="data">The data to compress.</param>
+            <returns>The compressed data.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.ICompressionProvider.Compress(System.IO.Stream)">
+            <summary>
+            Compresses the data from the stream and returns the result.
+            </summary>
+            <param name="data">The data to compress.</param>
+            <returns>The compressed data.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.ICompressionProvider.Compress(System.String)">
+            <summary>
+            Compresses the data from the string and returns the result.
+            </summary>
+            <param name="data">The data to compress.</param>
+            <returns>The compressed data.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.ICompressionProvider.TryCompressAsync(System.ReadOnlyMemory{System.Byte},System.IO.Stream,System.Threading.CancellationToken)">
+            <summary>
+            Tries to compress the data from the span and write the result to the destination stream asynchronously.
+            </summary>
+            <param name="data">The data to compress.</param>
+            <param name="destination">The destination stream to write the compressed data to.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>True if the compression was successful, false otherwise.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.ICompressionProvider.TryCompressAsync(System.IO.Stream,System.IO.Stream,System.Threading.CancellationToken)">
+            <summary>
+            Tries to compress the data from the stream and write the result to the destination stream asynchronously.
+            </summary>
+            <param name="data">The data to compress.</param>
+            <param name="destination">The destination stream to write the compressed data to.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>True if the compression was successful, false otherwise.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.ICompressionProvider.CompressAsync(System.ReadOnlyMemory{System.Byte},System.Threading.CancellationToken)">
+            <summary>
+            Compresses the data from the span and returns the result asynchronously.
+            </summary>
+            <param name="data">The data to compress.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>The compressed data.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.ICompressionProvider.CompressAsync(System.IO.Stream,System.Threading.CancellationToken)">
+            <summary>
+            Compresses the data from the stream and returns the result asynchronously.
+            </summary>
+            <param name="data">The data to compress.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>The compressed data.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.ICompressionProvider.CompressAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Compresses the data from the string and returns the result asynchronously.
+            </summary>
+            <param name="data">The data to compress.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>The compressed data.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.ICompressionProvider.TryDecompress(System.ReadOnlySpan{System.Byte},System.Span{System.Byte},System.Int32@)">
+            <summary>
+            Tries to decompress the data from the span and write the result to the destination.
+            </summary>
+            <param name="compressedData">The compressed data to decompress.</param>
+            <param name="destination">The destination to write the decompressed data to.</param>
+            <param name="bytesWritten">The number of bytes written to <paramref name="destination"/>.</param>
+            <returns>True if the decompression was successful, false otherwise.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.ICompressionProvider.TryDecompress(System.IO.Stream,System.IO.Stream)">
+            <summary>
+            Tries to decompress the data from the stream and write the result to the destination.
+            </summary>
+            <param name="compressedData">The compressed data to decompress.</param>
+            <param name="destination">The destination to write the decompressed data to.</param>
+            <returns>True if the decompression was successful, false otherwise.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.ICompressionProvider.TryDecompress(System.ReadOnlySpan{System.Byte},System.IO.Stream)">
+            <summary>
+            Tries to decompress the data from the span and write the result to the destination stream.
+            </summary>
+            <param name="compressedData">The compressed data to decompress.</param>
+            <param name="destination">The destination stream to write the decompressed data to.</param>
+            <returns>True if the decompression was successful, false otherwise.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.ICompressionProvider.Decompress(System.ReadOnlySpan{System.Byte})">
+            <summary>
+            Decompresses the data from the span and returns the result.
+            </summary>
+            <param name="compressedData">The compressed data to decompress.</param>
+            <returns>The decompressed data.</returns>
+            <remarks>
+            Unlike the other categories this cannot size a buffer up front — the decompressed length is not
+            derivable from compressed input — so it grows a stream instead. Callers who already know the
+            original size should use <see cref="M:ktsu.Essentials.ICompressionProvider.TryDecompress(System.ReadOnlySpan{System.Byte},System.Span{System.Byte},System.Int32@)"/>.
+            </remarks>
+        </member>
+        <member name="M:ktsu.Essentials.ICompressionProvider.Decompress(System.IO.Stream)">
+            <summary>
+            Decompresses the data from the stream and returns the result.
+            </summary>
+            <param name="compressedData">The compressed data to decompress.</param>
+            <returns>The decompressed data.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.ICompressionProvider.Decompress(System.String)">
+            <summary>
+            Decompresses text produced by <see cref="M:ktsu.Essentials.ICompressionProvider.Compress(System.String)"/> and returns the original string.
+            </summary>
+            <param name="compressedData">The compressed text.</param>
+            <returns>The decompressed data as a UTF8 string.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.ICompressionProvider.TryDecompressAsync(System.ReadOnlyMemory{System.Byte},System.IO.Stream,System.Threading.CancellationToken)">
+            <summary>
+            Tries to decompress the data from the span and write the result to the destination stream asynchronously.
+            </summary>
+            <param name="compressedData">The compressed data to decompress.</param>
+            <param name="destination">The destination stream to write the decompressed data to.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>True if the decompression was successful, false otherwise.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.ICompressionProvider.TryDecompressAsync(System.IO.Stream,System.IO.Stream,System.Threading.CancellationToken)">
+            <summary>
+            Tries to decompress the data from the stream and write the result to the destination stream asynchronously.
+            </summary>
+            <param name="compressedData">The compressed data to decompress.</param>
+            <param name="destination">The destination stream to write the decompressed data to.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>True if the decompression was successful, false otherwise.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.ICompressionProvider.DecompressAsync(System.ReadOnlyMemory{System.Byte},System.Threading.CancellationToken)">
+            <summary>
+            Decompresses the data from the span and returns the result asynchronously.
+            </summary>
+            <param name="compressedData">The compressed data to decompress.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>The decompressed data.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.ICompressionProvider.DecompressAsync(System.IO.Stream,System.Threading.CancellationToken)">
+            <summary>
+            Decompresses the data from the stream and returns the result asynchronously.
+            </summary>
+            <param name="compressedData">The compressed data to decompress.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>The decompressed data.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.ICompressionProvider.DecompressAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Decompresses text produced by <see cref="M:ktsu.Essentials.ICompressionProvider.Compress(System.String)"/> asynchronously.
+            </summary>
+            <param name="compressedData">The compressed text.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>The decompressed data as a UTF8 string.</returns>
+        </member>
+        <member name="T:ktsu.Essentials.IContinuousDistribution">
+            <summary>
+            Interface for continuous probability distributions over the real line.
+            </summary>
+            <remarks>
+            The density is not a probability: it is a probability per unit of <c>x</c>, so it integrates to one
+            rather than summing to one and may exceed one where the distribution is narrow. The probability of
+            any single exact value is zero; use <see cref="M:ktsu.Essentials.IDistribution`1.Cdf(`0)"/> for the probability of an
+            interval.
+            </remarks>
+        </member>
+        <member name="M:ktsu.Essentials.IContinuousDistribution.Pdf(System.Double)">
+            <summary>
+            Evaluates the probability density function.
+            </summary>
+            <param name="value">The value to evaluate at.</param>
+            <returns>The density at <paramref name="value"/>, or zero outside the support.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.IContinuousDistribution.LogPdf(System.Double)">
+            <summary>
+            Evaluates the natural logarithm of the probability density function.
+            </summary>
+            <remarks>
+            The default takes the logarithm of <see cref="M:ktsu.Essentials.IContinuousDistribution.Pdf(System.Double)"/>, which underflows to negative
+            infinity once the density falls below the smallest representable double. A distribution whose
+            log-density has a closed form should declare this member so far-tail work stays accurate.
+            </remarks>
+            <param name="value">The value to evaluate at.</param>
+            <returns>The log density at <paramref name="value"/>, or negative infinity outside the support.</returns>
+        </member>
+        <member name="T:ktsu.Essentials.IDiscreteDistribution">
+            <summary>
+            Interface for discrete probability distributions over the integers.
+            </summary>
+            <remarks>
+            Unlike a density, the mass at a point is a probability in its own right: the masses over the
+            support sum to one, and each is the probability of that exact outcome.
+            </remarks>
+        </member>
+        <member name="M:ktsu.Essentials.IDiscreteDistribution.Pmf(System.Int32)">
+            <summary>
+            Evaluates the probability mass function: the probability of drawing exactly <paramref name="value"/>.
+            </summary>
+            <param name="value">The outcome to evaluate at.</param>
+            <returns>A probability in the range [0, 1], or zero outside the support.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.IDiscreteDistribution.LogPmf(System.Int32)">
+            <summary>
+            Evaluates the natural logarithm of the probability mass function.
+            </summary>
+            <remarks>
+            The default takes the logarithm of <see cref="M:ktsu.Essentials.IDiscreteDistribution.Pmf(System.Int32)"/>, which underflows to negative infinity
+            once the mass falls below the smallest representable double. A distribution whose log-mass has a
+            closed form should declare this member so far-tail work stays accurate.
+            </remarks>
+            <param name="value">The outcome to evaluate at.</param>
+            <returns>The log mass at <paramref name="value"/>, or negative infinity outside the support.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.IDiscreteDistribution.ktsu#Essentials#IDistribution{System#Int32}#Quantile(System.Double)">
+            <summary>
+            Evaluates the quantile function by bisecting the support.
+            </summary>
+            <remarks>
+            A discrete quantile is the smallest outcome whose cumulative probability reaches the target, and
+            because <see cref="M:ktsu.Essentials.IDistribution`1.Cdf(`0)"/> is non-decreasing that outcome can be found by
+            bisection — at most 31 evaluations even over an unbounded support, and no reliance on the tail
+            masses staying above the underflow threshold. A distribution with a closed-form inverse should
+            declare this member instead.
+            </remarks>
+            <param name="probability">The probability to invert, in the range [0, 1].</param>
+            <returns>The smallest outcome whose cumulative probability is at least <paramref name="probability"/>.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="probability"/> is outside [0, 1] or is not a number.</exception>
+        </member>
+        <member name="T:ktsu.Essentials.IDistribution`1">
+            <summary>
+            Interface for univariate probability distributions over a sample space of <typeparamref name="T"/>.
+            </summary>
+            <remarks>
+            <para>
+            An implementation must supply <see cref="M:ktsu.Essentials.IDistribution`1.Cdf(`0)"/>, <see cref="M:ktsu.Essentials.IDistribution`1.Quantile(System.Double)"/>, the support
+            bounds and the first two moments. Sampling, the median and the survival function come free from
+            those, and an implementation is free to declare any of them when it has a faster or more accurate
+            route.
+            </para>
+            <para>
+            The default sampler inverts the CDF, which consumes exactly one draw per sample and reproduces the
+            distribution exactly as accurately as <see cref="M:ktsu.Essentials.IDistribution`1.Quantile(System.Double)"/> does. Distributions with a
+            cheaper closed-form sampler override it.
+            </para>
+            <para>
+            Instances are immutable: the parameters are fixed at construction and no state changes while
+            sampling, so one instance is safe to share across threads provided the
+            <see cref="T:ktsu.Essentials.IRandomProvider"/> passed to it is.
+            </para>
+            </remarks>
+            <typeparam name="T">The type of a single outcome — <see cref="T:System.Double"/> for a continuous distribution, <see cref="T:System.Int32"/> for a discrete one.</typeparam>
+        </member>
+        <member name="P:ktsu.Essentials.IDistribution`1.Mean">
+            <summary>
+            Gets the expected value of the distribution.
+            </summary>
+        </member>
+        <member name="P:ktsu.Essentials.IDistribution`1.Variance">
+            <summary>
+            Gets the variance of the distribution.
+            </summary>
+        </member>
+        <member name="P:ktsu.Essentials.IDistribution`1.StandardDeviation">
+            <summary>
+            Gets the standard deviation of the distribution.
+            </summary>
+        </member>
+        <member name="P:ktsu.Essentials.IDistribution`1.Minimum">
+            <summary>
+            Gets the lowest value the distribution can produce, or negative infinity when it is unbounded below.
+            </summary>
+        </member>
+        <member name="P:ktsu.Essentials.IDistribution`1.Maximum">
+            <summary>
+            Gets the highest value the distribution can produce, or positive infinity when it is unbounded above.
+            </summary>
+        </member>
+        <member name="M:ktsu.Essentials.IDistribution`1.Cdf(`0)">
+            <summary>
+            Evaluates the cumulative distribution function: the probability that a draw is at most <paramref name="value"/>.
+            </summary>
+            <param name="value">The value to evaluate at.</param>
+            <returns>A probability in the range [0, 1].</returns>
+        </member>
+        <member name="M:ktsu.Essentials.IDistribution`1.SurvivalFunction(`0)">
+            <summary>
+            Evaluates the survival function: the probability that a draw exceeds <paramref name="value"/>.
+            </summary>
+            <remarks>
+            The complement of <see cref="M:ktsu.Essentials.IDistribution`1.Cdf(`0)"/>. The default subtracts from one, which loses precision far
+            out in the upper tail; a distribution with a directly computable tail should declare this member.
+            </remarks>
+            <param name="value">The value to evaluate at.</param>
+            <returns>A probability in the range [0, 1].</returns>
+        </member>
+        <member name="M:ktsu.Essentials.IDistribution`1.Quantile(System.Double)">
+            <summary>
+            Evaluates the quantile function, the inverse of <see cref="M:ktsu.Essentials.IDistribution`1.Cdf(`0)"/>.
+            </summary>
+            <param name="probability">The probability to invert, in the range [0, 1].</param>
+            <returns>The smallest value whose cumulative probability is at least <paramref name="probability"/>.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="probability"/> is outside [0, 1] or is not a number.</exception>
+        </member>
+        <member name="P:ktsu.Essentials.IDistribution`1.Median">
+            <summary>
+            Gets the median of the distribution.
+            </summary>
+        </member>
+        <member name="M:ktsu.Essentials.IDistribution`1.Sample(ktsu.Essentials.IRandomProvider)">
+            <summary>
+            Draws one value from the distribution.
+            </summary>
+            <param name="random">The source of randomness to draw from.</param>
+            <returns>The drawn value.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="random"/> is null.</exception>
+        </member>
+        <member name="M:ktsu.Essentials.IDistribution`1.Sample(ktsu.Essentials.IRandomProvider,System.Span{`0})">
+            <summary>
+            Fills the destination buffer with independent draws from the distribution.
+            </summary>
+            <param name="random">The source of randomness to draw from.</param>
+            <param name="destination">The buffer to fill. Every element in it is overwritten.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="random"/> is null.</exception>
+        </member>
+        <member name="M:ktsu.Essentials.IDistribution`1.Sample(ktsu.Essentials.IRandomProvider,System.Int32)">
+            <summary>
+            Returns a new array of independent draws from the distribution.
+            </summary>
+            <param name="random">The source of randomness to draw from.</param>
+            <param name="count">The number of values to draw.</param>
+            <returns>An array of <paramref name="count"/> draws.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="random"/> is null.</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="count"/> is negative.</exception>
+        </member>
+        <member name="T:ktsu.Essentials.IEncodingProvider">
+            <summary>
+            Interface for encoding providers that apply a reversible format or transport encoding, such as
+            Base64 or hexadecimal. These are not text character encodings.
+            </summary>
+        </member>
+        <member name="M:ktsu.Essentials.IEncodingProvider.GetMaxEncodedLength(System.Int32)">
+            <summary>
+            Gets the largest number of bytes <see cref="M:ktsu.Essentials.IEncodingProvider.TryEncode(System.ReadOnlySpan{System.Byte},System.Span{System.Byte},System.Int32@)"/>
+            can produce for an input of the given length.
+            </summary>
+            <param name="sourceLength">The length of the data to encode.</param>
+            <returns>The buffer size required to guarantee the encode succeeds.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.IEncodingProvider.GetMaxDecodedLength(System.Int32)">
+            <summary>
+            Gets the largest number of bytes <see cref="M:ktsu.Essentials.IEncodingProvider.TryDecode(System.ReadOnlySpan{System.Byte},System.Span{System.Byte},System.Int32@)"/>
+            can produce for encoded data of the given length.
+            </summary>
+            <param name="encodedLength">The length of the encoded data.</param>
+            <returns>The buffer size required to guarantee the decode succeeds.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.IEncodingProvider.TryEncode(System.ReadOnlySpan{System.Byte},System.Span{System.Byte},System.Int32@)">
+            <summary>
+            Tries to encode the data from the span and write the result to the destination.
+            </summary>
+            <param name="data">The data to encode.</param>
+            <param name="destination">The destination to write the encoded data to.</param>
+            <param name="bytesWritten">The number of bytes written to <paramref name="destination"/>.</param>
+            <returns>True if the encoding was successful, false otherwise.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.IEncodingProvider.TryEncode(System.IO.Stream,System.IO.Stream)">
+            <summary>
+            Tries to encode the data from the stream and write the result to the destination.
+            </summary>
+            <param name="data">The data to encode.</param>
+            <param name="destination">The destination to write the encoded data to.</param>
+            <returns>True if the encoding was successful, false otherwise.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.IEncodingProvider.TryEncode(System.ReadOnlySpan{System.Byte},System.IO.Stream)">
+            <summary>
+            Tries to encode the data from the span and write the result to the destination stream.
+            </summary>
+            <param name="data">The data to encode.</param>
+            <param name="destination">The destination stream to write the encoded data to.</param>
+            <returns>True if the encoding was successful, false otherwise.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.IEncodingProvider.Encode(System.ReadOnlySpan{System.Byte})">
+            <summary>
+            Encodes the data from the span and returns the result.
+            </summary>
+            <param name="data">The data to encode.</param>
+            <returns>The encoded data.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.IEncodingProvider.Encode(System.IO.Stream)">
+            <summary>
+            Encodes the data from the stream and returns the result.
+            </summary>
+            <param name="data">The data to encode.</param>
+            <returns>The encoded data.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.IEncodingProvider.Encode(System.String)">
+            <summary>
+            Encodes the data from the string and returns the result.
+            </summary>
+            <param name="data">The data to encode.</param>
+            <returns>The encoded data.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.IEncodingProvider.TryEncodeAsync(System.ReadOnlyMemory{System.Byte},System.IO.Stream,System.Threading.CancellationToken)">
+            <summary>
+            Tries to encode the data from the span and write the result to the destination stream asynchronously.
+            </summary>
+            <param name="data">The data to encode.</param>
+            <param name="destination">The destination stream to write the encoded data to.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>True if the encoding was successful, false otherwise.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.IEncodingProvider.TryEncodeAsync(System.IO.Stream,System.IO.Stream,System.Threading.CancellationToken)">
+            <summary>
+            Tries to encode the data from the stream and write the result to the destination stream asynchronously.
+            </summary>
+            <param name="data">The data to encode.</param>
+            <param name="destination">The destination stream to write the encoded data to.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>True if the encoding was successful, false otherwise.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.IEncodingProvider.EncodeAsync(System.ReadOnlyMemory{System.Byte},System.Threading.CancellationToken)">
+            <summary>
+            Encodes the data from the span and returns the result asynchronously.
+            </summary>
+            <param name="data">The data to encode.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>The encoded data.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.IEncodingProvider.EncodeAsync(System.IO.Stream,System.Threading.CancellationToken)">
+            <summary>
+            Encodes the data from the stream and returns the result asynchronously.
+            </summary>
+            <param name="data">The data to encode.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>The encoded data.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.IEncodingProvider.EncodeAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Encodes the data from the string and returns the result asynchronously.
+            </summary>
+            <param name="data">The data to encode.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>The encoded data.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.IEncodingProvider.TryDecode(System.ReadOnlySpan{System.Byte},System.Span{System.Byte},System.Int32@)">
+            <summary>
+            Tries to decode the data from the span and write the result to the destination.
+            </summary>
+            <param name="encodedData">The encoded data to decode.</param>
+            <param name="destination">The destination to write the decoded data to.</param>
+            <param name="bytesWritten">The number of bytes written to <paramref name="destination"/>.</param>
+            <returns>True if the decoding was successful, false otherwise.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.IEncodingProvider.TryDecode(System.IO.Stream,System.IO.Stream)">
+            <summary>
+            Tries to decode the data from the stream and write the result to the destination.
+            </summary>
+            <param name="encodedData">The encoded data to decode.</param>
+            <param name="destination">The destination to write the decoded data to.</param>
+            <returns>True if the decoding was successful, false otherwise.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.IEncodingProvider.TryDecode(System.ReadOnlySpan{System.Byte},System.IO.Stream)">
+            <summary>
+            Tries to decode the data from the span and write the result to the destination stream.
+            </summary>
+            <param name="encodedData">The encoded data to decode.</param>
+            <param name="destination">The destination stream to write the decoded data to.</param>
+            <returns>True if the decoding was successful, false otherwise.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.IEncodingProvider.Decode(System.ReadOnlySpan{System.Byte})">
+            <summary>
+            Decodes the data from the span and returns the result.
+            </summary>
+            <param name="encodedData">The encoded data to decode.</param>
+            <returns>The decoded data.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.IEncodingProvider.Decode(System.IO.Stream)">
+            <summary>
+            Decodes the data from the stream and returns the result.
+            </summary>
+            <param name="encodedData">The encoded data to decode.</param>
+            <returns>The decoded data.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.IEncodingProvider.Decode(System.String)">
+            <summary>
+            Decodes text produced by <see cref="M:ktsu.Essentials.IEncodingProvider.Encode(System.String)"/> and returns the original string.
+            </summary>
+            <param name="encodedData">The encoded text.</param>
+            <returns>The decoded data as a UTF8 string.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.IEncodingProvider.TryDecodeAsync(System.ReadOnlyMemory{System.Byte},System.IO.Stream,System.Threading.CancellationToken)">
+            <summary>
+            Tries to decode the data from the span and write the result to the destination stream asynchronously.
+            </summary>
+            <param name="encodedData">The encoded data to decode.</param>
+            <param name="destination">The destination stream to write the decoded data to.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>True if the decoding was successful, false otherwise.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.IEncodingProvider.TryDecodeAsync(System.IO.Stream,System.IO.Stream,System.Threading.CancellationToken)">
+            <summary>
+            Tries to decode the data from the stream and write the result to the destination stream asynchronously.
+            </summary>
+            <param name="encodedData">The encoded data to decode.</param>
+            <param name="destination">The destination stream to write the decoded data to.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>True if the decoding was successful, false otherwise.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.IEncodingProvider.DecodeAsync(System.ReadOnlyMemory{System.Byte},System.Threading.CancellationToken)">
+            <summary>
+            Decodes the data from the span and returns the result asynchronously.
+            </summary>
+            <param name="encodedData">The encoded data to decode.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>The decoded data.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.IEncodingProvider.DecodeAsync(System.IO.Stream,System.Threading.CancellationToken)">
+            <summary>
+            Decodes the data from the stream and returns the result asynchronously.
+            </summary>
+            <param name="encodedData">The encoded data to decode.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>The decoded data.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.IEncodingProvider.DecodeAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Decodes text produced by <see cref="M:ktsu.Essentials.IEncodingProvider.Encode(System.String)"/> asynchronously.
+            </summary>
+            <param name="encodedData">The encoded text.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>The decoded data as a UTF8 string.</returns>
+        </member>
+        <member name="T:ktsu.Essentials.IEncryptionProvider">
+            <summary>
+            Interface for encryption providers that can encrypt and decrypt data.
+            </summary>
+            <remarks>
+            Encryption providers give confidentiality only. Ciphertext produced through this interface is not
+            tamper-evident: nothing in the surface carries an authentication tag, so a modified ciphertext is
+            indistinguishable from an unmodified one and decryption of altered input succeeds or fails
+            depending only on whether the result happens to be well-formed.
+            <para>
+            A caller who needs to detect tampering must authenticate the ciphertext separately, computing a
+            tag over the initialization vector and the ciphertext together with an
+            <see cref="T:ktsu.Essentials.IKeyedHashProvider"/>, then verifying that tag before decrypting. Covering only the
+            ciphertext is not enough. The initialization vector travels with it and feeds the first decrypted
+            block, so an attacker free to rewrite an unauthenticated one can change that block undetected.
+            Use a key for authentication that is separate from the encryption key.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:ktsu.Essentials.IEncryptionProvider.GetMaxEncryptedLength(System.Int32)">
+            <summary>
+            Gets the largest number of bytes
+            <see cref="M:ktsu.Essentials.IEncryptionProvider.TryEncrypt(System.ReadOnlySpan{System.Byte},System.ReadOnlySpan{System.Byte},System.ReadOnlySpan{System.Byte},System.Span{System.Byte},System.Int32@)"/>
+            can produce for an input of the given length.
+            </summary>
+            <param name="sourceLength">The length of the data to encrypt.</param>
+            <returns>The buffer size required to guarantee the encryption succeeds.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.IEncryptionProvider.GenerateKey">
+            <summary>
+            Generates a new encryption key.
+            </summary>
+            <returns>A new encryption key.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.IEncryptionProvider.GenerateIV">
+            <summary>
+            Generates a new initialization vector.
+            </summary>
+            <returns>A new initialization vector.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.IEncryptionProvider.TryEncrypt(System.ReadOnlySpan{System.Byte},System.ReadOnlySpan{System.Byte},System.ReadOnlySpan{System.Byte},System.Span{System.Byte},System.Int32@)">
+            <summary>
+            Tries to encrypt the data from the span and write the result to the destination.
+            </summary>
+            <param name="data">The data to encrypt.</param>
+            <param name="key">The key to use for encryption.</param>
+            <param name="iv">The initialization vector to use for encryption.</param>
+            <param name="destination">The destination to write the encrypted data to.</param>
+            <param name="bytesWritten">The number of bytes written to <paramref name="destination"/>.</param>
+            <returns>True if the encryption was successful, false otherwise.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.IEncryptionProvider.TryEncrypt(System.IO.Stream,System.ReadOnlySpan{System.Byte},System.ReadOnlySpan{System.Byte},System.IO.Stream)">
+            <summary>
+            Tries to encrypt the data from the stream and write the result to the destination.
+            </summary>
+            <param name="data">The data to encrypt.</param>
+            <param name="key">The key to use for encryption.</param>
+            <param name="iv">The initialization vector to use for encryption.</param>
+            <param name="destination">The destination to write the encrypted data to.</param>
+            <returns>True if the encryption was successful, false otherwise.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.IEncryptionProvider.TryEncrypt(System.ReadOnlySpan{System.Byte},System.ReadOnlySpan{System.Byte},System.ReadOnlySpan{System.Byte},System.IO.Stream)">
+            <summary>
+            Tries to encrypt the data from the span and write the result to the destination.
+            </summary>
+            <param name="data">The data to encrypt.</param>
+            <param name="key">The key to use for encryption.</param>
+            <param name="iv">The initialization vector to use for encryption.</param>
+            <param name="destination">The destination to write the encrypted data to.</param>
+            <returns>True if the encryption was successful, false otherwise.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.IEncryptionProvider.TryEncryptAsync(System.IO.Stream,System.ReadOnlyMemory{System.Byte},System.ReadOnlyMemory{System.Byte},System.IO.Stream,System.Threading.CancellationToken)">
+            <summary>
+            Tries to encrypt the data from the stream and write the result to the destination asynchronously.
+            </summary>
+            <param name="data">The data to encrypt.</param>
+            <param name="key">The key to use for encryption.</param>
+            <param name="iv">The initialization vector to use for encryption.</param>
+            <param name="destination">The destination to write the encrypted data to.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>True if the encryption was successful, false otherwise.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.IEncryptionProvider.TryEncryptAsync(System.ReadOnlyMemory{System.Byte},System.ReadOnlyMemory{System.Byte},System.ReadOnlyMemory{System.Byte},System.IO.Stream,System.Threading.CancellationToken)">
+            <summary>
+            Tries to encrypt the data from the span and write the result to the destination asynchronously.
+            </summary>
+            <param name="data">The data to encrypt.</param>
+            <param name="key">The key to use for encryption.</param>
+            <param name="iv">The initialization vector to use for encryption.</param>
+            <param name="destination">The destination to write the encrypted data to.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>True if the encryption was successful, false otherwise.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.IEncryptionProvider.Encrypt(System.ReadOnlySpan{System.Byte},System.ReadOnlySpan{System.Byte},System.ReadOnlySpan{System.Byte})">
+            <summary>
+            Encrypts the data from the span and returns the result.
+            </summary>
+            <param name="data">The data to encrypt.</param>
+            <param name="key">The key to use for encryption.</param>
+            <param name="iv">The initialization vector to use for encryption.</param>
+        </member>
+        <member name="M:ktsu.Essentials.IEncryptionProvider.Encrypt(System.IO.Stream,System.ReadOnlySpan{System.Byte},System.ReadOnlySpan{System.Byte})">
+            <summary>
+            Encrypts the data from the stream and returns the result.
+            </summary>
+            <param name="data">The data to encrypt.</param>
+            <param name="key">The key to use for encryption.</param>
+            <param name="iv">The initialization vector to use for encryption.</param>
+        </member>
+        <member name="M:ktsu.Essentials.IEncryptionProvider.Encrypt(System.String,System.ReadOnlySpan{System.Byte},System.ReadOnlySpan{System.Byte})">
+            <summary>
+            Encrypts a string and returns the ciphertext as Base64 text.
+            </summary>
+            <remarks>
+            The input is encoded as UTF8, encrypted, and the ciphertext is Base64-encoded so the result is
+            safe to store or transmit as text. Use <see cref="M:ktsu.Essentials.IEncryptionProvider.Decrypt(System.String,System.ReadOnlySpan{System.Byte},System.ReadOnlySpan{System.Byte})"/>
+            to reverse it.
+            </remarks>
+            <param name="data">The data to encrypt.</param>
+            <param name="key">The key to use for encryption.</param>
+            <param name="iv">The initialization vector to use for encryption.</param>
+            <returns>The ciphertext as a Base64 string.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.IEncryptionProvider.EncryptAsync(System.ReadOnlyMemory{System.Byte},System.ReadOnlyMemory{System.Byte},System.ReadOnlyMemory{System.Byte},System.Threading.CancellationToken)">
+            <summary>
+            Encrypts the data from the span and returns the result asynchronously.
+            </summary>
+            <param name="data">The data to encrypt.</param>
+            <param name="key">The key to use for encryption.</param>
+            <param name="iv">The initialization vector to use for encryption.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>The encrypted data.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.IEncryptionProvider.EncryptAsync(System.IO.Stream,System.ReadOnlyMemory{System.Byte},System.ReadOnlyMemory{System.Byte},System.Threading.CancellationToken)">
+            <summary>
+            Encrypts the data from the stream and returns the result asynchronously.
+            </summary>
+            <param name="data">The data to encrypt.</param>
+            <param name="key">The key to use for encryption.</param>
+            <param name="iv">The initialization vector to use for encryption.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>The encrypted data.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.IEncryptionProvider.EncryptAsync(System.String,System.ReadOnlyMemory{System.Byte},System.ReadOnlyMemory{System.Byte},System.Threading.CancellationToken)">
+            <summary>
+            Encrypts the data from the string and returns the result asynchronously.
+            </summary>
+            <param name="data">The data to encrypt.</param>
+            <param name="key">The key to use for encryption.</param>
+            <param name="iv">The initialization vector to use for encryption.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>The encrypted data.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.IEncryptionProvider.TryDecrypt(System.ReadOnlySpan{System.Byte},System.ReadOnlySpan{System.Byte},System.ReadOnlySpan{System.Byte},System.Span{System.Byte},System.Int32@)">
+            <summary>
+            Tries to decrypt the data from the span and write the result to the destination.
+            </summary>
+            <param name="data">The data to decrypt.</param>
+            <param name="key">The key to use for decryption.</param>
+            <param name="iv">The initialization vector to use for decryption.</param>
+            <param name="destination">The destination to write the decrypted data to.</param>
+            <param name="bytesWritten">The number of bytes written to <paramref name="destination"/>.</param>
+            <returns>True if the decryption was successful, false otherwise.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.IEncryptionProvider.TryDecrypt(System.IO.Stream,System.ReadOnlySpan{System.Byte},System.ReadOnlySpan{System.Byte},System.IO.Stream)">
+            <summary>
+            Tries to decrypt the data from the stream and write the result to the destination.
+            </summary>
+            <param name="data">The data to decrypt.</param>
+            <param name="key">The key to use for decryption.</param>
+            <param name="iv">The initialization vector to use for decryption.</param>
+            <param name="destination">The destination to write the decrypted data to.</param>
+        </member>
+        <member name="M:ktsu.Essentials.IEncryptionProvider.TryDecrypt(System.ReadOnlySpan{System.Byte},System.ReadOnlySpan{System.Byte},System.ReadOnlySpan{System.Byte},System.IO.Stream)">
+            <summary>
+            Tries to decrypt the data from the span and write the result to the destination.
+            </summary>
+            <param name="data">The data to decrypt.</param>
+            <param name="key">The key to use for decryption.</param>
+            <param name="iv">The initialization vector to use for decryption.</param>
+            <param name="destination">The destination to write the decrypted data to.</param>
+        </member>
+        <member name="M:ktsu.Essentials.IEncryptionProvider.TryDecryptAsync(System.IO.Stream,System.ReadOnlyMemory{System.Byte},System.ReadOnlyMemory{System.Byte},System.IO.Stream,System.Threading.CancellationToken)">
+            <summary>
+            Tries to decrypt the data from the stream and write the result to the destination asynchronously.
+            </summary>
+            <param name="data">The data to decrypt.</param>
+            <param name="key">The key to use for decryption.</param>
+            <param name="iv">The initialization vector to use for decryption.</param>
+            <param name="destination">The destination to write the decrypted data to.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>True if the decryption was successful, false otherwise.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.IEncryptionProvider.TryDecryptAsync(System.ReadOnlyMemory{System.Byte},System.ReadOnlyMemory{System.Byte},System.ReadOnlyMemory{System.Byte},System.IO.Stream,System.Threading.CancellationToken)">
+            <summary>
+            Tries to decrypt the data from the span and write the result to the destination asynchronously.
+            </summary>
+            <param name="data">The data to decrypt.</param>
+            <param name="key">The key to use for decryption.</param>
+            <param name="iv">The initialization vector to use for decryption.</param>
+            <param name="destination">The destination to write the decrypted data to.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>True if the decryption was successful, false otherwise.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.IEncryptionProvider.Decrypt(System.ReadOnlySpan{System.Byte},System.ReadOnlySpan{System.Byte},System.ReadOnlySpan{System.Byte})">
+            <summary>
+            Decrypts the data from the span and returns the result.
+            </summary>
+            <param name="data">The data to decrypt.</param>
+            <param name="key">The key to use for decryption.</param>
+            <param name="iv">The initialization vector to use for decryption.</param>
+        </member>
+        <member name="M:ktsu.Essentials.IEncryptionProvider.Decrypt(System.IO.Stream,System.ReadOnlySpan{System.Byte},System.ReadOnlySpan{System.Byte})">
+            <summary>
+            Decrypts the data from the stream and returns the result.
+            </summary>
+            <param name="data">The data to decrypt.</param>
+            <param name="key">The key to use for decryption.</param>
+            <param name="iv">The initialization vector to use for decryption.</param>
+        </member>
+        <member name="M:ktsu.Essentials.IEncryptionProvider.Decrypt(System.String,System.ReadOnlySpan{System.Byte},System.ReadOnlySpan{System.Byte})">
+            <summary>
+            Decrypts Base64 ciphertext produced by <see cref="M:ktsu.Essentials.IEncryptionProvider.Encrypt(System.String,System.ReadOnlySpan{System.Byte},System.ReadOnlySpan{System.Byte})"/>
+            and returns the original string.
+            </summary>
+            <param name="data">The Base64-encoded ciphertext.</param>
+            <param name="key">The key to use for decryption.</param>
+            <param name="iv">The initialization vector to use for decryption.</param>
+            <returns>The plaintext as a UTF8 string.</returns>
+            <exception cref="T:System.FormatException"><paramref name="data"/> is not valid Base64.</exception>
+        </member>
+        <member name="M:ktsu.Essentials.IEncryptionProvider.DecryptAsync(System.ReadOnlyMemory{System.Byte},System.ReadOnlyMemory{System.Byte},System.ReadOnlyMemory{System.Byte},System.Threading.CancellationToken)">
+            <summary>
+            Decrypts the data from the span and returns the result asynchronously.
+            </summary>
+            <param name="data">The data to decrypt.</param>
+            <param name="key">The key to use for decryption.</param>
+            <param name="iv">The initialization vector to use for decryption.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>The decrypted data.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.IEncryptionProvider.DecryptAsync(System.IO.Stream,System.ReadOnlyMemory{System.Byte},System.ReadOnlyMemory{System.Byte},System.Threading.CancellationToken)">
+            <summary>
+            Decrypts the data from the stream and returns the result asynchronously.
+            </summary>
+            <param name="data">The data to decrypt.</param>
+            <param name="key">The key to use for decryption.</param>
+            <param name="iv">The initialization vector to use for decryption.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>The decrypted data.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.IEncryptionProvider.DecryptAsync(System.String,System.ReadOnlyMemory{System.Byte},System.ReadOnlyMemory{System.Byte},System.Threading.CancellationToken)">
+            <summary>
+            Decrypts the data from the string and returns the result asynchronously.
+            </summary>
+            <param name="data">The data to decrypt.</param>
+            <param name="key">The key to use for decryption.</param>
+            <param name="iv">The initialization vector to use for decryption.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>The decrypted data.</returns>
+        </member>
+        <member name="T:ktsu.Essentials.IFileSystemProvider">
+            <summary>
+            Interface for providing access to filesystem implementations
+            </summary>
+        </member>
+        <member name="T:ktsu.Essentials.IHashProvider">
+            <summary>
+            Interface for hash providers that can hash data.
+            </summary>
+        </member>
+        <member name="P:ktsu.Essentials.IHashProvider.HashLengthBytes">
+            <summary>
+            The length of the hash in bytes.
+            </summary>
+        </member>
+        <member name="M:ktsu.Essentials.IHashProvider.TryHash(System.ReadOnlySpan{System.Byte},System.Span{System.Byte},System.Int32@)">
+            <summary>
+            Tries to hash the specified data into the provided hash buffer.
+            </summary>
+            <param name="data">The data to hash.</param>
+            <param name="destination">The hash buffer to write the result to.</param>
+            <param name="bytesWritten">The number of bytes written to <paramref name="destination"/>.</param>
+            <returns>True if the hash operation was successful, false otherwise.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.IHashProvider.TryHash(System.IO.Stream,System.Span{System.Byte},System.Int32@)">
+            <summary>
+            Tries to hash the specified data into the provided hash buffer.
+            </summary>
+            <param name="data">The data to hash.</param>
+            <param name="destination">The hash buffer to write the result to.</param>
+            <param name="bytesWritten">The number of bytes written to <paramref name="destination"/>.</param>
+            <returns>True if the hash operation was successful, false otherwise.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.IHashProvider.CreateIncremental">
+            <summary>
+            Creates an incremental hash that accepts data in successive chunks.
+            </summary>
+            <remarks>
+            The default implementation accumulates every appended byte in memory and hashes it in one pass
+            when the digest is requested. That is correct but it buffers the entire input, so implementers
+            should override this with a genuinely incremental implementation. Doing so also lets
+            <see cref="M:ktsu.Essentials.IHashProvider.TryHashAsync(System.IO.Stream,System.Memory{System.Byte},System.Threading.CancellationToken)"/> stream properly, because
+            that method is built on this one.
+            </remarks>
+            <returns>A new incremental hash. The caller owns it and should dispose it.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.IHashProvider.TryHashAsync(System.IO.Stream,System.Memory{System.Byte},System.Threading.CancellationToken)">
+            <summary>
+            Asynchronously hashes a stream into the provided buffer, reading it in one pass.
+            </summary>
+            <remarks>
+            Genuinely asynchronous: the stream is read with <see cref="M:System.IO.Stream.ReadAsync(System.Memory{System.Byte},System.Threading.CancellationToken)"/>
+            and no thread is held for the duration. The result is not reported through an <c>out</c> parameter
+            because one cannot cross an await boundary; a return value of true guarantees exactly
+            <see cref="P:ktsu.Essentials.IHashProvider.HashLengthBytes"/> bytes were written.
+            <para>
+            The read buffer is scrubbed on its way back to the pool. <see cref="T:System.Buffers.ArrayPool`1"/>.Shared is
+            process-wide, so without that the tail of whatever was just hashed stays readable to whatever
+            rents next. The clear is deliberate rather than incidental: against the stream I/O it
+            accompanies it does not register.
+            </para>
+            </remarks>
+            <param name="data">The stream to hash.</param>
+            <param name="destination">The buffer to write the hash to.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>True if the hash was written, false if the stream was null or the buffer too small.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.IHashProvider.HashAsync(System.IO.Stream,System.Threading.CancellationToken)">
+            <summary>
+            Asynchronously hashes a stream, reading it in one pass.
+            </summary>
+            <param name="data">The stream to hash.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>A byte array containing the hash of the stream.</returns>
+            <exception cref="T:System.InvalidOperationException">The hash could not be produced.</exception>
+        </member>
+        <member name="M:ktsu.Essentials.IHashProvider.HashAsync(System.ReadOnlyMemory{System.Byte},System.Threading.CancellationToken)">
+            <summary>
+            Asynchronously hashes the specified data.
+            </summary>
+            <param name="data">The data to hash.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>A byte array containing the hash of the data.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.IHashProvider.Hash(System.ReadOnlySpan{System.Byte})">
+            <summary>
+            Hashes the specified data.
+            </summary>
+            <param name="data">The data to hash.</param>
+            <returns>A byte array containing the hash of the data.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.IHashProvider.Hash(System.String)">
+            <summary>
+            Hashes the specified data.
+            </summary>
+            <param name="data">The data to hash.</param>
+            <returns>A byte array containing the hash of the data.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.IHashProvider.Hash(System.IO.Stream)">
+            <summary>
+            Hashes the specified data.
+            </summary>
+            <param name="data">The data to hash.</param>
+            <returns>A byte array containing the hash of the data.</returns>
+        </member>
+        <member name="T:ktsu.Essentials.IIncrementalHash">
+            <summary>
+            A hash computation that accepts data in successive chunks, so a caller can digest bytes it is
+            already moving for another reason instead of handing over a stream to be read.
+            </summary>
+            <remarks>
+            Obtained from <see cref="M:ktsu.Essentials.IHashProvider.CreateIncremental"/> or
+            <see cref="M:ktsu.Essentials.IKeyedHashProvider.CreateIncremental(System.ReadOnlySpan{System.Byte})"/>. Instances are stateful and
+            are not safe to share across threads. Dispose when finished.
+            </remarks>
+        </member>
+        <member name="P:ktsu.Essentials.IIncrementalHash.HashLengthBytes">
+            <summary>
+            The length of the hash in bytes.
+            </summary>
+        </member>
+        <member name="M:ktsu.Essentials.IIncrementalHash.Append(System.ReadOnlySpan{System.Byte})">
+            <summary>
+            Appends data to the running hash.
+            </summary>
+            <param name="data">The data to append.</param>
+        </member>
+        <member name="M:ktsu.Essentials.IIncrementalHash.TryGetHashAndReset(System.Span{System.Byte},System.Int32@)">
+            <summary>
+            Tries to write the hash of everything appended so far into <paramref name="destination"/>,
+            then resets so the instance can be reused.
+            </summary>
+            <remarks>
+            When the destination is too small the call fails without consuming the appended data: the
+            running state is left intact so the caller can retry with a correctly sized buffer.
+            </remarks>
+            <param name="destination">The buffer to write the hash to.</param>
+            <param name="bytesWritten">The number of bytes written to <paramref name="destination"/>.</param>
+            <returns>True if the hash was written, false if <paramref name="destination"/> was too small.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.IIncrementalHash.GetHashAndReset">
+            <summary>
+            Returns the hash of everything appended so far, then resets so the instance can be reused.
+            </summary>
+            <returns>A byte array containing the hash.</returns>
+            <exception cref="T:System.InvalidOperationException">The hash could not be produced.</exception>
+        </member>
+        <member name="T:ktsu.Essentials.IKeyedHashProvider">
+            <summary>
+            Interface for keyed hash providers, which compute a message authentication code over data using
+            a secret key.
+            </summary>
+            <remarks>
+            A keyed hash answers "was this produced by someone holding the key, and is it unmodified", which
+            an unkeyed <see cref="T:ktsu.Essentials.IHashProvider"/> cannot. <see cref="T:ktsu.Essentials.IEncryptionProvider"/> provides
+            confidentiality but not integrity, so a caller who needs tamper detection over ciphertext
+            authenticates it with one of these.
+            <para>
+            The key is passed per call rather than bound at construction, which matches
+            <see cref="T:ktsu.Essentials.IEncryptionProvider"/> and keeps providers stateless singletons. A provider holding
+            key or algorithm state in a field is the defect recorded in the remarks on the SHA-256 provider,
+            where concurrent callers corrupted each other's in-progress hash.
+            </para>
+            <para>
+            Generate the key with a cryptographically secure random number generator, such as
+            <see cref="T:System.Security.Cryptography.RandomNumberGenerator"/>, and make it at least <see cref="P:ktsu.Essentials.IKeyedHashProvider.HashLengthBytes"/> long. An
+            empty or predictable key still produces a valid-looking tag, so nothing about the output signals
+            a weak key. Never reuse an <see cref="T:ktsu.Essentials.IEncryptionProvider"/> encryption key for authentication.
+            </para>
+            </remarks>
+        </member>
+        <member name="P:ktsu.Essentials.IKeyedHashProvider.HashLengthBytes">
+            <summary>
+            The length of the authentication tag in bytes.
+            </summary>
+        </member>
+        <member name="M:ktsu.Essentials.IKeyedHashProvider.TryHash(System.ReadOnlySpan{System.Byte},System.ReadOnlySpan{System.Byte},System.Span{System.Byte},System.Int32@)">
+            <summary>
+            Tries to compute the authentication tag for the specified data.
+            </summary>
+            <param name="key">The secret key.</param>
+            <param name="data">The data to authenticate.</param>
+            <param name="destination">The buffer to write the tag to.</param>
+            <param name="bytesWritten">The number of bytes written to <paramref name="destination"/>.</param>
+            <returns>True if the tag was written, false if the buffer was too small or the key rejected.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.IKeyedHashProvider.TryHash(System.ReadOnlySpan{System.Byte},System.IO.Stream,System.Span{System.Byte},System.Int32@)">
+            <summary>
+            Tries to compute the authentication tag for the data in the specified stream.
+            </summary>
+            <param name="key">The secret key.</param>
+            <param name="data">The stream to authenticate. Read to its end from its current position.</param>
+            <param name="destination">The buffer to write the tag to.</param>
+            <param name="bytesWritten">The number of bytes written to <paramref name="destination"/>.</param>
+            <returns>True if the tag was written, false if the stream was null, the buffer too small, or the key rejected.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.IKeyedHashProvider.CreateIncremental(System.ReadOnlySpan{System.Byte})">
+            <summary>
+            Creates a keyed incremental hash that accepts data in successive chunks.
+            </summary>
+            <remarks>
+            The default implementation accumulates every appended byte in memory and computes the tag in
+            one pass when it is requested. That is correct but it buffers the entire input, so implementers
+            should override this with a genuinely incremental implementation. Doing so also lets
+            <see cref="M:ktsu.Essentials.IKeyedHashProvider.TryHashAsync(System.ReadOnlyMemory{System.Byte},System.IO.Stream,System.Memory{System.Byte},System.Threading.CancellationToken)"/>
+            stream properly, because that method is built on this one.
+            </remarks>
+            <param name="key">The secret key.</param>
+            <returns>A new keyed incremental hash. The caller owns it and should dispose it, which zeroes the key copy.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.IKeyedHashProvider.TryHashAsync(System.ReadOnlyMemory{System.Byte},System.IO.Stream,System.Memory{System.Byte},System.Threading.CancellationToken)">
+            <summary>
+            Asynchronously computes the authentication tag over a stream, reading it in one pass.
+            </summary>
+            <remarks>
+            The key is <see cref="T:System.ReadOnlyMemory`1"/> rather than <see cref="T:System.ReadOnlySpan`1"/> because a
+            span cannot cross an await boundary. The result is not reported through an <c>out</c> parameter
+            for the same reason; a return value of true guarantees exactly <see cref="P:ktsu.Essentials.IKeyedHashProvider.HashLengthBytes"/>
+            bytes were written.
+            <para>
+            The read buffer is scrubbed on its way back to the pool. <see cref="T:System.Buffers.ArrayPool`1"/>.Shared is
+            process-wide, so without that the tail of the authenticated message stays readable to whatever
+            rents next.
+            </para>
+            </remarks>
+            <param name="key">The secret key.</param>
+            <param name="data">The stream to authenticate.</param>
+            <param name="destination">The buffer to write the tag to.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>True if the tag was written, false if the stream was null or the buffer too small.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.IKeyedHashProvider.HashAsync(System.ReadOnlyMemory{System.Byte},System.IO.Stream,System.Threading.CancellationToken)">
+            <summary>
+            Asynchronously computes the authentication tag over a stream, reading it in one pass.
+            </summary>
+            <param name="key">The secret key.</param>
+            <param name="data">The stream to authenticate.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>The authentication tag.</returns>
+            <exception cref="T:System.InvalidOperationException">The tag could not be produced.</exception>
+        </member>
+        <member name="M:ktsu.Essentials.IKeyedHashProvider.HashAsync(System.ReadOnlyMemory{System.Byte},System.ReadOnlyMemory{System.Byte},System.Threading.CancellationToken)">
+            <summary>
+            Asynchronously computes the authentication tag for the specified data.
+            </summary>
+            <param name="key">The secret key.</param>
+            <param name="data">The data to authenticate.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>The authentication tag.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.IKeyedHashProvider.Hash(System.ReadOnlySpan{System.Byte},System.ReadOnlySpan{System.Byte})">
+            <summary>
+            Computes the authentication tag for the specified data.
+            </summary>
+            <param name="key">The secret key.</param>
+            <param name="data">The data to authenticate.</param>
+            <returns>The authentication tag.</returns>
+            <exception cref="T:System.InvalidOperationException">The tag could not be produced.</exception>
+        </member>
+        <member name="M:ktsu.Essentials.IKeyedHashProvider.Hash(System.ReadOnlySpan{System.Byte},System.String)">
+            <summary>
+            Computes the authentication tag for the UTF-8 encoding of the specified text.
+            </summary>
+            <param name="key">The secret key.</param>
+            <param name="data">The text to authenticate.</param>
+            <returns>The authentication tag.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.IKeyedHashProvider.Hash(System.ReadOnlySpan{System.Byte},System.IO.Stream)">
+            <summary>
+            Computes the authentication tag over the data in the specified stream.
+            </summary>
+            <param name="key">The secret key.</param>
+            <param name="data">The stream to authenticate.</param>
+            <returns>The authentication tag.</returns>
+            <exception cref="T:System.InvalidOperationException">The tag could not be produced.</exception>
+        </member>
+        <member name="M:ktsu.Essentials.IKeyedHashProvider.Verify(System.ReadOnlySpan{System.Byte},System.ReadOnlySpan{System.Byte},System.ReadOnlySpan{System.Byte})">
+            <summary>
+            Determines whether the supplied tag is the correct authentication tag for the data.
+            </summary>
+            <remarks>
+            Prefer this to computing a tag and comparing it yourself. The comparison runs in a time that
+            does not depend on the tag's contents, so it does not leak how much of a forged tag was
+            correct. A tag of the wrong length is rejected without comparing.
+            </remarks>
+            <param name="key">The secret key.</param>
+            <param name="data">The data the tag is claimed to authenticate.</param>
+            <param name="expected">The tag to check.</param>
+            <returns>True if the tag is correct for this key and data, false otherwise.</returns>
+        </member>
+        <member name="T:ktsu.Essentials.LogLevel">
+            <summary>
+            Defines the severity levels for log messages.
+            </summary>
+        </member>
+        <member name="F:ktsu.Essentials.LogLevel.Trace">
+            <summary>
+            Logs that contain the most detailed messages. These messages may contain sensitive application data.
+            These messages are disabled by default and should never be enabled in a production environment.
+            </summary>
+        </member>
+        <member name="F:ktsu.Essentials.LogLevel.Debug">
+            <summary>
+            Logs that are used for interactive investigation during development. These logs should primarily contain
+            information useful for debugging and have no long-term value.
+            </summary>
+        </member>
+        <member name="F:ktsu.Essentials.LogLevel.Information">
+            <summary>
+            Logs that track the general flow of the application. These logs should have long-term value.
+            </summary>
+        </member>
+        <member name="F:ktsu.Essentials.LogLevel.Warning">
+            <summary>
+            Logs that highlight an abnormal or unexpected event in the application flow,
+            but do not otherwise cause the application execution to stop.
+            </summary>
+        </member>
+        <member name="F:ktsu.Essentials.LogLevel.Error">
+            <summary>
+            Logs that highlight when the current flow of execution is stopped due to a failure.
+            These should indicate a failure in the current activity, not an application-wide failure.
+            </summary>
+        </member>
+        <member name="F:ktsu.Essentials.LogLevel.Critical">
+            <summary>
+            Logs that describe an unrecoverable application or system crash,
+            or a catastrophic failure that requires immediate attention.
+            </summary>
+        </member>
+        <member name="F:ktsu.Essentials.LogLevel.None">
+            <summary>
+            Not used for writing log messages. Specifies that a logging category should not write any messages.
+            </summary>
+        </member>
+        <member name="T:ktsu.Essentials.ILoggingProvider">
+            <summary>
+            Interface for logging providers that can write structured log messages at various severity levels.
+            </summary>
+        </member>
+        <member name="M:ktsu.Essentials.ILoggingProvider.Log(ktsu.Essentials.LogLevel,System.String)">
+            <summary>
+            Writes a log entry at the specified level.
+            </summary>
+            <param name="level">The severity level of the log entry.</param>
+            <param name="message">The log message.</param>
+        </member>
+        <member name="M:ktsu.Essentials.ILoggingProvider.Log(ktsu.Essentials.LogLevel,System.Exception,System.String)">
+            <summary>
+            Writes a log entry at the specified level with an associated exception.
+            </summary>
+            <param name="level">The severity level of the log entry.</param>
+            <param name="exception">The exception associated with this log entry.</param>
+            <param name="message">The log message.</param>
+        </member>
+        <member name="M:ktsu.Essentials.ILoggingProvider.IsEnabled(ktsu.Essentials.LogLevel)">
+            <summary>
+            Checks if the given log level is enabled.
+            </summary>
+            <param name="level">The log level to check.</param>
+            <returns>True if the log level is enabled, false otherwise.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.ILoggingProvider.LogTrace(System.String)">
+            <summary>
+            Writes a log entry at the <see cref="F:ktsu.Essentials.LogLevel.Trace"/> level.
+            </summary>
+            <param name="message">The log message.</param>
+        </member>
+        <member name="M:ktsu.Essentials.ILoggingProvider.LogDebug(System.String)">
+            <summary>
+            Writes a log entry at the <see cref="F:ktsu.Essentials.LogLevel.Debug"/> level.
+            </summary>
+            <param name="message">The log message.</param>
+        </member>
+        <member name="M:ktsu.Essentials.ILoggingProvider.LogInformation(System.String)">
+            <summary>
+            Writes a log entry at the <see cref="F:ktsu.Essentials.LogLevel.Information"/> level.
+            </summary>
+            <param name="message">The log message.</param>
+        </member>
+        <member name="M:ktsu.Essentials.ILoggingProvider.LogWarning(System.String)">
+            <summary>
+            Writes a log entry at the <see cref="F:ktsu.Essentials.LogLevel.Warning"/> level.
+            </summary>
+            <param name="message">The log message.</param>
+        </member>
+        <member name="M:ktsu.Essentials.ILoggingProvider.LogError(System.String)">
+            <summary>
+            Writes a log entry at the <see cref="F:ktsu.Essentials.LogLevel.Error"/> level.
+            </summary>
+            <param name="message">The log message.</param>
+        </member>
+        <member name="M:ktsu.Essentials.ILoggingProvider.LogError(System.Exception,System.String)">
+            <summary>
+            Writes a log entry at the <see cref="F:ktsu.Essentials.LogLevel.Error"/> level with an associated exception.
+            </summary>
+            <param name="exception">The exception associated with this log entry.</param>
+            <param name="message">The log message.</param>
+        </member>
+        <member name="M:ktsu.Essentials.ILoggingProvider.LogCritical(System.String)">
+            <summary>
+            Writes a log entry at the <see cref="F:ktsu.Essentials.LogLevel.Critical"/> level.
+            </summary>
+            <param name="message">The log message.</param>
+        </member>
+        <member name="M:ktsu.Essentials.ILoggingProvider.LogCritical(System.Exception,System.String)">
+            <summary>
+            Writes a log entry at the <see cref="F:ktsu.Essentials.LogLevel.Critical"/> level with an associated exception.
+            </summary>
+            <param name="exception">The exception associated with this log entry.</param>
+            <param name="message">The log message.</param>
+        </member>
+        <member name="T:ktsu.Essentials.INavigationProvider`1">
+            <summary>
+            Interface for navigation providers that manage back/forward navigation with history.
+            Provides browser-like navigation semantics for any type of destination.
+            </summary>
+            <typeparam name="T">The type of the navigation destination.</typeparam>
+        </member>
+        <member name="P:ktsu.Essentials.INavigationProvider`1.Current">
+            <summary>
+            Gets the current navigation destination, or the default value if no navigation has occurred.
+            </summary>
+        </member>
+        <member name="P:ktsu.Essentials.INavigationProvider`1.CanGoBack">
+            <summary>
+            Gets a value indicating whether backward navigation is possible.
+            </summary>
+        </member>
+        <member name="P:ktsu.Essentials.INavigationProvider`1.CanGoForward">
+            <summary>
+            Gets a value indicating whether forward navigation is possible.
+            </summary>
+        </member>
+        <member name="P:ktsu.Essentials.INavigationProvider`1.BackStack">
+            <summary>
+            Gets the back navigation stack. The most recently visited destination is at the end of the list.
+            </summary>
+        </member>
+        <member name="P:ktsu.Essentials.INavigationProvider`1.ForwardStack">
+            <summary>
+            Gets the forward navigation stack. The next destination is at the end of the list.
+            </summary>
+        </member>
+        <member name="M:ktsu.Essentials.INavigationProvider`1.NavigateTo(`0)">
+            <summary>
+            Navigates to the specified destination. The current destination is pushed onto the back stack,
+            and the forward stack is cleared.
+            </summary>
+            <param name="destination">The destination to navigate to.</param>
+        </member>
+        <member name="M:ktsu.Essentials.INavigationProvider`1.GoBack">
+            <summary>
+            Navigates backward to the previous destination in the back stack.
+            The current destination is pushed onto the forward stack.
+            </summary>
+            <returns>The previous destination, or the default value if the back stack is empty.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.INavigationProvider`1.GoForward">
+            <summary>
+            Navigates forward to the next destination in the forward stack.
+            The current destination is pushed onto the back stack.
+            </summary>
+            <returns>The next destination, or the default value if the forward stack is empty.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.INavigationProvider`1.Clear">
+            <summary>
+            Clears all navigation history including the back stack, forward stack, and current destination.
+            </summary>
+        </member>
+        <member name="T:ktsu.Essentials.IncrementalHashAdapter">
+            <summary>
+            An <see cref="T:ktsu.Essentials.IIncrementalHash"/> backed by <see cref="T:System.Security.Cryptography.IncrementalHash"/>, for providers built on
+            <see cref="N:System.Security.Cryptography"/>.
+            </summary>
+            <remarks>
+            Public because the cryptographic hash providers each ship as their own package and all need it.
+            The hash length is supplied by the caller rather than read from
+            <see cref="T:System.Security.Cryptography.IncrementalHash"/>, whose <c>HashLengthInBytes</c> property does not exist on
+            netstandard2.1.
+            </remarks>
+        </member>
+        <member name="M:ktsu.Essentials.IncrementalHashAdapter.#ctor(System.Security.Cryptography.IncrementalHash,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ktsu.Essentials.IncrementalHashAdapter"/> class.
+            </summary>
+            <param name="inner">The underlying incremental hash. This instance takes ownership and disposes it.</param>
+            <param name="hashLengthBytes">The length of the hash in bytes.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="inner"/> is null.</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="hashLengthBytes"/> is not positive.</exception>
+        </member>
+        <member name="P:ktsu.Essentials.IncrementalHashAdapter.HashLengthBytes">
+            <inheritdoc/>
+        </member>
+        <member name="M:ktsu.Essentials.IncrementalHashAdapter.Append(System.ReadOnlySpan{System.Byte})">
+            <inheritdoc/>
+        </member>
+        <member name="M:ktsu.Essentials.IncrementalHashAdapter.TryGetHashAndReset(System.Span{System.Byte},System.Int32@)">
+            <inheritdoc/>
+        </member>
+        <member name="M:ktsu.Essentials.IncrementalHashAdapter.Dispose">
+            <inheritdoc/>
+        </member>
+        <member name="T:ktsu.Essentials.IObfuscationProvider">
+            <summary>
+            Interface for obfuscation providers that can obfuscate and deobfuscate data using reversible transforms.
+            Obfuscation is NOT encryption — it provides no confidentiality guarantees and is intended only to make
+            data non-obvious at rest or in transit.
+            </summary>
+        </member>
+        <member name="M:ktsu.Essentials.IObfuscationProvider.GetMaxObfuscatedLength(System.Int32)">
+            <summary>
+            Gets the largest number of bytes <see cref="M:ktsu.Essentials.IObfuscationProvider.TryObfuscate(System.ReadOnlySpan{System.Byte},System.Span{System.Byte},System.Int32@)"/>
+            can produce for an input of the given length.
+            </summary>
+            <param name="sourceLength">The length of the data to obfuscate.</param>
+            <returns>The buffer size required to guarantee the obfuscate succeeds.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.IObfuscationProvider.GetMaxDeobfuscatedLength(System.Int32)">
+            <summary>
+            Gets the largest number of bytes <see cref="M:ktsu.Essentials.IObfuscationProvider.TryDeobfuscate(System.ReadOnlySpan{System.Byte},System.Span{System.Byte},System.Int32@)"/>
+            can produce for obfuscated data of the given length.
+            </summary>
+            <param name="obfuscatedLength">The length of the obfuscated data.</param>
+            <returns>The buffer size required to guarantee the deobfuscate succeeds.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.IObfuscationProvider.TryObfuscate(System.ReadOnlySpan{System.Byte},System.Span{System.Byte},System.Int32@)">
+            <summary>
+            Tries to obfuscate the data from the span and write the result to the destination.
+            </summary>
+            <param name="data">The data to obfuscate.</param>
+            <param name="destination">The destination to write the obfuscated data to.</param>
+            <param name="bytesWritten">The number of bytes written to <paramref name="destination"/>.</param>
+            <returns>True if the obfuscation was successful, false otherwise.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.IObfuscationProvider.TryObfuscate(System.IO.Stream,System.IO.Stream)">
+            <summary>
+            Tries to obfuscate the data from the stream and write the result to the destination.
+            </summary>
+            <param name="data">The data to obfuscate.</param>
+            <param name="destination">The destination to write the obfuscated data to.</param>
+            <returns>True if the obfuscation was successful, false otherwise.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.IObfuscationProvider.TryObfuscate(System.ReadOnlySpan{System.Byte},System.IO.Stream)">
+            <summary>
+            Tries to obfuscate the data from the span and write the result to the destination stream.
+            </summary>
+            <param name="data">The data to obfuscate.</param>
+            <param name="destination">The destination stream to write the obfuscated data to.</param>
+            <returns>True if the obfuscation was successful, false otherwise.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.IObfuscationProvider.Obfuscate(System.ReadOnlySpan{System.Byte})">
+            <summary>
+            Obfuscates the data from the span and returns the result.
+            </summary>
+            <param name="data">The data to obfuscate.</param>
+            <returns>The obfuscated data.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.IObfuscationProvider.Obfuscate(System.IO.Stream)">
+            <summary>
+            Obfuscates the data from the stream and returns the result.
+            </summary>
+            <param name="data">The data to obfuscate.</param>
+            <returns>The obfuscated data.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.IObfuscationProvider.Obfuscate(System.String)">
+            <summary>
+            Obfuscates a string and returns the obfuscated bytes as Base64 text.
+            </summary>
+            <remarks>
+            The input is encoded as UTF8, obfuscated, and the obfuscated bytes are Base64-encoded so the
+            result is safe to store or transmit as text. Use <see cref="M:ktsu.Essentials.IObfuscationProvider.Deobfuscate(System.String)"/> to reverse it.
+            </remarks>
+            <param name="data">The data to obfuscate.</param>
+            <returns>The obfuscated data as a Base64 string.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.IObfuscationProvider.TryObfuscateAsync(System.ReadOnlyMemory{System.Byte},System.IO.Stream,System.Threading.CancellationToken)">
+            <summary>
+            Tries to obfuscate the data from the span and write the result to the destination stream asynchronously.
+            </summary>
+            <param name="data">The data to obfuscate.</param>
+            <param name="destination">The destination stream to write the obfuscated data to.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>True if the obfuscation was successful, false otherwise.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.IObfuscationProvider.TryObfuscateAsync(System.IO.Stream,System.IO.Stream,System.Threading.CancellationToken)">
+            <summary>
+            Tries to obfuscate the data from the stream and write the result to the destination stream asynchronously.
+            </summary>
+            <param name="data">The data to obfuscate.</param>
+            <param name="destination">The destination stream to write the obfuscated data to.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>True if the obfuscation was successful, false otherwise.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.IObfuscationProvider.ObfuscateAsync(System.ReadOnlyMemory{System.Byte},System.Threading.CancellationToken)">
+            <summary>
+            Obfuscates the data from the span and returns the result asynchronously.
+            </summary>
+            <param name="data">The data to obfuscate.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>The obfuscated data.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.IObfuscationProvider.ObfuscateAsync(System.IO.Stream,System.Threading.CancellationToken)">
+            <summary>
+            Obfuscates the data from the stream and returns the result asynchronously.
+            </summary>
+            <param name="data">The data to obfuscate.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>The obfuscated data.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.IObfuscationProvider.ObfuscateAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Obfuscates the data from the string and returns the result asynchronously.
+            </summary>
+            <param name="data">The data to obfuscate.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>The obfuscated data.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.IObfuscationProvider.TryDeobfuscate(System.ReadOnlySpan{System.Byte},System.Span{System.Byte},System.Int32@)">
+            <summary>
+            Tries to deobfuscate the data from the span and write the result to the destination.
+            </summary>
+            <param name="obfuscatedData">The obfuscated data to deobfuscate.</param>
+            <param name="destination">The destination to write the deobfuscated data to.</param>
+            <param name="bytesWritten">The number of bytes written to <paramref name="destination"/>.</param>
+            <returns>True if the deobfuscation was successful, false otherwise.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.IObfuscationProvider.TryDeobfuscate(System.IO.Stream,System.IO.Stream)">
+            <summary>
+            Tries to deobfuscate the data from the stream and write the result to the destination.
+            </summary>
+            <param name="obfuscatedData">The obfuscated data to deobfuscate.</param>
+            <param name="destination">The destination to write the deobfuscated data to.</param>
+            <returns>True if the deobfuscation was successful, false otherwise.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.IObfuscationProvider.TryDeobfuscate(System.ReadOnlySpan{System.Byte},System.IO.Stream)">
+            <summary>
+            Tries to deobfuscate the data from the span and write the result to the destination stream.
+            </summary>
+            <param name="obfuscatedData">The obfuscated data to deobfuscate.</param>
+            <param name="destination">The destination stream to write the deobfuscated data to.</param>
+            <returns>True if the deobfuscation was successful, false otherwise.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.IObfuscationProvider.Deobfuscate(System.ReadOnlySpan{System.Byte})">
+            <summary>
+            Deobfuscates the data from the span and returns the result.
+            </summary>
+            <param name="obfuscatedData">The obfuscated data to deobfuscate.</param>
+            <returns>The deobfuscated data.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.IObfuscationProvider.Deobfuscate(System.IO.Stream)">
+            <summary>
+            Deobfuscates the data from the stream and returns the result.
+            </summary>
+            <param name="obfuscatedData">The obfuscated data to deobfuscate.</param>
+            <returns>The deobfuscated data.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.IObfuscationProvider.Deobfuscate(System.String)">
+            <summary>
+            Deobfuscates Base64 text produced by <see cref="M:ktsu.Essentials.IObfuscationProvider.Obfuscate(System.String)"/> and returns the original string.
+            </summary>
+            <param name="obfuscatedData">The Base64-encoded obfuscated data.</param>
+            <returns>The deobfuscated data as a UTF8 string.</returns>
+            <exception cref="T:System.FormatException"><paramref name="obfuscatedData"/> is not valid Base64.</exception>
+        </member>
+        <member name="M:ktsu.Essentials.IObfuscationProvider.TryDeobfuscateAsync(System.ReadOnlyMemory{System.Byte},System.IO.Stream,System.Threading.CancellationToken)">
+            <summary>
+            Tries to deobfuscate the data from the span and write the result to the destination stream asynchronously.
+            </summary>
+            <param name="obfuscatedData">The obfuscated data to deobfuscate.</param>
+            <param name="destination">The destination stream to write the deobfuscated data to.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>True if the deobfuscation was successful, false otherwise.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.IObfuscationProvider.TryDeobfuscateAsync(System.IO.Stream,System.IO.Stream,System.Threading.CancellationToken)">
+            <summary>
+            Tries to deobfuscate the data from the stream and write the result to the destination stream asynchronously.
+            </summary>
+            <param name="obfuscatedData">The obfuscated data to deobfuscate.</param>
+            <param name="destination">The destination stream to write the deobfuscated data to.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>True if the deobfuscation was successful, false otherwise.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.IObfuscationProvider.DeobfuscateAsync(System.ReadOnlyMemory{System.Byte},System.Threading.CancellationToken)">
+            <summary>
+            Deobfuscates the data from the span and returns the result asynchronously.
+            </summary>
+            <param name="obfuscatedData">The obfuscated data to deobfuscate.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>The deobfuscated data.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.IObfuscationProvider.DeobfuscateAsync(System.IO.Stream,System.Threading.CancellationToken)">
+            <summary>
+            Deobfuscates the data from the stream and returns the result asynchronously.
+            </summary>
+            <param name="obfuscatedData">The obfuscated data to deobfuscate.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>The deobfuscated data.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.IObfuscationProvider.DeobfuscateAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Deobfuscates text produced by <see cref="M:ktsu.Essentials.IObfuscationProvider.Obfuscate(System.String)"/> asynchronously.
+            </summary>
+            <param name="obfuscatedData">The obfuscated text.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>The deobfuscated data as a UTF8 string.</returns>
+        </member>
+        <member name="T:ktsu.Essentials.IPersistenceProvider`1">
+            <summary>
+            Defines a contract for persistence providers that can store and retrieve objects using different storage backends.
+            This interface supports dependency injection and allows swapping between different persistence strategies
+            such as file system, memory, cloud storage, or database backends.
+            </summary>
+            <typeparam name="TKey">The type used to identify stored objects (e.g., string, Guid, etc.).</typeparam>
+        </member>
+        <member name="P:ktsu.Essentials.IPersistenceProvider`1.ProviderName">
+            <summary>
+            Gets the name of the persistence provider (e.g., "FileSystem", "Memory", "Cloud").
+            </summary>
+        </member>
+        <member name="P:ktsu.Essentials.IPersistenceProvider`1.IsPersistent">
+            <summary>
+            Gets a value indicating whether the persistence provider supports long-term storage beyond the application lifecycle.
+            </summary>
+        </member>
+        <member name="M:ktsu.Essentials.IPersistenceProvider`1.StoreAsync``1(`0,``0,System.Threading.CancellationToken)">
+            <summary>
+            Stores an object using the specified key.
+            </summary>
+            <typeparam name="T">The type of object to store.</typeparam>
+            <param name="key">The unique key to identify the stored object.</param>
+            <param name="obj">The object to store.</param>
+            <param name="cancellationToken">A cancellation token to cancel the operation.</param>
+            <returns>A task that represents the asynchronous storage operation.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.IPersistenceProvider`1.RetrieveAsync``1(`0,System.Threading.CancellationToken)">
+            <summary>
+            Retrieves an object using the specified key.
+            </summary>
+            <typeparam name="T">The type of object to retrieve.</typeparam>
+            <param name="key">The unique key that identifies the stored object.</param>
+            <param name="cancellationToken">A cancellation token to cancel the operation.</param>
+            <returns>A task that represents the asynchronous retrieval operation. Returns null if the object is not found.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.IPersistenceProvider`1.RetrieveOrCreateAsync``1(`0,System.Threading.CancellationToken)">
+            <summary>
+            Retrieves an object using the specified key, or creates and stores a new instance if not found.
+            </summary>
+            <typeparam name="T">The type of object to retrieve, must have a parameterless constructor.</typeparam>
+            <param name="key">The unique key that identifies the stored object.</param>
+            <param name="cancellationToken">A cancellation token to cancel the operation.</param>
+            <returns>A task that represents the asynchronous retrieval operation. Returns a new instance if the object is not found.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.IPersistenceProvider`1.ExistsAsync(`0,System.Threading.CancellationToken)">
+            <summary>
+            Checks whether an object with the specified key exists in storage.
+            </summary>
+            <param name="key">The unique key to check for.</param>
+            <param name="cancellationToken">A cancellation token to cancel the operation.</param>
+            <returns>A task that represents the asynchronous existence check. Returns true if the object exists, false otherwise.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.IPersistenceProvider`1.RemoveAsync(`0,System.Threading.CancellationToken)">
+            <summary>
+            Removes an object with the specified key from storage.
+            </summary>
+            <param name="key">The unique key that identifies the object to remove.</param>
+            <param name="cancellationToken">A cancellation token to cancel the operation.</param>
+            <returns>A task that represents the asynchronous removal operation. Returns true if the object was removed, false if it didn't exist.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.IPersistenceProvider`1.GetAllKeysAsync(System.Threading.CancellationToken)">
+            <summary>
+            Retrieves all keys that are currently stored.
+            </summary>
+            <param name="cancellationToken">A cancellation token to cancel the operation.</param>
+            <returns>A task that represents the asynchronous operation to get all keys.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.IPersistenceProvider`1.ClearAsync(System.Threading.CancellationToken)">
+            <summary>
+            Clears all stored objects from the persistence provider.
+            </summary>
+            <param name="cancellationToken">A cancellation token to cancel the operation.</param>
+            <returns>A task that represents the asynchronous clear operation.</returns>
+        </member>
+        <member name="T:ktsu.Essentials.IRandomProvider">
+            <summary>
+            Interface for random providers that supply uniformly distributed random values.
+            </summary>
+            <remarks>
+            <para>
+            <see cref="M:ktsu.Essentials.IRandomProvider.NextBytes(System.Span{System.Byte})"/> is the only member an implementation must supply; everything
+            else has a default implementation built on it. An implementation backed by a word-at-a-time
+            generator should also declare <see cref="M:ktsu.Essentials.IRandomProvider.NextUInt64"/> and <see cref="M:ktsu.Essentials.IRandomProvider.NextUInt32"/>, because every
+            other default draws through those two rather than through the byte buffer.
+            </para>
+            <para>
+            Nothing here is asynchronous, and that is deliberate rather than an omission. The other provider
+            interfaces offer async variants because they front I/O; a draw from a generator is a handful of
+            arithmetic instructions over in-memory state, so scheduling one on the thread pool would cost
+            orders of magnitude more than the work itself.
+            </para>
+            <para>
+            Thread safety is an implementation concern. A generator that carries state cannot be shared across
+            threads without external synchronisation and each implementation documents its own guarantee.
+            </para>
+            <para>
+            The range-limited integer methods are free of modulo bias: they reject the values that would make
+            the mapping uneven rather than folding them into the low end of the range.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:ktsu.Essentials.IRandomProvider.NextBytes(System.Span{System.Byte})">
+            <summary>
+            Fills the destination buffer with uniformly distributed random bytes.
+            </summary>
+            <param name="destination">The buffer to fill. Every byte in it is overwritten.</param>
+        </member>
+        <member name="M:ktsu.Essentials.IRandomProvider.NextBytes(System.Int32)">
+            <summary>
+            Returns a new array of uniformly distributed random bytes.
+            </summary>
+            <param name="count">The number of bytes to generate.</param>
+            <returns>An array of <paramref name="count"/> random bytes.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="count"/> is negative.</exception>
+        </member>
+        <member name="M:ktsu.Essentials.IRandomProvider.NextUInt32">
+            <summary>
+            Returns a uniformly distributed 32-bit unsigned integer.
+            </summary>
+            <returns>A value drawn uniformly from the whole range of <see cref="T:System.UInt32"/>.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.IRandomProvider.NextUInt64">
+            <summary>
+            Returns a uniformly distributed 64-bit unsigned integer.
+            </summary>
+            <returns>A value drawn uniformly from the whole range of <see cref="T:System.UInt64"/>.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.IRandomProvider.NextInt32">
+            <summary>
+            Returns a non-negative random integer.
+            </summary>
+            <returns>A value in the range [0, <see cref="F:System.Int32.MaxValue"/>).</returns>
+        </member>
+        <member name="M:ktsu.Essentials.IRandomProvider.NextInt32(System.Int32)">
+            <summary>
+            Returns a non-negative random integer below the specified bound.
+            </summary>
+            <param name="maxExclusive">The exclusive upper bound. Must not be negative.</param>
+            <returns>A value in the range [0, <paramref name="maxExclusive"/>), or zero when the bound is zero.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="maxExclusive"/> is negative.</exception>
+        </member>
+        <member name="M:ktsu.Essentials.IRandomProvider.NextInt32(System.Int32,System.Int32)">
+            <summary>
+            Returns a random integer within the specified range.
+            </summary>
+            <param name="minInclusive">The inclusive lower bound.</param>
+            <param name="maxExclusive">The exclusive upper bound. Must not be below <paramref name="minInclusive"/>.</param>
+            <returns>
+            A value in the range [<paramref name="minInclusive"/>, <paramref name="maxExclusive"/>), or
+            <paramref name="minInclusive"/> when the two bounds are equal.
+            </returns>
+            <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="maxExclusive"/> is below <paramref name="minInclusive"/>.</exception>
+        </member>
+        <member name="M:ktsu.Essentials.IRandomProvider.NextInt64">
+            <summary>
+            Returns a non-negative random 64-bit integer.
+            </summary>
+            <returns>A value in the range [0, <see cref="F:System.Int64.MaxValue"/>).</returns>
+        </member>
+        <member name="M:ktsu.Essentials.IRandomProvider.NextInt64(System.Int64)">
+            <summary>
+            Returns a non-negative random 64-bit integer below the specified bound.
+            </summary>
+            <param name="maxExclusive">The exclusive upper bound. Must not be negative.</param>
+            <returns>A value in the range [0, <paramref name="maxExclusive"/>), or zero when the bound is zero.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="maxExclusive"/> is negative.</exception>
+        </member>
+        <member name="M:ktsu.Essentials.IRandomProvider.NextInt64(System.Int64,System.Int64)">
+            <summary>
+            Returns a random 64-bit integer within the specified range.
+            </summary>
+            <param name="minInclusive">The inclusive lower bound.</param>
+            <param name="maxExclusive">The exclusive upper bound. Must not be below <paramref name="minInclusive"/>.</param>
+            <returns>
+            A value in the range [<paramref name="minInclusive"/>, <paramref name="maxExclusive"/>), or
+            <paramref name="minInclusive"/> when the two bounds are equal.
+            </returns>
+            <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="maxExclusive"/> is below <paramref name="minInclusive"/>.</exception>
+        </member>
+        <member name="M:ktsu.Essentials.IRandomProvider.NextDouble">
+            <summary>
+            Returns a uniformly distributed double in the half-open unit interval.
+            </summary>
+            <remarks>
+            Built from the top 53 bits of a 64-bit draw, which is the full precision a <see cref="T:System.Double"/>
+            can carry on [0, 1).
+            </remarks>
+            <returns>A value in the range [0, 1).</returns>
+        </member>
+        <member name="M:ktsu.Essentials.IRandomProvider.NextDoubleExclusive">
+            <summary>
+            Returns a uniformly distributed double in the open unit interval, excluding both endpoints.
+            </summary>
+            <remarks>
+            Inverse-transform sampling needs this: the quantile function of an unbounded distribution is
+            infinite at 0 and at 1, so a draw that can return either endpoint would produce an infinity
+            rather than a sample. The 53-bit draw is offset by half a step, which excludes both ends
+            without distorting the spacing of the values in between.
+            </remarks>
+            <returns>A value in the range (0, 1).</returns>
+        </member>
+        <member name="M:ktsu.Essentials.IRandomProvider.NextDouble(System.Double,System.Double)">
+            <summary>
+            Returns a uniformly distributed double within the specified range.
+            </summary>
+            <param name="minInclusive">The inclusive lower bound. Must be finite.</param>
+            <param name="maxExclusive">The exclusive upper bound. Must be finite and not below <paramref name="minInclusive"/>.</param>
+            <returns>A value in the range [<paramref name="minInclusive"/>, <paramref name="maxExclusive"/>).</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">A bound is not finite, or <paramref name="maxExclusive"/> is below <paramref name="minInclusive"/>.</exception>
+        </member>
+        <member name="M:ktsu.Essentials.IRandomProvider.NextSingle">
+            <summary>
+            Returns a uniformly distributed single in the half-open unit interval.
+            </summary>
+            <returns>A value in the range [0, 1).</returns>
+        </member>
+        <member name="M:ktsu.Essentials.IRandomProvider.NextBoolean">
+            <summary>
+            Returns true or false with equal probability.
+            </summary>
+            <returns>True or false, each with probability one half.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.IRandomProvider.NextBoolean(System.Double)">
+            <summary>
+            Performs a Bernoulli trial: returns true with the given probability.
+            </summary>
+            <param name="probability">The probability of returning true, in the range [0, 1].</param>
+            <returns>True with probability <paramref name="probability"/>, false otherwise.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="probability"/> is outside [0, 1] or is not a number.</exception>
+        </member>
+        <member name="M:ktsu.Essentials.IRandomProvider.Shuffle``1(System.Collections.Generic.IList{``0})">
+            <summary>
+            Shuffles the list in place, so that every ordering of its elements is equally likely.
+            </summary>
+            <remarks>Uses the Fisher-Yates algorithm, which touches each element exactly once.</remarks>
+            <typeparam name="T">The element type.</typeparam>
+            <param name="items">The list to shuffle.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="items"/> is null.</exception>
+        </member>
+        <member name="M:ktsu.Essentials.IRandomProvider.Choose``1(System.Collections.Generic.IReadOnlyList{``0})">
+            <summary>
+            Returns one element of the list, chosen uniformly at random.
+            </summary>
+            <typeparam name="T">The element type.</typeparam>
+            <param name="items">The list to choose from. Must not be empty.</param>
+            <returns>The chosen element.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="items"/> is null.</exception>
+            <exception cref="T:System.ArgumentException"><paramref name="items"/> is empty.</exception>
+        </member>
+        <member name="M:ktsu.Essentials.IRandomProvider.Choose``1(System.Collections.Generic.IReadOnlyList{``0},System.Collections.Generic.IReadOnlyList{System.Double})">
+            <summary>
+            Returns one element of the list, chosen with probability proportional to its weight.
+            </summary>
+            <typeparam name="T">The element type.</typeparam>
+            <param name="items">The list to choose from. Must not be empty.</param>
+            <param name="weights">The relative weight of each element. Must be the same length as <paramref name="items"/>, non-negative, and not all zero.</param>
+            <returns>The chosen element.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="items"/> or <paramref name="weights"/> is null.</exception>
+            <exception cref="T:System.ArgumentException">The lists differ in length, are empty, or the weights are invalid.</exception>
+        </member>
+        <member name="M:ktsu.Essentials.IRandomProvider.Sample``1(System.Collections.Generic.IReadOnlyList{``0},System.Int32)">
+            <summary>
+            Returns a random sample of distinct elements drawn without replacement.
+            </summary>
+            <remarks>
+            Every subset of the requested size is equally likely, and so is every ordering of the one
+            returned. The source is not modified; the draw runs over a private copy.
+            </remarks>
+            <typeparam name="T">The element type.</typeparam>
+            <param name="source">The population to draw from.</param>
+            <param name="count">The number of elements to draw. Must not exceed the size of the population.</param>
+            <returns>The drawn elements, in the order they were drawn.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="source"/> is null.</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="count"/> is negative or larger than the population.</exception>
+        </member>
+        <member name="T:ktsu.Essentials.ISerializationOptions">
+            <summary>
+            Defines a contract for serialization options.
+            </summary>
+        </member>
+        <member name="P:ktsu.Essentials.ISerializationOptions.SerializationPolicy">
+            <summary>
+            The policy for members when serializing.
+            </summary>
+        </member>
+        <member name="P:ktsu.Essentials.ISerializationOptions.DeserializationPolicy">
+            <summary>
+            The policy for members when deserializing.
+            </summary>
+        </member>
+        <member name="P:ktsu.Essentials.ISerializationOptions.ReferencePolicy">
+            <summary>
+            The policy for references.
+            </summary>
+        </member>
+        <member name="P:ktsu.Essentials.ISerializationOptions.BoxingPolicy">
+            <summary>
+            The policy for boxing when serializing.
+            </summary>
+        </member>
+        <member name="T:ktsu.Essentials.MemberPolicy">
+            <summary>
+            The policy for members.
+            </summary>
+        </member>
+        <member name="P:ktsu.Essentials.MemberPolicy.NamePolicy">
+            <summary>
+            The policy for naming the member. Use NamePolicy.None when deserializing to match case-insensitively.
+            </summary>
+        </member>
+        <member name="P:ktsu.Essentials.MemberPolicy.KeyPolicy">
+            <summary>
+            The policy for naming the key of a dictionary.
+            </summary>
+        </member>
+        <member name="P:ktsu.Essentials.MemberPolicy.EnumNamePolicy">
+            <summary>
+            The policy for naming the enum.
+            </summary>
+        </member>
+        <member name="P:ktsu.Essentials.MemberPolicy.EnumValuePolicy">
+            <summary>
+            The policy for the value of an enum.
+            </summary>
+        </member>
+        <member name="P:ktsu.Essentials.MemberPolicy.InclusionPolicies">
+            <summary>
+            The policy for including the member when serializing or deserializing.
+            </summary>
+        </member>
+        <member name="T:ktsu.Essentials.InclusionPolicy">
+            <summary>
+            The policy for including a member when serializing or deserializing.
+            </summary>
+        </member>
+        <member name="F:ktsu.Essentials.InclusionPolicy.None">
+            <summary>
+            Do not include any members.
+            </summary>
+        </member>
+        <member name="F:ktsu.Essentials.InclusionPolicy.Public">
+            <summary>
+            Include public members.
+            </summary>
+        </member>
+        <member name="F:ktsu.Essentials.InclusionPolicy.NonPublic">
+            <summary>
+            Include non-public members.
+            </summary>
+        </member>
+        <member name="F:ktsu.Essentials.InclusionPolicy.Instance">
+            <summary>
+            Include instance members.
+            </summary>
+        </member>
+        <member name="F:ktsu.Essentials.InclusionPolicy.Static">
+            <summary>
+            Include static members.
+            </summary>
+        </member>
+        <member name="F:ktsu.Essentials.InclusionPolicy.Fields">
+            <summary>
+            Include fields.
+            </summary>
+        </member>
+        <member name="F:ktsu.Essentials.InclusionPolicy.Properties">
+            <summary>
+            Include properties.
+            </summary>
+        </member>
+        <member name="F:ktsu.Essentials.InclusionPolicy.ReadOnly">
+            <summary>
+            Include members which are read-only.
+            </summary>
+        </member>
+        <member name="F:ktsu.Essentials.InclusionPolicy.DefaultValues">
+            <summary>
+            Include members which have default values.
+            E.g. null for reference types, 0 for numeric types, etc.
+            Does not mean values in initializers, values set in constructors, primary constructor parameters default values, etc.
+            </summary>
+        </member>
+        <member name="T:ktsu.Essentials.NamePolicy">
+            <summary>
+            The policy for the casing of a name.
+            </summary>
+        </member>
+        <member name="F:ktsu.Essentials.NamePolicy.None">
+            <summary>
+            Do not change the name.
+            </summary>
+        </member>
+        <member name="F:ktsu.Essentials.NamePolicy.PascalCase">
+            <summary>
+            Convert to PascalCase.
+            </summary>
+        </member>
+        <member name="F:ktsu.Essentials.NamePolicy.CamelCase">
+            <summary>
+            Convert to CamelCase.
+            </summary>
+        </member>
+        <member name="F:ktsu.Essentials.NamePolicy.SnakeCase">
+            <summary>
+            Convert to SnakeCase.
+            </summary>
+        </member>
+        <member name="F:ktsu.Essentials.NamePolicy.KebabCase">
+            <summary>
+            Convert to KebabCase.
+            </summary>
+        </member>
+        <member name="F:ktsu.Essentials.NamePolicy.MacroCase">
+            <summary>
+            Convert to MacroCase.
+            </summary>
+        </member>
+        <member name="T:ktsu.Essentials.ReferencePolicy">
+            <summary>
+            The policy for reference handling.
+            </summary>
+        </member>
+        <member name="F:ktsu.Essentials.ReferencePolicy.Ignore">
+            <summary>
+            Ignore the reference.
+            </summary>
+        </member>
+        <member name="F:ktsu.Essentials.ReferencePolicy.Copy">
+            <summary>
+            Make a copy of the referenced object, excluding circular references which will be ignored.
+            </summary>
+        </member>
+        <member name="F:ktsu.Essentials.ReferencePolicy.Reference">
+            <summary>
+            Preserve the reference.
+            </summary>
+        </member>
+        <member name="T:ktsu.Essentials.EnumValuePolicy">
+            <summary>
+            The policy for the value of an enum.
+            </summary>
+        </member>
+        <member name="F:ktsu.Essentials.EnumValuePolicy.Name">
+            <summary>
+            Use the name of the enum value.
+            </summary>
+        </member>
+        <member name="F:ktsu.Essentials.EnumValuePolicy.Number">
+            <summary>
+            Use the number of the enum value.
+            </summary>
+        </member>
+        <member name="T:ktsu.Essentials.BoxingPolicy">
+            <summary>
+            The policy for boxing.
+            </summary>
+        </member>
+        <member name="F:ktsu.Essentials.BoxingPolicy.None">
+            <summary>
+            Do not box.
+            </summary>
+        </member>
+        <member name="F:ktsu.Essentials.BoxingPolicy.BoxNumeric">
+            <summary>
+            Box numeric types.
+            </summary>
+        </member>
+        <member name="F:ktsu.Essentials.BoxingPolicy.BoxDerived">
+            <summary>
+            Box derived types.
+            </summary>
+        </member>
+        <member name="F:ktsu.Essentials.BoxingPolicy.BoxAll">
+            <summary>
+            Box all types.
+            </summary>
+        </member>
+        <member name="T:ktsu.Essentials.ISerializationProvider">
+            <summary>
+            Defines a contract for serialization providers that can serialize and deserialize objects.
+            Supports JSON, YAML, TOML, and other text-based serialization formats.
+            </summary>
+        </member>
+        <member name="P:ktsu.Essentials.ISerializationProvider.FileExtension">
+            <summary>
+            Gets the conventional file extension for this format, including the leading dot.
+            </summary>
+            <remarks>
+            File-backed persistence providers name their files with this, so a provider configured with a YAML
+            or TOML serializer writes <c>.yaml</c> or <c>.toml</c> files. There is deliberately no default:
+            a format that does not state its own extension previously had <c>.json</c> assumed for it, which
+            produced files whose names contradicted their contents.
+            </remarks>
+        </member>
+        <member name="M:ktsu.Essentials.ISerializationProvider.TrySerialize(System.Object,System.IO.TextWriter)">
+            <summary>
+            Tries to serialize the specified object into the destination buffer without allocating.
+            </summary>
+            <param name="obj">The object to serialize.</param>
+            <param name="writer">The writer to write the serialized data to.</param>
+            <returns>True if the serialization was successful, false otherwise.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.ISerializationProvider.Deserialize``1(System.ReadOnlySpan{System.Byte})">
+            <summary>
+            Tries to deserialize the specified data into a specific type.
+            </summary>
+            <typeparam name="T">The type to deserialize into.</typeparam>
+            <param name="data">The data to deserialize.</param>
+            <returns>The deserialized object, or default if deserialization fails.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.ISerializationProvider.Deserialize``1(System.IO.TextReader)">
+            <summary>
+            Tries to deserialize the specified data into a specific type from a text reader.
+            </summary>
+            <typeparam name="T">The type to deserialize into.</typeparam>
+            <param name="reader">The reader to read the serialized data from.</param>
+            <returns>The deserialized object, or default if deserialization fails.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.ISerializationProvider.Deserialize``1(System.String)">
+            <summary>
+            Deserializes the specified string content into a specific type.
+            </summary>
+            <typeparam name="T">The type to deserialize into.</typeparam>
+            <param name="content">The string containing the serialized data.</param>
+            <returns>The deserialized object, or default if deserialization fails.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.ISerializationProvider.TrySerializeAsync(System.Object,System.IO.TextWriter,System.Threading.CancellationToken)">
+            <summary>
+            Tries to serialize the specified object into the destination buffer asynchronously.
+            </summary>
+            <param name="obj">The object to serialize.</param>
+            <param name="writer">The writer to write the serialized data to.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>True if the serialization was successful, false otherwise.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.ISerializationProvider.DeserializeAsync``1(System.ReadOnlyMemory{System.Byte},System.Threading.CancellationToken)">
+            <summary>
+            Tries to deserialize the specified data into a specific type asynchronously.
+            </summary>
+            <typeparam name="T">The type to deserialize into.</typeparam>
+            <param name="data">The data to deserialize.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>The deserialized object, or default if deserialization fails.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.ISerializationProvider.DeserializeAsync``1(System.IO.TextReader,System.Threading.CancellationToken)">
+            <summary>
+            Tries to deserialize the specified data into a specific type asynchronously from a text reader.
+            </summary>
+            <typeparam name="T">The type to deserialize into.</typeparam>
+            <param name="reader">The reader to read the serialized data from.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>The deserialized object, or default if deserialization fails.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.ISerializationProvider.DeserializeAsync``1(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Deserializes the specified string content into a specific type asynchronously.
+            </summary>
+            <typeparam name="T">The type to deserialize into.</typeparam>
+            <param name="content">The string containing the serialized data.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>The deserialized object, or default if deserialization fails.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.ISerializationProvider.Serialize(System.Object)">
+            <summary>
+            Serializes the specified object.
+            </summary>
+            <param name="obj">The object to serialize.</param>
+            <returns>A string containing the serialized data.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.ISerializationProvider.Serialize(System.Object,System.IO.TextWriter)">
+            <summary>
+            Serializes the specified object.
+            </summary>
+            <param name="obj">The object to serialize.</param>
+            <param name="writer">The writer to write the serialized data to.</param>
+        </member>
+        <member name="M:ktsu.Essentials.ISerializationProvider.SerializeAsync(System.Object,System.Threading.CancellationToken)">
+            <summary>
+            Serializes the specified object asynchronously.
+            </summary>
+            <param name="obj">The object to serialize.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>A string containing the serialized data.</returns>
+        </member>
+        <member name="T:ktsu.Essentials.ValidationResult">
+            <summary>
+            Represents the result of a validation operation, containing the overall validity status and any errors found.
+            </summary>
+            <param name="isValid">Whether the validation passed.</param>
+            <param name="errors">The validation errors, if any.</param>
+        </member>
+        <member name="M:ktsu.Essentials.ValidationResult.#ctor(System.Boolean,System.Collections.Generic.IReadOnlyList{ktsu.Essentials.ValidationError})">
+            <summary>
+            Represents the result of a validation operation, containing the overall validity status and any errors found.
+            </summary>
+            <param name="isValid">Whether the validation passed.</param>
+            <param name="errors">The validation errors, if any.</param>
+        </member>
+        <member name="P:ktsu.Essentials.ValidationResult.IsValid">
+            <summary>
+            Gets a value indicating whether the validated object is valid.
+            </summary>
+        </member>
+        <member name="P:ktsu.Essentials.ValidationResult.Errors">
+            <summary>
+            Gets the collection of validation errors found during validation.
+            </summary>
+        </member>
+        <member name="P:ktsu.Essentials.ValidationResult.Success">
+            <summary>
+            Gets a successful validation result with no errors.
+            </summary>
+        </member>
+        <member name="T:ktsu.Essentials.ValidationError">
+            <summary>
+            Represents a single validation error with information about what failed and why.
+            </summary>
+            <param name="propertyName">The name of the property that failed validation.</param>
+            <param name="errorMessage">The human-readable error message.</param>
+            <param name="errorCode">An optional error code for programmatic handling.</param>
+        </member>
+        <member name="M:ktsu.Essentials.ValidationError.#ctor(System.String,System.String,System.String)">
+            <summary>
+            Represents a single validation error with information about what failed and why.
+            </summary>
+            <param name="propertyName">The name of the property that failed validation.</param>
+            <param name="errorMessage">The human-readable error message.</param>
+            <param name="errorCode">An optional error code for programmatic handling.</param>
+        </member>
+        <member name="P:ktsu.Essentials.ValidationError.PropertyName">
+            <summary>
+            Gets the name of the property or member that failed validation.
+            </summary>
+        </member>
+        <member name="P:ktsu.Essentials.ValidationError.ErrorMessage">
+            <summary>
+            Gets the human-readable error message describing the validation failure.
+            </summary>
+        </member>
+        <member name="P:ktsu.Essentials.ValidationError.ErrorCode">
+            <summary>
+            Gets an optional error code that can be used for programmatic error handling.
+            </summary>
+        </member>
+        <member name="T:ktsu.Essentials.ValidationException">
+            <summary>
+            Exception thrown when validation fails and the caller requested an exception on failure.
+            </summary>
+        </member>
+        <member name="P:ktsu.Essentials.ValidationException.ValidationResult">
+            <summary>
+            Gets the validation result that caused this exception.
+            </summary>
+        </member>
+        <member name="M:ktsu.Essentials.ValidationException.#ctor(ktsu.Essentials.ValidationResult)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ktsu.Essentials.ValidationException"/> class.
+            </summary>
+            <param name="validationResult">The validation result containing the errors.</param>
+        </member>
+        <member name="M:ktsu.Essentials.ValidationException.#ctor(System.String,ktsu.Essentials.ValidationResult)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ktsu.Essentials.ValidationException"/> class with a custom message.
+            </summary>
+            <param name="message">The error message.</param>
+            <param name="validationResult">The validation result containing the errors.</param>
+        </member>
+        <member name="M:ktsu.Essentials.ValidationException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:ktsu.Essentials.ValidationException"/> class.
+            </summary>
+        </member>
+        <member name="M:ktsu.Essentials.ValidationException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ktsu.Essentials.ValidationException"/> class with a custom message.
+            </summary>
+            <param name="message">The error message.</param>
+        </member>
+        <member name="M:ktsu.Essentials.ValidationException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ktsu.Essentials.ValidationException"/> class with a custom message and inner exception.
+            </summary>
+            <param name="message">The error message.</param>
+            <param name="innerException">The inner exception.</param>
+        </member>
+        <member name="T:ktsu.Essentials.IValidationProvider`1">
+            <summary>
+            Interface for validation providers that can validate objects of a specific type and return structured results.
+            </summary>
+            <typeparam name="T">The type of object to validate.</typeparam>
+        </member>
+        <member name="M:ktsu.Essentials.IValidationProvider`1.Validate(`0)">
+            <summary>
+            Validates the specified value and returns a structured result.
+            </summary>
+            <param name="value">The value to validate.</param>
+            <returns>A <see cref="T:ktsu.Essentials.ValidationResult"/> containing the validation outcome and any errors.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.IValidationProvider`1.IsValid(`0)">
+            <summary>
+            Checks whether the specified value is valid.
+            </summary>
+            <param name="value">The value to validate.</param>
+            <returns>True if the value passes all validation rules, false otherwise.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.IValidationProvider`1.ValidateAndThrow(`0)">
+            <summary>
+            Validates the specified value and throws a <see cref="T:ktsu.Essentials.ValidationException"/> if validation fails.
+            </summary>
+            <param name="value">The value to validate.</param>
+            <exception cref="T:ktsu.Essentials.ValidationException">Thrown when the value fails validation.</exception>
+        </member>
+        <member name="M:ktsu.Essentials.IValidationProvider`1.ValidateAsync(`0,System.Threading.CancellationToken)">
+            <summary>
+            Validates the specified value asynchronously and returns a structured result.
+            </summary>
+            <param name="value">The value to validate.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>A <see cref="T:ktsu.Essentials.ValidationResult"/> containing the validation outcome and any errors.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.IValidationProvider`1.IsValidAsync(`0,System.Threading.CancellationToken)">
+            <summary>
+            Checks whether the specified value is valid asynchronously.
+            </summary>
+            <param name="value">The value to validate.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>True if the value passes all validation rules, false otherwise.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.IValidationProvider`1.ValidateAndThrowAsync(`0,System.Threading.CancellationToken)">
+            <summary>
+            Validates the specified value asynchronously and throws a <see cref="T:ktsu.Essentials.ValidationException"/> if validation fails.
+            </summary>
+            <param name="value">The value to validate.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <exception cref="T:ktsu.Essentials.ValidationException">Thrown when the value fails validation.</exception>
+        </member>
+        <member name="T:ktsu.Essentials.PersistenceProviderException">
+            <summary>
+            Exception thrown when a persistence provider operation fails.
+            </summary>
+        </member>
+        <member name="M:ktsu.Essentials.PersistenceProviderException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:ktsu.Essentials.PersistenceProviderException"/> class.
+            </summary>
+        </member>
+        <member name="M:ktsu.Essentials.PersistenceProviderException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ktsu.Essentials.PersistenceProviderException"/> class with a specified error message.
+            </summary>
+            <param name="message">The message that describes the error.</param>
+        </member>
+        <member name="M:ktsu.Essentials.PersistenceProviderException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ktsu.Essentials.PersistenceProviderException"/> class with a specified error message and inner exception.
+            </summary>
+            <param name="message">The message that describes the error.</param>
+            <param name="innerException">The exception that is the cause of the current exception.</param>
+        </member>
+        <member name="T:ktsu.Essentials.PersistenceProviderUtilities">
+            <summary>
+            Utility methods shared across persistence provider implementations.
+            </summary>
+        </member>
+        <member name="F:ktsu.Essentials.PersistenceProviderUtilities.ReservedCharacters">
+            <summary>
+            Characters that cannot appear in a filename on at least one supported platform, plus the escape
+            character itself so encoding stays unambiguous.
+            </summary>
+        </member>
+        <member name="F:ktsu.Essentials.PersistenceProviderUtilities.ReservedDeviceNames">
+            <summary>Device names Windows reserves regardless of extension.</summary>
+        </member>
+        <member name="F:ktsu.Essentials.PersistenceProviderUtilities.MaxEncodedLength">
+            <summary>
+            The longest encoded name kept verbatim. Longer names are truncated and disambiguated with a hash,
+            which keeps full paths clear of platform length limits.
+            </summary>
+        </member>
+        <member name="F:ktsu.Essentials.PersistenceProviderUtilities.TruncationMarker">
+            <summary>Separates the truncated prefix from its hash. Never produced by encoding.</summary>
+        </member>
+        <member name="M:ktsu.Essentials.PersistenceProviderUtilities.GetSafeFileName(System.String)">
+            <summary>
+            Converts a key to a filename that is safe on every supported platform.
+            </summary>
+            <remarks>
+            <para>
+            Reserved characters are percent-encoded rather than replaced with a single substitute, so distinct
+            keys always produce distinct filenames. Replacing them all with <c>_</c> — as earlier versions did —
+            mapped <c>a/b</c>, <c>a\b</c> and <c>a_b</c> onto one file, silently overwriting unrelated entries.
+            </para>
+            <para>
+            Encoding is reversible via <see cref="M:ktsu.Essentials.PersistenceProviderUtilities.GetKeyFromFileName(System.String)"/>, except for keys long enough to be
+            truncated. Those get a hash suffix to stay distinct, but cannot be read back from the filename.
+            </para>
+            </remarks>
+            <param name="input">The key text to convert.</param>
+            <returns>A filename-safe representation of <paramref name="input"/>.</returns>
+            <exception cref="T:System.ArgumentException"><paramref name="input"/> is null, empty, or whitespace.</exception>
+        </member>
+        <member name="M:ktsu.Essentials.PersistenceProviderUtilities.GetKeyFromFileName(System.String)">
+            <summary>
+            Recovers the original key text from a filename produced by <see cref="M:ktsu.Essentials.PersistenceProviderUtilities.GetSafeFileName(System.String)"/>.
+            </summary>
+            <param name="fileName">The filename, without extension.</param>
+            <returns>The original key text, or null if the name was truncated or is not valid encoded output.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.PersistenceProviderUtilities.TryConvertToKey``1(System.String,``0@)">
+            <summary>
+            Attempts to convert a string value to the specified key type.
+            </summary>
+            <remarks>
+            Replaces the earlier method that returned <c>default</c> on failure, which turned an unreadable
+            filename into a valid-looking key such as <c>0</c> or <see cref="F:System.Guid.Empty"/>.
+            </remarks>
+            <typeparam name="TKey">The target key type.</typeparam>
+            <param name="value">The string value to convert.</param>
+            <param name="key">The converted key, when conversion succeeds.</param>
+            <returns>True if the value was converted, false otherwise.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.PersistenceProviderUtilities.Fnv1a64(System.String)">
+            <summary>
+            FNV-1a, chosen because it is stable across processes and runtimes.
+            <see cref="M:System.String.GetHashCode"/> is randomised per process, so it cannot name a file.
+            </summary>
+            <param name="value">The value to hash.</param>
+            <returns>A stable 64-bit hash.</returns>
+        </member>
+        <member name="T:ktsu.Essentials.ProviderHelpers">
+            <summary>
+            Internal utility methods used by default interface implementations
+            to avoid duplicating common patterns across provider interfaces.
+            </summary>
+        </member>
+        <member name="M:ktsu.Essentials.ProviderHelpers.RunAsync``1(System.Func{``0},System.Threading.CancellationToken)">
+            <summary>
+            Wraps a synchronous function in Task.Run with cancellation support.
+            Used by all async default interface implementations.
+            </summary>
+            <typeparam name="T">The return type of the async operation.</typeparam>
+            <param name="action">The synchronous action to run.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>A task representing the asynchronous operation.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.ProviderHelpers.RunAsync(System.Action,System.Threading.CancellationToken)">
+            <summary>
+            Wraps a synchronous void action in Task.Run with cancellation support.
+            Used by async default interface implementations that return Task (not Task&lt;T&gt;).
+            </summary>
+            <param name="action">The synchronous action to run.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>A task representing the asynchronous operation.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.ProviderHelpers.ExecuteToByteArray(System.Func{System.IO.Stream,System.Boolean},System.String)">
+            <summary>
+            Calls a try-operation with a MemoryStream destination and returns the result as a byte array.
+            Used by convenience methods that auto-allocate output buffers.
+            </summary>
+            <param name="tryOperation">A function that writes to a Stream and returns success/failure.</param>
+            <param name="failureMessage">The message for the exception if the operation fails.</param>
+            <returns>The output as a byte array.</returns>
+        </member>
+        <member name="T:ktsu.Essentials.ProviderHelpers.SpanTransform">
+            <summary>
+            A span-to-span transform that reports how many bytes it wrote.
+            </summary>
+            <param name="source">The input data.</param>
+            <param name="destination">The buffer to write to.</param>
+            <param name="bytesWritten">The number of bytes written.</param>
+            <returns>True if the operation succeeded, false otherwise.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.ProviderHelpers.ExecuteToExactArray(System.Int32,System.ReadOnlySpan{System.Byte},ktsu.Essentials.ProviderHelpers.SpanTransform,System.String)">
+            <summary>
+            Runs a span transform into a pooled buffer and returns an array trimmed to the bytes actually written.
+            </summary>
+            <remarks>
+            Used by the self-allocating convenience methods where the output size is known in advance. The
+            scratch buffer is rented rather than allocated, so the only lasting allocation is the returned
+            array. Providers whose output size cannot be predicted — decompression, for one — still use the
+            stream path in <see cref="M:ktsu.Essentials.ProviderHelpers.ExecuteToByteArray(System.Func{System.IO.Stream,System.Boolean},System.String)"/>.
+            <para>
+            The buffer is scrubbed on its way back to the pool. <see cref="T:System.Buffers.ArrayPool`1"/>.Shared is
+            process-wide, so anything left behind is readable by whatever rents next, and this path carries
+            the output of every encoding, compression and obfuscation provider. The resulting
+            <c>Array.Clear</c> per call is a deliberate cost, not an oversight.
+            </para>
+            </remarks>
+            <param name="maxLength">The largest output the operation can produce for this input.</param>
+            <param name="source">The input data.</param>
+            <param name="transform">The operation to run.</param>
+            <param name="failureMessage">The message for the exception if the operation fails.</param>
+            <returns>The output, trimmed to the bytes actually written.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.ProviderHelpers.SpanToStreamBridge(System.ReadOnlySpan{System.Byte},System.IO.Stream,System.Func{System.IO.Stream,System.IO.Stream,System.Boolean})">
+            <summary>
+            Bridges a ReadOnlySpan input to a Stream-based operation by wrapping it in a MemoryStream.
+            </summary>
+            <param name="data">The span data to bridge.</param>
+            <param name="destination">The destination stream.</param>
+            <param name="streamOperation">The stream-to-stream operation to execute.</param>
+            <returns>True if the operation succeeded, false otherwise.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.ProviderHelpers.Utf8Transform(System.String,System.Func{System.Byte[],System.Byte[]})">
+            <summary>
+            Applies a byte-level operation to a UTF8 string, returning the result as a string.
+            Encodes the input string to UTF8 bytes, applies the operation, and decodes the result.
+            </summary>
+            <remarks>
+            Only valid when the operation is guaranteed to produce well-formed UTF8 output — for example
+            format encoders such as Base64 or Hex, whose output is ASCII. Operations that produce arbitrary
+            binary (compression, encryption, obfuscation) must use <see cref="M:ktsu.Essentials.ProviderHelpers.Utf8ToBase64Transform(System.String,System.Func{System.Byte[],System.Byte[]})"/> instead,
+            because decoding arbitrary bytes as UTF8 silently replaces invalid sequences with U+FFFD.
+            </remarks>
+            <param name="data">The input string.</param>
+            <param name="operation">The byte-level operation to apply. Must produce well-formed UTF8.</param>
+            <returns>The result as a UTF8-decoded string.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.ProviderHelpers.Utf8ToBase64Transform(System.String,System.Func{System.Byte[],System.Byte[]})">
+            <summary>
+            Applies a byte-level operation to a UTF8 string and returns the binary result as Base64 text.
+            </summary>
+            <remarks>
+            Use for operations that produce arbitrary binary output, so the result survives as text.
+            <see cref="M:ktsu.Essentials.ProviderHelpers.Base64ToUtf8Transform(System.String,System.Func{System.Byte[],System.Byte[]})"/> is the exact inverse.
+            </remarks>
+            <param name="data">The input string.</param>
+            <param name="operation">The byte-level operation to apply.</param>
+            <returns>The result encoded as a Base64 string.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.ProviderHelpers.Base64ToUtf8Transform(System.String,System.Func{System.Byte[],System.Byte[]})">
+            <summary>
+            Decodes Base64 text, applies a byte-level operation, and returns the result as a UTF8 string.
+            </summary>
+            <remarks>The exact inverse of <see cref="M:ktsu.Essentials.ProviderHelpers.Utf8ToBase64Transform(System.String,System.Func{System.Byte[],System.Byte[]})"/>.</remarks>
+            <param name="data">The Base64-encoded input string.</param>
+            <param name="operation">The byte-level operation to apply.</param>
+            <returns>The result as a UTF8-decoded string.</returns>
+            <exception cref="T:System.FormatException"><paramref name="data"/> is not valid Base64.</exception>
+        </member>
+        <member name="T:ktsu.Essentials.RandomHelpers">
+            <summary>
+            Internal utilities behind the default implementations of <see cref="T:ktsu.Essentials.IRandomProvider"/> and
+            <see cref="T:ktsu.Essentials.IDistribution`1"/>, kept out of the interfaces themselves so the contracts stay readable.
+            </summary>
+        </member>
+        <member name="F:ktsu.Essentials.RandomHelpers.UnitScale">
+            <summary>The step between adjacent 53-bit fixed-point values on the unit interval.</summary>
+        </member>
+        <member name="F:ktsu.Essentials.RandomHelpers.UnitScaleSingle">
+            <summary>The step between adjacent 24-bit fixed-point values on the unit interval.</summary>
+        </member>
+        <member name="M:ktsu.Essentials.RandomHelpers.NextBoundedUInt32(ktsu.Essentials.IRandomProvider,System.UInt32)">
+            <summary>
+            Draws a 32-bit value uniformly from [0, <paramref name="range"/>) without modulo bias.
+            </summary>
+            <remarks>
+            Lemire's multiply-and-shift method. Multiplying a full-width draw by the range and taking the
+            high word divides the 2^32 draws into <paramref name="range"/> buckets whose sizes differ by at
+            most one. The correction discards the first 2^32 mod <paramref name="range"/> draws, which are
+            exactly the ones that make the buckets uneven, so the result is exactly uniform. The rejection
+            test is skipped entirely unless the low word falls below the range, so the common case costs
+            one multiply.
+            </remarks>
+            <param name="random">The source of randomness.</param>
+            <param name="range">The size of the range. Must be greater than zero.</param>
+            <returns>A value in [0, <paramref name="range"/>).</returns>
+        </member>
+        <member name="M:ktsu.Essentials.RandomHelpers.NextBoundedUInt64(ktsu.Essentials.IRandomProvider,System.UInt64)">
+            <summary>
+            Draws a 64-bit value uniformly from [0, <paramref name="range"/>) without modulo bias.
+            </summary>
+            <remarks>
+            Lemire's method needs a 128-bit product, which is not available on every target framework here,
+            so this uses rejection instead: draws at or above the largest multiple of the range that fits in
+            64 bits are discarded, leaving a count divisible by the range for the modulo to split evenly.
+            The expected number of extra draws is below one for any range.
+            </remarks>
+            <param name="random">The source of randomness.</param>
+            <param name="range">The size of the range. Must be greater than zero.</param>
+            <returns>A value in [0, <paramref name="range"/>).</returns>
+        </member>
+        <member name="M:ktsu.Essentials.RandomHelpers.EnsureFinite(System.Double,System.String)">
+            <summary>
+            Throws when a value is infinite or not a number.
+            </summary>
+            <param name="value">The value to check.</param>
+            <param name="name">The parameter name to report.</param>
+            <exception cref="T:System.ArgumentOutOfRangeException">The value is not finite.</exception>
+        </member>
+        <member name="M:ktsu.Essentials.RandomHelpers.EnsureProbability(System.Double,System.String)">
+            <summary>
+            Throws when a value is not a probability in [0, 1].
+            </summary>
+            <param name="value">The value to check.</param>
+            <param name="name">The parameter name to report.</param>
+            <exception cref="T:System.ArgumentOutOfRangeException">The value is outside [0, 1] or is not a number.</exception>
+        </member>
+        <member name="M:ktsu.Essentials.RandomHelpers.SumWeights(System.Collections.Generic.IReadOnlyList{System.Double},System.String)">
+            <summary>
+            Adds up a weight list, rejecting negative, non-finite, and all-zero weights.
+            </summary>
+            <param name="weights">The weights to total.</param>
+            <param name="name">The parameter name to report.</param>
+            <returns>The sum of the weights.</returns>
+            <exception cref="T:System.ArgumentException">A weight is negative or not finite, or they sum to zero.</exception>
+        </member>
+        <member name="M:ktsu.Essentials.RandomHelpers.LastNonZeroWeightIndex(System.Collections.Generic.IReadOnlyList{System.Double})">
+            <summary>
+            Finds the last index carrying a non-zero weight, used as the fallback when rounding pushes a
+            weighted draw past the accumulated total.
+            </summary>
+            <param name="weights">The weights to scan. At least one must be greater than zero.</param>
+            <returns>The index of the last non-zero weight.</returns>
+        </member>
+        <member name="T:ktsu.Essentials.UserDirectories">
+            <summary>
+            Resolves the per-user data and configuration directories used by persistence providers.
+            </summary>
+            <remarks>
+            <para>
+            Layout follows the XDG Base Directory Specification and is identical on every platform, so an
+            application stores its files in the same place regardless of where it runs. The home directory is
+            resolved per platform — <c>%USERPROFILE%</c> on Windows, <c>$HOME</c> elsewhere.
+            </para>
+            <list type="bullet">
+            <item><description>Data: <c>$XDG_DATA_HOME</c> if set, otherwise <c>~/.local/share</c>.</description></item>
+            <item><description>Config: <c>$XDG_CONFIG_HOME</c> if set, otherwise <c>~/.config</c>.</description></item>
+            </list>
+            <para>
+            Per the specification, a relative or empty <c>XDG_*</c> value is ignored and the default is used.
+            </para>
+            </remarks>
+        </member>
+        <member name="F:ktsu.Essentials.UserDirectories.DataHomeVariable">
+            <summary>The environment variable that overrides the user data directory.</summary>
+        </member>
+        <member name="F:ktsu.Essentials.UserDirectories.ConfigHomeVariable">
+            <summary>The environment variable that overrides the user configuration directory.</summary>
+        </member>
+        <member name="M:ktsu.Essentials.UserDirectories.GetDataHome">
+            <summary>
+            Gets the base directory for user-specific data files.
+            </summary>
+            <returns><c>$XDG_DATA_HOME</c> when set to an absolute path, otherwise <c>~/.local/share</c>.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.UserDirectories.GetConfigHome">
+            <summary>
+            Gets the base directory for user-specific configuration files.
+            </summary>
+            <returns><c>$XDG_CONFIG_HOME</c> when set to an absolute path, otherwise <c>~/.config</c>.</returns>
+        </member>
+        <member name="M:ktsu.Essentials.UserDirectories.GetApplicationDataDirectory(System.String,System.String)">
+            <summary>
+            Gets the data directory for a specific application.
+            </summary>
+            <param name="applicationName">The application name used to namespace the directory.</param>
+            <param name="subdirectory">An optional subdirectory beneath the application directory.</param>
+            <returns>The resolved application data directory.</returns>
+            <exception cref="T:System.ArgumentException"><paramref name="applicationName"/> is null, empty, or whitespace.</exception>
+        </member>
+        <member name="M:ktsu.Essentials.UserDirectories.GetApplicationConfigDirectory(System.String,System.String)">
+            <summary>
+            Gets the configuration directory for a specific application.
+            </summary>
+            <param name="applicationName">The application name used to namespace the directory.</param>
+            <param name="subdirectory">An optional subdirectory beneath the application directory.</param>
+            <returns>The resolved application configuration directory.</returns>
+            <exception cref="T:System.ArgumentException"><paramref name="applicationName"/> is null, empty, or whitespace.</exception>
+        </member>
+        <member name="M:ktsu.Essentials.UserDirectories.GetHomeDirectory">
+            <summary>
+            Gets the current user's home directory.
+            </summary>
+            <returns><c>%USERPROFILE%</c> on Windows, <c>$HOME</c> on other platforms.</returns>
+            <exception cref="T:System.InvalidOperationException">The home directory could not be determined.</exception>
+        </member>
+    </members>
+</doc>

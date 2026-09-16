@@ -1,0 +1,320 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PuppeteerSharp.Contrib.Extensions</name>
+    </assembly>
+    <members>
+        <member name="T:PuppeteerSharp.Contrib.Extensions.ElementHandleAttributeExtensions">
+            <summary>
+            Extension methods for accessing attributes on <see cref="T:PuppeteerSharp.IElementHandle"/>.
+            </summary>
+            <seealso href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes"/>
+        </member>
+        <member name="M:PuppeteerSharp.Contrib.Extensions.ElementHandleAttributeExtensions.IdAsync(PuppeteerSharp.IElementHandle)">
+            <summary>
+            Id of the element.
+            </summary>
+            <param name="elementHandle">An <see cref="T:PuppeteerSharp.IElementHandle"/>.</param>
+            <returns>The element's <c>id</c>, or <c>null</c> if the attribute is missing.</returns>
+        </member>
+        <member name="M:PuppeteerSharp.Contrib.Extensions.ElementHandleAttributeExtensions.NameAsync(PuppeteerSharp.IElementHandle)">
+            <summary>
+            Name of the element.
+            </summary>
+            <param name="elementHandle">An <see cref="T:PuppeteerSharp.IElementHandle"/>.</param>
+            <returns>The element's <c>name</c>, or <c>null</c> if the attribute is missing.</returns>
+            <remarks><![CDATA[Elements: <button>, <form>, <fieldset>, <iframe>, <input>, <object>, <output>, <select>, <textarea>, <map>, <meta>, <param>]]></remarks>
+        </member>
+        <member name="M:PuppeteerSharp.Contrib.Extensions.ElementHandleAttributeExtensions.ValueAsync(PuppeteerSharp.IElementHandle)">
+            <summary>
+            Value of the element.
+            </summary>
+            <param name="elementHandle">An <see cref="T:PuppeteerSharp.IElementHandle"/>.</param>
+            <returns>The element's <c>value</c>, or <c>null</c> if the attribute is missing.</returns>
+            <remarks><![CDATA[Elements: <button>, <data>, <input>, <li>, <meter>, <option>, <progress>, <param>]]></remarks>
+        </member>
+        <member name="M:PuppeteerSharp.Contrib.Extensions.ElementHandleAttributeExtensions.HrefAsync(PuppeteerSharp.IElementHandle)">
+            <summary>
+            Href of the element.
+            </summary>
+            <param name="elementHandle">An <see cref="T:PuppeteerSharp.IElementHandle"/>.</param>
+            <returns>The element's <c>href</c>, or <c>null</c> if the attribute is missing.</returns>
+            <remarks><![CDATA[Elements: <a>, <area>, <base>, <link>]]></remarks>
+        </member>
+        <member name="M:PuppeteerSharp.Contrib.Extensions.ElementHandleAttributeExtensions.SrcAsync(PuppeteerSharp.IElementHandle)">
+            <summary>
+            Src of the element.
+            </summary>
+            <param name="elementHandle">An <see cref="T:PuppeteerSharp.IElementHandle"/>.</param>
+            <returns>The element's <c>src</c>, or <c>null</c> if the attribute is missing.</returns>
+            <remarks><![CDATA[Elements: <audio>, <embed>, <iframe>, <img>, <input>, <script>, <source>, <track>, <video>]]></remarks>
+        </member>
+        <member name="M:PuppeteerSharp.Contrib.Extensions.ElementHandleAttributeExtensions.HasAttributeAsync(PuppeteerSharp.IElementHandle,System.String)">
+            <summary>
+            Indicates whether the element has the specified attribute or not.
+            </summary>
+            <param name="elementHandle">An <see cref="T:PuppeteerSharp.IElementHandle"/>.</param>
+            <param name="name">The attribute name.</param>
+            <returns><c>true</c> if the element has the specified attribute.</returns>
+            <seealso href="https://developer.mozilla.org/en-US/docs/Web/API/Element/hasAttribute"/>
+        </member>
+        <member name="M:PuppeteerSharp.Contrib.Extensions.ElementHandleAttributeExtensions.HasAttributeValueAsync(PuppeteerSharp.IElementHandle,System.String,System.String,System.String)">
+            <summary>
+            Indicates whether the element has the specified attribute value or not.
+            </summary>
+            <param name="elementHandle">An <see cref="T:PuppeteerSharp.IElementHandle"/>.</param>
+            <param name="name">The attribute name.</param>
+            <param name="regex">A regular expression to test against <c>element.getAttribute(name)</c>.</param>
+            <param name="flags">A set of flags for the regular expression.</param>
+            <returns><c>true</c> if the element has the specified attribute value.</returns>
+            <seealso href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp"/>
+        </member>
+        <member name="M:PuppeteerSharp.Contrib.Extensions.ElementHandleAttributeExtensions.GetAttributeAsync(PuppeteerSharp.IElementHandle,System.String)">
+            <summary>
+            The value of a specified attribute on the element.
+            </summary>
+            <param name="elementHandle">An <see cref="T:PuppeteerSharp.IElementHandle"/>.</param>
+            <param name="name">The attribute name.</param>
+            <returns>The attribute value.</returns>
+            <seealso href="https://developer.mozilla.org/en-US/docs/Web/API/Element/getAttribute"/>
+        </member>
+        <member name="T:PuppeteerSharp.Contrib.Extensions.ElementHandleExtensions">
+            <summary>
+            Extension methods for <see cref="T:PuppeteerSharp.IElementHandle"/>.
+            </summary>
+        </member>
+        <member name="M:PuppeteerSharp.Contrib.Extensions.ElementHandleExtensions.QuerySelectorWithContentAsync(PuppeteerSharp.IElementHandle,System.String,System.String,System.String)">
+            <summary>
+            The method runs <c>element.querySelectorAll</c> and then tests a <c>RegExp</c> against the elements <c>textContent</c>. The first element match is returned. If no element matches the selector and regular expression, the return value resolve to <c>null</c>.
+            </summary>
+            <param name="elementHandle">An <see cref="T:PuppeteerSharp.IElementHandle"/> to query.</param>
+            <param name="selector">A selector to query element for.</param>
+            <param name="regex">A regular expression to test against <c>element.textContent</c>.</param>
+            <param name="flags">A set of flags for the regular expression.</param>
+            <returns>Task which resolves to an <see cref="T:PuppeteerSharp.IElementHandle"/> pointing to the element.</returns>
+            <seealso href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp"/>
+        </member>
+        <member name="M:PuppeteerSharp.Contrib.Extensions.ElementHandleExtensions.QuerySelectorAllWithContentAsync(PuppeteerSharp.IElementHandle,System.String,System.String,System.String)">
+            <summary>
+            The method runs <c>element.querySelectorAll</c> and then tests a <c>RegExp</c> against the elements <c>textContent</c>. All element matches are returned. If no element matches the selector and regular expression, the return value resolve to <see cref="M:System.Array.Empty``1"/>.
+            </summary>
+            <param name="elementHandle">An <see cref="T:PuppeteerSharp.IElementHandle"/> to query.</param>
+            <param name="selector">A selector to query element for.</param>
+            <param name="regex">A regular expression to test against <c>element.textContent</c>.</param>
+            <param name="flags">A set of flags for the regular expression.</param>
+            <returns>Task which resolves to an <see cref="T:PuppeteerSharp.IElementHandle"/> array pointing to the elements.</returns>
+            <seealso href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp"/>
+        </member>
+        <member name="M:PuppeteerSharp.Contrib.Extensions.ElementHandleExtensions.Exists(PuppeteerSharp.IElementHandle)">
+            <summary>
+            Indicates whether the element exists or not. A non null <see cref="T:PuppeteerSharp.IElementHandle"/> is considered existing.
+            </summary>
+            <param name="elementHandle">An <see cref="T:PuppeteerSharp.IElementHandle"/>.</param>
+            <returns><c>true</c> if the element exists.</returns>
+        </member>
+        <member name="M:PuppeteerSharp.Contrib.Extensions.ElementHandleExtensions.InnerHtmlAsync(PuppeteerSharp.IElementHandle)">
+            <summary>
+            InnerHtml of the element.
+            </summary>
+            <param name="elementHandle">An <see cref="T:PuppeteerSharp.IElementHandle"/>.</param>
+            <returns>The element's <c>innerHTML</c>.</returns>
+            <seealso href="https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML"/>
+        </member>
+        <member name="M:PuppeteerSharp.Contrib.Extensions.ElementHandleExtensions.OuterHtmlAsync(PuppeteerSharp.IElementHandle)">
+            <summary>
+            OuterHtml of the element.
+            </summary>
+            <param name="elementHandle">An <see cref="T:PuppeteerSharp.IElementHandle"/>.</param>
+            <returns>The element's <c>outerHTML</c>.</returns>
+            <seealso href="https://developer.mozilla.org/en-US/docs/Web/API/Element/outerHTML"/>
+        </member>
+        <member name="M:PuppeteerSharp.Contrib.Extensions.ElementHandleExtensions.TextContentAsync(PuppeteerSharp.IElementHandle)">
+            <summary>
+            TextContent of the element.
+            </summary>
+            <param name="elementHandle">An <see cref="T:PuppeteerSharp.IElementHandle"/>.</param>
+            <returns>The element's <c>textContent</c>.</returns>
+            <seealso href="https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent"/>
+        </member>
+        <member name="M:PuppeteerSharp.Contrib.Extensions.ElementHandleExtensions.InnerTextAsync(PuppeteerSharp.IElementHandle)">
+            <summary>
+            InnerText of the element.
+            </summary>
+            <param name="elementHandle">An <see cref="T:PuppeteerSharp.IElementHandle"/>.</param>
+            <returns>The element's <c>innerText</c>.</returns>
+            <seealso href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/innerText"/>
+        </member>
+        <member name="M:PuppeteerSharp.Contrib.Extensions.ElementHandleExtensions.HasContentAsync(PuppeteerSharp.IElementHandle,System.String,System.String)">
+            <summary>
+            Indicates whether the element has the specified content or not.
+            </summary>
+            <param name="elementHandle">An <see cref="T:PuppeteerSharp.IElementHandle"/>.</param>
+            <param name="regex">A regular expression to test against <c>element.textContent</c>.</param>
+            <param name="flags">A set of flags for the regular expression.</param>
+            <returns><c>true</c> if the element has the specified content.</returns>
+            <seealso href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp"/>
+        </member>
+        <member name="M:PuppeteerSharp.Contrib.Extensions.ElementHandleExtensions.ClassNameAsync(PuppeteerSharp.IElementHandle)">
+            <summary>
+            ClassName of the element.
+            </summary>
+            <param name="elementHandle">An <see cref="T:PuppeteerSharp.IElementHandle"/>.</param>
+            <returns>The element's <c>className</c>.</returns>
+            <seealso href="https://developer.mozilla.org/en-US/docs/Web/API/Element/className"/>
+        </member>
+        <member name="M:PuppeteerSharp.Contrib.Extensions.ElementHandleExtensions.ClassListAsync(PuppeteerSharp.IElementHandle)">
+            <summary>
+            ClassList of the element.
+            </summary>
+            <param name="elementHandle">An <see cref="T:PuppeteerSharp.IElementHandle"/>.</param>
+            <returns>The element's <c>classList</c>.</returns>
+            <seealso href="https://developer.mozilla.org/en-US/docs/Web/API/Element/classList"/>
+        </member>
+        <member name="M:PuppeteerSharp.Contrib.Extensions.ElementHandleExtensions.HasClassAsync(PuppeteerSharp.IElementHandle,System.String)">
+            <summary>
+            Indicates whether the element has the specified class or not.
+            </summary>
+            <param name="elementHandle">An <see cref="T:PuppeteerSharp.IElementHandle"/>.</param>
+            <param name="className">The class name.</param>
+            <returns><c>true</c> if the element has the specified class.</returns>
+        </member>
+        <member name="M:PuppeteerSharp.Contrib.Extensions.ElementHandleExtensions.IsSelectedAsync(PuppeteerSharp.IElementHandle)">
+            <summary>
+            Indicates whether the element is selected or not.
+            </summary>
+            <param name="elementHandle">An <see cref="T:PuppeteerSharp.IElementHandle"/>.</param>
+            <returns><c>true</c> if the element is selected.</returns>
+            <remarks><![CDATA[Elements: <option>]]></remarks>
+        </member>
+        <member name="M:PuppeteerSharp.Contrib.Extensions.ElementHandleExtensions.IsCheckedAsync(PuppeteerSharp.IElementHandle)">
+            <summary>
+            Indicates whether the element is checked or not.
+            </summary>
+            <param name="elementHandle">An <see cref="T:PuppeteerSharp.IElementHandle"/>.</param>
+            <returns><c>true</c> if the element is checked.</returns>
+            <remarks><![CDATA[Elements: <input>]]></remarks>
+        </member>
+        <member name="M:PuppeteerSharp.Contrib.Extensions.ElementHandleExtensions.IsDisabledAsync(PuppeteerSharp.IElementHandle)">
+            <summary>
+            Indicates whether the element is disabled or not.
+            </summary>
+            <param name="elementHandle">An <see cref="T:PuppeteerSharp.IElementHandle"/>.</param>
+            <returns><c>true</c> if the element is disabled.</returns>
+            <remarks><![CDATA[Elements: <button>, <fieldset>, <input>, <optgroup>, <option>, <select>, <textarea>]]></remarks>
+        </member>
+        <member name="M:PuppeteerSharp.Contrib.Extensions.ElementHandleExtensions.IsEnabledAsync(PuppeteerSharp.IElementHandle)">
+            <summary>
+            Indicates whether the element is enabled or not. This is the logical negation of <see cref="M:PuppeteerSharp.Contrib.Extensions.ElementHandleExtensions.IsDisabledAsync(PuppeteerSharp.IElementHandle)"/>.
+            </summary>
+            <param name="elementHandle">An <see cref="T:PuppeteerSharp.IElementHandle"/>.</param>
+            <returns><c>true</c> if the element is enabled.</returns>
+            <remarks><![CDATA[Elements: <button>, <fieldset>, <input>, <optgroup>, <option>, <select>, <textarea>]]></remarks>
+        </member>
+        <member name="M:PuppeteerSharp.Contrib.Extensions.ElementHandleExtensions.IsReadOnlyAsync(PuppeteerSharp.IElementHandle)">
+            <summary>
+            Indicates whether the element is read-only or not.
+            </summary>
+            <param name="elementHandle">An <see cref="T:PuppeteerSharp.IElementHandle"/>.</param>
+            <returns><c>true</c> if the element is read-only.</returns>
+            <remarks><![CDATA[Elements: <input>, <textarea>]]></remarks>
+        </member>
+        <member name="M:PuppeteerSharp.Contrib.Extensions.ElementHandleExtensions.IsRequiredAsync(PuppeteerSharp.IElementHandle)">
+            <summary>
+            Indicates whether the element is required or not.
+            </summary>
+            <param name="elementHandle">An <see cref="T:PuppeteerSharp.IElementHandle"/>.</param>
+            <returns><c>true</c> if the element is required.</returns>
+            <remarks><![CDATA[Elements: <input>, <select>, <textarea>]]></remarks>
+        </member>
+        <member name="M:PuppeteerSharp.Contrib.Extensions.ElementHandleExtensions.HasFocusAsync(PuppeteerSharp.IElementHandle)">
+            <summary>
+            Indicates whether the element has focus or not.
+            </summary>
+            <param name="elementHandle">An <see cref="T:PuppeteerSharp.IElementHandle"/>.</param>
+            <returns><c>true</c> if the element has focus.</returns>
+            <remarks><![CDATA[Elements: <button>, <input>, <select>, <textarea>]]></remarks>
+            <seealso href="https://developer.mozilla.org/en-US/docs/Web/API/DocumentOrShadowRoot/activeElement"/>
+        </member>
+        <member name="M:PuppeteerSharp.Contrib.Extensions.ElementHandleExtensions.IsEmptyAsync(PuppeteerSharp.IElementHandle)">
+            <summary>
+            Indicates whether the element is empty or not, e.g. an empty editable element or a DOM node that has no text.
+            </summary>
+            <param name="elementHandle">An <see cref="T:PuppeteerSharp.IElementHandle"/>.</param>
+            <returns><c>true</c> if the element is empty.</returns>
+            <remarks><![CDATA[Elements: <input>, <textarea>]]></remarks>
+            <seealso href="https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent"/>
+        </member>
+        <member name="T:PuppeteerSharp.Contrib.Extensions.PageExtensions">
+            <summary>
+            Extension methods for <see cref="T:PuppeteerSharp.IPage"/>.
+            </summary>
+        </member>
+        <member name="M:PuppeteerSharp.Contrib.Extensions.PageExtensions.QuerySelectorWithContentAsync(PuppeteerSharp.IPage,System.String,System.String,System.String)">
+            <summary>
+            The method runs <c>document.querySelectorAll</c> within the page and then tests a <c>RegExp</c> against the elements <c>textContent</c>. The first element match is returned. If no element matches the selector and regular expression, the return value resolve to <c>null</c>.
+            </summary>
+            <param name="page">An <see cref="T:PuppeteerSharp.IPage"/> to query.</param>
+            <param name="selector">A selector to query page for.</param>
+            <param name="regex">A regular expression to test against <c>element.textContent</c>.</param>
+            <param name="flags">A set of flags for the regular expression.</param>
+            <returns>Task which resolves to an <see cref="T:PuppeteerSharp.IElementHandle"/> pointing to the frame element.</returns>
+            <seealso href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp"/>
+        </member>
+        <member name="M:PuppeteerSharp.Contrib.Extensions.PageExtensions.QuerySelectorAllWithContentAsync(PuppeteerSharp.IPage,System.String,System.String,System.String)">
+            <summary>
+            The method runs <c>document.querySelectorAll</c> within the page and then tests a <c>RegExp</c> against the elements <c>textContent</c>. All element matches are returned. If no element matches the selector and regular expression, the return value resolve to <see cref="M:System.Array.Empty``1"/>.
+            </summary>
+            <param name="page">An <see cref="T:PuppeteerSharp.IPage"/> to query.</param>
+            <param name="selector">A selector to query page for.</param>
+            <param name="regex">A regular expression to test against <c>element.textContent</c>.</param>
+            <param name="flags">A set of flags for the regular expression.</param>
+            <returns>Task which resolves to an <see cref="T:PuppeteerSharp.IElementHandle"/> array pointing to the frame elements.</returns>
+            <seealso href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp"/>
+        </member>
+        <member name="M:PuppeteerSharp.Contrib.Extensions.PageExtensions.HasContentAsync(PuppeteerSharp.IPage,System.String,System.String)">
+            <summary>
+            Indicates whether the page has the specified content or not.
+            </summary>
+            <param name="page">An <see cref="T:PuppeteerSharp.IPage"/>.</param>
+            <param name="regex">A regular expression to test against <c>document.documentElement.textContent</c>.</param>
+            <param name="flags">A set of flags for the regular expression.</param>
+            <returns><c>true</c> if the page has the specified content.</returns>
+            <seealso href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp"/>
+        </member>
+        <member name="M:PuppeteerSharp.Contrib.Extensions.PageExtensions.HasTitleAsync(PuppeteerSharp.IPage,System.String,System.String)">
+            <summary>
+            Indicates whether the page has the specified title or not.
+            </summary>
+            <param name="page">An <see cref="T:PuppeteerSharp.IPage"/>.</param>
+            <param name="regex">A regular expression to test against <c>document.title</c>.</param>
+            <param name="flags">A set of flags for the regular expression.</param>
+            <returns><c>true</c> if the page has the specified title.</returns>
+            <seealso href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp"/>
+        </member>
+        <member name="M:PuppeteerSharp.Contrib.Extensions.PageExtensions.HasUrlAsync(PuppeteerSharp.IPage,System.String,System.String)">
+            <summary>
+            Indicates whether the page has the specified URL or not.
+            </summary>
+            <param name="page">An <see cref="T:PuppeteerSharp.IPage"/>.</param>
+            <param name="regex">A regular expression to test against <c>window.location.href</c>.</param>
+            <param name="flags">A set of flags for the regular expression.</param>
+            <returns><c>true</c> if the page has the specified URL.</returns>
+            <seealso href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp"/>
+        </member>
+        <member name="T:PuppeteerSharp.Contrib.Extensions.ResponseExtensions">
+            <summary>
+            Extension methods for <see cref="T:PuppeteerSharp.IResponse"/>.
+            </summary>
+        </member>
+        <member name="M:PuppeteerSharp.Contrib.Extensions.ResponseExtensions.HasUrl(PuppeteerSharp.IResponse,System.String,System.Text.RegularExpressions.RegexOptions)">
+            <summary>
+            Indicates whether the response has the specified URL or not.
+            </summary>
+            <param name="response">A <see cref="T:PuppeteerSharp.IResponse"/>.</param>
+            <param name="regex">A regular expression to test against <see cref="P:PuppeteerSharp.IResponse.Url"/>.</param>
+            <param name="options">A set of options for the regular expression.</param>
+            <returns><c>true</c> if the response has the specified URL.</returns>
+            <seealso href="https://learn.microsoft.com/en-us/dotnet/standard/base-types/regular-expression-language-quick-reference"/>
+        </member>
+    </members>
+</doc>

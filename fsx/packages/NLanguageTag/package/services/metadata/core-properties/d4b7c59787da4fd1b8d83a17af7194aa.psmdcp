@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<coreProperties xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.openxmlformats.org/package/2006/metadata/core-properties">
+  <dc:creator>Anatoliy Koperin &lt;a.koperin@gmail.com&gt;</dc:creator>
+  <dc:description>Language tags are used to help identify languages, whether spoken, written, signed, or otherwise signaled, for the purpose of communication.
+      Language tag syntax is defined by the IETF's BCP 47 (https://tools.ietf.org/html/bcp47) or RFC 5646 (https://datatracker.ietf.org/doc/html/rfc5646)</dc:description>
+  <dc:identifier>NLanguageTag</dc:identifier>
+  <version>4.1.2</version>
+  <keywords>bcp47 languagetag iso639 language rfc5646 bcp 47 languagetags iso 639 rfc 5646</keywords>
+  <lastModifiedBy>NuGet.Packaging, Version=7.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35;.NET 8.0</lastModifiedBy>
+</coreProperties>

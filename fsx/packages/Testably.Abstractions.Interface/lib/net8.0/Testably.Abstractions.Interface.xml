@@ -1,0 +1,559 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Testably.Abstractions.Interface</name>
+    </assembly>
+    <members>
+        <member name="T:Testably.Abstractions.Helpers.GuidSystemBase">
+            <summary>
+                Default implementation for <see cref="T:System.Guid" /> abstractions.
+                <para />
+                Implements <seealso cref="T:Testably.Abstractions.RandomSystem.IGuid" />
+            </summary>
+        </member>
+        <member name="M:Testably.Abstractions.Helpers.GuidSystemBase.#ctor(Testably.Abstractions.IRandomSystem)">
+            <summary>
+                Initializes a new instance of <see cref="T:Testably.Abstractions.Helpers.GuidSystemBase" /> for the given <paramref name="randomSystem" />.
+            </summary>
+        </member>
+        <member name="P:Testably.Abstractions.Helpers.GuidSystemBase.Empty">
+            <inheritdoc cref="P:Testably.Abstractions.RandomSystem.IGuid.Empty" />
+        </member>
+        <member name="P:Testably.Abstractions.Helpers.GuidSystemBase.RandomSystem">
+            <inheritdoc cref="P:Testably.Abstractions.RandomSystem.IRandomSystemEntity.RandomSystem" />
+        </member>
+        <member name="M:Testably.Abstractions.Helpers.GuidSystemBase.NewGuid">
+            <inheritdoc cref="M:Testably.Abstractions.RandomSystem.IGuid.NewGuid" />
+        </member>
+        <member name="M:Testably.Abstractions.Helpers.GuidSystemBase.Parse(System.String)">
+            <inheritdoc cref="M:Testably.Abstractions.RandomSystem.IGuid.Parse(System.String)" />
+        </member>
+        <member name="M:Testably.Abstractions.Helpers.GuidSystemBase.Parse(System.ReadOnlySpan{System.Char})">
+            <inheritdoc cref="M:Testably.Abstractions.RandomSystem.IGuid.Parse(System.ReadOnlySpan{System.Char})" />
+        </member>
+        <member name="M:Testably.Abstractions.Helpers.GuidSystemBase.Parse(System.String,System.IFormatProvider)">
+            <inheritdoc cref="M:Testably.Abstractions.RandomSystem.IGuid.Parse(System.String,System.IFormatProvider)" />
+        </member>
+        <member name="M:Testably.Abstractions.Helpers.GuidSystemBase.Parse(System.ReadOnlySpan{System.Char},System.IFormatProvider)">
+            <inheritdoc cref="M:Testably.Abstractions.RandomSystem.IGuid.Parse(System.ReadOnlySpan{System.Char},System.IFormatProvider)" />
+        </member>
+        <member name="M:Testably.Abstractions.Helpers.GuidSystemBase.ParseExact(System.String,System.String)">
+            <inheritdoc cref="M:Testably.Abstractions.RandomSystem.IGuid.ParseExact(System.String,System.String)" />
+        </member>
+        <member name="M:Testably.Abstractions.Helpers.GuidSystemBase.ParseExact(System.ReadOnlySpan{System.Char},System.ReadOnlySpan{System.Char})">
+            <inheritdoc cref="M:Testably.Abstractions.RandomSystem.IGuid.ParseExact(System.ReadOnlySpan{System.Char},System.ReadOnlySpan{System.Char})" />
+        </member>
+        <member name="M:Testably.Abstractions.Helpers.GuidSystemBase.TryParse(System.String,System.Guid@)">
+            <inheritdoc cref="M:Testably.Abstractions.RandomSystem.IGuid.TryParse(System.String,System.Guid@)" />
+        </member>
+        <member name="M:Testably.Abstractions.Helpers.GuidSystemBase.TryParse(System.ReadOnlySpan{System.Char},System.Guid@)">
+            <inheritdoc cref="M:Testably.Abstractions.RandomSystem.IGuid.TryParse(System.ReadOnlySpan{System.Char},System.Guid@)" />
+        </member>
+        <member name="M:Testably.Abstractions.Helpers.GuidSystemBase.TryParse(System.String,System.IFormatProvider,System.Guid@)">
+            <inheritdoc cref="M:Testably.Abstractions.RandomSystem.IGuid.TryParse(System.String,System.IFormatProvider,System.Guid@)" />
+        </member>
+        <member name="M:Testably.Abstractions.Helpers.GuidSystemBase.TryParse(System.ReadOnlySpan{System.Char},System.IFormatProvider,System.Guid@)">
+            <inheritdoc cref="M:Testably.Abstractions.RandomSystem.IGuid.TryParse(System.ReadOnlySpan{System.Char},System.IFormatProvider,System.Guid@)" />
+        </member>
+        <member name="M:Testably.Abstractions.Helpers.GuidSystemBase.TryParseExact(System.String,System.String,System.Guid@)">
+            <inheritdoc cref="M:Testably.Abstractions.RandomSystem.IGuid.TryParseExact(System.String,System.String,System.Guid@)" />
+        </member>
+        <member name="M:Testably.Abstractions.Helpers.GuidSystemBase.TryParseExact(System.ReadOnlySpan{System.Char},System.ReadOnlySpan{System.Char},System.Guid@)">
+            <inheritdoc cref="M:Testably.Abstractions.RandomSystem.IGuid.TryParseExact(System.ReadOnlySpan{System.Char},System.ReadOnlySpan{System.Char},System.Guid@)" />
+        </member>
+        <member name="T:Testably.Abstractions.Helpers.IFileSystemExtensibility">
+            <summary>
+                A container to support extensions on <see cref="T:System.IO.Abstractions.IFileSystem" /> entities.
+            </summary>
+        </member>
+        <member name="M:Testably.Abstractions.Helpers.IFileSystemExtensibility.RetrieveMetadata``1(System.String)">
+            <summary>
+                Retrieves a previously stored metadata on the <see cref="T:System.IO.Abstractions.IFileSystemInfo" />.
+            </summary>
+            <typeparam name="T">The type of the value to retrieve.</typeparam>
+            <param name="key">The key under which the metadata was stored.</param>
+            <returns>The value of the previously stored metadata, or <see langword="default" />.</returns>
+        </member>
+        <member name="M:Testably.Abstractions.Helpers.IFileSystemExtensibility.StoreMetadata``1(System.String,``0)">
+            <summary>
+                Stores additional metadata to the <see cref="T:System.IO.Abstractions.IFileSystemInfo" />.
+            </summary>
+            <typeparam name="T">The type of the value to store.</typeparam>
+            <param name="key">The key under which to store the metadata.</param>
+            <param name="value">The value to store under the given <paramref name="key" />.</param>
+        </member>
+        <member name="M:Testably.Abstractions.Helpers.IFileSystemExtensibility.TryGetWrappedInstance``1(``0@)">
+            <summary>
+                The wrapped instance on a real file system.
+            </summary>
+            <returns>
+                <see langword="null" /> when not on a real file system or if the requested type does not match,
+                otherwise the wrapped instance.
+            </returns>
+        </member>
+        <member name="T:Testably.Abstractions.Helpers.RandomWrapper">
+            <summary>
+                Wrapper around <see cref="T:System.Random" />.
+            </summary>
+        </member>
+        <member name="M:Testably.Abstractions.Helpers.RandomWrapper.#ctor(System.Random)">
+            <summary>
+                Initializes a random wrapper using the provided <see cref="T:System.Random" /> <paramref name="instance" />.
+            </summary>
+            <param name="instance"></param>
+        </member>
+        <member name="M:Testably.Abstractions.Helpers.RandomWrapper.GetItems``1(System.ReadOnlySpan{``0},System.Span{``0})">
+            <inheritdoc cref="M:Testably.Abstractions.RandomSystem.IRandom.GetItems``1(System.ReadOnlySpan{``0},System.Span{``0})" />
+        </member>
+        <member name="M:Testably.Abstractions.Helpers.RandomWrapper.GetItems``1(``0[],System.Int32)">
+            <inheritdoc cref="M:Testably.Abstractions.RandomSystem.IRandom.GetItems``1(``0[],System.Int32)" />
+        </member>
+        <member name="M:Testably.Abstractions.Helpers.RandomWrapper.GetItems``1(System.ReadOnlySpan{``0},System.Int32)">
+            <inheritdoc cref="M:Testably.Abstractions.RandomSystem.IRandom.GetItems``1(System.ReadOnlySpan{``0},System.Int32)" />
+        </member>
+        <member name="M:Testably.Abstractions.Helpers.RandomWrapper.Next">
+            <inheritdoc cref="M:Testably.Abstractions.RandomSystem.IRandom.Next" />
+        </member>
+        <member name="M:Testably.Abstractions.Helpers.RandomWrapper.Next(System.Int32)">
+            <inheritdoc cref="M:Testably.Abstractions.RandomSystem.IRandom.Next(System.Int32)" />
+        </member>
+        <member name="M:Testably.Abstractions.Helpers.RandomWrapper.Next(System.Int32,System.Int32)">
+            <inheritdoc cref="M:Testably.Abstractions.RandomSystem.IRandom.Next(System.Int32,System.Int32)" />
+        </member>
+        <member name="M:Testably.Abstractions.Helpers.RandomWrapper.NextBytes(System.Byte[])">
+            <inheritdoc cref="M:Testably.Abstractions.RandomSystem.IRandom.NextBytes(System.Byte[])" />
+        </member>
+        <member name="M:Testably.Abstractions.Helpers.RandomWrapper.NextBytes(System.Span{System.Byte})">
+            <inheritdoc cref="M:Testably.Abstractions.RandomSystem.IRandom.NextBytes(System.Span{System.Byte})" />
+        </member>
+        <member name="M:Testably.Abstractions.Helpers.RandomWrapper.NextDouble">
+            <inheritdoc cref="M:Testably.Abstractions.RandomSystem.IRandom.NextDouble" />
+        </member>
+        <member name="M:Testably.Abstractions.Helpers.RandomWrapper.NextInt64">
+            <inheritdoc cref="M:Testably.Abstractions.RandomSystem.IRandom.NextInt64" />
+        </member>
+        <member name="M:Testably.Abstractions.Helpers.RandomWrapper.NextInt64(System.Int64)">
+            <inheritdoc cref="M:Testably.Abstractions.RandomSystem.IRandom.NextInt64(System.Int64)" />
+        </member>
+        <member name="M:Testably.Abstractions.Helpers.RandomWrapper.NextInt64(System.Int64,System.Int64)">
+            <inheritdoc cref="M:Testably.Abstractions.RandomSystem.IRandom.NextInt64(System.Int64,System.Int64)" />
+        </member>
+        <member name="M:Testably.Abstractions.Helpers.RandomWrapper.NextSingle">
+            <inheritdoc cref="M:Testably.Abstractions.RandomSystem.IRandom.NextSingle" />
+        </member>
+        <member name="M:Testably.Abstractions.Helpers.RandomWrapper.Shuffle``1(``0[])">
+            <inheritdoc cref="M:Testably.Abstractions.RandomSystem.IRandom.Shuffle``1(``0[])" />
+        </member>
+        <member name="M:Testably.Abstractions.Helpers.RandomWrapper.Shuffle``1(System.Span{``0})">
+            <inheritdoc cref="M:Testably.Abstractions.RandomSystem.IRandom.Shuffle``1(System.Span{``0})" />
+        </member>
+        <member name="T:Testably.Abstractions.IRandomSystem">
+            <summary>
+                Allows abstracting random-related system dependencies.
+            </summary>
+        </member>
+        <member name="P:Testably.Abstractions.IRandomSystem.Guid">
+            <summary>
+                Abstractions for <see cref="T:System.Guid" />.
+            </summary>
+        </member>
+        <member name="P:Testably.Abstractions.IRandomSystem.Random">
+            <summary>
+                Abstractions for <see cref="T:System.Random" />.
+            </summary>
+        </member>
+        <member name="T:Testably.Abstractions.ITimeSystem">
+            <summary>
+                Allows abstracting time-related system dependencies.
+            </summary>
+        </member>
+        <member name="P:Testably.Abstractions.ITimeSystem.DateTime">
+            <summary>
+                Abstractions for <see cref="T:System.DateTime" />.
+            </summary>
+        </member>
+        <member name="P:Testably.Abstractions.ITimeSystem.DateTimeOffset">
+            <summary>
+                Abstractions for <see cref="T:System.DateTimeOffset" />.
+            </summary>
+        </member>
+        <member name="P:Testably.Abstractions.ITimeSystem.PeriodicTimer">
+            <summary>
+                Abstractions for <see cref="T:System.Threading.PeriodicTimer" />.
+            </summary>
+        </member>
+        <member name="P:Testably.Abstractions.ITimeSystem.Stopwatch">
+            <summary>
+                Abstractions for <see cref="T:System.Diagnostics.Stopwatch" />.
+            </summary>
+        </member>
+        <member name="P:Testably.Abstractions.ITimeSystem.Task">
+            <summary>
+                Abstractions for <see cref="T:System.Threading.Tasks.Task" />.
+            </summary>
+        </member>
+        <member name="P:Testably.Abstractions.ITimeSystem.Thread">
+            <summary>
+                Abstractions for <see cref="T:System.Threading.Thread" />.
+            </summary>
+        </member>
+        <member name="P:Testably.Abstractions.ITimeSystem.Timer">
+            <summary>
+                Abstractions for <see cref="T:System.Threading.Timer" />.
+            </summary>
+        </member>
+        <member name="P:Testably.Abstractions.ITimeSystem.TimeZoneInfo">
+            <summary>
+                Abstractions for <see cref="T:System.TimeZoneInfo" />.
+            </summary>
+        </member>
+        <member name="T:Testably.Abstractions.RandomSystem.IGuid">
+            <summary>
+                Abstractions for <see cref="T:System.Guid" />.
+            </summary>
+        </member>
+        <member name="P:Testably.Abstractions.RandomSystem.IGuid.Empty">
+            <inheritdoc cref="F:System.Guid.Empty" />
+        </member>
+        <member name="M:Testably.Abstractions.RandomSystem.IGuid.NewGuid">
+            <inheritdoc cref="M:System.Guid.NewGuid" />
+        </member>
+        <member name="M:Testably.Abstractions.RandomSystem.IGuid.Parse(System.String)">
+            <inheritdoc cref="M:System.Guid.Parse(System.String)" />
+        </member>
+        <member name="M:Testably.Abstractions.RandomSystem.IGuid.Parse(System.ReadOnlySpan{System.Char})">
+            <inheritdoc cref="M:System.Guid.Parse(System.ReadOnlySpan{System.Char})" />
+        </member>
+        <member name="M:Testably.Abstractions.RandomSystem.IGuid.Parse(System.String,System.IFormatProvider)">
+            <inheritdoc cref="M:System.Guid.Parse(System.String,System.IFormatProvider)" />
+        </member>
+        <member name="M:Testably.Abstractions.RandomSystem.IGuid.Parse(System.ReadOnlySpan{System.Char},System.IFormatProvider)">
+            <inheritdoc cref="M:System.Guid.Parse(System.ReadOnlySpan{System.Char},System.IFormatProvider)" />
+        </member>
+        <member name="M:Testably.Abstractions.RandomSystem.IGuid.ParseExact(System.String,System.String)">
+            <inheritdoc cref="M:System.Guid.ParseExact(System.String,System.String)" />
+        </member>
+        <member name="M:Testably.Abstractions.RandomSystem.IGuid.ParseExact(System.ReadOnlySpan{System.Char},System.ReadOnlySpan{System.Char})">
+            <inheritdoc cref="M:System.Guid.ParseExact(System.ReadOnlySpan{System.Char},System.ReadOnlySpan{System.Char})" />
+        </member>
+        <member name="M:Testably.Abstractions.RandomSystem.IGuid.TryParse(System.String,System.Guid@)">
+            <inheritdoc cref="M:System.Guid.TryParse(System.String,System.Guid@)" />
+        </member>
+        <member name="M:Testably.Abstractions.RandomSystem.IGuid.TryParse(System.ReadOnlySpan{System.Char},System.Guid@)">
+            <inheritdoc cref="M:System.Guid.TryParse(System.ReadOnlySpan{System.Char},System.Guid@)" />
+        </member>
+        <member name="M:Testably.Abstractions.RandomSystem.IGuid.TryParse(System.String,System.IFormatProvider,System.Guid@)">
+            <inheritdoc cref="M:System.Guid.TryParse(System.String,System.IFormatProvider,System.Guid@)" />
+        </member>
+        <member name="M:Testably.Abstractions.RandomSystem.IGuid.TryParse(System.ReadOnlySpan{System.Char},System.IFormatProvider,System.Guid@)">
+            <inheritdoc cref="M:System.Guid.TryParse(System.ReadOnlySpan{System.Char},System.IFormatProvider,System.Guid@)" />
+        </member>
+        <member name="M:Testably.Abstractions.RandomSystem.IGuid.TryParseExact(System.String,System.String,System.Guid@)">
+            <inheritdoc cref="M:System.Guid.TryParseExact(System.String,System.String,System.Guid@)" />
+        </member>
+        <member name="M:Testably.Abstractions.RandomSystem.IGuid.TryParseExact(System.ReadOnlySpan{System.Char},System.ReadOnlySpan{System.Char},System.Guid@)">
+            <inheritdoc cref="M:System.Guid.TryParseExact(System.ReadOnlySpan{System.Char},System.ReadOnlySpan{System.Char},System.Guid@)" />
+        </member>
+        <member name="T:Testably.Abstractions.RandomSystem.IRandom">
+            <summary>
+                Abstractions for <see cref="T:System.Random" />.
+            </summary>
+        </member>
+        <member name="M:Testably.Abstractions.RandomSystem.IRandom.GetItems``1(System.ReadOnlySpan{``0},System.Span{``0})">
+            <inheritdoc cref="M:System.Random.GetItems``1(System.ReadOnlySpan{``0},System.Span{``0})" />
+        </member>
+        <member name="M:Testably.Abstractions.RandomSystem.IRandom.GetItems``1(``0[],System.Int32)">
+            <inheritdoc cref="M:System.Random.GetItems``1(``0[],System.Int32)" />
+        </member>
+        <member name="M:Testably.Abstractions.RandomSystem.IRandom.GetItems``1(System.ReadOnlySpan{``0},System.Int32)">
+            <inheritdoc cref="M:System.Random.GetItems``1(System.ReadOnlySpan{``0},System.Int32)" />
+        </member>
+        <member name="M:Testably.Abstractions.RandomSystem.IRandom.Next">
+            <inheritdoc cref="M:System.Random.Next" />
+        </member>
+        <member name="M:Testably.Abstractions.RandomSystem.IRandom.Next(System.Int32)">
+            <inheritdoc cref="M:System.Random.Next(System.Int32)" />
+        </member>
+        <member name="M:Testably.Abstractions.RandomSystem.IRandom.Next(System.Int32,System.Int32)">
+            <inheritdoc cref="M:System.Random.Next(System.Int32,System.Int32)" />
+        </member>
+        <member name="M:Testably.Abstractions.RandomSystem.IRandom.NextBytes(System.Byte[])">
+            <inheritdoc cref="M:System.Random.NextBytes(System.Byte[])" />
+        </member>
+        <member name="M:Testably.Abstractions.RandomSystem.IRandom.NextBytes(System.Span{System.Byte})">
+            <inheritdoc cref="M:System.Random.NextBytes(System.Span{System.Byte})" />
+        </member>
+        <member name="M:Testably.Abstractions.RandomSystem.IRandom.NextDouble">
+            <inheritdoc cref="M:System.Random.NextDouble" />
+        </member>
+        <member name="M:Testably.Abstractions.RandomSystem.IRandom.NextInt64">
+            <inheritdoc cref="M:System.Random.NextInt64" />
+        </member>
+        <member name="M:Testably.Abstractions.RandomSystem.IRandom.NextInt64(System.Int64)">
+            <inheritdoc cref="M:System.Random.NextInt64(System.Int64)" />
+        </member>
+        <member name="M:Testably.Abstractions.RandomSystem.IRandom.NextInt64(System.Int64,System.Int64)">
+            <inheritdoc cref="M:System.Random.NextInt64(System.Int64,System.Int64)" />
+        </member>
+        <member name="M:Testably.Abstractions.RandomSystem.IRandom.NextSingle">
+            <inheritdoc cref="M:System.Random.NextSingle" />
+        </member>
+        <member name="M:Testably.Abstractions.RandomSystem.IRandom.Shuffle``1(``0[])">
+            <inheritdoc cref="M:System.Random.Shuffle``1(``0[])" />
+        </member>
+        <member name="M:Testably.Abstractions.RandomSystem.IRandom.Shuffle``1(System.Span{``0})">
+            <inheritdoc cref="M:System.Random.Shuffle``1(System.Span{``0})" />
+        </member>
+        <member name="T:Testably.Abstractions.RandomSystem.IRandomFactory">
+            <summary>
+                Factory for abstracting creation of <see cref="T:System.Random" />.
+            </summary>
+        </member>
+        <member name="P:Testably.Abstractions.RandomSystem.IRandomFactory.Shared">
+            <summary>
+                Provides a thread-safe <see cref="T:Testably.Abstractions.RandomSystem.IRandom" /> instance that may be used concurrently from any thread.
+            </summary>
+        </member>
+        <member name="M:Testably.Abstractions.RandomSystem.IRandomFactory.New">
+            <inheritdoc cref="M:System.Random.#ctor" />
+        </member>
+        <member name="M:Testably.Abstractions.RandomSystem.IRandomFactory.New(System.Int32)">
+            <inheritdoc cref="M:System.Random.#ctor(System.Int32)" />
+        </member>
+        <member name="T:Testably.Abstractions.RandomSystem.IRandomSystemEntity">
+            <summary>
+                Interface to support implementing extension methods on top of nested <see cref="T:Testably.Abstractions.IRandomSystem" /> interfaces.
+            </summary>
+        </member>
+        <member name="P:Testably.Abstractions.RandomSystem.IRandomSystemEntity.RandomSystem">
+            <summary>
+                Exposes the underlying random system implementation.
+                <para />
+                This is useful for implementing extension methods.
+            </summary>
+        </member>
+        <member name="T:Testably.Abstractions.TimeSystem.IDateTime">
+            <summary>
+                Abstractions for <see cref="T:System.DateTime" />.
+            </summary>
+        </member>
+        <member name="P:Testably.Abstractions.TimeSystem.IDateTime.MaxValue">
+            <inheritdoc cref="F:System.DateTime.MaxValue" />
+        </member>
+        <member name="P:Testably.Abstractions.TimeSystem.IDateTime.MinValue">
+            <inheritdoc cref="F:System.DateTime.MinValue" />
+        </member>
+        <member name="P:Testably.Abstractions.TimeSystem.IDateTime.UnixEpoch">
+            <inheritdoc cref="F:System.DateTime.UnixEpoch" />
+        </member>
+        <member name="P:Testably.Abstractions.TimeSystem.IDateTime.Now">
+            <inheritdoc cref="P:System.DateTime.Now" />
+        </member>
+        <member name="P:Testably.Abstractions.TimeSystem.IDateTime.UtcNow">
+            <inheritdoc cref="P:System.DateTime.UtcNow" />
+        </member>
+        <member name="P:Testably.Abstractions.TimeSystem.IDateTime.Today">
+            <inheritdoc cref="P:System.DateTime.Today" />
+        </member>
+        <member name="T:Testably.Abstractions.TimeSystem.IDateTimeOffset">
+            <summary>
+                Abstractions for <see cref="T:System.DateTimeOffset" />.
+            </summary>
+        </member>
+        <member name="P:Testably.Abstractions.TimeSystem.IDateTimeOffset.MaxValue">
+            <inheritdoc cref="F:System.DateTimeOffset.MaxValue" />
+        </member>
+        <member name="P:Testably.Abstractions.TimeSystem.IDateTimeOffset.MinValue">
+            <inheritdoc cref="F:System.DateTimeOffset.MinValue" />
+        </member>
+        <member name="P:Testably.Abstractions.TimeSystem.IDateTimeOffset.UnixEpoch">
+            <inheritdoc cref="F:System.DateTimeOffset.UnixEpoch" />
+        </member>
+        <member name="P:Testably.Abstractions.TimeSystem.IDateTimeOffset.Now">
+            <inheritdoc cref="P:System.DateTimeOffset.Now" />
+        </member>
+        <member name="P:Testably.Abstractions.TimeSystem.IDateTimeOffset.UtcNow">
+            <inheritdoc cref="P:System.DateTimeOffset.UtcNow" />
+        </member>
+        <member name="T:Testably.Abstractions.TimeSystem.IPeriodicTimer">
+            <summary>
+                Abstractions for <see cref="T:System.Threading.PeriodicTimer" />.
+            </summary>
+        </member>
+        <member name="P:Testably.Abstractions.TimeSystem.IPeriodicTimer.Period">
+            <inheritdoc cref="P:System.Threading.PeriodicTimer.Period" />
+        </member>
+        <member name="M:Testably.Abstractions.TimeSystem.IPeriodicTimer.WaitForNextTickAsync(System.Threading.CancellationToken)">
+            <inheritdoc cref="M:System.Threading.PeriodicTimer.WaitForNextTickAsync(System.Threading.CancellationToken)" />
+        </member>
+        <member name="T:Testably.Abstractions.TimeSystem.IPeriodicTimerFactory">
+            <summary>
+                Factory for abstracting creation of <see cref="T:System.Threading.PeriodicTimer" />.
+            </summary>
+        </member>
+        <member name="M:Testably.Abstractions.TimeSystem.IPeriodicTimerFactory.New(System.TimeSpan)">
+            <inheritdoc cref="M:System.Threading.PeriodicTimer.#ctor(System.TimeSpan)" />
+        </member>
+        <member name="M:Testably.Abstractions.TimeSystem.IPeriodicTimerFactory.Wrap(System.Threading.PeriodicTimer)">
+            <summary>
+                Wraps the <paramref name="timer" /> to the testable <see cref="T:Testably.Abstractions.TimeSystem.IPeriodicTimer" />.
+            </summary>
+        </member>
+        <member name="T:Testably.Abstractions.TimeSystem.IStopwatch">
+            <summary>
+                Abstractions for <see cref="T:System.Diagnostics.Stopwatch" />.
+            </summary>
+        </member>
+        <member name="P:Testably.Abstractions.TimeSystem.IStopwatch.Elapsed">
+            <inheritdoc cref="P:System.Diagnostics.Stopwatch.Elapsed" />
+        </member>
+        <member name="P:Testably.Abstractions.TimeSystem.IStopwatch.ElapsedMilliseconds">
+            <inheritdoc cref="P:System.Diagnostics.Stopwatch.ElapsedMilliseconds" />
+        </member>
+        <member name="P:Testably.Abstractions.TimeSystem.IStopwatch.ElapsedTicks">
+            <inheritdoc cref="P:System.Diagnostics.Stopwatch.ElapsedTicks" />
+        </member>
+        <member name="P:Testably.Abstractions.TimeSystem.IStopwatch.IsRunning">
+            <inheritdoc cref="P:System.Diagnostics.Stopwatch.IsRunning" />
+        </member>
+        <member name="M:Testably.Abstractions.TimeSystem.IStopwatch.Reset">
+            <inheritdoc cref="M:System.Diagnostics.Stopwatch.Reset" />
+        </member>
+        <member name="M:Testably.Abstractions.TimeSystem.IStopwatch.Restart">
+            <inheritdoc cref="M:System.Diagnostics.Stopwatch.Restart" />
+        </member>
+        <member name="M:Testably.Abstractions.TimeSystem.IStopwatch.Start">
+            <inheritdoc cref="M:System.Diagnostics.Stopwatch.Start" />
+        </member>
+        <member name="M:Testably.Abstractions.TimeSystem.IStopwatch.Stop">
+            <inheritdoc cref="M:System.Diagnostics.Stopwatch.Stop" />
+        </member>
+        <member name="T:Testably.Abstractions.TimeSystem.IStopwatchFactory">
+            <summary>
+                Factory for abstracting creation of <see cref="T:System.Diagnostics.Stopwatch" />.
+            </summary>
+        </member>
+        <member name="P:Testably.Abstractions.TimeSystem.IStopwatchFactory.Frequency">
+            <inheritdoc cref="F:System.Diagnostics.Stopwatch.Frequency" />
+        </member>
+        <member name="P:Testably.Abstractions.TimeSystem.IStopwatchFactory.IsHighResolution">
+            <inheritdoc cref="F:System.Diagnostics.Stopwatch.IsHighResolution" />
+        </member>
+        <member name="M:Testably.Abstractions.TimeSystem.IStopwatchFactory.GetTimestamp">
+            <inheritdoc cref="M:System.Diagnostics.Stopwatch.GetTimestamp" />
+        </member>
+        <member name="M:Testably.Abstractions.TimeSystem.IStopwatchFactory.New">
+            <inheritdoc cref="M:System.Diagnostics.Stopwatch.#ctor" />
+        </member>
+        <member name="M:Testably.Abstractions.TimeSystem.IStopwatchFactory.StartNew">
+            <inheritdoc cref="M:System.Diagnostics.Stopwatch.StartNew" />
+        </member>
+        <member name="M:Testably.Abstractions.TimeSystem.IStopwatchFactory.Wrap(System.Diagnostics.Stopwatch)">
+            <summary>
+                Wraps the <paramref name="stopwatch" /> to the testable <see cref="T:Testably.Abstractions.TimeSystem.IStopwatch" />.
+            </summary>
+        </member>
+        <member name="M:Testably.Abstractions.TimeSystem.IStopwatchFactory.GetElapsedTime(System.Int64)">
+            <inheritdoc cref="M:System.Diagnostics.Stopwatch.GetElapsedTime(System.Int64)" />
+        </member>
+        <member name="M:Testably.Abstractions.TimeSystem.IStopwatchFactory.GetElapsedTime(System.Int64,System.Int64)">
+            <inheritdoc cref="M:System.Diagnostics.Stopwatch.GetElapsedTime(System.Int64,System.Int64)" />
+        </member>
+        <member name="T:Testably.Abstractions.TimeSystem.ITask">
+            <summary>
+                Abstractions for <see cref="T:System.Threading.Tasks.Task" />.
+            </summary>
+        </member>
+        <member name="M:Testably.Abstractions.TimeSystem.ITask.Delay(System.Int32)">
+            <inheritdoc cref="M:System.Threading.Tasks.Task.Delay(System.Int32)" />
+        </member>
+        <member name="M:Testably.Abstractions.TimeSystem.ITask.Delay(System.Int32,System.Threading.CancellationToken)">
+            <inheritdoc cref="M:System.Threading.Tasks.Task.Delay(System.Int32,System.Threading.CancellationToken)" />
+        </member>
+        <member name="M:Testably.Abstractions.TimeSystem.ITask.Delay(System.TimeSpan)">
+            <inheritdoc cref="M:System.Threading.Tasks.Task.Delay(System.TimeSpan)" />
+        </member>
+        <member name="M:Testably.Abstractions.TimeSystem.ITask.Delay(System.TimeSpan,System.Threading.CancellationToken)">
+            <inheritdoc cref="M:System.Threading.Tasks.Task.Delay(System.TimeSpan,System.Threading.CancellationToken)" />
+        </member>
+        <member name="T:Testably.Abstractions.TimeSystem.IThread">
+            <summary>
+                Abstractions for <see cref="T:System.Threading.Thread" />.
+            </summary>
+        </member>
+        <member name="M:Testably.Abstractions.TimeSystem.IThread.Sleep(System.Int32)">
+            <inheritdoc cref="M:System.Threading.Thread.Sleep(System.Int32)" />
+        </member>
+        <member name="M:Testably.Abstractions.TimeSystem.IThread.Sleep(System.TimeSpan)">
+            <inheritdoc cref="M:System.Threading.Thread.Sleep(System.TimeSpan)" />
+        </member>
+        <member name="T:Testably.Abstractions.TimeSystem.ITimer">
+            <summary>
+                Abstractions for <see cref="T:System.Threading.Timer" />.
+            </summary>
+        </member>
+        <member name="M:Testably.Abstractions.TimeSystem.ITimer.Change(System.Int32,System.Int32)">
+            <inheritdoc cref="M:System.Threading.Timer.Change(System.Int32,System.Int32)" />
+        </member>
+        <member name="M:Testably.Abstractions.TimeSystem.ITimer.Change(System.Int64,System.Int64)">
+            <inheritdoc cref="M:System.Threading.Timer.Change(System.Int64,System.Int64)" />
+        </member>
+        <member name="M:Testably.Abstractions.TimeSystem.ITimer.Change(System.TimeSpan,System.TimeSpan)">
+            <inheritdoc cref="M:System.Threading.Timer.Change(System.TimeSpan,System.TimeSpan)" />
+        </member>
+        <member name="M:Testably.Abstractions.TimeSystem.ITimer.Dispose(System.Threading.WaitHandle)">
+            <inheritdoc cref="M:System.Threading.Timer.Dispose(System.Threading.WaitHandle)" />
+        </member>
+        <member name="T:Testably.Abstractions.TimeSystem.ITimerFactory">
+            <summary>
+                Factory for abstracting creation of <see cref="T:System.Threading.Timer" />.
+            </summary>
+        </member>
+        <member name="M:Testably.Abstractions.TimeSystem.ITimerFactory.New(System.Threading.TimerCallback)">
+            <inheritdoc cref="M:System.Threading.Timer.#ctor(System.Threading.TimerCallback)" />
+        </member>
+        <member name="M:Testably.Abstractions.TimeSystem.ITimerFactory.New(System.Threading.TimerCallback,System.Object,System.Int32,System.Int32)">
+            <inheritdoc cref="M:System.Threading.Timer.#ctor(System.Threading.TimerCallback,System.Object,System.Int32,System.Int32)" />
+        </member>
+        <member name="M:Testably.Abstractions.TimeSystem.ITimerFactory.New(System.Threading.TimerCallback,System.Object,System.Int64,System.Int64)">
+            <inheritdoc cref="M:System.Threading.Timer.#ctor(System.Threading.TimerCallback,System.Object,System.Int64,System.Int64)" />
+        </member>
+        <member name="M:Testably.Abstractions.TimeSystem.ITimerFactory.New(System.Threading.TimerCallback,System.Object,System.TimeSpan,System.TimeSpan)">
+            <inheritdoc cref="M:System.Threading.Timer.#ctor(System.Threading.TimerCallback,System.Object,System.TimeSpan,System.TimeSpan)" />
+        </member>
+        <member name="M:Testably.Abstractions.TimeSystem.ITimerFactory.Wrap(System.Threading.Timer)">
+            <summary>
+                Wraps the <paramref name="timer" /> to the testable <see cref="T:Testably.Abstractions.TimeSystem.ITimer" />.
+            </summary>
+        </member>
+        <member name="T:Testably.Abstractions.TimeSystem.ITimeSystemEntity">
+            <summary>
+                Interface to support implementing extension methods on top of nested <see cref="T:Testably.Abstractions.ITimeSystem" /> interfaces.
+            </summary>
+        </member>
+        <member name="P:Testably.Abstractions.TimeSystem.ITimeSystemEntity.TimeSystem">
+            <summary>
+                Exposes the underlying time system implementation.
+                <para />
+                This is useful for implementing extension methods.
+            </summary>
+        </member>
+        <member name="T:Testably.Abstractions.TimeSystem.ITimeZoneInfo">
+            <summary>
+                Abstractions for <see cref="T:System.TimeZoneInfo" />.
+            </summary>
+        </member>
+        <member name="P:Testably.Abstractions.TimeSystem.ITimeZoneInfo.Local">
+            <inheritdoc cref="P:System.TimeZoneInfo.Local" />
+        </member>
+        <member name="P:Testably.Abstractions.TimeSystem.ITimeZoneInfo.Utc">
+            <inheritdoc cref="P:System.TimeZoneInfo.Utc" />
+        </member>
+        <member name="M:Testably.Abstractions.TimeSystem.ITimeZoneInfo.FindSystemTimeZoneById(System.String)">
+            <inheritdoc cref="M:System.TimeZoneInfo.FindSystemTimeZoneById(System.String)" />
+        </member>
+        <member name="M:Testably.Abstractions.TimeSystem.ITimeZoneInfo.GetSystemTimeZones">
+            <inheritdoc cref="M:System.TimeZoneInfo.GetSystemTimeZones" />
+        </member>
+    </members>
+</doc>

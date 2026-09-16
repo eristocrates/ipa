@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>PhoenixmlDb.XQuery</id>
+    <version>1.6.15</version>
+    <authors>Endpoint Systems</authors>
+    <license type="expression">Apache-2.0</license>
+    <licenseUrl>https://licenses.nuget.org/Apache-2.0</licenseUrl>
+    <icon>icon.png</icon>
+    <readme>PACKAGE.md</readme>
+    <projectUrl>https://phoenixml.dev/</projectUrl>
+    <description>XQuery 4.0 query engine for PhoenixmlDb</description>
+    <releaseNotes>### Arithmetic on a date or time leaked a CLR exception
+
+`xs:date('2020-01-01') + 1` reported *"Unable to cast object of type 'PhoenixmlDb.Xdm.XsDate' to
+type 'System.IConvertible'"* — a raw `InvalidCastException`, not an XQuery error, matching no code
+a caller could catch. The valid date/time and duration combinations are matched earlier in each
+operator, so anything of those types reaching numeric promotion has already failed to match one
+and is a type error. Now XPTY0004.
+
+Guarded in `ToDouble`/`ToFloat` and in `PromoteNumeric`, which every operator fall-through routes
+through. Durations are deliberately not rejected: `duration * 2` is valid and passes the NUMBER
+through that path.
+
+```
+xs:date(…) + xs:dayTimeDuration('P1D')   2020-01-02    unchanged
+xs:dayTimeDuration('P1D') * 2            2.00:00:00    unchanged
+xs:date(…) + 1                           XPTY0004      was InvalidCastException
+xs:dateTime(…) * 2                       XPTY0004      was InvalidCastException
+```
+
+W3C XQTS 29,205 → **29,316 of 31,414 (93.32%)**. `InvalidCastException` 125 → 14. Unit suite 1542.
+
+**The cause was not what the call sites suggested, and two guesses at them cost an hour.** Reading
+four failing queries settled it in minutes:
+
+```
+xs:dayTimeDuration("PT1H") + xs:duration("P1D")     want XPTY0004
+xs:duration("P1D") + xs:date("1997-01-01")          want XPTY0004
+```
+
+These use `xs:duration`, the ABSTRACT base type. F&amp;O defines the duration operators only on
+`xs:yearMonthDuration` and `xs:dayTimeDuration` — there is no `op:add-durations` — so mixing the
+base type into arithmetic is a type error, and it was falling through to `Convert` instead.
+
+Rejecting only the base type still left `dayTimeDuration + xs:duration` leaking, because that one
+failed on the **TimeSpan** side. Reaching numeric conversion at all means every valid combination
+in the caller has already failed to match, so a duration operand there is equally an error.
+Rejecting the subtypes too took the cluster from 92 to 14.
+
+| step | gain |
+|---|---|
+| `ToDouble`/`ToFloat` guard — date/time operands | +30 |
+| `PromoteNumeric` guard | +1 |
+| `xs:duration` base type | +41 |
+| duration subtypes at numeric conversion | +39 |
+
+Verified rather than assumed, because `duration * number` passes the NUMBER to `ToDouble` and had
+to keep working:
+
+```
+xs:dayTimeDuration('PT1H') + xs:dayTimeDuration('P1D')      1.01:00:00   unchanged
+xs:yearMonthDuration('P1Y') + xs:yearMonthDuration('P1M')   P1Y1M        unchanged
+xs:date('2020-01-01') + xs:dayTimeDuration('P1D')           2020-01-02   unchanged
+xs:duration('P1D') + xs:date('1997-01-01')                  XPTY0004     fixed
+```
+
+What remains is scattered rather than clustered: 14 cases across `fn-avg` (5),
+`misc-CombinedErrorCodes` (4) and singles in the lookup and array paths.
+
+### FIXED: the CLI serialized adaptive xs:double the wrong way
+
+`xquery -o adaptive 'xs:double(41) + 1'` prints **42**. `XQueryResultSerializer.Serialize(item,
+store)`, whose default method is Adaptive, returns **4.2e1** for the same value. Two
+implementations of the adaptive output method, in the same estate, giving different answers.
+
+`XQueryResultSerializer.FormatAdaptiveDouble` is deliberate and cites W3C Serialization 4.0 §6 —
+its comment states that it is adaptive-scoped and intentionally does not touch the general double
+formatter. The `xquery` CLI does not use it: that tool has its own `ResultSerializer`, which
+predates it and formats doubles the fixed-point way.
+
+Anything embedding the library gets `4.2e1`; anyone using the CLI gets `42`. Found because
+`xquery-mcp` moved off PhoenixmlDb.XQuery 1.3.15, where the engine still returned `42` — its test
+for that has been skipped with the finding recorded rather than adjusted, since adjusting it would
+bake in whichever answer is current.
+
+**The spec settles it, and the library was right.** W3C XSLT and XQuery Serialization 3.1 §10:
+
+&gt; An instance of `xs:double` is serialized by applying the function
+&gt; `format-number(?, '0.0##########################e0')`
+
+with exponent-separator `e`, infinity `INF`, NaN `NaN`. So `4.2e1` is correct for the adaptive
+method, and the CLI printing `42` was the defect — not the other way round, which is what the
+vendored spec summary ("atomic values are output as their string representation") had suggested.
+
+The same section says `xs:integer` and `xs:decimal` DO use `fn:string`, so `41 + 1` remains `42`
+under every method. Only `xs:double` takes the exponential form, and only under adaptive.
+
+`FormatAdaptiveDouble` is now public and the CLI delegates to it, so there is one implementation
+rather than two. Pinned by `AdaptiveDoubleSerializationTests`, including `INF`/`-INF`/`NaN` and
+negative zero.
+
+```
+                        adaptive   xml/text
+xs:double(41) + 1       4.2e1      42
+xs:double(0.5)          5.0e-1     0.5
+41 + 1                  42         42
+```</releaseNotes>
+    <copyright>Copyright © Endpoint Systems 2026. All rights reserved.</copyright>
+    <tags>xml xquery xpath query database</tags>
+    <repository type="git" url="https://github.com/phoenixmldb/phoenixmldb-xquery" commit="b696f6a06bc074ba76b71032e398c929a5c2170c" />
+    <dependencies>
+      <group targetFramework="net10.0">
+        <dependency id="Antlr4.Runtime.Standard" version="4.13.1" exclude="Build,Analyzers" />
+        <dependency id="Lucene.Net" version="4.8.0-beta00016" exclude="Build,Analyzers" />
+        <dependency id="Lucene.Net.Analysis.Common" version="4.8.0-beta00016" exclude="Build,Analyzers" />
+        <dependency id="PhoenixmlDb.Core" version="1.6.7" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework="net8.0">
+        <dependency id="Antlr4.Runtime.Standard" version="4.13.1" exclude="Build,Analyzers" />
+        <dependency id="Lucene.Net" version="4.8.0-beta00016" exclude="Build,Analyzers" />
+        <dependency id="Lucene.Net.Analysis.Common" version="4.8.0-beta00016" exclude="Build,Analyzers" />
+        <dependency id="PhoenixmlDb.Core" version="1.6.7" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

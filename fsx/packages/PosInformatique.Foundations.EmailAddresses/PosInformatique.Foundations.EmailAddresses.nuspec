@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>PosInformatique.Foundations.EmailAddresses</id>
+    <version>1.2.0</version>
+    <authors>Gilles TOURREAU</authors>
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <icon>Icon.png</icon>
+    <readme>README.md</readme>
+    <projectUrl>https://github.com/PosInformatique/PosInformatique.Foundations</projectUrl>
+    <description>Provides a strongly-typed EmailAddress value object that ensures only valid RFC 5322 compliant email addresses can be instantiated.
+      Includes parsing, validation, comparison, and formatting features with case-insensitive handling for consistent equality checks.</description>
+    <releaseNotes>1.0.0
+  - Initial release with strongly-typed EmailAddress value object.</releaseNotes>
+    <copyright>Copyright (c) P.O.S Informatique. All rights reserved.</copyright>
+    <tags>email emailaddress valueobject ddd rfc5322 parsing validation dotnet posinformatique</tags>
+    <repository type="git" url="https://github.com/PosInformatique/PosInformatique.Foundations" commit="91ef3e8436679899163ca0d80e523e659e3e33b7" />
+    <dependencies>
+      <group targetFramework="net10.0" />
+      <group targetFramework="net8.0" />
+      <group targetFramework="net9.0" />
+    </dependencies>
+  </metadata>
+</package>

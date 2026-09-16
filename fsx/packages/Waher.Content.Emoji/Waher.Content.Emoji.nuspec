@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>Waher.Content.Emoji</id>
+    <version>2.0.3</version>
+    <authors>Peter Waher</authors>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <license type="file">LICENSE.txt</license>
+    <licenseUrl>https://aka.ms/deprecateLicenseUrl</licenseUrl>
+    <icon>Icon_64x64.png</icon>
+    <projectUrl>https://github.com/PeterWaher/IoTGateway/tree/master/Content/Waher.Content.Emoji</projectUrl>
+    <description>Defines an architecture for handling emojis.</description>
+    <copyright>Copyright © Waher Data AB 2016-2025. All rights reserved.</copyright>
+    <tags>emoji</tags>
+    <repository type="GitHub" url="https://github.com/PeterWaher/IoTGateway" commit="9e0cbda434ed6201a2e94d77dab59c3e45e7003a" />
+    <dependencies>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="System.Net.Http" version="4.3.4" exclude="Build,Analyzers" />
+        <dependency id="System.Text.RegularExpressions" version="4.3.1" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

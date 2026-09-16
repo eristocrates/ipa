@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>Waher.Runtime.Profiling</id>
+    <version>1.1.5</version>
+    <authors>Peter Waher</authors>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <license type="file">LICENSE.txt</license>
+    <licenseUrl>https://aka.ms/deprecateLicenseUrl</licenseUrl>
+    <icon>Icon_64x64.png</icon>
+    <projectUrl>https://github.com/PeterWaher/IoTGateway/tree/master/Runtime/Waher.Runtime.Profiling</projectUrl>
+    <description>Contains tools for profiling sequences of actions in multiple threads, as well as benchmarking. Results are accumulated, and can be exported to XML or as PlantUML Diagrams.</description>
+    <copyright>Copyright © Waher Data AB 2021-2026. All rights reserved.</copyright>
+    <tags>threading runtime profiling timing benchmarking</tags>
+    <repository type="GitHub" url="https://github.com/PeterWaher/IoTGateway" commit="3ab97786b709dac9fc6405b0391267858c7d95e5" />
+    <dependencies>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="Waher.Runtime.Collections" version="1.0.4" exclude="Build,Analyzers" />
+        <dependency id="System.Net.Http" version="4.3.4" exclude="Build,Analyzers" />
+        <dependency id="System.Text.RegularExpressions" version="4.3.1" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

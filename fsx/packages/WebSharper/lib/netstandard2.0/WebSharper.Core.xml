@@ -1,0 +1,3294 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doc>
+<assembly><name>WebSharper.Core</name></assembly>
+<members>
+<member name="T:WebSharper.RequireFeatureAttribute">
+<summary>
+ Marks a feature that can add exported methods to page bundles.
+</summary>
+</member>
+<member name="T:WebSharper.FSharpSourceGeneratorAttribute">
+<summary>
+ Marks the assembly as containing a source generator for a given file extension.
+ The generator type should implement the interface WebSharper.ISourceGenerator.
+</summary>
+</member>
+<member name="T:WebSharper.WildcardAttribute">
+<summary>
+ Indicates that the last field or union case argument parses all the remaining
+ path segments into a list or an array.
+ Example: type Action = | [&lt;Wildcard&gt;] MyAction of string * list&lt;string&gt;
+</summary>
+</member>
+<member name="M:WebSharper.FormDataAttribute.#ctor(System.String[])">
+<summary>
+ Indicates that the union case arguments with the given names must be parsed
+ from the request&apos;s query parameters.
+ Example: type Action = | [&lt;FormData &quot;someField&quot;&gt;] MyAction of someField: string
+</summary>
+</member>
+<member name="M:WebSharper.FormDataAttribute.#ctor">
+<summary>
+ Indicates that a field must be parsed from the request&apos;s query parameters.
+ Example: type Action = { [&lt;FormData&gt;] someField: string }
+</summary>
+</member>
+<member name="T:WebSharper.FormDataAttribute">
+<summary>
+ Indicates that a field or union case argument must be parsed
+ from the request&apos;s body in form post syntax, ie. with the Content-Type
+ being either application/x-www-form-urlencoded or multipart/form-data.
+ The value must be a primitive value, a DateTime, or an option thereof.
+</summary>
+</member>
+<member name="M:WebSharper.QueryAttribute.#ctor(System.String[])">
+<summary>
+ Indicates that the union case arguments with the given names must be parsed
+ from the request&apos;s query parameters.
+ Example: type Action = | [&lt;Query &quot;someField&quot;&gt;] MyAction of someField: string
+</summary>
+</member>
+<member name="M:WebSharper.QueryAttribute.#ctor">
+<summary>
+ Indicates that a field must be parsed from the request&apos;s query parameters.
+ Example: type Action = { [&lt;Query&gt;] someField : string }
+</summary>
+</member>
+<member name="T:WebSharper.QueryAttribute">
+<summary>
+ Indicates that a field or union case argument must be parsed
+ from the request&apos;s query parameters, rather than from the URL path.
+ The value must be a primitive value, a DateTime, or an option thereof.
+</summary>
+</member>
+<member name="M:WebSharper.JsonAttribute.#ctor(System.String)">
+<summary>
+ Indicates that the union case argument with the given name must be parsed
+ from the request&apos;s body as JSON.
+ Example: type Action = | [&lt;Json &quot;data&quot;&gt;] MyAction of data: MyData
+</summary>
+</member>
+<member name="M:WebSharper.JsonAttribute.#ctor">
+<summary>
+ Indicates that a field must be parsed from the request&apos;s body as JSON.
+ Example: type Action = { [&lt;Json&gt;] data : MyData }
+</summary>
+</member>
+<member name="T:WebSharper.JsonAttribute">
+<summary>
+ Indicates that a field or a union case argument must be parsed
+ from the request body as JSON, rather than from the URL path.
+</summary>
+</member>
+<member name="T:WebSharper.MethodAttribute">
+<summary>
+ Indicates that a union case in an action type must only be mapped
+ for requests that use the given HTTP method(s).
+ Example: type Action = | [&lt;Method &quot;POST&quot;&gt;] MyPostAction
+</summary>
+</member>
+<member name="M:WebSharper.EndPointAttribute.#ctor(System.String,System.Int32,System.Boolean)">
+<summary>
+ Indicates the URL fragments parsed by this class.
+ `order` specifies the parsing order.
+ `inheritRoute = false` allows re-specifying the full route instead of inheriting starting segment(s) from
+ base class.
+</summary>
+</member>
+<member name="M:WebSharper.EndPointAttribute.#ctor(System.String,System.Int32)">
+<summary>
+ Indicates the URL fragments parsed by this class.
+ `order` specifies the parsing order.
+</summary>
+</member>
+<member name="M:WebSharper.EndPointAttribute.#ctor(System.String,System.Boolean)">
+<summary>
+ Indicates the URL fragments parsed by this class.
+ `inheritRoute = false` allows re-specifying the full route instead of inheriting starting segment(s) from
+ base class.
+</summary>
+</member>
+<member name="M:WebSharper.EndPointAttribute.#ctor(System.String[])">
+<summary>
+ Indicates the URL fragments parsed by this class or union case.
+ If there are multiple arguments, first is the canonical form, used for writing links but all are parsed.
+</summary>
+</member>
+<member name="M:WebSharper.EndPointAttribute.#ctor(System.String)">
+<summary>
+ Indicates the URL fragments parsed by this class or union case.
+</summary>
+</member>
+<member name="T:WebSharper.EndPointAttribute">
+<summary>
+ Indicates the URL fragment parsed by this class or union case.
+</summary>
+</member>
+<member name="M:WebSharper.PrototypeAttribute.#ctor(System.Boolean)">
+<summary>
+ Prototype(true) is equivalent to Prototype().
+ Prototype(false) forces to have no prototype, tranlating instance methods to static,
+ usable only for sealed classes and F# unions and records.
+</summary>
+</member>
+<member name="T:WebSharper.PrototypeAttribute">
+<summary>
+ Marks a type to be translated to have a prototype if it would not have one otherwise.
+ This is needed if you want to do type checks in client code against it.
+</summary>
+</member>
+<member name="M:WebSharper.JavaScriptExportAttribute.#ctor(System.Type)">
+<summary>
+ Specify a type to export in JavaScript.
+ Use on assembly level.
+</summary>
+</member>
+<member name="M:WebSharper.JavaScriptExportAttribute.#ctor(System.String)">
+<summary>
+ Specify a type full name or file name (without path) to export in JavaScript.
+ Use on assembly level.
+</summary>
+</member>
+<member name="T:WebSharper.JavaScriptExportAttribute">
+<summary>
+ Marks methods, properties and constructors for always including it in JavaScript output.
+ Includes the effect of JavaSctipt attribute.
+</summary>
+</member>
+<member name="T:WebSharper.SPAEntryPointAttribute">
+<summary>
+ Marks the entry point of a Single Page Application.
+</summary>
+</member>
+<member name="M:WebSharper.DateTimeFormatAttribute.#ctor(System.String,System.String)">
+<summary>
+ Defines the format used to de/serialize the union case argument with the given name.
+</summary>
+</member>
+<member name="M:WebSharper.DateTimeFormatAttribute.#ctor(System.String)">
+<summary>
+ Defines the format used to de/serialize a record or object field.
+</summary>
+</member>
+<member name="T:WebSharper.DateTimeFormatAttribute">
+<summary>
+ Defines the format used to de/serialize a DateTime field or union case argument.
+ The default is &quot;o&quot; (ISO 8601 round-trip format) for JSON serialization,
+ and &quot;yyyy-MM-dd-HH.mm.ss&quot; for URL parsing.
+</summary>
+</member>
+<member name="M:WebSharper.NamedUnionCasesAttribute.#ctor">
+<summary>
+ The case is inferred from the field names. Every case must have at least one
+ non-option-typed field whose name is unique across all cases of this union.
+</summary>
+</member>
+<member name="M:WebSharper.NamedUnionCasesAttribute.#ctor(System.String)">
+<summary>
+ The case is determined by a field named `discriminatorName`,
+ which stores the CompiledName of the case.
+</summary>
+</member>
+<member name="T:WebSharper.NamedUnionCasesAttribute">
+<summary>
+ Declares that when de/serializing this union type for external use
+ (eg. when parsing a [&lt;Json&gt;] sitelet action or writing a Sitelet.Content.JsonContent),
+ its fields must be tagged by their name rather than &quot;$0&quot; ... &quot;$n&quot;.
+ Also determines how the cases are distinguished, instead of the default &quot;$&quot;: &lt;integer&gt;.
+</summary>
+</member>
+<member name="T:WebSharper.OptionalFieldAttribute">
+<summary>
+ Adds automatic inlines to a property so that a missing JavaScript field
+ is converted to None, otherwise Some fieldValue.
+</summary>
+</member>
+<member name="T:WebSharper.RemotingProviderAttribute">
+<summary>
+ Indicates the client-side remoting provider that should be used
+ by remote function calls in this assembly. The type passed to the
+ constructor must have three static methods as described by the
+ interface Remoting.IRemotingProvider.
+</summary>
+</member>
+<member name="T:WebSharper.StubAttribute">
+<summary>
+ Marks members that should be compiled by-name.
+</summary>
+</member>
+<member name="T:WebSharper.RequireAttribute">
+<summary>
+ Annotates members with dependencies. The type passed to the constructor
+ must implement WebSharper.Core.Resources.IResource and a default constructor or constructor with provided parameters.
+</summary>
+</member>
+<member name="T:WebSharper.RemoteAttribute">
+<summary>
+ Marks a server-side function to be invokable remotely from the client-side.
+</summary>
+</member>
+<member name="M:WebSharper.InternalProxyAttribute.#ctor(System.Type,System.Type[])">
+<summary>
+ Constructs a new proxy link using a type directly and allows adding inherited interfaces.
+</summary>
+</member>
+<member name="M:WebSharper.InternalProxyAttribute.#ctor(System.String)">
+<summary>
+ Constructs a new proxy link using an assembly-qualified name.
+</summary>
+</member>
+<member name="M:WebSharper.InternalProxyAttribute.#ctor(System.Type)">
+<summary>
+ Constructs a new proxy link using a type directly.
+</summary>
+</member>
+<member name="T:WebSharper.InternalProxyAttribute">
+<summary>
+ Declares a type to be a proxy for another type, identified directly or
+ by using an assembly-qualified name.
+ Proxy exists only for use in current project.
+</summary>
+</member>
+<member name="M:WebSharper.ProxyAttribute.#ctor(System.Type,System.Type[])">
+<summary>
+ Constructs a new proxy link using a type directly and allows adding inherited interfaces.
+</summary>
+</member>
+<member name="M:WebSharper.ProxyAttribute.#ctor(System.String)">
+<summary>
+ Constructs a new proxy link using an assembly-qualified name.
+</summary>
+</member>
+<member name="M:WebSharper.ProxyAttribute.#ctor(System.Type)">
+<summary>
+ Constructs a new proxy link using a type directly.
+</summary>
+</member>
+<member name="T:WebSharper.ProxyAttribute">
+<summary>
+ Declares a type to be a proxy for another type, identified directly or
+ by using an assembly-qualified name.
+</summary>
+</member>
+<member name="M:WebSharper.ImportAttribute.#ctor(System.String)">
+<summary>
+ Imports the default export from an ES6 module.
+</summary>
+</member>
+<member name="M:WebSharper.ImportAttribute.#ctor(System.String,System.String)">
+<summary>
+ Imports a single given named export from an ES6 module.
+</summary>
+</member>
+<member name="T:WebSharper.ImportAttribute">
+<summary>
+ Specifies that current Stub type or member is using an export of a JS module.
+</summary>
+</member>
+<member name="M:WebSharper.TypeAttribute.#ctor(System.String)">
+<summary>
+ Occurrences of this or the proxied .NET type will be annotated with this TypeScript type.
+ Supports generics, generic parameter name must match the .NET generic parameter name.
+</summary>
+</member>
+<member name="T:WebSharper.TypeAttribute">
+<summary>
+ Specifies TypeScript type annotation for a Proxy or Stub type declaration.
+</summary>
+</member>
+<member name="M:WebSharper.NameAttribute.#ctor(System.Int32)">
+<summary>
+ Constructs an indexed field.
+</summary>
+</member>
+<member name="M:WebSharper.NameAttribute.#ctor(System.String)">
+<summary>
+ Constructs a qualified name from a dot-separated string.
+</summary>
+</member>
+<member name="T:WebSharper.NameAttribute">
+<summary>
+ Provides a runtime name for members when it differs from the F# name.
+ The constructor accepts either an explicit array of parts,
+ or a single string, in which case it is assumed to be dot-separated.
+</summary>
+</member>
+<member name="T:WebSharper.GeneratedAttribute">
+<summary>
+ Annotates methods with a generator type that provides the method body.
+ The supplied type should implement Macros.IGenerator and a default constructor.
+</summary>
+</member>
+<member name="T:WebSharper.MacroAttribute">
+<summary>
+ Annotates methods an constructors with custom compilation rules.
+ The supplied type should implement Macros.IMacro and a default constructor.
+</summary>
+</member>
+<member name="M:WebSharper.JavaScriptAttribute.#ctor(WebSharper.JavaScriptOptions)">
+<summary>
+ Specify special compilation options.
+ Scope is a single method only.
+</summary>
+</member>
+<member name="M:WebSharper.JavaScriptAttribute.#ctor(System.Type)">
+<summary>
+ Specify a type to include in JavaScript compilation.
+ Use on assembly level.
+</summary>
+</member>
+<member name="M:WebSharper.JavaScriptAttribute.#ctor(System.String)">
+<summary>
+ Specify a type full name or file name (without path) to include in JavaScript compilation.
+ Use on assembly level.
+</summary>
+</member>
+<member name="M:WebSharper.JavaScriptAttribute.#ctor(System.Boolean)">
+<summary>
+ Use JavaScript(false) to exclude a type or member from JavaScript compilation scope.
+</summary>
+</member>
+<member name="T:WebSharper.JavaScriptAttribute">
+<summary>
+ Marks methods, properties and constructors for compilation to JavaScript.
+</summary>
+</member>
+<member name="F:WebSharper.JavaScriptOptions.SharedEventHandlers">
+<summary>
+ Enables client-server code sharing using auto-quoted event handlers.
+</summary>
+</member>
+<member name="F:WebSharper.JavaScriptOptions.NoDefaultInterfaceImplementation">
+<summary>
+ Skips calling default interface implementations but calls into the method on 
+ the object by name.
+</summary>
+</member>
+<member name="F:WebSharper.JavaScriptOptions.DefaultToUndefined">
+<summary>
+ Erases generic parameters inside this expression during WebSharper translation.
+ You can get use this to translate `defaultof` inside a generic function.
+</summary>
+</member>
+<member name="T:WebSharper.JavaScriptOptions">
+<summary>
+ Special compilation options for the JavaScript translation.
+</summary>
+</member>
+<member name="T:WebSharper.WarnAttribute">
+<summary>
+ Adds a compiler warning whenever annotated member is used from client-side code.
+</summary>
+</member>
+<member name="T:WebSharper.PureAttribute">
+<summary>
+ Marks methods and constructors as pure, so the call may be erased by optimizer
+ or applied in different execution order. 
+</summary>
+</member>
+<member name="F:WebSharper.DirectAttribute.UsingDollarVariables@">
+<summary>
+ Comma separated list of variable names starting with a dollar
+ that are expected to be found in the inline JavaScript.
+ Any variable name starting with a dollar that is neither
+ in this list nor an argument raises a warning.
+</summary>
+</member>
+<member name="P:WebSharper.DirectAttribute.UsingDollarVariables(System.String)">
+<summary>
+ Comma separated list of variable names starting with a dollar
+ that are expected to be found in the inline JavaScript.
+ Any variable name starting with a dollar that is neither
+ in this list nor an argument raises a warning.
+</summary>
+</member>
+<member name="P:WebSharper.DirectAttribute.UsingDollarVariables">
+<summary>
+ Comma separated list of variable names starting with a dollar
+ that are expected to be found in the inline JavaScript.
+ Any variable name starting with a dollar that is neither
+ in this list nor an argument raises a warning.
+</summary>
+</member>
+<member name="T:WebSharper.DirectAttribute">
+<summary>
+ Marks methods and constructors for direct compilation to a JavaScript function.
+ Direct members work by expanding JavaScript code templates
+ with placeholders of the form such as $0, $x, $this or $value
+ into the body of a JavaScript function. See also InlineAttribute.
+</summary>
+</member>
+<member name="F:WebSharper.InlineAttribute.UsingDollarVariables@">
+<summary>
+ Comma separated list of variable names starting with a dollar
+ that are expected to be found in the inline JavaScript.
+ Any variable name starting with a dollar that is neither
+ in this list nor an argument raises a warning.
+</summary>
+</member>
+<member name="P:WebSharper.InlineAttribute.UsingDollarVariables(System.String)">
+<summary>
+ Comma separated list of variable names starting with a dollar
+ that are expected to be found in the inline JavaScript.
+ Any variable name starting with a dollar that is neither
+ in this list nor an argument raises a warning.
+</summary>
+</member>
+<member name="P:WebSharper.InlineAttribute.UsingDollarVariables">
+<summary>
+ Comma separated list of variable names starting with a dollar
+ that are expected to be found in the inline JavaScript.
+ Any variable name starting with a dollar that is neither
+ in this list nor an argument raises a warning.
+</summary>
+</member>
+<member name="T:WebSharper.InlineAttribute">
+<summary>
+ Marks methods and constructors for inline compilation to JavaScript.
+ Inline members work by expanding JavaScript code templates
+ with placeholders of the form such as $0, $x, $this or $value
+ directly at the place of invocation. See also DirectAttribute.
+ If `assertReturnType = true` then creates a type assertion for the result type.
+</summary>
+</member>
+<member name="M:WebSharper.ConstantAttribute.#ctor(System.String)">
+<summary>
+ Constructs a string or a null constant annotation.
+</summary>
+</member>
+<member name="M:WebSharper.ConstantAttribute.#ctor(System.Double)">
+<summary>
+ Constructs a floating constant annotation.
+</summary>
+</member>
+<member name="M:WebSharper.ConstantAttribute.#ctor(System.Int32)">
+<summary>
+ Constructs an integer constant annotation.
+</summary>
+</member>
+<member name="M:WebSharper.ConstantAttribute.#ctor(System.Boolean)">
+<summary>
+ Constructs a boolean constant annotation.
+</summary>
+</member>
+<member name="T:WebSharper.ConstantAttribute">
+<summary>
+ Marks union cases or properties that should be compiled to constants.
+</summary>
+</member>
+<member name="T:WebSharper.IBundleExports">
+<summary>
+ Use with RequireFeature attribute
+</summary>
+</member>
+<member name="M:WebSharper.ISourceGenerator.Generate(WebSharper.GenerateCall)">
+<summary>
+ Gets an object of contextual information and actions.
+ Must return an array of file paths, which can be newly created.
+</summary>
+</member>
+<member name="T:WebSharper.ISourceGenerator">
+<summary>
+ Use with assembly-level FSharpSourceGenerator attribute
+</summary>
+</member>
+<member name="P:WebSharper.GenerateCall.PreviousOutputFiles">
+<summary>
+ The timestamp and output files registered from the last compilation.
+ None if there is no information.
+</summary>
+</member>
+<member name="P:WebSharper.GenerateCall.PrintError">
+<summary>
+ Print to the error output.
+</summary>
+</member>
+<member name="P:WebSharper.GenerateCall.Print">
+<summary>
+ Print to the standard output.
+</summary>
+</member>
+<member name="P:WebSharper.GenerateCall.ProjectFilePath">
+<summary>
+ Project file full path.
+</summary>
+</member>
+<member name="P:WebSharper.GenerateCall.FilePath">
+<summary>
+ Full path to the file the generator is invoked for.
+</summary>
+</member>
+<member name="P:WebSharper.GenerateCall.RelativeFilePath">
+<summary>
+ Path to the file the generator is invoked for as it is included in the project file.
+</summary>
+</member>
+<member name="P:WebSharper.TypedJson.ServerSideProvider">
+<summary>
+ An instance of Json.Provider, used for custom JSON serialization on the server.
+</summary>
+</member>
+<member name="M:WebSharper.TypedJson.Serialize``1(``0)">
+<summary>
+ Serializes an object to JSON using the same readable format as Sitelets.
+ For plain JSON stringification, see Json.Stringify.
+</summary>
+</member>
+<member name="M:WebSharper.TypedJson.Encode``1(``0)">
+<summary>
+ Encodes an object in such a way that JSON stringification
+ results in the same readable format as Sitelets.
+ Client-side only.
+</summary>
+</member>
+<member name="M:WebSharper.TypedJson.Deserialize``1(System.String)">
+<summary>
+ Deserializes a JSON string using the same readable format as Sitelets.
+ For plain JSON parsing, see Json.Parse.
+</summary>
+</member>
+<member name="M:WebSharper.TypedJson.Decode``1(System.Object)">
+<summary>
+ Decodes an object parsed from the same readable JSON format as Sitelets.
+ Client-side only.
+</summary>
+</member>
+<member name="P:WebSharper.PathConventions.PathUtility.ScriptBasePath">
+<summary>
+ Base path for script URLs.
+</summary>
+</member>
+<member name="P:WebSharper.PathConventions.PathUtility.ContentBasePath">
+<summary>
+ Base path for content URLs.
+</summary>
+</member>
+<member name="M:WebSharper.PathConventions.PathUtility.VirtualPaths(System.String)">
+<summary>
+ Constructs a utiltiy object for computing URLs based on a given
+ virtual path root (such as &apos;/&apos;).
+</summary>
+</member>
+<member name="M:WebSharper.PathConventions.PathUtility.TypeScriptPath(WebSharper.PathConventions.AssemblyId)">
+<summary>
+ Path or URL to the `.ts` TypeScript file corresponding to an assembly.
+</summary>
+</member>
+<member name="M:WebSharper.PathConventions.PathUtility.TypeScriptFileName(WebSharper.PathConventions.AssemblyId)">
+<summary>
+ Filename for the `.ts` TypeScript file corresponding to an assembly.
+</summary>
+</member>
+<member name="M:WebSharper.PathConventions.PathUtility.TypeScriptDeclarationPath(WebSharper.PathConventions.AssemblyId)">
+<summary>
+ Path or URL to the `.d.ts` TypeScript file corresponding to an assembly.
+</summary>
+</member>
+<member name="M:WebSharper.PathConventions.PathUtility.TypeScriptDeclarationFileName(WebSharper.PathConventions.AssemblyId)">
+<summary>
+ Filename for the `.d.ts` TypeScript file corresponding to an assembly.
+</summary>
+</member>
+<member name="M:WebSharper.PathConventions.PathUtility.MinifiedMapFilePath(WebSharper.PathConventions.AssemblyId)">
+<summary>
+ Path or URL to the `.min.map` source mapping file corresponding to an assembly.
+</summary>
+</member>
+<member name="M:WebSharper.PathConventions.PathUtility.MinifiedMapFileName(WebSharper.PathConventions.AssemblyId)">
+<summary>
+ Path or URL to the `.min.map` source mapping file corresponding to an assembly.
+</summary>
+</member>
+<member name="M:WebSharper.PathConventions.PathUtility.MinifiedJavaScriptPath(WebSharper.PathConventions.AssemblyId)">
+<summary>
+ Path or URL to the `.min.js` JavaScript file corresponding to an assembly.
+</summary>
+</member>
+<member name="M:WebSharper.PathConventions.PathUtility.MinifiedJavaScriptFileName(WebSharper.PathConventions.AssemblyId)">
+<summary>
+ Filename for the `.min.js` JavaScript file corresponding to an assembly.
+</summary>
+</member>
+<member name="M:WebSharper.PathConventions.PathUtility.MapFilePath(WebSharper.PathConventions.AssemblyId)">
+<summary>
+ Path or URL to the `.map` source mapping file corresponding to an assembly.
+</summary>
+</member>
+<member name="M:WebSharper.PathConventions.PathUtility.MapFileName(WebSharper.PathConventions.AssemblyId)">
+<summary>
+ Filename for the `.map` source mapping file corresponding to an assembly.
+</summary>
+</member>
+<member name="M:WebSharper.PathConventions.PathUtility.JavaScriptPath(WebSharper.PathConventions.AssemblyId)">
+<summary>
+ Path or URL to the `.js` JavaScript file corresponding to an assembly.
+</summary>
+</member>
+<member name="M:WebSharper.PathConventions.PathUtility.JavaScriptFileName(WebSharper.PathConventions.AssemblyId)">
+<summary>
+ Filename for the `.js` JavaScript file corresponding to an assembly.
+</summary>
+</member>
+<member name="M:WebSharper.PathConventions.PathUtility.FileSystem(System.String)">
+<summary>
+ Constructs a utiltiy object based on the physical path to the
+ web root folder, which can be obtained by `Server.MapPath(&quot;~&quot;)`.
+</summary>
+</member>
+<member name="M:WebSharper.PathConventions.PathUtility.EmbeddedResourceKey(WebSharper.PathConventions.EmbeddedResource)">
+<summary>
+ Key of embedded resource for looking up hash.
+</summary>
+</member>
+<member name="M:WebSharper.PathConventions.PathUtility.EmbeddedPath(WebSharper.PathConventions.EmbeddedResource)">
+<summary>
+ Path or URL for the embedded resource.
+</summary>
+</member>
+<member name="T:WebSharper.PathConventions.PathUtility">
+<summary>
+ Utility object for computing paths on the filesystem or relative URLs.
+</summary>
+</member>
+<member name="M:WebSharper.PathConventions.EmbeddedResource.Create(WebSharper.PathConventions.ResourceKind,WebSharper.PathConventions.AssemblyId,System.String)">
+<summary>
+ Constructs a new embedded resource identifier.
+</summary>
+</member>
+<member name="T:WebSharper.PathConventions.EmbeddedResource">
+<summary>
+ Represents embedded resources.
+</summary>
+</member>
+<member name="P:WebSharper.PathConventions.ResourceKind.Script">
+<summary>
+ Script resources (primarily JavaScript).
+</summary>
+</member>
+<member name="P:WebSharper.PathConventions.ResourceKind.Content">
+<summary>
+ Content resources (such as CSS stylesheet).
+</summary>
+</member>
+<member name="T:WebSharper.PathConventions.ResourceKind">
+<summary>
+ Represents kinds of resources.
+</summary>
+</member>
+<member name="M:WebSharper.PathConventions.AssemblyId.Create(System.Type)">
+<summary>
+ Creates an assembly identifier from a marker type.
+</summary>
+</member>
+<member name="M:WebSharper.PathConventions.AssemblyId.Create(System.Reflection.AssemblyName)">
+<summary>
+ Creates an assembly identifier from a `System.Reflection` name.
+</summary>
+</member>
+<member name="M:WebSharper.PathConventions.AssemblyId.Create(System.Reflection.Assembly)">
+<summary>
+ Creates an assembly identifier for the given assembly object.
+</summary>
+</member>
+<member name="M:WebSharper.PathConventions.AssemblyId.Create(System.String)">
+<summary>
+ Creates an assembly identifier from a string representation.
+</summary>
+</member>
+<member name="T:WebSharper.PathConventions.AssemblyId">
+<summary>
+ Identifies assemblies by name.
+</summary>
+</member>
+<member name="T:WebSharper.PathConventions">
+<summary>
+ Makes resource path and naming conventions explicit to avoid code duplication.
+</summary>
+</member>
+<member name="T:WebSharper.Core.Hashed`1">
+<summary>
+ A wrapper type for storing a computed hash for faster dictionary lookups
+</summary>
+</member>
+<member name="T:WebSharper.Core.Generator">
+<summary>
+ An abstract base class for code generation used with GeneratedAttribute.
+</summary>
+</member>
+<member name="T:WebSharper.Core.Generated">
+<summary>
+ Input for a Generate method on a generator
+</summary>
+</member>
+<member name="T:WebSharper.Core.GeneratedMember">
+<summary>
+ The return type of Generate method of a generator 
+</summary>
+</member>
+<member name="P:WebSharper.Core.Macro.NeedsTranslatedArguments">
+<summary>
+ Set this to true if compiler must translate the arguments to JavaScript expressions before calling TranslateCall or TranslateCtor.
+ Default is false, ie. arguments are .NET expressions.
+</summary>
+</member>
+<member name="M:WebSharper.Core.Macro.TranslateCtor(WebSharper.Core.MacroCtor)">
+<summary>
+ This method is invoked every time a call to a constructor annotated with this macro type is being translated.
+</summary>
+</member>
+<member name="M:WebSharper.Core.Macro.TranslateCall(WebSharper.Core.MacroCall)">
+<summary>
+ This method is invoked every time a call to a method annotated with this macro type is being translated.
+</summary>
+</member>
+<member name="T:WebSharper.Core.Macro">
+<summary>
+ An abstract base class for macro definitions used with MacroAttribute.
+</summary>
+</member>
+<member name="T:WebSharper.Core.GeneratorResult">
+<summary>
+ Represents method bodies, at either JavaScript core or syntax level.
+</summary>
+</member>
+<member name="T:WebSharper.Core.MacroResult.MacroUsedBoundVar">
+<summary>
+ Report that the macro has made use of the expression of an outside let binding
+ which now can be removed
+</summary>
+</member>
+<member name="T:WebSharper.Core.MacroResult.MacroNeedsResolvedTypeArg">
+<summary>
+ Report that the macro needs concrete type information.
+ Delays compilation of inlined calls until type resolution. 
+</summary>
+</member>
+<member name="T:WebSharper.Core.MacroResult.MacroFallback">
+<summary>
+ Revert to next in chain tranlation strategy for the call.
+</summary>
+</member>
+<member name="T:WebSharper.Core.MacroResult.MacroDependencies">
+<summary>
+ Add code dependencies to the member containing the call for the macroed member.
+</summary>
+</member>
+<member name="T:WebSharper.Core.MacroResult.MacroError">
+<summary>
+ Add a source error at the call point for macroed member.
+</summary>
+</member>
+<member name="T:WebSharper.Core.MacroResult.MacroWarning">
+<summary>
+ Add a source warning at the call point for macroed member.
+</summary>
+</member>
+<member name="T:WebSharper.Core.MacroResult.MacroOk">
+<summary>
+ An expression to inline at call point for macroed member.
+ Can contain JavaScript and .NET level AST nodes.
+</summary>
+</member>
+<member name="T:WebSharper.Core.MacroResult">
+<summary>
+ The return type of macro methods 
+</summary>
+</member>
+<member name="T:WebSharper.Core.MacroCtor">
+<summary>
+ Input for a TranslateCtor method on a macro
+</summary>
+</member>
+<member name="T:WebSharper.Core.MacroCall">
+<summary>
+ Input for a TranslateCall method on a macro
+</summary>
+</member>
+<member name="M:WebSharper.Core.FastInvoke.FastMethod.InvokeN(System.Object[])">
+<summary>
+ Invokes with an arbitrary number of arguments.
+</summary>
+</member>
+<member name="M:WebSharper.Core.FastInvoke.FastMethod.Invoke7(System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object)">
+<summary>
+ Invokes with 7 arguments.
+</summary>
+</member>
+<member name="M:WebSharper.Core.FastInvoke.FastMethod.Invoke6(System.Object,System.Object,System.Object,System.Object,System.Object,System.Object)">
+<summary>
+ Invokes with 6 arguments.
+</summary>
+</member>
+<member name="M:WebSharper.Core.FastInvoke.FastMethod.Invoke5(System.Object,System.Object,System.Object,System.Object,System.Object)">
+<summary>
+ Invokes with 5 arguments.
+</summary>
+</member>
+<member name="M:WebSharper.Core.FastInvoke.FastMethod.Invoke4(System.Object,System.Object,System.Object,System.Object)">
+<summary>
+ Invokes with 4 arguments.
+</summary>
+</member>
+<member name="M:WebSharper.Core.FastInvoke.FastMethod.Invoke3(System.Object,System.Object,System.Object)">
+<summary>
+ Invokes with 3 arguments.
+</summary>
+</member>
+<member name="M:WebSharper.Core.FastInvoke.FastMethod.Invoke2(System.Object,System.Object)">
+<summary>
+ Invokes with 2 arguments.
+</summary>
+</member>
+<member name="M:WebSharper.Core.FastInvoke.FastMethod.Invoke1(System.Object)">
+<summary>
+ Invokes with 1 argument.
+</summary>
+</member>
+<member name="M:WebSharper.Core.FastInvoke.FastMethod.Invoke0">
+<summary>
+ Invokes with 0 arguments.
+</summary>
+</member>
+<member name="T:WebSharper.Core.FastInvoke.FastMethod">
+<summary>
+ Represents a method that can be quickly invoked dynamically.
+</summary>
+</member>
+<member name="M:WebSharper.Core.FastInvoke.Compile(System.Reflection.MethodInfo)">
+<summary>
+ Compiles a method to a fast invoke function.
+</summary>
+</member>
+<member name="T:WebSharper.Core.FastInvoke">
+<summary>
+ Splits invocation of methods represented as `System.Reflection.MethodInfo`
+ into the static and dynamic phase, doing the binding work at the static phase.
+ A pre-bound method can be 100-1000x faster to invoke compared to using `.Invoke`
+ every time, which has to repeatedly do method binding.
+</summary>
+</member>
+<member name="T:WebSharper.Core.ContentTypes">
+<summary>
+ Provides a small vocabulary for dealing with Internet media types,
+ as far as WebSharper is concerned.
+</summary>
+</member>
+<member name="M:WebSharper.Core.Dict.tryFind``2(``0,System.Collections.Generic.IDictionary{``0,``1})">
+<summary>
+ IDictionary.TryGetValue result converted to option
+</summary>
+</member>
+<member name="M:WebSharper.Core.Dict.swap``2(System.Collections.Generic.IDictionary{``0,``1})">
+<summary>
+ Swap the key and values of an IDictionary
+</summary>
+</member>
+<member name="M:WebSharper.Core.Dict.unionDupl``2(System.Collections.Generic.IEnumerable{System.Collections.Generic.IDictionary{``0,``1}})">
+<summary>
+ IDictionary union, allowing exact duplicates
+</summary>
+</member>
+<member name="M:WebSharper.Core.Dict.mapKeys``3(Microsoft.FSharp.Core.FSharpFunc{``0,``1},System.Collections.Generic.IDictionary{``0,``2})">
+<summary>
+ Map keys of an IDictionary
+</summary>
+</member>
+<member name="M:WebSharper.Core.Dict.choose``3(Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.FSharpOption{``1}},System.Collections.Generic.IDictionary{``2,``0})">
+<summary>
+ Map and filter values of an IDictionary
+</summary>
+</member>
+<member name="M:WebSharper.Core.Dict.map``3(Microsoft.FSharp.Core.FSharpFunc{``0,``1},System.Collections.Generic.IDictionary{``2,``0})">
+<summary>
+ Map values of an IDictionary
+</summary>
+</member>
+<member name="M:WebSharper.Core.Dict.filter``2(Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.FSharpFunc{``1,System.Boolean}},System.Collections.Generic.IDictionary{``0,``1})">
+<summary>
+ Filter an IDictionary
+</summary>
+</member>
+<member name="M:WebSharper.Core.Dict.getFromMulti``2(System.Collections.Generic.IDictionary{``0,Microsoft.FSharp.Collections.FSharpList{``1}},``0)">
+<summary>
+ Get the list or an empty list from an IDictionary having a lists as values
+</summary>
+</member>
+<member name="M:WebSharper.Core.Dict.addToMulti``2(System.Collections.Generic.IDictionary{``0,Microsoft.FSharp.Collections.FSharpList{``1}},``0,``1)">
+<summary>
+ Add or append item to an IDictionary having a lists as values
+</summary>
+</member>
+<member name="M:WebSharper.Core.Dict.isEmpty``2(System.Collections.Generic.IDictionary{``0,``1})">
+<summary>
+ Returns true if the dictionary has no elements
+</summary>
+</member>
+<member name="T:WebSharper.Core.Dict">
+<summary>
+ Utility functions on IDictionary objects
+</summary>
+</member>
+<member name="T:WebSharper.Core.FSharpExtensions">
+<summary>
+ Utility extensions of IDictionary and parsing value types
+</summary>
+</member>
+<member name="M:WebSharper.Core.Binary.EncodingProvider.DeriveEncoding(System.Type)">
+<summary>
+ Derives an encoding for a given type.
+</summary>
+</member>
+<member name="M:WebSharper.Core.Binary.EncodingProvider.Create">
+<summary>
+ Constructs a new EncodingProvider.
+</summary>
+</member>
+<member name="T:WebSharper.Core.Binary.EncodingProvider">
+<summary>
+ Constructs Encoding objects.
+</summary>
+</member>
+<member name="P:WebSharper.Core.Binary.Encoding.Type">
+<summary>
+ The type for which operations are supported.
+</summary>
+</member>
+<member name="M:WebSharper.Core.Binary.Encoding.Encode(System.IO.Stream,System.Object,Microsoft.FSharp.Core.FSharpOption{System.String})">
+<summary>
+ Encodes an object to a stream.
+</summary>
+</member>
+<member name="M:WebSharper.Core.Binary.Encoding.Decode(System.IO.Stream,Microsoft.FSharp.Core.FSharpOption{System.String})">
+<summary>
+ Decodes an object from a stream.
+</summary>
+</member>
+<member name="T:WebSharper.Core.Binary.Encoding">
+<summary>
+ Represents an encoding for a given type.
+</summary>
+</member>
+<member name="T:WebSharper.Core.Binary.EncodingException">
+<summary>
+ Thrown when the decoder fails to reconstruct a value.
+</summary>
+</member>
+<member name="T:WebSharper.Core.Binary.NoEncodingException">
+<summary>
+ Thrown when no decoder can be derived for a given type.
+</summary>
+</member>
+<member name="T:WebSharper.Core.Binary">
+<summary>
+ Implements binary serialization for server-side use.
+ The encoding supports all records, unions, numeric types,
+ strings, rank-1 arrays, maps, sets, lists and dictionaries.
+ Strings are interned for efficiency. The encoding also uses
+ binary compression.
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Type.TSType">
+<summary>
+ Translated type
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Type.LocalTypeParameter">
+<summary>
+ used for F# inner generics
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Type.StaticTypeParameter">
+<summary>
+ used for F# statically resolved type parameters
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Type.VoidType">
+<summary>
+ Unified case for FSharp.Core.Unit and System.Void
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Type.ByRefType">
+<summary>
+ The type of a ref or out parameter
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Type.FSharpFuncType">
+<summary>
+ Identifies the FSharp.Core.FSharpFunc type
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Type.TupleType">
+<summary>
+ A Sytem.Tuple type, type parameters are in a straight list
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Type.ArrayType">
+<summary>
+ An array with the specified number of dimensions
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Type.TypeParameter">
+<summary>
+ A class and method type parameters specified by index in the combined list
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Type.ConcreteType">
+<summary>
+ A specific type not covered by other cases
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Type">
+<summary>
+ Identifies a type by shape
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Concrete`1">
+<summary>
+ Stores a definition and type parameter information
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.TypeDefinitionInfo">
+<summary>
+ Identifies a type definition by AssemblyName and FullName
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.SourcePos">
+<summary>
+ A range in original source code
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Purity.Pure">
+<summary>
+ Marks that a function call/property get has no side effect and only depends on its arguments.
+ Can be dropped if result is unused. Execution order can swapped.
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Purity.NoSideEffect">
+<summary>
+ Marks that a function call/property get has no side effect but depends on execution order.
+ Can be dropped if result is unused. Cannot have execution order swapped with other non-pure expressions.
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Purity.NonPure">
+<summary>
+ Marks that a function call/property get has a side effect or depends on execution order.
+ Cannot be dropped or execution order swapped with other non-pure expressions.
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.FuncArgOptimization">
+<summary>
+ Specifies a curried or tupled F# function argument that is translated to a flat function
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.StatementVisitor">
+<summary>
+ A visitor base class that skips expression forms
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.StatementTransformer">
+<summary>
+ A transformer base class that skips expression forms
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Visitor.VisitYield(Microsoft.FSharp.Core.FSharpOption{WebSharper.Core.AST.Expression})">
+<summary>
+ Temporary - C# `yield return` statement
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Visitor.VisitXmlComment(System.String)">
+<summary>
+ TypeScript triple-slash directive
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Visitor.VisitWhile(WebSharper.Core.AST.Expression,WebSharper.Core.AST.Statement)">
+<summary>
+ `while` loop
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Visitor.VisitVerbatim(Microsoft.FSharp.Collections.FSharpList{System.String},Microsoft.FSharp.Collections.FSharpList{WebSharper.Core.AST.Expression},System.Boolean)">
+<summary>
+ JavaScript verbatim code
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Visitor.VisitVarSet(WebSharper.Core.AST.Id,WebSharper.Core.AST.Expression)">
+<summary>
+ Variable set
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Visitor.VisitVarDeclaration(WebSharper.Core.AST.Id,WebSharper.Core.AST.Expression)">
+<summary>
+ Variable declaration
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Visitor.VisitVar(WebSharper.Core.AST.Id)">
+<summary>
+ Gets the value of a variable
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Visitor.VisitValue(WebSharper.Core.AST.Literal)">
+<summary>
+ Contains a literal value
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Visitor.VisitUnionCaseTest(WebSharper.Core.AST.Expression,WebSharper.Core.AST.Concrete{WebSharper.Core.Hashed{WebSharper.Core.AST.TypeDefinitionInfo}},System.String)">
+<summary>
+ F# union case test
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Visitor.VisitUnionCaseTag(WebSharper.Core.AST.Expression,WebSharper.Core.AST.Concrete{WebSharper.Core.Hashed{WebSharper.Core.AST.TypeDefinitionInfo}})">
+<summary>
+ F# union case tag getter
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Visitor.VisitUnionCaseGet(WebSharper.Core.AST.Expression,WebSharper.Core.AST.Concrete{WebSharper.Core.Hashed{WebSharper.Core.AST.TypeDefinitionInfo}},System.String,System.String)">
+<summary>
+ F# union case field getter
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Visitor.VisitUndefined">
+<summary>
+ JavaScript `undefined` value or `void` in .NET
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Visitor.VisitUnary(WebSharper.Core.AST.UnaryOperator,WebSharper.Core.AST.Expression)">
+<summary>
+ Unary operation
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Visitor.VisitTypeCheck(WebSharper.Core.AST.Expression,WebSharper.Core.AST.Type)">
+<summary>
+ .NET type check, returns bool
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Visitor.VisitTryWith(WebSharper.Core.AST.Statement,Microsoft.FSharp.Core.FSharpOption{WebSharper.Core.AST.Id},WebSharper.Core.AST.Statement)">
+<summary>
+ `try ... with` statement
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Visitor.VisitTryFinally(WebSharper.Core.AST.Statement,WebSharper.Core.AST.Statement)">
+<summary>
+ `try ... finally` statement
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Visitor.VisitTraitCall(Microsoft.FSharp.Core.FSharpOption{WebSharper.Core.AST.Expression},Microsoft.FSharp.Collections.FSharpList{WebSharper.Core.AST.Type},WebSharper.Core.AST.Concrete{WebSharper.Core.Hashed{WebSharper.Core.AST.MethodInfo}},Microsoft.FSharp.Collections.FSharpList{WebSharper.Core.AST.Expression})">
+<summary>
+ F# trait call (use of type member within functions with statically resolved type parameters)
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Visitor.VisitThrow(WebSharper.Core.AST.Expression)">
+<summary>
+ F# `raise` or C#/JavaScript `throw` statement
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Visitor.VisitSwitch(WebSharper.Core.AST.Expression,Microsoft.FSharp.Collections.FSharpList{System.Tuple{Microsoft.FSharp.Core.FSharpOption{WebSharper.Core.AST.Expression},WebSharper.Core.AST.Statement}})">
+<summary>
+ JavaScript `switch` expression
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Visitor.VisitStatementSourcePos(WebSharper.Core.AST.SourcePos,WebSharper.Core.AST.Statement)">
+<summary>
+ Original source location for a statement
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Visitor.VisitStatementExpr(WebSharper.Core.AST.Statement,Microsoft.FSharp.Core.FSharpOption{WebSharper.Core.AST.Id})">
+<summary>
+ .NET statement inside an expression. Optional result should be an identifier for a variable which is not explicitly defined inside the statement
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Visitor.VisitSideeffectingImport(WebSharper.Core.AST.Address)">
+<summary>
+ An import statement with no value used
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Visitor.VisitSequential(Microsoft.FSharp.Collections.FSharpList{WebSharper.Core.AST.Expression})">
+<summary>
+ Sequential evaluation of expressions, value is taken from the last
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Visitor.VisitReturn(WebSharper.Core.AST.Expression)">
+<summary>
+ Return a value
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Visitor.VisitRefOrOutParameter(WebSharper.Core.AST.Expression)">
+<summary>
+ Temporary - C# ref or out parameter
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Visitor.VisitOptimizedFSharpArg(WebSharper.Core.AST.Expression,WebSharper.Core.AST.FuncArgOptimization)">
+<summary>
+ Temporary - optimized curried or tupled F# function argument
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Visitor.VisitObjectExpr(WebSharper.Core.AST.Type,Microsoft.FSharp.Core.FSharpOption{WebSharper.Core.AST.Expression},Microsoft.FSharp.Collections.FSharpList{System.Tuple{WebSharper.Core.Hashed{WebSharper.Core.AST.TypeDefinitionInfo},WebSharper.Core.Hashed{WebSharper.Core.AST.MethodInfo},WebSharper.Core.AST.Expression}})">
+<summary>
+ F# object expression
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Visitor.VisitObject(Microsoft.FSharp.Collections.FSharpList{System.Tuple{System.String,WebSharper.Core.AST.MemberKind,WebSharper.Core.AST.Expression}})">
+<summary>
+ JavaSript object
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Visitor.VisitNewVar(WebSharper.Core.AST.Id,WebSharper.Core.AST.Expression)">
+<summary>
+ .NET expression-level variable declaration
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Visitor.VisitNewUnionCase(WebSharper.Core.AST.Concrete{WebSharper.Core.Hashed{WebSharper.Core.AST.TypeDefinitionInfo}},System.String,Microsoft.FSharp.Collections.FSharpList{WebSharper.Core.AST.Expression})">
+<summary>
+ F# union case constructor
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Visitor.VisitNewTuple(Microsoft.FSharp.Collections.FSharpList{WebSharper.Core.AST.Expression},Microsoft.FSharp.Collections.FSharpList{WebSharper.Core.AST.Type})">
+<summary>
+ Creating a new tuple in .NET, array expression in JavaScript
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Visitor.VisitNewRecord(WebSharper.Core.AST.Concrete{WebSharper.Core.Hashed{WebSharper.Core.AST.TypeDefinitionInfo}},Microsoft.FSharp.Collections.FSharpList{WebSharper.Core.AST.Expression})">
+<summary>
+ F# record constructor
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Visitor.VisitNewDelegate(Microsoft.FSharp.Core.FSharpOption{WebSharper.Core.AST.Expression},WebSharper.Core.AST.Concrete{WebSharper.Core.Hashed{WebSharper.Core.AST.TypeDefinitionInfo}},WebSharper.Core.AST.Concrete{WebSharper.Core.Hashed{WebSharper.Core.AST.MethodInfo}})">
+<summary>
+ .NET delegate construction
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Visitor.VisitNew(WebSharper.Core.AST.Expression,Microsoft.FSharp.Collections.FSharpList{WebSharper.Core.AST.TSType},Microsoft.FSharp.Collections.FSharpList{WebSharper.Core.AST.Expression})">
+<summary>
+ JavaScript `new` call
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Visitor.VisitNamedParameter(System.Int32,WebSharper.Core.AST.Expression)">
+<summary>
+ Temporary - C# named parameter
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Visitor.VisitMutatingUnary(WebSharper.Core.AST.MutatingUnaryOperator,WebSharper.Core.AST.Expression)">
+<summary>
+ Unary operation mutating value
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Visitor.VisitMutatingBinary(WebSharper.Core.AST.Expression,WebSharper.Core.AST.MutatingBinaryOperator,WebSharper.Core.AST.Expression)">
+<summary>
+ Binary operation mutating right side
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Visitor.VisitMatchSuccess(System.Int32,Microsoft.FSharp.Collections.FSharpList{WebSharper.Core.AST.Expression})">
+<summary>
+ F# successful match
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Visitor.VisitLetRec(Microsoft.FSharp.Collections.FSharpList{System.Tuple{WebSharper.Core.AST.Id,WebSharper.Core.AST.Expression}},WebSharper.Core.AST.Expression)">
+<summary>
+ F# `let rec`
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Visitor.VisitLet(WebSharper.Core.AST.Id,WebSharper.Core.AST.Expression,WebSharper.Core.AST.Expression)">
+<summary>
+ .NET immutable value definition used only in expression body
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Visitor.VisitLazyClass(WebSharper.Core.AST.Statement,WebSharper.Core.AST.Statement)">
+<summary>
+ Temporary - class during packaging that might need `Lazy` wrapper
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Visitor.VisitLabeled(WebSharper.Core.AST.Id,WebSharper.Core.AST.Statement)">
+<summary>
+ Statement with a label
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Visitor.VisitJSThis">
+<summary>
+ JavaScript `this` value
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Visitor.VisitItemSet(WebSharper.Core.AST.Expression,WebSharper.Core.AST.Expression,WebSharper.Core.AST.Expression)">
+<summary>
+ JavaScript object property set
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Visitor.VisitItemGet(WebSharper.Core.AST.Expression,WebSharper.Core.AST.Expression,WebSharper.Core.AST.Purity)">
+<summary>
+ JavaScript object property get
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Visitor.VisitInterface(WebSharper.Core.AST.Id,Microsoft.FSharp.Collections.FSharpList{WebSharper.Core.AST.TSType},Microsoft.FSharp.Collections.FSharpList{WebSharper.Core.AST.Statement},Microsoft.FSharp.Collections.FSharpList{WebSharper.Core.AST.TSType})">
+<summary>
+ TypeScript `interface { ... }` declaration
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Visitor.VisitImport(Microsoft.FSharp.Core.FSharpOption{WebSharper.Core.AST.Id},Microsoft.FSharp.Core.FSharpOption{WebSharper.Core.AST.Id},Microsoft.FSharp.Collections.FSharpList{System.Tuple{System.String,WebSharper.Core.AST.Id}},System.String)">
+<summary>
+ JavaScript `import * as ... from ...` statement
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Visitor.VisitIf(WebSharper.Core.AST.Expression,WebSharper.Core.AST.Statement,WebSharper.Core.AST.Statement)">
+<summary>
+ `if` statement
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Visitor.VisitId(WebSharper.Core.AST.Id)">
+<summary>
+ Identifier for variable or label
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Visitor.VisitHole(System.Int32)">
+<summary>
+ Temporary - A hole in an expression for inlining
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Visitor.VisitGotoCase(Microsoft.FSharp.Core.FSharpOption{WebSharper.Core.AST.Expression})">
+<summary>
+ Temporary - C# `goto case` statement
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Visitor.VisitGoto(WebSharper.Core.AST.Id)">
+<summary>
+ Temporary - C# `goto` statement
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Visitor.VisitGlobalAccessSet(WebSharper.Core.AST.Address,WebSharper.Core.AST.Expression)">
+<summary>
+ A global or imported value setter
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Visitor.VisitGlobalAccess(WebSharper.Core.AST.Address)">
+<summary>
+ A global or imported value
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Visitor.VisitFunction(Microsoft.FSharp.Collections.FSharpList{WebSharper.Core.AST.Id},Microsoft.FSharp.Core.FSharpOption{WebSharper.Core.AST.Id},Microsoft.FSharp.Core.FSharpOption{WebSharper.Core.AST.Type},WebSharper.Core.AST.Statement)">
+<summary>
+ Function declaration
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Visitor.VisitFuncSignature(WebSharper.Core.AST.Id,Microsoft.FSharp.Collections.FSharpList{WebSharper.Core.AST.Id},Microsoft.FSharp.Core.FSharpOption{WebSharper.Core.AST.Id},Microsoft.FSharp.Collections.FSharpList{WebSharper.Core.AST.TSType})">
+<summary>
+ TypeScript function signature
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Visitor.VisitFuncDeclaration(WebSharper.Core.AST.Id,Microsoft.FSharp.Collections.FSharpList{WebSharper.Core.AST.Id},Microsoft.FSharp.Core.FSharpOption{WebSharper.Core.AST.Id},WebSharper.Core.AST.Statement,Microsoft.FSharp.Collections.FSharpList{WebSharper.Core.AST.TSType})">
+<summary>
+ Function declaration
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Visitor.VisitForIn(WebSharper.Core.AST.Id,WebSharper.Core.AST.Expression,WebSharper.Core.AST.Statement)">
+<summary>
+ JavaScript `for ... in` loop
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Visitor.VisitFor(Microsoft.FSharp.Core.FSharpOption{WebSharper.Core.AST.Expression},Microsoft.FSharp.Core.FSharpOption{WebSharper.Core.AST.Expression},Microsoft.FSharp.Core.FSharpOption{WebSharper.Core.AST.Expression},WebSharper.Core.AST.Statement)">
+<summary>
+ `for` loop
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Visitor.VisitFieldSet(Microsoft.FSharp.Core.FSharpOption{WebSharper.Core.AST.Expression},WebSharper.Core.AST.Concrete{WebSharper.Core.Hashed{WebSharper.Core.AST.TypeDefinitionInfo}},System.String,WebSharper.Core.AST.Expression)">
+<summary>
+ .NET field setter
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Visitor.VisitFieldGet(Microsoft.FSharp.Core.FSharpOption{WebSharper.Core.AST.Expression},WebSharper.Core.AST.Concrete{WebSharper.Core.Hashed{WebSharper.Core.AST.TypeDefinitionInfo}},System.String)">
+<summary>
+ .NET field getter
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Visitor.VisitExprStatement(WebSharper.Core.AST.Expression)">
+<summary>
+ Expression as statement
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Visitor.VisitExprSourcePos(WebSharper.Core.AST.SourcePos,WebSharper.Core.AST.Expression)">
+<summary>
+ Original source location for an expression
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Visitor.VisitExportDecl(System.Boolean,WebSharper.Core.AST.Statement)">
+<summary>
+ JavaScript `export` statement
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Visitor.VisitEmpty">
+<summary>
+ Empty statement
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Visitor.VisitDoWhile(WebSharper.Core.AST.Statement,WebSharper.Core.AST.Expression)">
+<summary>
+ `do ... while` loop
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Visitor.VisitDoNotReturn">
+<summary>
+ F# tail call position
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Visitor.VisitDeclare(WebSharper.Core.AST.Statement)">
+<summary>
+ TypeScript `declare ...` statement
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Visitor.VisitDebugger">
+<summary>
+ debugger statement
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Visitor.VisitCurriedApplication(WebSharper.Core.AST.Expression,Microsoft.FSharp.Collections.FSharpList{System.Tuple{System.Boolean,WebSharper.Core.AST.Expression}})">
+<summary>
+ Temporary - F# function application, bool indicates if the argument has type unit
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Visitor.VisitCtor(WebSharper.Core.AST.Concrete{WebSharper.Core.Hashed{WebSharper.Core.AST.TypeDefinitionInfo}},WebSharper.Core.Hashed{WebSharper.Core.AST.ConstructorInfo},Microsoft.FSharp.Collections.FSharpList{WebSharper.Core.AST.Expression})">
+<summary>
+ .NET constructor call
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Visitor.VisitCopyCtor(WebSharper.Core.Hashed{WebSharper.Core.AST.TypeDefinitionInfo},WebSharper.Core.AST.Expression)">
+<summary>
+ .NET creating an object from a plain object, used for F# records/unions
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Visitor.VisitContinue(Microsoft.FSharp.Core.FSharpOption{WebSharper.Core.AST.Id})">
+<summary>
+ continue statement
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Visitor.VisitContinuation(WebSharper.Core.AST.Id,WebSharper.Core.AST.Expression)">
+<summary>
+ Temporary - go to next state in state-machine for iterators, async methods, or methods containing gotos
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Visitor.VisitConditional(WebSharper.Core.AST.Expression,WebSharper.Core.AST.Expression,WebSharper.Core.AST.Expression)">
+<summary>
+ Conditional operator
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Visitor.VisitComplexElement(Microsoft.FSharp.Collections.FSharpList{WebSharper.Core.AST.Expression})">
+<summary>
+ Temporary - C# complex element in initializer expression
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Visitor.VisitCoerce(WebSharper.Core.AST.Expression,WebSharper.Core.AST.Type,WebSharper.Core.AST.Type)">
+<summary>
+ .NET type coercion
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Visitor.VisitCoalesce(WebSharper.Core.AST.Expression,WebSharper.Core.AST.Type,WebSharper.Core.AST.Expression)">
+<summary>
+ .NET null-coalescing
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Visitor.VisitClassStatic(WebSharper.Core.AST.Statement)">
+<summary>
+ JavaScript class static block
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Visitor.VisitClassProperty(WebSharper.Core.AST.ClassPropertyInfo,System.String,WebSharper.Core.AST.TSType,Microsoft.FSharp.Core.FSharpOption{WebSharper.Core.AST.Expression})">
+<summary>
+ JavaScript class plain property
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Visitor.VisitClassMethod(WebSharper.Core.AST.ClassMethodInfo,System.String,Microsoft.FSharp.Collections.FSharpList{WebSharper.Core.AST.Id},Microsoft.FSharp.Core.FSharpOption{WebSharper.Core.AST.Id},Microsoft.FSharp.Core.FSharpOption{WebSharper.Core.AST.Statement},WebSharper.Core.AST.TSType)">
+<summary>
+ JavaScript class method
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Visitor.VisitClassExpr(Microsoft.FSharp.Core.FSharpOption{WebSharper.Core.AST.Id},Microsoft.FSharp.Core.FSharpOption{WebSharper.Core.AST.Expression},Microsoft.FSharp.Collections.FSharpList{WebSharper.Core.AST.Statement},Microsoft.FSharp.Collections.FSharpList{WebSharper.Core.AST.TSType},Microsoft.FSharp.Collections.FSharpList{WebSharper.Core.AST.TSType})">
+<summary>
+ JavaScript `class { ... }` expression
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Visitor.VisitClassConstructor(Microsoft.FSharp.Collections.FSharpList{System.Tuple{WebSharper.Core.AST.Id,WebSharper.Core.JavaScript.Syntax.Modifiers}},Microsoft.FSharp.Core.FSharpOption{WebSharper.Core.AST.Id},Microsoft.FSharp.Core.FSharpOption{WebSharper.Core.AST.Statement},WebSharper.Core.AST.TSType)">
+<summary>
+ JavaScript class constructor
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Visitor.VisitClass(WebSharper.Core.AST.Id,Microsoft.FSharp.Core.FSharpOption{WebSharper.Core.AST.Expression},Microsoft.FSharp.Collections.FSharpList{WebSharper.Core.AST.TSType},Microsoft.FSharp.Collections.FSharpList{WebSharper.Core.AST.Statement},Microsoft.FSharp.Collections.FSharpList{WebSharper.Core.AST.TSType},Microsoft.FSharp.Collections.FSharpList{WebSharper.Core.AST.TSType})">
+<summary>
+ JavaScript `class { ... }` statement
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Visitor.VisitChainedCtor(System.Boolean,WebSharper.Core.AST.Concrete{WebSharper.Core.Hashed{WebSharper.Core.AST.TypeDefinitionInfo}},WebSharper.Core.Hashed{WebSharper.Core.AST.ConstructorInfo},Microsoft.FSharp.Collections.FSharpList{WebSharper.Core.AST.Expression})">
+<summary>
+ .NET chained or base constructor call
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Visitor.VisitCast(WebSharper.Core.AST.TSType,WebSharper.Core.AST.Expression)">
+<summary>
+ TypeScript type cast `&lt;...&gt;...`
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Visitor.VisitCallNeedingMoreArgs(Microsoft.FSharp.Core.FSharpOption{WebSharper.Core.AST.Expression},WebSharper.Core.AST.Concrete{WebSharper.Core.Hashed{WebSharper.Core.AST.TypeDefinitionInfo}},WebSharper.Core.AST.Concrete{WebSharper.Core.Hashed{WebSharper.Core.AST.MethodInfo}},Microsoft.FSharp.Collections.FSharpList{WebSharper.Core.AST.Expression})">
+<summary>
+ Temporary - Partial application, workaround for FCS issue #414
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Visitor.VisitCall(Microsoft.FSharp.Core.FSharpOption{WebSharper.Core.AST.Expression},WebSharper.Core.AST.Concrete{WebSharper.Core.Hashed{WebSharper.Core.AST.TypeDefinitionInfo}},WebSharper.Core.AST.Concrete{WebSharper.Core.Hashed{WebSharper.Core.AST.MethodInfo}},Microsoft.FSharp.Collections.FSharpList{WebSharper.Core.AST.Expression})">
+<summary>
+ .NET method call
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Visitor.VisitCSharpSwitch(WebSharper.Core.AST.Expression,Microsoft.FSharp.Collections.FSharpList{System.Tuple{Microsoft.FSharp.Collections.FSharpList{Microsoft.FSharp.Core.FSharpOption{WebSharper.Core.AST.Expression}},WebSharper.Core.AST.Statement}})">
+<summary>
+ Temporary - C# `switch` statement
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Visitor.VisitBreak(Microsoft.FSharp.Core.FSharpOption{WebSharper.Core.AST.Id})">
+<summary>
+ break statement
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Visitor.VisitBlock(Microsoft.FSharp.Collections.FSharpList{WebSharper.Core.AST.Statement})">
+<summary>
+ Block of statements
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Visitor.VisitBinary(WebSharper.Core.AST.Expression,WebSharper.Core.AST.BinaryOperator,WebSharper.Core.AST.Expression)">
+<summary>
+ Binary operation
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Visitor.VisitBase">
+<summary>
+ Refers to the base class from an instance method, `super` in JavaScript
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Visitor.VisitAwait(WebSharper.Core.AST.Expression)">
+<summary>
+ Temporary - C# await expression
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Visitor.VisitApplication(WebSharper.Core.AST.Expression,Microsoft.FSharp.Collections.FSharpList{WebSharper.Core.AST.Expression},WebSharper.Core.AST.ApplicationInfo)">
+<summary>
+ Function application with extra information. The `Purity` field should be `NoSideEffect` if the function call can be omitted if the result is not used, and `Pure` when the function is deterministic. The `KnownLength` field should be `Some x` only when the function is known to have `x` number of arguments and does not use the `this` value.
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Visitor.VisitAlias(WebSharper.Core.AST.Id,Microsoft.FSharp.Collections.FSharpList{WebSharper.Core.AST.TSType},WebSharper.Core.AST.TSType)">
+<summary>
+ TypeScript `type` or `import` alias
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Visitor">
+<summary>
+ Base class for code visitors.
+ Provides virtual methods for visiting each AST case separately.
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Transformer.TransformYield(Microsoft.FSharp.Core.FSharpOption{WebSharper.Core.AST.Expression})">
+<summary>
+ Temporary - C# `yield return` statement
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Transformer.TransformXmlComment(System.String)">
+<summary>
+ TypeScript triple-slash directive
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Transformer.TransformWhile(WebSharper.Core.AST.Expression,WebSharper.Core.AST.Statement)">
+<summary>
+ `while` loop
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Transformer.TransformVerbatim(Microsoft.FSharp.Collections.FSharpList{System.String},Microsoft.FSharp.Collections.FSharpList{WebSharper.Core.AST.Expression},System.Boolean)">
+<summary>
+ JavaScript verbatim code
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Transformer.TransformVarSet(WebSharper.Core.AST.Id,WebSharper.Core.AST.Expression)">
+<summary>
+ Variable set
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Transformer.TransformVarDeclaration(WebSharper.Core.AST.Id,WebSharper.Core.AST.Expression)">
+<summary>
+ Variable declaration
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Transformer.TransformVar(WebSharper.Core.AST.Id)">
+<summary>
+ Gets the value of a variable
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Transformer.TransformValue(WebSharper.Core.AST.Literal)">
+<summary>
+ Contains a literal value
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Transformer.TransformUnionCaseTest(WebSharper.Core.AST.Expression,WebSharper.Core.AST.Concrete{WebSharper.Core.Hashed{WebSharper.Core.AST.TypeDefinitionInfo}},System.String)">
+<summary>
+ F# union case test
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Transformer.TransformUnionCaseTag(WebSharper.Core.AST.Expression,WebSharper.Core.AST.Concrete{WebSharper.Core.Hashed{WebSharper.Core.AST.TypeDefinitionInfo}})">
+<summary>
+ F# union case tag getter
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Transformer.TransformUnionCaseGet(WebSharper.Core.AST.Expression,WebSharper.Core.AST.Concrete{WebSharper.Core.Hashed{WebSharper.Core.AST.TypeDefinitionInfo}},System.String,System.String)">
+<summary>
+ F# union case field getter
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Transformer.TransformUndefined">
+<summary>
+ JavaScript `undefined` value or `void` in .NET
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Transformer.TransformUnary(WebSharper.Core.AST.UnaryOperator,WebSharper.Core.AST.Expression)">
+<summary>
+ Unary operation
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Transformer.TransformTypeCheck(WebSharper.Core.AST.Expression,WebSharper.Core.AST.Type)">
+<summary>
+ .NET type check, returns bool
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Transformer.TransformTryWith(WebSharper.Core.AST.Statement,Microsoft.FSharp.Core.FSharpOption{WebSharper.Core.AST.Id},WebSharper.Core.AST.Statement)">
+<summary>
+ `try ... with` statement
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Transformer.TransformTryFinally(WebSharper.Core.AST.Statement,WebSharper.Core.AST.Statement)">
+<summary>
+ `try ... finally` statement
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Transformer.TransformTraitCall(Microsoft.FSharp.Core.FSharpOption{WebSharper.Core.AST.Expression},Microsoft.FSharp.Collections.FSharpList{WebSharper.Core.AST.Type},WebSharper.Core.AST.Concrete{WebSharper.Core.Hashed{WebSharper.Core.AST.MethodInfo}},Microsoft.FSharp.Collections.FSharpList{WebSharper.Core.AST.Expression})">
+<summary>
+ F# trait call (use of type member within functions with statically resolved type parameters)
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Transformer.TransformThrow(WebSharper.Core.AST.Expression)">
+<summary>
+ F# `raise` or C#/JavaScript `throw` statement
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Transformer.TransformSwitch(WebSharper.Core.AST.Expression,Microsoft.FSharp.Collections.FSharpList{System.Tuple{Microsoft.FSharp.Core.FSharpOption{WebSharper.Core.AST.Expression},WebSharper.Core.AST.Statement}})">
+<summary>
+ JavaScript `switch` expression
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Transformer.TransformStatementSourcePos(WebSharper.Core.AST.SourcePos,WebSharper.Core.AST.Statement)">
+<summary>
+ Original source location for a statement
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Transformer.TransformStatementExpr(WebSharper.Core.AST.Statement,Microsoft.FSharp.Core.FSharpOption{WebSharper.Core.AST.Id})">
+<summary>
+ .NET statement inside an expression. Optional result should be an identifier for a variable which is not explicitly defined inside the statement
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Transformer.TransformSideeffectingImport(WebSharper.Core.AST.Address)">
+<summary>
+ An import statement with no value used
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Transformer.TransformSequential(Microsoft.FSharp.Collections.FSharpList{WebSharper.Core.AST.Expression})">
+<summary>
+ Sequential evaluation of expressions, value is taken from the last
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Transformer.TransformReturn(WebSharper.Core.AST.Expression)">
+<summary>
+ Return a value
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Transformer.TransformRefOrOutParameter(WebSharper.Core.AST.Expression)">
+<summary>
+ Temporary - C# ref or out parameter
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Transformer.TransformOptimizedFSharpArg(WebSharper.Core.AST.Expression,WebSharper.Core.AST.FuncArgOptimization)">
+<summary>
+ Temporary - optimized curried or tupled F# function argument
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Transformer.TransformObjectExpr(WebSharper.Core.AST.Type,Microsoft.FSharp.Core.FSharpOption{WebSharper.Core.AST.Expression},Microsoft.FSharp.Collections.FSharpList{System.Tuple{WebSharper.Core.Hashed{WebSharper.Core.AST.TypeDefinitionInfo},WebSharper.Core.Hashed{WebSharper.Core.AST.MethodInfo},WebSharper.Core.AST.Expression}})">
+<summary>
+ F# object expression
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Transformer.TransformObject(Microsoft.FSharp.Collections.FSharpList{System.Tuple{System.String,WebSharper.Core.AST.MemberKind,WebSharper.Core.AST.Expression}})">
+<summary>
+ JavaSript object
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Transformer.TransformNewVar(WebSharper.Core.AST.Id,WebSharper.Core.AST.Expression)">
+<summary>
+ .NET expression-level variable declaration
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Transformer.TransformNewUnionCase(WebSharper.Core.AST.Concrete{WebSharper.Core.Hashed{WebSharper.Core.AST.TypeDefinitionInfo}},System.String,Microsoft.FSharp.Collections.FSharpList{WebSharper.Core.AST.Expression})">
+<summary>
+ F# union case constructor
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Transformer.TransformNewTuple(Microsoft.FSharp.Collections.FSharpList{WebSharper.Core.AST.Expression},Microsoft.FSharp.Collections.FSharpList{WebSharper.Core.AST.Type})">
+<summary>
+ Creating a new tuple in .NET, array expression in JavaScript
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Transformer.TransformNewRecord(WebSharper.Core.AST.Concrete{WebSharper.Core.Hashed{WebSharper.Core.AST.TypeDefinitionInfo}},Microsoft.FSharp.Collections.FSharpList{WebSharper.Core.AST.Expression})">
+<summary>
+ F# record constructor
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Transformer.TransformNewDelegate(Microsoft.FSharp.Core.FSharpOption{WebSharper.Core.AST.Expression},WebSharper.Core.AST.Concrete{WebSharper.Core.Hashed{WebSharper.Core.AST.TypeDefinitionInfo}},WebSharper.Core.AST.Concrete{WebSharper.Core.Hashed{WebSharper.Core.AST.MethodInfo}})">
+<summary>
+ .NET delegate construction
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Transformer.TransformNew(WebSharper.Core.AST.Expression,Microsoft.FSharp.Collections.FSharpList{WebSharper.Core.AST.TSType},Microsoft.FSharp.Collections.FSharpList{WebSharper.Core.AST.Expression})">
+<summary>
+ JavaScript `new` call
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Transformer.TransformNamedParameter(System.Int32,WebSharper.Core.AST.Expression)">
+<summary>
+ Temporary - C# named parameter
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Transformer.TransformMutatingUnary(WebSharper.Core.AST.MutatingUnaryOperator,WebSharper.Core.AST.Expression)">
+<summary>
+ Unary operation mutating value
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Transformer.TransformMutatingBinary(WebSharper.Core.AST.Expression,WebSharper.Core.AST.MutatingBinaryOperator,WebSharper.Core.AST.Expression)">
+<summary>
+ Binary operation mutating right side
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Transformer.TransformMatchSuccess(System.Int32,Microsoft.FSharp.Collections.FSharpList{WebSharper.Core.AST.Expression})">
+<summary>
+ F# successful match
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Transformer.TransformLetRec(Microsoft.FSharp.Collections.FSharpList{System.Tuple{WebSharper.Core.AST.Id,WebSharper.Core.AST.Expression}},WebSharper.Core.AST.Expression)">
+<summary>
+ F# `let rec`
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Transformer.TransformLet(WebSharper.Core.AST.Id,WebSharper.Core.AST.Expression,WebSharper.Core.AST.Expression)">
+<summary>
+ .NET immutable value definition used only in expression body
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Transformer.TransformLazyClass(WebSharper.Core.AST.Statement,WebSharper.Core.AST.Statement)">
+<summary>
+ Temporary - class during packaging that might need `Lazy` wrapper
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Transformer.TransformLabeled(WebSharper.Core.AST.Id,WebSharper.Core.AST.Statement)">
+<summary>
+ Statement with a label
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Transformer.TransformJSThis">
+<summary>
+ JavaScript `this` value
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Transformer.TransformItemSet(WebSharper.Core.AST.Expression,WebSharper.Core.AST.Expression,WebSharper.Core.AST.Expression)">
+<summary>
+ JavaScript object property set
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Transformer.TransformItemGet(WebSharper.Core.AST.Expression,WebSharper.Core.AST.Expression,WebSharper.Core.AST.Purity)">
+<summary>
+ JavaScript object property get
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Transformer.TransformInterface(WebSharper.Core.AST.Id,Microsoft.FSharp.Collections.FSharpList{WebSharper.Core.AST.TSType},Microsoft.FSharp.Collections.FSharpList{WebSharper.Core.AST.Statement},Microsoft.FSharp.Collections.FSharpList{WebSharper.Core.AST.TSType})">
+<summary>
+ TypeScript `interface { ... }` declaration
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Transformer.TransformImport(Microsoft.FSharp.Core.FSharpOption{WebSharper.Core.AST.Id},Microsoft.FSharp.Core.FSharpOption{WebSharper.Core.AST.Id},Microsoft.FSharp.Collections.FSharpList{System.Tuple{System.String,WebSharper.Core.AST.Id}},System.String)">
+<summary>
+ JavaScript `import * as ... from ...` statement
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Transformer.TransformIf(WebSharper.Core.AST.Expression,WebSharper.Core.AST.Statement,WebSharper.Core.AST.Statement)">
+<summary>
+ `if` statement
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Transformer.TransformId(WebSharper.Core.AST.Id)">
+<summary>
+ Identifier for variable or label
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Transformer.TransformHole(System.Int32)">
+<summary>
+ Temporary - A hole in an expression for inlining
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Transformer.TransformGotoCase(Microsoft.FSharp.Core.FSharpOption{WebSharper.Core.AST.Expression})">
+<summary>
+ Temporary - C# `goto case` statement
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Transformer.TransformGoto(WebSharper.Core.AST.Id)">
+<summary>
+ Temporary - C# `goto` statement
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Transformer.TransformGlobalAccessSet(WebSharper.Core.AST.Address,WebSharper.Core.AST.Expression)">
+<summary>
+ A global or imported value setter
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Transformer.TransformGlobalAccess(WebSharper.Core.AST.Address)">
+<summary>
+ A global or imported value
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Transformer.TransformFunction(Microsoft.FSharp.Collections.FSharpList{WebSharper.Core.AST.Id},Microsoft.FSharp.Core.FSharpOption{WebSharper.Core.AST.Id},Microsoft.FSharp.Core.FSharpOption{WebSharper.Core.AST.Type},WebSharper.Core.AST.Statement)">
+<summary>
+ Function declaration
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Transformer.TransformFuncSignature(WebSharper.Core.AST.Id,Microsoft.FSharp.Collections.FSharpList{WebSharper.Core.AST.Id},Microsoft.FSharp.Core.FSharpOption{WebSharper.Core.AST.Id},Microsoft.FSharp.Collections.FSharpList{WebSharper.Core.AST.TSType})">
+<summary>
+ TypeScript function signature
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Transformer.TransformFuncDeclaration(WebSharper.Core.AST.Id,Microsoft.FSharp.Collections.FSharpList{WebSharper.Core.AST.Id},Microsoft.FSharp.Core.FSharpOption{WebSharper.Core.AST.Id},WebSharper.Core.AST.Statement,Microsoft.FSharp.Collections.FSharpList{WebSharper.Core.AST.TSType})">
+<summary>
+ Function declaration
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Transformer.TransformForIn(WebSharper.Core.AST.Id,WebSharper.Core.AST.Expression,WebSharper.Core.AST.Statement)">
+<summary>
+ JavaScript `for ... in` loop
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Transformer.TransformFor(Microsoft.FSharp.Core.FSharpOption{WebSharper.Core.AST.Expression},Microsoft.FSharp.Core.FSharpOption{WebSharper.Core.AST.Expression},Microsoft.FSharp.Core.FSharpOption{WebSharper.Core.AST.Expression},WebSharper.Core.AST.Statement)">
+<summary>
+ `for` loop
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Transformer.TransformFieldSet(Microsoft.FSharp.Core.FSharpOption{WebSharper.Core.AST.Expression},WebSharper.Core.AST.Concrete{WebSharper.Core.Hashed{WebSharper.Core.AST.TypeDefinitionInfo}},System.String,WebSharper.Core.AST.Expression)">
+<summary>
+ .NET field setter
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Transformer.TransformFieldGet(Microsoft.FSharp.Core.FSharpOption{WebSharper.Core.AST.Expression},WebSharper.Core.AST.Concrete{WebSharper.Core.Hashed{WebSharper.Core.AST.TypeDefinitionInfo}},System.String)">
+<summary>
+ .NET field getter
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Transformer.TransformExprStatement(WebSharper.Core.AST.Expression)">
+<summary>
+ Expression as statement
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Transformer.TransformExprSourcePos(WebSharper.Core.AST.SourcePos,WebSharper.Core.AST.Expression)">
+<summary>
+ Original source location for an expression
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Transformer.TransformExportDecl(System.Boolean,WebSharper.Core.AST.Statement)">
+<summary>
+ JavaScript `export` statement
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Transformer.TransformEmpty">
+<summary>
+ Empty statement
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Transformer.TransformDoWhile(WebSharper.Core.AST.Statement,WebSharper.Core.AST.Expression)">
+<summary>
+ `do ... while` loop
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Transformer.TransformDoNotReturn">
+<summary>
+ F# tail call position
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Transformer.TransformDeclare(WebSharper.Core.AST.Statement)">
+<summary>
+ TypeScript `declare ...` statement
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Transformer.TransformDebugger">
+<summary>
+ debugger statement
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Transformer.TransformCurriedApplication(WebSharper.Core.AST.Expression,Microsoft.FSharp.Collections.FSharpList{System.Tuple{System.Boolean,WebSharper.Core.AST.Expression}})">
+<summary>
+ Temporary - F# function application, bool indicates if the argument has type unit
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Transformer.TransformCtor(WebSharper.Core.AST.Concrete{WebSharper.Core.Hashed{WebSharper.Core.AST.TypeDefinitionInfo}},WebSharper.Core.Hashed{WebSharper.Core.AST.ConstructorInfo},Microsoft.FSharp.Collections.FSharpList{WebSharper.Core.AST.Expression})">
+<summary>
+ .NET constructor call
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Transformer.TransformCopyCtor(WebSharper.Core.Hashed{WebSharper.Core.AST.TypeDefinitionInfo},WebSharper.Core.AST.Expression)">
+<summary>
+ .NET creating an object from a plain object, used for F# records/unions
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Transformer.TransformContinue(Microsoft.FSharp.Core.FSharpOption{WebSharper.Core.AST.Id})">
+<summary>
+ continue statement
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Transformer.TransformContinuation(WebSharper.Core.AST.Id,WebSharper.Core.AST.Expression)">
+<summary>
+ Temporary - go to next state in state-machine for iterators, async methods, or methods containing gotos
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Transformer.TransformConditional(WebSharper.Core.AST.Expression,WebSharper.Core.AST.Expression,WebSharper.Core.AST.Expression)">
+<summary>
+ Conditional operator
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Transformer.TransformComplexElement(Microsoft.FSharp.Collections.FSharpList{WebSharper.Core.AST.Expression})">
+<summary>
+ Temporary - C# complex element in initializer expression
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Transformer.TransformCoerce(WebSharper.Core.AST.Expression,WebSharper.Core.AST.Type,WebSharper.Core.AST.Type)">
+<summary>
+ .NET type coercion
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Transformer.TransformCoalesce(WebSharper.Core.AST.Expression,WebSharper.Core.AST.Type,WebSharper.Core.AST.Expression)">
+<summary>
+ .NET null-coalescing
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Transformer.TransformClassStatic(WebSharper.Core.AST.Statement)">
+<summary>
+ JavaScript class static block
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Transformer.TransformClassProperty(WebSharper.Core.AST.ClassPropertyInfo,System.String,WebSharper.Core.AST.TSType,Microsoft.FSharp.Core.FSharpOption{WebSharper.Core.AST.Expression})">
+<summary>
+ JavaScript class plain property
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Transformer.TransformClassMethod(WebSharper.Core.AST.ClassMethodInfo,System.String,Microsoft.FSharp.Collections.FSharpList{WebSharper.Core.AST.Id},Microsoft.FSharp.Core.FSharpOption{WebSharper.Core.AST.Id},Microsoft.FSharp.Core.FSharpOption{WebSharper.Core.AST.Statement},WebSharper.Core.AST.TSType)">
+<summary>
+ JavaScript class method
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Transformer.TransformClassExpr(Microsoft.FSharp.Core.FSharpOption{WebSharper.Core.AST.Id},Microsoft.FSharp.Core.FSharpOption{WebSharper.Core.AST.Expression},Microsoft.FSharp.Collections.FSharpList{WebSharper.Core.AST.Statement},Microsoft.FSharp.Collections.FSharpList{WebSharper.Core.AST.TSType},Microsoft.FSharp.Collections.FSharpList{WebSharper.Core.AST.TSType})">
+<summary>
+ JavaScript `class { ... }` expression
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Transformer.TransformClassConstructor(Microsoft.FSharp.Collections.FSharpList{System.Tuple{WebSharper.Core.AST.Id,WebSharper.Core.JavaScript.Syntax.Modifiers}},Microsoft.FSharp.Core.FSharpOption{WebSharper.Core.AST.Id},Microsoft.FSharp.Core.FSharpOption{WebSharper.Core.AST.Statement},WebSharper.Core.AST.TSType)">
+<summary>
+ JavaScript class constructor
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Transformer.TransformClass(WebSharper.Core.AST.Id,Microsoft.FSharp.Core.FSharpOption{WebSharper.Core.AST.Expression},Microsoft.FSharp.Collections.FSharpList{WebSharper.Core.AST.TSType},Microsoft.FSharp.Collections.FSharpList{WebSharper.Core.AST.Statement},Microsoft.FSharp.Collections.FSharpList{WebSharper.Core.AST.TSType},Microsoft.FSharp.Collections.FSharpList{WebSharper.Core.AST.TSType})">
+<summary>
+ JavaScript `class { ... }` statement
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Transformer.TransformChainedCtor(System.Boolean,WebSharper.Core.AST.Concrete{WebSharper.Core.Hashed{WebSharper.Core.AST.TypeDefinitionInfo}},WebSharper.Core.Hashed{WebSharper.Core.AST.ConstructorInfo},Microsoft.FSharp.Collections.FSharpList{WebSharper.Core.AST.Expression})">
+<summary>
+ .NET chained or base constructor call
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Transformer.TransformCast(WebSharper.Core.AST.TSType,WebSharper.Core.AST.Expression)">
+<summary>
+ TypeScript type cast `&lt;...&gt;...`
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Transformer.TransformCallNeedingMoreArgs(Microsoft.FSharp.Core.FSharpOption{WebSharper.Core.AST.Expression},WebSharper.Core.AST.Concrete{WebSharper.Core.Hashed{WebSharper.Core.AST.TypeDefinitionInfo}},WebSharper.Core.AST.Concrete{WebSharper.Core.Hashed{WebSharper.Core.AST.MethodInfo}},Microsoft.FSharp.Collections.FSharpList{WebSharper.Core.AST.Expression})">
+<summary>
+ Temporary - Partial application, workaround for FCS issue #414
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Transformer.TransformCall(Microsoft.FSharp.Core.FSharpOption{WebSharper.Core.AST.Expression},WebSharper.Core.AST.Concrete{WebSharper.Core.Hashed{WebSharper.Core.AST.TypeDefinitionInfo}},WebSharper.Core.AST.Concrete{WebSharper.Core.Hashed{WebSharper.Core.AST.MethodInfo}},Microsoft.FSharp.Collections.FSharpList{WebSharper.Core.AST.Expression})">
+<summary>
+ .NET method call
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Transformer.TransformCSharpSwitch(WebSharper.Core.AST.Expression,Microsoft.FSharp.Collections.FSharpList{System.Tuple{Microsoft.FSharp.Collections.FSharpList{Microsoft.FSharp.Core.FSharpOption{WebSharper.Core.AST.Expression}},WebSharper.Core.AST.Statement}})">
+<summary>
+ Temporary - C# `switch` statement
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Transformer.TransformBreak(Microsoft.FSharp.Core.FSharpOption{WebSharper.Core.AST.Id})">
+<summary>
+ break statement
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Transformer.TransformBlock(Microsoft.FSharp.Collections.FSharpList{WebSharper.Core.AST.Statement})">
+<summary>
+ Block of statements
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Transformer.TransformBinary(WebSharper.Core.AST.Expression,WebSharper.Core.AST.BinaryOperator,WebSharper.Core.AST.Expression)">
+<summary>
+ Binary operation
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Transformer.TransformBase">
+<summary>
+ Refers to the base class from an instance method, `super` in JavaScript
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Transformer.TransformAwait(WebSharper.Core.AST.Expression)">
+<summary>
+ Temporary - C# await expression
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Transformer.TransformApplication(WebSharper.Core.AST.Expression,Microsoft.FSharp.Collections.FSharpList{WebSharper.Core.AST.Expression},WebSharper.Core.AST.ApplicationInfo)">
+<summary>
+ Function application with extra information. The `Purity` field should be `NoSideEffect` if the function call can be omitted if the result is not used, and `Pure` when the function is deterministic. The `KnownLength` field should be `Some x` only when the function is known to have `x` number of arguments and does not use the `this` value.
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.Transformer.TransformAlias(WebSharper.Core.AST.Id,Microsoft.FSharp.Collections.FSharpList{WebSharper.Core.AST.TSType},WebSharper.Core.AST.TSType)">
+<summary>
+ TypeScript `type` or `import` alias
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Transformer">
+<summary>
+ Base class for code transformers.
+ Provides virtual methods for transforming each AST case separately.
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Statement.FuncSignature">
+<summary>
+ TypeScript function signature
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Statement.LazyClass">
+<summary>
+ Temporary - class during packaging that might need `Lazy` wrapper
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Statement.XmlComment">
+<summary>
+ TypeScript triple-slash directive
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Statement.Alias">
+<summary>
+ TypeScript `type` or `import` alias
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Statement.Interface">
+<summary>
+ TypeScript `interface { ... }` declaration
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Statement.ClassStatic">
+<summary>
+ JavaScript class static block
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Statement.ClassProperty">
+<summary>
+ JavaScript class plain property
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Statement.ClassConstructor">
+<summary>
+ JavaScript class constructor
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Statement.ClassMethod">
+<summary>
+ JavaScript class method
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Statement.Class">
+<summary>
+ JavaScript `class { ... }` statement
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Statement.Declare">
+<summary>
+ TypeScript `declare ...` statement
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Statement.ExportDecl">
+<summary>
+ JavaScript `export` statement
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Statement.Import">
+<summary>
+ JavaScript `import * as ... from ...` statement
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Statement.DoNotReturn">
+<summary>
+ F# tail call position
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Statement.GotoCase">
+<summary>
+ Temporary - C# `goto case` statement
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Statement.CSharpSwitch">
+<summary>
+ Temporary - C# `switch` statement
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Statement.Yield">
+<summary>
+ Temporary - C# `yield return` statement
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Statement.Continuation">
+<summary>
+ Temporary - go to next state in state-machine for iterators, async methods, or methods containing gotos
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Statement.Goto">
+<summary>
+ Temporary - C# `goto` statement
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Statement.StatementSourcePos">
+<summary>
+ Original source location for a statement
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Statement.Labeled">
+<summary>
+ Statement with a label
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Statement.TryFinally">
+<summary>
+ `try ... finally` statement
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Statement.TryWith">
+<summary>
+ `try ... with` statement
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Statement.Throw">
+<summary>
+ F# `raise` or C#/JavaScript `throw` statement
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Statement.If">
+<summary>
+ `if` statement
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Statement.Switch">
+<summary>
+ JavaScript `switch` expression
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Statement.ForIn">
+<summary>
+ JavaScript `for ... in` loop
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Statement.For">
+<summary>
+ `for` loop
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Statement.DoWhile">
+<summary>
+ `do ... while` loop
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Statement.While">
+<summary>
+ `while` loop
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Statement.FuncDeclaration">
+<summary>
+ Function declaration
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Statement.VarDeclaration">
+<summary>
+ Variable declaration
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Statement.Block">
+<summary>
+ Block of statements
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Statement.Return">
+<summary>
+ Return a value
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Statement.ExprStatement">
+<summary>
+ Expression as statement
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Statement.Debugger">
+<summary>
+ debugger statement
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Statement.Continue">
+<summary>
+ continue statement
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Statement.Break">
+<summary>
+ break statement
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Statement.Empty">
+<summary>
+ Empty statement
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Expression.Verbatim">
+<summary>
+ JavaScript verbatim code
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Expression.ObjectExpr">
+<summary>
+ F# object expression
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Expression.ClassExpr">
+<summary>
+ JavaScript `class { ... }` expression
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Expression.Cast">
+<summary>
+ TypeScript type cast `&lt;...&gt;...`
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Expression.Hole">
+<summary>
+ Temporary - A hole in an expression for inlining
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Expression.New">
+<summary>
+ JavaScript `new` call
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Expression.GlobalAccessSet">
+<summary>
+ A global or imported value setter
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Expression.SideeffectingImport">
+<summary>
+ An import statement with no value used
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Expression.GlobalAccess">
+<summary>
+ A global or imported value
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Expression.Object">
+<summary>
+ JavaSript object
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Expression.ComplexElement">
+<summary>
+ Temporary - C# complex element in initializer expression
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Expression.RefOrOutParameter">
+<summary>
+ Temporary - C# ref or out parameter
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Expression.NamedParameter">
+<summary>
+ Temporary - C# named parameter
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Expression.Await">
+<summary>
+ Temporary - C# await expression
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Expression.TraitCall">
+<summary>
+ F# trait call (use of type member within functions with statically resolved type parameters)
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Expression.MatchSuccess">
+<summary>
+ F# successful match
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Expression.UnionCaseTag">
+<summary>
+ F# union case tag getter
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Expression.UnionCaseGet">
+<summary>
+ F# union case field getter
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Expression.UnionCaseTest">
+<summary>
+ F# union case test
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Expression.NewUnionCase">
+<summary>
+ F# union case constructor
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Expression.NewRecord">
+<summary>
+ F# record constructor
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Expression.LetRec">
+<summary>
+ F# `let rec`
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Expression.StatementExpr">
+<summary>
+ .NET statement inside an expression. Optional result should be an identifier for a variable which is not explicitly defined inside the statement
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Expression.NewDelegate">
+<summary>
+ .NET delegate construction
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Expression.Coerce">
+<summary>
+ .NET type coercion
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Expression.TypeCheck">
+<summary>
+ .NET type check, returns bool
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Expression.Coalesce">
+<summary>
+ .NET null-coalescing
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Expression.NewVar">
+<summary>
+ .NET expression-level variable declaration
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Expression.Let">
+<summary>
+ .NET immutable value definition used only in expression body
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Expression.FieldSet">
+<summary>
+ .NET field setter
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Expression.FieldGet">
+<summary>
+ .NET field getter
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Expression.CopyCtor">
+<summary>
+ .NET creating an object from a plain object, used for F# records/unions
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Expression.ChainedCtor">
+<summary>
+ .NET chained or base constructor call
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Expression.Ctor">
+<summary>
+ .NET constructor call
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Expression.OptimizedFSharpArg">
+<summary>
+ Temporary - optimized curried or tupled F# function argument
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Expression.CurriedApplication">
+<summary>
+ Temporary - F# function application, bool indicates if the argument has type unit
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Expression.CallNeedingMoreArgs">
+<summary>
+ Temporary - Partial application, workaround for FCS issue #414
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Expression.Call">
+<summary>
+ .NET method call
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Expression.Base">
+<summary>
+ Refers to the base class from an instance method, `super` in JavaScript
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Expression.JSThis">
+<summary>
+ JavaScript `this` value
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Expression.ExprSourcePos">
+<summary>
+ Original source location for an expression
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Expression.MutatingUnary">
+<summary>
+ Unary operation mutating value
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Expression.Unary">
+<summary>
+ Unary operation
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Expression.MutatingBinary">
+<summary>
+ Binary operation mutating right side
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Expression.Binary">
+<summary>
+ Binary operation
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Expression.ItemSet">
+<summary>
+ JavaScript object property set
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Expression.ItemGet">
+<summary>
+ JavaScript object property get
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Expression.Conditional">
+<summary>
+ Conditional operator
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Expression.NewTuple">
+<summary>
+ Creating a new tuple in .NET, array expression in JavaScript
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Expression.Sequential">
+<summary>
+ Sequential evaluation of expressions, value is taken from the last
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Expression.VarSet">
+<summary>
+ Variable set
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Expression.Function">
+<summary>
+ Function declaration
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Expression.Application">
+<summary>
+ Function application with extra information. The `Purity` field should be `NoSideEffect` if the function call can be omitted if the result is not used, and `Pure` when the function is deterministic. The `KnownLength` field should be `Some x` only when the function is known to have `x` number of arguments and does not use the `this` value.
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Expression.Value">
+<summary>
+ Contains a literal value
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Expression.Var">
+<summary>
+ Gets the value of a variable
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.Expression.Undefined">
+<summary>
+ JavaScript `undefined` value or `void` in .NET
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.AddressModule.|Runtime|_|(WebSharper.Core.AST.Address)">
+<summary>
+ Recognizes a WebSharper Runtime address
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.ASTHelpers.ReplaceIds">
+<summary>
+ Change every occurence of multiple Ids
+</summary>
+</member>
+<member name="T:WebSharper.Core.AST.ASTHelpers.ReplaceId">
+<summary>
+ Change every occurence of one Id to another
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.ASTHelpers.|UnaryOpName|_|(System.String)">
+<summary>
+ recognizes .NET names for unary operators
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.ASTHelpers.|BinaryOpName|_|(System.String)">
+<summary>
+ recognizes .NET names for binary operators
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.ASTHelpers.SetRef(WebSharper.Core.AST.Expression,WebSharper.Core.AST.Expression)">
+<summary>
+ Sets the value of a by-address value proxy
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.ASTHelpers.GetRef(WebSharper.Core.AST.Expression)">
+<summary>
+ Gets the value from a by-address value proxy
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.ASTHelpers.MakeInRef(WebSharper.Core.AST.Expression,Microsoft.FSharp.Core.FSharpOption{WebSharper.Core.AST.Type})">
+<summary>
+ Make a proxy for an in argument, having a getter function.
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.ASTHelpers.MakeOutRef(Microsoft.FSharp.Core.FSharpFunc{WebSharper.Core.AST.Expression,WebSharper.Core.AST.Expression},Microsoft.FSharp.Core.FSharpOption{WebSharper.Core.AST.Type})">
+<summary>
+ Make a proxy for a out argument, having a setter function.
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.ASTHelpers.MakeRef(WebSharper.Core.AST.Expression,Microsoft.FSharp.Core.FSharpFunc{WebSharper.Core.AST.Expression,WebSharper.Core.AST.Expression},Microsoft.FSharp.Core.FSharpOption{WebSharper.Core.AST.Type})">
+<summary>
+ Make a proxy for a by-address value, having two functions for get/set.
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.ASTHelpers.Global(Microsoft.FSharp.Collections.FSharpList{System.String})">
+<summary>
+ Creates a GlobalAccess case from an access list in normal order
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.ASTHelpers.CombineExpressions(Microsoft.FSharp.Collections.FSharpList{WebSharper.Core.AST.Expression})">
+<summary>
+ Combines a list of AST.Expressions into a single AST.Expression
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.ASTHelpers.CombineStatements(Microsoft.FSharp.Collections.FSharpList{WebSharper.Core.AST.Statement})">
+<summary>
+ Combines a list of AST.Statements into a single AST.Statement
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.ASTHelpers.DefaultValueOf(WebSharper.Core.AST.Type)">
+<summary>
+ Creates a call to a macro that generates default value for type
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.ASTHelpers.ReadLiteral(System.Object)">
+<summary>
+ Creates an AST.Literal value from an object
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.ASTHelpers.WithSourcePosOfStatement(WebSharper.Core.AST.Expression,WebSharper.Core.AST.Expression)">
+<summary>
+ Copies wrapping ExprSourcePos case if present to another AST.Statement
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.ASTHelpers.IgnoreStatementSourcePos(WebSharper.Core.AST.Statement)">
+<summary>
+ Removes wrapping ExprSourcePos case if present from an AST.Statement
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.ASTHelpers.WithSourcePosOfExpr(WebSharper.Core.AST.Expression,WebSharper.Core.AST.Expression)">
+<summary>
+ Copies wrapping ExprSourcePos case if present to another AST.Expression
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.ASTHelpers.IgnoreExprSourcePos(WebSharper.Core.AST.Expression)">
+<summary>
+ Removes wrapping ExprSourcePos case if present from an AST.Expression
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.ASTHelpers.MethodMatchesAnonRecordShape(Microsoft.FSharp.Core.FSharpFunc{WebSharper.Core.Hashed{WebSharper.Core.AST.TypeDefinitionInfo},Microsoft.FSharp.Core.FSharpOption{Microsoft.FSharp.Collections.FSharpList{System.String}}},WebSharper.Core.Hashed{WebSharper.Core.AST.MethodInfo},WebSharper.Core.Hashed{WebSharper.Core.AST.MethodInfo})">
+<summary>
+ Compares methods exactly, except anonymous record types in the signature can match by sorted field names.
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.ASTHelpers.TypeMatchesAnonRecordShape(Microsoft.FSharp.Core.FSharpFunc{WebSharper.Core.Hashed{WebSharper.Core.AST.TypeDefinitionInfo},Microsoft.FSharp.Core.FSharpOption{Microsoft.FSharp.Collections.FSharpList{System.String}}},WebSharper.Core.AST.Type,WebSharper.Core.AST.Type)">
+<summary>
+ Compares types exactly, except anonymous record types can match by sorted field names.
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.ASTHelpers.MethodHasAnonRecord(Microsoft.FSharp.Core.FSharpFunc{WebSharper.Core.Hashed{WebSharper.Core.AST.TypeDefinitionInfo},Microsoft.FSharp.Core.FSharpOption{Microsoft.FSharp.Collections.FSharpList{System.String}}},WebSharper.Core.Hashed{WebSharper.Core.AST.MethodInfo})">
+<summary>
+ Checks whether a method signature contains an anonymous record type.
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.ASTHelpers.TypeHasAnonRecord(Microsoft.FSharp.Core.FSharpFunc{WebSharper.Core.Hashed{WebSharper.Core.AST.TypeDefinitionInfo},Microsoft.FSharp.Core.FSharpOption{Microsoft.FSharp.Collections.FSharpList{System.String}}},WebSharper.Core.AST.Type)">
+<summary>
+ Checks whether a type is or contains an anonymous record type.
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.ASTHelpers.DefaultGenericType(WebSharper.Core.Hashed{WebSharper.Core.AST.TypeDefinitionInfo})">
+<summary>
+ Constructs a ConcreteType with fully unresolved generics for the type.
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.ASTHelpers.NonGenericType(WebSharper.Core.Hashed{WebSharper.Core.AST.TypeDefinitionInfo})">
+<summary>
+ Constructs a ConcreteType case with empty type argument list
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.ASTHelpers.GenericType(WebSharper.Core.Hashed{WebSharper.Core.AST.TypeDefinitionInfo},Microsoft.FSharp.Collections.FSharpList{WebSharper.Core.AST.Type})">
+<summary>
+ Constructs a ConcreteType case
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.ASTHelpers.NonGeneric``1(``0)">
+<summary>
+ Constructs a Concrete&lt;&apos;T&gt; instance with empty type argument list
+</summary>
+</member>
+<member name="M:WebSharper.Core.AST.ASTHelpers.Generic``1(``0,Microsoft.FSharp.Collections.FSharpList{WebSharper.Core.AST.Type})">
+<summary>
+ Constructs a Concrete&lt;&apos;T&gt; instance
+</summary>
+</member>
+<member name="P:WebSharper.Core.Metadata.ICompilation.AssemblyName">
+<summary>
+ The current project&apos;s assembly name.
+</summary>
+</member>
+<member name="M:WebSharper.Core.Metadata.ICompilation.ParseJSInline(System.String,Microsoft.FSharp.Collections.FSharpList{WebSharper.Core.AST.Expression},WebSharper.Core.AST.SourcePos,System.String[])">
+<summary>
+ Parses a JavaScript string, to the extent of what WebSharper supports via the `[&lt;Inline&gt;]` attribute.
+</summary>
+</member>
+<member name="M:WebSharper.Core.Metadata.ICompilation.NewGeneratedVar(System.String,WebSharper.Core.AST.Type)">
+<summary>
+ Creates a variable in the special `$Generated` module.
+</summary>
+</member>
+<member name="M:WebSharper.Core.Metadata.ICompilation.NewGenerated(System.String,System.Int32,Microsoft.FSharp.Collections.FSharpList{WebSharper.Core.AST.Type},WebSharper.Core.AST.Type)">
+<summary>
+ Creates a unique location for generated function within a special `$Generated` module.
+</summary>
+</member>
+<member name="M:WebSharper.Core.Metadata.ICompilation.GetTypeAttributes(WebSharper.Core.Hashed{WebSharper.Core.AST.TypeDefinitionInfo})">
+<summary>
+ Get the list of attributes on a type.
+</summary>
+</member>
+<member name="M:WebSharper.Core.Metadata.ICompilation.GetTSTypeOf(WebSharper.Core.AST.Type,Microsoft.FSharp.Collections.FSharpList{WebSharper.Core.Metadata.GenericParam})">
+<summary>
+ Translates a .NET type information to its TypeScript equivalent.
+</summary>
+</member>
+<member name="M:WebSharper.Core.Metadata.ICompilation.GetQuotation(WebSharper.Core.AST.SourcePos)">
+<summary>
+ Get information about a translated quotation at a given source position.
+</summary>
+</member>
+<member name="M:WebSharper.Core.Metadata.ICompilation.GetMethodAttributes(WebSharper.Core.Hashed{WebSharper.Core.AST.TypeDefinitionInfo},WebSharper.Core.Hashed{WebSharper.Core.AST.MethodInfo})">
+<summary>
+ Get the list of attributes on a method.
+</summary>
+</member>
+<member name="M:WebSharper.Core.Metadata.ICompilation.GetMetadataEntries(WebSharper.Core.Metadata.MetadataEntry)">
+<summary>
+ Get a dictionary entry from WebSharper metadata. This can be used so instances of macros/generators can leave information to each other across projects.
+</summary>
+</member>
+<member name="M:WebSharper.Core.Metadata.ICompilation.GetJsonMetadataEntry(System.Boolean,WebSharper.Core.AST.Type)">
+<summary>
+ Specialized to get the dictionary entry about the JSON encoder or decoder of a given type. The first argument is true for encoder, false for decoder.
+</summary>
+</member>
+<member name="M:WebSharper.Core.Metadata.ICompilation.GetJavaScriptClasses">
+<summary>
+ Gets a list of all classes with known JavaScript translations (including all referenced projects and current project).
+</summary>
+</member>
+<member name="M:WebSharper.Core.Metadata.ICompilation.GetInterfaceInfo(WebSharper.Core.Hashed{WebSharper.Core.AST.TypeDefinitionInfo})">
+<summary>
+ Get information about an interface.
+</summary>
+</member>
+<member name="M:WebSharper.Core.Metadata.ICompilation.GetFieldAttributes(WebSharper.Core.Hashed{WebSharper.Core.AST.TypeDefinitionInfo},System.String)">
+<summary>
+ Get the list of attributes on a field.
+</summary>
+</member>
+<member name="M:WebSharper.Core.Metadata.ICompilation.GetCustomTypeInfo(WebSharper.Core.Hashed{WebSharper.Core.AST.TypeDefinitionInfo})">
+<summary>
+ Get information about an F# records, F# unions, delegates, enums, and structs.
+</summary>
+</member>
+<member name="M:WebSharper.Core.Metadata.ICompilation.GetConstructorAttributes(WebSharper.Core.Hashed{WebSharper.Core.AST.TypeDefinitionInfo},WebSharper.Core.Hashed{WebSharper.Core.AST.ConstructorInfo})">
+<summary>
+ Get the list of attributes on a constructor.
+</summary>
+</member>
+<member name="M:WebSharper.Core.Metadata.ICompilation.GetClassInfo(WebSharper.Core.Hashed{WebSharper.Core.AST.TypeDefinitionInfo})">
+<summary>
+ Get all information about a class, including what name and module file (address) it is translated.
+</summary>
+</member>
+<member name="M:WebSharper.Core.Metadata.ICompilation.AddWarning(Microsoft.FSharp.Core.FSharpOption{WebSharper.Core.AST.SourcePos},System.String)">
+<summary>
+ Registers a warning at a given source position.
+</summary>
+</member>
+<member name="M:WebSharper.Core.Metadata.ICompilation.AddMetadataEntry(WebSharper.Core.Metadata.MetadataEntry,WebSharper.Core.Metadata.MetadataEntry)">
+<summary>
+ Adds a dictionary entry to WebSharper metadata
+</summary>
+</member>
+<member name="M:WebSharper.Core.Metadata.ICompilation.AddJsonMetadataEntry(System.Boolean,WebSharper.Core.AST.Type,WebSharper.Core.Metadata.JsonSerializerEntry)">
+<summary>
+ Specialized to add a dictionary entry about the JSON encoder or decoder of a given type. The first argument is true for encoder, false for decoder.
+</summary>
+</member>
+<member name="M:WebSharper.Core.Metadata.ICompilation.AddJSImportSideEffect(System.String)">
+<summary>
+ Generates an expression that is equivalent to using the `JS.Import` helper for side effect only.
+</summary>
+</member>
+<member name="M:WebSharper.Core.Metadata.ICompilation.AddJSImport(Microsoft.FSharp.Core.FSharpOption{System.String},System.String)">
+<summary>
+ Generates an expression that is equivalent to using the `JS.Import` helper.
+</summary>
+</member>
+<member name="M:WebSharper.Core.Metadata.ICompilation.AddGeneratedInline(WebSharper.Core.Hashed{WebSharper.Core.AST.MethodInfo},WebSharper.Core.AST.Expression)">
+<summary>
+ Adds an inlined method inside the `$Generated` module, pass it a method that has been previously created to be unique with `NewGenerated`.
+</summary>
+</member>
+<member name="M:WebSharper.Core.Metadata.ICompilation.AddGeneratedCode(WebSharper.Core.Hashed{WebSharper.Core.AST.MethodInfo},WebSharper.Core.AST.Expression)">
+<summary>
+ Adds code to the `$Generated` module, pass it a method that has been previously created to be unique with `NewGenerated`.
+</summary>
+</member>
+<member name="M:WebSharper.Core.Metadata.ICompilation.AddError(Microsoft.FSharp.Core.FSharpOption{WebSharper.Core.AST.SourcePos},System.String)">
+<summary>
+ Registers an error at a given source position.
+</summary>
+</member>
+<member name="M:WebSharper.Core.Metadata.ICompilation.AddBundle(System.String,WebSharper.Core.AST.Statement,System.Boolean)">
+<summary>
+ Creates a web worker bundle.
+</summary>
+</member>
+<member name="T:WebSharper.Core.Metadata.ICompilation">
+<summary>
+ Provides access to underlying F# and C# code information with a unified API, as well as WebSharper functionality.
+</summary>
+</member>
+<member name="P:WebSharper.Core.Metadata.Info.RemoteMethods">
+<summary>
+ Information for remoting, mapping URLs to type and method to execute.
+</summary>
+</member>
+<member name="P:WebSharper.Core.Metadata.Info.WebControls">
+<summary>
+ Web.Control instantiations and their prebundle names they appear in.
+</summary>
+</member>
+<member name="P:WebSharper.Core.Metadata.Info.QuotedMethods">
+<summary>
+ Methods that are used in simple quotations and JSON serialization needed for page initialization,
+ and their prebundle names they appear in.
+</summary>
+</member>
+<member name="P:WebSharper.Core.Metadata.Info.PreBundle">
+<summary>
+ The public contents sitelet prebundles to be used by the sitelet runtime.
+</summary>
+</member>
+<member name="P:WebSharper.Core.Metadata.Info.ExtraBundles">
+<summary>
+ Web worker bundle information.
+</summary>
+</member>
+<member name="P:WebSharper.Core.Metadata.Info.ResourceHashes">
+<summary>
+ Hashes created for embedded resources.
+</summary>
+</member>
+<member name="P:WebSharper.Core.Metadata.Info.Quotations">
+<summary>
+ Information about F# code quotations that are pre-compiled, keyed by their code location.
+</summary>
+</member>
+<member name="P:WebSharper.Core.Metadata.Info.MacroEntries">
+<summary>
+ Custom data that can be stored/retrieved by macros.
+</summary>
+</member>
+<member name="P:WebSharper.Core.Metadata.Info.Classes">
+<summary>
+ Classes available for JavaScript.
+</summary>
+</member>
+<member name="P:WebSharper.Core.Metadata.Info.Interfaces">
+<summary>
+ Interfaces available for JavaScript.
+</summary>
+</member>
+<member name="P:WebSharper.Core.Metadata.Info.Dependencies">
+<summary>
+ The code dependencies that can be used for dead code elimination.
+</summary>
+</member>
+<member name="P:WebSharper.Core.Metadata.Info.SiteletDefinition">
+<summary>
+ The type sprcified by the `Website` attribute on assembly level, if any.
+</summary>
+</member>
+<member name="P:WebSharper.Core.Metadata.Info.Empty">
+<summary>
+ Empty metadata.
+</summary>
+</member>
+<member name="M:WebSharper.Core.Metadata.Info.UnionWithoutDependencies(System.Collections.Generic.IEnumerable{WebSharper.Core.Metadata.Info})">
+<summary>
+ Merge a collection of metadata, not including code dependencies that is needed for dead code elimination only.
+</summary>
+</member>
+<member name="T:WebSharper.Core.Metadata.Info">
+<summary>
+ Contains WebSharper metadata for both compilation and runtime.
+</summary>
+</member>
+<member name="P:WebSharper.Core.Metadata.IClassInfo.Fields">
+<summary>
+ value: field info, is readonly
+</summary>
+</member>
+<member name="M:WebSharper.Core.Metadata.IO.LoadRuntimeMetadata(System.Reflection.Assembly)">
+<summary>
+ Load runtime metadata from an in-memory assembly, which must not be loaded as reflection-only.
+</summary>
+</member>
+<member name="M:WebSharper.Core.Metadata.IO.LoadMetadata(System.Reflection.Assembly)">
+<summary>
+ Load metadata from an in-memory assembly, which must not be loaded as reflection-only.
+</summary>
+</member>
+<member name="M:WebSharper.Core.Metadata.IO.Encode(System.IO.Stream,WebSharper.Core.Metadata.Info)">
+<summary>
+ Serialize metadata into a stream
+</summary>
+</member>
+<member name="M:WebSharper.Core.Metadata.IO.Decode(System.IO.Stream)">
+<summary>
+ Deserialize metadata from a stream
+</summary>
+</member>
+<member name="P:WebSharper.Core.Metadata.IO.CurrentVersion">
+<summary>
+ Current medata version flag to ensure consistency across WebSharper libraries
+</summary>
+</member>
+<member name="T:WebSharper.Core.Resources.Runtime">
+<summary>
+ Represents the runtime library resource required by all WebSharper code.
+</summary>
+</member>
+<member name="M:WebSharper.Core.Resources.BaseResource.#ctor(System.String,System.String,System.String[])">
+<summary>
+ References several external resources by specifying the
+ absolute base URL and one or more relative URLs.
+ The base URL is made configurable by consulting the application
+ setting matching the full name of the declaring type.
+ CSS resources are distinguished from JavaScript resources
+ by checking for the .css syntax.
+</summary>
+</member>
+<member name="M:WebSharper.Core.Resources.BaseResource.#ctor(System.String)">
+<summary>
+ References an embedded resource from he current assembly.
+ The string represents either a reference to an embedded
+ resource from the current assembly, or a (possibly relative)
+ URL. CSS resources are distinguished from JavaScript resources by
+ checking for the .css suffix.
+</summary>
+</member>
+<member name="T:WebSharper.Core.Resources.BaseResource">
+<summary>
+ A helper base class for resource-defining types.
+</summary>
+</member>
+<member name="M:WebSharper.Core.Resources.IExternalScriptResource.Urls(WebSharper.Core.Resources.Context)">
+<summary>
+ Get the JavaScript script URL(s) for this resource.
+ Can return an empty array if this is not a JavaScript resource.
+</summary>
+</member>
+<member name="T:WebSharper.Core.Resources.IExternalScriptResource">
+<summary>
+ An interface for resources whose JavaScript code, if any,
+ is a sequence of external scripts with the given URLs.
+</summary>
+</member>
+<member name="M:WebSharper.Core.Resources.IDownloadableResource.Unpack(System.String,Microsoft.FSharp.Core.FSharpFunc{System.String,Microsoft.FSharp.Core.Unit})">
+<summary>
+ Gets the WebSharper output root directory.
+ Can use the writeLog callback to log messages during unpacking.
+</summary>
+</member>
+<member name="M:WebSharper.Core.Resources.IDownloadableResource.GetImports">
+<summary>
+ Returns JavaScript imports to include in .ts files depending on this resource.
+</summary>
+</member>
+<member name="T:WebSharper.Core.Resources.IDownloadableResource">
+<summary>
+ An interface for resources to execute custom unpack.
+</summary>
+</member>
+<member name="M:WebSharper.Core.Resources.IResource.Render(WebSharper.Core.Resources.Context)">
+<summary>
+ Renders the resource to a given TextWriter.
+</summary>
+</member>
+<member name="T:WebSharper.Core.Resources.IResource">
+<summary>
+ An interface for resource-defining types.
+</summary>
+</member>
+<member name="P:WebSharper.Core.Resources.Context.ResourceDependencyCache">
+<summary>
+ Cache for resolved dependency lookups.
+</summary>
+</member>
+<member name="P:WebSharper.Core.Resources.Context.RenderingCache">
+<summary>
+ Cache for resolved rendering of resources.
+</summary>
+</member>
+<member name="P:WebSharper.Core.Resources.Context.WebRoot">
+<summary>
+ Gets the web application root URL. 
+</summary>
+</member>
+<member name="P:WebSharper.Core.Resources.Context.GetWebResourceRendering">
+<summary>
+ Constructs URLs to point to embedded resources.
+</summary>
+</member>
+<member name="P:WebSharper.Core.Resources.Context.GetSetting">
+<summary>
+ Provides a configuration settings collection.
+</summary>
+</member>
+<member name="P:WebSharper.Core.Resources.Context.ScriptBaseUrl">
+<summary>
+ Get the base URL path for WebSharper scripts.
+</summary>
+</member>
+<member name="P:WebSharper.Core.Resources.Context.DefaultToHttp">
+<summary>
+ Transform foreign links to starting with `//` to `http://`.
+</summary>
+</member>
+<member name="T:WebSharper.Core.Resources.Context">
+<summary>
+ Defines the context in which resources can be rendered.
+</summary>
+</member>
+<member name="T:WebSharper.Core.Resources.Rendering">
+<summary>
+ Defines how to render a resource.
+</summary>
+</member>
+<member name="P:WebSharper.Core.Resources.EmptyResource">
+<summary>
+ A resource value appending nothing.
+</summary>
+</member>
+<member name="T:WebSharper.Core.Resources">
+<summary>
+ Manages resources, such as dependent JavaScript and CSS files.
+</summary>
+</member>
+<member name="T:WebSharper.Core.Macros">
+<summary>
+ Defines macros used by proxy definitions.
+</summary>
+</member>
+<member name="P:WebSharper.Core.DependencyGraph.Graph.Overrides">
+<summary>
+ Nested dictionary lookup order: TypeNode -&gt; AbstractMethodNode -&gt; ImplementationNode 
+</summary>
+</member>
+<member name="M:WebSharper.Core.DependencyGraph.Graph.GetResourcesOf(System.Collections.Generic.IEnumerable{WebSharper.Core.Metadata.Node})">
+<summary>
+ Gets the resource nodes of a set of already explored graph nodes.
+ Used for minimal bundling.
+</summary>
+</member>
+<member name="M:WebSharper.Core.DependencyGraph.Graph.GetResources(WebSharper.Core.Metadata.Info,System.Collections.Generic.IEnumerable{WebSharper.Core.Metadata.Node})">
+<summary>
+ Gets all resource class instances for a set of graph nodes.
+ Resource nodes are ordered by graph edges, assembly nodes by assembly dependencies.
+</summary>
+</member>
+<member name="M:WebSharper.Core.DependencyGraph.Graph.GetRequires(WebSharper.Core.Metadata.Info,System.Collections.Generic.IEnumerable{WebSharper.Core.Metadata.Node})">
+<summary>
+ Get all resource nodes used by a graph node.
+</summary>
+</member>
+<member name="M:WebSharper.Core.DependencyGraph.Graph.GetDependencyIndexes(System.Collections.Generic.IEnumerable{WebSharper.Core.Metadata.Node})">
+<summary>
+ Get indexes of all code dependencies unordered
+</summary>
+</member>
+<member name="M:WebSharper.Core.DependencyGraph.Graph.GetDependencies(System.Collections.Generic.IEnumerable{WebSharper.Core.Metadata.Node})">
+<summary>
+ Get all code dependencies unordered
+</summary>
+</member>
+<member name="M:WebSharper.Core.DependencyGraph.Graph.FromData(System.Collections.Generic.IEnumerable{WebSharper.Core.Metadata.GraphData})">
+<summary>
+ Create a mutable graph from a sequence of parsed immutable graph data
+</summary>
+</member>
+<member name="M:WebSharper.Core.DependencyGraph.Graph.FromData(WebSharper.Core.Metadata.GraphData)">
+<summary>
+ Create a mutable graph from parsed immutable graph data
+</summary>
+</member>
+<member name="T:WebSharper.Core.DependencyGraph.Graph">
+<summary>
+ The compilation-time mutable representation of a code dependency graph
+</summary>
+</member>
+<member name="M:WebSharper.Core.Json.Provider.GetEncoder``1">
+<summary>
+ Derives an encoder for a given type.
+</summary>
+</member>
+<member name="M:WebSharper.Core.Json.Provider.GetEncoder(System.Type)">
+<summary>
+ Derives an encoder for a given type.
+</summary>
+</member>
+<member name="M:WebSharper.Core.Json.Provider.GetDecoder``1">
+<summary>
+ Derives a decoder for a given type.
+</summary>
+</member>
+<member name="M:WebSharper.Core.Json.Provider.GetDecoder(System.Type)">
+<summary>
+ Derives a decoder for a given type.
+</summary>
+</member>
+<member name="M:WebSharper.Core.Json.Provider.Create(WebSharper.Core.Json.FormatOptions)">
+<summary>
+ Constructs a basic JSON encoding provider.
+ This provider uses an untyped encoding
+ and is suitable for use with external APIs.
+ It is the encoding used by Sitelets (Infer, JsonContent)
+ and WebSharper.Json.Serialize/Deserialize.
+</summary>
+</member>
+<member name="M:WebSharper.Core.Json.Provider.Create">
+<summary>
+ Constructs a basic JSON encoding provider.
+ This provider uses an untyped encoding
+ and is suitable for use with external APIs.
+ It is the encoding used by Sitelets (Infer, JsonContent)
+ and WebSharper.Json.Serialize/Deserialize.
+</summary>
+</member>
+<member name="T:WebSharper.Core.Json.Provider">
+<summary>
+ Provides JSON encodings for arbitrary types.
+</summary>
+</member>
+<member name="T:WebSharper.Core.Json.Encoder`1">
+<summary>
+ Represents a typed encoder.
+</summary>
+</member>
+<member name="T:WebSharper.Core.Json.Encoder">
+<summary>
+ Represents an encoder.
+</summary>
+</member>
+<member name="T:WebSharper.Core.Json.Decoder`1">
+<summary>
+ Represents a typed decoder.
+</summary>
+</member>
+<member name="T:WebSharper.Core.Json.Decoder">
+<summary>
+ Represents a decoder.
+</summary>
+</member>
+<member name="T:WebSharper.Core.Json.Value">
+<summary>
+ Represents JSON values.
+</summary>
+</member>
+<member name="M:WebSharper.Core.Json.Stringify(WebSharper.Core.Json.Value)">
+<summary>
+ Converts JSON to a string. Throws WriteError.
+</summary>
+</member>
+<member name="M:WebSharper.Core.Json.Write(System.IO.TextWriter,WebSharper.Core.Json.Value)">
+<summary>
+ Writes raw JSON. Throws WriteError.
+</summary>
+</member>
+<member name="M:WebSharper.Core.Json.Parse(System.String)">
+<summary>
+ Parses a JSON string. Throws ReadError.
+</summary>
+</member>
+<member name="M:WebSharper.Core.Json.Read(System.IO.TextReader)">
+<summary>
+ Reads raw JSON. Throws ReadError.
+</summary>
+</member>
+<member name="T:WebSharper.Core.Json.NoEncoderException">
+<summary>
+ Thrown when no encoder can be derived for a given type.
+</summary>
+</member>
+<member name="T:WebSharper.Core.Json.NoDecoderException">
+<summary>
+ Thrown when no decoder can be derived for a given type.
+</summary>
+</member>
+<member name="T:WebSharper.Core.Json.EncoderException">
+<summary>
+ Thrown when the encoder is given a value it cannot encode.
+</summary>
+</member>
+<member name="T:WebSharper.Core.Json.DecoderException">
+<summary>
+ Thrown when the decoder fails to reconstruct a value from JSON.
+</summary>
+</member>
+<member name="T:WebSharper.Core.Json.WriteException">
+<summary>
+ Thrown when the value being written is not valid JSON.
+</summary>
+</member>
+<member name="T:WebSharper.Core.Json.ReadException">
+<summary>
+ Thrown when text being read from the text reader is not valid JSON.
+</summary>
+</member>
+<member name="M:WebSharper.Core.Json.Internal.GetUnionEncoding(System.Type)">
+<summary>
+ Get the encoding characteristics of a discriminated union.
+ t is assumed to be a discriminated union.
+</summary>
+</member>
+<member name="M:WebSharper.Core.Json.Internal.GetName``1(Microsoft.FSharp.Core.FSharpFunc{``0,System.Collections.Generic.IList{System.Reflection.CustomAttributeData}},Microsoft.FSharp.Core.FSharpFunc{``0,System.String},``0)">
+<summary>
+ Get the (potentially customized) name of a field or property.
+</summary>
+</member>
+<member name="T:WebSharper.Core.Json.Internal">
+<summary>
+ Common functions about the JSON encoding.
+</summary>
+</member>
+<member name="T:WebSharper.Core.Json">
+<summary>
+ Implements JSON encoding and decoding for client-server interaction.
+</summary>
+</member>
+<member name="P:WebSharper.Core.Remoting.Server.JsonProvider">
+<summary>
+ Exposes the Json encoding/decoding provider
+</summary>
+</member>
+<member name="M:WebSharper.Core.Remoting.Server.HandleRequest(WebSharper.Core.Remoting.Request)">
+<summary>
+ Handles a request.
+</summary>
+</member>
+<member name="M:WebSharper.Core.Remoting.Server.Create(WebSharper.Core.Metadata.Info,WebSharper.Core.Json.Provider,System.Func{System.Type,System.Object})">
+<summary>
+ Creates a new instance.
+</summary>
+</member>
+<member name="T:WebSharper.Core.Remoting.Server">
+<summary>
+ Handles remote procedure call requests.
+</summary>
+</member>
+<member name="T:WebSharper.Core.Remoting.Request">
+<summary>
+ Represents an incoming request.
+</summary>
+</member>
+<member name="T:WebSharper.Core.Remoting.Headers">
+<summary>
+ Represents read-only access to HTTP headers.
+</summary>
+</member>
+<member name="T:WebSharper.Core.Remoting.Response">
+<summary>
+ Represents the response.
+</summary>
+</member>
+<member name="M:WebSharper.Core.Remoting.AddHandler(System.Type,System.Object)">
+<summary>
+ Adds an RPC handler object for a given remoting type.
+ You can only add one instance for each type.
+</summary>
+</member>
+<member name="T:WebSharper.Core.Remoting">
+<summary>
+ Implements server-side remote procedure call support.
+</summary>
+</member>
+<member name="M:WebSharper.JavaScript.Function.Of``2(Microsoft.FSharp.Core.FSharpFunc{``0,``1})">
+<summary>
+ Type cast.
+ Warning: a tupled F# function is translated to JavaScript as a function with a single array argument.
+</summary>
+</member>
+<member name="T:WebSharper.JavaScript.ClientSideOnly">
+<summary>
+ Thrown on the server when client-side code is being executed.
+</summary>
+</member>
+<member name="M:WebSharper.JavaScript.Interop.X``1">
+<summary>
+ Specifies a value intended for client-side use only, so that there is no
+ .NET implementation.
+ Raises a WebSharper.JavaScript.ClientSideOnly exception.
+</summary>
+</member>
+</members>
+</doc>

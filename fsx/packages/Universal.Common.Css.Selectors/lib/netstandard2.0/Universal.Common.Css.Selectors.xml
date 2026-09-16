@@ -1,0 +1,460 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Universal.Common.Css.Selectors</name>
+    </assembly>
+    <members>
+        <member name="T:Universal.Common.Css.Selectors.AnPlusB">
+            <summary>
+            Represents the An+B microsyntax used in structural pseudo-classes
+            W3C Spec: https://www.w3.org/TR/css-syntax-3/#anb-microsyntax
+            </summary>
+        </member>
+        <member name="T:Universal.Common.Css.Selectors.AttributeMatcher">
+            <summary>
+            Attribute matching operators defined in the W3C specification
+            </summary>
+        </member>
+        <member name="F:Universal.Common.Css.Selectors.AttributeMatcher.Exists">
+            <summary>
+            [att] - Attribute exists
+            </summary>
+        </member>
+        <member name="F:Universal.Common.Css.Selectors.AttributeMatcher.Equal">
+            <summary>
+            [att=val] - Attribute value equals exactly
+            </summary>
+        </member>
+        <member name="F:Universal.Common.Css.Selectors.AttributeMatcher.Includes">
+            <summary>
+            [att~=val] - Attribute value contains word in whitespace-separated list
+            </summary>
+        </member>
+        <member name="F:Universal.Common.Css.Selectors.AttributeMatcher.DashMatch">
+            <summary>
+            [att|=val] - Attribute value equals or begins with followed by hyphen (language matching)
+            </summary>
+        </member>
+        <member name="F:Universal.Common.Css.Selectors.AttributeMatcher.Prefix">
+            <summary>
+            [att^=val] - Attribute value begins with
+            </summary>
+        </member>
+        <member name="F:Universal.Common.Css.Selectors.AttributeMatcher.Suffix">
+            <summary>
+            [att$=val] - Attribute value ends with
+            </summary>
+        </member>
+        <member name="F:Universal.Common.Css.Selectors.AttributeMatcher.Substring">
+            <summary>
+            [att*=val] - Attribute value contains substring
+            </summary>
+        </member>
+        <member name="T:Universal.Common.Css.Selectors.AttributeSelector">
+            <summary>
+            An attribute selector represents an element that has an attribute.
+            W3C Spec: https://www.w3.org/TR/selectors-4/#attribute-selectors
+            </summary>
+        </member>
+        <member name="T:Universal.Common.Css.Selectors.CaseSensitivity">
+            <summary>
+            Case sensitivity for attribute matching (CSS4 feature)
+            </summary>
+        </member>
+        <member name="T:Universal.Common.Css.Selectors.ClassSelector">
+            <summary>
+            A class selector represents an element belonging to the class identified by the identifier.
+            W3C Spec: https://www.w3.org/TR/selectors-4/#class-html
+            </summary>
+        </member>
+        <member name="T:Universal.Common.Css.Selectors.Combinator">
+            <summary>
+            A combinator is punctuation that represents a particular kind of relationship between selectors.
+            W3C Spec: https://www.w3.org/TR/selectors-4/#combinators
+            </summary>
+        </member>
+        <member name="T:Universal.Common.Css.Selectors.CombinatorType">
+            <summary>
+            Types of combinators defined in the W3C specification
+            </summary>
+        </member>
+        <member name="F:Universal.Common.Css.Selectors.CombinatorType.Descendant">
+            <summary>
+            Descendant combinator (whitespace) - matches elements that are descendants
+            </summary>
+        </member>
+        <member name="F:Universal.Common.Css.Selectors.CombinatorType.Child">
+            <summary>
+            Child combinator (>) - matches elements that are direct children
+            </summary>
+        </member>
+        <member name="F:Universal.Common.Css.Selectors.CombinatorType.NextSibling">
+            <summary>
+            Next-sibling combinator (+) - matches the immediately following sibling
+            </summary>
+        </member>
+        <member name="F:Universal.Common.Css.Selectors.CombinatorType.SubsequentSibling">
+            <summary>
+            Subsequent-sibling combinator (~) - matches any following sibling
+            </summary>
+        </member>
+        <member name="F:Universal.Common.Css.Selectors.CombinatorType.Column">
+            <summary>
+            Column combinator (||) - matches elements in the same column (CSS4)
+            </summary>
+        </member>
+        <member name="T:Universal.Common.Css.Selectors.CompoundSelector">
+            <summary>
+            A compound selector is a sequence of simple selectors that are not separated by combinators.
+            W3C Spec: https://www.w3.org/TR/selectors-4/#compound
+            </summary>
+        </member>
+        <member name="P:Universal.Common.Css.Selectors.CompoundSelector.IdSelector">
+            <summary>
+            Gets the ID selector from this compound selector, if any
+            </summary>
+        </member>
+        <member name="P:Universal.Common.Css.Selectors.CompoundSelector.TypeSelector">
+            <summary>
+            Gets the type selector from this compound selector, if any
+            </summary>
+        </member>
+        <member name="P:Universal.Common.Css.Selectors.CompoundSelector.UniversalSelector">
+            <summary>
+            Gets the universal selector from this compound selector, if any
+            </summary>
+        </member>
+        <member name="P:Universal.Common.Css.Selectors.CompoundSelector.AttributeSelectors">
+            <summary>
+            Gets all attribute selectors from this compound selector
+            </summary>
+        </member>
+        <member name="P:Universal.Common.Css.Selectors.CompoundSelector.ClassSelectors">
+            <summary>
+            Gets all class selectors from this compound selector
+            </summary>
+        </member>
+        <member name="P:Universal.Common.Css.Selectors.CompoundSelector.FormPseudoClassSelectors">
+            <summary>
+            Gets all form pseudo-class selectors from this compound selector
+            </summary>
+        </member>
+        <member name="P:Universal.Common.Css.Selectors.CompoundSelector.FunctionalPseudoClassSelectors">
+            <summary>
+            Gets all functional pseudo-class selectors from this compound selector
+            </summary>
+        </member>
+        <member name="P:Universal.Common.Css.Selectors.CompoundSelector.LanguageDirectionalPseudoClassSelectors">
+            <summary>
+            Gets all language/directional pseudo-class selectors from this compound selector
+            </summary>
+        </member>
+        <member name="P:Universal.Common.Css.Selectors.CompoundSelector.PseudoClassSelectors">
+            <summary>
+            Gets all basic pseudo-class selectors from this compound selector
+            </summary>
+        </member>
+        <member name="P:Universal.Common.Css.Selectors.CompoundSelector.PseudoElementSelectors">
+            <summary>
+            Gets all pseudo-element selectors from this compound selector
+            </summary>
+        </member>
+        <member name="P:Universal.Common.Css.Selectors.CompoundSelector.StructuralPseudoClassSelectors">
+            <summary>
+            Gets all structural pseudo-class selectors from this compound selector
+            </summary>
+        </member>
+        <member name="P:Universal.Common.Css.Selectors.CompoundSelector.UserActionPseudoClassSelectors">
+            <summary>
+            Gets all user action pseudo-class selectors from this compound selector
+            </summary>
+        </member>
+        <member name="M:Universal.Common.Css.Selectors.CompoundSelector.GetSpecificity">
+            <summary>
+            Calculates the specificity contribution of this compound selector
+            </summary>
+        </member>
+        <member name="T:Universal.Common.Css.Selectors.FormPseudoClassSelector">
+            <summary>
+            Represents form-related pseudo-classes
+            W3C Spec: https://www.w3.org/TR/selectors-4/#input-pseudos
+            </summary>
+        </member>
+        <member name="T:Universal.Common.Css.Selectors.FormPseudoClassType">
+            <summary>
+            Types of form-related pseudo-classes
+            </summary>
+        </member>
+        <member name="T:Universal.Common.Css.Selectors.FunctionalPseudoClassSelector">
+            <summary>
+            Represents functional pseudo-classes that take selector lists as arguments
+            like :is(), :not(), :where(), :has()
+            W3C Spec: https://www.w3.org/TR/selectors-4/#functional-pseudos
+            </summary>
+        </member>
+        <member name="M:Universal.Common.Css.Selectors.FunctionalPseudoClassSelector.Has(Universal.Common.Css.Selectors.SelectorList)">
+            <summary>
+            Creates a :has() selector (forgiving)
+            </summary>
+        </member>
+        <member name="M:Universal.Common.Css.Selectors.FunctionalPseudoClassSelector.Is(Universal.Common.Css.Selectors.SelectorList)">
+            <summary>
+            Creates a forgiving :is() selector
+            </summary>
+        </member>
+        <member name="M:Universal.Common.Css.Selectors.FunctionalPseudoClassSelector.Not(Universal.Common.Css.Selectors.SelectorList)">
+            <summary>
+            Creates a :not() selector (forgiving in CSS4)
+            </summary>
+        </member>
+        <member name="M:Universal.Common.Css.Selectors.FunctionalPseudoClassSelector.Where(Universal.Common.Css.Selectors.SelectorList)">
+            <summary>
+            Creates a :where() selector (always forgiving, 0 specificity)
+            </summary>
+        </member>
+        <member name="T:Universal.Common.Css.Selectors.IdSelector">
+            <summary>
+            An ID selector represents an element instance that has an identifier.
+            W3C Spec: https://www.w3.org/TR/selectors-4/#id-selectors
+            </summary>
+        </member>
+        <member name="T:Universal.Common.Css.Selectors.LanguageDirectionalPseudoClassSelector">
+            <summary>
+            Represents language and directional pseudo-classes
+            </summary>
+        </member>
+        <member name="T:Universal.Common.Css.Selectors.NamespaceInfo">
+            <summary>
+            Enhanced namespace handling for CSS4 compliance
+            </summary>
+        </member>
+        <member name="T:Universal.Common.Css.Selectors.PseudoClassSelector">
+            <summary>
+            A pseudo-class selector represents elements based on information not contained in the document tree.
+            W3C Spec: https://www.w3.org/TR/selectors-4/#pseudo-classes
+            </summary>
+        </member>
+        <member name="T:Universal.Common.Css.Selectors.PseudoElementSelector">
+            <summary>
+            A pseudo-element selector represents an abstract element that does not exist explicitly in the document tree.
+            W3C Spec: https://www.w3.org/TR/selectors-4/#pseudo-elements
+            </summary>
+        </member>
+        <member name="T:Universal.Common.Css.Selectors.RelativeSelector">
+            <summary>
+            Represents a relative selector that starts with a combinator
+            W3C Spec: https://www.w3.org/TR/selectors-4/#relative
+            </summary>
+        </member>
+        <member name="M:Universal.Common.Css.Selectors.RelativeSelector.Child(Universal.Common.Css.Selectors.Selector)">
+            <summary>
+            Creates a relative selector with child combinator (> div)
+            </summary>
+        </member>
+        <member name="M:Universal.Common.Css.Selectors.RelativeSelector.Descendant(Universal.Common.Css.Selectors.Selector)">
+            <summary>
+            Creates a relative selector with descendant combinator (implicit)
+            </summary>
+        </member>
+        <member name="M:Universal.Common.Css.Selectors.RelativeSelector.NextSibling(Universal.Common.Css.Selectors.Selector)">
+            <summary>
+            Creates a relative selector with next sibling combinator (+ div)
+            </summary>
+        </member>
+        <member name="M:Universal.Common.Css.Selectors.RelativeSelector.SubsequentSibling(Universal.Common.Css.Selectors.Selector)">
+            <summary>
+            Creates a relative selector with subsequent sibling combinator (~ div)
+            </summary>
+        </member>
+        <member name="T:Universal.Common.Css.Selectors.RelativeSelectorList">
+            <summary>
+            Represents a list of relative selectors (used in :has() and other contexts)
+            </summary>
+        </member>
+        <member name="T:Universal.Common.Css.Selectors.Selector">
+            <summary>
+            A selector is a chain of one or more sequences of simple selectors separated by combinators.
+            W3C Spec: https://www.w3.org/TR/selectors-4/#selector
+            </summary>
+        </member>
+        <member name="P:Universal.Common.Css.Selectors.Selector.IsComplex">
+            <summary>
+            True if this selector contains any combinators
+            </summary>
+        </member>
+        <member name="P:Universal.Common.Css.Selectors.Selector.FirstCompoundSelector">
+            <summary>
+            Gets the first compound selector in this selector
+            </summary>
+        </member>
+        <member name="P:Universal.Common.Css.Selectors.Selector.CompoundSelectors">
+            <summary>
+            Gets all compound selectors in this selector
+            </summary>
+        </member>
+        <member name="P:Universal.Common.Css.Selectors.Selector.Combinators">
+            <summary>
+            Gets all combinators in this selector
+            </summary>
+        </member>
+        <member name="M:Universal.Common.Css.Selectors.Selector.GetSpecificity">
+            <summary>
+            Calculates the total specificity of this selector
+            Specificity is the sum of all compound selector specificities
+            </summary>
+        </member>
+        <member name="M:Universal.Common.Css.Selectors.Selector.CompareSpecificity(Universal.Common.Css.Selectors.Selector)">
+            <summary>
+            Compares the specificity of this selector with another
+            Returns: 1 if this selector is more specific, -1 if less specific, 0 if equal
+            </summary>
+        </member>
+        <member name="M:Universal.Common.Css.Selectors.Selector.IsMoreSpecificThan(Universal.Common.Css.Selectors.Selector)">
+            <summary>
+            Returns true if this selector is more specific than the other
+            </summary>
+        </member>
+        <member name="M:Universal.Common.Css.Selectors.Selector.HasSameSpecificityAs(Universal.Common.Css.Selectors.Selector)">
+            <summary>
+            Returns true if this selector has the same specificity as the other
+            </summary>
+        </member>
+        <member name="T:Universal.Common.Css.Selectors.SelectorList">
+            <summary>
+            A selector list is a comma-separated list of selectors.
+            W3C Spec: https://www.w3.org/TR/selectors-4/#selector-list
+            </summary>
+        </member>
+        <member name="T:Universal.Common.Css.Selectors.SelectorParser">
+            <summary>
+            Parses CSS selector strings into structured selector objects according to CSS Selectors Level 4 specification.
+            Supports complex selectors, pseudo-classes, pseudo-elements, attribute selectors, and functional selectors.
+            </summary>
+            <remarks>
+            <para>
+            The SelectorParser handles the complete CSS selector syntax including:
+            </para>
+            <list type="bullet">
+            <item><description>Basic selectors (type, class, ID, universal, attribute)</description></item>
+            <item><description>Combinator selectors (descendant, child, adjacent sibling, general sibling)</description></item>
+            <item><description>Pseudo-class selectors (structural, user action, form state)</description></item>
+            <item><description>Pseudo-element selectors (including functional pseudo-elements)</description></item>
+            <item><description>Functional selectors (:nth-child, :not, :is, :where, :has, etc.)</description></item>
+            <item><description>Complex selector lists with comma separation</description></item>
+            <item><description>Namespace-qualified selectors</description></item>
+            </list>
+            <para>
+            The parser validates selector syntax and throws <see cref="T:System.FormatException"/> for invalid selectors.
+            It follows the CSS specification for selector precedence and structural validation.
+            </para>
+            </remarks>
+            <example>
+            <code>
+            var parser = new SelectorParser();
+            
+            // Parse a simple selector
+            var selectorList = parser.Parse("div.main-content");
+            
+            // Parse a complex selector with pseudo-classes
+            var complexSelector = parser.Parse("nav > ul li:nth-child(2n+1):hover");
+            
+            // Parse multiple selectors
+            var multipleSelectors = parser.Parse("h1, h2, h3");
+            
+            // Parse functional selectors
+            var functionalSelector = parser.Parse(":not(.hidden):is(.visible, .shown)");
+            </code>
+            </example>
+        </member>
+        <member name="M:Universal.Common.Css.Selectors.SelectorParser.Parse(System.String)">
+            <summary>
+            Parses a CSS selector string into a structured <see cref="T:Universal.Common.Css.Selectors.SelectorList"/> object.
+            </summary>
+            <param name="selectorText">
+            The CSS selector string to parse. Can contain multiple selectors separated by commas.
+            Examples: "div", ".class", "#id", "nav > ul li:hover", "h1, h2, h3"
+            </param>
+            <returns>
+            A <see cref="T:Universal.Common.Css.Selectors.SelectorList"/> containing the parsed selectors. Each selector in the list
+            represents one complete selector (separated by commas in the input).
+            </returns>
+            <exception cref="T:System.FormatException">
+            Thrown when the selector string contains invalid syntax, such as:
+            <list type="bullet">
+            <item><description>Invalid CSS identifiers</description></item>
+            <item><description>Malformed pseudo-class or pseudo-element syntax</description></item>
+            <item><description>Invalid combinator usage (e.g., starting or ending with a combinator)</description></item>
+            <item><description>Unbalanced parentheses or brackets</description></item>
+            <item><description>Invalid An+B expressions in structural pseudo-classes</description></item>
+            <item><description>Empty selectors or selector components</description></item>
+            </list>
+            </exception>
+            <remarks>
+            <para>
+            The method tokenizes the input string first, then parses the tokens into a selector structure.
+            Invalid selectors within a comma-separated list are ignored, and only valid selectors are included
+            in the result. If no valid selectors can be parsed, a <see cref="T:System.FormatException"/> is thrown.
+            </para>
+            <para>
+            The parser supports CSS Selectors Level 4 features including logical combinators (:is, :where, :not),
+            the relational pseudo-class (:has), and advanced structural selectors with "of selector" syntax.
+            </para>
+            </remarks>
+            <example>
+            <code>
+            var parser = new SelectorParser();
+            
+            // Basic selector parsing
+            var basic = parser.Parse("p.intro");
+            
+            // Complex selector with multiple combinators
+            var complex = parser.Parse("article > header + p:first-of-type");
+            
+            // Multiple selectors
+            var multiple = parser.Parse("h1, h2, h3, h4, h5, h6");
+            
+            // Advanced functional selectors
+            var advanced = parser.Parse(":is(section, article) :where(h1, h2):not(.hidden)");
+            
+            // Attribute selectors with various matchers
+            var attributes = parser.Parse("[data-state='active'][class*='btn']:not([disabled])");
+            </code>
+            </example>
+        </member>
+        <member name="T:Universal.Common.Css.Selectors.SimpleSelector">
+            <summary>
+            Base class for all simple selectors.
+            W3C Spec: https://www.w3.org/TR/selectors-4/#simple
+            </summary>
+        </member>
+        <member name="T:Universal.Common.Css.Selectors.StructuralPseudoClassSelector">
+            <summary>
+            Represents structural pseudo-classes like :nth-child(), :first-child, etc.
+            W3C Spec: https://www.w3.org/TR/selectors-4/#structural-pseudos
+            </summary>
+        </member>
+        <member name="T:Universal.Common.Css.Selectors.TypeSelector">
+            <summary>
+            A type selector represents an instance of an element type in the document tree.
+            W3C Spec: https://www.w3.org/TR/selectors-4/#type-selectors
+            </summary>
+        </member>
+        <member name="T:Universal.Common.Css.Selectors.UniversalSelector">
+            <summary>
+            The universal selector represents an element of any type.
+            W3C Spec: https://www.w3.org/TR/selectors-4/#universal-selector
+            </summary>
+        </member>
+        <member name="T:Universal.Common.Css.Selectors.UserActionPseudoClassSelector">
+            <summary>
+            Represents user action pseudo-classes
+            W3C Spec: https://www.w3.org/TR/selectors-4/#useraction-pseudos
+            </summary>
+        </member>
+        <member name="T:Universal.Common.Css.Selectors.UserActionPseudoClassType">
+            <summary>
+            Types of user action pseudo-classes
+            </summary>
+        </member>
+    </members>
+</doc>

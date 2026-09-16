@@ -1,0 +1,17 @@
+D: /lib
+D: /lib/netstandard2.0
+F: /lib/netstandard2.0/Waher.Runtime.Inventory.dll
+F: /lib/netstandard2.0/Waher.Runtime.Inventory.xml
+D: /package
+D: /package/services
+D: /package/services/metadata
+D: /package/services/metadata/core-properties
+F: /package/services/metadata/core-properties/edafd2433970440cbc2bd4fe9e8f16f8.psmdcp
+D: /_rels
+F: /_rels/.rels
+F: /.signature.p7s
+F: /Icon_64x64.png
+F: /LICENSE.txt
+F: /waher.runtime.inventory.1.4.6.nupkg
+F: /Waher.Runtime.Inventory.nuspec
+F: /[Content_Types].xml

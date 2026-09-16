@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<coreProperties xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.openxmlformats.org/package/2006/metadata/core-properties">
+  <dc:creator>ktsu.dev contributors</dc:creator>
+  <dc:description>A .NET library for executing external commands and handling their output through delegates, with both synchronous and asynchronous APIs. Delivers standard output and standard error as raw chunks or complete lines as the process produces them, passes arguments as a vector so paths with spaces need no quoting, and shapes the spawned process with a working directory, an environment variable overlay, Windows elevation, and cancellation that terminates the process tree.</dc:description>
+  <dc:identifier>ktsu.RunCommand</dc:identifier>
+  <version>1.5.18</version>
+  <keywords>.NET;C#;dotnet;csharp;run command;shell command;command line;process;process execution;subprocess;child process;output handling;stdout;stderr;output redirection;async execution;asynchronous;cancellation;working directory;environment variables;elevation;uac;cli;exit code;delegates</keywords>
+  <lastModifiedBy>NuGet.Packaging, Version=7.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35;.NET 8.0</lastModifiedBy>
+</coreProperties>

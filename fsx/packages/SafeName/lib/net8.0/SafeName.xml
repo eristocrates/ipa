@@ -1,0 +1,500 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SafeName</name>
+    </assembly>
+    <members>
+        <member name="T:SafeName.ErrorReason">
+            <summary>
+            The reason a name or path failed validation. Each <see cref="T:SafeName.ValidationError"/> carries one.
+            </summary>
+        </member>
+        <member name="F:SafeName.ErrorReason.Empty">
+            <summary>
+            The name is null, empty, all whitespace, or resolves to nothing after removing
+            trailing dots and spaces (for example <c>"."</c> or <c>".."</c>).
+            </summary>
+        </member>
+        <member name="F:SafeName.ErrorReason.ReservedCharacter">
+            <summary>
+            The name contains a character reserved by the target platform, such as
+            <c>&lt; &gt; : " | ? *</c> on Windows.
+            </summary>
+        </member>
+        <member name="F:SafeName.ErrorReason.ControlCharacter">
+            <summary>The name contains a control character (including NUL and DEL).</summary>
+        </member>
+        <member name="F:SafeName.ErrorReason.ReservedDeviceName">
+            <summary>
+            The name is, or begins with, a Windows reserved device name such as <c>CON</c> or
+            <c>COM1</c>. These are reserved even when they carry an extension (<c>CON.txt</c>).
+            </summary>
+        </member>
+        <member name="F:SafeName.ErrorReason.TrailingDotOrSpace">
+            <summary>
+            The name ends with a dot or a space. Windows silently strips these, which breaks
+            round-tripping (a saved <c>"report."</c> is read back as <c>"report"</c>).
+            </summary>
+        </member>
+        <member name="F:SafeName.ErrorReason.TooLong">
+            <summary>The name or path exceeds the configured maximum length.</summary>
+        </member>
+        <member name="F:SafeName.ErrorReason.PathSeparatorPresent">
+            <summary>
+            A filename component contains a path separator (<c>/</c> on POSIX; <c>/</c> or <c>\</c>
+            on Windows). A single component must never span directories.
+            </summary>
+        </member>
+        <member name="F:SafeName.ErrorReason.PathTraversal">
+            <summary>
+            A path contains a traversal segment (<c>..</c>) or a current-directory segment
+            (<c>.</c>) that could escape or confuse the intended location.
+            </summary>
+        </member>
+        <member name="F:SafeName.ErrorReason.UnpairedSurrogate">
+            <summary>
+            The name contains an unpaired UTF-16 surrogate (a high surrogate not followed by a low, or a
+            low surrogate not preceded by a high). Such a string is not valid Unicode and cannot be
+            encoded to UTF-8 without loss.
+            </summary>
+        </member>
+        <member name="T:SafeName.FileName">
+            <summary>
+            Sanitizes and validates a single filename component (a name with no directory part). For full,
+            multi-segment paths, use <see cref="T:SafeName.FilePath"/>.
+            </summary>
+            <remarks>
+            All members are static and thread-safe. <see cref="M:SafeName.FileName.Sanitize(System.String,SafeName.SanitizeOptions)"/> never
+            throws on the input name; it always returns a usable, safe name. <see cref="M:SafeName.FileName.Validate(System.String,SafeName.PlatformProfile)"/>
+            never throws. Only invalid <see cref="T:SafeName.SanitizeOptions"/> (empty replacement, non-positive
+            maximum length, or an unsafe replacement) cause a throw, and only from <c>Sanitize</c>.
+            </remarks>
+        </member>
+        <member name="M:SafeName.FileName.Sanitize(System.String,SafeName.SanitizeOptions)">
+            <summary>
+            Returns a safe filename derived from <paramref name="name"/>. Unsafe characters are
+            replaced, reserved device names are handled, trailing dots and spaces are removed where the
+            profile forbids them, and the result is truncated to the length limit (keeping the
+            extension by default). When the input cleans down to nothing, the configured fallback is
+            returned. This method never throws on <paramref name="name"/>; a null or empty input yields
+            the fallback.
+            </summary>
+            <param name="name">The candidate name. May be null, empty, or arbitrary user input.</param>
+            <param name="options">Sanitization options, or <see langword="null"/> for the defaults.</param>
+            <returns>A safe name that passes <see cref="M:SafeName.FileName.Validate(System.String,SafeName.PlatformProfile)"/> for the same profile.</returns>
+            <exception cref="T:System.ArgumentException">The options are invalid (see the type remarks).</exception>
+        </member>
+        <member name="M:SafeName.FileName.Validate(System.String,SafeName.PlatformProfile)">
+            <summary>
+            Validates <paramref name="name"/> against the rules of <paramref name="profile"/> and
+            returns every reason it is not a safe, portable filename, along with a sanitized form for
+            convenience. Never throws.
+            </summary>
+            <param name="name">The name to check. A null name is treated as empty.</param>
+            <param name="profile">The platform rule set to check against. Default <see cref="F:SafeName.PlatformProfile.Universal"/>.</param>
+        </member>
+        <member name="M:SafeName.FileName.Validate(System.String,SafeName.SanitizeOptions)">
+            <summary>
+            Validates <paramref name="name"/> against the exact same profile, maximum length, and length
+            unit that <see cref="M:SafeName.FileName.Sanitize(System.String,SafeName.SanitizeOptions)"/> would use for
+            <paramref name="options"/>. Use this to check the output of <c>Sanitize</c> for the same
+            options. Never throws.
+            </summary>
+            <param name="name">The name to check. A null name is treated as empty.</param>
+            <param name="options">The options whose profile, maximum length, and unit to validate against.</param>
+        </member>
+        <member name="M:SafeName.FileName.IsValid(System.String,SafeName.PlatformProfile)">
+            <summary>
+            Returns whether <paramref name="name"/> is a valid, safe filename under
+            <paramref name="profile"/>. Equivalent to <c>Validate(name, profile).IsValid</c>. Checks the
+            default limit of 255 UTF-8 bytes; use the <see cref="M:SafeName.FileName.IsValid(System.String,SafeName.SanitizeOptions)"/>
+            overload to check a different length or unit. Never throws.
+            </summary>
+        </member>
+        <member name="M:SafeName.FileName.IsValid(System.String,SafeName.SanitizeOptions)">
+            <summary>
+            Returns whether <paramref name="name"/> is valid under the exact same profile, maximum
+            length, and length unit that <see cref="M:SafeName.FileName.Sanitize(System.String,SafeName.SanitizeOptions)"/> would use for
+            <paramref name="options"/>. Never throws.
+            </summary>
+        </member>
+        <member name="T:SafeName.FilePath">
+            <summary>
+            Sanitizes and validates a full, multi-segment path: it splits on separators, cleans each
+            segment as a filename, neutralizes traversal, and rejoins with the platform separator.
+            </summary>
+            <remarks>
+            <para>
+            This makes the <em>names</em> in a path safe. It is not a substitute for confining filesystem
+            access to a base directory. Traversal segments (<c>..</c>) are stripped, but if you then combine
+            the result with a base path you must still resolve and check containment yourself; see the
+            README security section for the <c>Path.GetFullPath</c> pattern.
+            </para>
+            <para>All members are static and thread-safe.</para>
+            </remarks>
+        </member>
+        <member name="M:SafeName.FilePath.Sanitize(System.String,SafeName.PathSanitizeOptions)">
+            <summary>
+            Returns a safe path derived from <paramref name="path"/>. Each segment is sanitized as a
+            filename, <c>.</c> and <c>..</c> segments are removed, drive letters and UNC and absolute
+            roots are preserved, the segments are rejoined with the platform separator, and the whole
+            result is truncated to the maximum path length. Never throws on <paramref name="path"/>.
+            </summary>
+            <param name="path">The candidate path. May be null, empty, absolute, relative, or hostile.</param>
+            <param name="options">Path sanitization options, or <see langword="null"/> for the defaults.</param>
+            <exception cref="T:System.ArgumentException">The options are invalid.</exception>
+        </member>
+        <member name="M:SafeName.FilePath.Validate(System.String,SafeName.PlatformProfile)">
+            <summary>
+            Validates <paramref name="path"/> against <paramref name="profile"/>, reporting traversal
+            segments, unsafe or reserved segments, and an over-length path, plus a sanitized form.
+            Never throws.
+            </summary>
+            <param name="path">The path to check. A null path is treated as empty.</param>
+            <param name="profile">The platform rule set. Default <see cref="F:SafeName.PlatformProfile.Universal"/>.</param>
+        </member>
+        <member name="T:SafeName.Internal.ComponentSanitizer">
+            <summary>
+            The core engine that turns one arbitrary filename component into a safe one. The output is
+            guaranteed to be non-empty, free of unsafe characters and path separators, not a reserved
+            device name, not ending in a dot or space (where the profile forbids that), within the length
+            limit, and idempotent under a second pass.
+            </summary>
+        </member>
+        <member name="M:SafeName.Internal.ComponentSanitizer.GetExtension(System.String)">
+            <summary>Returns the extension including its leading dot, or empty when there is no usable one.</summary>
+        </member>
+        <member name="M:SafeName.Internal.ComponentSanitizer.SuffixStem(System.String,System.String)">
+            <summary>Appends the replacement to the stem, keeping any extension: <c>CON.txt</c> -> <c>CON_.txt</c>.</summary>
+        </member>
+        <member name="M:SafeName.Internal.ComponentSanitizer.BreakReservedWithinLength(System.String,System.String)">
+            <summary>Replaces the final character of the stem with the replacement, keeping the overall length in range.</summary>
+        </member>
+        <member name="T:SafeName.Internal.ComponentValidator">
+            <summary>
+            Inspects one filename component against a profile's rules and reports every reason it is not a
+            valid, safe name. Does not modify the input; pair it with <see cref="T:SafeName.Internal.ComponentSanitizer"/> to
+            repair.
+            </summary>
+        </member>
+        <member name="T:SafeName.Internal.FileSystemLimits">
+            <summary>
+            Default filesystem limits used when options do not override them. These are safe defaults,
+            not the maximum any single filesystem allows; see the README for the per-filesystem reality.
+            </summary>
+        </member>
+        <member name="F:SafeName.Internal.FileSystemLimits.DefaultComponentMaxLength">
+            <summary>
+            Default maximum length of a single filename component. 255 is the near-universal component
+            limit (bytes on ext4/APFS/XFS, UTF-16 code units on NTFS).
+            </summary>
+        </member>
+        <member name="F:SafeName.Internal.FileSystemLimits.WindowsMaxPathLength">
+            <summary>
+            Default maximum total path length for Windows and Universal profiles: the legacy
+            <c>MAX_PATH</c> value. Long-path support raises this to 32767, but 260 is the safe default.
+            </summary>
+        </member>
+        <member name="F:SafeName.Internal.FileSystemLimits.PosixMaxPathLength">
+            <summary>Default maximum total path length for the POSIX profile (<c>PATH_MAX</c>).</summary>
+        </member>
+        <member name="F:SafeName.Internal.FileSystemLimits.DefaultReplacement">
+            <summary>The default replacement string substituted for each unsafe character.</summary>
+        </member>
+        <member name="F:SafeName.Internal.FileSystemLimits.DefaultFallback">
+            <summary>The default name used when the input resolves to nothing usable.</summary>
+        </member>
+        <member name="T:SafeName.Internal.LengthLimiter">
+            <summary>
+            Measures and truncates strings by either UTF-8 byte count or UTF-16 code-unit count, never
+            splitting a character or a surrogate pair.
+            </summary>
+        </member>
+        <member name="M:SafeName.Internal.LengthLimiter.Truncate(System.String,System.Int32,SafeName.MaxLengthUnit)">
+            <summary>
+            Returns <paramref name="s"/> truncated so its measured length does not exceed
+            <paramref name="max"/>. Truncation happens on whole-character boundaries, so a multi-byte
+            character or a surrogate pair is never cut in half.
+            </summary>
+        </member>
+        <member name="T:SafeName.Internal.OptionsGuard">
+            <summary>
+            Validates caller-supplied options up front and throws <see cref="T:System.ArgumentException"/> on the
+            values that cannot produce a safe result: an empty replacement, a non-positive maximum length,
+            a replacement that is itself unsafe, or a non-ASCII replacement combined with
+            <c>AllowUnicode=false</c>. Sanitizing the input name never throws; only bad options do.
+            </summary>
+        </member>
+        <member name="T:SafeName.Internal.PathSegment">
+            <summary>One segment of a parsed path and where it started in the original string.</summary>
+        </member>
+        <member name="T:SafeName.Internal.ParsedPath">
+            <summary>The parsed structure of a path: a leading root (drive, UNC prefix, or slash) and its segments.</summary>
+        </member>
+        <member name="P:SafeName.Internal.ParsedPath.Root">
+            <summary>The root prefix already rendered with the platform join separator, or empty for a relative path.</summary>
+        </member>
+        <member name="P:SafeName.Internal.ParsedPath.Segments">
+            <summary>The non-empty segments, in order, including any <c>.</c> and <c>..</c> segments.</summary>
+        </member>
+        <member name="T:SafeName.Internal.PathParser">
+            <summary>
+            Splits a path into its root and segments, understanding POSIX absolute paths and, on
+            Windows-style profiles, drive letters (absolute and drive-relative) and UNC prefixes.
+            </summary>
+        </member>
+        <member name="T:SafeName.Internal.PlatformRules">
+            <summary>
+            The concrete, resolved rule set for one <see cref="T:SafeName.PlatformProfile"/>: which characters are
+            reserved, whether trailing dots and spaces and reserved device names are forbidden, the path
+            separators, and the character used to join path components.
+            </summary>
+        </member>
+        <member name="M:SafeName.Internal.PlatformRules.IsForbiddenControl(System.Char)">
+            <summary>NUL is forbidden on every profile; other control characters only where the profile forbids them.</summary>
+        </member>
+        <member name="M:SafeName.Internal.PlatformRules.IsUnsafe(System.Char)">
+            <summary>Whether a single character is unsafe for a filename component under this profile.</summary>
+        </member>
+        <member name="T:SafeName.Internal.ReservedNames">
+            <summary>
+            The Windows reserved device names (including the console-handle names <c>CONIN$</c> and
+            <c>CONOUT$</c>) and the logic for recognizing them, including the classic trap that a reserved
+            name is still reserved when it carries an extension (<c>CON.txt</c>) and regardless of case.
+            </summary>
+        </member>
+        <member name="M:SafeName.Internal.ReservedNames.IsReserved(System.String)">
+            <summary>
+            Returns whether <paramref name="component"/> is a Windows reserved device name. The stem
+            (the part before the first dot, with trailing spaces removed) is compared case-insensitively,
+            so <c>CON</c>, <c>con</c>, <c>CON.txt</c>, and <c>CON.tar.gz</c> are all reserved, while
+            <c>CONtext</c> and <c>COM0</c> are not.
+            </summary>
+        </member>
+        <member name="T:SafeName.MaxLengthUnit">
+            <summary>
+            The unit in which a maximum length is measured and enforced.
+            </summary>
+            <remarks>
+            This choice is easy to get wrong and matters. Most Unix filesystems (ext4, APFS, XFS)
+            limit a filename component to 255 <em>bytes</em>, and they store names as UTF-8, so a name
+            of 100 emoji is 400 bytes and is rejected even though it is only 100 characters. NTFS limits
+            to 255 UTF-16 <em>code units</em>. Because the byte limit is the stricter and more portable
+            one, <see cref="F:SafeName.MaxLengthUnit.Utf8Bytes"/> is the default.
+            </remarks>
+        </member>
+        <member name="F:SafeName.MaxLengthUnit.Utf8Bytes">
+            <summary>
+            Measure length as the number of UTF-8 bytes. This is the default and matches how ext4,
+            APFS, and most Unix filesystems enforce their 255-limit.
+            </summary>
+        </member>
+        <member name="F:SafeName.MaxLengthUnit.Chars">
+            <summary>
+            Measure length as the number of UTF-16 code units (the value of
+            <see cref="P:System.String.Length"/>). This matches how NTFS enforces its 255-limit.
+            </summary>
+        </member>
+        <member name="T:SafeName.PathSanitizeOptions">
+            <summary>
+            Options controlling how <see cref="M:SafeName.FilePath.Sanitize(System.String,SafeName.PathSanitizeOptions)"/> repairs a
+            full, multi-component path. The <see cref="P:SafeName.PathSanitizeOptions.Component"/> options are applied to each path
+            segment; the path-level options here govern the whole result.
+            </summary>
+        </member>
+        <member name="P:SafeName.PathSanitizeOptions.Profile">
+            <summary>The platform rule set to apply. Default <see cref="F:SafeName.PlatformProfile.Universal"/>.</summary>
+        </member>
+        <member name="P:SafeName.PathSanitizeOptions.MaxPathLength">
+            <summary>
+            The maximum length of the whole path, measured in <see cref="P:SafeName.PathSanitizeOptions.MaxLengthUnit"/>. When
+            <see langword="null"/> (the default), a per-profile default is used: 260 for Windows and
+            Universal, 4096 for POSIX.
+            </summary>
+        </member>
+        <member name="P:SafeName.PathSanitizeOptions.MaxLengthUnit">
+            <summary>
+            The unit in which <see cref="P:SafeName.PathSanitizeOptions.MaxPathLength"/> is measured. Default
+            <see cref="F:SafeName.MaxLengthUnit.Utf8Bytes"/>.
+            </summary>
+        </member>
+        <member name="P:SafeName.PathSanitizeOptions.Component">
+            <summary>
+            The options applied to each individual path component. Its <see cref="P:SafeName.SanitizeOptions.Profile"/>
+            is overridden by this object's <see cref="P:SafeName.PathSanitizeOptions.Profile"/>.
+            </summary>
+        </member>
+        <member name="T:SafeName.PlatformProfile">
+            <summary>
+            Selects the set of filesystem rules used when sanitizing or validating a name.
+            </summary>
+            <remarks>
+            The rules a name must satisfy differ between operating systems. A profile picks
+            which rule set to apply. Unless you know the target filesystem, prefer
+            <see cref="F:SafeName.PlatformProfile.Universal"/>, which forbids anything forbidden on either Windows or POSIX
+            and so produces names that are safe on both.
+            </remarks>
+        </member>
+        <member name="F:SafeName.PlatformProfile.Windows">
+            <summary>
+            Windows (NTFS/FAT) rules: forbids the characters <c>&lt; &gt; : " / \ | ? *</c> and
+            all control characters, the reserved device names (<c>CON</c>, <c>PRN</c>, <c>AUX</c>,
+            <c>NUL</c>, <c>COM1</c>-<c>COM9</c>, <c>LPT1</c>-<c>LPT9</c>, even with an extension),
+            and trailing dots and spaces.
+            </summary>
+        </member>
+        <member name="F:SafeName.PlatformProfile.Posix">
+            <summary>
+            POSIX (Linux, macOS, and most Unix filesystems) rules: forbids only the forward slash
+            and the NUL character in a filename component. Trailing dots and spaces, control
+            characters other than NUL, and the Windows reserved device names are all permitted.
+            </summary>
+        </member>
+        <member name="F:SafeName.PlatformProfile.Universal">
+            <summary>
+            The intersection of the Windows and POSIX rules: a name is only valid if it is valid on
+            both. This is the default and is the correct choice when you do not control the target
+            filesystem (cross-platform apps, cloud sync, archives, uploads that may be restored
+            anywhere).
+            </summary>
+        </member>
+        <member name="F:SafeName.PlatformProfile.Auto">
+            <summary>
+            Detects the current operating system at call time and applies <see cref="F:SafeName.PlatformProfile.Windows"/> on
+            Windows or <see cref="F:SafeName.PlatformProfile.Posix"/> elsewhere.
+            </summary>
+        </member>
+        <member name="T:SafeName.ReservedNamePolicy">
+            <summary>
+            Controls what <see cref="M:SafeName.FileName.Sanitize(System.String,SafeName.SanitizeOptions)"/> does when the input
+            resolves to a Windows reserved device name such as <c>CON</c> or <c>COM1</c>.
+            </summary>
+        </member>
+        <member name="F:SafeName.ReservedNamePolicy.Suffix">
+            <summary>
+            Append the configured replacement to the stem so the name is no longer reserved, keeping
+            any extension: <c>CON</c> becomes <c>CON_</c> and <c>CON.txt</c> becomes <c>CON_.txt</c>.
+            This is the default and preserves the most information.
+            </summary>
+        </member>
+        <member name="F:SafeName.ReservedNamePolicy.Reject">
+            <summary>
+            Treat the reserved name as unusable and replace it with the configured
+            <see cref="P:SafeName.SanitizeOptions.NullOrEmptyFallback"/>.
+            </summary>
+        </member>
+        <member name="T:SafeName.SanitizeOptions">
+            <summary>
+            Options controlling how <see cref="M:SafeName.FileName.Sanitize(System.String,SafeName.SanitizeOptions)"/> repairs a
+            single filename component. Every property has a sensible default, so <c>new SanitizeOptions()</c>
+            is a good starting point.
+            </summary>
+        </member>
+        <member name="P:SafeName.SanitizeOptions.Replacement">
+            <summary>
+            The string substituted for each unsafe character. Must be non-empty and must itself be
+            safe for <see cref="P:SafeName.SanitizeOptions.Profile"/> (no reserved characters, control characters, path
+            separators, or a value made only of dots and spaces). Default <c>"_"</c>.
+            </summary>
+        </member>
+        <member name="P:SafeName.SanitizeOptions.Profile">
+            <summary>The platform rule set to apply. Default <see cref="F:SafeName.PlatformProfile.Universal"/>.</summary>
+        </member>
+        <member name="P:SafeName.SanitizeOptions.MaxLength">
+            <summary>
+            The maximum length of the result, measured in <see cref="P:SafeName.SanitizeOptions.MaxLengthUnit"/>. Must be greater
+            than zero. Default 255.
+            </summary>
+        </member>
+        <member name="P:SafeName.SanitizeOptions.MaxLengthUnit">
+            <summary>
+            The unit in which <see cref="P:SafeName.SanitizeOptions.MaxLength"/> is measured. Default
+            <see cref="F:SafeName.MaxLengthUnit.Utf8Bytes"/>, which matches how ext4, APFS, and most
+            Unix filesystems enforce their 255-limit.
+            </summary>
+        </member>
+        <member name="P:SafeName.SanitizeOptions.PreserveExtension">
+            <summary>
+            When length truncation is needed, keep the file extension so <c>very-long-name.pdf</c>
+            stays a <c>.pdf</c> file. Default <see langword="true"/>.
+            </summary>
+        </member>
+        <member name="P:SafeName.SanitizeOptions.CollapseConsecutiveReplacements">
+            <summary>
+            Collapse each run of consecutive <see cref="P:SafeName.SanitizeOptions.Replacement"/> tokens into a single one, so a
+            name full of unsafe characters does not become a wall of underscores. Default
+            <see langword="true"/>.
+            </summary>
+        </member>
+        <member name="P:SafeName.SanitizeOptions.NullOrEmptyFallback">
+            <summary>
+            The name used when the input, once cleaned, is empty. Default <c>"untitled"</c>. It is
+            itself sanitized before use, so a bad value cannot produce an unsafe result.
+            </summary>
+        </member>
+        <member name="P:SafeName.SanitizeOptions.AllowUnicode">
+            <summary>
+            Keep non-ASCII characters (letters, emoji, CJK) when they are otherwise safe. When
+            <see langword="false"/>, every character above U+007F is stripped, yielding an ASCII-only
+            name; in that mode <see cref="P:SafeName.SanitizeOptions.Replacement"/> must itself be ASCII, or construction throws.
+            Default <see langword="true"/>.
+            </summary>
+        </member>
+        <member name="P:SafeName.SanitizeOptions.ReservedNamePolicy">
+            <summary>
+            What to do when the input resolves to a Windows reserved device name. Default
+            <see cref="F:SafeName.ReservedNamePolicy.Suffix"/>.
+            </summary>
+        </member>
+        <member name="T:SafeName.ValidationError">
+            <summary>
+            A single reason a name or path is not valid, with a human-readable message and, where it
+            applies, the zero-based position of the offending character.
+            </summary>
+        </member>
+        <member name="M:SafeName.ValidationError.#ctor(SafeName.ErrorReason,System.String,System.Nullable{System.Int32})">
+            <summary>Initializes a new <see cref="T:SafeName.ValidationError"/>.</summary>
+            <param name="reason">The category of the problem.</param>
+            <param name="message">A human-readable description.</param>
+            <param name="position">The zero-based index of the offending character, if applicable.</param>
+        </member>
+        <member name="P:SafeName.ValidationError.Reason">
+            <summary>The category of the problem.</summary>
+        </member>
+        <member name="P:SafeName.ValidationError.Message">
+            <summary>A human-readable description of the problem.</summary>
+        </member>
+        <member name="P:SafeName.ValidationError.Position">
+            <summary>
+            The zero-based index of the offending character within the validated name, or
+            <see langword="null"/> when the problem is not tied to a single position.
+            </summary>
+        </member>
+        <member name="M:SafeName.ValidationError.ToString">
+            <summary>Returns the message, prefixed with the position when one is known.</summary>
+        </member>
+        <member name="T:SafeName.ValidationResult">
+            <summary>
+            The outcome of validating a name or path: whether it is valid, every reason it is not, and a
+            convenience sanitized form.
+            </summary>
+        </member>
+        <member name="M:SafeName.ValidationResult.#ctor(System.Collections.Generic.IReadOnlyList{SafeName.ValidationError},System.String)">
+            <summary>Initializes a new <see cref="T:SafeName.ValidationResult"/>.</summary>
+            <param name="errors">The errors found, or an empty list when the input is valid.</param>
+            <param name="sanitized">A safe form of the input, if one was computed.</param>
+        </member>
+        <member name="P:SafeName.ValidationResult.IsValid">
+            <summary>Whether the input satisfies every rule of the target profile.</summary>
+        </member>
+        <member name="P:SafeName.ValidationResult.Errors">
+            <summary>Every reason the input is not valid. Empty when <see cref="P:SafeName.ValidationResult.IsValid"/> is true.</summary>
+        </member>
+        <member name="P:SafeName.ValidationResult.Sanitized">
+            <summary>
+            A safe form of the input, computed as a convenience so callers can validate and repair in
+            one call. May be <see langword="null"/> when no sanitized form was requested.
+            </summary>
+        </member>
+    </members>
+</doc>

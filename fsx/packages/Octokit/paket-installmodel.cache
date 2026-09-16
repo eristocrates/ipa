@@ -1,0 +1,16 @@
+D: /lib
+D: /lib/netstandard2.0
+F: /lib/netstandard2.0/Octokit.dll
+F: /lib/netstandard2.0/Octokit.xml
+D: /package
+D: /package/services
+D: /package/services/metadata
+D: /package/services/metadata/core-properties
+F: /package/services/metadata/core-properties/ee5e9d555be4458dbd8c9e3cb950da92.psmdcp
+D: /_rels
+F: /_rels/.rels
+F: /.signature.p7s
+F: /octokit.14.0.0.nupkg
+F: /Octokit.nuspec
+F: /octokit.png
+F: /[Content_Types].xml

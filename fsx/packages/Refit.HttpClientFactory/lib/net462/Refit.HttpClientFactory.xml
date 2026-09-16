@@ -1,0 +1,1286 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Refit.HttpClientFactory</name>
+    </assembly>
+    <members>
+        <member name="T:Refit.Internal.ArgumentExceptionHelper">
+            <summary>
+            Polyfill for <c>ArgumentNullException.ThrowIfNull</c> on target frameworks that predate it.
+            On modern targets, projects alias <c>ArgumentExceptionHelper</c> directly to <see cref="T:System.ArgumentNullException"/>.
+            </summary>
+        </member>
+        <member name="M:Refit.Internal.ArgumentExceptionHelper.ThrowIfNull(System.Object,System.String)">
+            <summary>Throws an <see cref="T:System.ArgumentNullException"/> if <paramref name="argument"/> is <see langword="null"/>.</summary>
+            <param name="argument">The reference type argument to validate as non-null.</param>
+            <param name="paramName">The parameter name.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="argument"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="T:Refit.Internal.ArgumentOutOfRangeExceptionHelper">
+            <summary>Polyfill for modern <see cref="T:System.ArgumentOutOfRangeException"/> guard helpers on target frameworks that predate them.</summary>
+        </member>
+        <member name="M:Refit.Internal.ArgumentOutOfRangeExceptionHelper.ThrowIfNegative(System.Int32,System.String)">
+            <summary>Throws when <paramref name="value"/> is negative.</summary>
+            <param name="value">The value to validate.</param>
+            <param name="paramName">The parameter name.</param>
+            <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="value"/> is less than zero.</exception>
+        </member>
+        <member name="M:Refit.Internal.ArgumentOutOfRangeExceptionHelper.ThrowIfNegativeOrZero(System.Int32,System.String)">
+            <summary>Throws when <paramref name="value"/> is negative or zero.</summary>
+            <param name="value">The value to validate.</param>
+            <param name="paramName">The parameter name.</param>
+            <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="value"/> is zero or less.</exception>
+        </member>
+        <member name="T:Refit.Internal.CollectionExtensions">
+            <summary>
+            Polyfills for dictionary APIs that .NET Framework lacks. Only compiled into the
+            <c>net4*</c> targets, where the instance methods do not exist; every other target
+            binds to the built-in overloads instead.
+            </summary>
+        </member>
+        <member name="M:Refit.Internal.CollectionExtensions.GetOrAdd``3(System.Collections.Concurrent.ConcurrentDictionary{``0,``1},``0,System.Func{``0,``2,``1},``2)">
+            <inheritdoc cref="M:Refit.Internal.CollectionExtensions.&lt;G&gt;$310EC761CC0CBFE9938D5B432F938138`2.GetOrAdd``1(`0,System.Func{`0,``0,`1},``0)"/>
+        </member>
+        <member name="M:Refit.Internal.CollectionExtensions.TryAdd``2(System.Collections.Generic.Dictionary{``0,``1},``0,``1)">
+            <inheritdoc cref="M:Refit.Internal.CollectionExtensions.&lt;G&gt;$E42DFDC8D24EBEA929FB244FBCDF3D61`2.TryAdd(`0,`1)"/>
+        </member>
+        <member name="T:Refit.Internal.CollectionExtensions.&lt;G&gt;$310EC761CC0CBFE9938D5B432F938138`2.&lt;M&gt;$FB9FE442F239E519EF35331DCC4D3876">
+            <summary>Supplies the state-taking <c>GetOrAdd</c> overload added after .NET Framework.</summary>
+            <typeparam name="TKey">The key type.</typeparam>
+            <typeparam name="TValue">The value type.</typeparam>
+            <param name="dictionary">The dictionary being extended.</param>
+        </member>
+        <member name="M:Refit.Internal.CollectionExtensions.&lt;G&gt;$310EC761CC0CBFE9938D5B432F938138`2.GetOrAdd``1(`0,System.Func{`0,``0,`1},``0)">
+            <summary>Gets the value for a key, creating it from <paramref name="arg"/> when absent.</summary>
+            <typeparam name="TArg">The type of the state passed to <paramref name="valueFactory"/>.</typeparam>
+            <param name="key">The key to look up.</param>
+            <param name="valueFactory">Builds the value from the key and <paramref name="arg"/>.</param>
+            <param name="arg">State handed to <paramref name="valueFactory"/> so it need not capture.</param>
+            <returns>The existing value, or the newly created one.</returns>
+            <remarks>
+            As with the built-in overload, <paramref name="valueFactory"/> runs outside the lock and may
+            run more than once under contention; the first value inserted wins.
+            </remarks>
+        </member>
+        <member name="T:Refit.Internal.CollectionExtensions.&lt;G&gt;$E42DFDC8D24EBEA929FB244FBCDF3D61`2.&lt;M&gt;$CA8EA18293A9BC7D3FA9C1224E7F3E4B">
+            <summary>Supplies the <c>TryAdd</c> method added after .NET Framework.</summary>
+            <typeparam name="TKey">The key type.</typeparam>
+            <typeparam name="TValue">The value type.</typeparam>
+            <param name="dictionary">The dictionary being extended.</param>
+        </member>
+        <member name="M:Refit.Internal.CollectionExtensions.&lt;G&gt;$E42DFDC8D24EBEA929FB244FBCDF3D61`2.TryAdd(`0,`1)">
+            <summary>Adds the pair when the key is absent, reporting whether it acted.</summary>
+            <param name="key">The key to add.</param>
+            <param name="value">The value to add.</param>
+            <returns><see langword="true"/> if the pair was added; <see langword="false"/> if the key was already present.</returns>
+        </member>
+        <member name="T:Refit.HttpClientFactoryCore">
+            <summary>Shared registration logic backing the Refit HttpClientFactory extension methods.</summary>
+        </member>
+        <member name="F:Refit.HttpClientFactoryCore.RequiresUnreferencedCodeMessage">
+            <summary>Diagnostic message explaining why the reflection-based registration path is not trim-safe.</summary>
+        </member>
+        <member name="F:Refit.HttpClientFactoryCore.RequiresDynamicCodeMessage">
+            <summary>Diagnostic message explaining why the reflection-based registration path is not AOT-safe.</summary>
+        </member>
+        <member name="F:Refit.HttpClientFactoryCore._requestBuilderGenericForTypeMethod">
+            <summary>Lazily cached generic RequestBuilder.ForType method used to build request builders by type.</summary>
+        </member>
+        <member name="M:Refit.HttpClientFactoryCore.AddRefitClientCore(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Type,System.Func{System.IServiceProvider,Refit.RefitSettings},System.String)">
+            <summary>Registers a Refit client and its dependencies for the given interface type.</summary>
+            <param name="services">The service collection to register into.</param>
+            <param name="refitInterfaceType">The Refit interface type to register.</param>
+            <param name="settings">A factory that produces the Refit settings, or null.</param>
+            <param name="httpClientName">A name for the underlying HTTP client, or null.</param>
+            <returns>The HTTP client builder for further configuration.</returns>
+        </member>
+        <member name="M:Refit.HttpClientFactoryCore.AddRefitClientCore``1(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Func{System.IServiceProvider,Refit.RefitSettings},System.String)">
+            <summary>Registers a strongly typed Refit client and its dependencies.</summary>
+            <typeparam name="T">The Refit interface type to register.</typeparam>
+            <param name="services">The service collection to register into.</param>
+            <param name="settings">A factory that produces the Refit settings, or null.</param>
+            <param name="httpClientName">A name for the underlying HTTP client, or null.</param>
+            <returns>The HTTP client builder for further configuration.</returns>
+        </member>
+        <member name="M:Refit.HttpClientFactoryCore.AddKeyedRefitClientCore(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Type,System.Object,System.Func{System.IServiceProvider,Refit.RefitSettings},System.String)">
+            <summary>Registers a keyed Refit client and its dependencies for the given interface type.</summary>
+            <param name="services">The service collection to register into.</param>
+            <param name="refitInterfaceType">The Refit interface type to register.</param>
+            <param name="serviceKey">The key under which the client is registered.</param>
+            <param name="settings">A factory that produces the Refit settings, or null.</param>
+            <param name="httpClientName">A name for the underlying HTTP client, or null.</param>
+            <returns>The HTTP client builder for further configuration.</returns>
+        </member>
+        <member name="M:Refit.HttpClientFactoryCore.AddKeyedRefitClientCore``1(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Object,System.Func{System.IServiceProvider,Refit.RefitSettings},System.String)">
+            <summary>Registers a strongly typed keyed Refit client and its dependencies.</summary>
+            <typeparam name="T">The Refit interface type to register.</typeparam>
+            <param name="services">The service collection to register into.</param>
+            <param name="serviceKey">The key under which the client is registered.</param>
+            <param name="settings">A factory that produces the Refit settings, or null.</param>
+            <param name="httpClientName">A name for the underlying HTTP client, or null.</param>
+            <returns>The HTTP client builder for further configuration.</returns>
+        </member>
+        <member name="M:Refit.HttpClientFactoryCore.AddRefitGeneratedClientCore``1(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Func{System.IServiceProvider,Refit.RefitSettings},System.String)">
+            <summary>Registers a strongly typed, source-generated Refit client without any reflection fallback.</summary>
+            <typeparam name="T">The Refit interface type to register.</typeparam>
+            <param name="services">The service collection to register into.</param>
+            <param name="settings">A factory that produces the Refit settings, or null.</param>
+            <param name="httpClientName">A name for the underlying HTTP client, or null.</param>
+            <returns>The HTTP client builder for further configuration.</returns>
+        </member>
+        <member name="M:Refit.HttpClientFactoryCore.AddKeyedRefitGeneratedClientCore``1(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Object,System.Func{System.IServiceProvider,Refit.RefitSettings},System.String)">
+            <summary>Registers a strongly typed, keyed, source-generated Refit client without any reflection fallback.</summary>
+            <typeparam name="T">The Refit interface type to register.</typeparam>
+            <param name="services">The service collection to register into.</param>
+            <param name="serviceKey">The key under which the client is registered.</param>
+            <param name="settings">A factory that produces the Refit settings, or null.</param>
+            <param name="httpClientName">A name for the underlying HTTP client, or null.</param>
+            <returns>The HTTP client builder for further configuration.</returns>
+        </member>
+        <member name="M:Refit.HttpClientFactoryCore.GetRequestBuilderGenericForTypeMethod">
+            <summary>Resolves and caches the open generic <see cref="M:Refit.RequestBuilder.ForType``1(Refit.RefitSettings)"/> method.</summary>
+            <returns>The open generic <c>RequestBuilder.ForType</c> method definition.</returns>
+        </member>
+        <member name="M:Refit.HttpClientFactoryCore.FindRequestBuilderGenericForTypeMethod">
+            <summary>Finds the open generic <see cref="M:Refit.RequestBuilder.ForType``1(Refit.RefitSettings)"/> method.</summary>
+            <returns>The matching method definition.</returns>
+            <exception cref="T:System.InvalidOperationException"><see cref="T:Refit.RequestBuilder"/> declares no single-parameter generic <c>ForType</c> method, or more than one.</exception>
+        </member>
+        <member name="M:Refit.HttpClientFactoryCore.ConfigureKeyedHandlers(Microsoft.Extensions.DependencyInjection.IHttpClientBuilder,System.Func{System.IServiceProvider,Refit.ISettingsFor})">
+            <summary>Configures the primary and authorization handlers for a keyed Refit client from its settings.</summary>
+            <param name="builder">The HTTP client builder to configure.</param>
+            <param name="settingsResolver">Resolves the settings holder for the keyed client from a service provider.</param>
+        </member>
+        <member name="M:Refit.HttpClientFactoryCore.CreateInnerHandlerIfProvided(Refit.RefitSettings)">
+            <summary>Builds the inner HTTP message handler from the supplied settings, if any.</summary>
+            <param name="settings">The Refit settings that may provide a handler factory or auth getter.</param>
+            <returns>The configured inner handler, or null when none is required.</returns>
+        </member>
+        <member name="T:Refit.HttpClientFactoryExtensions">
+            <summary>Extension methods for registering Refit clients with dependency injection.</summary>
+            <summary>Extension methods for registering Refit clients with dependency injection.</summary>
+        </member>
+        <member name="M:Refit.HttpClientFactoryExtensions.AddRefitClient(Microsoft.Extensions.DependencyInjection.IHttpClientBuilder,System.Type)">
+            <inheritdoc cref="M:Refit.HttpClientFactoryExtensions.&lt;G&gt;$FD14743E8ABAD982E22D574C34770B13.AddRefitClient(System.Type)"/>
+        </member>
+        <member name="M:Refit.HttpClientFactoryExtensions.AddRefitClient(Microsoft.Extensions.DependencyInjection.IHttpClientBuilder,System.Type,Refit.RefitSettings)">
+            <inheritdoc cref="M:Refit.HttpClientFactoryExtensions.&lt;G&gt;$FD14743E8ABAD982E22D574C34770B13.AddRefitClient(System.Type,Refit.RefitSettings)"/>
+        </member>
+        <member name="M:Refit.HttpClientFactoryExtensions.AddRefitClient(Microsoft.Extensions.DependencyInjection.IHttpClientBuilder,System.Type,System.Func{System.IServiceProvider,Refit.RefitSettings})">
+            <inheritdoc cref="M:Refit.HttpClientFactoryExtensions.&lt;G&gt;$FD14743E8ABAD982E22D574C34770B13.AddRefitClient(System.Type,System.Func{System.IServiceProvider,Refit.RefitSettings})"/>
+        </member>
+        <member name="M:Refit.HttpClientFactoryExtensions.AddRefitClient``1(Microsoft.Extensions.DependencyInjection.IHttpClientBuilder)">
+            <inheritdoc cref="M:Refit.HttpClientFactoryExtensions.&lt;G&gt;$FD14743E8ABAD982E22D574C34770B13.AddRefitClient``1"/>
+        </member>
+        <member name="M:Refit.HttpClientFactoryExtensions.AddRefitClient``1(Microsoft.Extensions.DependencyInjection.IHttpClientBuilder,Refit.RefitSettings)">
+            <inheritdoc cref="M:Refit.HttpClientFactoryExtensions.&lt;G&gt;$FD14743E8ABAD982E22D574C34770B13.AddRefitClient``1(Refit.RefitSettings)"/>
+        </member>
+        <member name="M:Refit.HttpClientFactoryExtensions.AddRefitClient``1(Microsoft.Extensions.DependencyInjection.IHttpClientBuilder,System.Func{System.IServiceProvider,Refit.RefitSettings})">
+            <inheritdoc cref="M:Refit.HttpClientFactoryExtensions.&lt;G&gt;$FD14743E8ABAD982E22D574C34770B13.AddRefitClient``1(System.Func{System.IServiceProvider,Refit.RefitSettings})"/>
+        </member>
+        <member name="M:Refit.HttpClientFactoryExtensions.AddKeyedRefitClient(Microsoft.Extensions.DependencyInjection.IHttpClientBuilder,System.Type,System.Object)">
+            <inheritdoc cref="M:Refit.HttpClientFactoryExtensions.&lt;G&gt;$FD14743E8ABAD982E22D574C34770B13.AddKeyedRefitClient(System.Type,System.Object)"/>
+        </member>
+        <member name="M:Refit.HttpClientFactoryExtensions.AddKeyedRefitClient(Microsoft.Extensions.DependencyInjection.IHttpClientBuilder,System.Type,System.Object,Refit.RefitSettings)">
+            <inheritdoc cref="M:Refit.HttpClientFactoryExtensions.&lt;G&gt;$FD14743E8ABAD982E22D574C34770B13.AddKeyedRefitClient(System.Type,System.Object,Refit.RefitSettings)"/>
+        </member>
+        <member name="M:Refit.HttpClientFactoryExtensions.AddKeyedRefitClient(Microsoft.Extensions.DependencyInjection.IHttpClientBuilder,System.Type,System.Object,System.Func{System.IServiceProvider,Refit.RefitSettings})">
+            <inheritdoc cref="M:Refit.HttpClientFactoryExtensions.&lt;G&gt;$FD14743E8ABAD982E22D574C34770B13.AddKeyedRefitClient(System.Type,System.Object,System.Func{System.IServiceProvider,Refit.RefitSettings})"/>
+        </member>
+        <member name="M:Refit.HttpClientFactoryExtensions.AddKeyedRefitClient``1(Microsoft.Extensions.DependencyInjection.IHttpClientBuilder,System.Object)">
+            <inheritdoc cref="M:Refit.HttpClientFactoryExtensions.&lt;G&gt;$FD14743E8ABAD982E22D574C34770B13.AddKeyedRefitClient``1(System.Object)"/>
+        </member>
+        <member name="M:Refit.HttpClientFactoryExtensions.AddKeyedRefitClient``1(Microsoft.Extensions.DependencyInjection.IHttpClientBuilder,System.Object,Refit.RefitSettings)">
+            <inheritdoc cref="M:Refit.HttpClientFactoryExtensions.&lt;G&gt;$FD14743E8ABAD982E22D574C34770B13.AddKeyedRefitClient``1(System.Object,Refit.RefitSettings)"/>
+        </member>
+        <member name="M:Refit.HttpClientFactoryExtensions.AddKeyedRefitClient``1(Microsoft.Extensions.DependencyInjection.IHttpClientBuilder,System.Object,System.Func{System.IServiceProvider,Refit.RefitSettings})">
+            <inheritdoc cref="M:Refit.HttpClientFactoryExtensions.&lt;G&gt;$FD14743E8ABAD982E22D574C34770B13.AddKeyedRefitClient``1(System.Object,System.Func{System.IServiceProvider,Refit.RefitSettings})"/>
+        </member>
+        <member name="M:Refit.HttpClientFactoryExtensions.AddAuthorizationHeaderValueProvider(Microsoft.Extensions.DependencyInjection.IHttpClientBuilder,System.Func{System.IServiceProvider,System.Net.Http.HttpRequestMessage,System.Threading.CancellationToken,System.Threading.Tasks.ValueTask{System.String}})">
+            <inheritdoc cref="M:Refit.HttpClientFactoryExtensions.&lt;G&gt;$FD14743E8ABAD982E22D574C34770B13.AddAuthorizationHeaderValueProvider(System.Func{System.IServiceProvider,System.Net.Http.HttpRequestMessage,System.Threading.CancellationToken,System.Threading.Tasks.ValueTask{System.String}})"/>
+        </member>
+        <member name="F:Refit.HttpClientFactoryExtensions.RequiresUnreferencedCodeMessage">
+            <summary>Diagnostic message explaining why the reflection-based registration path is not trim-safe.</summary>
+        </member>
+        <member name="F:Refit.HttpClientFactoryExtensions.RequiresDynamicCodeMessage">
+            <summary>Diagnostic message explaining why the reflection-based registration path is not AOT-safe.</summary>
+        </member>
+        <member name="M:Refit.HttpClientFactoryExtensions.AddRefitClient(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Type)">
+            <inheritdoc cref="M:Refit.HttpClientFactoryExtensions.&lt;G&gt;$7B30185E57B8298C6754F16C0BCF4773.AddRefitClient(System.Type)"/>
+        </member>
+        <member name="M:Refit.HttpClientFactoryExtensions.AddRefitClient(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Type,Refit.RefitSettings)">
+            <inheritdoc cref="M:Refit.HttpClientFactoryExtensions.&lt;G&gt;$7B30185E57B8298C6754F16C0BCF4773.AddRefitClient(System.Type,Refit.RefitSettings)"/>
+        </member>
+        <member name="M:Refit.HttpClientFactoryExtensions.AddRefitClient(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Type,Refit.RefitSettings,System.String)">
+            <inheritdoc cref="M:Refit.HttpClientFactoryExtensions.&lt;G&gt;$7B30185E57B8298C6754F16C0BCF4773.AddRefitClient(System.Type,Refit.RefitSettings,System.String)"/>
+        </member>
+        <member name="M:Refit.HttpClientFactoryExtensions.AddRefitClient(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Type,System.Func{System.IServiceProvider,Refit.RefitSettings})">
+            <inheritdoc cref="M:Refit.HttpClientFactoryExtensions.&lt;G&gt;$7B30185E57B8298C6754F16C0BCF4773.AddRefitClient(System.Type,System.Func{System.IServiceProvider,Refit.RefitSettings})"/>
+        </member>
+        <member name="M:Refit.HttpClientFactoryExtensions.AddRefitClient(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Type,System.Func{System.IServiceProvider,Refit.RefitSettings},System.String)">
+            <inheritdoc cref="M:Refit.HttpClientFactoryExtensions.&lt;G&gt;$7B30185E57B8298C6754F16C0BCF4773.AddRefitClient(System.Type,System.Func{System.IServiceProvider,Refit.RefitSettings},System.String)"/>
+        </member>
+        <member name="M:Refit.HttpClientFactoryExtensions.AddRefitClient``1(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <inheritdoc cref="M:Refit.HttpClientFactoryExtensions.&lt;G&gt;$7B30185E57B8298C6754F16C0BCF4773.AddRefitClient``1"/>
+        </member>
+        <member name="M:Refit.HttpClientFactoryExtensions.AddRefitClient``1(Microsoft.Extensions.DependencyInjection.IServiceCollection,Refit.RefitSettings)">
+            <inheritdoc cref="M:Refit.HttpClientFactoryExtensions.&lt;G&gt;$7B30185E57B8298C6754F16C0BCF4773.AddRefitClient``1(Refit.RefitSettings)"/>
+        </member>
+        <member name="M:Refit.HttpClientFactoryExtensions.AddRefitClient``1(Microsoft.Extensions.DependencyInjection.IServiceCollection,Refit.RefitSettings,System.String)">
+            <inheritdoc cref="M:Refit.HttpClientFactoryExtensions.&lt;G&gt;$7B30185E57B8298C6754F16C0BCF4773.AddRefitClient``1(Refit.RefitSettings,System.String)"/>
+        </member>
+        <member name="M:Refit.HttpClientFactoryExtensions.AddRefitClient``1(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Func{System.IServiceProvider,Refit.RefitSettings})">
+            <inheritdoc cref="M:Refit.HttpClientFactoryExtensions.&lt;G&gt;$7B30185E57B8298C6754F16C0BCF4773.AddRefitClient``1(System.Func{System.IServiceProvider,Refit.RefitSettings})"/>
+        </member>
+        <member name="M:Refit.HttpClientFactoryExtensions.AddRefitClient``1(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Func{System.IServiceProvider,Refit.RefitSettings},System.String)">
+            <inheritdoc cref="M:Refit.HttpClientFactoryExtensions.&lt;G&gt;$7B30185E57B8298C6754F16C0BCF4773.AddRefitClient``1(System.Func{System.IServiceProvider,Refit.RefitSettings},System.String)"/>
+        </member>
+        <member name="M:Refit.HttpClientFactoryExtensions.AddKeyedRefitClient(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Type,System.Object)">
+            <inheritdoc cref="M:Refit.HttpClientFactoryExtensions.&lt;G&gt;$7B30185E57B8298C6754F16C0BCF4773.AddKeyedRefitClient(System.Type,System.Object)"/>
+        </member>
+        <member name="M:Refit.HttpClientFactoryExtensions.AddKeyedRefitClient(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Type,System.Object,Refit.RefitSettings)">
+            <inheritdoc cref="M:Refit.HttpClientFactoryExtensions.&lt;G&gt;$7B30185E57B8298C6754F16C0BCF4773.AddKeyedRefitClient(System.Type,System.Object,Refit.RefitSettings)"/>
+        </member>
+        <member name="M:Refit.HttpClientFactoryExtensions.AddKeyedRefitClient(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Type,System.Object,Refit.RefitSettings,System.String)">
+            <inheritdoc cref="M:Refit.HttpClientFactoryExtensions.&lt;G&gt;$7B30185E57B8298C6754F16C0BCF4773.AddKeyedRefitClient(System.Type,System.Object,Refit.RefitSettings,System.String)"/>
+        </member>
+        <member name="M:Refit.HttpClientFactoryExtensions.AddKeyedRefitClient(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Type,System.Object,System.Func{System.IServiceProvider,Refit.RefitSettings})">
+            <inheritdoc cref="M:Refit.HttpClientFactoryExtensions.&lt;G&gt;$7B30185E57B8298C6754F16C0BCF4773.AddKeyedRefitClient(System.Type,System.Object,System.Func{System.IServiceProvider,Refit.RefitSettings})"/>
+        </member>
+        <member name="M:Refit.HttpClientFactoryExtensions.AddKeyedRefitClient(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Type,System.Object,System.Func{System.IServiceProvider,Refit.RefitSettings},System.String)">
+            <inheritdoc cref="M:Refit.HttpClientFactoryExtensions.&lt;G&gt;$7B30185E57B8298C6754F16C0BCF4773.AddKeyedRefitClient(System.Type,System.Object,System.Func{System.IServiceProvider,Refit.RefitSettings},System.String)"/>
+        </member>
+        <member name="M:Refit.HttpClientFactoryExtensions.AddKeyedRefitClient``1(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Object)">
+            <inheritdoc cref="M:Refit.HttpClientFactoryExtensions.&lt;G&gt;$7B30185E57B8298C6754F16C0BCF4773.AddKeyedRefitClient``1(System.Object)"/>
+        </member>
+        <member name="M:Refit.HttpClientFactoryExtensions.AddKeyedRefitClient``1(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Object,Refit.RefitSettings)">
+            <inheritdoc cref="M:Refit.HttpClientFactoryExtensions.&lt;G&gt;$7B30185E57B8298C6754F16C0BCF4773.AddKeyedRefitClient``1(System.Object,Refit.RefitSettings)"/>
+        </member>
+        <member name="M:Refit.HttpClientFactoryExtensions.AddKeyedRefitClient``1(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Object,Refit.RefitSettings,System.String)">
+            <inheritdoc cref="M:Refit.HttpClientFactoryExtensions.&lt;G&gt;$7B30185E57B8298C6754F16C0BCF4773.AddKeyedRefitClient``1(System.Object,Refit.RefitSettings,System.String)"/>
+        </member>
+        <member name="M:Refit.HttpClientFactoryExtensions.AddKeyedRefitClient``1(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Object,System.Func{System.IServiceProvider,Refit.RefitSettings})">
+            <inheritdoc cref="M:Refit.HttpClientFactoryExtensions.&lt;G&gt;$7B30185E57B8298C6754F16C0BCF4773.AddKeyedRefitClient``1(System.Object,System.Func{System.IServiceProvider,Refit.RefitSettings})"/>
+        </member>
+        <member name="M:Refit.HttpClientFactoryExtensions.AddKeyedRefitClient``1(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Object,System.Func{System.IServiceProvider,Refit.RefitSettings},System.String)">
+            <inheritdoc cref="M:Refit.HttpClientFactoryExtensions.&lt;G&gt;$7B30185E57B8298C6754F16C0BCF4773.AddKeyedRefitClient``1(System.Object,System.Func{System.IServiceProvider,Refit.RefitSettings},System.String)"/>
+        </member>
+        <member name="M:Refit.HttpClientFactoryExtensions.AddRefitGeneratedClient``1(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <inheritdoc cref="M:Refit.HttpClientFactoryExtensions.&lt;G&gt;$7B30185E57B8298C6754F16C0BCF4773.AddRefitGeneratedClient``1"/>
+        </member>
+        <member name="M:Refit.HttpClientFactoryExtensions.AddRefitGeneratedClient``1(Microsoft.Extensions.DependencyInjection.IServiceCollection,Refit.RefitSettings)">
+            <inheritdoc cref="M:Refit.HttpClientFactoryExtensions.&lt;G&gt;$7B30185E57B8298C6754F16C0BCF4773.AddRefitGeneratedClient``1(Refit.RefitSettings)"/>
+        </member>
+        <member name="M:Refit.HttpClientFactoryExtensions.AddRefitGeneratedClient``1(Microsoft.Extensions.DependencyInjection.IServiceCollection,Refit.RefitSettings,System.String)">
+            <inheritdoc cref="M:Refit.HttpClientFactoryExtensions.&lt;G&gt;$7B30185E57B8298C6754F16C0BCF4773.AddRefitGeneratedClient``1(Refit.RefitSettings,System.String)"/>
+        </member>
+        <member name="M:Refit.HttpClientFactoryExtensions.AddRefitGeneratedClient``1(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Func{System.IServiceProvider,Refit.RefitSettings})">
+            <inheritdoc cref="M:Refit.HttpClientFactoryExtensions.&lt;G&gt;$7B30185E57B8298C6754F16C0BCF4773.AddRefitGeneratedClient``1(System.Func{System.IServiceProvider,Refit.RefitSettings})"/>
+        </member>
+        <member name="M:Refit.HttpClientFactoryExtensions.AddRefitGeneratedClient``1(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Func{System.IServiceProvider,Refit.RefitSettings},System.String)">
+            <inheritdoc cref="M:Refit.HttpClientFactoryExtensions.&lt;G&gt;$7B30185E57B8298C6754F16C0BCF4773.AddRefitGeneratedClient``1(System.Func{System.IServiceProvider,Refit.RefitSettings},System.String)"/>
+        </member>
+        <member name="M:Refit.HttpClientFactoryExtensions.AddKeyedRefitGeneratedClient``1(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Object)">
+            <inheritdoc cref="M:Refit.HttpClientFactoryExtensions.&lt;G&gt;$7B30185E57B8298C6754F16C0BCF4773.AddKeyedRefitGeneratedClient``1(System.Object)"/>
+        </member>
+        <member name="M:Refit.HttpClientFactoryExtensions.AddKeyedRefitGeneratedClient``1(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Object,Refit.RefitSettings)">
+            <inheritdoc cref="M:Refit.HttpClientFactoryExtensions.&lt;G&gt;$7B30185E57B8298C6754F16C0BCF4773.AddKeyedRefitGeneratedClient``1(System.Object,Refit.RefitSettings)"/>
+        </member>
+        <member name="M:Refit.HttpClientFactoryExtensions.AddKeyedRefitGeneratedClient``1(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Object,Refit.RefitSettings,System.String)">
+            <inheritdoc cref="M:Refit.HttpClientFactoryExtensions.&lt;G&gt;$7B30185E57B8298C6754F16C0BCF4773.AddKeyedRefitGeneratedClient``1(System.Object,Refit.RefitSettings,System.String)"/>
+        </member>
+        <member name="M:Refit.HttpClientFactoryExtensions.AddKeyedRefitGeneratedClient``1(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Object,System.Func{System.IServiceProvider,Refit.RefitSettings})">
+            <inheritdoc cref="M:Refit.HttpClientFactoryExtensions.&lt;G&gt;$7B30185E57B8298C6754F16C0BCF4773.AddKeyedRefitGeneratedClient``1(System.Object,System.Func{System.IServiceProvider,Refit.RefitSettings})"/>
+        </member>
+        <member name="M:Refit.HttpClientFactoryExtensions.AddKeyedRefitGeneratedClient``1(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Object,System.Func{System.IServiceProvider,Refit.RefitSettings},System.String)">
+            <inheritdoc cref="M:Refit.HttpClientFactoryExtensions.&lt;G&gt;$7B30185E57B8298C6754F16C0BCF4773.AddKeyedRefitGeneratedClient``1(System.Object,System.Func{System.IServiceProvider,Refit.RefitSettings},System.String)"/>
+        </member>
+        <member name="T:Refit.HttpClientFactoryExtensions.&lt;G&gt;$FD14743E8ABAD982E22D574C34770B13.&lt;M&gt;$7A89DCEE3BB610E7EFDE7B6163DA4966">
+            <summary>Registers Refit clients on an existing <see cref="T:Microsoft.Extensions.DependencyInjection.IHttpClientBuilder"/>.</summary>
+            <param name="builder">The HTTP client builder the Refit client is registered with.</param>
+        </member>
+        <member name="M:Refit.HttpClientFactoryExtensions.&lt;G&gt;$FD14743E8ABAD982E22D574C34770B13.AddRefitClient(System.Type)">
+            <summary>Adds a Refit client to the dependency injection container.</summary>
+            <param name="refitInterfaceType">The type of the Refit interface.</param>
+            <returns>The HTTP client builder for chaining.</returns>
+        </member>
+        <member name="M:Refit.HttpClientFactoryExtensions.&lt;G&gt;$FD14743E8ABAD982E22D574C34770B13.AddRefitClient(System.Type,Refit.RefitSettings)">
+            <summary>Adds a Refit client to the dependency injection container.</summary>
+            <param name="refitInterfaceType">The type of the Refit interface.</param>
+            <param name="settings">The settings used to configure the instance.</param>
+            <returns>The HTTP client builder for chaining.</returns>
+        </member>
+        <member name="M:Refit.HttpClientFactoryExtensions.&lt;G&gt;$FD14743E8ABAD982E22D574C34770B13.AddRefitClient(System.Type,System.Func{System.IServiceProvider,Refit.RefitSettings})">
+            <summary>Adds a Refit client to the dependency injection container.</summary>
+            <param name="refitInterfaceType">The type of the Refit interface.</param>
+            <param name="settingsAction">An action used to configure the Refit settings from the service provider.</param>
+            <returns>The HTTP client builder for chaining.</returns>
+        </member>
+        <member name="M:Refit.HttpClientFactoryExtensions.&lt;G&gt;$FD14743E8ABAD982E22D574C34770B13.AddRefitClient``1">
+            <summary>Adds a Refit client to the dependency injection container.</summary>
+            <typeparam name="T">The type of the Refit interface.</typeparam>
+            <returns>The HTTP client builder for chaining.</returns>
+        </member>
+        <member name="M:Refit.HttpClientFactoryExtensions.&lt;G&gt;$FD14743E8ABAD982E22D574C34770B13.AddRefitClient``1(Refit.RefitSettings)">
+            <summary>Adds a Refit client to the dependency injection container.</summary>
+            <typeparam name="T">The type of the Refit interface.</typeparam>
+            <param name="settings">The settings used to configure the instance.</param>
+            <returns>The HTTP client builder for chaining.</returns>
+        </member>
+        <member name="M:Refit.HttpClientFactoryExtensions.&lt;G&gt;$FD14743E8ABAD982E22D574C34770B13.AddRefitClient``1(System.Func{System.IServiceProvider,Refit.RefitSettings})">
+            <summary>Adds a Refit client to the dependency injection container.</summary>
+            <typeparam name="T">The type of the Refit interface.</typeparam>
+            <param name="settingsAction">An action used to configure the Refit settings from the service provider.</param>
+            <returns>The HTTP client builder for chaining.</returns>
+        </member>
+        <member name="M:Refit.HttpClientFactoryExtensions.&lt;G&gt;$FD14743E8ABAD982E22D574C34770B13.AddKeyedRefitClient(System.Type,System.Object)">
+            <summary>Adds a Refit client to the dependency injection container with a specified service key.</summary>
+            <param name="refitInterfaceType">The type of the Refit interface.</param>
+            <param name="serviceKey">A key used to associate with the specific Refit client instance.</param>
+            <returns>The HTTP client builder for chaining.</returns>
+        </member>
+        <member name="M:Refit.HttpClientFactoryExtensions.&lt;G&gt;$FD14743E8ABAD982E22D574C34770B13.AddKeyedRefitClient(System.Type,System.Object,Refit.RefitSettings)">
+            <summary>Adds a Refit client to the dependency injection container with a specified service key.</summary>
+            <param name="refitInterfaceType">The type of the Refit interface.</param>
+            <param name="serviceKey">A key used to associate with the specific Refit client instance.</param>
+            <param name="settings">The settings used to configure the instance.</param>
+            <returns>The HTTP client builder for chaining.</returns>
+        </member>
+        <member name="M:Refit.HttpClientFactoryExtensions.&lt;G&gt;$FD14743E8ABAD982E22D574C34770B13.AddKeyedRefitClient(System.Type,System.Object,System.Func{System.IServiceProvider,Refit.RefitSettings})">
+            <summary>Adds a Refit client to the dependency injection container with a specified service key.</summary>
+            <param name="refitInterfaceType">The type of the Refit interface.</param>
+            <param name="serviceKey">A key used to associate with the specific Refit client instance.</param>
+            <param name="settingsAction">An action used to configure the Refit settings from the service provider.</param>
+            <returns>The HTTP client builder for chaining.</returns>
+        </member>
+        <member name="M:Refit.HttpClientFactoryExtensions.&lt;G&gt;$FD14743E8ABAD982E22D574C34770B13.AddKeyedRefitClient``1(System.Object)">
+            <summary>Adds a Refit client to the dependency injection container with a specified service key.</summary>
+            <typeparam name="T">The type of the Refit interface.</typeparam>
+            <param name="serviceKey">A key used to associate with the specific Refit client instance.</param>
+            <returns>The HTTP client builder for chaining.</returns>
+        </member>
+        <member name="M:Refit.HttpClientFactoryExtensions.&lt;G&gt;$FD14743E8ABAD982E22D574C34770B13.AddKeyedRefitClient``1(System.Object,Refit.RefitSettings)">
+            <summary>Adds a Refit client to the dependency injection container with a specified service key.</summary>
+            <typeparam name="T">The type of the Refit interface.</typeparam>
+            <param name="serviceKey">A key used to associate with the specific Refit client instance.</param>
+            <param name="settings">The settings used to configure the instance.</param>
+            <returns>The HTTP client builder for chaining.</returns>
+        </member>
+        <member name="M:Refit.HttpClientFactoryExtensions.&lt;G&gt;$FD14743E8ABAD982E22D574C34770B13.AddKeyedRefitClient``1(System.Object,System.Func{System.IServiceProvider,Refit.RefitSettings})">
+            <summary>Adds a Refit client to the dependency injection container with a specified service key.</summary>
+            <typeparam name="T">The type of the Refit interface.</typeparam>
+            <param name="serviceKey">A key used to associate with the specific Refit client instance.</param>
+            <param name="settingsAction">An action used to configure the Refit settings from the service provider.</param>
+            <returns>The HTTP client builder for chaining.</returns>
+        </member>
+        <member name="M:Refit.HttpClientFactoryExtensions.&lt;G&gt;$FD14743E8ABAD982E22D574C34770B13.AddAuthorizationHeaderValueProvider(System.Func{System.IServiceProvider,System.Net.Http.HttpRequestMessage,System.Threading.CancellationToken,System.Threading.Tasks.ValueTask{System.String}})">
+            <summary>Adds a message handler that resolves each request's authorization token from a fresh dependency-injection scope.</summary>
+            <param name="getToken">
+            A delegate that resolves the authorization token from a per-request <see cref="T:System.IServiceProvider"/>, the outgoing
+            request, and a cancellation token. Returning null, empty, or whitespace omits the <c>Authorization</c> header for
+            that request.
+            </param>
+            <returns>The HTTP client builder for chaining.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="getToken"/> is null.</exception>
+            <remarks>
+            <see cref="T:System.Net.Http.IHttpClientFactory"/> pools message handlers for their configured lifetime, so a scoped token provider
+            captured directly would bleed across requests. This registers a handler that creates a fresh
+            <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceScope"/> per request, resolving <paramref name="getToken"/> from that scope's provider, so a
+            scoped service (or ambient <c>AsyncLocal</c> state such as a host-registered <c>IHttpContextAccessor</c>) resolves
+            correctly per request without any ASP.NET Core dependency.
+            </remarks>
+        </member>
+        <member name="T:Refit.HttpClientFactoryExtensions.&lt;G&gt;$7B30185E57B8298C6754F16C0BCF4773.&lt;M&gt;$6BEA73177691D2862842D66CC9F1DED9">
+            <summary>Registers Refit clients directly on an <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/>.</summary>
+            <param name="services">The service collection the Refit client is registered with.</param>
+        </member>
+        <member name="M:Refit.HttpClientFactoryExtensions.&lt;G&gt;$7B30185E57B8298C6754F16C0BCF4773.AddRefitClient(System.Type)">
+            <summary>Adds a Refit client to the dependency injection container.</summary>
+            <param name="refitInterfaceType">The type of the Refit interface.</param>
+            <returns>The HTTP client builder for chaining.</returns>
+        </member>
+        <member name="M:Refit.HttpClientFactoryExtensions.&lt;G&gt;$7B30185E57B8298C6754F16C0BCF4773.AddRefitClient(System.Type,Refit.RefitSettings)">
+            <summary>Adds a Refit client to the dependency injection container.</summary>
+            <param name="refitInterfaceType">The type of the Refit interface.</param>
+            <param name="settings">The settings used to configure the instance.</param>
+            <returns>The HTTP client builder for chaining.</returns>
+        </member>
+        <member name="M:Refit.HttpClientFactoryExtensions.&lt;G&gt;$7B30185E57B8298C6754F16C0BCF4773.AddRefitClient(System.Type,Refit.RefitSettings,System.String)">
+            <summary>Adds a Refit client to the dependency injection container.</summary>
+            <param name="refitInterfaceType">The type of the Refit interface.</param>
+            <param name="settings">The settings used to configure the instance.</param>
+            <param name="httpClientName">Allows the name of the underlying HttpClient to be changed.</param>
+            <returns>The HTTP client builder for chaining.</returns>
+        </member>
+        <member name="M:Refit.HttpClientFactoryExtensions.&lt;G&gt;$7B30185E57B8298C6754F16C0BCF4773.AddRefitClient(System.Type,System.Func{System.IServiceProvider,Refit.RefitSettings})">
+            <summary>Adds a Refit client to the dependency injection container.</summary>
+            <param name="refitInterfaceType">The type of the Refit interface.</param>
+            <param name="settingsAction">An action used to configure the Refit settings from the service provider.</param>
+            <returns>The HTTP client builder for chaining.</returns>
+        </member>
+        <member name="M:Refit.HttpClientFactoryExtensions.&lt;G&gt;$7B30185E57B8298C6754F16C0BCF4773.AddRefitClient(System.Type,System.Func{System.IServiceProvider,Refit.RefitSettings},System.String)">
+            <summary>Adds a Refit client to the dependency injection container.</summary>
+            <param name="refitInterfaceType">The type of the Refit interface.</param>
+            <param name="settingsAction">An action used to configure the Refit settings from the service provider.</param>
+            <param name="httpClientName">Allows the name of the underlying HttpClient to be changed.</param>
+            <returns>The HTTP client builder for chaining.</returns>
+        </member>
+        <member name="M:Refit.HttpClientFactoryExtensions.&lt;G&gt;$7B30185E57B8298C6754F16C0BCF4773.AddRefitClient``1">
+            <summary>Adds a Refit client to the dependency injection container.</summary>
+            <typeparam name="T">The type of the Refit interface.</typeparam>
+            <returns>The HTTP client builder for chaining.</returns>
+        </member>
+        <member name="M:Refit.HttpClientFactoryExtensions.&lt;G&gt;$7B30185E57B8298C6754F16C0BCF4773.AddRefitClient``1(Refit.RefitSettings)">
+            <summary>Adds a Refit client to the dependency injection container.</summary>
+            <typeparam name="T">The type of the Refit interface.</typeparam>
+            <param name="settings">The settings used to configure the instance.</param>
+            <returns>The HTTP client builder for chaining.</returns>
+        </member>
+        <member name="M:Refit.HttpClientFactoryExtensions.&lt;G&gt;$7B30185E57B8298C6754F16C0BCF4773.AddRefitClient``1(Refit.RefitSettings,System.String)">
+            <summary>Adds a Refit client to the dependency injection container.</summary>
+            <typeparam name="T">The type of the Refit interface.</typeparam>
+            <param name="settings">The settings used to configure the instance.</param>
+            <param name="httpClientName">Allows the name of the underlying HttpClient to be changed.</param>
+            <returns>The HTTP client builder for chaining.</returns>
+        </member>
+        <member name="M:Refit.HttpClientFactoryExtensions.&lt;G&gt;$7B30185E57B8298C6754F16C0BCF4773.AddRefitClient``1(System.Func{System.IServiceProvider,Refit.RefitSettings})">
+            <summary>Adds a Refit client to the dependency injection container.</summary>
+            <typeparam name="T">The type of the Refit interface.</typeparam>
+            <param name="settingsAction">An action used to configure the Refit settings from the service provider.</param>
+            <returns>The HTTP client builder for chaining.</returns>
+        </member>
+        <member name="M:Refit.HttpClientFactoryExtensions.&lt;G&gt;$7B30185E57B8298C6754F16C0BCF4773.AddRefitClient``1(System.Func{System.IServiceProvider,Refit.RefitSettings},System.String)">
+            <summary>Adds a Refit client to the dependency injection container.</summary>
+            <typeparam name="T">The type of the Refit interface.</typeparam>
+            <param name="settingsAction">An action used to configure the Refit settings from the service provider.</param>
+            <param name="httpClientName">Allows the name of the underlying HttpClient to be changed.</param>
+            <returns>The HTTP client builder for chaining.</returns>
+        </member>
+        <member name="M:Refit.HttpClientFactoryExtensions.&lt;G&gt;$7B30185E57B8298C6754F16C0BCF4773.AddKeyedRefitClient(System.Type,System.Object)">
+            <summary>Adds a Refit client to the dependency injection container with a specified service key.</summary>
+            <param name="refitInterfaceType">The type of the Refit interface.</param>
+            <param name="serviceKey">A key used to associate with the specific Refit client instance.</param>
+            <returns>The HTTP client builder for chaining.</returns>
+        </member>
+        <member name="M:Refit.HttpClientFactoryExtensions.&lt;G&gt;$7B30185E57B8298C6754F16C0BCF4773.AddKeyedRefitClient(System.Type,System.Object,Refit.RefitSettings)">
+            <summary>Adds a Refit client to the dependency injection container with a specified service key.</summary>
+            <param name="refitInterfaceType">The type of the Refit interface.</param>
+            <param name="serviceKey">A key used to associate with the specific Refit client instance.</param>
+            <param name="settings">The settings used to configure the instance.</param>
+            <returns>The HTTP client builder for chaining.</returns>
+        </member>
+        <member name="M:Refit.HttpClientFactoryExtensions.&lt;G&gt;$7B30185E57B8298C6754F16C0BCF4773.AddKeyedRefitClient(System.Type,System.Object,Refit.RefitSettings,System.String)">
+            <summary>Adds a Refit client to the dependency injection container with a specified service key.</summary>
+            <param name="refitInterfaceType">The type of the Refit interface.</param>
+            <param name="serviceKey">A key used to associate with the specific Refit client instance.</param>
+            <param name="settings">The settings used to configure the instance.</param>
+            <param name="httpClientName">Allows the name of the underlying HttpClient to be changed.</param>
+            <returns>The HTTP client builder for chaining.</returns>
+        </member>
+        <member name="M:Refit.HttpClientFactoryExtensions.&lt;G&gt;$7B30185E57B8298C6754F16C0BCF4773.AddKeyedRefitClient(System.Type,System.Object,System.Func{System.IServiceProvider,Refit.RefitSettings})">
+            <summary>Adds a Refit client to the dependency injection container with a specified service key.</summary>
+            <param name="refitInterfaceType">The type of the Refit interface.</param>
+            <param name="serviceKey">A key used to associate with the specific Refit client instance.</param>
+            <param name="settingsAction">An action used to configure the Refit settings from the service provider.</param>
+            <returns>The HTTP client builder for chaining.</returns>
+        </member>
+        <member name="M:Refit.HttpClientFactoryExtensions.&lt;G&gt;$7B30185E57B8298C6754F16C0BCF4773.AddKeyedRefitClient(System.Type,System.Object,System.Func{System.IServiceProvider,Refit.RefitSettings},System.String)">
+            <summary>Adds a Refit client to the dependency injection container with a specified service key.</summary>
+            <param name="refitInterfaceType">The type of the Refit interface.</param>
+            <param name="serviceKey">A key used to associate with the specific Refit client instance.</param>
+            <param name="settingsAction">An action used to configure the Refit settings from the service provider.</param>
+            <param name="httpClientName">Allows the name of the underlying HttpClient to be changed.</param>
+            <returns>The HTTP client builder for chaining.</returns>
+        </member>
+        <member name="M:Refit.HttpClientFactoryExtensions.&lt;G&gt;$7B30185E57B8298C6754F16C0BCF4773.AddKeyedRefitClient``1(System.Object)">
+            <summary>Adds a Refit client to the dependency injection container with a specified service key.</summary>
+            <typeparam name="T">The type of the Refit interface.</typeparam>
+            <param name="serviceKey">A key used to associate with the specific Refit client instance.</param>
+            <returns>The HTTP client builder for chaining.</returns>
+        </member>
+        <member name="M:Refit.HttpClientFactoryExtensions.&lt;G&gt;$7B30185E57B8298C6754F16C0BCF4773.AddKeyedRefitClient``1(System.Object,Refit.RefitSettings)">
+            <summary>Adds a Refit client to the dependency injection container with a specified service key.</summary>
+            <typeparam name="T">The type of the Refit interface.</typeparam>
+            <param name="serviceKey">A key used to associate with the specific Refit client instance.</param>
+            <param name="settings">The settings used to configure the instance.</param>
+            <returns>The HTTP client builder for chaining.</returns>
+        </member>
+        <member name="M:Refit.HttpClientFactoryExtensions.&lt;G&gt;$7B30185E57B8298C6754F16C0BCF4773.AddKeyedRefitClient``1(System.Object,Refit.RefitSettings,System.String)">
+            <summary>Adds a Refit client to the dependency injection container with a specified service key.</summary>
+            <typeparam name="T">The type of the Refit interface.</typeparam>
+            <param name="serviceKey">A key used to associate with the specific Refit client instance.</param>
+            <param name="settings">The settings used to configure the instance.</param>
+            <param name="httpClientName">Allows the name of the underlying HttpClient to be changed.</param>
+            <returns>The HTTP client builder for chaining.</returns>
+        </member>
+        <member name="M:Refit.HttpClientFactoryExtensions.&lt;G&gt;$7B30185E57B8298C6754F16C0BCF4773.AddKeyedRefitClient``1(System.Object,System.Func{System.IServiceProvider,Refit.RefitSettings})">
+            <summary>Adds a Refit client to the dependency injection container with a specified service key.</summary>
+            <typeparam name="T">The type of the Refit interface.</typeparam>
+            <param name="serviceKey">A key used to associate with the specific Refit client instance.</param>
+            <param name="settingsAction">An action used to configure the Refit settings from the service provider.</param>
+            <returns>The HTTP client builder for chaining.</returns>
+        </member>
+        <member name="M:Refit.HttpClientFactoryExtensions.&lt;G&gt;$7B30185E57B8298C6754F16C0BCF4773.AddKeyedRefitClient``1(System.Object,System.Func{System.IServiceProvider,Refit.RefitSettings},System.String)">
+            <summary>Adds a Refit client to the dependency injection container with a specified service key.</summary>
+            <typeparam name="T">The type of the Refit interface.</typeparam>
+            <param name="serviceKey">A key used to associate with the specific Refit client instance.</param>
+            <param name="settingsAction">An action used to configure the Refit settings from the service provider.</param>
+            <param name="httpClientName">Allows the name of the underlying HttpClient to be changed.</param>
+            <returns>The HTTP client builder for chaining.</returns>
+        </member>
+        <member name="M:Refit.HttpClientFactoryExtensions.&lt;G&gt;$7B30185E57B8298C6754F16C0BCF4773.AddRefitGeneratedClient``1">
+            <summary>
+            Adds a source-generated Refit client to the dependency injection container without any reflection
+            fallback, making it safe for Native AOT and trimming. The client is built through
+            <c>RestService.ForGenerated&lt;T&gt;</c>; if no generated implementation exists for <typeparamref name="T"/>,
+            resolving the client throws an <see cref="T:System.InvalidOperationException"/>. The usual HttpClientFactory
+            features (base address, handlers, resilience pipelines) remain available on the returned builder.
+            </summary>
+            <typeparam name="T">The type of the Refit interface.</typeparam>
+            <returns>The HTTP client builder for chaining.</returns>
+        </member>
+        <member name="M:Refit.HttpClientFactoryExtensions.&lt;G&gt;$7B30185E57B8298C6754F16C0BCF4773.AddRefitGeneratedClient``1(Refit.RefitSettings)">
+            <summary>Adds a source-generated Refit client to the dependency injection container without any reflection fallback.</summary>
+            <typeparam name="T">The type of the Refit interface.</typeparam>
+            <param name="settings">The settings used to configure the instance.</param>
+            <returns>The HTTP client builder for chaining.</returns>
+        </member>
+        <member name="M:Refit.HttpClientFactoryExtensions.&lt;G&gt;$7B30185E57B8298C6754F16C0BCF4773.AddRefitGeneratedClient``1(Refit.RefitSettings,System.String)">
+            <summary>Adds a source-generated Refit client to the dependency injection container without any reflection fallback.</summary>
+            <typeparam name="T">The type of the Refit interface.</typeparam>
+            <param name="settings">The settings used to configure the instance.</param>
+            <param name="httpClientName">Allows the name of the underlying HttpClient to be changed.</param>
+            <returns>The HTTP client builder for chaining.</returns>
+        </member>
+        <member name="M:Refit.HttpClientFactoryExtensions.&lt;G&gt;$7B30185E57B8298C6754F16C0BCF4773.AddRefitGeneratedClient``1(System.Func{System.IServiceProvider,Refit.RefitSettings})">
+            <summary>Adds a source-generated Refit client to the dependency injection container without any reflection fallback.</summary>
+            <typeparam name="T">The type of the Refit interface.</typeparam>
+            <param name="settingsAction">An action used to configure the Refit settings from the service provider.</param>
+            <returns>The HTTP client builder for chaining.</returns>
+        </member>
+        <member name="M:Refit.HttpClientFactoryExtensions.&lt;G&gt;$7B30185E57B8298C6754F16C0BCF4773.AddRefitGeneratedClient``1(System.Func{System.IServiceProvider,Refit.RefitSettings},System.String)">
+            <summary>Adds a source-generated Refit client to the dependency injection container without any reflection fallback.</summary>
+            <typeparam name="T">The type of the Refit interface.</typeparam>
+            <param name="settingsAction">An action used to configure the Refit settings from the service provider.</param>
+            <param name="httpClientName">Allows the name of the underlying HttpClient to be changed.</param>
+            <returns>The HTTP client builder for chaining.</returns>
+        </member>
+        <member name="M:Refit.HttpClientFactoryExtensions.&lt;G&gt;$7B30185E57B8298C6754F16C0BCF4773.AddKeyedRefitGeneratedClient``1(System.Object)">
+            <summary>
+            Adds a source-generated Refit client to the dependency injection container under the specified
+            service key, without any reflection fallback, making it safe for Native AOT and trimming. The client
+            is built through <c>RestService.ForGenerated&lt;T&gt;</c>; if no generated implementation exists for
+            <typeparamref name="T"/>, resolving the client throws an <see cref="T:System.InvalidOperationException"/>. The
+            usual HttpClientFactory features (base address, handlers, resilience pipelines) remain available on
+            the returned builder.
+            </summary>
+            <typeparam name="T">The type of the Refit interface.</typeparam>
+            <param name="serviceKey">A key used to associate with the specific Refit client instance.</param>
+            <returns>The HTTP client builder for chaining.</returns>
+        </member>
+        <member name="M:Refit.HttpClientFactoryExtensions.&lt;G&gt;$7B30185E57B8298C6754F16C0BCF4773.AddKeyedRefitGeneratedClient``1(System.Object,Refit.RefitSettings)">
+            <summary>Adds a source-generated Refit client to the dependency injection container under the specified service key, without any reflection fallback.</summary>
+            <typeparam name="T">The type of the Refit interface.</typeparam>
+            <param name="serviceKey">A key used to associate with the specific Refit client instance.</param>
+            <param name="settings">The settings used to configure the instance.</param>
+            <returns>The HTTP client builder for chaining.</returns>
+        </member>
+        <member name="M:Refit.HttpClientFactoryExtensions.&lt;G&gt;$7B30185E57B8298C6754F16C0BCF4773.AddKeyedRefitGeneratedClient``1(System.Object,Refit.RefitSettings,System.String)">
+            <summary>Adds a source-generated Refit client to the dependency injection container under the specified service key, without any reflection fallback.</summary>
+            <typeparam name="T">The type of the Refit interface.</typeparam>
+            <param name="serviceKey">A key used to associate with the specific Refit client instance.</param>
+            <param name="settings">The settings used to configure the instance.</param>
+            <param name="httpClientName">Allows the name of the underlying HttpClient to be changed.</param>
+            <returns>The HTTP client builder for chaining.</returns>
+        </member>
+        <member name="M:Refit.HttpClientFactoryExtensions.&lt;G&gt;$7B30185E57B8298C6754F16C0BCF4773.AddKeyedRefitGeneratedClient``1(System.Object,System.Func{System.IServiceProvider,Refit.RefitSettings})">
+            <summary>Adds a source-generated Refit client to the dependency injection container under the specified service key, without any reflection fallback.</summary>
+            <typeparam name="T">The type of the Refit interface.</typeparam>
+            <param name="serviceKey">A key used to associate with the specific Refit client instance.</param>
+            <param name="settingsAction">An action used to configure the Refit settings from the service provider.</param>
+            <returns>The HTTP client builder for chaining.</returns>
+        </member>
+        <member name="M:Refit.HttpClientFactoryExtensions.&lt;G&gt;$7B30185E57B8298C6754F16C0BCF4773.AddKeyedRefitGeneratedClient``1(System.Object,System.Func{System.IServiceProvider,Refit.RefitSettings},System.String)">
+            <summary>Adds a source-generated Refit client to the dependency injection container under the specified service key, without any reflection fallback.</summary>
+            <typeparam name="T">The type of the Refit interface.</typeparam>
+            <param name="serviceKey">A key used to associate with the specific Refit client instance.</param>
+            <param name="settingsAction">An action used to configure the Refit settings from the service provider.</param>
+            <param name="httpClientName">Allows the name of the underlying HttpClient to be changed.</param>
+            <returns>The HTTP client builder for chaining.</returns>
+        </member>
+        <member name="T:Refit.ISettingsFor">
+            <summary>Provides access to the <see cref="T:Refit.RefitSettings"/> for a Refit interface.</summary>
+        </member>
+        <member name="P:Refit.ISettingsFor.Settings">
+            <summary>Gets the settings.</summary>
+            <value>
+            The settings.
+            </value>
+        </member>
+        <member name="T:Refit.ScopedAuthorizationHeaderHandler">
+            <summary>Resolves each request's authorization token from a fresh per-request dependency-injection scope.</summary>
+            <remarks>
+            <see cref="T:System.Net.Http.IHttpClientFactory"/> pools message handlers for their configured lifetime, so a scoped service captured
+            directly by a handler would bleed across requests. Creating a scope here keeps the token provider correctly scoped
+            to each request without taking any ASP.NET Core dependency. Ambient <c>AsyncLocal</c>-based state (such as a
+            singleton <c>IHttpContextAccessor</c> registered by the host) still flows into the fresh scope, so the common
+            ASP.NET case works; a provider that reads the request message directly works too.
+            </remarks>
+        </member>
+        <member name="F:Refit.ScopedAuthorizationHeaderHandler.DefaultScheme">
+            <summary>The default authorization scheme applied when the request carries no scheme of its own.</summary>
+        </member>
+        <member name="F:Refit.ScopedAuthorizationHeaderHandler._rootServiceProvider">
+            <summary>The root service provider used to create a fresh scope for every request.</summary>
+        </member>
+        <member name="F:Refit.ScopedAuthorizationHeaderHandler._getToken">
+            <summary>The delegate that resolves the token from a per-request service provider.</summary>
+        </member>
+        <member name="M:Refit.ScopedAuthorizationHeaderHandler.#ctor(System.IServiceProvider,System.Func{System.IServiceProvider,System.Net.Http.HttpRequestMessage,System.Threading.CancellationToken,System.Threading.Tasks.ValueTask{System.String}})">
+            <summary>Initializes a new instance of the <see cref="T:Refit.ScopedAuthorizationHeaderHandler"/> class.</summary>
+            <param name="rootServiceProvider">The root service provider used to create a per-request scope.</param>
+            <param name="getToken">The delegate that resolves the token from a per-request service provider.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="rootServiceProvider"/> or <paramref name="getToken"/> is null.</exception>
+        </member>
+        <member name="M:Refit.ScopedAuthorizationHeaderHandler.SendAsync(System.Net.Http.HttpRequestMessage,System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Refit.SettingsFor`1">
+            <summary>Holds the <see cref="T:Refit.RefitSettings"/> associated with a specific Refit interface type.</summary>
+            <typeparam name="T">The Refit interface type the settings belong to.</typeparam>
+            <param name="settings">The settings.</param>
+            <remarks>Initializes a new instance of the <see cref="T:Refit.SettingsFor`1"/> class.</remarks>
+        </member>
+        <member name="M:Refit.SettingsFor`1.#ctor(Refit.RefitSettings)">
+            <summary>Holds the <see cref="T:Refit.RefitSettings"/> associated with a specific Refit interface type.</summary>
+            <typeparam name="T">The Refit interface type the settings belong to.</typeparam>
+            <param name="settings">The settings.</param>
+            <remarks>Initializes a new instance of the <see cref="T:Refit.SettingsFor`1"/> class.</remarks>
+        </member>
+        <member name="P:Refit.SettingsFor`1.Settings">
+            <summary>Gets the settings.</summary>
+            <value>
+            The settings.
+            </value>
+        </member>
+        <member name="T:Refit.AuthenticatedHttpClientHandler">
+            <summary>A delegating handler that adds an authorization token to outgoing requests when an authorization header is present.</summary>
+        </member>
+        <member name="F:Refit.AuthenticatedHttpClientHandler._getToken">
+            <summary>The function used to retrieve the authentication token for a request.</summary>
+        </member>
+        <member name="M:Refit.AuthenticatedHttpClientHandler.#ctor(System.Func{System.Net.Http.HttpRequestMessage,System.Threading.CancellationToken,System.Threading.Tasks.ValueTask{System.String}},System.Net.Http.HttpMessageHandler)">
+            <summary>Initializes a new instance of the <see cref="T:Refit.AuthenticatedHttpClientHandler"/> class.</summary>
+            <param name="getToken">The function to get the authentication token.</param>
+            <param name="innerHandler">The optional inner handler.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="getToken"/> must not be null.</exception>
+            <remarks>
+            Warning: This constructor sets the <see cref="P:System.Net.Http.DelegatingHandler.InnerHandler"/> to an instance
+            of <see cref="T:System.Net.Http.HttpClientHandler"/>, when <paramref name="innerHandler"/> is <c>null</c>. This is
+            a behavior which is incompatible with the <c>IHttpClientBuilder</c>.
+            </remarks>
+        </member>
+        <member name="M:Refit.AuthenticatedHttpClientHandler.#ctor(System.Net.Http.HttpMessageHandler,System.Func{System.Net.Http.HttpRequestMessage,System.Threading.CancellationToken,System.Threading.Tasks.ValueTask{System.String}})">
+            <summary>Initializes a new instance of the <see cref="T:Refit.AuthenticatedHttpClientHandler"/> class.</summary>
+            <param name="innerHandler">The optional inner handler.</param>
+            <param name="getToken">The function to get the authentication token.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="getToken"/> must not be null.</exception>
+            <remarks>
+            This function doesn't set the <see cref="P:System.Net.Http.DelegatingHandler.InnerHandler"/> automatically to an
+            instance of <see cref="T:System.Net.Http.HttpClientHandler"/> when <paramref name="innerHandler"/> is null,
+            which is different from the old (legacy) constructor, and compliant with the behavior expected
+            by the <c>IHttpClientBuilder</c>.
+            </remarks>
+        </member>
+        <member name="M:Refit.AuthenticatedHttpClientHandler.SendAsync(System.Net.Http.HttpRequestMessage,System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="T:System.Runtime.CompilerServices.CallerArgumentExpressionAttribute">
+            <summary>Polyfill for the caller-argument-expression attribute on older target frameworks.</summary>
+            <param name="parameterName">The parameter whose source expression should be captured.</param>
+        </member>
+        <member name="M:System.Runtime.CompilerServices.CallerArgumentExpressionAttribute.#ctor(System.String)">
+            <summary>Polyfill for the caller-argument-expression attribute on older target frameworks.</summary>
+            <param name="parameterName">The parameter whose source expression should be captured.</param>
+        </member>
+        <member name="T:System.Runtime.CompilerServices.CallerArgumentExpressionAttribute.IMetadata">
+            <summary>Defines the compiler-required public metadata contract.</summary>
+        </member>
+        <member name="P:System.Runtime.CompilerServices.CallerArgumentExpressionAttribute.IMetadata.ParameterName">
+            <summary>Gets the parameter whose source expression should be captured.</summary>
+        </member>
+        <member name="P:System.Runtime.CompilerServices.CallerArgumentExpressionAttribute.ParameterName">
+            <summary>Gets the parameter whose source expression should be captured.</summary>
+        </member>
+        <member name="T:System.Runtime.CompilerServices.CompilerFeatureRequiredAttribute">
+            <summary>Polyfill marker the compiler emits for language features such as <c>required</c> members on older target frameworks.</summary>
+            <param name="featureName">The name of the required compiler feature.</param>
+        </member>
+        <member name="M:System.Runtime.CompilerServices.CompilerFeatureRequiredAttribute.#ctor(System.String)">
+            <summary>Polyfill marker the compiler emits for language features such as <c>required</c> members on older target frameworks.</summary>
+            <param name="featureName">The name of the required compiler feature.</param>
+        </member>
+        <member name="F:System.Runtime.CompilerServices.CompilerFeatureRequiredAttribute.RequiredMembers">
+            <summary>The <see cref="P:System.Runtime.CompilerServices.CompilerFeatureRequiredAttribute.FeatureName"/> value used for the <c>required</c> members feature.</summary>
+        </member>
+        <member name="T:System.Runtime.CompilerServices.CompilerFeatureRequiredAttribute.IMetadata">
+            <summary>Defines the compiler-required public metadata contract.</summary>
+        </member>
+        <member name="P:System.Runtime.CompilerServices.CompilerFeatureRequiredAttribute.IMetadata.FeatureName">
+            <summary>Gets the required compiler feature name.</summary>
+        </member>
+        <member name="P:System.Runtime.CompilerServices.CompilerFeatureRequiredAttribute.IMetadata.IsOptional">
+            <summary>Gets whether an unaware compiler may safely ignore the feature.</summary>
+        </member>
+        <member name="P:System.Runtime.CompilerServices.CompilerFeatureRequiredAttribute.FeatureName">
+            <summary>Gets the name of the required compiler feature.</summary>
+        </member>
+        <member name="P:System.Runtime.CompilerServices.CompilerFeatureRequiredAttribute.IsOptional">
+            <summary>Gets a value indicating whether the feature can be safely ignored by a compiler that does not understand it.</summary>
+        </member>
+        <member name="T:System.Runtime.CompilerServices.IsExternalInit">
+            <summary>Polyfill marker enabling init-only setters on older target frameworks.</summary>
+        </member>
+        <member name="T:System.Runtime.CompilerServices.OverloadResolutionPriorityAttribute">
+            <summary>
+            Polyfill for the .NET 9 attribute that biases overload resolution toward the annotated member.
+            The C# compiler recognizes this attribute by its full name, so defining it here lets older target
+            frameworks honor <c>[OverloadResolutionPriority]</c> the same way net9.0+ does.
+            </summary>
+            <param name="priority">The relative priority; higher values win during overload resolution.</param>
+        </member>
+        <member name="M:System.Runtime.CompilerServices.OverloadResolutionPriorityAttribute.#ctor(System.Int32)">
+            <summary>
+            Polyfill for the .NET 9 attribute that biases overload resolution toward the annotated member.
+            The C# compiler recognizes this attribute by its full name, so defining it here lets older target
+            frameworks honor <c>[OverloadResolutionPriority]</c> the same way net9.0+ does.
+            </summary>
+            <param name="priority">The relative priority; higher values win during overload resolution.</param>
+        </member>
+        <member name="T:System.Runtime.CompilerServices.OverloadResolutionPriorityAttribute.IMetadata">
+            <summary>Defines the compiler-required public metadata contract.</summary>
+        </member>
+        <member name="P:System.Runtime.CompilerServices.OverloadResolutionPriorityAttribute.IMetadata.Priority">
+            <summary>Gets the relative overload-resolution priority.</summary>
+        </member>
+        <member name="P:System.Runtime.CompilerServices.OverloadResolutionPriorityAttribute.Priority">
+            <summary>Gets the priority of the annotated member.</summary>
+        </member>
+        <member name="T:System.Runtime.CompilerServices.RequiredMemberAttribute">
+            <summary>Polyfill marker enabling the <c>required</c> modifier on older target frameworks.</summary>
+        </member>
+        <member name="T:System.Diagnostics.CodeAnalysis.DoesNotReturnIfAttribute">
+            <summary>Indicates that the method does not return when the associated parameter has the specified value.</summary>
+            <param name="parameterValue">The parameter value that signals the method will not return.</param>
+        </member>
+        <member name="M:System.Diagnostics.CodeAnalysis.DoesNotReturnIfAttribute.#ctor(System.Boolean)">
+            <summary>Indicates that the method does not return when the associated parameter has the specified value.</summary>
+            <param name="parameterValue">The parameter value that signals the method will not return.</param>
+        </member>
+        <member name="T:System.Diagnostics.CodeAnalysis.DoesNotReturnIfAttribute.IMetadata">
+            <summary>Defines the analysis-required public metadata contract.</summary>
+        </member>
+        <member name="P:System.Diagnostics.CodeAnalysis.DoesNotReturnIfAttribute.IMetadata.ParameterValue">
+            <summary>Gets the parameter value that prevents the method from returning.</summary>
+        </member>
+        <member name="P:System.Diagnostics.CodeAnalysis.DoesNotReturnIfAttribute.ParameterValue">
+            <summary>Gets the parameter value that signals the method will not return.</summary>
+        </member>
+        <member name="T:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMembersAttribute">
+            <summary>Polyfill of the trimming attribute indicating which members are accessed dynamically.</summary>
+            <param name="memberTypes">The member types that are dynamically accessed.</param>
+        </member>
+        <member name="M:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMembersAttribute.#ctor(System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes)">
+            <summary>Polyfill of the trimming attribute indicating which members are accessed dynamically.</summary>
+            <param name="memberTypes">The member types that are dynamically accessed.</param>
+        </member>
+        <member name="T:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMembersAttribute.IMetadata">
+            <summary>Defines the trimming-required public metadata contract.</summary>
+        </member>
+        <member name="P:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMembersAttribute.IMetadata.MemberTypes">
+            <summary>Gets the dynamically accessed member categories.</summary>
+        </member>
+        <member name="P:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMembersAttribute.MemberTypes">
+            <summary>Gets the member types that are dynamically accessed.</summary>
+        </member>
+        <member name="T:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes">
+            <summary>Specifies the member types that are dynamically accessed and must be preserved.</summary>
+        </member>
+        <member name="F:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.None">
+            <summary>No members are dynamically accessed.</summary>
+        </member>
+        <member name="F:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.PublicParameterlessConstructor">
+            <summary>The public parameterless constructor.</summary>
+        </member>
+        <member name="F:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.PublicConstructors">
+            <summary>All public constructors.</summary>
+        </member>
+        <member name="F:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.NonPublicConstructors">
+            <summary>All non-public constructors.</summary>
+        </member>
+        <member name="F:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.PublicMethods">
+            <summary>All public methods.</summary>
+        </member>
+        <member name="F:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.NonPublicMethods">
+            <summary>All non-public methods.</summary>
+        </member>
+        <member name="F:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.PublicFields">
+            <summary>All public fields.</summary>
+        </member>
+        <member name="F:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.NonPublicFields">
+            <summary>All non-public fields.</summary>
+        </member>
+        <member name="F:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.PublicNestedTypes">
+            <summary>All public nested types.</summary>
+        </member>
+        <member name="F:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.NonPublicNestedTypes">
+            <summary>All non-public nested types.</summary>
+        </member>
+        <member name="F:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.PublicProperties">
+            <summary>All public properties.</summary>
+        </member>
+        <member name="F:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.NonPublicProperties">
+            <summary>All non-public properties.</summary>
+        </member>
+        <member name="F:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.PublicEvents">
+            <summary>All public events.</summary>
+        </member>
+        <member name="F:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.NonPublicEvents">
+            <summary>All non-public events.</summary>
+        </member>
+        <member name="F:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.Interfaces">
+            <summary>All interfaces implemented by the type.</summary>
+        </member>
+        <member name="F:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.All">
+            <summary>All members.</summary>
+        </member>
+        <member name="T:System.Diagnostics.CodeAnalysis.DynamicDependencyAttribute">
+            <summary>Polyfill of the DynamicDependency attribute for older target frameworks.</summary>
+        </member>
+        <member name="M:System.Diagnostics.CodeAnalysis.DynamicDependencyAttribute.#ctor(System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes,System.Type)">
+            <summary>Initializes a new instance of the <see cref="T:System.Diagnostics.CodeAnalysis.DynamicDependencyAttribute"/> class.</summary>
+            <param name="memberTypes">The member types to preserve.</param>
+            <param name="type">The owning type.</param>
+        </member>
+        <member name="M:System.Diagnostics.CodeAnalysis.DynamicDependencyAttribute.#ctor(System.String,System.Type)">
+            <summary>Initializes a new instance of the <see cref="T:System.Diagnostics.CodeAnalysis.DynamicDependencyAttribute"/> class.</summary>
+            <param name="memberSignature">The signature of the depended-upon member.</param>
+            <param name="type">The owning type.</param>
+        </member>
+        <member name="T:System.Diagnostics.CodeAnalysis.DynamicDependencyAttribute.IMetadata">
+            <summary>Defines the trimming-required public metadata contract.</summary>
+        </member>
+        <member name="P:System.Diagnostics.CodeAnalysis.DynamicDependencyAttribute.IMetadata.MemberTypes">
+            <summary>Gets the member categories that form the dependency.</summary>
+        </member>
+        <member name="P:System.Diagnostics.CodeAnalysis.DynamicDependencyAttribute.IMetadata.Type">
+            <summary>Gets the type that owns the dependency.</summary>
+        </member>
+        <member name="P:System.Diagnostics.CodeAnalysis.DynamicDependencyAttribute.IMetadata.MemberSignature">
+            <summary>Gets the dependent member signature.</summary>
+        </member>
+        <member name="P:System.Diagnostics.CodeAnalysis.DynamicDependencyAttribute.MemberTypes">
+            <summary>Gets the member types that must be preserved.</summary>
+        </member>
+        <member name="P:System.Diagnostics.CodeAnalysis.DynamicDependencyAttribute.Type">
+            <summary>Gets the type that owns the depended-upon members.</summary>
+        </member>
+        <member name="P:System.Diagnostics.CodeAnalysis.DynamicDependencyAttribute.MemberSignature">
+            <summary>Gets the signature of the depended-upon member.</summary>
+        </member>
+        <member name="T:System.Diagnostics.CodeAnalysis.MaybeNullWhenAttribute">
+            <summary>Specifies that an output parameter may be null when the method returns the given value.</summary>
+            <param name="returnValue">The return value condition under which the parameter may be null.</param>
+        </member>
+        <member name="M:System.Diagnostics.CodeAnalysis.MaybeNullWhenAttribute.#ctor(System.Boolean)">
+            <summary>Specifies that an output parameter may be null when the method returns the given value.</summary>
+            <param name="returnValue">The return value condition under which the parameter may be null.</param>
+        </member>
+        <member name="T:System.Diagnostics.CodeAnalysis.MaybeNullWhenAttribute.IMetadata">
+            <summary>Defines the nullable-analysis public metadata contract.</summary>
+        </member>
+        <member name="P:System.Diagnostics.CodeAnalysis.MaybeNullWhenAttribute.IMetadata.ReturnValue">
+            <summary>Gets the return value for which the parameter may be null.</summary>
+        </member>
+        <member name="P:System.Diagnostics.CodeAnalysis.MaybeNullWhenAttribute.ReturnValue">
+            <summary>Gets the return value condition under which the parameter may be null.</summary>
+        </member>
+        <member name="T:System.Diagnostics.CodeAnalysis.MemberNotNullWhenAttribute">
+            <summary>Polyfill for the member-not-null-when attribute on older target frameworks.</summary>
+            <param name="returnValue">The return value condition under which the members are non-null.</param>
+            <param name="members">The member names guaranteed to be non-null.</param>
+        </member>
+        <member name="M:System.Diagnostics.CodeAnalysis.MemberNotNullWhenAttribute.#ctor(System.Boolean,System.String[])">
+            <summary>Polyfill for the member-not-null-when attribute on older target frameworks.</summary>
+            <param name="returnValue">The return value condition under which the members are non-null.</param>
+            <param name="members">The member names guaranteed to be non-null.</param>
+        </member>
+        <member name="T:System.Diagnostics.CodeAnalysis.MemberNotNullWhenAttribute.IMetadata">
+            <summary>Defines the nullable-analysis public metadata contract.</summary>
+        </member>
+        <member name="P:System.Diagnostics.CodeAnalysis.MemberNotNullWhenAttribute.IMetadata.ReturnValue">
+            <summary>Gets the return value for which the members are non-null.</summary>
+        </member>
+        <member name="P:System.Diagnostics.CodeAnalysis.MemberNotNullWhenAttribute.IMetadata.Members">
+            <summary>Gets the members that are non-null.</summary>
+        </member>
+        <member name="P:System.Diagnostics.CodeAnalysis.MemberNotNullWhenAttribute.ReturnValue">
+            <summary>Gets the return value condition under which the members are non-null.</summary>
+        </member>
+        <member name="P:System.Diagnostics.CodeAnalysis.MemberNotNullWhenAttribute.Members">
+            <summary>Gets the member names guaranteed to be non-null.</summary>
+        </member>
+        <member name="T:System.Diagnostics.CodeAnalysis.NotNullAttribute">
+            <summary>Specifies that an input value is not null after the method returns.</summary>
+        </member>
+        <member name="T:System.Diagnostics.CodeAnalysis.NotNullWhenAttribute">
+            <summary>Polyfill of the attribute that specifies a parameter is not null when the method returns the given value.</summary>
+            <param name="returnValue">The return value for which the parameter is guaranteed not null.</param>
+        </member>
+        <member name="M:System.Diagnostics.CodeAnalysis.NotNullWhenAttribute.#ctor(System.Boolean)">
+            <summary>Polyfill of the attribute that specifies a parameter is not null when the method returns the given value.</summary>
+            <param name="returnValue">The return value for which the parameter is guaranteed not null.</param>
+        </member>
+        <member name="T:System.Diagnostics.CodeAnalysis.NotNullWhenAttribute.IMetadata">
+            <summary>Defines the nullable-analysis public metadata contract.</summary>
+        </member>
+        <member name="P:System.Diagnostics.CodeAnalysis.NotNullWhenAttribute.IMetadata.ReturnValue">
+            <summary>Gets the return value for which the parameter is not null.</summary>
+        </member>
+        <member name="P:System.Diagnostics.CodeAnalysis.NotNullWhenAttribute.ReturnValue">
+            <summary>Gets the return value for which the parameter is guaranteed not null.</summary>
+        </member>
+        <member name="T:System.Diagnostics.CodeAnalysis.RequiresDynamicCodeAttribute">
+            <summary>Polyfill marking members that require runtime code generation.</summary>
+            <param name="message">A message describing the dynamic code requirement.</param>
+        </member>
+        <member name="M:System.Diagnostics.CodeAnalysis.RequiresDynamicCodeAttribute.#ctor(System.String)">
+            <summary>Polyfill marking members that require runtime code generation.</summary>
+            <param name="message">A message describing the dynamic code requirement.</param>
+        </member>
+        <member name="T:System.Diagnostics.CodeAnalysis.RequiresDynamicCodeAttribute.IMetadata">
+            <summary>Defines the runtime-required public metadata contract.</summary>
+        </member>
+        <member name="P:System.Diagnostics.CodeAnalysis.RequiresDynamicCodeAttribute.IMetadata.Message">
+            <summary>Gets the dynamic-code requirement message.</summary>
+        </member>
+        <member name="P:System.Diagnostics.CodeAnalysis.RequiresDynamicCodeAttribute.IMetadata.ExcludeStatics">
+            <summary>Gets or sets whether static members are excluded.</summary>
+        </member>
+        <member name="P:System.Diagnostics.CodeAnalysis.RequiresDynamicCodeAttribute.IMetadata.Url">
+            <summary>Gets or sets an optional information URL.</summary>
+        </member>
+        <member name="P:System.Diagnostics.CodeAnalysis.RequiresDynamicCodeAttribute.Message">
+            <summary>Gets the message describing the dynamic code requirement.</summary>
+        </member>
+        <member name="P:System.Diagnostics.CodeAnalysis.RequiresDynamicCodeAttribute.ExcludeStatics">
+            <summary>Gets or sets a value indicating whether static members are excluded.</summary>
+        </member>
+        <member name="P:System.Diagnostics.CodeAnalysis.RequiresDynamicCodeAttribute.Url">
+            <summary>Gets or sets an optional URL with more information.</summary>
+        </member>
+        <member name="T:System.Diagnostics.CodeAnalysis.RequiresUnreferencedCodeAttribute">
+            <summary>Polyfill of the attribute that marks members whose use requires code that may be trimmed.</summary>
+            <param name="message">The message describing why the code is required.</param>
+        </member>
+        <member name="M:System.Diagnostics.CodeAnalysis.RequiresUnreferencedCodeAttribute.#ctor(System.String)">
+            <summary>Polyfill of the attribute that marks members whose use requires code that may be trimmed.</summary>
+            <param name="message">The message describing why the code is required.</param>
+        </member>
+        <member name="T:System.Diagnostics.CodeAnalysis.RequiresUnreferencedCodeAttribute.IMetadata">
+            <summary>Defines the trimming-required public metadata contract.</summary>
+        </member>
+        <member name="P:System.Diagnostics.CodeAnalysis.RequiresUnreferencedCodeAttribute.IMetadata.Message">
+            <summary>Gets the trimming requirement message.</summary>
+        </member>
+        <member name="P:System.Diagnostics.CodeAnalysis.RequiresUnreferencedCodeAttribute.IMetadata.Url">
+            <summary>Gets or sets an optional information URL.</summary>
+        </member>
+        <member name="P:System.Diagnostics.CodeAnalysis.RequiresUnreferencedCodeAttribute.Message">
+            <summary>Gets the message describing why the code is required.</summary>
+        </member>
+        <member name="P:System.Diagnostics.CodeAnalysis.RequiresUnreferencedCodeAttribute.Url">
+            <summary>Gets or sets an optional URL with more information.</summary>
+        </member>
+        <member name="T:System.Diagnostics.CodeAnalysis.UnconditionalSuppressMessageAttribute">
+            <summary>Polyfill of the attribute that suppresses analysis diagnostics independently of build configuration.</summary>
+            <param name="category">The category for the suppressed diagnostic.</param>
+            <param name="checkId">The identifier for the suppressed diagnostic.</param>
+        </member>
+        <member name="M:System.Diagnostics.CodeAnalysis.UnconditionalSuppressMessageAttribute.#ctor(System.String,System.String)">
+            <summary>Polyfill of the attribute that suppresses analysis diagnostics independently of build configuration.</summary>
+            <param name="category">The category for the suppressed diagnostic.</param>
+            <param name="checkId">The identifier for the suppressed diagnostic.</param>
+        </member>
+        <member name="T:System.Diagnostics.CodeAnalysis.UnconditionalSuppressMessageAttribute.IMetadata">
+            <summary>Defines the analysis-required public metadata contract.</summary>
+        </member>
+        <member name="P:System.Diagnostics.CodeAnalysis.UnconditionalSuppressMessageAttribute.IMetadata.Category">
+            <summary>Gets the diagnostic category.</summary>
+        </member>
+        <member name="P:System.Diagnostics.CodeAnalysis.UnconditionalSuppressMessageAttribute.IMetadata.CheckId">
+            <summary>Gets the diagnostic identifier.</summary>
+        </member>
+        <member name="P:System.Diagnostics.CodeAnalysis.UnconditionalSuppressMessageAttribute.IMetadata.Justification">
+            <summary>Gets or sets the suppression justification.</summary>
+        </member>
+        <member name="P:System.Diagnostics.CodeAnalysis.UnconditionalSuppressMessageAttribute.IMetadata.Scope">
+            <summary>Gets or sets the diagnostic scope.</summary>
+        </member>
+        <member name="P:System.Diagnostics.CodeAnalysis.UnconditionalSuppressMessageAttribute.IMetadata.Target">
+            <summary>Gets or sets the suppression target.</summary>
+        </member>
+        <member name="P:System.Diagnostics.CodeAnalysis.UnconditionalSuppressMessageAttribute.Category">
+            <summary>Gets the category for the suppressed diagnostic.</summary>
+        </member>
+        <member name="P:System.Diagnostics.CodeAnalysis.UnconditionalSuppressMessageAttribute.CheckId">
+            <summary>Gets the identifier for the suppressed diagnostic.</summary>
+        </member>
+        <member name="P:System.Diagnostics.CodeAnalysis.UnconditionalSuppressMessageAttribute.Justification">
+            <summary>Gets or sets the suppression justification.</summary>
+        </member>
+        <member name="P:System.Diagnostics.CodeAnalysis.UnconditionalSuppressMessageAttribute.Scope">
+            <summary>Gets or sets the diagnostic scope.</summary>
+        </member>
+        <member name="P:System.Diagnostics.CodeAnalysis.UnconditionalSuppressMessageAttribute.Target">
+            <summary>Gets or sets the target covered by this suppression.</summary>
+        </member>
+        <member name="T:System.HashCode">
+            <summary>Polyfill for <c>System.HashCode</c> on .NET Framework targets.</summary>
+            <remarks>
+            This is intentionally small: it provides the compiler/runtime surface Refit uses without
+            attempting to clone the randomized framework implementation. It is a <c>ref struct</c>
+            because every use is a stack-local accumulator; that keeps it from ever being boxed or
+            compared, so it needs no equality members.
+            </remarks>
+            <summary>Provides the object hash-code contract for the .NET Framework polyfill.</summary>
+        </member>
+        <member name="F:System.HashCode.Prime2">
+            <summary>The second prime multiplier.</summary>
+        </member>
+        <member name="F:System.HashCode.Prime3">
+            <summary>The third prime multiplier.</summary>
+        </member>
+        <member name="F:System.HashCode.Prime4">
+            <summary>The fourth prime multiplier.</summary>
+        </member>
+        <member name="F:System.HashCode.Prime5">
+            <summary>The fifth prime multiplier.</summary>
+        </member>
+        <member name="F:System.HashCode.BytesPerQueuedValue">
+            <summary>The number of bytes represented by each queued integer value.</summary>
+        </member>
+        <member name="F:System.HashCode.AvalancheShift1">
+            <summary>The first avalanche shift.</summary>
+        </member>
+        <member name="F:System.HashCode.AvalancheShift2">
+            <summary>The second avalanche shift.</summary>
+        </member>
+        <member name="F:System.HashCode.AvalancheShift3">
+            <summary>The third avalanche shift.</summary>
+        </member>
+        <member name="F:System.HashCode.QueueRoundRotation">
+            <summary>The queued-value rotation offset.</summary>
+        </member>
+        <member name="F:System.HashCode.BitsPerInt32">
+            <summary>The number of bits in an integer.</summary>
+        </member>
+        <member name="F:System.HashCode._hash">
+            <summary>The running hash value.</summary>
+        </member>
+        <member name="F:System.HashCode._count">
+            <summary>The number of values added to this accumulator.</summary>
+        </member>
+        <member name="M:System.HashCode.Combine``1(``0)">
+            <summary>Combines one value into a hash code.</summary>
+            <typeparam name="T1">The first value type.</typeparam>
+            <param name="value1">The first value.</param>
+            <returns>The combined hash code.</returns>
+        </member>
+        <member name="M:System.HashCode.Combine``2(``0,``1)">
+            <summary>Combines two values into a hash code.</summary>
+            <typeparam name="T1">The first value type.</typeparam>
+            <typeparam name="T2">The second value type.</typeparam>
+            <param name="value1">The first value.</param>
+            <param name="value2">The second value.</param>
+            <returns>The combined hash code.</returns>
+        </member>
+        <member name="M:System.HashCode.Combine``3(``0,``1,``2)">
+            <summary>Combines three values into a hash code.</summary>
+            <typeparam name="T1">The first value type.</typeparam>
+            <typeparam name="T2">The second value type.</typeparam>
+            <typeparam name="T3">The third value type.</typeparam>
+            <param name="value1">The first value.</param>
+            <param name="value2">The second value.</param>
+            <param name="value3">The third value.</param>
+            <returns>The combined hash code.</returns>
+        </member>
+        <member name="M:System.HashCode.Combine``4(``0,``1,``2,``3)">
+            <summary>Combines four values into a hash code.</summary>
+            <typeparam name="T1">The first value type.</typeparam>
+            <typeparam name="T2">The second value type.</typeparam>
+            <typeparam name="T3">The third value type.</typeparam>
+            <typeparam name="T4">The fourth value type.</typeparam>
+            <param name="value1">The first value.</param>
+            <param name="value2">The second value.</param>
+            <param name="value3">The third value.</param>
+            <param name="value4">The fourth value.</param>
+            <returns>The combined hash code.</returns>
+        </member>
+        <member name="M:System.HashCode.Add``1(``0)">
+            <summary>Adds a value to the hash code.</summary>
+            <typeparam name="T">The value type.</typeparam>
+            <param name="value">The value.</param>
+        </member>
+        <member name="M:System.HashCode.Add``1(``0,System.Collections.Generic.IEqualityComparer{``0})">
+            <summary>Adds a value to the hash code using the specified comparer.</summary>
+            <typeparam name="T">The value type.</typeparam>
+            <param name="value">The value.</param>
+            <param name="comparer">The equality comparer.</param>
+        </member>
+        <member name="M:System.HashCode.ToHashCode">
+            <summary>Returns the final hash code.</summary>
+            <returns>The final hash code.</returns>
+        </member>
+        <member name="M:System.HashCode.QueueRound(System.Int32,System.Int32)">
+            <summary>Mixes one queued value into the hash.</summary>
+            <param name="hash">The current hash.</param>
+            <param name="queuedValue">The queued value.</param>
+            <returns>The mixed hash.</returns>
+        </member>
+        <member name="M:System.HashCode.RotateLeft(System.Int32,System.Int32)">
+            <summary>Rotates a value left by the requested number of bits.</summary>
+            <param name="value">The value to rotate.</param>
+            <param name="offset">The bit offset.</param>
+            <returns>The rotated value.</returns>
+        </member>
+        <member name="M:System.HashCode.Add(System.Int32)">
+            <summary>Adds a raw hash code value.</summary>
+            <param name="value">The raw hash code.</param>
+        </member>
+        <member name="M:System.HashCode.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="T:System.Index">
+            <summary>Minimal polyfill for <c>System.Index</c> so C# index/range syntax compiles on .NET Framework targets.</summary>
+            <remarks>
+            This is a compiler hook for older target frameworks. It intentionally mirrors the BCL member names used
+            by range lowering and should not grow into a general-purpose replacement for the framework type.
+            </remarks>
+        </member>
+        <member name="M:System.Index.#ctor(System.Int32)">
+            <summary>Initializes a new instance of the <see cref="T:System.Index"/> struct.</summary>
+            <param name="value">The index value.</param>
+        </member>
+        <member name="M:System.Index.#ctor(System.Int32,System.Boolean)">
+            <summary>Initializes a new instance of the <see cref="T:System.Index"/> struct.</summary>
+            <param name="value">The index value.</param>
+            <param name="fromEnd">Whether the index is relative to the end of the sequence.</param>
+            <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="value"/> is negative; an index is always counted from zero, whichever end it is relative to.</exception>
+        </member>
+        <member name="P:System.Index.Start">
+            <summary>Gets an <see cref="T:System.Index"/> that points to the start of a sequence.</summary>
+        </member>
+        <member name="P:System.Index.End">
+            <summary>Gets an <see cref="T:System.Index"/> that points just past the end of a sequence.</summary>
+        </member>
+        <member name="P:System.Index.Value">
+            <summary>Gets the index value.</summary>
+        </member>
+        <member name="P:System.Index.IsFromEnd">
+            <summary>Gets a value indicating whether the index is from the end of the sequence.</summary>
+        </member>
+        <member name="M:System.Index.op_Implicit(System.Int32)~System.Index">
+            <summary>Implicitly converts an <see cref="T:System.Int32"/> to an <see cref="T:System.Index"/> from the start.</summary>
+            <param name="value">The zero-based index from the start.</param>
+        </member>
+        <member name="M:System.Index.op_Equality(System.Index,System.Index)">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.Index.op_Inequality(System.Index,System.Index)">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.Index.Equals(System.Index)">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.Index.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.Index.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.Index.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.Index.FromStart(System.Int32)">
+            <summary>Creates an <see cref="T:System.Index"/> from the start of a sequence.</summary>
+            <param name="value">The zero-based index from the start.</param>
+            <returns>The created <see cref="T:System.Index"/>.</returns>
+        </member>
+        <member name="M:System.Index.FromEnd(System.Int32)">
+            <summary>Creates an <see cref="T:System.Index"/> from the end of a sequence.</summary>
+            <param name="value">The zero-based index from the end.</param>
+            <returns>The created <see cref="T:System.Index"/>.</returns>
+        </member>
+        <member name="M:System.Index.GetOffset(System.Int32)">
+            <summary>Calculates the zero-based offset for a sequence of the given length.</summary>
+            <param name="length">The sequence length.</param>
+            <returns>The zero-based offset from the start of the sequence.</returns>
+        </member>
+        <member name="T:System.Range">
+            <summary>Minimal polyfill for <c>System.Range</c> so C# range syntax compiles on .NET Framework targets.</summary>
+            <remarks>
+            This is a compiler hook for older target frameworks. It intentionally mirrors the BCL member names used
+            by range lowering and should not grow into a general-purpose replacement for the framework type.
+            </remarks>
+        </member>
+        <member name="M:System.Range.#ctor(System.Index,System.Index)">
+            <summary>Initializes a new instance of the <see cref="T:System.Range"/> struct.</summary>
+            <param name="start">The inclusive start index.</param>
+            <param name="end">The exclusive end index.</param>
+        </member>
+        <member name="P:System.Range.All">
+            <summary>Gets a <see cref="T:System.Range"/> that represents the entire sequence.</summary>
+        </member>
+        <member name="P:System.Range.Start">
+            <summary>Gets the inclusive start index.</summary>
+        </member>
+        <member name="P:System.Range.End">
+            <summary>Gets the exclusive end index.</summary>
+        </member>
+        <member name="M:System.Range.op_Equality(System.Range,System.Range)">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.Range.op_Inequality(System.Range,System.Range)">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.Range.Equals(System.Range)">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.Range.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.Range.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.Range.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.Range.StartAt(System.Index)">
+            <summary>Creates a <see cref="T:System.Range"/> that starts at the specified index and ends at <see cref="P:System.Index.End"/>.</summary>
+            <param name="start">The inclusive start index.</param>
+            <returns>The created <see cref="T:System.Range"/>.</returns>
+        </member>
+        <member name="M:System.Range.EndAt(System.Index)">
+            <summary>Creates a <see cref="T:System.Range"/> that starts at <see cref="P:System.Index.Start"/> and ends at the specified index.</summary>
+            <param name="end">The exclusive end index.</param>
+            <returns>The created <see cref="T:System.Range"/>.</returns>
+        </member>
+        <member name="M:System.Range.GetOffsetAndLength(System.Int32)">
+            <summary>Calculates the start offset and length for a sequence of the given length.</summary>
+            <param name="length">The sequence length.</param>
+            <returns>The offset and length represented by the range.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">The range does not fall inside a sequence of <paramref name="length"/> elements, or its start comes after its end.</exception>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<coreProperties xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.openxmlformats.org/package/2006/metadata/core-properties">
+  <dc:creator>ktsu.dev contributors</dc:creator>
+  <dc:description>A .NET library that wraps the git command-line binary behind a fluent, strongly-typed interface for reading repository state — status, log, diff, branches, remotes, and revision resolution — and for mutating it — init, clone, staging, committing, branch creation and deletion, checkout, remote management, and remote sync via fetch, pull, and push — executed via ktsu.RunCommand with reproducible, copy-pasteable failures, locale-safe parsing, and a machine-readable per-reference account of every fetch and push, and that also unifies access to hosted Git providers behind a pluggable GitProvider abstraction with a GitHub implementation built on Octokit and credential resolution through ktsu.CredentialCache. Includes a set of semantic string types that replace stringly-typed Git identifiers — branch names, commit SHAs, ref names, remote names, author names and emails, repository names, and web URIs — with validated, compile-time-safe wrappers.</dc:description>
+  <dc:identifier>ktsu.GitIntegration</dc:identifier>
+  <version>3.0.2</version>
+  <keywords>.NET;C#;git integration;git;git wrapper;version control;source control;fluent api;git status;git log;git diff;git provider;github;octokit;semantic types;strongly typed;branch name;commit sha;credentials;credential cache;dependency injection;dotnet;csharp;git cli;process runner;command builder;git init;git clone;git commit;git add;git checkout;git branch;git remote;git fetch;git pull;git push;remote sync</keywords>
+  <lastModifiedBy>NuGet.Packaging, Version=7.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35;.NET 8.0</lastModifiedBy>
+</coreProperties>

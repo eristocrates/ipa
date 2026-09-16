@@ -52,9 +52,9 @@ let chrome = CdpBrowser.Connect()
 chrome.TargetCreated
 let replTab = chrome.NewPageAsync().await.asCdp
 watchPageNetworkTraffic replTab
-replTab.GoToAsync("https://claims.akko.app/login").await
+replTab.GoToAsync("https://dh.obdurodon.org/xproc-tutorial.xhtml").await
 
-
+// https://xproc.org/specifications.html
 
 finishedRequests.Count()
 finishedRequests

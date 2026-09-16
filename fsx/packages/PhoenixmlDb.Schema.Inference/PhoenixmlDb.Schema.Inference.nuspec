@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>PhoenixmlDb.Schema.Inference</id>
+    <version>0.1.0</version>
+    <authors>Endpoint Systems</authors>
+    <license type="expression">Apache-2.0</license>
+    <licenseUrl>https://licenses.nuget.org/Apache-2.0</licenseUrl>
+    <readme>PACKAGE.md</readme>
+    <projectUrl>https://phoenixml.dev/</projectUrl>
+    <description>Open-source XSD inference and JSON/CSV/XML conversion for .NET. Observes documents to produce progressively-refined schemas; supports schema-aware XML↔JSON round-trip.</description>
+    <copyright>Copyright © Endpoint Systems 2026. All rights reserved.</copyright>
+    <tags>xml xsd schema inference json csv phoenixml</tags>
+    <repository type="git" url="https://github.com/phoenixmldb/phoenixml-schema-inference" commit="9f468530a2345d6e2f7e8718044aaf6c6f24adac" />
+    <dependencies>
+      <group targetFramework="net10.0" />
+    </dependencies>
+  </metadata>
+</package>

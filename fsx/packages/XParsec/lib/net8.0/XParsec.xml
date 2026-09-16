@@ -1,0 +1,1661 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doc>
+<assembly><name>XParsec</name></assembly>
+<members>
+<member name="T:XParsec.SmallArrayBuilder`1">
+<summary>
+ Stack-allocated builder for small ImmutableArray results (&lt;= 4 items).
+ Holds four inline slots and spills to an ImmutableArray.Builder on the 5th item.
+ ToImmutable() dispatches to the exact-size ImmutableArray.Create overload for
+ small counts, avoiding both the Builder allocation and the size-fitting copy.
+
+ Use as a mutable local:
+     let mutable xs = SmallArrayBuilder&lt;&apos;T&gt;()
+     xs.Add(item)
+     ...
+     xs.ToImmutable()
+
+ Single-shot: do not reuse after ToImmutable().
+ IsByRefLike forces the struct to stay on the stack — it can&apos;t be boxed, captured in
+ a closure, stored in a heap field, or cross an async boundary. This prevents the
+ silent-copy bugs typical of mutable value types.
+</summary>
+</member>
+<member name="P:XParsec.InfiniteLoopException`1.Position">
+<summary>
+ The reader position at which the looping combinator detected zero progress.
+</summary>
+</member>
+<member name="T:XParsec.InfiniteLoopException`1">
+ <summary>
+ Raised by looping combinators (<c>many</c>, <c>sepBy*</c>, <c>manyTill</c>,
+ <c>chainl1</c>, <c>fold</c>, <c>foldUserState</c>, <c>manyChars</c>, …) when
+ the inner parser succeeds without advancing the reader. Carries the
+ <see cref="Position{S}"/> at which the loop got stuck so the bug can be
+ localised.
+ </summary>
+ <remarks>
+ This is a programming error — the inner parser is malformed (e.g. it always
+ succeeds with <c>preturn</c>). User code should fix the parser rather than
+ catch the exception. <c>ParserCE.While</c> / <c>For</c> deliberately do
+ <em>not</em> raise this; termination of CE loops is the user's responsibility.
+ </remarks>
+</member>
+<member name="T:XParsec.Parser`4">
+ <summary>
+ A parser is a function from a <see cref="Reader{T,S,I}"/> to a
+ <see cref="ParseResult{P,T,S}"/>. It mutates the reader's index/state on
+ success, and is expected to leave the reader at the position it was at on
+ entry when it returns <c>Error</c> without intending to consume input.
+ </summary>
+ <remarks>
+ Most combinators in <c>XParsec.Combinators</c> are <c>inline</c> and accept
+ <c>InlineIfLambda</c> arguments, so plain function-typed parsers compose
+ with no allocation overhead in steady-state code.
+ </remarks>
+</member>
+<member name="T:XParsec.ParseResult`3">
+ <summary>
+ The result of running a parser: either the parsed value or a
+ <see cref="ParseError{T,S}"/>. Aliased to the BCL <c>Result</c> type so it
+ integrates with standard `Result.bind`/`Result.map` / `match` workflows.
+ </summary>
+</member>
+<member name="T:XParsec.ParseError`2">
+ <summary>
+ A parse error: the <see cref="Position{S}"/> at which the parser gave up, plus
+ the structured <see cref="ErrorType{T,S}"/> describing why.
+ </summary>
+</member>
+<member name="T:XParsec.ErrorType`2.Nested">
+<summary>
+ A `parent` error caused by the listed `children` (typical for combinators
+ like `&lt;|&gt;`, `choice`, and the `*Till` family that aggregate sub-errors).
+</summary>
+</member>
+<member name="T:XParsec.ErrorType`2.EndOfInput">
+<summary>
+ The parser hit end-of-input but expected more.
+</summary>
+</member>
+<member name="T:XParsec.ErrorType`2.Message">
+<summary>
+ A free-form parser-supplied message.
+</summary>
+</member>
+<member name="T:XParsec.ErrorType`2.UnexpectedSeq">
+<summary>
+ A sequence of items was encountered that should not have been.
+</summary>
+</member>
+<member name="T:XParsec.ErrorType`2.Unexpected">
+<summary>
+ An item was encountered that should not have been.
+</summary>
+</member>
+<member name="T:XParsec.ErrorType`2.ExpectedSeqOneOf">
+<summary>
+ One of several alternative sequences was expected.
+</summary>
+</member>
+<member name="T:XParsec.ErrorType`2.ExpectedOneOf">
+<summary>
+ One of several alternative items was expected.
+</summary>
+</member>
+<member name="T:XParsec.ErrorType`2.ExpectedSeq">
+<summary>
+ A specific sequence of items was expected.
+</summary>
+</member>
+<member name="T:XParsec.ErrorType`2.Expected">
+<summary>
+ A specific item was expected at this position.
+</summary>
+</member>
+<member name="T:XParsec.ErrorType`2.Empty">
+<summary>
+ Unspecified failure — analogous to FParsec&apos;s &quot;empty error message list&quot;.
+ Produced by `pzero`. Aggregating combinators filter `Empty` children before
+ constructing nested errors, and the default formatter renders nothing.
+</summary>
+</member>
+<member name="T:XParsec.ErrorType`2">
+ <summary>
+ Describes why a parser failed. The default <see cref="ErrorFormatting.formatParseError"/>
+ renders these in a tree, but consumers are free to pattern-match and emit their own format.
+ </summary>
+</member>
+<member name="M:XParsec.Reader`3.Slice``1(System.Int32,System.Int32,``0)">
+ <summary>
+ Creates a child Reader over a slice of the current input with an explicit
+ initial state. The state type may differ from the parent reader's.
+ </summary>
+ <remarks>
+ See the two-arg <c>Slice</c> for slicing semantics. The child reader has
+ its own <c>ReaderId</c> and is independent of the parent.
+ </remarks>
+</member>
+<member name="M:XParsec.Reader`3.Slice(System.Int32,System.Int32)">
+ <summary>
+ Creates a child Reader over a slice of the current input, starting at
+ <paramref name="newStart"/> items past the current position and spanning
+ <paramref name="newLength"/> items. The child reader's state is reset to
+ <c>unit</c> — use the three-arg overload to seed an explicit state.
+ </summary>
+ <remarks>
+ Slicing is the standard way to run a sub-parser over a bounded region with
+ a fresh (and possibly differently-typed) state. The child reader has its
+ own <c>ReaderId</c>; <c>Position</c> values cross between parent and child
+ readers will be rejected by the position setter.
+ </remarks>
+</member>
+<member name="M:XParsec.Reader`3.PeekN(System.Int32)">
+<summary>
+ Returns up to `count` items starting at the current position, clamped to the
+ remaining input. Use this for &quot;peek as many as are there&quot; lookups; for strict
+ BCL bounds semantics call `Input.AsSpan(index, length)` directly.
+</summary>
+</member>
+<member name="T:XParsec.Reader`3">
+ <summary>
+ A cursor that tracks the current position in the input and the user state.
+ It is used by the parser to read from the input and manage state.
+ </summary>
+</member>
+<member name="T:XParsec.Position`1">
+ <summary>
+ A snapshot of a Reader's progress: the issuing reader's <c>Id</c>, the
+ current <c>Index</c>, and the user <c>State</c>. Capture with
+ <c>reader.Position</c> and restore by assigning back; assigning a position
+ from a different reader throws.
+ </summary>
+</member>
+<member name="T:XParsec.ReaderId">
+ <summary>
+ An opaque identifier minted per <see cref="Reader{T,S,I}"/> instance. Used by
+ <see cref="Position{S}"/> values to detect cross-reader assignments and reject
+ them with a clear error rather than corrupting parser state.
+ </summary>
+</member>
+<member name="M:XParsec.IReadable`2.AsSpan(System.Int32,System.Int32)">
+<summary>
+ Returns a span over `[start, start + length)`. Throws
+ `ArgumentOutOfRangeException` if `start` or `length` is negative or
+ `start + length &gt; Length` (matches BCL `AsSpan`).
+</summary>
+</member>
+<member name="M:XParsec.IReadable`2.AsSpan(System.Int32)">
+<summary>
+ Returns a span over `[start, Length)`. Throws `ArgumentOutOfRangeException`
+ if `start` is negative or greater than `Length` (matches BCL `AsSpan`).
+</summary>
+</member>
+<member name="M:XParsec.IReadable`2.AsSpan">
+<summary>
+ Returns a span over the entire view. Equivalent to `AsSpan(0, Length)`.
+</summary>
+</member>
+<member name="T:XParsec.IReadable`2">
+ <summary>
+ A type that can be read from, representing the input to a parser.
+ Implement this interface to create your own input types.
+ Use the Reader module for common input types like string, array, etc.
+ </summary>
+</member>
+<member name="T:XParsec.RefParser`4">
+<summary>
+ Holds a mutable reference to a parser allowing the creation of forward-reference or mutually recursive parsers
+</summary>
+</member>
+<member name="M:XParsec.ReadableMemory`1.ToImmutableArray">
+<summary>
+ Materialises this view into an ImmutableArray. Allocates a fresh copy.
+</summary>
+</member>
+<member name="M:XParsec.ReadableMemory`1.AsSpan">
+<summary>
+ `ReadOnlyMemory&lt;&apos;T&gt;.Span.Slice` already enforces BCL bounds — we delegate
+ directly. The interface validation contract is upheld by that BCL throw.
+</summary>
+</member>
+<member name="T:XParsec.ReadableMemory`1">
+<summary>
+ A memory slice that can be read as input by the parser.
+</summary>
+</member>
+<member name="M:XParsec.ReadableResizeArray`1.ToImmutableArray">
+<summary>
+ Materialises this view into an ImmutableArray. Allocates a fresh copy.
+</summary>
+</member>
+<member name="M:XParsec.ReadableResizeArray`1.#ctor(System.Collections.Generic.List{`0})">
+<summary>
+ Construct a view over the whole ResizeArray.
+</summary>
+</member>
+<member name="T:XParsec.ReadableResizeArray`1">
+<summary>
+ A ResizeArray slice that can be read as input by the parser.
+</summary>
+</member>
+<member name="M:XParsec.ReadableImmutableArray`1.ToImmutableArray">
+<summary>
+ Materialises this view into an ImmutableArray. Zero-copy when the view
+ covers the whole backing array; otherwise allocates a fresh copy.
+</summary>
+</member>
+<member name="M:XParsec.ReadableImmutableArray`1.#ctor(System.Collections.Immutable.ImmutableArray{`0})">
+<summary>
+ Construct a view over the whole immutable array.
+</summary>
+</member>
+<member name="T:XParsec.ReadableImmutableArray`1">
+<summary>
+ An immutable array slice that can be read as input by the parser.
+</summary>
+</member>
+<member name="M:XParsec.ReadableArrayBuilder`1.ToReadableArray">
+<summary>
+ Returns a ReadableArray viewing the first `count` slots of the backing buffer.
+ Always zero-copy: parsing consumers typically work with reasonably-sized
+ buffers and the result is one-shot, so retaining some unused capacity is
+ cheaper than allocating a fresh array + copy (which also punishes LOH-sized
+ buffers by round-tripping through the Gen2 heap).
+ Single-shot: releases the builder&apos;s reference — do not reuse.
+</summary>
+</member>
+<member name="T:XParsec.ReadableArrayBuilder`1">
+<summary>
+ Append-only builder that materialises into a ReadableArray, usually without copying.
+ Single-shot: after ToReadableArray the builder releases its buffer.
+</summary>
+</member>
+<member name="M:XParsec.ReadableArray`1.ToImmutableArray">
+<summary>
+ Materialises this view into an ImmutableArray. Escape hatch for consumers
+ that specifically need an ImmutableArray; allocates a fresh copy.
+</summary>
+</member>
+<member name="M:XParsec.ReadableArray`1.#ctor(`0[])">
+<summary>
+ Construct a view over the whole array.
+</summary>
+</member>
+<member name="T:XParsec.ReadableArray`1">
+<summary>
+ An array slice that can be read as input by the parser.
+</summary>
+</member>
+<member name="M:XParsec.ReadableString.ToString">
+<summary>
+ Materialises this view into a String. Allocates a fresh substring.
+</summary>
+</member>
+<member name="M:XParsec.ReadableString.#ctor(System.String)">
+<summary>
+ Construct a view over the whole string.
+</summary>
+</member>
+<member name="T:XParsec.ReadableString">
+<summary>
+ A string slice that can be read as input by the parser.
+</summary>
+</member>
+<member name="M:XParsec.LineIndex.GetLineCol(System.Int32)">
+<summary>
+ Returns the 1-based line number and column number of the given 0-based index.
+ Accepts index = maxIndex + 1 (one past the end) to represent the EOF position.
+</summary>
+</member>
+<member name="M:XParsec.ParseError.empty``2(XParsec.Position{``0})">
+<summary>
+ An &quot;unspecified&quot; error at the given position. Used as a sentinel by
+ internal soft-error accumulators where every code path needs a `ParseError`
+ value but most are &quot;no error here yet&quot;.
+</summary>
+</member>
+<member name="M:XParsec.ParseError.isEmpty``2(XParsec.ErrorType{``0,``1})">
+<summary>
+ True if the given error carries no specific information (`Empty`). Used by
+ aggregating combinators to filter out `pzero`-style siblings before nesting.
+</summary>
+</member>
+<member name="M:XParsec.ParseError.bothFailed``2">
+<summary>
+ Wraps the two errors from `&lt;|&gt;` (or the loop-stuck pair from `manyTill`) when both sides failed.
+</summary>
+</member>
+<member name="M:XParsec.ParseError.allChoicesFailed``2">
+<summary>
+ Wraps the per-branch errors from `choice` when every alternative failed.
+</summary>
+</member>
+<member name="M:XParsec.ParseError.zero``2">
+<summary>
+ Unspecified failure — emitted by `pzero`. Aggregating combinators drop
+ these from nested children; the default formatter renders nothing for them.
+</summary>
+</member>
+<member name="M:XParsec.ParseError.expectedAtLeastOne``2">
+<summary>
+ Used by `many1`, `sepBy1`, `fold1`, etc. when the first item fails.
+</summary>
+</member>
+<member name="M:XParsec.ParseError.expectedEnd``2">
+<summary>
+ Used by `eof` when there are still items left in the input.
+</summary>
+</member>
+<member name="M:XParsec.ParseError.unexpectedEnd``2">
+<summary>
+ Generic &quot;we hit EOF&quot; message used in error-formatting fallbacks.
+</summary>
+</member>
+<member name="M:XParsec.ParseError.shouldFailInPlace``2">
+<summary>
+ Used by `notFollowedBy` when the inner parser failed but had already consumed input.
+</summary>
+</member>
+<member name="M:XParsec.ParseError.shouldNotSucceed``2">
+<summary>
+ Used by `notFollowedBy` when the inner parser unexpectedly succeeded.
+</summary>
+</member>
+<member name="M:XParsec.ParseError.shouldNotConsume``2">
+<summary>
+ Used by `followedBy*` when its inner parser advanced (it should have peeked, not consumed).
+</summary>
+</member>
+<member name="M:XParsec.ParseError.shouldConsume``2">
+<summary>
+ Used by `notEmpty` when its inner parser returned `Ok` without advancing.
+</summary>
+</member>
+<member name="M:XParsec.ParseError.wrongUserState``2">
+<summary>
+ Used by `userStateSatisfies` when the predicate rejects the current state.
+</summary>
+</member>
+<member name="M:XParsec.ParseError.createNested``3(XParsec.ErrorType{``0,``1},Microsoft.FSharp.Collections.FSharpList{XParsec.ParseError{``0,``1}},XParsec.Position{``1})">
+<summary>
+ Constructs a &lt;c&gt;Result.Error&lt;/c&gt; with a `Nested(parent, children)` body at the given position.
+</summary>
+</member>
+<member name="M:XParsec.ParseError.create``3(XParsec.ErrorType{``0,``1},XParsec.Position{``1})">
+<summary>
+ Constructs a &lt;c&gt;Result.Error&lt;/c&gt; at the given position from the supplied error type.
+</summary>
+</member>
+<member name="T:XParsec.ParseError">
+ <summary>
+ Helpers for constructing and inspecting <see cref="ParseError{T,S}"/> values.
+ Also exposes the canonical <c>Message</c> values used by the standard combinators
+ (`shouldConsume`, `bothFailed`, etc.) so user code can pattern-match against them
+ and produce the same error shape.
+ </summary>
+</member>
+<member name="M:XParsec.Parsers.foldUserState1``4(Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.FSharpFunc{``1,``0}},Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``2,``0,``3},Microsoft.FSharp.Core.FSharpResult{``1,XParsec.ParseError{``2,``0}}},XParsec.Reader{``2,``0,``3})">
+<summary>
+ Applies a `folder` function to each result of the given parser and the current user state one or more times,
+ updating the user state.
+ The parser is applied until it fails. Returns unit.
+</summary>
+</member>
+<member name="M:XParsec.Parsers.foldUserState``5(Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.FSharpFunc{``1,``0}},Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``2,``0,``3},Microsoft.FSharp.Core.FSharpResult{``1,XParsec.ParseError{``2,``0}}},XParsec.Reader{``2,``0,``3})">
+<summary>
+ Applies a `folder` function to each result of the given parser and the current user state zero or more times,
+ updating the user state.
+ The parser is applied until it fails. Returns unit.
+</summary>
+</member>
+<member name="M:XParsec.Parsers.fold1``5(``0,Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.FSharpFunc{``1,``0}},Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``2,``3,``4},Microsoft.FSharp.Core.FSharpResult{``1,XParsec.ParseError{``2,``3}}},XParsec.Reader{``2,``3,``4})">
+<summary>
+ Applies the `folder` function to each result of the given parser and the initial `state` one or more times,
+ accumulating a final result.
+ The parser is applied until it fails, and the final state is returned.
+</summary>
+</member>
+<member name="M:XParsec.Parsers.fold``6(``0,Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.FSharpFunc{``1,``0}},Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``2,``3,``4},Microsoft.FSharp.Core.FSharpResult{``1,XParsec.ParseError{``2,``3}}},XParsec.Reader{``2,``3,``4})">
+<summary>
+ Applies the `folder` function to each result of the given parser and the initial `state` zero or more times,
+ accumulating a final result.
+ The parser is applied until it fails, and the final state is returned.
+</summary>
+</member>
+<member name="M:XParsec.Parsers.pseqReturn``5(``0,``2)">
+<summary>
+ Succeeds if the next items in the input are equal to the given items, and consumes them.
+ Returns the result, otherwise fails with the Expected items.
+</summary>
+</member>
+<member name="M:XParsec.Parsers.pseq``4(``0)">
+<summary>
+ Succeeds if the next items in the input are equal to the given items, and consumes them.
+ Returns the items, otherwise fails with the Expected items.
+</summary>
+</member>
+<member name="M:XParsec.Parsers.skipAnyInRange``3(``0,``0,XParsec.Reader{``0,``1,``2})">
+<summary>
+ Succeeds if the next item in the input is in the given range (inclusive), and consumes one item.
+ Returns unit, otherwise fails with the Unexpected item.
+</summary>
+</member>
+<member name="M:XParsec.Parsers.anyInRange``3(``0,``0,XParsec.Reader{``0,``1,``2})">
+<summary>
+ Succeeds if the next item in the input is in the given range (inclusive), and consumes one item.
+ Returns the item, otherwise fails with the Unexpected item.
+</summary>
+</member>
+<member name="M:XParsec.Parsers.skipNoneOf``3(System.Collections.Generic.IEnumerable{``0})">
+<summary>
+ Succeeds if the next item in the input is equal to none of the given items, and consumes one item.
+ Returns unit, otherwise fails with the Unexpected item.
+</summary>
+</member>
+<member name="M:XParsec.Parsers.noneOf``3(System.Collections.Generic.IEnumerable{``0})">
+<summary>
+ Succeeds if the next item in the input is equal to none of the given items, and consumes one item.
+ Returns the item, otherwise fails with the Unexpected item.
+</summary>
+</member>
+<member name="M:XParsec.Parsers.skipAnyOf``3(System.Collections.Generic.IEnumerable{``0})">
+<summary>
+ Succeeds if the next item in the input is equal to any of the given items, and consumes one item.
+ Returns unit, otherwise fails with the Unexpected item.
+</summary>
+</member>
+<member name="M:XParsec.Parsers.anyOf``3(System.Collections.Generic.IEnumerable{``0})">
+<summary>
+ Succeeds if the next item in the input is equal to any of the given items, and consumes one item.
+ Returns the item, otherwise fails with the Unexpected item.
+</summary>
+</member>
+<member name="M:XParsec.Parsers.pitem``3(``0,XParsec.Reader{``0,``1,``2})">
+<summary>
+ Succeeds if the next item in the input is equal to the given item, and consumes one item.
+ Returns the item, otherwise fails with the Expected item.
+</summary>
+</member>
+<member name="M:XParsec.Parsers.skipItem``3(``0,XParsec.Reader{``0,``1,``2})">
+<summary>
+ Succeeds if the next item in the input is equal to the given item, and consumes one item.
+ Returns unit, otherwise fails with the Expected item.
+</summary>
+</member>
+<member name="M:XParsec.Parsers.itemReturn``4(``0,``1,XParsec.Reader{``0,``2,``3})">
+<summary>
+ Succeeds if the next item in the input is equal to the given item, and consumes one item.
+ Returns the item if it is equal to the given item, otherwise fails with the Expected item.
+</summary>
+</member>
+<member name="M:XParsec.Parsers.satisfyL``3(Microsoft.FSharp.Core.FSharpFunc{``0,System.Boolean},System.String,XParsec.Reader{``0,``1,``2})">
+<summary>
+ Succeeds if the predicate is satisfied by the next item in the input, and consumes one item.
+ Returns the item if the predicate is satisfied, otherwise fails with the given message.
+</summary>
+</member>
+<member name="M:XParsec.Parsers.satisfy``3(Microsoft.FSharp.Core.FSharpFunc{``0,System.Boolean},XParsec.Reader{``0,``1,``2})">
+<summary>
+ Succeeds if the predicate is satisfied by the next item in the input, and consumes one item.
+ Returns the item if the predicate is satisfied, otherwise fails with the Unexpected item.
+</summary>
+</member>
+<member name="M:XParsec.Parsers.skip``3(XParsec.Reader{``0,``1,``2})">
+<summary>
+ Succeeds if the Reader position is not at the end of the input, and consumes one item, returning unit.
+</summary>
+</member>
+<member name="M:XParsec.Parsers.pid``3(XParsec.Reader{``0,``1,``2})">
+<summary>
+ Succeeds if the Reader position is not at the end of the input, consumes and returns one item.
+</summary>
+</member>
+<member name="M:XParsec.Parsers.eof``3(XParsec.Reader{``0,``1,``2})">
+<summary>
+ Succeeds if the Reader position is at the end of the input.
+ This parser does not consume any input.
+</summary>
+</member>
+<member name="M:XParsec.Parsers.setPosition``3(XParsec.Position{``0},XParsec.Reader{``1,``0,``2})">
+<summary>
+ Set the Reader position to the given value.
+ An exception is thrown if the ReaderId is inconsistent with the Reader.
+</summary>
+</member>
+<member name="M:XParsec.Parsers.getPosition``3(XParsec.Reader{``0,``1,``2})">
+<summary>
+ Return the current Reader position.
+ This parser does not consume any input.
+</summary>
+</member>
+<member name="M:XParsec.Parsers.userStateSatisfies``3(Microsoft.FSharp.Core.FSharpFunc{``0,System.Boolean},XParsec.Reader{``1,``0,``2})">
+<summary>
+ Succeeds if the user state satisfies the given predicate.
+ This parser does not consume any input.
+</summary>
+</member>
+<member name="M:XParsec.Parsers.updateUserState``3(Microsoft.FSharp.Core.FSharpFunc{``0,``0},XParsec.Reader{``1,``0,``2})">
+<summary>
+ Update the user state using the given function.
+ This parser does not consume any input.
+</summary>
+</member>
+<member name="M:XParsec.Parsers.setUserState``3(``0,XParsec.Reader{``1,``0,``2})">
+<summary>
+ Set the user state to the given value.
+ This parser does not consume any input.
+</summary>
+</member>
+<member name="M:XParsec.Parsers.getUserState``3(XParsec.Reader{``0,``1,``2})">
+<summary>
+ Return the current user state.
+ This parser does not consume any input.
+</summary>
+</member>
+<member name="M:XParsec.Parsers.fail``4(XParsec.ErrorType{``0,``1},XParsec.Reader{``0,``1,``2})">
+<summary>
+ Always fails with the given error.
+ This parser does not consume any input.
+</summary>
+</member>
+<member name="M:XParsec.Parsers.pzero``4(XParsec.Reader{``0,``1,``2})">
+<summary>
+ Always fails with the zero error.
+ This parser does not consume any input.
+</summary>
+</member>
+<member name="M:XParsec.Parsers.preturn``4(``0,XParsec.Reader{``1,``2,``3})">
+<summary>
+ Always succeeds and returns the given value.
+ This parser does not consume any input.
+</summary>
+</member>
+<member name="T:XParsec.Parsers.Internal">
+<summary>
+ Contains generalized parser implementations, not intended to be used directly.
+</summary>
+</member>
+<member name="M:XParsec.Combinators.dispatchWithState``4(Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.FSharpFunc{Microsoft.FSharp.Core.FSharpValueOption{``1},Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``0,``3},Microsoft.FSharp.Core.FSharpResult{``2,XParsec.ParseError{``1,``0}}}}},XParsec.Reader{``1,``0,``3})">
+ <summary>
+ Peeks at the next token (without consuming it) and retrieves the current user state,
+ using both to select the next parser to run.
+ </summary>
+ <remarks>
+ <para>
+ This is an optimization for <strong>Context-Sensitive LL(1) grammars</strong>.
+ </para>
+ <para>
+ It avoids the overhead of <c>getUserState >>= ...</c> by passing the state directly
+ to the dispatch function. This is particularly useful for parsers that need to switch
+ behavior based on a context.
+ </para>
+ </remarks>
+ <param name="f">A function that maps the current state and lookahead token to a parser.</param>
+</member>
+<member name="M:XParsec.Combinators.dispatch``4(Microsoft.FSharp.Core.FSharpFunc{Microsoft.FSharp.Core.FSharpValueOption{``0},Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``0,``2,``3},Microsoft.FSharp.Core.FSharpResult{``1,XParsec.ParseError{``0,``2}}}},XParsec.Reader{``0,``2,``3})">
+ <summary>
+ Peeks at the next token (without consuming it) and uses it to select
+ the next parser to run.
+ </summary>
+ <remarks>
+ <para>
+ This combinator is ideal for implementing <strong>LL(1) grammars</strong> (predictive parsing).
+ It allows the parser to branch deterministically based on a single lookahead token.
+ </para>
+ <para>
+ Use <c>dispatch</c> instead of <c>choice</c> when the next token uniquely identifies
+ which parser to use. This avoids the overhead of sequential trial-and-error and
+ prevents unnecessary backtracking.
+ </para>
+ </remarks>
+ <param name="f">A function that maps the lookahead token (or ValueNone at the end of input) to a parser.</param>
+</member>
+<member name="M:XParsec.Combinators.many1Items2``4(Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``0,XParsec.ParseError{``1,``2}}},Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``0,XParsec.ParseError{``1,``2}}},XParsec.Reader{``1,``2,``3})">
+<summary>
+ Applies the parser `p1` followed by `p` zero or more times. If it succeeds, returns the results as an ImmutableArray.
+ If `p1` fails, this parser fails.
+</summary>
+</member>
+<member name="M:XParsec.Combinators.chainr``4(Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``0,XParsec.ParseError{``1,``2}}},Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.FSharpFunc{``0,``0}},XParsec.ParseError{``1,``2}}},``0,XParsec.Reader{``1,``2,``3})">
+<summary>
+ Applies the parser `p` zero or more times, separated by `pOp`. If `pOp` succeeds, combines the results of `p` before and after in a right-associative manner.
+ If `p` fails on the first attempt, this parser returns the result of `orElse`.
+ This parser always succeeds.
+</summary>
+</member>
+<member name="M:XParsec.Combinators.chainr1``4(Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``0,XParsec.ParseError{``1,``2}}},Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.FSharpFunc{``0,``0}},XParsec.ParseError{``1,``2}}},XParsec.Reader{``1,``2,``3})">
+<summary>
+ Applies the parser `p` one or more times, separated by `pOp`. If `pOp` succeeds, combines the results of `p` before and after in a right-associative manner.
+ If `p` fails on the first attempt, this parser fails.
+</summary>
+</member>
+<member name="M:XParsec.Combinators.chainl``4(Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``0,XParsec.ParseError{``1,``2}}},Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.FSharpFunc{``0,``0}},XParsec.ParseError{``1,``2}}},``0,XParsec.Reader{``1,``2,``3})">
+<summary>
+ Applies the parser `p` zero or more times, separated by `pOp`. If `pOp` succeeds, combines the results of `p` before and after in a left-associative manner.
+ If `p` fails on the first attempt, this parser returns the result of `orElse`.
+ This parser always succeeds.
+</summary>
+</member>
+<member name="M:XParsec.Combinators.chainl1``4(Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``0,XParsec.ParseError{``1,``2}}},Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.FSharpFunc{``0,``0}},XParsec.ParseError{``1,``2}}},XParsec.Reader{``1,``2,``3})">
+<summary>
+ Applies the parser `p` one or more times, separated by `pOp`. If `pOp` succeeds, combines the results of `p` before and after in a left-associative manner.
+ If `p` fails on the first attempt, this parser fails.
+</summary>
+</member>
+<member name="M:XParsec.Combinators.skipMany1Till``5(Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``0,XParsec.ParseError{``1,``2}}},Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``4,XParsec.ParseError{``1,``2}}},XParsec.Reader{``1,``2,``3})">
+<summary>
+ Applies the parser `p` one or more times, until `pEnd` succeeds. If it succeeds, returns unit.
+ If `p` fails on the first attempt, this parser fails.
+ This parser also fails if `pEnd` fails.
+</summary>
+</member>
+<member name="M:XParsec.Combinators.skipManyTill``5(Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``0,XParsec.ParseError{``1,``2}}},Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``4,XParsec.ParseError{``1,``2}}},XParsec.Reader{``1,``2,``3})">
+<summary>
+ Applies the parser `p` zero or more times, until `pEnd` succeeds. If it succeeds, returns unit.
+ This parser fails if `pEnd` fails.
+</summary>
+</member>
+<member name="M:XParsec.Combinators.many1Till``5(Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``0,XParsec.ParseError{``1,``2}}},Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``4,XParsec.ParseError{``1,``2}}},XParsec.Reader{``1,``2,``3})">
+<summary>
+ Applies the parser `p` one or more times, until `pEnd` succeeds. If it succeeds, returns the results as an ImmutableArray and the result of `pEnd`.
+ If `p` fails on the first attempt, this parser fails.
+ This parser also fails if `pEnd` fails.
+</summary>
+</member>
+<member name="M:XParsec.Combinators.manyTill``5(Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``0,XParsec.ParseError{``1,``2}}},Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``4,XParsec.ParseError{``1,``2}}},XParsec.Reader{``1,``2,``3})">
+<summary>
+ Applies the parser `p` zero or more times, until `pEnd` succeeds. If it succeeds, returns the results as an ImmutableArray and the result of `pEnd`.
+ This parser fails if `pEnd` fails.
+</summary>
+</member>
+<member name="M:XParsec.Combinators.skipSepEndBy1``5(Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``0,XParsec.ParseError{``1,``2}}},Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``4,XParsec.ParseError{``1,``2}}},XParsec.Reader{``1,``2,``3})">
+<summary>
+ Applies the parser `p` one or more times, separated and optionally ended by `pSep`. If it succeeds, returns unit.
+ If `p` fails on the first attempt, this parser fails.
+</summary>
+</member>
+<member name="M:XParsec.Combinators.skipSepEndBy``5(Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``0,XParsec.ParseError{``1,``2}}},Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``4,XParsec.ParseError{``1,``2}}},XParsec.Reader{``1,``2,``3})">
+<summary>
+ Applies the parser `p` zero or more times, separated and optionally ended by `pSep`. If it succeeds, returns unit.
+ This parser always succeeds.
+</summary>
+</member>
+<member name="M:XParsec.Combinators.sepEndBy1``5(Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``0,XParsec.ParseError{``1,``2}}},Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``4,XParsec.ParseError{``1,``2}}},XParsec.Reader{``1,``2,``3})">
+<summary>
+ Applies the parser `p` one or more times, separated and optionally ended by `pSep`. If it succeeds, returns the results as an ImmutableArray.
+ If `p` fails on the first attempt, this parser fails.
+</summary>
+</member>
+<member name="M:XParsec.Combinators.sepEndBy``5(Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``0,XParsec.ParseError{``1,``2}}},Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``4,XParsec.ParseError{``1,``2}}},XParsec.Reader{``1,``2,``3})">
+<summary>
+ Applies the parser `p` zero or more times, separated and optionally ended by `pSep`. If it succeeds, returns the results as an ImmutableArray.
+ This parser always succeeds.
+</summary>
+</member>
+<member name="M:XParsec.Combinators.skipSepBy1``5(Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``0,XParsec.ParseError{``1,``2}}},Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``4,XParsec.ParseError{``1,``2}}},XParsec.Reader{``1,``2,``3})">
+<summary>
+ Applies the parser `p` one or more times, separated by `pSep`. If it succeeds, returns unit.
+ If `p` fails on the first attempt, this parser fails.
+</summary>
+</member>
+<member name="M:XParsec.Combinators.skipSepBy``5(Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``0,XParsec.ParseError{``1,``2}}},Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``4,XParsec.ParseError{``1,``2}}},XParsec.Reader{``1,``2,``3})">
+<summary>
+ Applies the parser `p` zero or more times, separated by `pSep`. If it succeeds, returns unit.
+ This parser always succeeds.
+</summary>
+</member>
+<member name="M:XParsec.Combinators.sepBy1``5(Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``0,XParsec.ParseError{``1,``2}}},Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``4,XParsec.ParseError{``1,``2}}},XParsec.Reader{``1,``2,``3})">
+<summary>
+ Applies the parser `p` one or more times, separated by `pSep`. If it succeeds, returns the results as an ImmutableArray.
+ If `p` fails on the first attempt, this parser fails.
+</summary>
+</member>
+<member name="M:XParsec.Combinators.sepBy``5(Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``0,XParsec.ParseError{``1,``2}}},Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``4,XParsec.ParseError{``1,``2}}},XParsec.Reader{``1,``2,``3})">
+<summary>
+ Applies the parser `p` zero or more times, separated by `pSep`. If it succeeds, returns the results as an ImmutableArray.
+ This parser always succeeds.
+</summary>
+</member>
+<member name="M:XParsec.Combinators.skipMany1Satisfies``3(Microsoft.FSharp.Core.FSharpFunc{``0,System.Boolean},XParsec.Reader{``0,``1,``2})">
+ <summary>
+ Skips one or more input elements that satisfy the given predicate.
+ </summary>
+ <remarks>
+ If the predicate fails on the first element, this parser fails.
+ </remarks>
+</member>
+<member name="M:XParsec.Combinators.skipManySatisfies``3(Microsoft.FSharp.Core.FSharpFunc{``0,System.Boolean},XParsec.Reader{``0,``1,``2})">
+ <summary>
+ Skips zero or more input elements that satisfy the given predicate.
+ </summary>
+ <remarks>
+ This parser always succeeds. It is a highly efficient way to skip input like whitespace or comments.
+ </remarks>
+</member>
+<member name="M:XParsec.Combinators.countMany1Satisfies``3(Microsoft.FSharp.Core.FSharpFunc{``0,System.Boolean},XParsec.Reader{``0,``1,``2})">
+ <summary>
+ Applies a predicate to the input one or more times and returns the number of successful matches.
+ </summary>
+ <remarks>
+ If the predicate fails on the first element, this parser fails. It is more efficient than `many1 (satisfy predicate)` when only the count is needed.
+ </remarks>
+</member>
+<member name="M:XParsec.Combinators.countManySatisfies``3(Microsoft.FSharp.Core.FSharpFunc{``0,System.Boolean},XParsec.Reader{``0,``1,``2})">
+ <summary>
+ Applies a predicate to the input zero or more times and returns the number of successful matches.
+ </summary>
+ <remarks>
+ This parser always succeeds. It is more efficient than `many (satisfy predicate)` when only the count is needed.
+ </remarks>
+</member>
+<member name="M:XParsec.Combinators.skipMany1``4(Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``0,XParsec.ParseError{``1,``2}}},XParsec.Reader{``1,``2,``3})">
+<summary>
+ Applies the parser `p` one or more times. If it succeeds, returns unit.
+ If `p` fails on the first attempt, this parser fails.
+</summary>
+</member>
+<member name="M:XParsec.Combinators.skipMany``4(Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``0,XParsec.ParseError{``1,``2}}},XParsec.Reader{``1,``2,``3})">
+<summary>
+ Applies the parser `p` zero or more times. If it succeeds, returns unit.
+ This parser always succeeds.
+</summary>
+</member>
+<member name="M:XParsec.Combinators.many1``4(Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``0,XParsec.ParseError{``1,``2}}},XParsec.Reader{``1,``2,``3})">
+<summary>
+ Applies the parser `p` one or more times. If it succeeds, returns the results as an ImmutableArray.
+ If `p` fails on the first attempt, this parser fails.
+</summary>
+</member>
+<member name="M:XParsec.Combinators.many``4(Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``0,XParsec.ParseError{``1,``2}}},XParsec.Reader{``1,``2,``3})">
+<summary>
+ Applies the parser `p` zero or more times. If it succeeds, returns the results as an ImmutableArray.
+ This parser always succeeds.
+</summary>
+</member>
+<member name="M:XParsec.Combinators.skipArray``4(System.Int32,Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``0,XParsec.ParseError{``1,``2}}},XParsec.Reader{``1,``2,``3})">
+ <summary>
+ Applies the parser <paramref name="p"/> exactly <paramref name="n"/> times,
+ discarding the results. Returns <c>unit</c> on full success, or propagates
+ the inner error on the first failure.
+ </summary>
+ <remarks>
+ Equivalent to <c>parray n p |>> ignore</c> but without allocating the
+ intermediate result array. Use this when you only need to advance the reader.
+ </remarks>
+</member>
+<member name="M:XParsec.Combinators.parray``4(System.Int32,Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``0,XParsec.ParseError{``1,``2}}},XParsec.Reader{``1,``2,``3})">
+ <summary>
+ Applies the parser <paramref name="p"/> exactly <paramref name="n"/> times.
+ If every application succeeds, returns the results as an <c>ImmutableArray</c>
+ of length <paramref name="n"/>. Stops and propagates the inner error on the
+ first failure.
+ </summary>
+ <remarks>
+ Builds via <see cref="SmallArrayBuilder{T}"/>, so counts ≤ 4 avoid
+ allocating an <c>ImmutableArray.Builder</c>. Use
+ <see cref="skipArray"/> when you only need the side effect.
+ </remarks>
+</member>
+<member name="M:XParsec.Combinators.tuple5``8(Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``0,XParsec.ParseError{``1,``2}}},Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``4,XParsec.ParseError{``1,``2}}},Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``5,XParsec.ParseError{``1,``2}}},Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``6,XParsec.ParseError{``1,``2}}},Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``7,XParsec.ParseError{``1,``2}}})">
+<summary>
+ Applies the parsers `p1`, `p2`, `p3`, `p4` and `p5` in sequence. If all succeed, returns the results in a tuple.
+</summary>
+</member>
+<member name="M:XParsec.Combinators.tuple4``7(Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``0,XParsec.ParseError{``1,``2}}},Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``4,XParsec.ParseError{``1,``2}}},Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``5,XParsec.ParseError{``1,``2}}},Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``6,XParsec.ParseError{``1,``2}}})">
+<summary>
+ Applies the parsers `p1`, `p2`, `p3` and `p4` in sequence. If all succeed, returns the results in a tuple.
+</summary>
+</member>
+<member name="M:XParsec.Combinators.tuple3``6(Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``0,XParsec.ParseError{``1,``2}}},Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``4,XParsec.ParseError{``1,``2}}},Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``5,XParsec.ParseError{``1,``2}}})">
+<summary>
+ Applies the parsers `p1`, `p2` and `p3` in sequence. If all succeed, returns the results in a tuple.
+</summary>
+</member>
+<member name="M:XParsec.Combinators.tuple2``5(Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``0,XParsec.ParseError{``1,``2}}},Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``4,XParsec.ParseError{``1,``2}}})">
+<summary>
+ Applies the parsers `p1` and `p2` in sequence. If both succeed, returns the results in a tuple.
+</summary>
+</member>
+<member name="M:XParsec.Combinators.op_LessQmarkQmarkGreater``4(Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``0,XParsec.ParseError{``1,``2}}},System.String,XParsec.Reader{``1,``2,``3})">
+<summary>
+ Applies the parser `p1`, if it succeeds, returns the result of `p1`.
+ If `p1` fails without consuming input, the parser fails with the given `message`.
+ If `p1` fails and consumes input, the parser fails with a nested error of the given `message` and the result of `p1`.
+</summary>
+</member>
+<member name="M:XParsec.Combinators.op_LessQmarkGreater``4(Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``0,XParsec.ParseError{``1,``2}}},System.String,XParsec.Reader{``1,``2,``3})">
+<summary>
+ Applies the parser `p1`, if it succeeds, returns the result of `p1`.
+ If `p1` fails without consuming input, the parser fails with the given `message`.
+ If `p1` fails and consumes input, the parser fails with the result of `p1`.
+</summary>
+</member>
+<member name="M:XParsec.Combinators.lookAhead``4(Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``0,XParsec.ParseError{``1,``2}}},XParsec.Reader{``1,``2,``3})">
+<summary>
+ Applies the parser `p1`, if it succeeds, returns the result of `p1` without consuming input.
+</summary>
+</member>
+<member name="M:XParsec.Combinators.notFollowedByL``4(Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``0,XParsec.ParseError{``1,``2}}},System.String,XParsec.Reader{``1,``2,``3})">
+<summary>
+ Applies the parser `p1`, if it succeeds, this parser fails without consuming input, with the given `message`.
+ If `p1` fails without consuming input, the parser succeeds.
+ If `p1` fails and consumes input, this parser fails without consuming input, with the given `message`.
+</summary>
+</member>
+<member name="M:XParsec.Combinators.notFollowedBy``4(Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``0,XParsec.ParseError{``1,``2}}},XParsec.Reader{``1,``2,``3})">
+<summary>
+ Applies the parser `p1`, if it succeeds, this parser fails without consuming input.
+ If `p1` fails without consuming input, the parser succeeds.
+ If `p1` fails and consumes input, this parser fails without consuming input.
+</summary>
+</member>
+<member name="M:XParsec.Combinators.followedByL``4(Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``0,XParsec.ParseError{``1,``2}}},System.String,XParsec.Reader{``1,``2,``3})">
+<summary>
+ Applies the parser `p1`, if it succeeds, ensures that the parser has not changed the input position.
+ If `p1` fails, no input is consumed.
+ If `p1` succeeds and consumes input, the parser fails with the given `message`.
+</summary>
+</member>
+<member name="M:XParsec.Combinators.followedBy``4(Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``0,XParsec.ParseError{``1,``2}}},XParsec.Reader{``1,``2,``3})">
+<summary>
+ Applies the parser `p1`, if it succeeds, ensures that the parser has not changed the input position.
+ If `p1` fails, no input is consumed.
+</summary>
+</member>
+<member name="M:XParsec.Combinators.notEmpty``4(Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``0,XParsec.ParseError{``1,``2}}},XParsec.Reader{``1,``2,``3})">
+<summary>
+ Applies the parser `p1`, if it succeeds, ensures that the parser has changed the input position.
+</summary>
+</member>
+<member name="M:XParsec.Combinators.optional``4(Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``0,XParsec.ParseError{``1,``2}}},XParsec.Reader{``1,``2,``3})">
+<summary>
+ Attempts to apply the parser `p1`. Always succeeds, returning `()`.
+ If `p1` succeeds, the input is consumed. If `p1` fails, no input is consumed.
+</summary>
+</member>
+<member name="M:XParsec.Combinators.opt``4(Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``0,XParsec.ParseError{``1,``2}}},XParsec.Reader{``1,``2,``3})">
+<summary>
+ Applies the parser `p1` and, if it fails, returns `ValueNone`.
+ If `p1` succeeds, the input is consumed. If `p1` fails, no input is consumed.
+</summary>
+</member>
+<member name="M:XParsec.Combinators.op_LessBarGreaterPercent``4(Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``0,XParsec.ParseError{``1,``2}}},``0,XParsec.Reader{``1,``2,``3})">
+<summary>
+ Applies the parser `p1` and, if it fails, returns the value `x`.
+ If `p1` succeeds, the input is consumed. If `p1` fails, no input is consumed.
+</summary>
+</member>
+<member name="M:XParsec.Combinators.choiceL``4(System.Collections.Generic.IEnumerable{Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``0,XParsec.ParseError{``1,``2}}}},System.String)">
+ <summary>
+ Applies the parsers <paramref name="ps"/> in order. Returns the result of
+ the first parser that succeeds, or fails with the given <paramref name="message"/>
+ if all fail — discarding the per-branch errors that <c>choice</c> would have
+ accumulated.
+ </summary>
+ <remarks>
+ Same backtracking semantics as <c>choice</c> and <c>&lt;|&gt;</c>: every
+ branch is tried with the reader rewound to the entry position. Use this
+ over <c>choice</c> when you can supply a clearer top-level error than the
+ nested per-branch tree.
+ </remarks>
+</member>
+<member name="M:XParsec.Combinators.choice``4(System.Collections.Generic.IEnumerable{Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``0,XParsec.ParseError{``1,``2}}}})">
+ <summary>
+ Applies the parsers <paramref name="ps"/> in order. Returns the result of
+ the first parser that succeeds, or a nested error containing every branch's
+ failure if all fail.
+ </summary>
+ <remarks>
+ <para>
+ Like <c>&lt;|&gt;</c>, <c>choice</c> <strong>always backtracks</strong>:
+ if a branch fails after consuming input, the reader position is restored
+ before the next branch runs. There is no per-branch <c>attempt</c> needed
+ — XParsec has no <c>attempt</c> at all. This is unlike FParsec, where
+ <c>choice</c> only continues if a branch failed without consuming input.
+ </para>
+ <para>
+ Accumulating every branch's error allocates a list per call; prefer
+ <c>choiceL</c> when the per-branch detail isn't needed.
+ </para>
+ </remarks>
+</member>
+<member name="M:XParsec.Combinators.op_LessBarGreater``4(Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``0,XParsec.ParseError{``1,``2}}},Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``0,XParsec.ParseError{``1,``2}}},XParsec.Reader{``1,``2,``3})">
+ <summary>
+ Applies the parser <paramref name="p1"/> and, if it fails, restores the reader
+ position and applies <paramref name="p2"/>. Returns the result of the first
+ parser that succeeds, or both errors if both fail.
+ </summary>
+ <remarks>
+ <para>
+ XParsec's <c>&lt;|&gt;</c> <strong>always backtracks</strong> on failure of
+ <paramref name="p1"/> — regardless of how much input <paramref name="p1"/>
+ consumed before failing. This is unlike FParsec, where <c>&lt;|&gt;</c> only
+ tries the right-hand side if the LHS failed without consuming input.
+ </para>
+ <para>
+ As a consequence, XParsec has <strong>no <c>attempt</c> combinator</strong>:
+ every alternative already behaves like one. The position-save is a struct
+ copy, so the always-backtrack default is cheap. If you need "fail fast when
+ input was consumed", reach for <c>notFollowedBy</c> or <c>&lt;?&gt;</c> to
+ gate or relabel instead.
+ </para>
+ </remarks>
+</member>
+<member name="M:XParsec.Combinators.pipe5``9(Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``0,XParsec.ParseError{``1,``2}}},Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``4,XParsec.ParseError{``1,``2}}},Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``5,XParsec.ParseError{``1,``2}}},Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``6,XParsec.ParseError{``1,``2}}},Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``7,XParsec.ParseError{``1,``2}}},Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.FSharpFunc{``4,Microsoft.FSharp.Core.FSharpFunc{``5,Microsoft.FSharp.Core.FSharpFunc{``6,Microsoft.FSharp.Core.FSharpFunc{``7,``8}}}}})">
+<summary>
+ Applies the 5 parsers in sequence. If all succeed, returns the result of `f` applied to the results of the parsers.
+</summary>
+</member>
+<member name="M:XParsec.Combinators.pipe4``8(Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``0,XParsec.ParseError{``1,``2}}},Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``4,XParsec.ParseError{``1,``2}}},Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``5,XParsec.ParseError{``1,``2}}},Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``6,XParsec.ParseError{``1,``2}}},Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.FSharpFunc{``4,Microsoft.FSharp.Core.FSharpFunc{``5,Microsoft.FSharp.Core.FSharpFunc{``6,``7}}}})">
+<summary>
+ Applies the 4 parsers in sequence. If all succeed, returns the result of `f` applied to the results of the parsers.
+</summary>
+</member>
+<member name="M:XParsec.Combinators.pipe3``7(Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``0,XParsec.ParseError{``1,``2}}},Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``4,XParsec.ParseError{``1,``2}}},Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``5,XParsec.ParseError{``1,``2}}},Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.FSharpFunc{``4,Microsoft.FSharp.Core.FSharpFunc{``5,``6}}},XParsec.Reader{``1,``2,``3})">
+<summary>
+ Applies the 3 parsers in sequence. If both succeed, returns the result of `f` applied to the results of the parsers.
+</summary>
+</member>
+<member name="M:XParsec.Combinators.pipe2``6(Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``0,XParsec.ParseError{``1,``2}}},Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``4,XParsec.ParseError{``1,``2}}},Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.FSharpFunc{``4,``5}},XParsec.Reader{``1,``2,``3})">
+<summary>
+ Applies the parsers `p1` and `p2` in sequence. If both succeed, returns the result of `f` applied to the results of `p1` and `p2`.
+</summary>
+</member>
+<member name="P:XParsec.Combinators.parser">
+<summary>
+ A computation expression builder for parsers.
+</summary>
+</member>
+<member name="M:XParsec.Combinators.op_BarGreaterGreater``5(Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``0,XParsec.ParseError{``1,``2}}},Microsoft.FSharp.Core.FSharpFunc{``0,``4},XParsec.Reader{``1,``2,``3})">
+<summary>
+ Applies the parser `p` and, if it succeeds, computes the function `mapping` with the result of `p`.
+</summary>
+</member>
+<member name="M:XParsec.Combinators.between``6(Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``0,XParsec.ParseError{``1,``2}}},Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``4,XParsec.ParseError{``1,``2}}},Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``5,XParsec.ParseError{``1,``2}}},XParsec.Reader{``1,``2,``3})">
+<summary>
+ Applies the parsers `pOpen`, `p` and `pClose` in sequence. If all succeed, returns the result of `p`.
+</summary>
+</member>
+<member name="M:XParsec.Combinators.op_DotGreaterGreaterDot``5(Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``0,XParsec.ParseError{``1,``2}}},Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``4,XParsec.ParseError{``1,``2}}},XParsec.Reader{``1,``2,``3})">
+<summary>
+ Applies the parsers `p1` and `p2` in sequence. If both succeed, returns the result of `p1` and `p2`.
+</summary>
+</member>
+<member name="M:XParsec.Combinators.op_DotGreaterGreater``5(Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``0,XParsec.ParseError{``1,``2}}},Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``4,XParsec.ParseError{``1,``2}}},XParsec.Reader{``1,``2,``3})">
+<summary>
+ Applies the parsers `p1` and `p2` in sequence. If both succeed, returns the result of `p1`.
+</summary>
+</member>
+<member name="M:XParsec.Combinators.op_GreaterGreaterDot``5(Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``0,XParsec.ParseError{``1,``2}}},Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``4,XParsec.ParseError{``1,``2}}},XParsec.Reader{``1,``2,``3})">
+<summary>
+ Applies the parsers `p1` and `p2` in sequence. If both succeed, returns the result of `p2`.
+</summary>
+</member>
+<member name="M:XParsec.Combinators.op_GreaterGreaterPercent``5(Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``0,XParsec.ParseError{``1,``2}}},``4,XParsec.Reader{``1,``2,``3})">
+<summary>
+ Applies the parser `p` and, if it succeeds, returns the value `x`.
+</summary>
+</member>
+<member name="M:XParsec.Combinators.op_GreaterGreaterEquals``5(Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``0,XParsec.ParseError{``1,``2}}},Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``4,XParsec.ParseError{``1,``2}}}})">
+<summary>
+ Applies the parser `p` and, if it succeeds, computes the parser `p2` of `binder` with the result of `p`.
+ Finally, it returns the result of `p2`.
+</summary>
+</member>
+<member name="M:XParsec.Combinators.bind``5(Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``0,XParsec.ParseError{``1,``2}}},Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``4,XParsec.ParseError{``1,``2}}}},XParsec.Reader{``1,``2,``3})">
+<summary>
+ Applies the parser `p` and, if it succeeds, computes the parser `p2` of `binder` with the result of `p`.
+ Finally, it returns the result of `p2`.
+</summary>
+</member>
+<member name="T:XParsec.OperatorParsing.Operators`6">
+<summary>
+ A collection of operators used for parsing expressions.
+ It contains both left-hand side (LHS) and right-hand side (RHS) operators, along with their associated parsers.
+ Use `Operator.create` to create an instance of this type.
+</summary>
+</member>
+<member name="T:XParsec.OperatorParsing.LHSOperator`6.PrefixMapped">
+<summary>
+ A prefix operator whose right-hand side is fully handled by a custom parser rather than
+ by the standard Pratt parsing mechanism. Used where the body parser controls its own
+ structure and context.
+</summary>
+</member>
+<member name="T:XParsec.OperatorParsing.LHSOperator`6.LHSTernary">
+<summary>
+ Used for control flow constructs like &quot;if &lt;expr&gt; then &lt;expr&gt;&quot; or &quot;while &lt;expr&gt; do &lt;expr&gt;&quot;
+</summary>
+</member>
+<member name="T:XParsec.OperatorParsing.RHSOperator`6.InfixMapped">
+<summary>
+ A generalized infix operator where the Right-Hand Side is NOT necessarily an expression.
+ It uses a specific parser `parseRight` and maps the result into the &apos;Expr.
+ Used for Member Access (.), Type Checks (is/as), or rigid syntax.
+</summary>
+</member>
+<member name="T:XParsec.OperatorParsing.RHSOperator`6.InfixNary">
+<summary>
+ Used for operators like the Tuple comma (,) which are technically &quot;Not Associative&quot;
+ in type theory (creating a flat list rather than nested pairs) but strictly
+ require chaining in the parser.
+</summary>
+</member>
+<member name="T:XParsec.OperatorParsing.bp">
+<summary>
+ A unit of measure representing binding power for operators.
+ Binding power is used in Pratt parsing to determine the precedence and associativity of operators.
+ Higher binding power indicates higher precedence.
+ By convention, binding powers are odd numbers N with the next higher even number indicating the operator associativity.
+ A left-associative operator with binding power N has left power N and right power N + 1.
+ A right-associative operator with binding power N has left power N + 1 and right power N.
+ A non-associative operator with binding power N has both left and right power N.
+</summary>
+</member>
+<member name="T:XParsec.OperatorParsing.Precedence">
+<summary>
+ Operator precedence is used to determine the order of operations in expressions.
+ Operators with higher precedence are evaluated first, resulting in the higher value appearing in the inner expression.
+</summary>
+</member>
+<member name="M:XParsec.OperatorParsing.Operator.parserAt``6(System.Byte,Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``0,XParsec.ParseError{``1,``2}}},XParsec.OperatorParsing.Operators{``4,``5,``0,``1,``2,``3})">
+<summary>
+ Parses an expression starting at a specific minimum precedence.
+ Use this when parsing expressions inside delimiters (like lists or array indices)
+ where you want to stop parsing before consuming the delimiter.
+</summary>
+</member>
+<member name="M:XParsec.OperatorParsing.Operator.parser``6(Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``0,XParsec.ParseError{``1,``2}}},XParsec.OperatorParsing.Operators{``4,``5,``0,``1,``2,``3})">
+<summary>
+ Parses an expression using the provided expression parser and operator definitions.
+</summary>
+</member>
+<member name="M:XParsec.OperatorParsing.Operator.prefixMapped``6(``0,Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``0,XParsec.ParseError{``1,``2}}},Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``4,XParsec.ParseError{``1,``2}}},Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.FSharpFunc{``4,``5}})">
+<summary>
+ Creates a prefix operator whose right-hand side is fully parsed by a custom parser.
+ Unlike `prefix`, there is no recursive Pratt descent for the right-hand side.
+ Used where the body parser controls its own structure and context.
+</summary>
+</member>
+<member name="M:XParsec.OperatorParsing.Operator.infixMapped``6(``0,XParsec.OperatorParsing.Precedence,Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``0,XParsec.ParseError{``1,``2}}},Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``4,XParsec.ParseError{``1,``2}}},Microsoft.FSharp.Core.FSharpFunc{``5,Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.FSharpFunc{``4,``5}}})">
+<summary>
+ Creates a generalised infix operator whose right-hand side is parsed by a
+ custom &lt;paramref name=&quot;parseRight&quot;/&gt; rather than by the Pratt expression
+ parser. Useful for syntax where the RHS is not itself an expression —
+ member access (`.member`), type tests (`is T` / `as T`), and similar.
+</summary>
+</member>
+<member name="M:XParsec.OperatorParsing.Operator.lhsTernary``6(``0,XParsec.OperatorParsing.Precedence,Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``0,XParsec.ParseError{``1,``2}}},``0,Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``0,XParsec.ParseError{``1,``2}}},Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.FSharpFunc{``4,Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.FSharpFunc{``4,``4}}}})">
+<summary>
+ Creates a left-hand side ternary operator with the specified properties.
+</summary>
+</member>
+<member name="M:XParsec.OperatorParsing.Operator.ternary``6(``0,XParsec.OperatorParsing.Precedence,Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``0,XParsec.ParseError{``1,``2}}},Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``0,XParsec.ParseError{``1,``2}}},Microsoft.FSharp.Core.FSharpFunc{``4,Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.FSharpFunc{``4,Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.FSharpFunc{``4,``4}}}}})">
+<summary>
+ Creates a ternary operator with the specified properties.
+ Ternary operators are always right associative.
+</summary>
+</member>
+<member name="M:XParsec.OperatorParsing.Operator.indexer``6(``0,``0,XParsec.OperatorParsing.Precedence,Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``0,XParsec.ParseError{``1,``2}}},Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``4,XParsec.ParseError{``1,``2}}},Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``0,XParsec.ParseError{``1,``2}}},Microsoft.FSharp.Core.FSharpFunc{``5,Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.FSharpFunc{``4,Microsoft.FSharp.Core.FSharpFunc{``0,``5}}}})">
+<summary>
+ Creates an indexer operator with the specified properties.
+</summary>
+</member>
+<member name="M:XParsec.OperatorParsing.Operator.enclosedBy``6(``0,``0,XParsec.OperatorParsing.Precedence,Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``0,XParsec.ParseError{``1,``2}}},Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``0,XParsec.ParseError{``1,``2}}},Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.FSharpFunc{``4,Microsoft.FSharp.Core.FSharpFunc{``0,``4}}})">
+<summary>
+ Creates an operator defining a pair of delimiters with the specified properties.
+</summary>
+</member>
+<member name="M:XParsec.OperatorParsing.Operator.postfix``6(``0,XParsec.OperatorParsing.Precedence,Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``0,XParsec.ParseError{``1,``2}}},Microsoft.FSharp.Core.FSharpFunc{``4,Microsoft.FSharp.Core.FSharpFunc{``0,``4}})">
+<summary>
+ Creates a postfix operator with the specified properties.
+</summary>
+</member>
+<member name="M:XParsec.OperatorParsing.Operator.prefix``6(``0,XParsec.OperatorParsing.Precedence,Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``0,XParsec.ParseError{``1,``2}}},Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.FSharpFunc{``4,``4}})">
+<summary>
+ Creates a prefix operator with the specified properties.
+</summary>
+</member>
+<member name="M:XParsec.OperatorParsing.Operator.infixNary``6(``0,XParsec.OperatorParsing.Precedence,Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``0,XParsec.ParseError{``1,``2}}},System.Boolean,Microsoft.FSharp.Core.FSharpFunc{System.Collections.Generic.List{``4},Microsoft.FSharp.Core.FSharpFunc{System.Collections.Generic.List{``0},``4}})">
+<summary>
+ Creates an n-ary infix operator with the specified properties.
+ N-ary operators are similar to left-associative operators but allow chaining without ambiguity.
+ Set `allowTrailingOp` to true to silently accept a trailing separator (e.g. semicolons in lists).
+</summary>
+</member>
+<member name="M:XParsec.OperatorParsing.Operator.infixNonAssoc``6(``0,XParsec.OperatorParsing.Precedence,Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``0,XParsec.ParseError{``1,``2}}},Microsoft.FSharp.Core.FSharpFunc{``4,Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.FSharpFunc{``4,``4}}})">
+<summary>
+ Creates a non-associative infix operator with the specified properties.
+</summary>
+</member>
+<member name="M:XParsec.OperatorParsing.Operator.infixRightAssoc``6(``0,XParsec.OperatorParsing.Precedence,Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``0,XParsec.ParseError{``1,``2}}},Microsoft.FSharp.Core.FSharpFunc{``4,Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.FSharpFunc{``4,``4}}})">
+<summary>
+ Creates a right-associative infix operator with the specified properties.
+</summary>
+</member>
+<member name="M:XParsec.OperatorParsing.Operator.infixLeftAssoc``6(``0,XParsec.OperatorParsing.Precedence,Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{``1,``2,``3},Microsoft.FSharp.Core.FSharpResult{``0,XParsec.ParseError{``1,``2}}},Microsoft.FSharp.Core.FSharpFunc{``4,Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.FSharpFunc{``4,``4}}})">
+<summary>
+ Creates a left-associative infix operator with the specified properties.
+</summary>
+</member>
+<member name="M:XParsec.OperatorParsing.Operator.create``6(System.Collections.Generic.IEnumerable{XParsec.OperatorParsing.Operator{``0,``1,``2,``3,``4,``5}})">
+<summary>
+ Creates an `Operators` instance from a collection of operators.
+ The returned instance can be used to parse expressions using the defined operators.
+</summary>
+</member>
+<member name="T:XParsec.OperatorParsing.Operator">
+<summary>
+ Provides functions to create and parse expressions using operators.
+</summary>
+</member>
+<member name="P:XParsec.OperatorParsing.Pratt.PrattParsed`3.Error">
+<summary>
+ Accumulated soft error during parsing. `Errors = Empty` means
+ &quot;no soft error yet&quot; — there&apos;s no separate `voption` wrapper.
+</summary>
+</member>
+<member name="M:XParsec.OperatorParsing.BindingPower.rightAssocLhs(System.Byte)">
+<summary>
+ Calculates the LHS power for a Right Associative operator.
+ (LBP = N + 1, RBP = N)
+</summary>
+</member>
+<member name="M:XParsec.OperatorParsing.BindingPower.leftAssocRhs(System.Byte)">
+<summary>
+ Calculates the recursion power for a Left Associative operator.
+ (LBP = N, RBP = N + 1)
+</summary>
+</member>
+<member name="M:XParsec.OperatorParsing.BindingPower.fromLevel(System.Int32)">
+<summary>
+ Converts a raw precedence level (0-126) into a Base Binding Power (Odd Number).
+ Level 0 -&gt; 1&lt;bp&gt;, Level 1 -&gt; 3&lt;bp&gt;, Level 10 -&gt; 21&lt;bp&gt;.
+</summary>
+</member>
+<member name="T:XParsec.OperatorParsing.BindingPower">
+<summary>
+ Binding power is used in Pratt parsing to determine the precedence and associativity of operators.
+ Higher binding power indicates higher precedence.
+ By convention, binding powers are odd numbers N with the next higher even number indicating the operator associativity.
+ A left-associative operator with binding power N has left power N and right power N + 1.
+ A right-associative operator with binding power N has left power N + 1 and right power N.
+ A non-associative operator with binding power N has both left and right power N.
+</summary>
+</member>
+<member name="M:XParsec.CharParsers.anyStringCIReturnL``3(System.Collections.Generic.IEnumerable{System.Tuple{System.String,``0}},System.String)">
+<summary>
+ Succeeds if the next characters in the reader match any of the given strings (case-insensitive ordinal comparison),
+ and consumes the characters. Returns the associated result.
+ If no match is found, fails with the provided message.
+</summary>
+</member>
+<member name="M:XParsec.CharParsers.anyStringCIReturn``3(System.Collections.Generic.IEnumerable{System.Tuple{System.String,``0}})">
+<summary>
+ Succeeds if the next characters in the reader match any of the given strings (case-insensitive ordinal comparison),
+ and consumes the characters. Returns the associated result.
+ If no match is found, fails with a detailed error message.
+</summary>
+</member>
+<member name="M:XParsec.CharParsers.anyStringReturnL``3(System.Collections.Generic.IEnumerable{System.Tuple{System.String,``0}},System.String)">
+<summary>
+ Succeeds if the next characters in the reader match any of the given strings (with ordinal comparison),
+ and consumes the characters. Returns the associated result.
+ If no match is found, fails with the provided message.
+</summary>
+</member>
+<member name="M:XParsec.CharParsers.anyStringReturn``3(System.Collections.Generic.IEnumerable{System.Tuple{System.String,``0}})">
+<summary>
+ Succeeds if the next characters in the reader match any of the given strings (with ordinal comparison),
+ and consumes the characters. Returns the associated result.
+ If no match is found, fails with a detailed error message.
+</summary>
+</member>
+<member name="M:XParsec.CharParsers.anyStringCIL``2(System.Collections.Generic.IEnumerable{System.String},System.String)">
+<summary>
+ Succeeds if the next characters in the reader match any of the given strings (case-insensitive ordinal comparison),
+ and consumes the characters. Returns the matched string.
+ If no match is found, fails with the provided message.
+</summary>
+</member>
+<member name="M:XParsec.CharParsers.anyStringCI``2(System.Collections.Generic.IEnumerable{System.String})">
+<summary>
+ Succeeds if the next characters in the reader match any of the given strings (case-insensitive ordinal comparison),
+ and consumes the characters. Returns the matched string.
+ If no match is found, fails with a detailed error message.
+</summary>
+</member>
+<member name="M:XParsec.CharParsers.anyStringL``2(System.Collections.Generic.IEnumerable{System.String},System.String)">
+<summary>
+ Succeeds if the next characters in the reader match any of the given strings (with ordinal comparison),
+ and consumes the characters. Returns the matched string.
+ If no match is found, fails with the provided message.
+</summary>
+</member>
+<member name="M:XParsec.CharParsers.anyString``2(System.Collections.Generic.IEnumerable{System.String})">
+<summary>
+ Succeeds if the next characters in the reader match any of the given strings (with ordinal comparison),
+ and consumes the characters. Returns the matched string.
+ If no match is found, fails with a detailed error message.
+</summary>
+</member>
+<member name="M:XParsec.CharParsers.anyStringByL``2(System.StringComparison,System.Collections.Generic.IEnumerable{System.String},System.String)">
+<summary>
+ Succeeds if the next characters in the reader match any of the given strings (with the given comparison),
+ and consumes the characters. Returns the matched string.
+ If no match is found, fails with the provided message.
+</summary>
+</member>
+<member name="M:XParsec.CharParsers.anyStringBy``2(System.StringComparison,System.Collections.Generic.IEnumerable{System.String})">
+<summary>
+ Succeeds if the next characters in the reader match any of the given strings (with the given comparison),
+ and consumes the characters. Returns the matched string.
+ If no match is found, fails with a detailed error message.
+</summary>
+</member>
+<member name="M:XParsec.CharParsers.anyStringByReturnL``3(System.StringComparison,System.Collections.Generic.IEnumerable{System.Tuple{System.String,``0}},System.String)">
+<summary>
+ Succeeds if the next characters in the reader match any of the given strings (with the given comparison),
+ and consumes the characters. Returns the associated result.
+ If no match is found, fails with the provided message.
+</summary>
+</member>
+<member name="M:XParsec.CharParsers.anyStringByReturn``3(System.StringComparison,System.Collections.Generic.IEnumerable{System.Tuple{System.String,``0}})">
+<summary>
+ Succeeds if the next characters in the reader match any of the given strings (with the given comparison),
+ and consumes the characters. Returns the associated result.
+ If no match is found, fails with a detailed error message.
+</summary>
+</member>
+<member name="M:XParsec.CharParsers.pfloat``2(XParsec.Reader{System.Char,``0,``1})">
+ <summary>
+ Parses a floating-point number, accepting decimal, hexadecimal, and IEEE
+ special-value forms.
+ </summary>
+ <remarks>
+ Decimal: <c>[0-9]+(\.[0-9]*)?([eE][+-]?[0-9]+)?</c><br/>
+ Hexadecimal: <c>0[xX][0-9a-fA-F]+(\.[0-9a-fA-F]*)?([pP][+-]?[0-9]+)?</c>
+ (IEEE 754r / C99 / Java syntax, e.g. <c>0x1f.cP-5</c> = 31.75 * 2⁻⁵).<br/>
+ Special values: <c>NaN</c>, <c>Inf(inity)?</c> (case-insensitive). All forms
+ may be prefixed with <c>+</c> or <c>-</c>. Leading-dot fractions like
+ <c>.5</c> are not accepted.
+
+ <para>Fails in place if no digit (including the 0 in 0x) is parsed.
+ Fails after consuming input if a format prefix is followed by no digits.</para>
+ </remarks>
+</member>
+<member name="M:XParsec.CharParsers.pbigint``2(XParsec.Reader{System.Char,``0,``1})">
+ <summary>
+ Parses a signed integer of arbitrary precision in decimal, hexadecimal (0[xX]),
+ octal (0[oO]) or binary (0[bB]) format. The result is unbounded — there is no overflow.
+ </summary>
+ <remarks>
+ The parser fails
+ - in place, if not at least one digit (including the 0 in the format specifiers 0x etc.) can be parsed,
+ - if no digit comes after the format specifier.
+ </remarks>
+</member>
+<member name="M:XParsec.CharParsers.puint8``2(XParsec.Reader{System.Char,``0,``1})">
+ <summary>
+ Parses an 8‐bit unsigned integer, accepting decimal, hexadecimal (0[xX]), octal (0[oO]) and binary (0[bB]) formats.
+ </summary>
+ <remarks>
+ The parser fails
+ - in place, if not at least one digit (including the 0 in the format specifiers 0x etc.) can be parsed,
+ - if no digit comes after the format specifier,
+ - if the value represented by the input string is greater than Byte.MaxValue.
+ </remarks>
+</member>
+<member name="M:XParsec.CharParsers.puint16``2(XParsec.Reader{System.Char,``0,``1})">
+ <summary>
+ Parses a 16‐bit unsigned integer, accepting decimal, hexadecimal (0[xX]), octal (0[oO]) and binary (0[bB]) formats.
+ </summary>
+ <remarks>
+ The parser fails
+ - in place, if not at least one digit (including the 0 in the format specifiers 0x etc.) can be parsed,
+ - if no digit comes after the format specifier,
+ - if the value represented by the input string is greater than UInt16.MaxValue.
+ </remarks>
+</member>
+<member name="M:XParsec.CharParsers.puint32``2(XParsec.Reader{System.Char,``0,``1})">
+ <summary>
+ Parses a 32‐bit unsigned integer, accepting decimal, hexadecimal (0[xX]), octal (0[oO]) and binary (0[bB]) formats.
+ </summary>
+ <remarks>
+ The parser fails
+ - in place, if not at least one digit (including the 0 in the format specifiers 0x etc.) can be parsed,
+ - if no digit comes after the format specifier,
+ - if the value represented by the input string is greater than UInt32.MaxValue.
+ </remarks>
+</member>
+<member name="M:XParsec.CharParsers.puint64``2(XParsec.Reader{System.Char,``0,``1})">
+ <summary>
+ Parses a 64‐bit unsigned integer, accepting decimal, hexadecimal (0[xX]), octal (0[oO]) and binary (0[bB]) formats.
+ </summary>
+ <remarks>
+ The parser fails
+ - in place, if not at least one digit (including the 0 in the format specifiers 0x etc.) can be parsed,
+ - if no digit comes after the format specifier,
+ - if the value represented by the input string is greater than UInt64.MaxValue.
+ </remarks>
+</member>
+<member name="M:XParsec.CharParsers.pint8``2(XParsec.Reader{System.Char,``0,``1})">
+ <summary>
+ Parses an 8‐bit signed integer, accepting decimal, hexadecimal (0[xX]), octal (0[oO]) and binary (0[bB]) formats.
+ </summary>
+ <remarks>
+ The parser fails
+ - in place, if not at least one digit (including the 0 in the format specifiers 0x etc.) can be parsed,
+ - if no digit comes after the format specifier,
+ - if the value represented by the input string is greater than SByte.MaxValue or less than SByte.MinValue.
+ </remarks>
+</member>
+<member name="M:XParsec.CharParsers.pint16``2(XParsec.Reader{System.Char,``0,``1})">
+ <summary>
+ Parses a 16‐bit signed integer, accepting decimal, hexadecimal (0[xX]), octal (0[oO]) and binary (0[bB]) formats.
+ </summary>
+ <remarks>
+ The parser fails
+ - in place, if not at least one digit (including the 0 in the format specifiers 0x etc.) can be parsed,
+ - if no digit comes after the format specifier,
+ - if the value represented by the input string is greater than Int16.MaxValue or less than Int16.MinValue.
+ </remarks>
+</member>
+<member name="M:XParsec.CharParsers.pint32``2(XParsec.Reader{System.Char,``0,``1})">
+ <summary>
+ Parses a 32‐bit signed integer, accepting decimal, hexadecimal (0[xX]), octal (0[oO]) and binary (0[bB]) formats.
+ </summary>
+ <remarks>
+ The parser fails
+ - in place, if not at least one digit (including the 0 in the format specifiers 0x etc.) can be parsed,
+ - if no digit comes after the format specifier,
+ - if the value represented by the input string is greater than Int32.MaxValue or less than Int32.MinValue.
+ </remarks>
+</member>
+<member name="M:XParsec.CharParsers.pint64``2(XParsec.Reader{System.Char,``0,``1})">
+ <summary>
+ Parses a 64‐bit signed integer, accepting decimal, hexadecimal (0[xX]), octal (0[oO]) and binary (0[bB]) formats.
+ </summary>
+ <remarks>
+ The parser fails
+ - in place, if not at least one digit (including the 0 in the format specifiers 0x etc.) can be parsed,
+ - if no digit comes after the format specifier,
+ - if the value represented by the input string is greater than Int64.MaxValue or less than Int64.MinValue.
+ </remarks>
+</member>
+<member name="M:XParsec.CharParsers.anyOf``2(System.Collections.Generic.IEnumerable{System.Char})">
+<summary>
+ Matches any of the characters in the given sequence, and returns the character.
+</summary>
+</member>
+<member name="M:XParsec.CharParsers.skipNewline``2(XParsec.Reader{System.Char,``0,``1})">
+<summary>
+ Matches any of &quot;\n&quot;, &quot;\r&quot;, or &quot;\r\n&quot; (newline) and returns unit.
+</summary>
+</member>
+<member name="M:XParsec.CharParsers.newline``2(XParsec.Reader{System.Char,``0,``1})">
+<summary>
+ Matches any of &quot;\n&quot;, &quot;\r&quot;, or &quot;\r\n&quot; (newline) and returns the value &apos;\n&apos;.
+</summary>
+</member>
+<member name="M:XParsec.CharParsers.newlineReturn``3(``0,XParsec.Reader{System.Char,``1,``2})">
+<summary>
+ Matches any of &quot;\n&quot;, &quot;\r&quot;, or &quot;\r\n&quot; (newline) and returns the provided `result`.
+</summary>
+</member>
+<member name="M:XParsec.CharParsers.manyCharsTill``4(Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{System.Char,``1,``2},Microsoft.FSharp.Core.FSharpResult{``0,XParsec.ParseError{System.Char,``1}}},Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{System.Char,``1,``2},Microsoft.FSharp.Core.FSharpResult{``3,XParsec.ParseError{System.Char,``1}}},XParsec.Reader{System.Char,``1,``2})">
+<summary>
+ Matches zero or more characters that satisfy the parser `p`, until the parser `pEnd` succeeds.
+ Returns the string of matched characters and the parsed value of `pEnd`.
+</summary>
+</member>
+<member name="M:XParsec.CharParsers.many1Chars2``2(Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{System.Char,``0,``1},Microsoft.FSharp.Core.FSharpResult{System.Char,XParsec.ParseError{System.Char,``0}}},Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{System.Char,``0,``1},Microsoft.FSharp.Core.FSharpResult{System.Char,XParsec.ParseError{System.Char,``0}}},XParsec.Reader{System.Char,``0,``1})">
+<summary>
+ Matches one character that satisfies the parser `p1`, and then zero or more characters that satisfy the parser `p`.
+ Returns the string of matched characters.
+ This parser fails if no characters are matched by `p1`.
+</summary>
+</member>
+<member name="M:XParsec.CharParsers.spaces1``2(XParsec.Reader{System.Char,``0,``1})">
+<summary>
+ Matches one or more whitespace characters (space, tab, carriage return, newline) and returns unit.
+</summary>
+</member>
+<member name="M:XParsec.CharParsers.spaces``2(XParsec.Reader{System.Char,``0,``1})">
+<summary>
+ Matches zero or more whitespace characters (space, tab, carriage return, newline) and returns unit.
+</summary>
+</member>
+<member name="M:XParsec.CharParsers.many1Chars``2(Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{System.Char,``0,``1},Microsoft.FSharp.Core.FSharpResult{System.Char,XParsec.ParseError{System.Char,``0}}},XParsec.Reader{System.Char,``0,``1})">
+<summary>
+ Matches one or more characters that satisfy the given parser `p1`, and returns the string of matched characters.
+ This parser fails if no characters are matched.
+ Raises `InfiniteLoopException` if `p1` succeeds without consuming input — matches the
+ behaviour of `many1`, `sepBy1`, `many1Till`, and `chainl1`.
+</summary>
+</member>
+<member name="M:XParsec.CharParsers.manyChars``2(Microsoft.FSharp.Core.FSharpFunc{XParsec.Reader{System.Char,``0,``1},Microsoft.FSharp.Core.FSharpResult{System.Char,XParsec.ParseError{System.Char,``0}}},XParsec.Reader{System.Char,``0,``1})">
+<summary>
+ Matches zero or more characters that satisfy the given parser `p1`, and returns the string of matched characters.
+ This parser always succeeds, even if no characters are matched, returning an empty string.
+ Raises `InfiniteLoopException` if `p1` succeeds without consuming input — matches the
+ behaviour of `many`, `sepBy*`, `manyTill`, and `chainl1`.
+</summary>
+</member>
+<member name="M:XParsec.CharParsers.digit``2(XParsec.Reader{System.Char,``0,``1})">
+<summary>
+ Succeeds if the next character in the reader is an ASCII digit, and consumes one char. Returns the char.
+</summary>
+</member>
+<member name="M:XParsec.CharParsers.asciiLetter``2(XParsec.Reader{System.Char,``0,``1})">
+<summary>
+ Succeeds if the next character in the reader is an ASCII letter, and consumes one char. Returns the char.
+</summary>
+</member>
+<member name="M:XParsec.CharParsers.stringReturn``3(System.String,``0,XParsec.Reader{System.Char,``1,``2})">
+<summary>
+ Succeeds if the next characters in the reader match the given string, and consumes the characters. Returns `result`.
+ An empty string vacuously matches at any position (including end-of-input) and consumes nothing.
+</summary>
+</member>
+<member name="M:XParsec.CharParsers.stringCIReturn``3(System.String,``0,XParsec.Reader{System.Char,``1,``2})">
+<summary>
+ Succeeds if the next characters in the reader match the given string (case insensitive), and consumes the characters. Returns `result`.
+ An empty string vacuously matches at any position (including end-of-input) and consumes nothing.
+</summary>
+</member>
+<member name="M:XParsec.CharParsers.pstring``2(System.String,XParsec.Reader{System.Char,``0,``1})">
+<summary>
+ Succeeds if the next characters in the reader match the given string, and consumes the characters. Returns the string, otherwise fails with the Expected string.
+ An empty string vacuously matches at any position (including end-of-input) and consumes nothing.
+</summary>
+</member>
+<member name="M:XParsec.CharParsers.skipAnyChar``2(XParsec.Reader{System.Char,``0,``1})">
+<summary>
+ Succeeds if the Reader position is not at the end of the input, and consumes one char. Returns unit.
+</summary>
+</member>
+<member name="M:XParsec.CharParsers.anyChar``2(XParsec.Reader{System.Char,``0,``1})">
+<summary>
+ Succeeds if the Reader position is not at the end of the input, and consumes one char.
+</summary>
+</member>
+<member name="M:XParsec.CharParsers.charReturn``3(System.Char,``0,XParsec.Reader{System.Char,``1,``2})">
+<summary>
+ Succeeds if the next char in the input is equal to the given char, and consumes one char. Returns the `result`, otherwise fails with the Expected char.
+</summary>
+</member>
+<member name="M:XParsec.CharParsers.skipChar``2(System.Char,XParsec.Reader{System.Char,``0,``1})">
+<summary>
+ Succeeds if the next char in the input is equal to the given char, and consumes one char. Returns unit, otherwise fails with the Expected char.
+</summary>
+</member>
+<member name="M:XParsec.CharParsers.pchar``2(System.Char,XParsec.Reader{System.Char,``0,``1})">
+<summary>
+ Succeeds if the next char in the input is equal to the given char, and consumes one char. Returns the char, otherwise fails with the Expected char.
+</summary>
+</member>
+<member name="T:XParsec.CharParsers">
+<summary>
+ Defines parsers for characters and strings.
+ These parsers are more optimized for working with strings than the general parsers in `XParsec.Parsers`.
+</summary>
+</member>
+<member name="M:XParsec.ByteParsers.pIntPtrLE``2(XParsec.Reader{System.Byte,``0,``1})">
+<summary>
+ Parses a pointer-sized signed integer in little-endian format.
+</summary>
+</member>
+<member name="M:XParsec.ByteParsers.pIntPtrBE``2(XParsec.Reader{System.Byte,``0,``1})">
+<summary>
+ Parses a pointer-sized signed integer in big-endian format.
+</summary>
+</member>
+<member name="M:XParsec.ByteParsers.pInt128LE``2(XParsec.Reader{System.Byte,``0,``1})">
+<summary>
+ Parses a 128-bit signed integer in little-endian format.
+</summary>
+</member>
+<member name="M:XParsec.ByteParsers.pInt128BE``2(XParsec.Reader{System.Byte,``0,``1})">
+<summary>
+ Parses a 128-bit signed integer in big-endian format.
+</summary>
+</member>
+<member name="M:XParsec.ByteParsers.pInt64LE``2(XParsec.Reader{System.Byte,``0,``1})">
+<summary>
+ Parses a 64-bit signed integer in little-endian format.
+</summary>
+</member>
+<member name="M:XParsec.ByteParsers.pInt64BE``2(XParsec.Reader{System.Byte,``0,``1})">
+<summary>
+ Parses a 64-bit signed integer in big-endian format.
+</summary>
+</member>
+<member name="M:XParsec.ByteParsers.pInt32LE``2(XParsec.Reader{System.Byte,``0,``1})">
+<summary>
+ Parses a 32-bit signed integer in little-endian format.
+</summary>
+</member>
+<member name="M:XParsec.ByteParsers.pInt32BE``2(XParsec.Reader{System.Byte,``0,``1})">
+<summary>
+ Parses a 32-bit signed integer in big-endian format.
+</summary>
+</member>
+<member name="M:XParsec.ByteParsers.pInt16LE``2(XParsec.Reader{System.Byte,``0,``1})">
+<summary>
+ Parses a 16-bit signed integer in little-endian format.
+</summary>
+</member>
+<member name="M:XParsec.ByteParsers.pInt16BE``2(XParsec.Reader{System.Byte,``0,``1})">
+<summary>
+ Parses a 16-bit signed integer in big-endian format.
+</summary>
+</member>
+<member name="M:XParsec.ByteParsers.pUIntPtrLE``2(XParsec.Reader{System.Byte,``0,``1})">
+<summary>
+ Parses a pointer-sized unsigned integer in little-endian format.
+</summary>
+</member>
+<member name="M:XParsec.ByteParsers.pUIntPtrBE``2(XParsec.Reader{System.Byte,``0,``1})">
+<summary>
+ Parses a pointer-sized unsigned integer in big-endian format.
+</summary>
+</member>
+<member name="M:XParsec.ByteParsers.pUInt128LE``2(XParsec.Reader{System.Byte,``0,``1})">
+<summary>
+ Parses a 128-bit unsigned integer in little-endian format.
+</summary>
+</member>
+<member name="M:XParsec.ByteParsers.pUInt128BE``2(XParsec.Reader{System.Byte,``0,``1})">
+<summary>
+ Parses a 128-bit unsigned integer in big-endian format.
+</summary>
+</member>
+<member name="M:XParsec.ByteParsers.pUInt64LE``2(XParsec.Reader{System.Byte,``0,``1})">
+<summary>
+ Parses a 64-bit unsigned integer in little-endian format.
+</summary>
+</member>
+<member name="M:XParsec.ByteParsers.pUInt64BE``2(XParsec.Reader{System.Byte,``0,``1})">
+<summary>
+ Parses a 64-bit unsigned integer in big-endian format.
+</summary>
+</member>
+<member name="M:XParsec.ByteParsers.pUInt32LE``2(XParsec.Reader{System.Byte,``0,``1})">
+<summary>
+ Parses a 32-bit unsigned integer in little-endian format.
+</summary>
+</member>
+<member name="M:XParsec.ByteParsers.pUInt32BE``2(XParsec.Reader{System.Byte,``0,``1})">
+<summary>
+ Parses a 32-bit unsigned integer in big-endian format.
+</summary>
+</member>
+<member name="M:XParsec.ByteParsers.pUInt16LE``2(XParsec.Reader{System.Byte,``0,``1})">
+<summary>
+ Parses a 16-bit unsigned integer in little-endian format.
+</summary>
+</member>
+<member name="M:XParsec.ByteParsers.pUInt16BE``2(XParsec.Reader{System.Byte,``0,``1})">
+<summary>
+ Parses a 16-bit unsigned integer in big-endian format.
+</summary>
+</member>
+<member name="M:XParsec.ByteParsers.pFloat64LE``2(XParsec.Reader{System.Byte,``0,``1})">
+<summary>
+ Parses a 64-bit double-precision floating-point number in little-endian format.
+</summary>
+</member>
+<member name="M:XParsec.ByteParsers.pFloat64BE``2(XParsec.Reader{System.Byte,``0,``1})">
+<summary>
+ Parses a 64-bit double-precision floating-point number in big-endian format.
+</summary>
+</member>
+<member name="M:XParsec.ByteParsers.pFloat32LE``2(XParsec.Reader{System.Byte,``0,``1})">
+<summary>
+ Parses a 32-bit single-precision floating-point number in little-endian format.
+</summary>
+</member>
+<member name="M:XParsec.ByteParsers.pFloat32BE``2(XParsec.Reader{System.Byte,``0,``1})">
+<summary>
+ Parses a 32-bit single-precision floating-point number in big-endian format.
+</summary>
+</member>
+<member name="M:XParsec.ByteParsers.pFloat16LE``2(XParsec.Reader{System.Byte,``0,``1})">
+<summary>
+ Parses a 16-bit half-precision floating-point number in little-endian format.
+</summary>
+</member>
+<member name="M:XParsec.ByteParsers.pFloat16BE``2(XParsec.Reader{System.Byte,``0,``1})">
+<summary>
+ Parses a 16-bit half-precision floating-point number in big-endian format.
+</summary>
+</member>
+<member name="M:XParsec.Reader.ofMemory``2(System.ReadOnlyMemory{``0},``1)">
+<summary>
+ Creates a new reader from the input memory and state.
+</summary>
+</member>
+<member name="M:XParsec.Reader.ofResizeArray``2(System.Collections.Generic.List{``0},``1)">
+<summary>
+ Creates a new reader from the input resize array and state.
+</summary>
+</member>
+<member name="M:XParsec.Reader.ofImmutableArray``2(System.Collections.Immutable.ImmutableArray{``0},``1)">
+<summary>
+ Creates a new reader from the input immutable array and state.
+</summary>
+</member>
+<member name="M:XParsec.Reader.ofArray``2(``0[],``1)">
+<summary>
+ Creates a new reader from the input array and state.
+</summary>
+</member>
+<member name="M:XParsec.Reader.ofString``1(System.String,``0)">
+<summary>
+ Creates a new reader from the input string and state.
+</summary>
+</member>
+</members>
+</doc>

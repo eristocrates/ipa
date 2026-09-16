@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<coreProperties xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.openxmlformats.org/package/2006/metadata/core-properties">
+  <dc:creator>ktsu.dev contributors</dc:creator>
+  <dc:description>Settles a graph into a readable shape by simulation: bodies repel across the clear space between their bounding boxes, edges pull like springs, gravity holds the whole together, and overlapping boxes are pushed apart. Pure physics with no rendering, no UI dependency and no runtime package dependencies — double precision throughout, AOT- and trim-clean, and exposed at three levels so a caller can bring its own types, submit plain ids in bulk, or drive the flat core. Step it by a frame delta or solve to convergence, and read back energy and stability. The same core ships as a Native AOT shared library with a C ABI.</dc:description>
+  <dc:identifier>ktsu.ForceDirectedLayout</dc:identifier>
+  <version>3.37.0</version>
+  <keywords>.NET;C#;Dear ImGui;ImGui;GUI;desktop;UI;widgets;theming;popups;modal;node graph;node editor;immediate mode;cross-platform;OpenGL;windowing;Silk.NET;Hexa.NET;frame limiter;PID controller;DPI;font management;texture caching;scoped styling;RAII;tabs;search box;knob;radial progress;divider;grid;file browser;theme browser;color;accessibility;markdown;syntax highlighting;code highlighting;tokenizer;lexer;embedded languages;renderer agnostic</keywords>
+  <lastModifiedBy>NuGet.Packaging, Version=7.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35;.NET 8.0</lastModifiedBy>
+</coreProperties>

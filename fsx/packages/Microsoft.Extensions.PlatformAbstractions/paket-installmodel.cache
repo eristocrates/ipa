@@ -1,0 +1,13 @@
+D: /lib
+D: /lib/net451
+F: /lib/net451/Microsoft.Extensions.PlatformAbstractions.dll
+F: /lib/net451/Microsoft.Extensions.PlatformAbstractions.xml
+D: /lib/netstandard1.3
+F: /lib/netstandard1.3/Microsoft.Extensions.PlatformAbstractions.dll
+F: /lib/netstandard1.3/Microsoft.Extensions.PlatformAbstractions.xml
+D: /_rels
+F: /_rels/.rels
+F: /.signature.p7s
+F: /microsoft.extensions.platformabstractions.1.1.0.nupkg
+F: /Microsoft.Extensions.PlatformAbstractions.nuspec
+F: /[Content_Types].xml

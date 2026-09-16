@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<coreProperties xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.openxmlformats.org/package/2006/metadata/core-properties">
+  <dc:creator>Rolosoft</dc:creator>
+  <dc:description>Parsing domain names is not easy. For example, how does one extract Top Level Domain (TLD) data from the address 'me.com.br'? Is the TLD br, or is it com.br? The correct answer is com.br, but how can we know? The answer is that it is not possible to write simple rules in code to determine TLDs with any accuracy. Therefore, a list of all TLDs is maintained at https://publicsuffix.org.
+
+This software parses domain names into TLD, Second Level Domain (SLD) and host using rules found at https://publicsuffix.org.
+
+Features of this package include: High performance by using aggressive caching, data redundancy, async logging and async/await compatible methods.
+
+This component is for anyone that needs reliable, accurate and fast domain name parsing.</dc:description>
+  <dc:identifier>Rsft.Net.DomainParser</dc:identifier>
+  <version>1.3.237</version>
+  <keywords>domain parsing</keywords>
+  <lastModifiedBy>NuGet.Build.Tasks.Pack, Version=6.7.1.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35;.NET Standard 2.0</lastModifiedBy>
+</coreProperties>

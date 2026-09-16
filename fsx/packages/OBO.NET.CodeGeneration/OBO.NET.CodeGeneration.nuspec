@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>OBO.NET.CodeGeneration</id>
+    <version>0.5.0</version>
+    <authors>Oliver Maus, F# open source contributors</authors>
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <projectUrl>https://github.com/CSBiology/OBO.NET</projectUrl>
+    <description>An OBO file format to F# source code generator, written in F#.</description>
+    <releaseNotes>Additions:
+Update document header tag parsing (WIP)
+Code generation (#32)
+Play around in playground
+Update type and functions
+Play around in playground
+Update functionality
+Replace string matching with Regex
+Finish `fromLines` parsing function
+Add new `fromLines` functionality to library
+Update OboEntries functions for document header tags
+Add unit tests for new `fromLines` function
+Merge branch 'main' into feature-DocumentHeaderTags-#33
+Add ControlledVocabulary dependency
+Add `toCvTerm` functionality to DBXref
+Merge pull request #35 from CSBiology/feature-DocumentHeaderTags-#33
+Add DBXref functionality and expand type
+Add function to return OboTerm as CvTerm
+Add functions to check for and return equivalence among terms
+Merge branch 'main' into feature-resolveXrefsEquivalent-#34
+Create manage-issues.yml (#37)
+Do requested changes
+Merge pull request #36 from CSBiology/feature-resolveXrefsEquivalent-#34
+Bugfixes:
+Fix bug (incorrect order and missing `List.rev`s)</releaseNotes>
+    <tags>ontology fsharp file obo codegeneration code generation</tags>
+    <repository type="git" url="https://github.com/CSBiology/OBO.NET" />
+    <dependencies>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="OBO.NET" version="0.5.0" exclude="Build,Analyzers" />
+        <dependency id="FSharp.Core" version="6.0.7" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>json-ld.net</id>
+    <version>1.0.7</version>
+    <authors>NuGet,linked-data-dotnet</authors>
+    <licenseUrl>https://raw.githubusercontent.com/linked-data-dotnet/json-ld.net/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/linked-data-dotnet/json-ld.net/</projectUrl>
+    <iconUrl>http://json-ld.org/images/json-ld-logo-64.png</iconUrl>
+    <description>JSON-LD processor for .NET
+
+Implements the W3C JSON-LD 1.0 standard.</description>
+    <tags>json-ld jsonld json linked-data rdf semantic web</tags>
+    <repository url="https://github.com/linked-data-dotnet/json-ld.net" />
+    <dependencies>
+      <group targetFramework=".NETFramework4.0">
+        <dependency id="Microsoft.Bcl.Async" version="1.0.168" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Net.Http" version="2.2.29" exclude="Build,Analyzers" />
+        <dependency id="Newtonsoft.Json" version="9.0.1" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework=".NETStandard1.1">
+        <dependency id="NETStandard.Library" version="1.6.1" exclude="Build,Analyzers" />
+        <dependency id="Newtonsoft.Json" version="9.0.1" exclude="Build,Analyzers" />
+        <dependency id="System.Security.Cryptography.Algorithms" version="4.3.1" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="Newtonsoft.Json" version="9.0.1" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

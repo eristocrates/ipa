@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>Waher.Content.Semantic</id>
+    <version>2.3.2</version>
+    <authors>Peter Waher</authors>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <license type="file">LICENSE.txt</license>
+    <licenseUrl>https://aka.ms/deprecateLicenseUrl</licenseUrl>
+    <icon>Icon_64x64.png</icon>
+    <projectUrl>https://github.com/PeterWaher/IoTGateway/tree/master/Content/Waher.Content.Semantic</projectUrl>
+    <description>The library contains encoders and decoders of semantic information, using well-known formats defined by the W3C for the semantic web, such as Turtle, RDF/XML and SPARQL results. Library also contains abstraction layer and extensiblea architecture for literals, as well as interfaces for semantic cubes for procedural access of semantic information.</description>
+    <copyright>Copyright © Waher Data AB 2023-2026. All rights reserved.</copyright>
+    <tags>Encoding Decoding Semantic Web Turtle, RDF, SPARQL</tags>
+    <repository type="GitHub" url="https://github.com/PeterWaher/IoTGateway" commit="3ab97786b709dac9fc6405b0391267858c7d95e5" />
+    <dependencies>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="Waher.Content.Html" version="3.2.2" exclude="Build,Analyzers" />
+        <dependency id="Waher.Content.Markdown" version="6.3.3" exclude="Build,Analyzers" />
+        <dependency id="Waher.Content.Xml" version="3.1.6" exclude="Build,Analyzers" />
+        <dependency id="Waher.Content" version="3.6.2" exclude="Build,Analyzers" />
+        <dependency id="Waher.Persistence" version="2.0.1" exclude="Build,Analyzers" />
+        <dependency id="Waher.Runtime.Cache" version="2.2.1" exclude="Build,Analyzers" />
+        <dependency id="Waher.Runtime.Inventory" version="1.4.6" exclude="Build,Analyzers" />
+        <dependency id="Waher.Script" version="2.15.0" exclude="Build,Analyzers" />
+        <dependency id="System.Net.Http" version="4.3.4" exclude="Build,Analyzers" />
+        <dependency id="System.Text.RegularExpressions" version="4.3.1" exclude="Build,Analyzers" />
+        <dependency id="System.Xml.XmlDocument" version="4.3.0" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

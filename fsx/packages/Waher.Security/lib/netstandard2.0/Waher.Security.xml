@@ -1,0 +1,940 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Waher.Security</name>
+    </assembly>
+    <members>
+        <member name="T:Waher.Security.Authorization.CustomPrivilege`1">
+            <summary>
+            Authorization based on a custom privilege.
+            </summary>
+        </member>
+        <member name="M:Waher.Security.Authorization.CustomPrivilege`1.#ctor(System.Func{`0,System.String})">
+            <summary>
+            Authorization based on a custom privilege.
+            </summary>
+            <param name="CalculatePrivilege">Function to calculate the privilege required for 
+            authorization of a resource.</param>
+        </member>
+        <member name="M:Waher.Security.Authorization.CustomPrivilege`1.IsAuthorized(`0,Waher.Security.IHasPrivileges)">
+            <summary>
+            Checks if an user or object is authorized to perform an action.
+            </summary>
+            <param name="Resource">Resource to authorize access to.</param>
+            <param name="User">User or object with access privileges.</param>
+            <returns>If authorized access.</returns>
+        </member>
+        <member name="T:Waher.Security.Authorization.CustomPrivileges`1">
+            <summary>
+            Authorization based on a custom privileges.
+            </summary>
+        </member>
+        <member name="M:Waher.Security.Authorization.CustomPrivileges`1.#ctor(System.Func{`0,System.String[]})">
+            <summary>
+            Authorization based on a custom privileges.
+            </summary>
+            <param name="CalculatePrivileges">Function to calculate the privileges required for 
+            authorization of a resource.</param>
+        </member>
+        <member name="M:Waher.Security.Authorization.CustomPrivileges`1.IsAuthorized(`0,Waher.Security.IHasPrivileges)">
+            <summary>
+            Checks if an user or object is authorized to perform an action.
+            </summary>
+            <param name="Resource">Resource to authorize access to.</param>
+            <param name="User">User or object with access privileges.</param>
+            <returns>If authorized access.</returns>
+        </member>
+        <member name="T:Waher.Security.Authorization.MultiplePrivileges`1">
+            <summary>
+            Authorization based on multiple privileges.
+            </summary>
+        </member>
+        <member name="M:Waher.Security.Authorization.MultiplePrivileges`1.#ctor(System.String[])">
+            <summary>
+            Authorization based on multiple privileges.
+            </summary>
+            <param name="Privileges">Privileges required for authorization.</param>
+        </member>
+        <member name="M:Waher.Security.Authorization.MultiplePrivileges`1.IsAuthorized(`0,Waher.Security.IHasPrivileges)">
+            <summary>
+            Checks if an user or object is authorized to perform an action.
+            </summary>
+            <param name="Resource">Resource to authorize access to.</param>
+            <param name="User">User or object with access privileges.</param>
+            <returns>If authorized access.</returns>
+        </member>
+        <member name="T:Waher.Security.Authorization.SinglePrivilege`1">
+            <summary>
+            Authorization based on a single privilege.
+            </summary>
+        </member>
+        <member name="M:Waher.Security.Authorization.SinglePrivilege`1.#ctor(System.String)">
+            <summary>
+            Authorization based on a single privilege.
+            </summary>
+            <param name="Privilege">Privilege required for authorization.</param>
+        </member>
+        <member name="M:Waher.Security.Authorization.SinglePrivilege`1.IsAuthorized(`0,Waher.Security.IHasPrivileges)">
+            <summary>
+            Checks if an user or object is authorized to perform an action.
+            </summary>
+            <param name="Resource">Resource to authorize access to.</param>
+            <param name="User">User or object with access privileges.</param>
+            <returns>If authorized access.</returns>
+        </member>
+        <member name="T:Waher.Security.Crypto">
+            <summary>
+            Helper methods for encrypting and decrypting streams of data.
+            </summary>
+        </member>
+        <member name="F:Waher.Security.Crypto.SecureTls">
+            <summary>
+            TLS 1.2 &amp; 1.3
+            </summary>
+        </member>
+        <member name="F:Waher.Security.Crypto.TlsOnly">
+            <summary>
+            TLS 1.0, 1.1, 1.2 &amp; 1.3
+            </summary>
+        </member>
+        <member name="M:Waher.Security.Crypto.CryptoTransform(System.Security.Cryptography.ICryptoTransform,System.IO.Stream,System.IO.Stream)">
+            <summary>
+            Transforms a stream of data.
+            </summary>
+            <param name="Transform">Cryptographic transform.</param>
+            <param name="Source">Source.</param>
+            <param name="Destination">Destination</param>
+        </member>
+        <member name="M:Waher.Security.Crypto.CryptoTransform(System.Security.Cryptography.ICryptoTransform,System.IO.Stream,System.IO.Stream,System.Int32)">
+            <summary>
+            Transforms a stream of data.
+            </summary>
+            <param name="Transform">Cryptographic transform.</param>
+            <param name="Source">Source.</param>
+            <param name="Destination">Destination</param>
+            <param name="BufferSize">Intermediate buffer size. (Default=65536 bytes)</param>
+        </member>
+        <member name="M:Waher.Security.Crypto.CopyAsync(System.IO.Stream,System.IO.Stream,System.Int64)">
+            <summary>
+            Copies <paramref name="DataLen"/> number of bytes from <paramref name="From"/> to <paramref name="To"/>.
+            </summary>
+            <param name="From">Source data stream.</param>
+            <param name="To">Destination data stream.</param>
+            <param name="DataLen">Number of bytes to copy.</param>
+            <returns>If copy was successful.</returns>
+        </member>
+        <member name="T:Waher.Security.HashFunctionArray">
+            <summary>
+            Delegate to hash function.
+            </summary>
+            <param name="Data">Data to be hashed.</param>
+            <returns>Hash digest</returns>
+        </member>
+        <member name="T:Waher.Security.HashFunctionStream">
+            <summary>
+            Delegate to hash function.
+            </summary>
+            <param name="Data">Data to be hashed.</param>
+            <returns>Hash digest</returns>
+        </member>
+        <member name="T:Waher.Security.HashFunction">
+            <summary>
+            Hash method enumeration.
+            </summary>
+        </member>
+        <member name="F:Waher.Security.HashFunction.MD5">
+            <summary>
+            MD5 Hash function
+            </summary>
+        </member>
+        <member name="F:Waher.Security.HashFunction.SHA1">
+            <summary>
+            SHA-1 Hash function
+            </summary>
+        </member>
+        <member name="F:Waher.Security.HashFunction.SHA256">
+            <summary>
+            SHA-256 Hash function
+            </summary>
+        </member>
+        <member name="F:Waher.Security.HashFunction.SHA384">
+            <summary>
+            SHA-384 Hash function
+            </summary>
+        </member>
+        <member name="F:Waher.Security.HashFunction.SHA512">
+            <summary>
+            SHA-512 Hash function
+            </summary>
+        </member>
+        <member name="T:Waher.Security.Hashes">
+            <summary>
+            Contains methods for simple hash calculations.
+            </summary>
+        </member>
+        <member name="M:Waher.Security.Hashes.BinaryToString(System.Byte[])">
+            <summary>
+            Converts an array of bytes to a string with their hexadecimal representations (in lower case).
+            </summary>
+            <param name="Data">Binary Data</param>
+            <returns>Hexadecimal string representation.</returns>
+        </member>
+        <member name="M:Waher.Security.Hashes.BinaryToString(System.Byte[],System.Boolean)">
+            <summary>
+            Converts an array of bytes to a string with their hexadecimal representations (in lower case).
+            </summary>
+            <param name="Data">Binary Data</param>
+            <param name="SpaceDelimiter">If bytes are to be separated by space characters.</param>
+            <returns>Hexadecimal string representation.</returns>
+        </member>
+        <member name="M:Waher.Security.Hashes.StringToBinary(System.String)">
+            <summary>
+            Parses a hex string.
+            </summary>
+            <param name="s">String.</param>
+            <returns>Array of bytes found in the string, or null if not a hex string.</returns>
+        </member>
+        <member name="M:Waher.Security.Hashes.ComputeHashString(Waher.Security.HashFunction,System.Byte[])">
+            <summary>
+            Computes a hash of a block of binary data.
+            </summary>
+            <param name="Function">Hash function.</param>
+            <param name="Data">Binary data.</param>
+            <returns>String representation of hash.</returns>
+        </member>
+        <member name="M:Waher.Security.Hashes.ComputeHashString(Waher.Security.HashFunction,System.IO.Stream)">
+            <summary>
+            Computes a hash of a block of binary data.
+            </summary>
+            <param name="Function">Hash function.</param>
+            <param name="Data">Binary data.</param>
+            <returns>String representation of hash.</returns>
+        </member>
+        <member name="M:Waher.Security.Hashes.ComputeHash(Waher.Security.HashFunction,System.Byte[])">
+            <summary>
+            Computes a hash of a block of binary data.
+            </summary>
+            <param name="Function">Hash function.</param>
+            <param name="Data">Binary data.</param>
+            <returns>Hash value.</returns>
+        </member>
+        <member name="M:Waher.Security.Hashes.ComputeHash(Waher.Security.HashFunction,System.IO.Stream)">
+            <summary>
+            Computes a hash of a block of binary data.
+            </summary>
+            <param name="Function">Hash function.</param>
+            <param name="Data">Binary data.</param>
+            <returns>Hash value.</returns>
+        </member>
+        <member name="M:Waher.Security.Hashes.ComputeHMACHashString(Waher.Security.HashFunction,System.Byte[],System.Byte[])">
+            <summary>
+            Computes a hash of a block of binary data.
+            </summary>
+            <param name="Function">Hash function.</param>
+            <param name="Key">Binary key.</param>
+            <param name="Data">Binary data.</param>
+            <returns>String representation of hash.</returns>
+        </member>
+        <member name="M:Waher.Security.Hashes.ComputeHMACHashString(Waher.Security.HashFunction,System.Byte[],System.IO.Stream)">
+            <summary>
+            Computes a hash of a block of binary data.
+            </summary>
+            <param name="Function">Hash function.</param>
+            <param name="Key">Binary key.</param>
+            <param name="Data">Binary data.</param>
+            <returns>String representation of hash.</returns>
+        </member>
+        <member name="M:Waher.Security.Hashes.ComputeHMACHash(Waher.Security.HashFunction,System.Byte[],System.Byte[])">
+            <summary>
+            Computes a hash of a block of binary data.
+            </summary>
+            <param name="Function">Hash function.</param>
+            <param name="Key">Binary key.</param>
+            <param name="Data">Binary data.</param>
+            <returns>Hash value.</returns>
+        </member>
+        <member name="M:Waher.Security.Hashes.ComputeHMACHash(Waher.Security.HashFunction,System.Byte[],System.IO.Stream)">
+            <summary>
+            Computes a hash of a block of binary data.
+            </summary>
+            <param name="Function">Hash function.</param>
+            <param name="Key">Binary key.</param>
+            <param name="Data">Binary data.</param>
+            <returns>Hash value.</returns>
+        </member>
+        <member name="M:Waher.Security.Hashes.ComputeSHA1HashString(System.Byte[])">
+            <summary>
+            Computes the SHA-1 hash of a block of binary data.
+            </summary>
+            <param name="Data">Binary data.</param>
+            <returns>String representation of hash.</returns>
+        </member>
+        <member name="M:Waher.Security.Hashes.ComputeSHA1HashString(System.IO.Stream)">
+            <summary>
+            Computes the SHA-1 hash of a block of binary data.
+            </summary>
+            <param name="Data">Binary data.</param>
+            <returns>String representation of hash.</returns>
+        </member>
+        <member name="M:Waher.Security.Hashes.ComputeSHA1Hash(System.Byte[])">
+            <summary>
+            Computes the SHA-1 hash of a block of binary data.
+            </summary>
+            <param name="Data">Binary data.</param>
+            <returns>Hash value.</returns>
+        </member>
+        <member name="M:Waher.Security.Hashes.ComputeSHA1Hash(System.IO.Stream)">
+            <summary>
+            Computes the SHA-1 hash of a block of binary data.
+            </summary>
+            <param name="Data">Binary data.</param>
+            <returns>Hash value.</returns>
+        </member>
+        <member name="M:Waher.Security.Hashes.ComputeSHA256HashString(System.Byte[])">
+            <summary>
+            Computes the SHA-256 hash of a block of binary data.
+            </summary>
+            <param name="Data">Binary data.</param>
+            <returns>String representation of hash.</returns>
+        </member>
+        <member name="M:Waher.Security.Hashes.ComputeSHA256HashString(System.IO.Stream)">
+            <summary>
+            Computes the SHA-256 hash of a block of binary data.
+            </summary>
+            <param name="Data">Binary data.</param>
+            <returns>String representation of hash.</returns>
+        </member>
+        <member name="M:Waher.Security.Hashes.ComputeSHA256Hash(System.Byte[])">
+            <summary>
+            Computes the SHA-256 hash of a block of binary data.
+            </summary>
+            <param name="Data">Binary data.</param>
+            <returns>Hash value.</returns>
+        </member>
+        <member name="M:Waher.Security.Hashes.ComputeSHA256Hash(System.IO.Stream)">
+            <summary>
+            Computes the SHA-256 hash of a block of binary data.
+            </summary>
+            <param name="Data">Binary data.</param>
+            <returns>Hash value.</returns>
+        </member>
+        <member name="M:Waher.Security.Hashes.ComputeSHA384HashString(System.Byte[])">
+            <summary>
+            Computes the SHA-384 hash of a block of binary data.
+            </summary>
+            <param name="Data">Binary data.</param>
+            <returns>String representation of hash.</returns>
+        </member>
+        <member name="M:Waher.Security.Hashes.ComputeSHA384HashString(System.IO.Stream)">
+            <summary>
+            Computes the SHA-384 hash of a block of binary data.
+            </summary>
+            <param name="Data">Binary data.</param>
+            <returns>String representation of hash.</returns>
+        </member>
+        <member name="M:Waher.Security.Hashes.ComputeSHA384Hash(System.Byte[])">
+            <summary>
+            Computes the SHA-384 hash of a block of binary data.
+            </summary>
+            <param name="Data">Binary data.</param>
+            <returns>Hash value.</returns>
+        </member>
+        <member name="M:Waher.Security.Hashes.ComputeSHA384Hash(System.IO.Stream)">
+            <summary>
+            Computes the SHA-384 hash of a block of binary data.
+            </summary>
+            <param name="Data">Binary data.</param>
+            <returns>Hash value.</returns>
+        </member>
+        <member name="M:Waher.Security.Hashes.ComputeSHA512HashString(System.Byte[])">
+            <summary>
+            Computes the SHA-512 hash of a block of binary data.
+            </summary>
+            <param name="Data">Binary data.</param>
+            <returns>String representation of hash.</returns>
+        </member>
+        <member name="M:Waher.Security.Hashes.ComputeSHA512HashString(System.IO.Stream)">
+            <summary>
+            Computes the SHA-512 hash of a block of binary data.
+            </summary>
+            <param name="Data">Binary data.</param>
+            <returns>String representation of hash.</returns>
+        </member>
+        <member name="M:Waher.Security.Hashes.ComputeSHA512Hash(System.Byte[])">
+            <summary>
+            Computes the SHA-512 hash of a block of binary data.
+            </summary>
+            <param name="Data">Binary data.</param>
+            <returns>Hash value.</returns>
+        </member>
+        <member name="M:Waher.Security.Hashes.ComputeSHA512Hash(System.IO.Stream)">
+            <summary>
+            Computes the SHA-512 hash of a block of binary data.
+            </summary>
+            <param name="Data">Binary data.</param>
+            <returns>Hash value.</returns>
+        </member>
+        <member name="M:Waher.Security.Hashes.ComputeMD5HashString(System.Byte[])">
+            <summary>
+            Computes the MD5 hash of a block of binary data.
+            </summary>
+            <param name="Data">Binary data.</param>
+            <returns>String representation of hash.</returns>
+        </member>
+        <member name="M:Waher.Security.Hashes.ComputeMD5HashString(System.IO.Stream)">
+            <summary>
+            Computes the MD5 hash of a block of binary data.
+            </summary>
+            <param name="Data">Binary data.</param>
+            <returns>String representation of hash.</returns>
+        </member>
+        <member name="M:Waher.Security.Hashes.ComputeMD5Hash(System.Byte[])">
+            <summary>
+            Computes the MD5 hash of a block of binary data.
+            </summary>
+            <param name="Data">Binary data.</param>
+            <returns>Hash value.</returns>
+        </member>
+        <member name="M:Waher.Security.Hashes.ComputeMD5Hash(System.IO.Stream)">
+            <summary>
+            Computes the MD5 hash of a block of binary data.
+            </summary>
+            <param name="Data">Binary data.</param>
+            <returns>Hash value.</returns>
+        </member>
+        <member name="M:Waher.Security.Hashes.ComputeHMACSHA1HashString(System.Byte[],System.Byte[])">
+            <summary>
+            Computes the HMAC-SHA-1 hash of a block of binary data.
+            </summary>
+            <param name="Key">Binary key.</param>
+            <param name="Data">Binary data.</param>
+            <returns>String representation of hash.</returns>
+        </member>
+        <member name="M:Waher.Security.Hashes.ComputeHMACSHA1Hash(System.Byte[],System.Byte[])">
+            <summary>
+            Computes the HMAC-SHA-1 hash of a block of binary data.
+            </summary>
+            <param name="Key">Binary key.</param>
+            <param name="Data">Binary data.</param>
+            <returns>Hash value.</returns>
+        </member>
+        <member name="M:Waher.Security.Hashes.ComputeHMACSHA1HashString(System.Byte[],System.IO.Stream)">
+            <summary>
+            Computes the HMAC-SHA-1 hash of a block of binary data.
+            </summary>
+            <param name="Key">Binary key.</param>
+            <param name="Data">Binary data.</param>
+            <returns>String representation of hash.</returns>
+        </member>
+        <member name="M:Waher.Security.Hashes.ComputeHMACSHA1Hash(System.Byte[],System.IO.Stream)">
+            <summary>
+            Computes the HMAC-SHA-1 hash of a block of binary data.
+            </summary>
+            <param name="Key">Binary key.</param>
+            <param name="Data">Binary data.</param>
+            <returns>Hash value.</returns>
+        </member>
+        <member name="M:Waher.Security.Hashes.ComputeHMACSHA256HashString(System.Byte[],System.Byte[])">
+            <summary>
+            Computes the HMAC-SHA-256 hash of a block of binary data.
+            </summary>
+            <param name="Key">Binary key.</param>
+            <param name="Data">Binary data.</param>
+            <returns>String representation of hash.</returns>
+        </member>
+        <member name="M:Waher.Security.Hashes.ComputeHMACSHA256Hash(System.Byte[],System.Byte[])">
+            <summary>
+            Computes the HMAC-SHA-256 hash of a block of binary data.
+            </summary>
+            <param name="Key">Binary key.</param>
+            <param name="Data">Binary data.</param>
+            <returns>Hash value.</returns>
+        </member>
+        <member name="M:Waher.Security.Hashes.ComputeHMACSHA256HashString(System.Byte[],System.IO.Stream)">
+            <summary>
+            Computes the HMAC-SHA-256 hash of a block of binary data.
+            </summary>
+            <param name="Key">Binary key.</param>
+            <param name="Data">Binary data.</param>
+            <returns>String representation of hash.</returns>
+        </member>
+        <member name="M:Waher.Security.Hashes.ComputeHMACSHA256Hash(System.Byte[],System.IO.Stream)">
+            <summary>
+            Computes the HMAC-SHA-256 hash of a block of binary data.
+            </summary>
+            <param name="Key">Binary key.</param>
+            <param name="Data">Binary data.</param>
+            <returns>Hash value.</returns>
+        </member>
+        <member name="M:Waher.Security.Hashes.ComputeHMACSHA384HashString(System.Byte[],System.Byte[])">
+            <summary>
+            Computes the HMAC-SHA-384 hash of a block of binary data.
+            </summary>
+            <param name="Key">Binary key.</param>
+            <param name="Data">Binary data.</param>
+            <returns>String representation of hash.</returns>
+        </member>
+        <member name="M:Waher.Security.Hashes.ComputeHMACSHA384Hash(System.Byte[],System.Byte[])">
+            <summary>
+            Computes the HMAC-SHA-384 hash of a block of binary data.
+            </summary>
+            <param name="Key">Binary key.</param>
+            <param name="Data">Binary data.</param>
+            <returns>Hash value.</returns>
+        </member>
+        <member name="M:Waher.Security.Hashes.ComputeHMACSHA384HashString(System.Byte[],System.IO.Stream)">
+            <summary>
+            Computes the HMAC-SHA-384 hash of a block of binary data.
+            </summary>
+            <param name="Key">Binary key.</param>
+            <param name="Data">Binary data.</param>
+            <returns>String representation of hash.</returns>
+        </member>
+        <member name="M:Waher.Security.Hashes.ComputeHMACSHA384Hash(System.Byte[],System.IO.Stream)">
+            <summary>
+            Computes the HMAC-SHA-384 hash of a block of binary data.
+            </summary>
+            <param name="Key">Binary key.</param>
+            <param name="Data">Binary data.</param>
+            <returns>Hash value.</returns>
+        </member>
+        <member name="M:Waher.Security.Hashes.ComputeHMACSHA512HashString(System.Byte[],System.Byte[])">
+            <summary>
+            Computes the HMAC-SHA-512 hash of a block of binary data.
+            </summary>
+            <param name="Key">Binary key.</param>
+            <param name="Data">Binary data.</param>
+            <returns>String representation of hash.</returns>
+        </member>
+        <member name="M:Waher.Security.Hashes.ComputeHMACSHA512Hash(System.Byte[],System.Byte[])">
+            <summary>
+            Computes the HMAC-SHA-512 hash of a block of binary data.
+            </summary>
+            <param name="Key">Binary key.</param>
+            <param name="Data">Binary data.</param>
+            <returns>Hash value.</returns>
+        </member>
+        <member name="M:Waher.Security.Hashes.ComputeHMACSHA512HashString(System.Byte[],System.IO.Stream)">
+            <summary>
+            Computes the HMAC-SHA-512 hash of a block of binary data.
+            </summary>
+            <param name="Key">Binary key.</param>
+            <param name="Data">Binary data.</param>
+            <returns>String representation of hash.</returns>
+        </member>
+        <member name="M:Waher.Security.Hashes.ComputeHMACSHA512Hash(System.Byte[],System.IO.Stream)">
+            <summary>
+            Computes the HMAC-SHA-512 hash of a block of binary data.
+            </summary>
+            <param name="Key">Binary key.</param>
+            <param name="Data">Binary data.</param>
+            <returns>Hash value.</returns>
+        </member>
+        <member name="M:Waher.Security.Hashes.ComputeHMACMD5HashString(System.Byte[],System.Byte[])">
+            <summary>
+            Computes the HMAC-SHA-1 hash of a block of binary data.
+            </summary>
+            <param name="Key">Binary key.</param>
+            <param name="Data">Binary data.</param>
+            <returns>String representation of hash.</returns>
+        </member>
+        <member name="M:Waher.Security.Hashes.ComputeHMACMD5Hash(System.Byte[],System.Byte[])">
+            <summary>
+            Computes the HMAC-SHA-1 hash of a block of binary data.
+            </summary>
+            <param name="Key">Binary key.</param>
+            <param name="Data">Binary data.</param>
+            <returns>Hash value.</returns>
+        </member>
+        <member name="M:Waher.Security.Hashes.ComputeHMACMD5HashString(System.Byte[],System.IO.Stream)">
+            <summary>
+            Computes the HMAC-SHA-1 hash of a block of binary data.
+            </summary>
+            <param name="Key">Binary key.</param>
+            <param name="Data">Binary data.</param>
+            <returns>String representation of hash.</returns>
+        </member>
+        <member name="M:Waher.Security.Hashes.ComputeHMACMD5Hash(System.Byte[],System.IO.Stream)">
+            <summary>
+            Computes the HMAC-SHA-1 hash of a block of binary data.
+            </summary>
+            <param name="Key">Binary key.</param>
+            <param name="Data">Binary data.</param>
+            <returns>Hash value.</returns>
+        </member>
+        <member name="M:Waher.Security.Hashes.GetHashFunctionArray(Waher.Security.HashFunction)">
+            <summary>
+            Converts an enumeration value to a delegate to the corresponding hash function.
+            </summary>
+            <param name="Function">Hash function enumeration value.</param>
+            <returns>Delegate to the corresponding hash function.</returns>
+        </member>
+        <member name="M:Waher.Security.Hashes.GetHashFunctionStream(Waher.Security.HashFunction)">
+            <summary>
+            Converts an enumeration value to a delegate to the corresponding hash function.
+            </summary>
+            <param name="Function">Hash function enumeration value.</param>
+            <returns>Delegate to the corresponding hash function.</returns>
+        </member>
+        <member name="T:Waher.Security.IAuthorization`1">
+            <summary>
+            Basic authorization interface for objects of type <typeparamref name="T"/>.
+            </summary>
+        </member>
+        <member name="M:Waher.Security.IAuthorization`1.IsAuthorized(`0,Waher.Security.IHasPrivileges)">
+            <summary>
+            Checks if an user or object is authorized to perform an action.
+            </summary>
+            <param name="Resource">Resource to authorize access to.</param>
+            <param name="User">User or object with access privileges.</param>
+            <returns>If authorized access.</returns>
+        </member>
+        <member name="T:Waher.Security.IHasPrivileges">
+            <summary>
+            Interface for objects that have privileges.
+            </summary>
+        </member>
+        <member name="M:Waher.Security.IHasPrivileges.HasPrivilege(System.String)">
+            <summary>
+            If the object has a given privilege.
+            </summary>
+            <param name="Privilege">Privilege.</param>
+            <returns>If the object has the corresponding privilege.</returns>
+        </member>
+        <member name="T:Waher.Security.IdentityState">
+            <summary>
+            Lists recognized legal identity states.
+            </summary>
+        </member>
+        <member name="F:Waher.Security.IdentityState.Created">
+            <summary>
+            An application has been received.
+            </summary>
+        </member>
+        <member name="F:Waher.Security.IdentityState.Rejected">
+            <summary>
+            The legal identity has been rejected.
+            </summary>
+        </member>
+        <member name="F:Waher.Security.IdentityState.Approved">
+            <summary>
+            The legal identity is authenticated and approved by the Trust Provider.
+            </summary>
+        </member>
+        <member name="F:Waher.Security.IdentityState.Obsoleted">
+            <summary>
+            The legal identity has been explicitly obsoleted by its owner, or by the Trust Provider.
+            </summary>
+        </member>
+        <member name="F:Waher.Security.IdentityState.Compromised">
+            <summary>
+            The legal identity has been reported compromised by its owner, or by the Trust Provider.
+            </summary>
+        </member>
+        <member name="T:Waher.Security.ILegalIdentity">
+            <summary>
+            Interfaces for legal identities.
+            </summary>
+        </member>
+        <member name="P:Waher.Security.ILegalIdentity.Id">
+            <summary>
+            ID of the legal identity
+            </summary>
+        </member>
+        <member name="P:Waher.Security.ILegalIdentity.Provider">
+            <summary>
+            Provider where the identity is maintained.
+            </summary>
+        </member>
+        <member name="P:Waher.Security.ILegalIdentity.State">
+            <summary>
+            Current state of identity
+            </summary>
+        </member>
+        <member name="P:Waher.Security.ILegalIdentity.Created">
+            <summary>
+            When the identity object was created
+            </summary>
+        </member>
+        <member name="P:Waher.Security.ILegalIdentity.Updated">
+            <summary>
+            When the identity object was last updated
+            </summary>
+        </member>
+        <member name="P:Waher.Security.ILegalIdentity.From">
+            <summary>
+            From what point in time the legal identity is valid.
+            </summary>
+        </member>
+        <member name="P:Waher.Security.ILegalIdentity.To">
+            <summary>
+            To what point in time the legal identity is valid.
+            </summary>
+        </member>
+        <member name="P:Waher.Security.ILegalIdentity.Properties">
+            <summary>
+            Properties detailing the legal identity.
+            </summary>
+        </member>
+        <member name="P:Waher.Security.ILegalIdentity.Attachments">
+            <summary>
+            Attachments assigned to the legal identity.
+            </summary>
+        </member>
+        <member name="P:Waher.Security.ILegalIdentity.ClientKeyName">
+            <summary>
+            Type of key used for client signatures
+            </summary>
+        </member>
+        <member name="P:Waher.Security.ILegalIdentity.ClientPubKey">
+            <summary>
+            Client Public key
+            </summary>
+        </member>
+        <member name="P:Waher.Security.ILegalIdentity.ClientSignature">
+            <summary>
+            Client signature
+            </summary>
+        </member>
+        <member name="P:Waher.Security.ILegalIdentity.ServerSignature">
+            <summary>
+            Server signature
+            </summary>
+        </member>
+        <member name="P:Waher.Security.ILegalIdentity.HasClientPublicKey">
+            <summary>
+            If the identity has a client public key
+            </summary>
+        </member>
+        <member name="P:Waher.Security.ILegalIdentity.HasClientSignature">
+            <summary>
+            If the identity has a client signature
+            </summary>
+        </member>
+        <member name="P:Waher.Security.ILegalIdentity.Item(System.String)">
+            <summary>
+            Access to property values.
+            </summary>
+            <param name="Key">Property key</param>
+            <returns>Corresponding property value, if one is found with the same key, or the empty string, if not.</returns>
+        </member>
+        <member name="T:Waher.Security.ILegalIdentityAttachment">
+            <summary>
+            Interface for legal identity attachments.
+            </summary>
+        </member>
+        <member name="P:Waher.Security.ILegalIdentityAttachment.Id">
+            <summary>
+            Attachment ID
+            </summary>
+        </member>
+        <member name="P:Waher.Security.ILegalIdentityAttachment.LegalId">
+            <summary>
+            Legal ID of uploader of the attachment
+            </summary>
+        </member>
+        <member name="P:Waher.Security.ILegalIdentityAttachment.ContentType">
+            <summary>
+            Internet Content Type of binary attachment.
+            </summary>
+        </member>
+        <member name="P:Waher.Security.ILegalIdentityAttachment.FileName">
+            <summary>
+            Filename of attachment.
+            </summary>
+        </member>
+        <member name="P:Waher.Security.ILegalIdentityAttachment.Signature">
+            <summary>
+            Binary signature of the attachment, generated by an approved legal identity of the account-holder.
+            If no signature, attribute is null.
+            </summary>
+        </member>
+        <member name="P:Waher.Security.ILegalIdentityAttachment.Timestamp">
+            <summary>
+            Timestamp of signature. If no signature, value is <see cref="F:System.DateTime.MinValue"/>
+            </summary>
+        </member>
+        <member name="T:Waher.Security.ILegalIdentityAttachmentUrl">
+            <summary>
+            Interface for legal identity attachments.
+            </summary>
+        </member>
+        <member name="P:Waher.Security.ILegalIdentityAttachmentUrl.Url">
+            <summary>
+            URL to retrieve attachment, if provided.
+            </summary>
+        </member>
+        <member name="T:Waher.Security.ILegalIdentityProperty">
+            <summary>
+            Interface for legal identity properties.
+            </summary>
+        </member>
+        <member name="P:Waher.Security.ILegalIdentityProperty.Name">
+            <summary>
+            Name of property
+            </summary>
+        </member>
+        <member name="P:Waher.Security.ILegalIdentityProperty.Value">
+            <summary>
+            Property value
+            </summary>
+        </member>
+        <member name="T:Waher.Security.ILegalIdentityUser">
+            <summary>
+            Basic interface for a users with a Legal Identity.
+            </summary>
+        </member>
+        <member name="P:Waher.Security.ILegalIdentityUser.LegalIdentity">
+            <summary>
+            Legal Identity of the user.
+            </summary>
+        </member>
+        <member name="T:Waher.Security.ILoginAuditor">
+            <summary>
+            Interface for classes that monitor login events, and help applications determine malicious intent. 
+            </summary>
+        </member>
+        <member name="M:Waher.Security.ILoginAuditor.ProcessLoginSuccessful(System.String,System.String)">
+            <summary>
+            Processes a successful login attempt.
+            
+            NOTE: Typically, logins are audited by listening on logged events.
+            This method should only be called directly when such events are not logged.
+            </summary>
+            <param name="RemoteEndPoint">String-representation of remote endpoint.</param>
+            <param name="Protocol">Protocol used to log in.</param>
+        </member>
+        <member name="M:Waher.Security.ILoginAuditor.ProcessLoginFailure(System.String,System.String,System.DateTime,System.String)">
+            <summary>
+            Processes a failed login attempt.
+            
+            NOTE: Typically, logins are audited by listening on logged events.
+            This method should only be called directly when such events are not logged.
+            </summary>
+            <param name="RemoteEndPoint">String-representation of remote endpoint.</param>
+            <param name="Protocol">Protocol used to log in.</param>
+            <param name="Timestamp">Timestamp of event.</param>
+            <param name="Reason">Reason for the failure. Will be logged with the state object, in case the remote endpoint
+            gets blocked.</param>
+            <returns>If the remote endpoint was or has been blocked as a result of the failure.</returns>
+        </member>
+        <member name="M:Waher.Security.ILoginAuditor.GetEarliestLoginOpportunity(System.String,System.String)">
+            <summary>
+            Checks when a remote endpoint can login.
+            </summary>
+            <param name="RemoteEndPoint">String-representation of remote endpoint.</param>
+            <param name="Protocol">Protocol used to log in.</param>
+            <returns>When the remote endpoint is allowed to login:
+            
+            null = Remote endpoint can login now.
+            <see cref="F:System.DateTime.MaxValue"/> = Remote endpoint has been blocked and cannot login.
+            Other <see cref="T:System.DateTime"/> values indicate when, at the earliest, the remote endpoint
+            is allowed to login again.
+            </returns>
+        </member>
+        <member name="M:Waher.Security.ILoginAuditor.BlockEndpoint(System.String,System.String,System.String)">
+            <summary>
+            Blocks and endpoint.
+            </summary>
+            <param name="RemoteEndPoint">Remote Endpoint to block.</param>
+            <param name="Protocol">Protocol used.</param>
+            <param name="Reason">Reason for blocking the endpoint.</param>
+            <returns>If the endpoint was blocked as a result of the call (true), 
+            or if the endpoint was already blocked (false).</returns>
+        </member>
+        <member name="T:Waher.Security.ISignatureAlgorithm">
+            <summary>
+            Interface for digital signature algorithms.
+            </summary>
+        </member>
+        <member name="M:Waher.Security.ISignatureAlgorithm.Sign(System.Byte[],System.Boolean)">
+            <summary>
+            Creates a signature of <paramref name="Data"/>.
+            </summary>
+            <param name="Data">Payload to sign.</param>
+            <param name="BigEndian">Indicates if the signature should be in big-endian format.</param>
+            <returns>Signature.</returns>
+        </member>
+        <member name="M:Waher.Security.ISignatureAlgorithm.Sign(System.IO.Stream,System.Boolean)">
+            <summary>
+            Creates a signature of <paramref name="Data"/>.
+            </summary>
+            <param name="Data">Payload to sign.</param>
+            <param name="BigEndian">Indicates if the signature should be in big-endian format.</param>
+            <returns>Signature.</returns>
+        </member>
+        <member name="M:Waher.Security.ISignatureAlgorithm.Verify(System.Byte[],System.Byte[],System.Boolean,System.Byte[])">
+            <summary>
+            Verifies a signature of <paramref name="Data"/>.
+            </summary>
+            <param name="Data">Payload to sign.</param>
+            <param name="PublicKey">Public Key of the entity that generated the signature.</param>
+            <param name="BigEndian">Indicates if the signature is in big-endian format.</param>
+            <param name="Signature">Signature</param>
+            <returns>If the signature is valid.</returns>
+        </member>
+        <member name="M:Waher.Security.ISignatureAlgorithm.Verify(System.IO.Stream,System.Byte[],System.Boolean,System.Byte[])">
+            <summary>
+            Verifies a signature of <paramref name="Data"/>.
+            </summary>
+            <param name="Data">Payload to sign.</param>
+            <param name="PublicKey">Public Key of the entity that generated the signature.</param>
+            <param name="BigEndian">Indicates if the signature is in big-endian format.</param>
+            <param name="Signature">Signature</param>
+            <returns>If the signature is valid.</returns>
+        </member>
+        <member name="T:Waher.Security.ITlsCertificateEndpoint">
+            <summary>
+            Interface for Mutual TLS (mTLS) Clients or TLS servers.
+            </summary>
+        </member>
+        <member name="M:Waher.Security.ITlsCertificateEndpoint.UpdateCertificate(System.Security.Cryptography.X509Certificates.X509Certificate)">
+            <summary>
+            Updates the certificate used in mTLS negotiation.
+            </summary>
+            <param name="Certificate">Updated Certificate</param>
+        </member>
+        <member name="T:Waher.Security.IUser">
+            <summary>
+            Basic interface for a user.
+            </summary>
+        </member>
+        <member name="P:Waher.Security.IUser.UserName">
+            <summary>
+            User Name.
+            </summary>
+        </member>
+        <member name="P:Waher.Security.IUser.FederatedUserName">
+            <summary>
+            Full Federated User Name.
+            </summary>
+        </member>
+        <member name="P:Waher.Security.IUser.FriendlyName">
+            <summary>
+            Friendly name of the user, for display purposes.
+            </summary>
+        </member>
+        <member name="P:Waher.Security.IUser.PasswordHash">
+            <summary>
+            Password Hash
+            </summary>
+        </member>
+        <member name="P:Waher.Security.IUser.PasswordHashType">
+            <summary>
+            Type of password hash. The empty stream means a clear-text password.
+            </summary>
+        </member>
+        <member name="T:Waher.Security.IUserSource">
+            <summary>
+            Interface for data sources containing users.
+            </summary>
+        </member>
+        <member name="M:Waher.Security.IUserSource.TryGetUser(System.String)">
+            <summary>
+            Tries to get a user with a given user name.
+            </summary>
+            <param name="UserName">User Name.</param>
+            <returns>User, if found, null otherwise.</returns>
+        </member>
+    </members>
+</doc>

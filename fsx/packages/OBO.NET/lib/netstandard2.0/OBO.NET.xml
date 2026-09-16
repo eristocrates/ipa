@@ -1,0 +1,1222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doc>
+<assembly><name>OBO.NET</name></assembly>
+<members>
+<member name="P:ProviderImplementation.ProvidedTypes.TypeProviderForNamespaces.TargetContext">
+<summary>
+ The context for which code is eventually to be generated. You should not normally
+ need to use this property directly, as translation from the compiler-hosted context to 
+ the design-time context will normally be performed automatically.
+</summary>
+</member>
+<member name="P:ProviderImplementation.ProvidedTypes.TypeProviderForNamespaces.Namespaces">
+<summary>
+ Invoked by the type provider to get all provided namespaces with their provided types.
+</summary>
+</member>
+<member name="M:ProviderImplementation.ProvidedTypes.TypeProviderForNamespaces.ResolveAssembly(System.ResolveEventArgs)">
+<summary>
+ AssemblyResolve handler. Default implementation searches &lt;assemblyname&gt;.dll file in registered folders
+</summary>
+</member>
+<member name="M:ProviderImplementation.ProvidedTypes.TypeProviderForNamespaces.RegisterRuntimeAssemblyLocationAsProbingFolder(Microsoft.FSharp.Core.CompilerServices.TypeProviderConfig)">
+<summary>
+ Registers location of RuntimeAssembly (from TypeProviderConfig) as probing folder
+</summary>
+</member>
+<member name="M:ProviderImplementation.ProvidedTypes.TypeProviderForNamespaces.RegisterProbingFolder(System.String)">
+<summary>
+ Registers custom probing path that can be used for probing assemblies
+</summary>
+</member>
+<member name="M:ProviderImplementation.ProvidedTypes.TypeProviderForNamespaces.RegisterGeneratedTargetAssembly(System.String)">
+<summary>
+ Register that a given file is a provided generated target assembly, e.g. an assembly produced by an external
+ code generation tool.  This assembly should be a target assembly, i.e. use the same assembly references
+ as given by TargetContext.ReferencedAssemblyPaths
+</summary>
+</member>
+<member name="M:ProviderImplementation.ProvidedTypes.TypeProviderForNamespaces.Invalidate">
+<summary>
+ Invoked by the type provider to invalidate the information provided by the provider
+</summary>
+</member>
+<member name="M:ProviderImplementation.ProvidedTypes.TypeProviderForNamespaces.GetStaticParametersForMethod(System.Reflection.MethodBase)">
+<summary>
+ Invoked by the host of the type provider to get the static parameters for a method.
+</summary>
+</member>
+<member name="M:ProviderImplementation.ProvidedTypes.TypeProviderForNamespaces.ApplyStaticArgumentsForMethod(System.Reflection.MethodBase,System.String,System.Object[])">
+<summary>
+ Invoked by the host of the type provider to apply the static arguments for a method.
+</summary>
+</member>
+<member name="M:ProviderImplementation.ProvidedTypes.TypeProviderForNamespaces.AddNamespace(System.String,Microsoft.FSharp.Collections.FSharpList{ProviderImplementation.ProvidedTypes.ProvidedTypeDefinition})">
+<summary>
+ Invoked by the type provider to add a namespace of provided types in the specification of the type provider.
+</summary>
+</member>
+<member name="M:ProviderImplementation.ProvidedTypes.TypeProviderForNamespaces.#ctor(Microsoft.FSharp.Core.CompilerServices.TypeProviderConfig,Microsoft.FSharp.Core.FSharpOption{Microsoft.FSharp.Collections.FSharpList{System.Reflection.Assembly}},Microsoft.FSharp.Core.FSharpOption{Microsoft.FSharp.Collections.FSharpList{System.Tuple{System.String,System.String}}},Microsoft.FSharp.Core.FSharpOption{System.Boolean})">
+ <summary>Initializes a type provider.</summary>
+ <param name="config"> Type provider config. </param>
+ <param name="sourceAssemblies">
+    Optionally specify the design-time assemblies available to use as a basis for authoring provided types.
+    The transitive dependencies of these assemblies are also included. By default
+    Assembly.GetCallingAssembly() and its transitive dependencies are used.
+ </param>
+               
+ <param name="assemblyReplacementMap">
+    Optionally specify a map of assembly names from source model to referenced assemblies.
+ </param>
+               
+ <param name="addDefaultProbingLocation">
+    Optionally specify that the location of the type provider design-time component should be used to resolve failing assembly resolutions.
+    This flag or an equivalent call to RegisterProbingFolder is generally needed for any type provider design-time components loaded into .NET Core tooling.
+ </param>
+</member>
+<member name="M:ProviderImplementation.ProvidedTypes.TypeProviderForNamespaces.#ctor(Microsoft.FSharp.Core.CompilerServices.TypeProviderConfig,System.String,Microsoft.FSharp.Collections.FSharpList{ProviderImplementation.ProvidedTypes.ProvidedTypeDefinition},Microsoft.FSharp.Core.FSharpOption{Microsoft.FSharp.Collections.FSharpList{System.Reflection.Assembly}},Microsoft.FSharp.Core.FSharpOption{Microsoft.FSharp.Collections.FSharpList{System.Tuple{System.String,System.String}}},Microsoft.FSharp.Core.FSharpOption{System.Boolean})">
+ <summary>Initializes a type provider to provide the types in the given namespace.</summary>
+ <param name="config"> Type provider config. </param>
+ <param name="namespaceName"> Name of namespace. </param>
+ <param name="types"> Provided type definitions. </param>
+               
+ <param name="sourceAssemblies">
+    Optionally specify the design-time assemblies available to use as a basis for authoring provided types.
+    The transitive dependencies of these assemblies are also included. By default
+    Assembly.GetCallingAssembly() and its transitive dependencies are used.
+ </param>
+               
+ <param name="assemblyReplacementMap">
+    Optionally specify a map of assembly names from source model to referenced assemblies.
+ </param>
+               
+ <param name="addDefaultProbingLocation">
+    Optionally specify that the location of the type provider design-time component should be used to resolve failing assembly resolutions.
+    This flag or an equivalent call to RegisterProbingFolder is generally needed for any type provider design-time components loaded into .NET Core tooling.
+ </param>
+</member>
+<member name="T:ProviderImplementation.ProvidedTypes.TypeProviderForNamespaces">
+<summary>
+ A base type providing default implementations of type provider functionality.
+</summary>
+</member>
+<member name="P:ProviderImplementation.ProvidedTypes.ProvidedTypesContext.FSharpCoreAssemblyVersion">
+<summary>
+ Try to get the version of FSharp.Core referenced. May raise an exception if FSharp.Core has not been correctly resolved
+</summary>
+</member>
+<member name="M:ProviderImplementation.ProvidedTypes.ProvidedTypesContext.TryBindSimpleAssemblyNameToTarget(System.String)">
+<summary>
+ Try to find the given target assembly in the context
+</summary>
+</member>
+<member name="M:ProviderImplementation.ProvidedTypes.ProvidedTypesContext.TryBindAssemblyNameToTarget(System.Reflection.AssemblyName)">
+<summary>
+ Try to find the given target assembly in the context
+</summary>
+</member>
+<member name="M:ProviderImplementation.ProvidedTypes.ProvidedTypesContext.ReadRelatedAssembly(System.Byte[])">
+<summary>
+ Read the assembly related to this context
+</summary>
+</member>
+<member name="M:ProviderImplementation.ProvidedTypes.ProvidedTypesContext.ReadRelatedAssembly(System.String)">
+<summary>
+ Read the assembly related to this context
+</summary>
+</member>
+<member name="M:ProviderImplementation.ProvidedTypes.ProvidedTypesContext.GetTargetAssemblies">
+<summary>
+ Get the resolved referenced assemblies determined by the type provider configuration
+</summary>
+</member>
+<member name="M:ProviderImplementation.ProvidedTypes.ProvidedTypesContext.GetSourceAssemblies">
+<summary>
+ Get the set of design-time assemblies available to use as a basis for authoring provided types.
+</summary>
+</member>
+<member name="M:ProviderImplementation.ProvidedTypes.ProvidedTypesContext.ConvertTargetTypeToSource(System.Type)">
+<summary>
+ Returns the design-time type that corresponds to the given type from the target referenced assemblies.  Normally
+ this method should not be used directly when authoring a type provider.
+</summary>
+</member>
+<member name="M:ProviderImplementation.ProvidedTypes.ProvidedTypesContext.ConvertSourceTypeToTarget(System.Type)">
+<summary>
+ Returns a type from the referenced assemblies that corresponds to the given design-time type.  Normally
+ this method should not be used directly when authoring a type provider.
+</summary>
+</member>
+<member name="M:ProviderImplementation.ProvidedTypes.ProvidedTypesContext.ConvertSourceExprToTarget(Microsoft.FSharp.Quotations.FSharpExpr)">
+<summary>
+ Returns a quotation rebuilt with respect to the types from the target referenced assemblies.  Normally
+ this method should not be used directly when authoring a type provider.
+</summary>
+</member>
+<member name="M:ProviderImplementation.ProvidedTypes.ProvidedTypesContext.AddSourceAssembly(System.Reflection.Assembly)">
+<summary>
+ Add an assembly to the set of design-time assemblies available to use as a basis for authoring provided types
+</summary>
+</member>
+<member name="M:ProviderImplementation.ProvidedTypes.ProvidedAssembly.AddTypes(Microsoft.FSharp.Collections.FSharpList{ProviderImplementation.ProvidedTypes.ProvidedTypeDefinition})">
+<summary>
+ Emit the given provided type definitions as part of the assembly
+ and adjust the &apos;Assembly&apos; property of all provided type definitions to return that
+ assembly.
+
+ The assembly is only emitted when the Assembly property on the root type is accessed for the first time.
+ The host F# compiler does this when processing a generative type declaration for the type.
+</summary>
+</member>
+<member name="M:ProviderImplementation.ProvidedTypes.ProvidedAssembly.AddNestedTypes(Microsoft.FSharp.Collections.FSharpList{ProviderImplementation.ProvidedTypes.ProvidedTypeDefinition},Microsoft.FSharp.Collections.FSharpList{System.String})">
+ <summary>
+ Emit the given nested provided type definitions as part of the assembly.
+ and adjust the 'Assembly' property of all provided type definitions to return that
+ assembly.
+ </summary>
+ <param name="types">Provided type definitions. </param>
+ <param name="enclosingGeneratedTypeNames">A path of type names to wrap the generated types. The generated types are then generated as nested types.</param>
+</member>
+<member name="M:ProviderImplementation.ProvidedTypes.ProvidedAssembly.#ctor">
+<summary>
+ Create a provided generated assembly using a temporary file as the interim assembly storage
+</summary>
+</member>
+<member name="M:ProviderImplementation.ProvidedTypes.ProvidedAssembly.#ctor(System.Reflection.AssemblyName,System.String)">
+<summary>
+ Create a provided generated assembly
+</summary>
+</member>
+<member name="T:ProviderImplementation.ProvidedTypes.ProvidedAssembly">
+<summary>
+ A provided generated assembly
+</summary>
+</member>
+<member name="P:ProviderImplementation.ProvidedTypes.ProvidedTypeDefinition.SuppressRelocation(System.Boolean)">
+<summary>
+ Get or set a flag indicating if the ProvidedTypeDefinition has type-relocation suppressed
+</summary>
+</member>
+<member name="P:ProviderImplementation.ProvidedTypes.ProvidedTypeDefinition.SuppressRelocation">
+<summary>
+ Get or set a flag indicating if the ProvidedTypeDefinition has type-relocation suppressed
+</summary>
+</member>
+<member name="P:ProviderImplementation.ProvidedTypes.ProvidedTypeDefinition.NonNullable">
+<summary>
+ Disallows the use of the null literal.
+</summary>
+</member>
+<member name="P:ProviderImplementation.ProvidedTypes.ProvidedTypeDefinition.Logger">
+<summary>
+ Get or set a utility function to log the creation of root Provided Type. Used to debug caching/invalidation.
+</summary>
+</member>
+<member name="P:ProviderImplementation.ProvidedTypes.ProvidedTypeDefinition.IsErased">
+<summary>
+ Get a flag indicating if the ProvidedTypeDefinition is erased
+</summary>
+</member>
+<member name="P:ProviderImplementation.ProvidedTypes.ProvidedTypeDefinition.HideObjectMethods">
+<summary>
+ Suppress Object entries in intellisense menus in instances of this provided type
+</summary>
+</member>
+<member name="M:ProviderImplementation.ProvidedTypes.ProvidedTypeDefinition.SetEnumUnderlyingType(System.Type)">
+<summary>
+ Set underlying type for generated enums
+</summary>
+</member>
+<member name="M:ProviderImplementation.ProvidedTypes.ProvidedTypeDefinition.SetBaseTypeDelayed(Microsoft.FSharp.Core.FSharpFunc{Microsoft.FSharp.Core.Unit,System.Type})">
+<summary>
+ Set the base type to a lazily evaluated value. Use this to delay realization of the base type as late as possible.
+</summary>
+</member>
+<member name="M:ProviderImplementation.ProvidedTypes.ProvidedTypeDefinition.SetBaseType(System.Type)">
+<summary>
+ Set the base type
+</summary>
+</member>
+<member name="M:ProviderImplementation.ProvidedTypes.ProvidedTypeDefinition.SetAttributes(System.Reflection.TypeAttributes)">
+<summary>
+ Set the attributes on the provided type. This fully replaces the default TypeAttributes.
+</summary>
+</member>
+<member name="M:ProviderImplementation.ProvidedTypes.ProvidedTypeDefinition.EraseType(System.Type)">
+<summary>
+ Emulate the F# type provider type erasure mechanism to get the
+ actual (erased) type. We erase ProvidedTypes to their base type
+ and we erase array of provided type to array of base type. In the
+ case of generics all the generic type arguments are also recursively
+ replaced with the erased-to types
+</summary>
+</member>
+<member name="M:ProviderImplementation.ProvidedTypes.ProvidedTypeDefinition.DefineStaticParameters(Microsoft.FSharp.Collections.FSharpList{ProviderImplementation.ProvidedTypes.ProvidedStaticParameter},Microsoft.FSharp.Core.FSharpFunc{System.String,Microsoft.FSharp.Core.FSharpFunc{System.Object[],ProviderImplementation.ProvidedTypes.ProvidedTypeDefinition}})">
+<summary>
+ Define the static parameters available on a statically parameterized type
+</summary>
+</member>
+<member name="M:ProviderImplementation.ProvidedTypes.ProvidedTypeDefinition.DefineMethodOverridesDelayed(Microsoft.FSharp.Core.FSharpFunc{Microsoft.FSharp.Core.Unit,Microsoft.FSharp.Collections.FSharpList{System.Tuple{ProviderImplementation.ProvidedTypes.ProvidedMethod,System.Reflection.MethodInfo}}})">
+<summary>
+ Specifies that the given method bodies implement the given method declarations
+</summary>
+</member>
+<member name="M:ProviderImplementation.ProvidedTypes.ProvidedTypeDefinition.DefineMethodOverride(ProviderImplementation.ProvidedTypes.ProvidedMethod,System.Reflection.MethodInfo)">
+<summary>
+ Specifies that the given method body implements the given method declaration.
+</summary>
+</member>
+<member name="M:ProviderImplementation.ProvidedTypes.ProvidedTypeDefinition.AddXmlDocDelayed(Microsoft.FSharp.Core.FSharpFunc{Microsoft.FSharp.Core.Unit,System.String})">
+<summary>
+ Add XML documentation information to this provided constructor, where the computation of the documentation is delayed until necessary.
+ The documentation is only computed once.
+</summary>
+</member>
+<member name="M:ProviderImplementation.ProvidedTypes.ProvidedTypeDefinition.AddXmlDocComputed(Microsoft.FSharp.Core.FSharpFunc{Microsoft.FSharp.Core.Unit,System.String})">
+<summary>
+ Add XML documentation information to this provided constructor, where the computation of the documentation is delayed until necessary
+ The documentation is re-computed  every time it is required.
+</summary>
+</member>
+<member name="M:ProviderImplementation.ProvidedTypes.ProvidedTypeDefinition.AddXmlDoc(System.String)">
+<summary>
+ Add XML documentation information to this provided constructor
+</summary>
+</member>
+<member name="M:ProviderImplementation.ProvidedTypes.ProvidedTypeDefinition.AddObsoleteAttribute(System.String,Microsoft.FSharp.Core.FSharpOption{System.Boolean})">
+<summary>
+ Add a &apos;Obsolete&apos; attribute to this provided type definition
+</summary>
+</member>
+<member name="M:ProviderImplementation.ProvidedTypes.ProvidedTypeDefinition.AddMembersDelayed``1(Microsoft.FSharp.Core.FSharpFunc{Microsoft.FSharp.Core.Unit,Microsoft.FSharp.Collections.FSharpList{``0}})">
+<summary>
+ Add a set of members to a ProvidedTypeDefinition, delaying computation of the members until required by the compilation context.
+</summary>
+</member>
+<member name="M:ProviderImplementation.ProvidedTypes.ProvidedTypeDefinition.AddMembers``1(Microsoft.FSharp.Collections.FSharpList{``0})">
+<summary>
+ Add a set of members to a ProvidedTypeDefinition
+</summary>
+</member>
+<member name="M:ProviderImplementation.ProvidedTypes.ProvidedTypeDefinition.AddMemberDelayed``1(Microsoft.FSharp.Core.FSharpFunc{Microsoft.FSharp.Core.Unit,``0})">
+<summary>
+ Add a member to a ProvidedTypeDefinition, delaying computation of the members until required by the compilation context.
+</summary>
+</member>
+<member name="M:ProviderImplementation.ProvidedTypes.ProvidedTypeDefinition.AddMember(System.Reflection.MemberInfo)">
+<summary>
+ Add a method, property, nested type or other member to a ProvidedTypeDefinition
+</summary>
+</member>
+<member name="M:ProviderImplementation.ProvidedTypes.ProvidedTypeDefinition.AddInterfaceImplementationsDelayed(Microsoft.FSharp.Core.FSharpFunc{Microsoft.FSharp.Core.Unit,Microsoft.FSharp.Collections.FSharpList{System.Type}})">
+<summary>
+ Add the given function as a set of on-demand computed interfaces.
+</summary>
+</member>
+<member name="M:ProviderImplementation.ProvidedTypes.ProvidedTypeDefinition.AddInterfaceImplementation(System.Type)">
+<summary>
+ Add the given type as an implemented interface.
+</summary>
+</member>
+<member name="M:ProviderImplementation.ProvidedTypes.ProvidedTypeDefinition.AddDefinitionLocation(System.Int32,System.Int32,System.String)">
+<summary>
+ Add definition location information to the provided type definition.
+</summary>
+</member>
+<member name="M:ProviderImplementation.ProvidedTypes.ProvidedTypeDefinition.AddCustomAttribute(System.Reflection.CustomAttributeData)">
+<summary>
+ Add a custom attribute to the provided type definition.
+</summary>
+</member>
+<member name="M:ProviderImplementation.ProvidedTypes.ProvidedTypeDefinition.AddAssemblyTypesAsNestedTypesDelayed(Microsoft.FSharp.Core.FSharpFunc{Microsoft.FSharp.Core.Unit,System.Reflection.Assembly})">
+<summary>
+ Add the types of the generated assembly as generative types, where types in namespaces get hierarchically positioned as nested types.
+</summary>
+</member>
+<member name="M:ProviderImplementation.ProvidedTypes.ProvidedTypeDefinition.#ctor(System.Reflection.Assembly,System.String,System.String,Microsoft.FSharp.Core.FSharpOption{System.Type},Microsoft.FSharp.Core.FSharpOption{System.Boolean},Microsoft.FSharp.Core.FSharpOption{System.Boolean},Microsoft.FSharp.Core.FSharpOption{System.Boolean},Microsoft.FSharp.Core.FSharpOption{System.Boolean},Microsoft.FSharp.Core.FSharpOption{System.Boolean},Microsoft.FSharp.Core.FSharpOption{System.Boolean})">
+<summary>
+ When making a cross-targeting type provider, use this method instead of the corresponding ProvidedTypeDefinition constructor from ProvidedTypes
+</summary>
+</member>
+<member name="M:ProviderImplementation.ProvidedTypes.ProvidedTypeDefinition.#ctor(System.String,Microsoft.FSharp.Core.FSharpOption{System.Type},Microsoft.FSharp.Core.FSharpOption{System.Boolean},Microsoft.FSharp.Core.FSharpOption{System.Boolean},Microsoft.FSharp.Core.FSharpOption{System.Boolean},Microsoft.FSharp.Core.FSharpOption{System.Boolean},Microsoft.FSharp.Core.FSharpOption{System.Boolean},Microsoft.FSharp.Core.FSharpOption{System.Boolean})">
+<summary>
+ When making a cross-targeting type provider, use this method instead of the corresponding ProvidedTypeDefinition constructor from ProvidedTypes
+</summary>
+</member>
+<member name="T:ProviderImplementation.ProvidedTypes.ProvidedTypeDefinition">
+<summary>
+ Represents a provided type definition.
+</summary>
+</member>
+<member name="P:ProviderImplementation.ProvidedTypes.ProvidedMeasureBuilder.One">
+<summary>
+ Gets the measure indicating the &quot;1&quot; unit of measure, that is the unitless measure.
+</summary>
+</member>
+<member name="M:ProviderImplementation.ProvidedTypes.ProvidedMeasureBuilder.Square(System.Type)">
+<summary>
+ Returns the measure indicating the square of a unit of measure, e.g. m * m
+</summary>
+</member>
+<member name="M:ProviderImplementation.ProvidedTypes.ProvidedMeasureBuilder.SI(System.String)">
+<summary>
+ Returns the measure for an SI unit from the F# core library, where the string is in capitals and US spelling, e.g. Meter
+</summary>
+</member>
+<member name="M:ProviderImplementation.ProvidedTypes.ProvidedMeasureBuilder.Ratio(System.Type,System.Type)">
+<summary>
+ Returns the measure indicating the ratio of two units of measure, e.g. kg / m
+</summary>
+</member>
+<member name="M:ProviderImplementation.ProvidedTypes.ProvidedMeasureBuilder.Product(System.Type,System.Type)">
+<summary>
+ Returns the measure indicating the product of two units of measure, e.g. kg * m
+</summary>
+</member>
+<member name="M:ProviderImplementation.ProvidedTypes.ProvidedMeasureBuilder.Inverse(System.Type)">
+<summary>
+ Returns the measure indicating the inverse of two units of measure, e.g. 1 / s
+</summary>
+</member>
+<member name="M:ProviderImplementation.ProvidedTypes.ProvidedMeasureBuilder.AnnotateType(System.Type,Microsoft.FSharp.Collections.FSharpList{System.Type})">
+<summary>
+ Returns a type where the type has been annotated with the given types and/or units-of-measure.
+ e.g. float&lt;kg&gt;, Vector&lt;int, kg&gt;
+</summary>
+</member>
+<member name="T:ProviderImplementation.ProvidedTypes.ProvidedMeasureBuilder">
+<summary>
+ Helps create erased provided unit-of-measure annotations.
+</summary>
+</member>
+<member name="M:ProviderImplementation.ProvidedTypes.ProvidedTypeBuilder.MakeTupleType(Microsoft.FSharp.Collections.FSharpList{System.Type})">
+<summary>
+ Like FsharpType.MakeTupleType, but will also work with unit-annotated types and provided types
+</summary>
+</member>
+<member name="M:ProviderImplementation.ProvidedTypes.ProvidedTypeBuilder.MakeTupleType(Microsoft.FSharp.Collections.FSharpList{System.Type},System.Boolean)">
+<summary>
+ Like FsharpType.MakeTupleType, but will also work with unit-annotated types and provided types
+</summary>
+</member>
+<member name="M:ProviderImplementation.ProvidedTypes.ProvidedTypeBuilder.MakeGenericType(System.Type,Microsoft.FSharp.Collections.FSharpList{System.Type})">
+<summary>
+ Like typ.MakeGenericType, but will also work with unit-annotated types
+</summary>
+</member>
+<member name="M:ProviderImplementation.ProvidedTypes.ProvidedTypeBuilder.MakeGenericMethod(System.Reflection.MethodInfo,Microsoft.FSharp.Collections.FSharpList{System.Type})">
+<summary>
+ Like methodInfo.MakeGenericMethod, but will also work with unit-annotated types and provided types
+</summary>
+</member>
+<member name="T:ProviderImplementation.ProvidedTypes.ProvidedTypeBuilder">
+<summary>
+ Helpers to build symbolic provided types
+</summary>
+</member>
+<member name="P:ProviderImplementation.ProvidedTypes.ProvidedTypeSymbol.IsFSharpUnitAnnotated">
+<summary>
+ For example, int&lt;kg&gt; or int&lt;kilogram&gt;
+</summary>
+</member>
+<member name="P:ProviderImplementation.ProvidedTypes.ProvidedTypeSymbol.IsFSharpTypeAbbreviation">
+<summary>
+ For example, kg
+</summary>
+</member>
+<member name="T:ProviderImplementation.ProvidedTypes.ProvidedTypeSymbol">
+<summary>
+ Represents an array or other symbolic type involving a provided type as the argument.
+ See the type provider spec for the methods that must be implemented.
+ Note that the type provider specification does not require us to implement pointer-equality for provided types.
+</summary>
+</member>
+<member name="M:ProviderImplementation.ProvidedTypes.ProvidedField.Literal(System.String,System.Type,System.Object)">
+<summary>
+ Create a new provided literal field. It is not initially associated with any specific provided type definition.
+</summary>
+</member>
+<member name="M:ProviderImplementation.ProvidedTypes.ProvidedField.AddXmlDocDelayed(Microsoft.FSharp.Core.FSharpFunc{Microsoft.FSharp.Core.Unit,System.String})">
+<summary>
+ Add XML documentation information to this provided field, where the computation of the documentation is delayed until necessary
+</summary>
+</member>
+<member name="M:ProviderImplementation.ProvidedTypes.ProvidedField.AddXmlDocComputed(Microsoft.FSharp.Core.FSharpFunc{Microsoft.FSharp.Core.Unit,System.String})">
+<summary>
+ Add XML documentation information to this provided field, where the computation of the documentation is delayed until necessary
+ The documentation is re-computed  every time it is required.
+</summary>
+</member>
+<member name="M:ProviderImplementation.ProvidedTypes.ProvidedField.AddXmlDoc(System.String)">
+<summary>
+ Add XML documentation information to this provided field
+</summary>
+</member>
+<member name="M:ProviderImplementation.ProvidedTypes.ProvidedField.AddObsoleteAttribute(System.String,Microsoft.FSharp.Core.FSharpOption{System.Boolean})">
+<summary>
+ Add a &apos;Obsolete&apos; attribute to this provided field
+</summary>
+</member>
+<member name="M:ProviderImplementation.ProvidedTypes.ProvidedField.AddDefinitionLocation(System.Int32,System.Int32,System.String)">
+<summary>
+ Add definition location information to the provided field definition.
+</summary>
+</member>
+<member name="M:ProviderImplementation.ProvidedTypes.ProvidedField.AddCustomAttribute(System.Reflection.CustomAttributeData)">
+<summary>
+ Add a custom attribute to the provided property definition.
+</summary>
+</member>
+<member name="M:ProviderImplementation.ProvidedTypes.ProvidedField.#ctor(System.String,System.Type)">
+<summary>
+ Create a new provided field. It is not initially associated with any specific provided type definition.
+</summary>
+</member>
+<member name="T:ProviderImplementation.ProvidedTypes.ProvidedField">
+<summary>
+ Represents an erased provided field.
+</summary>
+</member>
+<member name="P:ProviderImplementation.ProvidedTypes.ProvidedEvent.IsStatic">
+<summary>
+ Get a flag indicating if the property is static.
+</summary>
+</member>
+<member name="M:ProviderImplementation.ProvidedTypes.ProvidedEvent.AddXmlDocDelayed(Microsoft.FSharp.Core.FSharpFunc{Microsoft.FSharp.Core.Unit,System.String})">
+<summary>
+ Add XML documentation information to this provided constructor, where the computation of the documentation is delayed until necessary
+</summary>
+</member>
+<member name="M:ProviderImplementation.ProvidedTypes.ProvidedEvent.AddXmlDocComputed(Microsoft.FSharp.Core.FSharpFunc{Microsoft.FSharp.Core.Unit,System.String})">
+<summary>
+ Add XML documentation information to this provided constructor, where the computation of the documentation is delayed until necessary
+ The documentation is re-computed  every time it is required.
+</summary>
+</member>
+<member name="M:ProviderImplementation.ProvidedTypes.ProvidedEvent.AddXmlDoc(System.String)">
+<summary>
+ Add XML documentation information to this provided constructor
+</summary>
+</member>
+<member name="M:ProviderImplementation.ProvidedTypes.ProvidedEvent.AddDefinitionLocation(System.Int32,System.Int32,System.String)">
+<summary>
+ Add definition location information to the provided type definition.
+</summary>
+</member>
+<member name="M:ProviderImplementation.ProvidedTypes.ProvidedEvent.#ctor(System.String,System.Type,Microsoft.FSharp.Core.FSharpFunc{Microsoft.FSharp.Collections.FSharpList{Microsoft.FSharp.Quotations.FSharpExpr},Microsoft.FSharp.Quotations.FSharpExpr},Microsoft.FSharp.Core.FSharpFunc{Microsoft.FSharp.Collections.FSharpList{Microsoft.FSharp.Quotations.FSharpExpr},Microsoft.FSharp.Quotations.FSharpExpr},Microsoft.FSharp.Core.FSharpOption{System.Boolean})">
+<summary>
+ Create a new provided event. It is not initially associated with any specific provided type definition.
+</summary>
+</member>
+<member name="T:ProviderImplementation.ProvidedTypes.ProvidedEvent">
+<summary>
+ Represents an erased provided property.
+</summary>
+</member>
+<member name="P:ProviderImplementation.ProvidedTypes.ProvidedProperty.IsStatic">
+<summary>
+ Get or set a flag indicating if the property is static.
+</summary>
+</member>
+<member name="M:ProviderImplementation.ProvidedTypes.ProvidedProperty.AddXmlDocDelayed(Microsoft.FSharp.Core.FSharpFunc{Microsoft.FSharp.Core.Unit,System.String})">
+<summary>
+ Add XML documentation information to this provided constructor, where the computation of the documentation is delayed until necessary
+</summary>
+</member>
+<member name="M:ProviderImplementation.ProvidedTypes.ProvidedProperty.AddXmlDocComputed(Microsoft.FSharp.Core.FSharpFunc{Microsoft.FSharp.Core.Unit,System.String})">
+<summary>
+ Add XML documentation information to this provided constructor, where the computation of the documentation is delayed until necessary
+ The documentation is re-computed  every time it is required.
+</summary>
+</member>
+<member name="M:ProviderImplementation.ProvidedTypes.ProvidedProperty.AddXmlDoc(System.String)">
+<summary>
+ Add XML documentation information to this provided constructor
+</summary>
+</member>
+<member name="M:ProviderImplementation.ProvidedTypes.ProvidedProperty.AddObsoleteAttribute(System.String,Microsoft.FSharp.Core.FSharpOption{System.Boolean})">
+<summary>
+ Add a &apos;Obsolete&apos; attribute to this provided property
+</summary>
+</member>
+<member name="M:ProviderImplementation.ProvidedTypes.ProvidedProperty.AddDefinitionLocation(System.Int32,System.Int32,System.String)">
+<summary>
+ Add definition location information to the provided type definition.
+</summary>
+</member>
+<member name="M:ProviderImplementation.ProvidedTypes.ProvidedProperty.AddCustomAttribute(System.Reflection.CustomAttributeData)">
+<summary>
+ Add a custom attribute to the provided property definition.
+</summary>
+</member>
+<member name="M:ProviderImplementation.ProvidedTypes.ProvidedProperty.#ctor(System.String,System.Type,Microsoft.FSharp.Core.FSharpOption{Microsoft.FSharp.Core.FSharpFunc{Microsoft.FSharp.Collections.FSharpList{Microsoft.FSharp.Quotations.FSharpExpr},Microsoft.FSharp.Quotations.FSharpExpr}},Microsoft.FSharp.Core.FSharpOption{Microsoft.FSharp.Core.FSharpFunc{Microsoft.FSharp.Collections.FSharpList{Microsoft.FSharp.Quotations.FSharpExpr},Microsoft.FSharp.Quotations.FSharpExpr}},Microsoft.FSharp.Core.FSharpOption{System.Boolean},Microsoft.FSharp.Core.FSharpOption{Microsoft.FSharp.Collections.FSharpList{ProviderImplementation.ProvidedTypes.ProvidedParameter}})">
+<summary>
+ Create a new provided property. It is not initially associated with any specific provided type definition.
+</summary>
+</member>
+<member name="T:ProviderImplementation.ProvidedTypes.ProvidedProperty">
+<summary>
+ Represents an erased provided property.
+</summary>
+</member>
+<member name="P:ProviderImplementation.ProvidedTypes.ProvidedMethod.GetInvokeCode">
+<summary>
+ This method is for internal use only in the type provider SDK
+</summary>
+</member>
+<member name="M:ProviderImplementation.ProvidedTypes.ProvidedMethod.SetMethodAttrs(System.Reflection.MethodAttributes)">
+<summary>
+ Set the method attributes of the method. By default these are simple &apos;MethodAttributes.Public&apos;
+</summary>
+</member>
+<member name="M:ProviderImplementation.ProvidedTypes.ProvidedMethod.DefineStaticParameters(Microsoft.FSharp.Collections.FSharpList{ProviderImplementation.ProvidedTypes.ProvidedStaticParameter},Microsoft.FSharp.Core.FSharpFunc{System.String,Microsoft.FSharp.Core.FSharpFunc{System.Object[],ProviderImplementation.ProvidedTypes.ProvidedMethod}})">
+<summary>
+ Define the static parameters available on a statically parameterized method
+</summary>
+</member>
+<member name="M:ProviderImplementation.ProvidedTypes.ProvidedMethod.AddXmlDocDelayed(Microsoft.FSharp.Core.FSharpFunc{Microsoft.FSharp.Core.Unit,System.String})">
+<summary>
+ Add XML documentation information to this provided constructor, where the computation of the documentation is delayed until necessary
+</summary>
+</member>
+<member name="M:ProviderImplementation.ProvidedTypes.ProvidedMethod.AddXmlDocComputed(Microsoft.FSharp.Core.FSharpFunc{Microsoft.FSharp.Core.Unit,System.String})">
+<summary>
+ Add XML documentation information to this provided constructor, where the computation of the documentation is delayed until necessary
+ The documentation is re-computed  every time it is required.
+</summary>
+</member>
+<member name="M:ProviderImplementation.ProvidedTypes.ProvidedMethod.AddXmlDoc(System.String)">
+<summary>
+ Add XML documentation information to this provided constructor
+</summary>
+</member>
+<member name="M:ProviderImplementation.ProvidedTypes.ProvidedMethod.AddObsoleteAttribute(System.String,Microsoft.FSharp.Core.FSharpOption{System.Boolean})">
+<summary>
+ Add XML documentation information to this provided method
+</summary>
+</member>
+<member name="M:ProviderImplementation.ProvidedTypes.ProvidedMethod.AddDefinitionLocation(System.Int32,System.Int32,System.String)">
+<summary>
+ Add definition location information to the provided type definition.
+</summary>
+</member>
+<member name="M:ProviderImplementation.ProvidedTypes.ProvidedMethod.AddCustomAttribute(System.Reflection.CustomAttributeData)">
+<summary>
+ Add a custom attribute to the provided method definition.
+</summary>
+</member>
+<member name="M:ProviderImplementation.ProvidedTypes.ProvidedMethod.#ctor(System.String,Microsoft.FSharp.Collections.FSharpList{ProviderImplementation.ProvidedTypes.ProvidedParameter},System.Type,Microsoft.FSharp.Core.FSharpOption{Microsoft.FSharp.Core.FSharpFunc{Microsoft.FSharp.Collections.FSharpList{Microsoft.FSharp.Quotations.FSharpExpr},Microsoft.FSharp.Quotations.FSharpExpr}},Microsoft.FSharp.Core.FSharpOption{System.Boolean})">
+<summary>
+ When making a cross-targeting type provider, use this method instead of the ProvidedMethod constructor from ProvidedTypes
+</summary>
+</member>
+<member name="P:ProviderImplementation.ProvidedTypes.ProvidedConstructor.IsImplicitConstructor(System.Boolean)">
+<summary>
+ Set a flag indicating that the constructor acts like an F# implicit constructor, so the
+ parameters of the constructor become fields and can be accessed using Expr.GlobalVar with the
+ same name.
+</summary>
+</member>
+<member name="P:ProviderImplementation.ProvidedTypes.ProvidedConstructor.BaseConstructorCall(Microsoft.FSharp.Core.FSharpFunc{Microsoft.FSharp.Collections.FSharpList{Microsoft.FSharp.Quotations.FSharpExpr},System.Tuple{System.Reflection.ConstructorInfo,Microsoft.FSharp.Collections.FSharpList{Microsoft.FSharp.Quotations.FSharpExpr}}})">
+<summary>
+ Set the target and arguments of the base constructor call. Only used for generated types.
+</summary>
+</member>
+<member name="P:ProviderImplementation.ProvidedTypes.ProvidedConstructor.IsImplicitConstructor">
+<summary>
+ Set a flag indicating that the constructor acts like an F# implicit constructor, so the
+ parameters of the constructor become fields and can be accessed using Expr.GlobalVar with the
+ same name.
+</summary>
+</member>
+<member name="M:ProviderImplementation.ProvidedTypes.ProvidedConstructor.GetInvokeCode(Microsoft.FSharp.Collections.FSharpList{Microsoft.FSharp.Quotations.FSharpExpr})">
+<summary>
+ This method is for internal use only in the type provider SDK
+</summary>
+</member>
+<member name="M:ProviderImplementation.ProvidedTypes.ProvidedConstructor.AddXmlDocDelayed(Microsoft.FSharp.Core.FSharpFunc{Microsoft.FSharp.Core.Unit,System.String})">
+<summary>
+ Add XML documentation information to this provided constructor, where the computation of the documentation is delayed until necessary
+</summary>
+</member>
+<member name="M:ProviderImplementation.ProvidedTypes.ProvidedConstructor.AddXmlDocComputed(Microsoft.FSharp.Core.FSharpFunc{Microsoft.FSharp.Core.Unit,System.String})">
+<summary>
+ Add XML documentation information to this provided constructor, where the documentation is re-computed  every time it is required.
+</summary>
+</member>
+<member name="M:ProviderImplementation.ProvidedTypes.ProvidedConstructor.AddXmlDoc(System.String)">
+<summary>
+ Add XML documentation information to this provided constructor
+</summary>
+</member>
+<member name="M:ProviderImplementation.ProvidedTypes.ProvidedConstructor.AddObsoleteAttribute(System.String,Microsoft.FSharp.Core.FSharpOption{System.Boolean})">
+<summary>
+ Add a &apos;Obsolete&apos; attribute to this provided constructor
+</summary>
+</member>
+<member name="M:ProviderImplementation.ProvidedTypes.ProvidedConstructor.AddDefinitionLocation(System.Int32,System.Int32,System.String)">
+<summary>
+ Add definition location information to the provided constructor.
+</summary>
+</member>
+<member name="M:ProviderImplementation.ProvidedTypes.ProvidedConstructor.#ctor(Microsoft.FSharp.Collections.FSharpList{ProviderImplementation.ProvidedTypes.ProvidedParameter},Microsoft.FSharp.Core.FSharpFunc{Microsoft.FSharp.Collections.FSharpList{Microsoft.FSharp.Quotations.FSharpExpr},Microsoft.FSharp.Quotations.FSharpExpr})">
+<summary>
+ When making a cross-targeting type provider, use this method instead of the ProvidedConstructor constructor from ProvidedTypes
+</summary>
+</member>
+<member name="T:ProviderImplementation.ProvidedTypes.ProvidedConstructor">
+<summary>
+ Represents an erased provided constructor.
+</summary>
+</member>
+<member name="M:ProviderImplementation.ProvidedTypes.ProvidedStaticParameter.AddXmlDocDelayed(Microsoft.FSharp.Core.FSharpFunc{Microsoft.FSharp.Core.Unit,System.String})">
+<summary>
+ Add XML documentation information to this provided constructor, where the computation of the documentation is delayed until necessary
+</summary>
+</member>
+<member name="M:ProviderImplementation.ProvidedTypes.ProvidedStaticParameter.AddXmlDoc(System.String)">
+<summary>
+ Add XML documentation information to this provided constructor
+</summary>
+</member>
+<member name="M:ProviderImplementation.ProvidedTypes.ProvidedStaticParameter.#ctor(System.String,System.Type,Microsoft.FSharp.Core.FSharpOption{System.Object})">
+<summary>
+ Create a new provided static parameter, for use with DefineStaticParameters on a provided type definition.
+</summary>
+</member>
+<member name="T:ProviderImplementation.ProvidedTypes.ProvidedStaticParameter">
+<summary>
+ Represents a provided static parameter.
+</summary>
+</member>
+<member name="P:ProviderImplementation.ProvidedTypes.ProvidedParameter.IsReflectedDefinition(System.Boolean)">
+<summary>
+ Indicates if the parameter is marked as ReflectedDefinition
+</summary>
+</member>
+<member name="P:ProviderImplementation.ProvidedTypes.ProvidedParameter.IsParamArray(System.Boolean)">
+<summary>
+ Indicates if the parameter is marked as ParamArray
+</summary>
+</member>
+<member name="P:ProviderImplementation.ProvidedTypes.ProvidedParameter.HasDefaultParameterValue">
+<summary>
+ Indicates if the parameter has a default value
+</summary>
+</member>
+<member name="M:ProviderImplementation.ProvidedTypes.ProvidedParameter.AddCustomAttribute(System.Reflection.CustomAttributeData)">
+<summary>
+ Add a custom attribute to the provided parameter.
+</summary>
+</member>
+<member name="M:ProviderImplementation.ProvidedTypes.ProvidedParameter.#ctor(System.String,System.Type,Microsoft.FSharp.Core.FSharpOption{System.Boolean},Microsoft.FSharp.Core.FSharpOption{System.Object})">
+<summary>
+ Create a new provided parameter.
+</summary>
+</member>
+<member name="T:ProviderImplementation.ProvidedTypes.ProvidedParameter">
+<summary>
+ Represents an erased provided parameter
+</summary>
+</member>
+<member name="M:OBO.NET.DBXref.ofString(System.String)">
+<summary>
+ Parses a given string to a DBXref
+</summary>
+</member>
+<member name="M:OBO.NET.DBXref.ToCvTerm">
+<summary>
+ Returns the corresponding CvTerm of the DBXref with empty name.
+</summary>
+</member>
+<member name="T:OBO.NET.DBXref">
+<summary>
+ Representation of DBXrefs.
+</summary>
+</member>
+<member name="T:OBO.NET.TermSynonymScope">
+<summary>
+The value consists of a quote enclosed synonym text, a scope identifier, an optional synonym type name, and an optional dbxref list, like this:
+synonym: &quot;The other white meat&quot; EXACT MARKETING_SLOGAN [MEAT:00324, BACONBASE:03021]
+
+The synonym scope may be one of four values: EXACT, BROAD, NARROW, RELATED. If the first form is used to specify a synonym, the scope is assumed to be RELATED.
+
+The synonym type must be the id of a synonym type defined by a synonymtypedef line in the header. If the synonym type has a default scope, that scope is used regardless of any scope declaration given by a synonym tag.
+
+The dbxref list is formatted as specified in dbxref formatting. A term may have any number of synonyms.
+</summary>
+</member>
+<member name="T:OBO.NET.TermRelation`1.TargetMissing">
+<summary>
+ Relation between one OboTerm with another OboTerm that is not defined in the OboOntology in the form of generic relation `&apos;a` * source OboTerm.
+</summary>
+</member>
+<member name="T:OBO.NET.TermRelation`1.Target">
+<summary>
+ Relation between one OboTerm with another in the form of generic relation `&apos;a` * source OboTerm * target OboTerm.
+</summary>
+</member>
+<member name="T:OBO.NET.TermRelation`1.Empty">
+<summary>
+ No Relation with other OboTerms.
+</summary>
+</member>
+<member name="T:OBO.NET.TermRelation`1">
+<summary>
+ Representation of a the relation an OboTerm can have with other OboTerms.
+</summary>
+</member>
+<member name="P:OBO.NET.OboTerm.CreationDate">
+<summary>
+Date of creation of the term specified in ISO 8601 format. Example: 2009-04-13T01:32:36Z
+</summary>
+</member>
+<member name="P:OBO.NET.OboTerm.CreatedBy">
+<summary>
+Name of the creator of the term. May be a short username, initials or ID. 
+</summary>
+</member>
+<member name="P:OBO.NET.OboTerm.BuiltIn">
+<summary>
+Whether or not this term or relation is built in to the OBO format. 
+</summary>
+</member>
+<member name="P:OBO.NET.OboTerm.Replacedby">
+<summary>
+Gives a term which replaces an obsolete term. The value is the id of the replacement term. 
+</summary>
+</member>
+<member name="P:OBO.NET.OboTerm.IsObsolete">
+<summary>
+Whether or not this term is obsolete. 
+</summary>
+</member>
+<member name="P:OBO.NET.OboTerm.Relationships">
+<summary>
+describes a typed relationship between this term and another term or terms. 
+relationship
+Cardinality: any.
+The value of this tag should be the relationship type id, and then the id of the target term, plus, optionally, other target terms. The relationship type 
+name must be a relationship type name as defined in a typedef tag stanza. The [Typedef] must either occur in a document in the current parse batch, or in a 
+file imported via an import header tag. If the relationship type name is undefined, a parse error will be generated. If the id of the target term cannot be 
+resolved by the end of parsing the current batch of files, this tag describes a &quot;dangling reference&quot;; see the parser requirements section for information 
+about how a parser may handle dangling references. If a relationship is specified for a term with an is_obsolete value of true, a parse error will be generated.
+Parsers which support trailing modifiers may optionally parse the following trailing modifier tags for relationships:
+namespace &lt;any namespace id&gt;
+inferred true OR false
+cardinality any non-negative integer
+maxCardinality any non-negative integer
+minCardinality any non-negative integer
+The namespace modifier allows the relationship to be assigned its own namespace (independant of the namespace of the parent, child, or type of the relationship).
+The inferred modifier indicates that the relationship was not explicitly defined by a human ontology designer, but was created automatically by a reasoner, and could be re-derived using the non-derived relationships in the ontology.
+Cardinality qualifiers can be used to specify constraints on the number of relations of the specified type any given instance can have. For example, in the stanza declaring a id: SO:0000634 ! polycistronic mRNA, we can say: relationship: has_part SO:0000316 {minCardinality=2} ! CDS which means that every instance of a transcript of this type has two or more CDS features such that they stand in a has_part relationship from the transcript.
+The semantics of a relationship tag is by default &quot;all-some&quot;. Formally, in OWL this corresponds to an existential restriction - see the OWL section.
+</summary>
+</member>
+<member name="P:OBO.NET.OboTerm.DisjointFrom">
+<summary>
+indicates that a term is disjoint from another, meaning that the two terms have no instances or subclasses in common. 
+</summary>
+</member>
+<member name="P:OBO.NET.OboTerm.UnionOf">
+<summary>
+indicates that this term represents the union of several other terms. 
+</summary>
+</member>
+<member name="P:OBO.NET.OboTerm.Xrefs">
+<summary>
+Cross references that describe analagous terms in another vocabularies. 
+</summary>
+</member>
+<member name="P:OBO.NET.OboTerm.Synonyms">
+<summary>
+This tag gives a synonym for this term, some xrefs to describe the origins of the synonym, and may indicate a synonym category or scope information. 
+</summary>
+</member>
+<member name="P:OBO.NET.OboTerm.Subsets">
+<summary>
+This tag indicates a term subset to which this term belongs. 
+</summary>
+</member>
+<member name="P:OBO.NET.OboTerm.Comment">
+<summary>
+A comment for this term. 
+</summary>
+</member>
+<member name="P:OBO.NET.OboTerm.Definition">
+<summary>
+The definition of the current term. 
+</summary>
+</member>
+<member name="P:OBO.NET.OboTerm.AltIds">
+<summary>
+Defines an alternate id for this term. 
+</summary>
+</member>
+<member name="P:OBO.NET.OboTerm.IsAnonymous">
+<summary>
+Whether or not the current object has an anonymous id. 
+</summary>
+</member>
+<member name="P:OBO.NET.OboTerm.Name">
+<summary>
+The term name. 
+</summary>
+</member>
+<member name="P:OBO.NET.OboTerm.Id">
+<summary>
+The unique id of the current term. 
+</summary>
+</member>
+<member name="M:OBO.NET.OboTerm.toOntologyAnnotation(OBO.NET.OboTerm)">
+<summary>
+ Translates an OBO `term` into an ISADotNet `OntologyAnnotation`.
+</summary>
+</member>
+<member name="M:OBO.NET.OboTerm.toLines(OBO.NET.OboTerm)">
+<summary>
+ Writes an OBO Term to lines in &quot;key:value&quot; style.
+</summary>
+</member>
+<member name="M:OBO.NET.OboTerm.toCvTerm(OBO.NET.OboTerm)">
+<summary>
+ Returns the corresponding CvTerm of the given OboTerm.
+</summary>
+</member>
+<member name="M:OBO.NET.OboTerm.ofOntologyAnnotation(ARCtrl.OntologyAnnotation)">
+<summary>
+ Translates an ISADotNet `OntologyAnnotation` into an OBO `term`.
+</summary>
+</member>
+<member name="M:OBO.NET.OboTerm.make(System.String,System.String,System.Boolean,Microsoft.FSharp.Collections.FSharpList{System.String},System.String,System.String,Microsoft.FSharp.Collections.FSharpList{System.String},Microsoft.FSharp.Collections.FSharpList{OBO.NET.TermSynonym},Microsoft.FSharp.Collections.FSharpList{OBO.NET.DBXref},Microsoft.FSharp.Collections.FSharpList{System.String},Microsoft.FSharp.Collections.FSharpList{System.String},Microsoft.FSharp.Collections.FSharpList{System.String},Microsoft.FSharp.Collections.FSharpList{System.String},Microsoft.FSharp.Collections.FSharpList{System.String},System.Boolean,Microsoft.FSharp.Collections.FSharpList{System.String},Microsoft.FSharp.Collections.FSharpList{System.String},Microsoft.FSharp.Collections.FSharpList{System.String},System.Boolean,System.String,System.String)">
+<summary>
+ Creates an OBO Term from its field values.
+</summary>
+</member>
+<member name="M:OBO.NET.OboTerm.getRelatedTermIds(OBO.NET.OboTerm)">
+<summary>
+ Takes an OboTerm and returns its relationships as a triple consisting of the input term&apos;s ID, the name of the relationship, and the related term&apos;s ID.
+</summary>
+</member>
+<member name="M:OBO.NET.OboTerm.fromLines(System.Boolean,System.Collections.Generic.IEnumerator{System.String},System.Int32,System.String,System.String,System.Boolean,Microsoft.FSharp.Collections.FSharpList{System.String},System.String,System.String,Microsoft.FSharp.Collections.FSharpList{System.String},Microsoft.FSharp.Collections.FSharpList{OBO.NET.TermSynonym},Microsoft.FSharp.Collections.FSharpList{OBO.NET.DBXref},Microsoft.FSharp.Collections.FSharpList{System.String},Microsoft.FSharp.Collections.FSharpList{System.String},Microsoft.FSharp.Collections.FSharpList{System.String},Microsoft.FSharp.Collections.FSharpList{System.String},Microsoft.FSharp.Collections.FSharpList{System.String},System.Boolean,Microsoft.FSharp.Collections.FSharpList{System.String},Microsoft.FSharp.Collections.FSharpList{System.String},Microsoft.FSharp.Collections.FSharpList{System.String},System.Boolean,System.String,System.String)">
+<summary>
+ Reads an OBO Term from lines in &quot;key:value&quot; style.
+</summary>
+</member>
+<member name="M:OBO.NET.OboTerm.deconstructRelationship(System.String)">
+<summary>
+ Takes a relationship and returns a tuple consisting of the name of the relationship and the ID of the OboTerm it matches.
+</summary>
+</member>
+<member name="M:OBO.NET.OboTerm.create(System.String,Microsoft.FSharp.Core.FSharpOption{System.String},Microsoft.FSharp.Core.FSharpOption{System.Boolean},Microsoft.FSharp.Core.FSharpOption{Microsoft.FSharp.Collections.FSharpList{System.String}},Microsoft.FSharp.Core.FSharpOption{System.String},Microsoft.FSharp.Core.FSharpOption{System.String},Microsoft.FSharp.Core.FSharpOption{Microsoft.FSharp.Collections.FSharpList{System.String}},Microsoft.FSharp.Core.FSharpOption{Microsoft.FSharp.Collections.FSharpList{OBO.NET.TermSynonym}},Microsoft.FSharp.Core.FSharpOption{Microsoft.FSharp.Collections.FSharpList{OBO.NET.DBXref}},Microsoft.FSharp.Core.FSharpOption{Microsoft.FSharp.Collections.FSharpList{System.String}},Microsoft.FSharp.Core.FSharpOption{Microsoft.FSharp.Collections.FSharpList{System.String}},Microsoft.FSharp.Core.FSharpOption{Microsoft.FSharp.Collections.FSharpList{System.String}},Microsoft.FSharp.Core.FSharpOption{Microsoft.FSharp.Collections.FSharpList{System.String}},Microsoft.FSharp.Core.FSharpOption{Microsoft.FSharp.Collections.FSharpList{System.String}},Microsoft.FSharp.Core.FSharpOption{System.Boolean},Microsoft.FSharp.Core.FSharpOption{Microsoft.FSharp.Collections.FSharpList{System.String}},Microsoft.FSharp.Core.FSharpOption{Microsoft.FSharp.Collections.FSharpList{System.String}},Microsoft.FSharp.Core.FSharpOption{Microsoft.FSharp.Collections.FSharpList{System.String}},Microsoft.FSharp.Core.FSharpOption{System.Boolean},Microsoft.FSharp.Core.FSharpOption{System.String},Microsoft.FSharp.Core.FSharpOption{System.String})">
+<summary>
+ Creates an OBO Term from its field values.
+</summary>
+</member>
+<member name="M:OBO.NET.OboTerm.ToCvTerm">
+<summary>
+ Returns the corresponding CvTerm of the OboTerm.
+</summary>
+</member>
+<member name="M:OBO.NET.OboTerm.GetRelatedTermIds">
+<summary>
+ Returns the OboTerm&apos;s relationships as a triple consisting of the term&apos;s ID, the name of the relationship, and the related term&apos;s ID.
+</summary>
+</member>
+<member name="M:OBO.NET.OboTerm.Create(System.String,Microsoft.FSharp.Core.FSharpOption{System.String},Microsoft.FSharp.Core.FSharpOption{System.Boolean},Microsoft.FSharp.Core.FSharpOption{Microsoft.FSharp.Collections.FSharpList{System.String}},Microsoft.FSharp.Core.FSharpOption{System.String},Microsoft.FSharp.Core.FSharpOption{System.String},Microsoft.FSharp.Core.FSharpOption{Microsoft.FSharp.Collections.FSharpList{System.String}},Microsoft.FSharp.Core.FSharpOption{Microsoft.FSharp.Collections.FSharpList{OBO.NET.TermSynonym}},Microsoft.FSharp.Core.FSharpOption{Microsoft.FSharp.Collections.FSharpList{OBO.NET.DBXref}},Microsoft.FSharp.Core.FSharpOption{Microsoft.FSharp.Collections.FSharpList{System.String}},Microsoft.FSharp.Core.FSharpOption{Microsoft.FSharp.Collections.FSharpList{System.String}},Microsoft.FSharp.Core.FSharpOption{Microsoft.FSharp.Collections.FSharpList{System.String}},Microsoft.FSharp.Core.FSharpOption{Microsoft.FSharp.Collections.FSharpList{System.String}},Microsoft.FSharp.Core.FSharpOption{Microsoft.FSharp.Collections.FSharpList{System.String}},Microsoft.FSharp.Core.FSharpOption{System.Boolean},Microsoft.FSharp.Core.FSharpOption{Microsoft.FSharp.Collections.FSharpList{System.String}},Microsoft.FSharp.Core.FSharpOption{Microsoft.FSharp.Collections.FSharpList{System.String}},Microsoft.FSharp.Core.FSharpOption{Microsoft.FSharp.Collections.FSharpList{System.String}},Microsoft.FSharp.Core.FSharpOption{System.Boolean},Microsoft.FSharp.Core.FSharpOption{System.String},Microsoft.FSharp.Core.FSharpOption{System.String})">
+<summary>
+ Creates an OBO Term from its field values.
+</summary>
+</member>
+<member name="T:OBO.NET.OboTerm">
+<summary>
+ Models the entities in an OBO Ontology.
+</summary>
+</member>
+<member name="P:OBO.NET.OboTypeDef.Name">
+<summary>
+The term name. 
+</summary>
+</member>
+<member name="P:OBO.NET.OboTypeDef.Id">
+<summary>
+The unique id of the current term. 
+</summary>
+</member>
+<member name="M:OBO.NET.OboTypeDef.toLines(OBO.NET.OboTypeDef)">
+<summary>
+ Writes an OBO Type Def to lines in &quot;key:value&quot; style.
+</summary>
+</member>
+<member name="M:OBO.NET.OboTypeDef.make(System.String,System.String,System.String,System.String,Microsoft.FSharp.Collections.FSharpList{System.String},Microsoft.FSharp.Collections.FSharpList{System.String},System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean)">
+<summary>
+ Creates an OBO Type Def from its field values.
+</summary>
+</member>
+<member name="M:OBO.NET.OboTypeDef.fromLines(System.Boolean,System.Collections.Generic.IEnumerator{System.String},System.Int32,System.String,System.String,System.String,System.String,Microsoft.FSharp.Collections.FSharpList{System.String},Microsoft.FSharp.Collections.FSharpList{System.String},System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean)">
+<summary>
+ Reads an OBO Type Def from lines in &quot;key:value&quot; style.
+</summary>
+</member>
+<member name="M:OBO.NET.OboTypeDef.create(System.String,System.String,System.String,Microsoft.FSharp.Core.FSharpOption{System.String},Microsoft.FSharp.Core.FSharpOption{Microsoft.FSharp.Collections.FSharpList{System.String}},Microsoft.FSharp.Core.FSharpOption{Microsoft.FSharp.Collections.FSharpList{System.String}},Microsoft.FSharp.Core.FSharpOption{System.Boolean},Microsoft.FSharp.Core.FSharpOption{System.Boolean},Microsoft.FSharp.Core.FSharpOption{System.Boolean},Microsoft.FSharp.Core.FSharpOption{System.Boolean},Microsoft.FSharp.Core.FSharpOption{System.Boolean},Microsoft.FSharp.Core.FSharpOption{System.Boolean},Microsoft.FSharp.Core.FSharpOption{System.Boolean})">
+<summary>
+ Creates an OBO Type Def from its field values.
+</summary>
+</member>
+<member name="M:OBO.NET.OboTypeDef.Create(System.String,System.String,System.String,Microsoft.FSharp.Core.FSharpOption{System.String},Microsoft.FSharp.Core.FSharpOption{Microsoft.FSharp.Collections.FSharpList{System.String}},Microsoft.FSharp.Core.FSharpOption{Microsoft.FSharp.Collections.FSharpList{System.String}},Microsoft.FSharp.Core.FSharpOption{System.Boolean},Microsoft.FSharp.Core.FSharpOption{System.Boolean},Microsoft.FSharp.Core.FSharpOption{System.Boolean},Microsoft.FSharp.Core.FSharpOption{System.Boolean},Microsoft.FSharp.Core.FSharpOption{System.Boolean},Microsoft.FSharp.Core.FSharpOption{System.Boolean},Microsoft.FSharp.Core.FSharpOption{System.Boolean})">
+<summary>
+ Creates an OBO Type Def from its field values.
+</summary>
+</member>
+<member name="T:OBO.NET.OboTypeDef">
+<summary>
+ Models the relationship between OBO Terms.
+</summary>
+</member>
+<member name="T:OBO.NET.OboEntry">
+<summary>
+ Model of raw OboEntries, divided into Terms (as `OboTerm`s) and TypeDefs (as `OboTypeDef`s).
+</summary>
+</member>
+<member name="M:OBO.NET.OboOntology.tryGetSynonymTerms(OBO.NET.OboTerm,OBO.NET.OboOntology)">
+<summary>
+ Takes a given OboTerm and returns a sequence of scope * OboTerm if the synonym exists in the given OboOntology or scope * None if it does not.
+</summary>
+</member>
+<member name="M:OBO.NET.OboOntology.toLines(OBO.NET.OboOntology)">
+<summary>
+ Writes an OBO Ontology to term and type def stanzas in line form.
+</summary>
+</member>
+<member name="M:OBO.NET.OboOntology.toFile(System.String,OBO.NET.OboOntology)">
+<summary>
+ Writes an OBO Ontology to term and type def stanzas to a file in the given path.
+</summary>
+</member>
+<member name="M:OBO.NET.OboOntology.returnAllEquivalentTerms(OBO.NET.OboOntology,OBO.NET.OboOntology)">
+<summary>
+ Returns all terms of the first given OboOntology that have equivalent terms in the second given OboOntology.
+</summary>
+</member>
+<member name="M:OBO.NET.OboOntology.getSynonyms(OBO.NET.OboTerm,OBO.NET.OboOntology)">
+<summary>
+ Takes a given OboTerm and returns a sequence of scope * OboTerm if the synonym exists in the given OboOntology.
+</summary>
+</member>
+<member name="M:OBO.NET.OboOntology.getRelations(OBO.NET.OboOntology)">
+<summary>
+ Returns all relations in the given OboOntology as a list of TermRelations.
+</summary>
+</member>
+<member name="M:OBO.NET.OboOntology.getRelatedTerms(OBO.NET.OboTerm,OBO.NET.OboOntology)">
+<summary>
+ Takes an OboTerm and an OboOntology and returns all related terms in this ontology as a triple of input term, relationship, and related term.
+</summary>
+</member>
+<member name="M:OBO.NET.OboOntology.getIsAs(OBO.NET.OboTerm,OBO.NET.OboOntology)">
+<summary>
+ Takes an OboTerm and an OboOntology and returns a list of the input OboTerm and all OboTerms that this OboTerm is related with via is_a.
+</summary>
+</member>
+<member name="M:OBO.NET.OboOntology.fromOboEntries(System.String,Microsoft.FSharp.Core.FSharpOption{System.String},Microsoft.FSharp.Core.FSharpOption{System.String},Microsoft.FSharp.Core.FSharpOption{System.DateTime},Microsoft.FSharp.Core.FSharpOption{System.String},Microsoft.FSharp.Core.FSharpOption{System.String},Microsoft.FSharp.Collections.FSharpList{System.String},Microsoft.FSharp.Collections.FSharpList{System.String},Microsoft.FSharp.Collections.FSharpList{System.String},Microsoft.FSharp.Collections.FSharpList{System.String},Microsoft.FSharp.Core.FSharpOption{System.String},Microsoft.FSharp.Collections.FSharpList{System.String},Microsoft.FSharp.Collections.FSharpList{System.String},Microsoft.FSharp.Collections.FSharpList{System.String},Microsoft.FSharp.Collections.FSharpList{System.String},Microsoft.FSharp.Collections.FSharpList{System.String},Microsoft.FSharp.Collections.FSharpList{System.String},Microsoft.FSharp.Collections.FSharpList{System.String},Microsoft.FSharp.Collections.FSharpList{System.String},Microsoft.FSharp.Collections.FSharpList{OBO.NET.OboEntry})">
+<summary>
+ Takes a list of OboEntries and the document header tags and returns the OboOntology based on them.
+</summary>
+</member>
+<member name="M:OBO.NET.OboOntology.fromLines(System.Boolean,System.Collections.Generic.IEnumerable{System.String})">
+<summary>
+ Reads an OBO Ontology containing document header tags, and term and type def stanzas from lines.
+</summary>
+</member>
+<member name="M:OBO.NET.OboOntology.fromFile(System.Boolean,System.String)">
+<summary>
+ Reads an OBO Ontology containing term and type def stanzas from a file with the given path.
+</summary>
+</member>
+<member name="M:OBO.NET.OboOntology.create(Microsoft.FSharp.Collections.FSharpList{OBO.NET.OboTerm},Microsoft.FSharp.Collections.FSharpList{OBO.NET.OboTypeDef},System.String,Microsoft.FSharp.Core.FSharpOption{System.String},Microsoft.FSharp.Core.FSharpOption{System.String},Microsoft.FSharp.Core.FSharpOption{System.DateTime},Microsoft.FSharp.Core.FSharpOption{System.String},Microsoft.FSharp.Core.FSharpOption{System.String},Microsoft.FSharp.Collections.FSharpList{System.String},Microsoft.FSharp.Collections.FSharpList{System.String},Microsoft.FSharp.Collections.FSharpList{System.String},Microsoft.FSharp.Collections.FSharpList{System.String},Microsoft.FSharp.Core.FSharpOption{System.String},Microsoft.FSharp.Collections.FSharpList{System.String},Microsoft.FSharp.Collections.FSharpList{System.String},Microsoft.FSharp.Collections.FSharpList{System.String},Microsoft.FSharp.Collections.FSharpList{System.String},Microsoft.FSharp.Collections.FSharpList{System.String},Microsoft.FSharp.Collections.FSharpList{System.String},Microsoft.FSharp.Collections.FSharpList{System.String},Microsoft.FSharp.Collections.FSharpList{System.String})">
+<summary>
+ Creates an OboOntology based on the given parameters.
+</summary>
+</member>
+<member name="M:OBO.NET.OboOntology.areTermsEquivalent(OBO.NET.OboTerm,OBO.NET.OboTerm,OBO.NET.OboOntology)">
+ <summary>Checks if the given terms are treated as equivalent in the given OboOntology.</summary>
+ <remarks>Note that term1 must be part of the given OboOntology while term2 must be part of another ontology.</remarks>
+</member>
+<member name="M:OBO.NET.OboOntology.TryGetTermByName(System.String)">
+<summary>
+ Finds OBO term by its free text name if it exists. Else returns None.
+</summary>
+</member>
+<member name="M:OBO.NET.OboOntology.TryGetTerm(System.String)">
+<summary>
+ Finds OBO term by &quot;TermSourceRef:TermAccessionNumber&quot; style ID.
+</summary>
+</member>
+<member name="M:OBO.NET.OboOntology.TryGetSynonyms(OBO.NET.OboTerm)">
+<summary>
+ Takes a given OboTerm and returns a sequence of scope * OboTerm if the synonym exists in the OboOntology or scope * None if it does not.
+</summary>
+</member>
+<member name="M:OBO.NET.OboOntology.TryGetOntologyAnnotationByName(System.String)">
+<summary>
+ Finds OBO term by its free text name and returns it as ISA OntologyAnnotation type if it exists. Else returns None.
+</summary>
+</member>
+<member name="M:OBO.NET.OboOntology.TryGetOntologyAnnotation(System.String)">
+<summary>
+ Finds OBO term by &quot;TermSourceRef:TermAccessionNumber&quot; style ID and returns it as ISA OntologyAnnotation type.
+</summary>
+</member>
+<member name="M:OBO.NET.OboOntology.ToLines">
+<summary>
+ Writes an OBO Ontology to term and type def stanzas in line form.
+</summary>
+</member>
+<member name="M:OBO.NET.OboOntology.ToFile(System.String)">
+<summary>
+ Writes an OBO Ontology to term and type def stanzas to a file in the given path.
+</summary>
+</member>
+<member name="M:OBO.NET.OboOntology.ReturnAllEquivalentTerms(OBO.NET.OboOntology)">
+<summary>
+ Returns all terms of the OboOntology that have equivalent terms in a given second OboOntology.
+</summary>
+</member>
+<member name="M:OBO.NET.OboOntology.GetTermByName(System.String)">
+<summary>
+ Finds OBO term by its free text name.
+</summary>
+</member>
+<member name="M:OBO.NET.OboOntology.GetTerm(System.String)">
+<summary>
+ Finds OBO term by &quot;TermSourceRef:TermAccessionNumber&quot; style ID.
+</summary>
+</member>
+<member name="M:OBO.NET.OboOntology.GetSynonyms(OBO.NET.OboTerm)">
+<summary>
+ Takes a given OboTerm and returns a sequence of scope * OboTerm if the synonym exists in the OboOntology.
+</summary>
+</member>
+<member name="M:OBO.NET.OboOntology.GetRelations">
+<summary>
+ Returns all relations in this OboOntology as a list of TermRelations.
+</summary>
+</member>
+<member name="M:OBO.NET.OboOntology.GetRelatedTerms(OBO.NET.OboTerm)">
+<summary>
+ Takes an OboTerm and returns all related terms in this ontology as a triple of input term, relationship, and related term.
+</summary>
+</member>
+<member name="M:OBO.NET.OboOntology.GetParentOntologyAnnotations(System.String,Microsoft.FSharp.Core.FSharpOption{System.Int32})">
+<summary>
+ For a given ontology term, find all terms to which this term points in a &quot;isA&quot; relationship
+
+ Depth can be used to restrict the number of iterations by which neighbours of neighbours are checked.
+</summary>
+</member>
+<member name="M:OBO.NET.OboOntology.GetParentOntologyAnnotations(ARCtrl.OntologyAnnotation,Microsoft.FSharp.Core.FSharpOption{System.Int32})">
+<summary>
+ For a given ontology term, finds all terms to which this term points in a &quot;isA&quot; relationship.
+
+ Depth can be used to restrict the number of iterations by which neighbours of neighbours are checked.
+</summary>
+</member>
+<member name="M:OBO.NET.OboOntology.GetOntologyAnnotationByName(System.String)">
+<summary>
+ Finds OBO term by it&apos;s free text name and return it as ISA OntologyAnnotation type.
+</summary>
+</member>
+<member name="M:OBO.NET.OboOntology.GetOntologyAnnotation(System.String)">
+<summary>
+ Finds OBO term by &quot;TermSourceRef:TermAccessionNumber&quot; style ID and returns it as ISA OntologyAnnotation type.
+</summary>
+</member>
+<member name="M:OBO.NET.OboOntology.GetIsAs(OBO.NET.OboTerm)">
+<summary>
+ Takes an OboTerm and returns a list of the input OboTerm and all OboTerms that this OboTerm is related with via is_a.
+</summary>
+</member>
+<member name="M:OBO.NET.OboOntology.GetEquivalentOntologyAnnotations(System.String,Microsoft.FSharp.Core.FSharpOption{System.Int32})">
+<summary>
+ For a given ontology term, finds all equivalent terms that are connected via XRefs.
+
+ Depth can be used to restrict the number of iterations by which neighbours of neighbours are checked.
+</summary>
+</member>
+<member name="M:OBO.NET.OboOntology.GetEquivalentOntologyAnnotations(ARCtrl.OntologyAnnotation,Microsoft.FSharp.Core.FSharpOption{System.Int32})">
+<summary>
+ For a given ontology term, finsd all equivalent terms that are connected via XRefs.
+
+ Depth can be used to restrict the number of iterations by which neighbours of neighbours are checked.
+</summary>
+</member>
+<member name="M:OBO.NET.OboOntology.GetChildOntologyAnnotations(System.String,Microsoft.FSharp.Core.FSharpOption{System.Int32})">
+<summary>
+ For a given ontology term, finds all terms which point to this term &quot;isA&quot; relationship.
+
+ Depth can be used to restrict the number of iterations by which neighbours of neighbours are checked.
+</summary>
+</member>
+<member name="M:OBO.NET.OboOntology.GetChildOntologyAnnotations(ARCtrl.OntologyAnnotation,Microsoft.FSharp.Core.FSharpOption{System.Int32})">
+<summary>
+ For a given ontology term, finds all terms which point to this term &quot;isA&quot; relationship.
+
+ Depth can be used to restrict the number of iterations by which neighbours of neighbours are checked.
+</summary>
+</member>
+<member name="M:OBO.NET.OboOntology.FromOboEntries(Microsoft.FSharp.Collections.FSharpList{OBO.NET.OboEntry},System.String,Microsoft.FSharp.Core.FSharpOption{System.String},Microsoft.FSharp.Core.FSharpOption{System.String},Microsoft.FSharp.Core.FSharpOption{System.DateTime},Microsoft.FSharp.Core.FSharpOption{System.String},Microsoft.FSharp.Core.FSharpOption{System.String},Microsoft.FSharp.Core.FSharpOption{Microsoft.FSharp.Collections.FSharpList{System.String}},Microsoft.FSharp.Core.FSharpOption{Microsoft.FSharp.Collections.FSharpList{System.String}},Microsoft.FSharp.Core.FSharpOption{Microsoft.FSharp.Collections.FSharpList{System.String}},Microsoft.FSharp.Core.FSharpOption{Microsoft.FSharp.Collections.FSharpList{System.String}},Microsoft.FSharp.Core.FSharpOption{System.String},Microsoft.FSharp.Core.FSharpOption{Microsoft.FSharp.Collections.FSharpList{System.String}},Microsoft.FSharp.Core.FSharpOption{Microsoft.FSharp.Collections.FSharpList{System.String}},Microsoft.FSharp.Core.FSharpOption{Microsoft.FSharp.Collections.FSharpList{System.String}},Microsoft.FSharp.Core.FSharpOption{Microsoft.FSharp.Collections.FSharpList{System.String}},Microsoft.FSharp.Core.FSharpOption{Microsoft.FSharp.Collections.FSharpList{System.String}},Microsoft.FSharp.Core.FSharpOption{Microsoft.FSharp.Collections.FSharpList{System.String}},Microsoft.FSharp.Core.FSharpOption{Microsoft.FSharp.Collections.FSharpList{System.String}},Microsoft.FSharp.Core.FSharpOption{Microsoft.FSharp.Collections.FSharpList{System.String}})">
+<summary>
+ Takes a list of OboEntries and the document header tags and returns the OboOntology based on them.
+</summary>
+</member>
+<member name="M:OBO.NET.OboOntology.Create(Microsoft.FSharp.Collections.FSharpList{OBO.NET.OboTerm},Microsoft.FSharp.Collections.FSharpList{OBO.NET.OboTypeDef},System.String,Microsoft.FSharp.Core.FSharpOption{System.String},Microsoft.FSharp.Core.FSharpOption{System.String},Microsoft.FSharp.Core.FSharpOption{System.DateTime},Microsoft.FSharp.Core.FSharpOption{System.String},Microsoft.FSharp.Core.FSharpOption{System.String},Microsoft.FSharp.Core.FSharpOption{Microsoft.FSharp.Collections.FSharpList{System.String}},Microsoft.FSharp.Core.FSharpOption{Microsoft.FSharp.Collections.FSharpList{System.String}},Microsoft.FSharp.Core.FSharpOption{Microsoft.FSharp.Collections.FSharpList{System.String}},Microsoft.FSharp.Core.FSharpOption{Microsoft.FSharp.Collections.FSharpList{System.String}},Microsoft.FSharp.Core.FSharpOption{System.String},Microsoft.FSharp.Core.FSharpOption{Microsoft.FSharp.Collections.FSharpList{System.String}},Microsoft.FSharp.Core.FSharpOption{Microsoft.FSharp.Collections.FSharpList{System.String}},Microsoft.FSharp.Core.FSharpOption{Microsoft.FSharp.Collections.FSharpList{System.String}},Microsoft.FSharp.Core.FSharpOption{Microsoft.FSharp.Collections.FSharpList{System.String}},Microsoft.FSharp.Core.FSharpOption{Microsoft.FSharp.Collections.FSharpList{System.String}},Microsoft.FSharp.Core.FSharpOption{Microsoft.FSharp.Collections.FSharpList{System.String}},Microsoft.FSharp.Core.FSharpOption{Microsoft.FSharp.Collections.FSharpList{System.String}},Microsoft.FSharp.Core.FSharpOption{Microsoft.FSharp.Collections.FSharpList{System.String}})">
+<summary>
+ Creates an OboOntology based on the given arguments.
+</summary>
+</member>
+<member name="M:OBO.NET.OboOntology.AreTermsEquivalent(OBO.NET.OboTerm,OBO.NET.OboTerm)">
+ <summary>Checks if the given terms are treated as equivalent in the OboOntology.</summary>
+ <remarks>Note that term1 must be part of the OboOntology while term2 must be part of another ontology.</remarks>
+</member>
+<member name="T:OBO.NET.OboOntology">
+<summary>
+ Ontology containing OBO Terms and OBO Type Defs (OBO 1.2).
+</summary>
+</member>
+<member name="M:OBO.NET.DBXrefModule.toCvTerm(OBO.NET.DBXref)">
+<summary>
+ Creates a CvTerm (with an empty name) of a given DBXref.
+</summary>
+</member>
+<member name="T:OBO.NET.DBXrefModule">
+<summary>
+ Functions for working with DBXrefs.
+</summary>
+</member>
+<member name="M:OBO.NET.OboEntries.fromFile(System.Boolean,System.String)">
+<summary>
+ Reads an OBO file and returns a list of OboEntries.
+</summary>
+</member>
+<member name="M:OBO.NET.OboEntries.fromLines(System.Boolean,System.Collections.Generic.IEnumerable{System.String})">
+<summary>
+ Reads a collection of strings and parses them into a list of OboEntries.
+</summary>
+</member>
+<member name="T:OBO.NET.OboEntries">
+<summary>
+ Functions for working with OboEntries.
+</summary>
+</member>
+<member name="M:OBO.NET.OboOntologyModule.parseOboTerms(System.Boolean,System.Collections.Generic.IEnumerable{System.String})">
+<summary>
+ Parses OBO Terms [Term] from seq&lt;string&gt;.
+</summary>
+</member>
+<member name="T:OBO.NET.OboOntologyModule">
+<summary>
+ Functions for parsing and querying an OBO ontology.
+</summary>
+</member>
+</members>
+</doc>

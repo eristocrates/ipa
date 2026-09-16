@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>Waher.Runtime.IO</id>
+    <version>1.0.6</version>
+    <authors>Peter Waher</authors>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <license type="file">LICENSE.txt</license>
+    <licenseUrl>https://aka.ms/deprecateLicenseUrl</licenseUrl>
+    <icon>Icon_64x64.png</icon>
+    <projectUrl>https://github.com/PeterWaher/IoTGateway/tree/master/Runtime/Waher.Runtime.IO</projectUrl>
+    <description>Class library that contains a small set of IO extensions and tools simplifying stream, file, string and certificate management.</description>
+    <copyright>Copyright © Waher Data AB 2016-2026. All rights reserved.</copyright>
+    <tags>IO extensions streams files strings certificates</tags>
+    <repository type="GitHub" url="https://github.com/PeterWaher/IoTGateway" commit="3f981e89711ab55db51b4087416921d02390bfe9" />
+    <dependencies>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="Waher.Runtime.Inventory" version="1.4.5" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>UriTemplate.Core</id>
+    <version>1.0.2</version>
+    <authors>Jakub Pierewoj</authors>
+    <owners>UriTemplate.Core</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Uri template library supporting RFC 6570</description>
+    <dependencies>
+      <group targetFramework=".NETFramework4.5" />
+      <group targetFramework=".NETFramework4.5.1" />
+      <group targetFramework=".NETFramework4.5.2" />
+      <group targetFramework=".NETFramework4.6" />
+      <group targetFramework=".NETFramework4.6.1" />
+      <group targetFramework=".NETStandard1.6">
+        <dependency id="NETStandard.Library" version="[1.6.1, )" />
+      </group>
+    </dependencies>
+    <title>UriTemplate.Core</title>
+    <iconUrl>http://icons.iconarchive.com/icons/ph03nyx/super-mario/256/Retro-Flower-Fire-2-icon.png</iconUrl>
+    <projectUrl>https://github.com/pierewoj/dotnet-uritemplate</projectUrl>
+  </metadata>
+</package>

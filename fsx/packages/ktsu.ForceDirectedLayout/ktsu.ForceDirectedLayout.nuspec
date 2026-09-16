@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>ktsu.ForceDirectedLayout</id>
+    <version>3.37.0</version>
+    <title>ktsu.ForceDirectedLayout</title>
+    <authors>ktsu.dev contributors</authors>
+    <license type="file">LICENSE.md</license>
+    <licenseUrl>https://aka.ms/deprecateLicenseUrl</licenseUrl>
+    <icon>icon.png</icon>
+    <readme>README.md</readme>
+    <projectUrl>https://github.com/ktsu-dev/ImGuiApp</projectUrl>
+    <description>Settles a graph into a readable shape by simulation: bodies repel across the clear space between their bounding boxes, edges pull like springs, gravity holds the whole together, and overlapping boxes are pushed apart. Pure physics with no rendering, no UI dependency and no runtime package dependencies — double precision throughout, AOT- and trim-clean, and exposed at three levels so a caller can bring its own types, submit plain ids in bulk, or drive the flat core. Step it by a frame delta or solve to convergence, and read back energy and stability. The same core ships as a Native AOT shared library with a C ABI.</description>
+    <releaseNotes>## v3.37.0 (minor)
+
+Changes since v3.36.0:
+
+- Remove generic catch from SetWindowIcon test ([@copilot-swe-agent[bot]](https://github.com/copilot-swe-agent[bot]))
+- Address Sonar gate coverage for macOS icon change ([@copilot-swe-agent[bot]](https://github.com/copilot-swe-agent[bot]))
+- Fix macOS app icon handling ([@copilot-swe-agent[bot]](https://github.com/copilot-swe-agent[bot]))
+- Initial plan ([@copilot-swe-agent[bot]](https://github.com/copilot-swe-agent[bot]))</releaseNotes>
+    <copyright>Copyright (c) 2023-2026 ktsu-dev contributors</copyright>
+    <tags>.NET;C#;Dear ImGui;ImGui;GUI;desktop;UI;widgets;theming;popups;modal;node graph;node editor;immediate mode;cross-platform;OpenGL;windowing;Silk.NET;Hexa.NET;frame limiter;PID controller;DPI;font management;texture caching;scoped styling;RAII;tabs;search box;knob;radial progress;divider;grid;file browser;theme browser;color;accessibility;markdown;syntax highlighting;code highlighting;tokenizer;lexer;embedded languages;renderer agnostic</tags>
+    <repository type="git" commit="632050cbf915d55cdce70b2d21b9b42a0801b465" />
+    <dependencies>
+      <group targetFramework="net10.0" />
+    </dependencies>
+  </metadata>
+</package>

@@ -1,0 +1,557 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Waher.Runtime.Collections</name>
+    </assembly>
+    <members>
+        <member name="T:Waher.Runtime.Collections.ForEachChunkCallback`1">
+            <summary>
+            Callback method for the ForEachChunk method.
+            </summary>
+            <typeparam name="T">Element type.</typeparam>
+            <param name="Chunk">Chunk being iterated.</param>
+            <param name="Offset">Offset into chunk where elements begin.</param>
+            <param name="Count">Number of items in chunk.</param>
+            <returns>If the iteration can continue (true) or should be terminated early (false).</returns>
+        </member>
+        <member name="T:Waher.Runtime.Collections.ForEachChunkAsyncCallback`1">
+            <summary>
+            Asynchronous callback method for the ForEachChunkAsync method.
+            </summary>
+            <typeparam name="T">Element type.</typeparam>
+            <param name="Chunk">Chunk being iterated.</param>
+            <param name="Offset">Offset into chunk where elements begin.</param>
+            <param name="Count">Number of items in chunk.</param>
+            <returns>If the iteration can continue (true) or should be terminated early (false).</returns>
+        </member>
+        <member name="T:Waher.Runtime.Collections.PredicateAsync`1">
+            <summary>
+            Asynchronous predicate function with one argument.
+            </summary>
+            <typeparam name="T">Argument type.</typeparam>
+            <param name="Arg">Argument.</param>
+            <returns>Result of call.</returns>
+        </member>
+        <member name="T:Waher.Runtime.Collections.UpdateCallback`1">
+            <summary>
+            Delegate for callback methods that update the elements of a <see cref="T:Waher.Runtime.Collections.ChunkedList`1"/>.
+            </summary>
+            <typeparam name="T">Type of element.</typeparam>
+            <param name="Value">Value that can be updated.</param>
+            <param name="Keep">If the value should be kept.</param>
+            <returns>If the iteration can continue (true) or should be terminated early (false).</returns>
+        </member>
+        <member name="T:Waher.Runtime.Collections.ChunkedList`1">
+            <summary>
+            A chunked list is a linked list of chunks of objects of type <typeparamref name="T"/>.
+            </summary>
+            <typeparam name="T">Element type.</typeparam>
+        </member>
+        <member name="P:Waher.Runtime.Collections.ChunkedList`1.Count">
+            <summary>
+            Number of elements in collection.
+            </summary>
+        </member>
+        <member name="P:Waher.Runtime.Collections.ChunkedList`1.IsReadOnly">
+            <summary>
+            If collection is read-only (false).
+            </summary>
+        </member>
+        <member name="M:Waher.Runtime.Collections.ChunkedList`1.#ctor">
+            <summary>
+            A chunked list is a linked list of chunks of objects of type <typeparamref name="T"/>.
+            </summary>
+        </member>
+        <member name="M:Waher.Runtime.Collections.ChunkedList`1.#ctor(System.Int32)">
+            <summary>
+            A chunked list is a linked list of chunks of objects of type <typeparamref name="T"/>.
+            </summary>
+            <param name="InitialChunkSize">Initial Chunk Size.</param>
+        </member>
+        <member name="M:Waher.Runtime.Collections.ChunkedList`1.#ctor(System.Int32,System.Int32)">
+            <summary>
+            A chunked list is a linked list of chunks of objects of type <typeparamref name="T"/>.
+            </summary>
+            <param name="InitialChunkSize">Initial Chunk Size.</param>
+            <param name="MaxChunkSize">Maximum Chunk Size.</param>
+        </member>
+        <member name="M:Waher.Runtime.Collections.ChunkedList`1.#ctor(`0[])">
+            <summary>
+            A chunked list is a linked list of chunks of objects of type <typeparamref name="T"/>,
+            initially filled with elements in <paramref name="InitialElements"/>.
+            </summary>
+            <param name="InitialElements">Initial elements.</param>
+        </member>
+        <member name="M:Waher.Runtime.Collections.ChunkedList`1.#ctor(`0[],System.Int32)">
+            <summary>
+            A chunked list is a linked list of chunks of objects of type <typeparamref name="T"/>,
+            initially filled with elements in <paramref name="InitialElements"/>.
+            </summary>
+            <param name="InitialElements">Initial elements.</param>
+            <param name="MaxChunkSize">Maximum Chunk Size.</param>
+        </member>
+        <member name="M:Waher.Runtime.Collections.ChunkedList`1.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="P:Waher.Runtime.Collections.ChunkedList`1.FirstChunk">
+            <summary>
+            First chunk
+            </summary>
+        </member>
+        <member name="P:Waher.Runtime.Collections.ChunkedList`1.LastChunk">
+            <summary>
+            Last chunk
+            </summary>
+        </member>
+        <member name="M:Waher.Runtime.Collections.ChunkedList`1.Add(`0)">
+            <summary>
+            Adds an item to the collection.
+            </summary>
+            <param name="Item">Item</param>
+        </member>
+        <member name="M:Waher.Runtime.Collections.ChunkedList`1.Clear">
+            <summary>
+            Clears the collection.
+            </summary>
+        </member>
+        <member name="M:Waher.Runtime.Collections.ChunkedList`1.Contains(`0)">
+            <summary>
+            Checks if an item is a member of the collection.
+            </summary>
+            <param name="Item">Item to search for.</param>
+            <returns>If the item is found in the collection.</returns>
+        </member>
+        <member name="M:Waher.Runtime.Collections.ChunkedList`1.CopyTo(`0[],System.Int32)">
+            <summary>
+            Copies the contents of the collection to an array.
+            </summary>
+            <param name="Destination">Destination array.</param>
+            <param name="DestinationIndex">Start index into the array where elements are to be copied.</param>
+        </member>
+        <member name="M:Waher.Runtime.Collections.ChunkedList`1.Remove(`0)">
+            <summary>
+            Removes an element from the collection.
+            </summary>
+            <param name="Item">Item to remove from the collection.</param>
+            <returns>If the element was found and removed.</returns>
+        </member>
+        <member name="M:Waher.Runtime.Collections.ChunkedList`1.GetEnumerator">
+            <summary>
+            Returns an enumerator for the collection.
+            </summary>
+            <returns>Enumerator</returns>
+        </member>
+        <member name="M:Waher.Runtime.Collections.ChunkedList`1.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            Returns an enumerator for the collection.
+            </summary>
+            <returns>Enumerator</returns>
+        </member>
+        <member name="M:Waher.Runtime.Collections.ChunkedList`1.ForEach(System.Predicate{`0})">
+            <summary>
+            Iterates through all elements in the collection, and calls the callback method 
+            in <paramref name="Callback"/> for each element. The loop can be terminated 
+            early, by returning false from the callback method.
+            </summary>
+            <param name="Callback">Callback method.</param>
+            <returns>If the loop was completed (true) or terminated early (false).</returns>
+        </member>
+        <member name="M:Waher.Runtime.Collections.ChunkedList`1.ForEachAsync(Waher.Runtime.Collections.PredicateAsync{`0})">
+            <summary>
+            Iterates through all elements in the collection, and calls the callback method 
+            in <paramref name="Callback"/> for each element. The loop can be terminated 
+            early, by returning false from the callback method.
+            </summary>
+            <param name="Callback">Callback method.</param>
+            <returns>If the loop was completed (true) or terminated early (false).</returns>
+        </member>
+        <member name="M:Waher.Runtime.Collections.ChunkedList`1.ForEachChunk(Waher.Runtime.Collections.ForEachChunkCallback{`0})">
+            <summary>
+            Iterates through all chunks of elements in the collection, and calls the callback 
+            method in <paramref name="Callback"/> for each chunk. The loop can be terminated 
+            early, by returning false from the callback method.
+            </summary>
+            <param name="Callback">Callback method.</param>
+            <returns>If the loop was completed (true) or terminated early (false).</returns>
+        </member>
+        <member name="M:Waher.Runtime.Collections.ChunkedList`1.ForEachChunkAsync(Waher.Runtime.Collections.ForEachChunkAsyncCallback{`0})">
+            <summary>
+            Iterates through all chunks of elements in the collection, and calls the callback 
+            method in <paramref name="Callback"/> for each chunk. The loop can be terminated 
+            early, by returning false from the callback method.
+            </summary>
+            <param name="Callback">Callback method.</param>
+            <returns>If the loop was completed (true) or terminated early (false).</returns>
+        </member>
+        <member name="M:Waher.Runtime.Collections.ChunkedList`1.Update(Waher.Runtime.Collections.UpdateCallback{`0})">
+            <summary>
+            Iterates through all elements in the collection, and calls the callback method 
+            in <paramref name="Callback"/> for each element, allowing the method to update the
+            value or remove it. The loop can be terminated early, by returning false from the 
+            callback method. Deleting an element is done by returning null from the callback 
+            method.
+            </summary>
+            <param name="Callback">Callback method.</param>
+            <returns>If the loop was completed (true) or terminated early (false).</returns>
+        </member>
+        <member name="P:Waher.Runtime.Collections.ChunkedList`1.HasLastItem">
+            <summary>
+            If there is a last item in the collection
+            </summary>
+        </member>
+        <member name="P:Waher.Runtime.Collections.ChunkedList`1.LastItem">
+            <summary>
+            Last item in the collection.
+            </summary>
+        </member>
+        <member name="P:Waher.Runtime.Collections.ChunkedList`1.HasFirstItem">
+            <summary>
+            If there is a first item in the collection
+            </summary>
+        </member>
+        <member name="P:Waher.Runtime.Collections.ChunkedList`1.FirstItem">
+            <summary>
+            First item in the collection.
+            </summary>
+        </member>
+        <member name="M:Waher.Runtime.Collections.ChunkedList`1.AddFirstItem(`0)">
+            <summary>
+            Adds a new item first in the collection.
+            </summary>
+            <param name="Value">Item to add.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Waher.Runtime.Collections.ChunkedList`1.AddLastItem(`0)">
+            <summary>
+            Adds a new item last in the collection.
+            </summary>
+            <param name="Value">Item to add.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Waher.Runtime.Collections.ChunkedList`1.RemoveFirst">
+            <summary>
+            Removes the first item in the collection.
+            </summary>
+            <returns>The removed item.</returns>
+        </member>
+        <member name="M:Waher.Runtime.Collections.ChunkedList`1.RemoveLast">
+            <summary>
+            Removes the last item in the collection.
+            </summary>
+            <returns>The removed item.</returns>
+        </member>
+        <member name="P:Waher.Runtime.Collections.ChunkedList`1.Item(System.Int32)">
+            <summary>
+            Gets or sets the element at the specified index.
+            </summary>
+            <param name="Index">The zero-based index of the element to get or set.</param>
+            <returns>The element at the specified index.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">index is not a valid index.</exception>"
+        </member>
+        <member name="M:Waher.Runtime.Collections.ChunkedList`1.IndexOf(`0)">
+            <summary>
+            Determines the index of a specific item
+            </summary>
+            <param name="Item">The object to locate</param>
+            <returns>The index of item if found in the list; otherwise, -1.</returns>
+        </member>
+        <member name="M:Waher.Runtime.Collections.ChunkedList`1.IndexOf(`0,System.Int32)">
+            <summary>
+            Determines the index of a specific item
+            </summary>
+            <param name="Item">The object to locate</param>
+            <param name="Index">Start index of search.</param>
+            <returns>The index of item if found in the list; otherwise, -1.</returns>
+        </member>
+        <member name="M:Waher.Runtime.Collections.ChunkedList`1.IndexOf(`0,System.Int32,System.Int32)">
+            <summary>
+            Determines the index of a specific item
+            </summary>
+            <param name="Item">The object to locate</param>
+            <param name="Index">Start index of search.</param>
+            <param name="Count">Number of items to search, maximum.</param>
+            <returns>The index of item if found in the list; otherwise, -1.</returns>
+        </member>
+        <member name="M:Waher.Runtime.Collections.ChunkedList`1.LastIndexOf(`0)">
+            <summary>
+            Determines the last index of a specific item
+            </summary>
+            <param name="Item">The object to locate</param>
+            <returns>The index of item if found in the list; otherwise, -1.</returns>
+        </member>
+        <member name="M:Waher.Runtime.Collections.ChunkedList`1.LastIndexOf(`0,System.Int32)">
+            <summary>
+            Determines the last index of a specific item
+            </summary>
+            <param name="Item">The object to locate</param>
+            <param name="Index">Start index of search.</param>
+            <returns>The index of item if found in the list; otherwise, -1.</returns>
+        </member>
+        <member name="M:Waher.Runtime.Collections.ChunkedList`1.LastIndexOf(`0,System.Int32,System.Int32)">
+            <summary>
+            Determines the last index of a specific item
+            </summary>
+            <param name="Item">The object to locate</param>
+            <param name="Index">Start index of search.</param>
+            <param name="Count">Number of items to search, maximum.</param>
+            <returns>The index of item if found in the list; otherwise, -1.</returns>
+        </member>
+        <member name="M:Waher.Runtime.Collections.ChunkedList`1.Insert(System.Int32,`0)">
+            <summary>
+            Inserts an item to the list at the specified index.
+            </summary>
+            <param name="Index">The zero-based index at which item should be inserted.</param>
+            <param name="Item">The object to insert into the list.</param>
+        </member>
+        <member name="M:Waher.Runtime.Collections.ChunkedList`1.RemoveAt(System.Int32)">
+            <summary>
+            Removes the item at the specified index.
+            </summary>
+            <param name="Index">The zero-based index of the item to remove.</param>
+        </member>
+        <member name="M:Waher.Runtime.Collections.ChunkedList`1.AddRange(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Adds a range of elements (last) to the list.
+            </summary>
+            <param name="Collection">Collection of elements to add.</param>
+        </member>
+        <member name="M:Waher.Runtime.Collections.ChunkedList`1.AddRange(Waher.Runtime.Collections.ChunkedList{`0})">
+            <summary>
+            Adds a range of elements (last) to the list.
+            </summary>
+            <param name="Collection">Collection of elements to add.</param>
+        </member>
+        <member name="M:Waher.Runtime.Collections.ChunkedList`1.AddRange(`0[])">
+            <summary>
+            Adds a range of elements (last) to the list.
+            </summary>
+            <param name="Collection">Collection of elements to add.</param>
+        </member>
+        <member name="M:Waher.Runtime.Collections.ChunkedList`1.AddRange(`0[],System.Int32,System.Int32)">
+            <summary>
+            Adds a range of elements (last) to the list.
+            </summary>
+            <param name="Collection">Collection of elements to add.</param>
+            <param name="Index">Index of first element to add.</param>
+            <param name="Count">Number of elements to add.</param>
+        </member>
+        <member name="M:Waher.Runtime.Collections.ChunkedList`1.CopyTo(`0[])">
+            <summary>
+            Copies the contents of the collection to an array.
+            </summary>
+            <param name="Destination">Destination array.</param>
+        </member>
+        <member name="M:Waher.Runtime.Collections.ChunkedList`1.CopyTo(System.Int32,`0[],System.Int32,System.Int32)">
+            <summary>
+            Copies the contents of the collection to an array.
+            </summary>
+            <param name="Index">Index of the first item to copy.</param>
+            <param name="Destination">Destination array.</param>
+            <param name="DestinationIndex">Start index into the array where elements are to be copied.</param>
+            <param name="Count">Number of elements to copy.</param>
+        </member>
+        <member name="M:Waher.Runtime.Collections.ChunkedList`1.ToArray">
+            <summary>
+            Returns an array containing all elements of the collection.
+            </summary>
+            <returns>Array of elements</returns>
+        </member>
+        <member name="M:Waher.Runtime.Collections.ChunkedList`1.Sort">
+            <summary>
+            Sorts the collection.
+            </summary>
+        </member>
+        <member name="M:Waher.Runtime.Collections.ChunkedList`1.Sort(System.Collections.Generic.IComparer{`0})">
+            <summary>
+            Sorts the collection.
+            </summary>
+            <param name="Comparer">Comparer to use during sort.</param>
+        </member>
+        <member name="M:Waher.Runtime.Collections.ChunkedList`1.Sort(System.Comparison{`0})">
+            <summary>
+            Sorts the collection.
+            </summary>
+            <param name="Comparison">Comparisong to use during sort.</param>
+        </member>
+        <member name="M:Waher.Runtime.Collections.ChunkedList`1.Sort(System.Int32,System.Int32,System.Collections.Generic.IComparer{`0})">
+            <summary>
+            Sorts a part of the collection.
+            </summary>
+            <param name="Index">Start index of collection.</param>
+            <param name="Count">Number of elements to sort.</param>
+            <param name="Comparer">Comparer to use during sort.</param>
+        </member>
+        <member name="M:Waher.Runtime.Collections.ChunkedList`1.Reverse">
+            <summary>
+            Reverses the order of the elements in the collection.
+            </summary>
+        </member>
+        <member name="M:Waher.Runtime.Collections.ChunkedList`1.Reverse(System.Int32,System.Int32)">
+            <summary>
+            Reverses the order of a subset of elements in the collection.
+            </summary>
+            <param name="Index">Index of first element.</param>
+            <param name="Count">Number of elements.</param>
+        </member>
+        <member name="M:Waher.Runtime.Collections.ChunkedList`1.AddRangeLast(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Adds a range of elements last to the list.
+            </summary>
+            <param name="Collection">Collection of elements to add.</param>
+        </member>
+        <member name="M:Waher.Runtime.Collections.ChunkedList`1.AddRangeLast(`0[])">
+            <summary>
+            Adds a range of elements last to the list.
+            </summary>
+            <param name="Collection">Collection of elements to add.</param>
+        </member>
+        <member name="M:Waher.Runtime.Collections.ChunkedList`1.AddRangeFirst(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Adds a range of elements first to the list.
+            </summary>
+            <param name="Collection">Collection of elements to add.</param>
+        </member>
+        <member name="M:Waher.Runtime.Collections.ChunkedList`1.AddRangeFirst(`0[])">
+            <summary>
+            Adds a range of elements first to the list.
+            </summary>
+            <param name="Collection">Collection of elements to add.</param>
+        </member>
+        <member name="M:Waher.Runtime.Collections.ChunkedList`1.InsertRange(System.Int32,System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Inserts a range of elements at a given index.
+            </summary>
+            <param name="Index">Index to insert the range of elements.</param>
+            <param name="Collection">Collection of elements.</param>
+        </member>
+        <member name="T:Waher.Runtime.Collections.ChunkedListDebugView`1">
+            <summary>
+            Displays a <see cref="T:Waher.Runtime.Collections.ChunkedList`1"/> is a debugger view.
+            </summary>
+            <typeparam name="T">Type of elements.</typeparam>
+        </member>
+        <member name="M:Waher.Runtime.Collections.ChunkedListDebugView`1.#ctor(Waher.Runtime.Collections.ChunkedList{`0})">
+            <summary>
+            Displays a <see cref="T:Waher.Runtime.Collections.ChunkedList`1"/> is a debugger view.
+            </summary>
+            <param name="List">Collection</param>
+        </member>
+        <member name="P:Waher.Runtime.Collections.ChunkedListDebugView`1.Items">
+            <summary>
+            Items to display (up to 200 items).
+            </summary>
+        </member>
+        <member name="T:Waher.Runtime.Collections.ChunkedListExtensions">
+            <summary>
+            ChunkedList extensions.
+            </summary>
+        </member>
+        <member name="M:Waher.Runtime.Collections.ChunkedListExtensions.Append(System.Text.StringBuilder,Waher.Runtime.Collections.ChunkedList{System.String})">
+            <summary>
+            Appends the elements of a chunked list with string elements, to a string builder.
+            </summary>
+            <param name="sb">Elements will be appended to this string builder.</param>
+            <param name="List">List of string elements.</param>
+        </member>
+        <member name="M:Waher.Runtime.Collections.ChunkedListExtensions.Append(System.Text.StringBuilder,Waher.Runtime.Collections.ChunkedList{System.String},System.String)">
+            <summary>
+            Appends the elements of a chunked list with string elements, to a string builder.
+            </summary>
+            <param name="sb">Elements will be appended to this string builder.</param>
+            <param name="List">List of string elements.</param>
+            <param name="Delimiter">Optional delimiter.</param>
+        </member>
+        <member name="M:Waher.Runtime.Collections.ChunkedListExtensions.Concatenate(Waher.Runtime.Collections.ChunkedList{System.String})">
+            <summary>
+            Concatenates the string elements of a chunked list.
+            </summary>
+            <param name="List">List of string elements.</param>
+            <returns>Concatenation of elements.</returns>
+        </member>
+        <member name="M:Waher.Runtime.Collections.ChunkedListExtensions.Concatenate(Waher.Runtime.Collections.ChunkedList{System.String},System.String)">
+            <summary>
+            Concatenates the string elements of a chunked list.
+            </summary>
+            <param name="List">List of string elements.</param>
+            <param name="Delimiter">Optional delimiter.</param>
+            <returns>Concatenation of elements.</returns>
+        </member>
+        <member name="T:Waher.Runtime.Collections.ChunkNode`1">
+            <summary>
+            Node referencing a chunk in a <see cref="T:Waher.Runtime.Collections.ChunkedList`1"/>
+            </summary>
+        </member>
+        <member name="M:Waher.Runtime.Collections.ChunkNode`1.#ctor(Waher.Runtime.Collections.ChunkedList{`0}.Chunk)">
+            <summary>
+            Node referencing a chunk in a <see cref="T:Waher.Runtime.Collections.ChunkedList`1"/>
+            </summary>
+            <param name="Chunk">Chunk</param>
+        </member>
+        <member name="P:Waher.Runtime.Collections.ChunkNode`1.Next">
+            <summary>
+            Next chunk
+            </summary>
+        </member>
+        <member name="P:Waher.Runtime.Collections.ChunkNode`1.Prev">
+            <summary>
+            Previous chunk
+            </summary>
+        </member>
+        <member name="P:Waher.Runtime.Collections.ChunkNode`1.Elements">
+            <summary>
+            Array of elements in chunk.
+            </summary>
+        </member>
+        <member name="P:Waher.Runtime.Collections.ChunkNode`1.Size">
+            <summary>
+            Size of chunk.
+            </summary>
+        </member>
+        <member name="P:Waher.Runtime.Collections.ChunkNode`1.Start">
+            <summary>
+            Index of first element in chunk.
+            </summary>
+        </member>
+        <member name="P:Waher.Runtime.Collections.ChunkNode`1.Pos">
+            <summary>
+            Index after the last element in chunk.
+            </summary>
+        </member>
+        <member name="P:Waher.Runtime.Collections.ChunkNode`1.Count">
+            <summary>
+            Number of elements in chunk.
+            </summary>
+        </member>
+        <member name="M:Waher.Runtime.Collections.ChunkNode`1.ToString">
+            <summary>
+            String representation of chunk.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Waher.Runtime.Collections.ChunkNode`1.Item(System.Int32)">
+            <summary>
+            Access directly into the chunk. Valid indices are from <see cref="P:Waher.Runtime.Collections.ChunkNode`1.Start"/>
+            to <see cref="P:Waher.Runtime.Collections.ChunkNode`1.Pos"/>-1.
+            </summary>
+            <param name="Index"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Waher.Runtime.Collections.ChunkNodeDebugView`1">
+            <summary>
+            Displays a <see cref="T:Waher.Runtime.Collections.ChunkNode`1"/> is a debugger view.
+            </summary>
+            <typeparam name="T">Type of elements.</typeparam>
+        </member>
+        <member name="M:Waher.Runtime.Collections.ChunkNodeDebugView`1.#ctor(Waher.Runtime.Collections.ChunkNode{`0})">
+            <summary>
+            Displays a <see cref="T:Waher.Runtime.Collections.ChunkNode`1"/> is a debugger view.
+            </summary>
+            <param name="Node">Chunk node</param>
+        </member>
+        <member name="P:Waher.Runtime.Collections.ChunkNodeDebugView`1.Items">
+            <summary>
+            Items to display (up to 200 items).
+            </summary>
+        </member>
+    </members>
+</doc>

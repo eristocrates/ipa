@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>NLog</id>
+    <version>6.2.0</version>
+    <title>NLog for .NET Framework and .NET Standard</title>
+    <authors>Jarek Kowalski,Kim Christensen,Julian Verdurmen</authors>
+    <license type="expression">BSD-3-Clause</license>
+    <licenseUrl>https://licenses.nuget.org/BSD-3-Clause</licenseUrl>
+    <icon>N.png</icon>
+    <projectUrl>https://nlog-project.org/</projectUrl>
+    <description>NLog is a logging platform for .NET with rich log routing and management capabilities.
+NLog supports traditional logging, structured logging and the combination of both.
+
+Supported platforms:
+
+- .NET 6, 7, 8, 9 and 10
+- .NET Standard 2.0 and 2.1
+- .NET Framework 3.5 - 4.8
+- Xamarin Android + iOS (.NET Standard)
+- Mono 4
+
+For integrating NLog with Microsoft.Extensions.Logging, check: https://www.nuget.org/packages/NLog.Extensions.Logging
+
+For using NLog with ASP.NET Core, check: https://www.nuget.org/packages/NLog.Web.AspNetCore</description>
+    <releaseNotes>Changelog:
+
+- [#6215] FileTarget - Added FileLifecycleHooks for extending archive logic. (@Dave-Senn)
+- [#6218] ScopeContext - Optimize collection of properties in reverse order. (@snakefoot)
+- [#6230] PropertyTypeConverter - Disable legacy TypeDescriptor when AOT. (@snakefoot)
+- [#6231] Replacing ProcessInfoLayoutRenderer with ProcessStartLayoutRenderer. (@snakefoot)
+- [#6229] GarbageCollectorInfoLayoutRenderer - WorkingSet + Format. (@snakefoot)
+- [#6246] AsyncTaskTarget - Added Jitter on Retry to reduce thundering herd. (@snakefoot)
+- [#6248] AsyncTaskTarget - Changed Jitter to use Stopwatch instead of TickCount. (@snakefoot)
+- [#6245] AsyncTaskTarget - Refactor to reduce code complexity. (@snakefoot)
+- [#6148] AppEnvironmentWrapper - Return Unknown_ProcessId when empty ProcessName. (@snakefoot)
+- [#6187] ConfigurationItemFactory - Marked ParseMessageTemplates as obsolete. (@snakefoot)
+- [#6243] ConditionParser - Marked as obsolete, so it can become internal. (@snakefoot)
+- [#6087] Target - Reduce code complexity of WriteAsyncLogEvents. (@snakefoot)
+- [#6200] SimpleLayout - Marked Renderers-property as obsolete. (@snakefoot)
+- [#6239] LogFactory - FlushAsync and DisposeAsync with explict usage of CancellationToken.None. (@snakefoot)
+
+NLog v6.2 release notes: https://nlog-project.org/2026/08/16/nlog-6-2-aot-build-size.html
+
+Full changelog: https://github.com/NLog/NLog/releases
+
+For all config options and platform support, check https://nlog-project.org/config/</releaseNotes>
+    <copyright>Copyright (c) 2004-2026 NLog Project - https://nlog-project.org/</copyright>
+    <tags>NLog logging log structured tracing logfiles database eventlog console</tags>
+    <repository type="git" url="https://github.com/NLog/NLog.git" commit="d38a12a9e2ed2f229d3990068cd7c66ebfd57805" />
+    <dependencies>
+      <group targetFramework=".NETFramework3.5" />
+      <group targetFramework=".NETFramework4.5" />
+      <group targetFramework=".NETFramework4.6" />
+      <group targetFramework=".NETStandard2.0" />
+      <group targetFramework=".NETStandard2.1" />
+    </dependencies>
+    <frameworkAssemblies>
+      <frameworkAssembly assemblyName="System.Configuration" targetFramework=".NETFramework3.5, .NETFramework4.5, .NETFramework4.6" />
+      <frameworkAssembly assemblyName="System.Core" targetFramework=".NETFramework3.5, .NETFramework4.5, .NETFramework4.6" />
+      <frameworkAssembly assemblyName="System" targetFramework=".NETFramework3.5, .NETFramework4.5, .NETFramework4.6" />
+      <frameworkAssembly assemblyName="System.Xml" targetFramework=".NETFramework3.5, .NETFramework4.5, .NETFramework4.6" />
+    </frameworkAssemblies>
+  </metadata>
+</package>

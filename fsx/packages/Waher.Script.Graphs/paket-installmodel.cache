@@ -1,0 +1,17 @@
+D: /lib
+D: /lib/netstandard2.0
+F: /lib/netstandard2.0/Waher.Script.Graphs.dll
+F: /lib/netstandard2.0/Waher.Script.Graphs.xml
+D: /package
+D: /package/services
+D: /package/services/metadata
+D: /package/services/metadata/core-properties
+F: /package/services/metadata/core-properties/b208c285777149bc949e6cbc6dadf11b.psmdcp
+D: /_rels
+F: /_rels/.rels
+F: /.signature.p7s
+F: /Icon_64x64.png
+F: /LICENSE.txt
+F: /waher.script.graphs.2.7.0.nupkg
+F: /Waher.Script.Graphs.nuspec
+F: /[Content_Types].xml

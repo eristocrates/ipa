@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<coreProperties xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.openxmlformats.org/package/2006/metadata/core-properties">
+  <dc:creator>Stoyan Hadzhiyski</dc:creator>
+  <dc:description>A .NET package intended to simplify the work with sets of generic intervals, especially suitable for use cases requiring often mutation (add, remove). This is done with IntervalSet collection. It provides main operations like Add, Remove, Union, Intersect, Except, Merge.</dc:description>
+  <dc:identifier>NeatIntervals</dc:identifier>
+  <version>1.0.0</version>
+  <keywords>interval set collection</keywords>
+  <lastModifiedBy>NuGet.Build.Tasks.Pack, Version=6.3.3.3, Culture=neutral, PublicKeyToken=31bf3856ad364e35;.NET Standard 2.0</lastModifiedBy>
+</coreProperties>

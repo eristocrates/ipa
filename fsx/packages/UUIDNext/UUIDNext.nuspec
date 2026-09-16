@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>UUIDNext</id>
+    <version>4.2.4</version>
+    <authors>Matthieu Mourisson</authors>
+    <license type="expression">0BSD</license>
+    <licenseUrl>https://licenses.nuget.org/0BSD</licenseUrl>
+    <icon>Logo_128.png</icon>
+    <readme>README.md</readme>
+    <projectUrl>https://github.com/mareek/UUIDNext</projectUrl>
+    <description>A fast and modern .NET library to generate UUID/GUID that are either sequential and database friendly (versions 7), name based (versions 5) or random (version 4).</description>
+    <releaseNotes>See https://github.com/mareek/UUIDNext/blob/main/Changelog.md</releaseNotes>
+    <tags>UUID GUID UUIDv5 UUIDv7 UUIDv8</tags>
+    <repository type="git" url="https://github.com/mareek/UUIDNext" branch="refs/heads/main" commit="1905bf876d4e54163faba8a872cfbb3209f93f6e" />
+    <dependencies>
+      <group targetFramework="net8.0" />
+      <group targetFramework="net10.0" />
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="System.Memory" version="4.6.3" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework=".NETStandard2.1" />
+    </dependencies>
+  </metadata>
+</package>

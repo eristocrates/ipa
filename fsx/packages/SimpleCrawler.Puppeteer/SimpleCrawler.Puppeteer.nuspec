@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>SimpleCrawler.Puppeteer</id>
+    <version>4.1.0</version>
+    <authors>Sven-Erik Jonsson</authors>
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <icon>icon.png</icon>
+    <readme>README.md</readme>
+    <projectUrl>https://github.com/svenrog/SimpleCrawler</projectUrl>
+    <description>Headless-browser crawling backend for SimpleCrawler using PuppeteerSharp, for fully JavaScript-rendered sites. Downloads Chromium on first run.</description>
+    <copyright>Copyright © Sven-Erik Jonsson</copyright>
+    <tags>crawler web-crawler scraper scraping robots-txt sitemap load-testing</tags>
+    <repository type="git" url="https://github.com/svenrog/SimpleCrawler" commit="8ed708cded0f28be00afe7b1837f316362303fc5" />
+    <dependencies>
+      <group targetFramework="net10.0">
+        <dependency id="SimpleCrawler.Core" version="4.1.0" exclude="Build,Analyzers" />
+        <dependency id="PuppeteerSharp" version="[25.0.4, 26.0.0)" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

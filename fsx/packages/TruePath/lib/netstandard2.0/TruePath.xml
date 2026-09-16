@@ -1,0 +1,980 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TruePath</name>
+    </assembly>
+    <members>
+        <member name="T:TruePath.AbsolutePath">
+            <summary>
+            This is a path on the local system that's guaranteed to be <b>absolute</b>: that is, path that is rooted and has a
+            disk letter (on Windows).
+            </summary>
+            <remarks>For a path that's not guaranteed to be absolute, use the <see cref="T:TruePath.LocalPath"/> type.</remarks>
+        </member>
+        <member name="F:TruePath.AbsolutePath.PlatformDefaultComparer">
+            <summary>
+            <para>Provides a default comparer for comparing file paths, aware of the current platform.</para>
+            <para>
+                On <b>Windows</b> and <b>macOS</b>, this will perform <b>case-insensitive</b> string comparison, since the
+                file systems are case-insensitive on these operating systems by default.
+            </para>
+            <para>On <b>Linux</b>, the comparison will be <b>case-sensitive</b>.</para>
+            </summary>
+            <remarks>
+            Note that this comparison <b>does not guarantee correctness</b>: in practice, on any platform to control
+            case-sensitiveness of either the whole file system or a part of it. This class does not take this into account,
+            having a benefit of no accessing the file system for any of the comparisons.
+            </remarks>
+        </member>
+        <member name="F:TruePath.AbsolutePath.StrictStringComparer">
+            <summary>
+            A strict comparer for comparing file paths using ordinal, case-sensitive comparison of the underlying path
+            strings.
+            </summary>
+        </member>
+        <member name="M:TruePath.AbsolutePath.#ctor(System.String,System.Boolean)">
+            <summary>
+            Creates an <see cref="T:TruePath.AbsolutePath"/> instance by normalizing the path from the passed string according to the
+            rules stated in <see cref="T:TruePath.LocalPath"/>.
+            </summary>
+            <param name="value">Path string to normalize.</param>
+            <param name="checkAbsoluteness">Flag indicating whether absoluteness of path should be checked</param>
+            <exception cref="T:System.ArgumentException">Thrown if the passed string does not represent an absolute path.</exception>>
+        </member>
+        <member name="M:TruePath.AbsolutePath.#ctor(System.String)">
+            <summary>
+            Creates an <see cref="T:TruePath.AbsolutePath"/> instance by normalizing the path from the passed string according to the
+            rules stated in <see cref="T:TruePath.LocalPath"/>.
+            </summary>
+            <param name="value">Path string to normalize.</param>
+            <exception cref="T:System.ArgumentException">Thrown if the passed string does not represent an absolute path.</exception>
+        </member>
+        <member name="M:TruePath.AbsolutePath.#ctor(TruePath.LocalPath)">
+            <summary>
+            Creates an <see cref="T:TruePath.AbsolutePath"/> instance by converting a <paramref name="localPath"/> object.
+            </summary>
+            <exception cref="T:System.ArgumentException">Thrown if the passed path is not absolute.</exception>
+        </member>
+        <member name="P:TruePath.AbsolutePath.Value">
+            <inheritdoc cref="P:TruePath.IPath.Value"/>
+        </member>
+        <member name="P:TruePath.AbsolutePath.Parent">
+            <inheritdoc cref="P:TruePath.IPath.Parent"/>
+        </member>
+        <member name="P:TruePath.AbsolutePath.TruePath#IPath#Parent">
+            <inheritdoc cref="P:TruePath.IPath.Parent"/>
+        </member>
+        <member name="P:TruePath.AbsolutePath.FileName">
+            <inheritdoc cref="P:TruePath.IPath.FileName"/>
+        </member>
+        <member name="M:TruePath.AbsolutePath.StartsWith(TruePath.AbsolutePath)">
+            <inheritdoc cref="M:TruePath.IPath`1.StartsWith(`0)"/>
+        </member>
+        <member name="M:TruePath.AbsolutePath.Create(System.String)">
+            <summary>
+            Creates a new path instance of type <see cref="T:TruePath.AbsolutePath" /> from the specified string value.
+            </summary>
+            <param name="value">The string representation of the path to create.</param>
+            <returns>A new instance of <see cref="T:TruePath.AbsolutePath" /> representing the specified path.</returns>
+        </member>
+        <member name="M:TruePath.AbsolutePath.IsPrefixOf(TruePath.AbsolutePath)">
+            <inheritdoc cref="M:TruePath.IPath`1.IsPrefixOf(`0)"/>
+        </member>
+        <member name="P:TruePath.AbsolutePath.CurrentWorkingDirectory">
+            <summary>Gets or sets the current working directory as an AbsolutePath instance.</summary>
+            <value>The current working directory.</value>
+        </member>
+        <member name="M:TruePath.AbsolutePath.RelativeTo(TruePath.AbsolutePath)">
+            <summary>
+            Calculates the relative path from a base path to this path.
+            </summary>
+            <param name="basePath">The base path from which to calculate the relative path.</param>
+            <returns>The relative path from the base path to this path.</returns>
+        </member>
+        <member name="M:TruePath.AbsolutePath.Canonicalize">
+            <summary>Corrects the file name case on case-insensitive file systems, resolves symlinks.</summary>
+        </member>
+        <member name="M:TruePath.AbsolutePath.op_Division(TruePath.AbsolutePath,TruePath.LocalPath)">
+            <summary>Appends another path to this one.</summary>
+            <remarks>
+            Note that in case path <paramref name="b"/> is <b>absolute</b>, it will completely take over and the
+            <paramref name="basePath"/> will be ignored.
+            </remarks>
+        </member>
+        <member name="M:TruePath.AbsolutePath.op_Division(TruePath.AbsolutePath,System.String)">
+            <summary>Appends another path to this one.</summary>
+            <remarks>
+            Note that in case path <paramref name="b"/> is <b>absolute</b>, it will completely take over and the
+            <paramref name="basePath"/> will be ignored.
+            </remarks>
+        </member>
+        <member name="M:TruePath.AbsolutePath.ToString">
+            <returns>The normalized path string contained in this object.</returns>
+        </member>
+        <member name="M:TruePath.AbsolutePath.Equals(TruePath.AbsolutePath)">
+            <summary>Compares the path with another.</summary>
+            <remarks>Note that currently this comparison is case-sensitive.</remarks>
+        </member>
+        <member name="M:TruePath.AbsolutePath.Equals(TruePath.AbsolutePath,System.Collections.Generic.IEqualityComparer{TruePath.AbsolutePath})">
+            <summary>
+            Determines whether the specified <see cref="T:TruePath.AbsolutePath"/> is equal to the current <see cref="T:TruePath.AbsolutePath"/>
+            using the specified comparer.
+            </summary>
+            <param name="other">The <see cref="T:TruePath.AbsolutePath"/> to compare with the current <see cref="T:TruePath.AbsolutePath"/>.</param>
+            <param name="comparer">
+            The comparer to use for comparing the paths. For example, pass <see cref="F:TruePath.AbsolutePath.PlatformDefaultComparer"/> or
+            <see cref="F:TruePath.AbsolutePath.StrictStringComparer"/>.
+            </param>
+            <returns>
+            <see langword="true"/> if the specified <see cref="T:TruePath.AbsolutePath"/> is equal to the current
+            <see cref="T:TruePath.AbsolutePath"/> using the specified comparer; otherwise, <see langword="false"/>.
+            </returns>
+        </member>
+        <member name="M:TruePath.AbsolutePath.Equals(System.Object)">
+            <inheritdoc cref="M:TruePath.AbsolutePath.Equals(TruePath.AbsolutePath)"/>
+        </member>
+        <member name="M:TruePath.AbsolutePath.GetHashCode">
+            <inheritdoc cref="M:System.Object.GetHashCode"/>
+        </member>
+        <member name="M:TruePath.AbsolutePath.op_Equality(TruePath.AbsolutePath,TruePath.AbsolutePath)">
+            <inheritdoc cref="M:TruePath.AbsolutePath.Equals(TruePath.AbsolutePath)"/>
+        </member>
+        <member name="M:TruePath.AbsolutePath.op_Inequality(TruePath.AbsolutePath,TruePath.AbsolutePath)">
+            <inheritdoc cref="M:TruePath.AbsolutePath.Equals(TruePath.AbsolutePath)"/>
+        </member>
+        <member name="M:TruePath.AbsolutePath.ReadKind">
+            <summary>
+            Determines the type of the file system entry (file, directory, symlink, or junction) for the given path.
+            </summary>
+            <returns>
+            A <see cref="T:TruePath.FileEntryKind"/> enumeration value representing the type of the file system entry, or <see langword="null"/> if the entry does not exist.
+            </returns>
+            <remarks>
+            This method checks if the specified path represents a file, directory, symbolic link, or junction. On Windows, it uses <see cref="M:TruePath.DiskUtils.IsJunction(System.String)"/> to identify junctions and checks for the <see cref="F:System.IO.FileAttributes.ReparsePoint"/> flag to identify symbolic links.
+            </remarks>
+        </member>
+        <member name="M:TruePath.AbsolutePath.CompareTo(TruePath.AbsolutePath)">
+            <summary>
+            Compares the current <see cref="T:TruePath.AbsolutePath"/> instance with another <see cref="T:TruePath.AbsolutePath"/> instance,
+            using the default platform-aware comparison rules provided by <see cref="T:TruePath.Comparers.PlatformDefaultPathComparer`1"/>.
+            </summary>
+            <param name="other">The <see cref="T:TruePath.AbsolutePath"/> instance to compare with the current instance.</param>
+            <returns>
+            <para>A signed integer that indicates the relative order of the compared objects.</para>
+            <list type="table">
+                <listheader>
+                    <term>Value</term>
+                    <description>Meaning</description>
+                </listheader>
+                <item>
+                    <term>Less than zero</term>
+                    <description>The current instance precedes <paramref name="other"/> in the sort order.</description>
+                </item>
+                <item>
+                    <term>Zero</term>
+                    <description>The current instance occurs in the same position in the sort order as <paramref name="other"/>.</description>
+                </item>
+                <item>
+                    <term>Greater than zero</term>
+                    <description>The current instance follows <paramref name="other"/> in the sort order.</description>
+                </item>
+            </list>
+            </returns>
+        </member>
+        <member name="T:TruePath.FileEntryKind">
+            <summary>
+            Specifies the type of file system entry.
+            </summary>
+        </member>
+        <member name="F:TruePath.FileEntryKind.Unknown">
+            <summary>
+            The type of the file system entry is unknown.
+            </summary>
+        </member>
+        <member name="F:TruePath.FileEntryKind.File">
+            <summary>
+            The file system entry is a regular file.
+            </summary>
+        </member>
+        <member name="F:TruePath.FileEntryKind.Directory">
+            <summary>
+            The file system entry is a directory.
+            </summary>
+        </member>
+        <member name="F:TruePath.FileEntryKind.Symlink">
+            <summary>
+            The file system entry is a symbolic link.
+            </summary>
+        </member>
+        <member name="F:TruePath.FileEntryKind.Junction">
+            <summary>
+            The file system entry is a junction.
+            </summary>
+        </member>
+        <member name="T:TruePath.Comparers.IPathComparer`1">
+            <summary>
+            Provides an interface for defining custom comparison logic for path types.
+            This interface combines both equality (<see cref="T:System.Collections.Generic.IEqualityComparer`1"/>)
+            and ordering (<see cref="T:System.Collections.Generic.IComparer`1"/>) comparisons.
+            </summary>
+            <typeparam name="TPath">The type of paths being compared, which must implement <see cref="T:TruePath.IPath"/>.</typeparam>
+        </member>
+        <member name="T:TruePath.Comparers.PlatformDefaultPathComparer`1">
+            <summary>
+            <para>Provides a default comparer for comparing file paths, aware of the current platform.</para>
+            <para>
+                On <b>Windows</b> and <b>macOS</b>, this will perform <b>case-insensitive</b> string comparison, since the file
+                systems are case-insensitive on these operating systems by default.
+            </para>
+            <para>On <b>Linux</b>, the comparison will be <b>case-sensitive</b>.</para>
+            </summary>
+            <remarks>
+            Note that this comparison <b>does not guarantee correctness</b>: in practice, on any platform to control
+            case-sensitiveness of either the whole file system or a part of it. This class does not take this into account,
+            having a benefit of no accessing the file system for any of the comparisons.
+            </remarks>
+        </member>
+        <member name="T:TruePath.Comparers.StrictStringPathComparer`1">
+            <summary>
+            A strict comparer for comparing file paths using ordinal, case-sensitive comparison of the underlying path strings.
+            </summary>
+        </member>
+        <member name="T:TruePath.DiskUtils">
+            <summary>
+            Utility class for handling disk operations and obtaining real paths.
+            </summary>
+        </member>
+        <member name="F:TruePath.DiskUtils.WindowsMaxPath">
+            <summary>
+            The maximum path length for Windows.
+            </summary>
+        </member>
+        <member name="M:TruePath.DiskUtils.IsJunction(System.String)">
+            <summary>
+            Determines whether the specified path is a junction (mount point).
+            </summary>
+            <param name="path">The path to check.</param>
+            <returns><see langword="true"/> if the specified path is a junction; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:TruePath.DiskUtils.TryGetReparseDataBuffer(System.String)">
+            <summary>
+            Tries to get the reparse data buffer for the specified path.
+            </summary>
+            <param name="path">The path to check.</param>
+            <returns>
+            A <see cref="T:TruePath.Kernel32.SymbolicLinkReparseBuffer"/> containing the reparse data if successful; otherwise, <see langword="null"/>.
+            </returns>
+        </member>
+        <member name="M:TruePath.DiskUtils.GetRealPath(System.String)">
+            <summary>
+            Gets the real (absolute) path of the specified <paramref name="path"/> depending on the operating system.
+            </summary>
+            <param name="path">The file path to resolve.</param>
+            <returns>The resolved absolute path.</returns>
+        </member>
+        <member name="M:TruePath.DiskUtils.GetPosixRealPath(System.String)">
+            <summary>
+            Gets the real (absolute) path of the specified <paramref name="path"/> for POSIX systems.
+            </summary>
+            <param name="path">The file path to resolve.</param>
+            <returns>The resolved absolute path, or the original path if resolution fails.</returns>
+        </member>
+        <member name="M:TruePath.DiskUtils.GetWindowsRealPath(System.String)">
+            <summary>
+            Gets the real (absolute) path of the specified <paramref name="path"/> for Windows systems.
+            </summary>
+            <param name="path">The file path to resolve.</param>
+            <returns>The resolved absolute path, or the original path if resolution fails.</returns>
+        </member>
+        <member name="M:TruePath.DiskUtils.GetWindowsRealPathByHandle(System.IntPtr)">
+            <summary>
+            Gets the real (absolute) path by file handle for Windows systems.
+            </summary>
+            <param name="handle">The file handle.</param>
+            <returns>The resolved absolute path, or <c>null</c> if resolution fails.</returns>
+        </member>
+        <member name="T:TruePath.IPath">
+            <summary>Represents a path in a file system.</summary>
+        </member>
+        <member name="P:TruePath.IPath.Value">
+            <summary>The normalized path string.</summary>
+        </member>
+        <member name="P:TruePath.IPath.FileName">
+            <summary>The name of this path's last component.</summary>
+        </member>
+        <member name="P:TruePath.IPath.Parent">
+            <summary>
+            The parent of this path. Will be <c>null</c> for a rooted absolute path. For a relative path, will always
+            resolve to its parent directory — by either removing directories from the end of the path, or appending
+            <code>..</code> to the end.
+            </summary>
+        </member>
+        <member name="T:TruePath.IPath`1">
+            <summary>Represents a path in a file system. Allows generic operators to be applied.</summary>
+            <typeparam name="TPath">The type of this path.</typeparam>
+        </member>
+        <member name="M:TruePath.IPath`1.IsPrefixOf(`0)">
+            <remarks>
+            Checks for a non-strict prefix: if the paths are equal, then they are still considered prefixes of each other.
+            </remarks>
+            <remarks>Note that currently this comparison is case-sensitive.</remarks>
+        </member>
+        <member name="M:TruePath.IPath`1.StartsWith(`0)">
+            <summary>
+            Determines whether the current path starts with the specified path.
+            </summary>
+            <param name="other">The path to compare to the current path.</param>
+            <remarks>Note that currently this comparison is case-sensitive.</remarks>
+        </member>
+        <member name="M:TruePath.Kernel32.GetFinalPathNameByHandle(System.IntPtr,System.Char*,System.UInt32,System.UInt32)">
+            <summary>
+            Retrieves the final path for the specified file handle.
+            </summary>
+            <param name="hFile">The file handle.</param>
+            <param name="buffer">A buffer that receives the final path.</param>
+            <param name="bufferLength">The size of the buffer, in characters.</param>
+            <param name="dwFlags">The flags to specify the path format.</param>
+            <returns>The length of the string copied to the buffer.</returns>
+        </member>
+        <member name="F:TruePath.Kernel32.FileAttributes.Archive">
+            <summary>FILE_ATTRIBUTE_ARCHIVE</summary>
+        </member>
+        <member name="F:TruePath.Kernel32.FileAttributes.Compressed">
+            <summary>FILE_ATTRIBUTE_COMPRESSED</summary>
+        </member>
+        <member name="F:TruePath.Kernel32.FileAttributes.Device">
+            <summary>FILE_ATTRIBUTE_DEVICE</summary>
+        </member>
+        <member name="F:TruePath.Kernel32.FileAttributes.Directory">
+            <summary>FILE_ATTRIBUTE_DIRECTORY</summary>
+        </member>
+        <member name="F:TruePath.Kernel32.FileAttributes.Encrypted">
+            <summary>FILE_ATTRIBUTE_ENCRYPTED</summary>
+        </member>
+        <member name="F:TruePath.Kernel32.FileAttributes.Hidden">
+            <summary>FILE_ATTRIBUTE_HIDDEN</summary>
+        </member>
+        <member name="F:TruePath.Kernel32.FileAttributes.IntegrityStream">
+            <summary>FILE_ATTRIBUTE_INTEGRITY_STREAM</summary>
+        </member>
+        <member name="F:TruePath.Kernel32.FileAttributes.Normal">
+            <summary>FILE_ATTRIBUTE_NORMAL</summary>
+        </member>
+        <member name="F:TruePath.Kernel32.FileAttributes.NotContentIndexed">
+            <summary>FILE_ATTRIBUTE_NOT_CONTENT_INDEXED</summary>
+        </member>
+        <member name="F:TruePath.Kernel32.FileAttributes.NoScrubData">
+            <summary>FILE_ATTRIBUTE_NO_SCRUB_DATA</summary>
+        </member>
+        <member name="F:TruePath.Kernel32.FileAttributes.Offline">
+            <summary>FILE_ATTRIBUTE_OFFLINE</summary>
+        </member>
+        <member name="F:TruePath.Kernel32.FileAttributes.Readonly">
+            <summary>FILE_ATTRIBUTE_READONLY</summary>
+        </member>
+        <member name="F:TruePath.Kernel32.FileAttributes.ReparsePoint">
+            <summary>FILE_ATTRIBUTE_REPARSE_POINT</summary>
+        </member>
+        <member name="F:TruePath.Kernel32.FileAttributes.SparseFile">
+            <summary>FILE_ATTRIBUTE_SPARSE_FILE</summary>
+        </member>
+        <member name="F:TruePath.Kernel32.FileAttributes.System">
+            <summary>FILE_ATTRIBUTE_SYSTEM</summary>
+        </member>
+        <member name="F:TruePath.Kernel32.FileAttributes.Temporary">
+            <summary>FILE_ATTRIBUTE_TEMPORARY</summary>
+        </member>
+        <member name="F:TruePath.Kernel32.FileAttributes.Virtual">
+            <summary>FILE_ATTRIBUTE_VIRTUAL</summary>
+        </member>
+        <member name="F:TruePath.Kernel32.FileAttributes.BackupSemantics">
+            <summary>FILE_FLAG_BACKUP_SEMANTICS</summary>
+        </member>
+        <member name="F:TruePath.Kernel32.FileAttributes.DeleteOnClose">
+            <summary>FILE_FLAG_DELETE_ON_CLOSE</summary>
+        </member>
+        <member name="F:TruePath.Kernel32.FileAttributes.NoBuffering">
+            <summary>FILE_FLAG_NO_BUFFERING</summary>
+        </member>
+        <member name="F:TruePath.Kernel32.FileAttributes.OpenNoRecall">
+            <summary>FILE_FLAG_OPEN_NO_RECALL</summary>
+        </member>
+        <member name="F:TruePath.Kernel32.FileAttributes.OpenReparsePoint">
+            <summary>FILE_FLAG_OPEN_REPARSE_POINT</summary>
+        </member>
+        <member name="F:TruePath.Kernel32.FileAttributes.Overlapped">
+            <summary>FILE_FLAG_OVERLAPPED</summary>
+        </member>
+        <member name="F:TruePath.Kernel32.FileAttributes.PosixSemantics">
+            <summary>FILE_FLAG_POSIX_SEMANTICS</summary>
+        </member>
+        <member name="F:TruePath.Kernel32.FileAttributes.RandomAccess">
+            <summary>FILE_FLAG_RANDOM_ACCESS</summary>
+        </member>
+        <member name="F:TruePath.Kernel32.FileAttributes.SessionAware">
+            <summary>FILE_FLAG_SESSION_AWARE</summary>
+        </member>
+        <member name="F:TruePath.Kernel32.FileAttributes.SequentialScan">
+            <summary>FILE_FLAG_SEQUENTIAL_SCAN</summary>
+        </member>
+        <member name="F:TruePath.Kernel32.FileAttributes.WriteThrough">
+            <summary>FILE_FLAG_WRITE_THROUGH</summary>
+        </member>
+        <member name="F:TruePath.Kernel32.FileAccess.ReadData">
+            <summary>FILE_READ_DATA</summary>
+        </member>
+        <member name="F:TruePath.Kernel32.FileAccess.ListDirectory">
+            <summary>FILE_LIST_DIRECTORY</summary>
+        </member>
+        <member name="F:TruePath.Kernel32.FileAccess.WriteData">
+            <summary>FILE_WRITE_DATA</summary>
+        </member>
+        <member name="F:TruePath.Kernel32.FileAccess.AddFile">
+            <summary>FILE_ADD_FILE</summary>
+        </member>
+        <member name="F:TruePath.Kernel32.FileAccess.AppendData">
+            <summary>FILE_APPEND_DATA</summary>
+        </member>
+        <member name="F:TruePath.Kernel32.FileAccess.AddSubdirectory">
+            <summary>FILE_ADD_SUBDIRECTORY</summary>
+        </member>
+        <member name="F:TruePath.Kernel32.FileAccess.CreatePipeInstance">
+            <summary>FILE_CREATE_PIPE_INSTANCE</summary>
+        </member>
+        <member name="F:TruePath.Kernel32.FileAccess.ReadEa">
+            <summary>FILE_READ_EA</summary>
+        </member>
+        <member name="F:TruePath.Kernel32.FileAccess.WriteEa">
+            <summary>FILE_WRITE_EA</summary>
+        </member>
+        <member name="F:TruePath.Kernel32.FileAccess.Execute">
+            <summary>FILE_EXECUTE</summary>
+        </member>
+        <member name="F:TruePath.Kernel32.FileAccess.Traverse">
+            <summary>FILE_TRAVERSE</summary>
+        </member>
+        <member name="F:TruePath.Kernel32.FileAccess.DeleteChild">
+            <summary>FILE_DELETE_CHILD</summary>
+        </member>
+        <member name="F:TruePath.Kernel32.FileAccess.ReadAttributes">
+            <summary>FILE_READ_ATTRIBUTES</summary>
+        </member>
+        <member name="F:TruePath.Kernel32.FileAccess.WriteAttributes">
+            <summary>FILE_WRITE_ATTRIBUTES</summary>
+        </member>
+        <member name="F:TruePath.Kernel32.FileAccess.GenericRead">
+            <summary>GENERIC_READ</summary>
+        </member>
+        <member name="F:TruePath.Kernel32.FileAccess.GenericWrite">
+            <summary>GENERIC_WRITE</summary>
+        </member>
+        <member name="F:TruePath.Kernel32.FileAccess.GenericExecute">
+            <summary>GENERIC_EXECUTE</summary>
+        </member>
+        <member name="F:TruePath.Kernel32.FileAccess.GenericAll">
+            <summary>GENERIC_ALL</summary>
+        </member>
+        <member name="F:TruePath.Kernel32.FileShare.None">
+            <summary>FILE_SHARE_NONE</summary>
+        </member>
+        <member name="F:TruePath.Kernel32.FileShare.Read">
+            <summary>FILE_SHARE_READ</summary>
+        </member>
+        <member name="F:TruePath.Kernel32.FileShare.Write">
+            <summary>FILE_SHARE_WRITE</summary>
+        </member>
+        <member name="F:TruePath.Kernel32.FileShare.Delete">
+            <summary>FILE_SHARE_DELETE</summary>
+        </member>
+        <member name="M:TruePath.Kernel32.CreateFile(System.String,TruePath.Kernel32.FileAccess,TruePath.Kernel32.FileShare,System.IntPtr,System.IO.FileMode,TruePath.Kernel32.FileAttributes,System.IntPtr)">
+            <summary>
+            Creates or opens a file or I/O device.
+            </summary>
+            <param name="filename">The name of the file or device to be created or opened.</param>
+            <param name="access">The requested access to the file or device.</param>
+            <param name="share">The requested sharing mode of the file or device.</param>
+            <param name="securityAttributes">A pointer to a <c>SECURITY_ATTRIBUTES</c> structure or <c>IntPtr.Zero</c>.</param>
+            <param name="creationDisposition">An action to take on a file or device that exists or does not exist.</param>
+            <param name="flagsAndAttributes">The file or device attributes and flags.</param>
+            <param name="templateFile">A valid handle to a template file, or <c>IntPtr.Zero</c>.</param>
+            <returns>A <see cref="T:Microsoft.Win32.SafeHandles.SafeFileHandle"/> for the opened file or device.</returns>
+        </member>
+        <member name="F:TruePath.Kernel32.FSCTL_GET_REPARSE_POINT">
+            <summary>
+            Control code for retrieving reparse point data.
+            </summary>
+            <remarks>
+            For more information, see <see href="https://learn.microsoft.com/windows/win32/api/winioctl/ni-winioctl-fsctl_get_reparse_point"/>.
+            </remarks>
+        </member>
+        <member name="F:TruePath.Kernel32.IOCTL_STORAGE_READ_CAPACITY">
+            <summary>
+            Control code for reading the storage capacity of a device.
+            </summary>
+            <remarks>
+            For more information, see <see href="https://learn.microsoft.com/windows-hardware/drivers/ddi/ntddstor/ni-ntddstor-ioctl_storage_read_capacity"/>.
+            </remarks>
+        </member>
+        <member name="M:TruePath.Kernel32.DeviceIoControl(System.Runtime.InteropServices.SafeHandle,System.UInt32,System.Void*,System.UInt32,System.Void*,System.UInt32,System.UInt32@,System.IntPtr)">
+            <summary>
+            Sends a control code directly to a specified device driver, causing the corresponding device to perform the corresponding operation.
+            </summary>
+            <param name="hDevice">A handle to the device on which the operation is to be performed.</param>
+            <param name="dwIoControlCode">The control code for the operation.</param>
+            <param name="lpInBuffer">A pointer to the input buffer that contains the data required to perform the operation.</param>
+            <param name="nInBufferSize">The size of the input buffer, in bytes.</param>
+            <param name="lpOutBuffer">A pointer to the output buffer that receives the data returned by the operation.</param>
+            <param name="nOutBufferSize">The size of the output buffer, in bytes.</param>
+            <param name="lpBytesReturned">A variable that receives the size of the data stored in the output buffer, in bytes.</param>
+            <param name="lpOverlapped">A pointer to an OVERLAPPED structure for asynchronous operations. For synchronous operations, this parameter is set to <see cref="F:System.IntPtr.Zero"/>.</param>
+            <returns>
+            <see langword="true"/> if the operation succeeds; otherwise, <see langword="false"/>. If the operation fails, call <see cref="M:System.Runtime.InteropServices.Marshal.GetLastWin32Error"/> to get extended error information.
+            </returns>
+            <remarks>
+            For more information, see <see href="https://learn.microsoft.com/windows-hardware/drivers/ifs/fsctl-get-reparse-point"/>.
+            </remarks>
+        </member>
+        <member name="F:TruePath.Kernel32.MAXIMUM_REPARSE_DATA_BUFFER_SIZE">
+            <summary>
+            The maximum size of the reparse data buffer.
+            </summary>
+            <remarks>
+            For more information, see <see href="https://learn.microsoft.com/windows-hardware/drivers/ifs/fsctl-get-reparse-point"/>.
+            </remarks>
+        </member>
+        <member name="T:TruePath.Kernel32.IOReparseOptions">
+            <summary>
+            Contains constants for reparse tags used in IO operations.
+            </summary>
+        </member>
+        <member name="F:TruePath.Kernel32.IOReparseOptions.IO_REPARSE_TAG_FILE_PLACEHOLDER">
+            <summary>
+            Reparse tag for a file placeholder.
+            </summary>
+        </member>
+        <member name="F:TruePath.Kernel32.IOReparseOptions.IO_REPARSE_TAG_MOUNT_POINT">
+            <summary>
+            Reparse tag for a mount point.
+            </summary>
+        </member>
+        <member name="F:TruePath.Kernel32.IOReparseOptions.IO_REPARSE_TAG_SYMLINK">
+            <summary>
+            Reparse tag for a symbolic link.
+            </summary>
+        </member>
+        <member name="T:TruePath.Kernel32.SymbolicLinkReparseBuffer">
+            <summary>
+            Represents a symbolic link reparse buffer.
+            </summary>
+            <remarks>
+            For more information, see <see href="https://msdn.microsoft.com/library/windows/hardware/ff552012.aspx"/>.
+            </remarks>
+        </member>
+        <member name="F:TruePath.Kernel32.SymbolicLinkReparseBuffer.ReparseTag">
+            <summary>
+            The reparse tag.
+            </summary>
+        </member>
+        <member name="F:TruePath.Kernel32.SymbolicLinkReparseBuffer.ReparseDataLength">
+            <summary>
+            The length of the reparse data.
+            </summary>
+        </member>
+        <member name="F:TruePath.Kernel32.SymbolicLinkReparseBuffer.Reserved">
+            <summary>
+            Reserved; do not use.
+            </summary>
+        </member>
+        <member name="F:TruePath.Kernel32.SymbolicLinkReparseBuffer.SubstituteNameOffset">
+            <summary>
+            The offset, in bytes, to the substitute name string in the PathBuffer array.
+            </summary>
+        </member>
+        <member name="F:TruePath.Kernel32.SymbolicLinkReparseBuffer.SubstituteNameLength">
+            <summary>
+            The length, in bytes, of the substitute name string. If this string is null-terminated, SubstituteNameLength does not include space for the null character.
+            </summary>
+        </member>
+        <member name="F:TruePath.Kernel32.SymbolicLinkReparseBuffer.PrintNameOffset">
+            <summary>
+            The offset, in bytes, to the print name string in the PathBuffer array.
+            </summary>
+        </member>
+        <member name="F:TruePath.Kernel32.SymbolicLinkReparseBuffer.PrintNameLength">
+            <summary>
+            The length, in bytes, of the print name string. If this string is null-terminated, PrintNameLength does not include space for the null character.
+            </summary>
+        </member>
+        <member name="F:TruePath.Kernel32.SymbolicLinkReparseBuffer.Flags">
+            <summary>
+            Flags that control the behavior of the symbolic link.
+            </summary>
+        </member>
+        <member name="T:TruePath.Libc">
+            <summary>
+            Provides interop methods for the libc library.
+            </summary>
+        </member>
+        <member name="M:TruePath.Libc.RealPath(System.String,System.IntPtr)">
+            <summary>
+            Resolves the absolute path of the specified <paramref name="path"/> and stores it in the provided <paramref name="buffer"/>.
+            </summary>
+            <param name="path">The file path to resolve.</param>
+            <param name="buffer">A pointer to a buffer where the resolved absolute path will be stored.</param>
+            <returns>A <see cref="T:Microsoft.Win32.SafeHandles.SafeFileHandle"/> representing the resolved path, or an invalid handle if the function fails.</returns>
+            <remarks>
+            This method is an interop call to the 'realpath' function in the libc library. The <paramref name="buffer"/> should be allocated with enough space to hold the resolved path.
+            </remarks>
+        </member>
+        <member name="T:TruePath.LocalPath">
+            <summary>
+            <para>A path pointing to a place in the local file system.</para>
+            <para>It may be either absolute or relative.</para>
+            <para>
+                Always stored in a normalized form. Read the documentation on <see cref="M:TruePath.PathStrings.Normalize(System.String)"/> to
+                know what form of normalization the path uses.
+            </para>
+            </summary>
+        </member>
+        <member name="M:TruePath.LocalPath.#ctor(System.String)">
+            <summary>
+            <para>A path pointing to a place in the local file system.</para>
+            <para>It may be either absolute or relative.</para>
+            <para>
+                Always stored in a normalized form. Read the documentation on <see cref="M:TruePath.PathStrings.Normalize(System.String)"/> to
+                know what form of normalization the path uses.
+            </para>
+            </summary>
+        </member>
+        <member name="F:TruePath.LocalPath.PlatformDefaultComparer">
+            <summary>
+            <para>Provides a default comparer for comparing file paths, aware of the current platform.</para>
+            <para>
+                On <b>Windows</b> and <b>macOS</b>, this will perform <b>case-insensitive</b> string comparison, since the
+                file systems are case-insensitive on these operating systems by default.
+            </para>
+            <para>On <b>Linux</b>, the comparison will be <b>case-sensitive</b>.</para>
+            </summary>
+            <remarks>
+            Note that this comparison <b>does not guarantee correctness</b>: in practice, on any platform to control
+            case-sensitiveness of either the whole file system or a part of it. This class does not take this into account,
+            having a benefit of no accessing the file system for any of the comparisons.
+            </remarks>
+        </member>
+        <member name="F:TruePath.LocalPath.StrictStringComparer">
+            <summary>
+            A strict comparer for comparing file paths using ordinal, case-sensitive comparison of the underlying path
+            strings.
+            </summary>
+        </member>
+        <member name="P:TruePath.LocalPath.Value">
+            <inheritdoc cref="P:TruePath.IPath.Value"/>
+        </member>
+        <member name="P:TruePath.LocalPath.IsAbsolute">
+            <summary>
+            <para>Checks whether the path is absolute.</para>
+            <para>
+                Currently, any rooted paths are considered absolute, but this is subject to change: on Windows, there
+                will be an additional requirement for a path to be either a DOS device path or start from a disk letter.
+            </para>
+            </summary>
+        </member>
+        <member name="P:TruePath.LocalPath.Parent">
+            <inheritdoc cref="P:TruePath.IPath.Parent"/>
+        </member>
+        <member name="P:TruePath.LocalPath.TruePath#IPath#Parent">
+            <inheritdoc cref="P:TruePath.IPath.Parent"/>
+        </member>
+        <member name="P:TruePath.LocalPath.FileName">
+            <inheritdoc cref="P:TruePath.IPath.FileName"/>
+        </member>
+        <member name="M:TruePath.LocalPath.ToString">
+            <returns>The normalized path string contained in this object.</returns>
+        </member>
+        <member name="M:TruePath.LocalPath.Equals(TruePath.LocalPath)">
+            <summary>Compares the path with another.</summary>
+            <remarks>Note that currently this comparison is case-sensitive.</remarks>
+        </member>
+        <member name="M:TruePath.LocalPath.Equals(TruePath.LocalPath,System.Collections.Generic.IEqualityComparer{TruePath.LocalPath})">
+            <summary>
+            Determines whether the specified <see cref="T:TruePath.LocalPath"/> is equal to the current <see cref="T:TruePath.LocalPath"/> using the specified string comparer.
+            </summary>
+            <param name="other">The <see cref="T:TruePath.LocalPath"/> to compare with the current <see cref="T:TruePath.LocalPath"/>.</param>
+            <param name="comparer">The comparer to use for comparing the paths.</param>
+            <returns>
+            <see langword="true"/> if the specified <see cref="T:TruePath.LocalPath"/> is equal to the current <see cref="T:TruePath.LocalPath"/> using the specified string comparer; otherwise, <see langword="false"/>.
+            </returns>
+        </member>
+        <member name="M:TruePath.LocalPath.Equals(System.Object)">
+            <inheritdoc cref="M:TruePath.LocalPath.Equals(TruePath.LocalPath)"/>
+        </member>
+        <member name="M:TruePath.LocalPath.GetHashCode">
+            <inheritdoc cref="M:System.Object.GetHashCode"/>
+        </member>
+        <member name="M:TruePath.LocalPath.op_Equality(TruePath.LocalPath,TruePath.LocalPath)">
+            <inheritdoc cref="M:TruePath.LocalPath.Equals(TruePath.LocalPath)"/>
+        </member>
+        <member name="M:TruePath.LocalPath.op_Inequality(TruePath.LocalPath,TruePath.LocalPath)">
+            <inheritdoc cref="M:TruePath.LocalPath.Equals(TruePath.LocalPath)"/>
+        </member>
+        <member name="M:TruePath.LocalPath.StartsWith(TruePath.LocalPath)">
+            <inheritdoc cref="M:TruePath.IPath`1.StartsWith(`0)"/>
+        </member>
+        <member name="M:TruePath.LocalPath.Create(System.String)">
+            <summary>
+            Creates a new <see cref="T:TruePath.LocalPath"/> instance from the specified string value.
+            </summary>
+            <param name="value">The string representation of the path to create.</param>
+            <returns>A new normalized <see cref="T:TruePath.LocalPath"/> instance representing the specified path.</returns>
+        </member>
+        <member name="M:TruePath.LocalPath.IsPrefixOf(TruePath.LocalPath)">
+            <inheritdoc cref="M:TruePath.IPath`1.IsPrefixOf(`0)"/>
+        </member>
+        <member name="M:TruePath.LocalPath.RelativeTo(TruePath.LocalPath)">
+            <summary>
+            Calculates the relative path from a base path to this path.
+            </summary>
+            <param name="basePath">The base path from which to calculate the relative path.</param>
+            <returns>The relative path from the base path to this path.</returns>
+        </member>
+        <member name="M:TruePath.LocalPath.op_Division(TruePath.LocalPath,TruePath.LocalPath)">
+            <summary>Appends another path to this one.</summary>
+            <remarks>
+            Note that in case path <paramref name="b"/> is <b>absolute</b>, it will completely take over and the
+            <paramref name="basePath"/> will be ignored.
+            </remarks>
+        </member>
+        <member name="M:TruePath.LocalPath.op_Division(TruePath.LocalPath,System.String)">
+            <summary>Appends another path to this one.</summary>
+            <remarks>
+            Note that in case path <paramref name="b"/> is <b>absolute</b>, it will completely take over and the
+            <paramref name="basePath"/> will be ignored.
+            </remarks>
+        </member>
+        <member name="M:TruePath.LocalPath.op_Implicit(TruePath.AbsolutePath)~TruePath.LocalPath">
+            <summary>
+            Implicitly converts an <see cref="T:TruePath.AbsolutePath"/> to a <see cref="T:TruePath.LocalPath"/>.
+            </summary>
+            <remarks>Note that this conversion doesn't lose any information.</remarks>
+        </member>
+        <member name="M:TruePath.LocalPath.ResolveToCurrentDirectory">
+            <summary>
+            Resolves this path to an absolute path based on the current working directory.
+            </summary>
+            <returns>An <see cref="T:TruePath.AbsolutePath"/> that represents this path resolved against the current working directory.</returns>
+            <remarks>
+            Note that if this path is already absolute, it will just transform to <see cref="T:TruePath.AbsolutePath"/>. The current
+            directory won't matter for such a case.
+            </remarks>
+        </member>
+        <member name="M:TruePath.LocalPath.#ctor(TruePath.AbsolutePath)">
+            <summary>Converts an <see cref="T:TruePath.AbsolutePath"/> to a <see cref="T:TruePath.LocalPath"/>.</summary>
+        </member>
+        <member name="M:TruePath.LocalPath.CompareTo(TruePath.LocalPath)">
+            <summary>
+            Compares the current <see cref="T:TruePath.LocalPath"/> instance with another <see cref="T:TruePath.LocalPath"/> instance,
+            using the default platform-aware comparison rules provided by <see cref="T:TruePath.Comparers.PlatformDefaultPathComparer`1"/>.
+            </summary>
+            <param name="other">The <see cref="T:TruePath.LocalPath"/> instance to compare with the current instance.</param>
+            <returns>
+            <para>A signed integer that indicates the relative order of the compared objects.</para>
+            <list type="table">
+                <listheader>
+                    <term>Value</term>
+                    <description>Meaning</description>
+                </listheader>
+                <item>
+                    <term>Less than zero</term>
+                    <description>The current instance precedes <paramref name="other"/> in the sort order.</description>
+                </item>
+                <item>
+                    <term>Zero</term>
+                    <description>The current instance occurs in the same position in the sort order as <paramref name="other"/>.</description>
+                </item>
+                <item>
+                    <term>Greater than zero</term>
+                    <description>The current instance follows <paramref name="other"/> in the sort order.</description>
+                </item>
+            </list>
+            </returns>
+        </member>
+        <member name="T:TruePath.LocalPathPattern">
+            <summary>
+            <para>An opaque pattern that may be checked if it corresponds to a local path.</para>
+            <para>
+                This is a token type, created with an idea that it should be interpreted in usage-specific way by some external
+                means.
+            </para>
+            </summary>
+            <param name="Value">
+            The pattern text. May be of various formats: say, a glob. This library doesn't dictate any particular format and
+            gives no guarantees.
+            </param>
+        </member>
+        <member name="M:TruePath.LocalPathPattern.#ctor(System.String)">
+            <summary>
+            <para>An opaque pattern that may be checked if it corresponds to a local path.</para>
+            <para>
+                This is a token type, created with an idea that it should be interpreted in usage-specific way by some external
+                means.
+            </para>
+            </summary>
+            <param name="Value">
+            The pattern text. May be of various formats: say, a glob. This library doesn't dictate any particular format and
+            gives no guarantees.
+            </param>
+        </member>
+        <member name="P:TruePath.LocalPathPattern.Value">
+            <summary>
+            The pattern text. May be of various formats: say, a glob. This library doesn't dictate any particular format and
+            gives no guarantees.
+            </summary>
+        </member>
+        <member name="M:TruePath.LocalPathPattern.ToString">
+            <returns>The pattern text contained in this object.</returns>
+        </member>
+        <member name="T:TruePath.PathExtensions">
+            <summary>
+            Extension methods for <see cref="T:TruePath.IPath"/> and <see cref="T:TruePath.IPath`1"/>.
+            </summary>
+        </member>
+        <member name="M:TruePath.PathExtensions.GetExtensionWithDot(TruePath.IPath)">
+            <summary>
+            <para>Gets the extension of the file name of the <paramref name="path"/> with the dot character.</para>
+            <para>For example, for the path <c>file.txt</c>, this method will return a string <c>.txt</c>.</para>
+            <para>File name entirely consisting of extension, such as <c>.gitignore</c>, is returned as-is.</para>
+            </summary>
+            <returns>The extension of the file name of the path with the dot character (if present).</returns>
+            <remarks>
+                This method will return an empty string for paths without extensions, and will return a dot for paths whose
+                names end with a dot (even though it is an unusual path). This behavior allows to distinguish such paths,
+                and potentially reconstruct the file name from its part without the extension and the "extension with dot".
+            </remarks>
+        </member>
+        <member name="M:TruePath.PathExtensions.GetExtensionWithoutDot(TruePath.IPath)">
+            <summary>
+            <para>Gets the extension of the file name of the <paramref name="path"/> without the dot character.</para>
+            <para>For example, for the path <c>file.txt</c>, this method will return a string <c>txt</c>.</para>
+            <para>
+                File name entirely consisting of extension, such as <c>.gitignore</c>, is returned with its leading dot
+                trimmed.
+            </para>
+            </summary>
+            <returns>The extension of the file name of the path without the dot.</returns>
+            <remarks>
+                This method will return an empty string for paths without extensions and with empty extensions (ending with
+                dot, which may be unusual). This behavior doesn't allow to distinguish such paths using this method, to
+                reconstruct the original name from its name without extension and its extension without dot.
+            </remarks>
+        </member>
+        <member name="M:TruePath.PathExtensions.GetFilenameWithoutExtension(TruePath.IPath)">
+            <summary>
+            <para>Gets the file name of the <paramref name="path"/> without the extension.</para>
+            <para>For example, for the path <c>file.txt</c>, this method will return a string <c>file</c>.</para>
+            </summary>
+            <returns>
+            The file name of the path without the extension. If the path has no extension, the file name is returned as-is
+            (one trailing dot will be stripped, though).
+            </returns>
+        </member>
+        <member name="M:TruePath.PathExtensions.WithExtension(TruePath.AbsolutePath,System.String)">
+            <summary>
+            Returns a new path of type <see cref="T:TruePath.AbsolutePath"/> with the extension of its file name component changed,
+            or with a new extension-like component if the original file name was empty.
+            </summary>
+            <param name="path">The original path.</param>
+            <param name="extension">The new extension to apply.</param>
+            <returns>
+            A new path of type <see cref="T:TruePath.AbsolutePath"/> with the modified file name component.
+            The original <paramref name="path"/> object is not modified.
+            </returns>
+        </member>
+        <member name="M:TruePath.PathExtensions.WithExtension(TruePath.LocalPath,System.String)">
+            <summary>
+            Returns a new path of type <see cref="T:TruePath.LocalPath"/> with the extension of its file name component changed,
+            or with a new extension-like component if the original file name was empty.
+            </summary>
+            <param name="path">The original path.</param>
+            <param name="extension">The new extension to apply.</param>
+            <returns>
+            A new path of type <see cref="T:TruePath.LocalPath"/> with the modified file name component.
+            The original <paramref name="path"/> object is not modified.
+            </returns>
+        </member>
+        <member name="T:TruePath.PathStrings">
+            <summary>Helper methods to manipulate paths as strings.</summary>
+        </member>
+        <member name="M:TruePath.PathStrings.Normalize(System.String)">
+            <summary>
+            <para>
+                Will convert a path string to a normalized path, using path separator specific for the current system.
+            </para>
+            <para>
+                The normalization includes:
+                <list type="bullet">
+                    <item>
+                        converting all the <see cref="F:System.IO.Path.AltDirectorySeparatorChar"/> to
+                        <see cref="F:System.IO.Path.DirectorySeparatorChar"/> (e.g. <c>/</c> to <c>\</c> on Windows),
+                    </item>
+                    <item>
+                        collapsing any repeated separators in the input to only one separator (e.g. <c>//</c> to just
+                        <c>/</c> on Unix),
+                    </item>
+                    <item>
+                        resolving any sequence of current and parent directory marks (subsequently, <c>.</c> and <c>..</c>)
+                        if possible (meaning they will not be replaced if they are in the root position: paths such as
+                        <c>.</c> or <c>../..</c> will not be affected by the normalization, while e.g. <c>foo/../.</c> will
+                        be resolved to just <c>foo</c>).
+                    </item>
+                </list>
+            </para>
+            <para>
+                Note that this operation will never perform any file IO, and is purely string manipulation.
+            </para>
+            </summary>
+        </member>
+        <member name="M:TruePath.PathStrings.SourceContainsDriveLetter(System.ReadOnlySpan{System.Char})">
+            <summary>
+            Determines whether the specified source contains a drive letter.
+            </summary>
+            <param name="source">A read-only span of characters to be checked.</param>
+            <returns>
+              <c>true</c> if the source contains a drive letter (e.g., 'C:'); otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="T:TruePath.Temporary">
+            <summary>
+            Provides methods for working with temporary files, directories and folders.
+            </summary>
+        </member>
+        <member name="M:TruePath.Temporary.SystemTempDirectory">
+            <summary>
+            Gets the system's temporary directory.
+            </summary>
+            <returns>An AbsolutePath representing the system's temporary directory.</returns>
+        </member>
+        <member name="M:TruePath.Temporary.CreateTempFile">
+            <summary>
+            Creates a temporary file.
+            </summary>
+            <returns>An AbsolutePath representing the newly created temporary file.</returns>
+        </member>
+        <member name="M:TruePath.Temporary.CreateTempFolder(System.String)">
+            <summary>
+            Creates a temporary folder with the specified prefix.
+            </summary>
+            <param name="prefix">An optional string to add to the beginning of the subdirectory name.</param>
+            <returns>An AbsolutePath representing newly created temporary folder</returns>
+        </member>
+        <member name="T:System.IO.DirectoryEx">
+            <summary>
+            Class that contains custom implementations methods of <see cref="T:System.IO.Directory"/> class presented in .NET 8 but missing in .NET Standard 2.0.
+            </summary>
+        </member>
+        <member name="T:System.IO.PathEx">
+            <summary>
+            Class that contains custom implementations methods of <see cref="T:System.IO.Path"/> class presented in .NET 8 but missing in .NET Standard 2.0.
+            </summary>
+        </member>
+    </members>
+</doc>

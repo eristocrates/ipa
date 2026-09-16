@@ -1,0 +1,4003 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>WordGlue4</name>
+  </assembly>
+  <members>
+    <member name="T:WebSupergoo.WordGlue4.Activity">
+      <summary>
+            The activity being performed by a running object.
+            </summary>
+    </member>
+    <member name="F:WebSupergoo.WordGlue4.Activity.None">
+      <summary>
+            No activity currently being performed.
+            </summary>
+    </member>
+    <member name="F:WebSupergoo.WordGlue4.Activity.Parsing">
+      <summary>
+            Reading from stream and parsing the XML.
+            </summary>
+    </member>
+    <member name="F:WebSupergoo.WordGlue4.Activity.Reflowing">
+      <summary>
+            Reflowing the document content across multiple pages.
+            </summary>
+    </member>
+    <member name="F:WebSupergoo.WordGlue4.Activity.Aborting">
+      <summary>
+            Abort requested but not yet acted upon.
+            </summary>
+    </member>
+    <member name="T:WebSupergoo.WordGlue4.Doc">
+      <summary>
+            An object encapsulating a Word document.
+            </summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Doc.#ctor">
+      <summary>
+            Create a new Doc object.
+            </summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Doc.#ctor(System.IO.Stream)">
+      <summary>
+            Create a new Doc object.
+            Parse the document specified as a Stream, into an object ready for rendering.
+            </summary>
+      <param name="stream">Stream containing the .doc, .docx, .dot or .dotx.</param>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Doc.#ctor(System.IO.Stream,System.String)">
+      <summary>
+            Create a new Doc object.
+            Parse the document specified as a Stream and with a type specified using a file name, into an object ready for rendering.
+            </summary>
+      <param name="stream">Stream containing the .doc, .docx, .dot or .dotx.</param>
+      <param name="fileName">Filename used to specifiy the format as .doc, .docx, .dot or .dotx.</param>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Doc.#ctor(System.String)">
+      <summary>
+            Create a new Doc object.
+            Parse the document specified by file name, into an object ready for rendering.
+            </summary>
+      <param name="fileName">Path to a .doc, .docx, .dot or .dotx file.</param>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Doc.Dispose">
+      <summary>
+            Free buffers and other resources used by the document render.
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Doc.DocumentFrame">
+      <summary>
+            The DocumentFrame comprising the root of the Frame tree.
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Doc.Fields">
+      <summary>
+        <para>Field variable definitions for resolving field codes.</para>
+        <para>Field definitions are values that can be can be used as a data source when saving a rendered output.
+            They do not reflect the current value of fields within a docx.</para>
+        <para>You should place your data in this structure and then at the point of render, should fields be found,
+            appropriate values will be pulled from this property.</para>
+        <para>Use MS Word or similar tools to determine what fields are in your particular document.</para>
+      </summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Doc.GetPageSize(System.Int32)">
+      <summary>
+            Obtain the dimensions of a particular page of the document.
+            </summary>
+      <param name="pageNumber">The number of the page. This is a one based index.</param>
+      <returns>The dimensions of the page in points.</returns>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Doc.Options">
+      <summary>
+            Options for loading, parsing and rendering documents.
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Doc.PageCount">
+      <summary>
+            The total number of pages in the document.
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Doc.Properties">
+      <summary>
+            Document properties.
+            </summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Doc.Render(System.Object)">
+      <summary>
+            Render all pages to an ABCpdf Doc object.
+            </summary>
+      <param name="doc">
+            The ABCpdf Doc object that output should be rendered to.
+            The ABCpdf Doc is not cleared before use so content pages will be appended to any existing pages.
+            </param>
+      <returns>A context to be disposed after the document has been saved.</returns>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Doc.Render(System.Object,System.Int32)">
+      <summary>
+            Render a particular page to an ABCpdf Doc object.
+            </summary>
+      <param name="doc">
+            The ABCpdf Doc object that output should be rendered to. Content is output to the current page. 
+            The page MediaBox and Rect should be set appropriately before this method is called. 
+            After this method has been called you may wish to flatten the page to reduce file size.
+            </param>
+      <param name="page">
+            The page number to render. So for the first page you would pass one.
+            </param>
+      <returns>A context to be disposed after the document has been saved.</returns>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Doc.Render(WebSupergoo.WordGlue4.Rendering.IRenderingContext,System.Int32)">
+      <summary>
+            Render the specified page onto the given rendering context.
+            </summary>
+      <param name="renderingContext">
+            The rendering context for converting rendering operations into
+            output.
+            </param>
+      <param name="page">
+            The page number to render. So for the first page you would pass one.
+            </param>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Doc.SaveAs(System.IO.Stream,System.String)">
+      <summary>
+            Convert the entire Word document into another format.
+            </summary>
+      <param name="fs">Stream to receive the output.</param>
+      <param name="format">Desired format of output.</param>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Doc.SaveAs(System.IO.Stream,System.String,System.Int32)">
+      <summary>
+            Convert a specified page of the Word document into another format.
+            </summary>
+      <param name="stream">Stream to receive the output.</param>
+      <param name="format">Desired format of output.</param>
+      <param name="page">Page number to convert.</param>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Doc.SaveAs(System.String)">
+      <summary>
+            Save the Word document as a different format.
+            </summary>
+      <param name="path">Where to save the converted output.</param>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Doc.SaveAs(System.String,System.Int32)">
+      <summary>
+            Save a specified page of the Word document as a different format.
+            </summary>
+      <param name="path">File path to receive the output.</param>
+      <param name="page">Page number to convert.</param>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Doc.SaveAs(System.String,System.String,System.Int32)">
+      <summary>
+            Convert a specified page of the Word document into another format.
+            </summary>
+      <param name="path">File path to receive the output.</param>
+      <param name="format">Desired format of output.</param>
+      <param name="page">Page number to convert.</param>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Doc.SetFile(System.String)">
+      <summary>
+            Parse the document specified by file name, into an object ready for rendering.
+            </summary>
+      <param name="fileName">Path to a .doc, .docx, .dot or .dotx file.</param>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Doc.SetStream(System.IO.Stream)">
+      <summary>
+            Parse the document specified as a Stream, into an object ready for rendering.
+            </summary>
+      <param name="stream">Stream containing the .doc, .docx, .dot or .dotx.</param>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Doc.SetStream(System.IO.Stream,System.String)">
+      <summary>
+            Parse the document specified as a Stream and with a type specified using a file name, into an object ready for rendering.
+            </summary>
+      <param name="stream">Stream containing the .doc, .docx, .dot or .dotx.</param>
+      <param name="fileName">Filename used to specifiy the format as .doc, .docx, .dot or .dotx.</param>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Doc.Status">
+      <summary>
+            The state in which the current document is in.
+            </summary>
+    </member>
+    <member name="T:WebSupergoo.WordGlue4.ErrorAction">
+      <summary>
+            The action to take when content data errors are encountered.
+            </summary>
+    </member>
+    <member name="F:WebSupergoo.WordGlue4.ErrorAction.Ignore">
+      <summary>
+            Ignore any problems.
+            </summary>
+    </member>
+    <member name="F:WebSupergoo.WordGlue4.ErrorAction.ErrorOnLoad">
+      <summary>
+            Throw an exception at the point the document is loaded.
+            </summary>
+    </member>
+    <member name="F:WebSupergoo.WordGlue4.ErrorAction.ErrorOnRender">
+      <summary>
+            Throw an exception at the point a relevant page is rendered.
+            </summary>
+    </member>
+    <member name="T:WebSupergoo.WordGlue4.Inset">
+      <summary>
+            An inset that can be applied to a Rect.
+            Conceptually quite similar to a Rect but it is a bit confusing to use the same thing
+            </summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Inset.#ctor(System.Double)">
+      <summary>
+            Construct an Inset given one value to be applied to each of the components.
+            </summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Inset.#ctor(System.Double,System.Double,System.Double,System.Double)">
+      <summary>
+            Construct an Inset given four values.
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Inset.Bottom">
+      <summary>The amount of inset for the bottom.</summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Inset.CompareTo(WebSupergoo.WordGlue4.Inset)">
+      <summary>
+            Compares the current instance with another object of the same type and returns an integer that indicates whether the current instance precedes, follows, or occurs in the same position in the sort order as the other object
+            </summary>
+      <param name="other">Inset for comparison.</param>
+      <returns>The comparison result.</returns>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Inset.Equals(System.Object)">
+      <summary>
+            Compare for equality.
+            </summary>
+      <param name="obj">Object for comparison.</param>
+      <returns>True if the objects are equal Insets.</returns>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Inset.GetHashCode">
+      <summary>
+            Obtain a hash code for the Inset.
+            </summary>
+      <returns>The hash code.</returns>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Inset.IsEmpty">
+      <summary>
+            Whether the inset has all zero values
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Inset.Left">
+      <summary>The amount of inset for the left.</summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Inset.Map(WebSupergoo.WordGlue4.Rect,WebSupergoo.WordGlue4.Rect)">
+      <summary>
+            Generate an Inset which will map one Rect to another.
+            </summary>
+      <param name="r1">The start rect.</param>
+      <param name="r2">The final rect.</param>
+      <returns>An Inset containing the result.</returns>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Inset.Max(WebSupergoo.WordGlue4.Inset,WebSupergoo.WordGlue4.Inset)">
+      <summary>
+            Combine two Insets to produce the maximum Inset.
+            The maximum is the maximum value of each component to produce the greatest possible inset or least possible outset.
+            </summary>
+      <param name="a">An Inset.</param>
+      <param name="b">An Inset</param>
+      <returns>The resultant Inset.</returns>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Inset.Min(WebSupergoo.WordGlue4.Inset,WebSupergoo.WordGlue4.Inset)">
+      <summary>
+            Combine two Insets to produce the minimum Inset.
+            The minimum is the minimum value of each component to produce the least possible inset or greatest possible outset.
+            </summary>
+      <param name="a">An Inset.</param>
+      <param name="b">An Inset</param>
+      <returns>The resultant Inset.</returns>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Inset.op_Addition(WebSupergoo.WordGlue4.Inset,WebSupergoo.WordGlue4.Inset)">
+      <summary>
+            Combine two Insets by adding the values in one to the other.
+            </summary>
+      <param name="lhs">Inset for translation.</param>
+      <param name="rhs">Inset by which it should be translated.</param>
+      <returns>An Inset containing the result.</returns>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Inset.op_Addition(WebSupergoo.WordGlue4.Rect,WebSupergoo.WordGlue4.Inset)">
+      <summary>
+            Combine a Rect with an Inset to produce a rect which has been inset.
+            </summary>
+      <param name="r">The Rect.</param>
+      <param name="i">Inset which should be applied to Rect.</param>
+      <returns>A Rect containing the result.</returns>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Inset.op_Addition(WebSupergoo.WordGlue4.Size,WebSupergoo.WordGlue4.Inset)">
+      <summary>
+            Combine a Size with an Inset to produce a rect which has been inset.
+            </summary>
+      <param name="s">The Size.</param>
+      <param name="i">Inset which should be applied to Size.</param>
+      <returns>A Rect containing the result.</returns>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Inset.op_Equality(WebSupergoo.WordGlue4.Inset,WebSupergoo.WordGlue4.Inset)">
+      <summary>
+            Compare two Insets for equality.
+            </summary>
+      <param name="a">First Insets for comparision.</param>
+      <param name="b">Second Insets for comparision.</param>
+      <returns>True if the values are equal.</returns>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Inset.op_Inequality(WebSupergoo.WordGlue4.Inset,WebSupergoo.WordGlue4.Inset)">
+      <summary>
+            Compare two Insets for inequality.
+            </summary>
+      <param name="a">First Insets for comparision.</param>
+      <param name="b">Second Insets for comparision.</param>
+      <returns>True if the values are not equal.</returns>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Inset.op_Subtraction(WebSupergoo.WordGlue4.Inset,WebSupergoo.WordGlue4.Inset)">
+      <summary>
+            Combine two Insets by subtracting the values in one from the other.
+            </summary>
+      <param name="lhs">Base Inset - left hand side.</param>
+      <param name="rhs">Inset to subtract - right hand side.</param>
+      <returns>An Inset containing the result.</returns>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Inset.op_UnaryNegation(WebSupergoo.WordGlue4.Inset)">
+      <summary>
+            Negate the inset - so an inset becomes an outset and vice versa.
+            </summary>
+      <param name="i">Inset which should be negated.</param>
+      <returns>An Inset containing the result.</returns>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Inset.Right">
+      <summary>The amount of inset for the right.</summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Inset.Top">
+      <summary>The amount of inset for the top.</summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Inset.ToString">
+      <summary>
+            Convert the Inset to a human readable string such as \'X=10; Y=20; W=100; H=200\'.
+            </summary>
+      <returns>A string representation of the Inset.</returns>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Inset.ToString(System.IFormatProvider)">
+      <summary>
+            Convert the Inset to a human readable string such as \'X=10; Y=20; W=100; H=200\'.
+            </summary>
+      <returns>A string representation of the Inset.</returns>
+    </member>
+    <member name="T:WebSupergoo.WordGlue4.Logs">
+      <summary>
+            The logs that exist.
+            <para>By default these Logs are null. To enable logging assign a new Log to the property you are interested in.</para></summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Logs.Layout">
+      <summary>
+            A log detailing layout information.
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Logs.PDF">
+      <summary>
+            A log detailing PDF construction information.
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Logs.Reflow">
+      <summary>
+            A log detailing reflow information.
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Logs.Warning">
+      <summary>
+            A log detailing warnings.
+            </summary>
+    </member>
+    <member name="T:WebSupergoo.WordGlue4.Options">
+      <summary>
+            A set of user defined options to allow control over the load and render process.
+            </summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Options.#ctor">
+      <summary>
+            Create a new Options object with default values.
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Options.BreakAtTimeFrame">
+      <summary>Breaks into debugger at a particular time frame in the render sequence. For internal use only.</summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Options.BreakAtTimeSpan">
+      <summary>Break into debugger at a second time frame in the render sequence as measured from BreakAtTimeFrame. For internal use only.</summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Options.BreakOnAdoptionID">
+      <summary>Break into debugger at the point a particular frame is adopted. For internal use only.</summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Options.BreakOnDocConversionFailure">
+      <summary>Break into debugger if the conversion of DOC to DOCX fails. For internal use only.</summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Options.BreakOnFrameCreationID">
+      <summary>Break into debugger at the point a particular frame is created. For internal use only.</summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Options.BreakOnFramePopID">
+      <summary>Break into debugger at the point a particular frame is popped off the parsing stack.</summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Options.BreakOnFrameReflowID">
+      <summary>Break into debugger at the point a particular frame is reflowed. For internal use only.</summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Options.BreakOnFrameRenderID">
+      <summary>Break into debugger at the point a particular frame is rendered. For internal use only.</summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Options.ClippingEnabled">
+      <summary>Enable clipping.</summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Options.ClippingOutlines">
+      <summary>Clipping regions outlined.</summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Options.CorruptImagesErrorAction">
+      <summary>
+        <para>The action that should be performed when a corrupt image is encountered.</para>
+        <para>The default value is Action.Ignore which means that a blank space will be left where the element should be.</para>
+      </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Options.DrawDocumentGrid">
+      <summary>Draw horizontal lines to show the position of the document grid. The grid is used for the precision layout of East Asian characters.</summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Options.DrawMarginMarks">
+      <summary>Draw guides to show the locations of the page margins.</summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Options.DrawPathPoints">
+      <summary>Draw annotations to show how paths are constructed and where the end and control points lie.</summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Options.DrawPilcrows">
+      <summary>Show pilcrows - paragraph markers.</summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Options.DrawSignatures">
+      <summary>
+            Whether to draw signature strings even if the validity of the signature is uncertain.
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Options.DrawSpaces">
+      <summary>Show spaces as dots.</summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Options.DrawTabs">
+      <summary>Show tabs as arrows.</summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Options.DrawTypes">
+      <summary>Draw frames and annotations for types of frames contained in this HashSet.</summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Options.DrawVerticalRuler">
+      <summary>Draw horizontal lines at intervals of 50 points.</summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Options.FieldDateTime">
+      <summary>
+        <para>Allows you to override the value of all date and time fields in the document.</para>
+        <para>This can be useful for test cases where you want the output to be identical rather than changing with date.</para>
+      </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Options.FillMarkedSpace">
+      <summary>Fill spaces on page that are occupied by floating objects. If these objects are invisible the marks can be useful.</summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Options.FormatXml">
+      <summary>Whether to format the input XML using indents and new lines to make it more readable.
+            If you want to take advantage of the Frame.LineNumber property you will typically want the XML formatted in this way.
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Options.FrameTextFragments">
+      <summary>Draw a frame round each atomic text fragment.</summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Options.LoadEmbeddedFonts">
+      <summary>Whether to load and use fonts embedded in the source document.</summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Options.LoadTimeout">
+      <summary>
+        <para>A timeout for the loading of the document.</para>
+        <para>If the document fails to load and reflow within the specified time then a TimeoutException will be raised.</para>
+        <para>Some operations cannot be halted immediately, so the exception may not be raised at the exact point of the timeout.
+            In generally the two will be fairly close - less than a second apart - but conceivably the delay could be up to a minute or so.</para>
+        <para>The default timeout is ten minutes which should be enough for all but the very largest documents.</para>
+      </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Options.MaximumFrameReflow">
+      <summary>
+        <para>The maximum number of times that an individual frame may be reflowed.</para>
+      </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Options.MetafileTimeout">
+      <summary>
+        <para>A timeout for the loading of metafiles within the document.</para>
+      </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Options.OnMultipageError">
+      <summary>
+        <para>The action that should be performed when an error is encountered during rendering of multiple pages.</para>
+        <para>The default value is Action.Ignore which means that rendering exceptions will be ignored. Only load exceptions will be rethrown.</para>
+        <para>If the value Action.ErrorOnLoad is used, any exception raised at any point during import will be immediately be rethrown.</para>
+        <para>If the value Action.ErrorOnRender is used, an attempt will be made to render the whole document, keeping track of any errors. If an error is encountered during load then this will be rethrown.
+            If errors are encountered duging page rendering, these will be collected and rethrown in the form of an AggregateException.</para>
+      </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Options.PageBackgroundOpacity">
+      <summary>Override the opacity of the page background color.</summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Options.ReflowErrorAction">
+      <summary>
+        <para>The action that should be performed when a reflow error is encountered.</para>
+        <para>The default value is Action.ErrorOnLoad which means that an exception will be raised as soon as a reflow error is detected.</para>
+        <para>The value Action.ErrorOnRender is not applicable to this property and it will behave the same ways as Action.ErrorOnLoad.</para>
+      </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Options.ReflowStopAt">
+      <summary>
+        <para>The count at which reflow should be stopped.</para>
+        <para>By default this value is null in which case reflow will be stopped when it is complete.
+            However by setting this value it is possible to see the state of the document at an earlier point in the reflow.</para>
+      </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Options.ShowBlankPages">
+      <summary>Whether to display pages which are completely blank.</summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Options.TrackFrameReflows">
+      <summary>
+        <para>Whether to track the the number of times a Frame has been requested to reflow.</para>
+        <para>If set, the count will be availalable via the Frame.ReflowCount.</para>
+        <para>Setting this property also allows the render to tell the difference betwen Frames which have been reflowed and those that have not.</para>
+        <para>This means that with this property set it can render partially reflowed pages in a more sensible way.</para>
+      </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Options.TrackReflowState">
+      <summary>
+            Whether to track the current reflow state via the ReflowState.Current property.
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Options.UnsupportedDrawingTypesAction">
+      <summary>
+        <para>The action that should be performed when an unrecognised drawing type is encountered.</para>
+        <para>The default value is Action.Ignore which means that a blank space will be left where the element should be.</para>
+      </summary>
+    </member>
+    <member name="T:WebSupergoo.WordGlue4.Point">
+      <summary>
+            A 2D point in a top-down coordinate space.
+            </summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Point.#ctor(System.Double,System.Double)">
+      <summary>
+            Construct the Point given a horizontal and vertical component.
+            </summary>
+      <param name="x">Horizontal component.</param>
+      <param name="y">Vertical component.</param>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Point.Equals(System.Object)">
+      <summary>
+            Compare for equality.
+            </summary>
+      <returns>True if the objects are equal Points.</returns>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Point.Equals(WebSupergoo.WordGlue4.Point,System.Double)">
+      <summary>
+            Compare for equality.
+            </summary>
+      <param name="p">Point for comparison.</param>
+      <param name="epsilon">The amount by which coordinates can differ and still be equal.</param>
+      <returns>True if the objects are equal Points.</returns>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Point.GetHashCode">
+      <summary>
+            Obtain a hash code for the Point.
+            </summary>
+      <returns>The hash code.</returns>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Point.IsZero">
+      <summary>
+            True if both components of the point are zero.
+            </summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Point.op_Addition(WebSupergoo.WordGlue4.Point,WebSupergoo.WordGlue4.Point)">
+      <summary>
+            Add two Points returning the vector sum.
+            </summary>
+      <param name="a">First Point for addition.</param>
+      <param name="b">Second Point for addition.</param>
+      <returns>A Point containing the result.</returns>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Point.op_Division(WebSupergoo.WordGlue4.Point,System.Double)">
+      <summary>
+            Divide a vector Point by a scalar.
+            </summary>
+      <param name="a">The Point for division.</param>
+      <param name="b">Scalar that the components of the point should be divided by.</param>
+      <returns>A Point containing the result.</returns>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Point.op_Equality(WebSupergoo.WordGlue4.Point,WebSupergoo.WordGlue4.Point)">
+      <summary>
+            Compare two Points for equality.
+            </summary>
+      <param name="a">First Point for comparision.</param>
+      <param name="b">Second Point for comparision.</param>
+      <returns>True if the values are equal.</returns>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Point.op_Inequality(WebSupergoo.WordGlue4.Point,WebSupergoo.WordGlue4.Point)">
+      <summary>
+            Compare two Points for inequality.
+            </summary>
+      <param name="a">First Point for comparision.</param>
+      <param name="b">Second Point for comparision.</param>
+      <returns>True if the values are not equal.</returns>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Point.op_Multiply(WebSupergoo.WordGlue4.Point,System.Double)">
+      <summary>
+            Multiply a vector Point by a scalar.
+            </summary>
+      <param name="a">The Point for multiplication.</param>
+      <param name="b">Scalar that the components of the point should be multiplied by.</param>
+      <returns>A Point containing the result.</returns>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Point.op_Subtraction(WebSupergoo.WordGlue4.Point,WebSupergoo.WordGlue4.Point)">
+      <summary>
+            Subtract the components of one Point from another.
+            </summary>
+      <param name="a">The Point that should be subtracted from.</param>
+      <param name="b">The Point that should be subtracted.</param>
+      <returns>A Point containing the result.</returns>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Point.op_UnaryNegation(WebSupergoo.WordGlue4.Point)">
+      <summary>
+            Unary negative of a vector point.
+            </summary>
+      <param name="a">The point.</param>
+      <returns>A Point containing the negative result.</returns>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Point.ToString">
+      <summary>
+            Convert the Point to a human readable string such as \'X=10; Y=20\'.
+            </summary>
+      <returns>A string representation of the Pont.</returns>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Point.ToString(System.IFormatProvider)">
+      <summary>
+            Convert the Point to a human readable string such as \'X=10; Y=20\'.
+            </summary>
+      <returns>A string representation of the Pont.</returns>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Point.X">
+      <summary>
+            The horizontal component of the Point. Increasing values move to the right.
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Point.Y">
+      <summary>
+            The vertical component of the Point. Increasing values move down.
+            </summary>
+    </member>
+    <member name="T:WebSupergoo.WordGlue4.Rect">
+      <summary>
+            A rectangular area in a 2D coordinate space.
+            </summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rect.#ctor(System.Double,System.Double,System.Double,System.Double)">
+      <summary>
+            Construct the Rect given a horizontal and vertical location, width and height.
+            </summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rect.#ctor(WebSupergoo.WordGlue4.Point,WebSupergoo.WordGlue4.Size)">
+      <summary>
+            Construct the Rect given a top-left Point and a Size extending down and right.
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rect.Bottom">
+      <summary>
+            The bottom border of the Rect.
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rect.BottomLeft">
+      <summary>
+            The Point at the bottom left of the Rect.
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rect.BottomRight">
+      <summary>
+            The Point at the bottom right of the Rect.
+            </summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rect.CompareTo(WebSupergoo.WordGlue4.Rect)">
+      <summary>
+            Compares the current instance with another object of the same type and returns an integer that indicates whether the current instance precedes, follows, or occurs in the same position in the sort order as the other object
+            </summary>
+      <param name="other">Rect for comparison.</param>
+      <returns>The comparison result.</returns>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rect.Contains(WebSupergoo.WordGlue4.Rect,WebSupergoo.WordGlue4.Point)">
+      <summary>
+            Works out if a rect contains a point.
+            A point at the top or left of the rectangle is counted as contained
+            but one at the bottom or right is not. Thus an empty rectangle never
+            contains any points.
+            </summary>
+      <param name="r">A Rect.</param>
+      <param name="p">A Point</param>
+      <returns>True if A contains B.</returns>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rect.Contains(WebSupergoo.WordGlue4.Rect,WebSupergoo.WordGlue4.Point,System.Double)">
+      <summary>
+            Works out if a rect contains a point.
+            A point at the top or left of the rectangle is counted as contained
+            but one at the bottom or right is not. Thus an empty rectangle never
+            contains any points.
+            </summary>
+      <param name="r">A Rect.</param>
+      <param name="p">A Point</param>
+      <param name="epsilon">The amount by which coordinates can differ and still be equal.</param>
+      <returns>True if A contains B.</returns>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rect.Contains(WebSupergoo.WordGlue4.Rect,WebSupergoo.WordGlue4.Rect)">
+      <summary>
+            Works out if one rect (a) completely contains another (b).
+            Identical rectangles are counted as contained.
+            </summary>
+      <param name="a">Rect A.</param>
+      <param name="b">Rect B</param>
+      <returns>True if A contains B.</returns>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rect.Equals(System.Object)">
+      <summary>
+            Compare for equality.
+            </summary>
+      <param name="obj">Object for comparison.</param>
+      <returns>True if the objects are equal Rects.</returns>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rect.Equals(WebSupergoo.WordGlue4.Rect,System.Double)">
+      <summary>
+            Compare for equality.
+            </summary>
+      <param name="rc">Rect for comparison.</param>
+      <param name="epsilon">The amount by which coordinates can differ and still be equal.</param>
+      <returns>True if the objects are equal Rects.</returns>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rect.GetHashCode">
+      <summary>
+            Obtain a hash code for the Rect.
+            </summary>
+      <returns>The hash code.</returns>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rect.Height">
+      <summary>
+            The vertical dimensions of the Rect.
+            </summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rect.Intersect(WebSupergoo.WordGlue4.Rect,WebSupergoo.WordGlue4.Rect)">
+      <summary>
+            Find the intersection of two rectangles.
+            </summary>
+      <param name="a">A Rect.</param>
+      <param name="b">A Rect</param>
+      <returns>The resultant Rect.</returns>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rect.IntersectsWith(WebSupergoo.WordGlue4.Rect,WebSupergoo.WordGlue4.Rect)">
+      <summary>
+            Determines if one rectangle intersects with another.
+            </summary>
+      <param name="a">A Rect.</param>
+      <param name="b">A Rect</param>
+      <returns>True if the two intersect.</returns>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rect.IsEmpty">
+      <summary>
+            Whether the rectangle has a positive area
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rect.Left">
+      <summary>
+            The left border of the Rect.
+            </summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rect.op_Addition(WebSupergoo.WordGlue4.Rect,WebSupergoo.WordGlue4.Point)">
+      <summary>
+            Translate the Rect by adding a vector Point to it.
+            </summary>
+      <param name="r">Rect for translation.</param>
+      <param name="p">Point by which it should be translated.</param>
+      <returns>A Rect containing the result.</returns>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rect.op_Addition(WebSupergoo.WordGlue4.Rect,WebSupergoo.WordGlue4.Size)">
+      <summary>
+            Translate the Rect by adding a vector Size to it.
+            </summary>
+      <param name="r">Rect for translation.</param>
+      <param name="s">Size by which it should be translated.</param>
+      <returns>A Rect containing the result.</returns>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rect.op_Division(WebSupergoo.WordGlue4.Rect,System.Double)">
+      <summary>
+            Scale the coordinates of the rect by a dividing factor.
+            </summary>
+      <param name="r">Rect for scaling.</param>
+      <param name="scale">Factor by which the coordinates should be decreased.</param>
+      <returns>A Rect containing the result.</returns>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rect.op_Equality(WebSupergoo.WordGlue4.Rect,WebSupergoo.WordGlue4.Rect)">
+      <summary>
+            Compare two Rects for equality.
+            </summary>
+      <param name="a">First Rect for comparision.</param>
+      <param name="b">Second Rect for comparision.</param>
+      <returns>True if the values are equal.</returns>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rect.op_Inequality(WebSupergoo.WordGlue4.Rect,WebSupergoo.WordGlue4.Rect)">
+      <summary>
+            Compare two Rects for inequality.
+            </summary>
+      <param name="a">First Rect for comparision.</param>
+      <param name="b">Second Rect for comparision.</param>
+      <returns>True if the values are not equal.</returns>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rect.op_Multiply(WebSupergoo.WordGlue4.Rect,System.Double)">
+      <summary>
+            Scale the coordinates of the rect by a multiplying factor.
+            </summary>
+      <param name="r">Rect for scaling.</param>
+      <param name="scale">Factor by which the coordinates should be increased.</param>
+      <returns>A Rect containing the result.</returns>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rect.op_Subtraction(WebSupergoo.WordGlue4.Rect,WebSupergoo.WordGlue4.Point)">
+      <summary>
+            Translate the Rect by subtracting a vector Point from it.
+            </summary>
+      <param name="r">Rect for translation.</param>
+      <param name="p">Point by which it should be translated.</param>
+      <returns>A Rect containing the result.</returns>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rect.Position">
+      <summary>
+            The top-left position of the Rect.
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rect.Right">
+      <summary>
+            The right border of the Rect.
+            </summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rect.Round">
+      <summary>
+            Round the dimensions of the rect to the nearest integer.
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rect.Size">
+      <summary>
+            The dimensions of the Rect.
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rect.Top">
+      <summary>
+            The top border of the Rect.
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rect.TopLeft">
+      <summary>
+            The Point at the top left of the Rect.
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rect.TopRight">
+      <summary>
+            The Point at the top right of the Rect.
+            </summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rect.ToString">
+      <summary>
+            Convert the Rect to a human readable string such as \'X=10; Y=20; W=100; H=200\'.
+            </summary>
+      <returns>A string representation of the Rect.</returns>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rect.ToString(System.IFormatProvider)">
+      <summary>
+            Convert the Rect to a human readable string such as \'X=10; Y=20; W=100; H=200\'.
+            </summary>
+      <returns>A string representation of the Rect.</returns>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rect.Union(WebSupergoo.WordGlue4.Rect,WebSupergoo.WordGlue4.Rect)">
+      <summary>
+            Determine the union of two supplied rectangles.
+            The union is the smallest rectangle that contains both rectangles.
+            </summary>
+      <param name="a">A Rect.</param>
+      <param name="b">A Rect</param>
+      <returns>The resultant Rect.</returns>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rect.Width">
+      <summary>
+            The horizontal dimensions of the Rect.
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rect.X">
+      <summary>
+            The left border of the Rect.
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rect.Y">
+      <summary>
+            The top border of the Rect.
+            </summary>
+    </member>
+    <member name="T:WebSupergoo.WordGlue4.Size">
+      <summary>
+            A rectangular size in a 2D coordinate space.
+            </summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Size.#ctor(System.Double,System.Double)">
+      <summary>
+            Construct a Size given a width and a height.
+            </summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Size.Equals(System.Object)">
+      <summary>
+            Compare for equality.
+            </summary>
+      <param name="obj">Object for comparision.</param>
+      <returns>True if the objects are equal Sizes.</returns>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Size.Equals(WebSupergoo.WordGlue4.Size,System.Double)">
+      <summary>
+            Compare for equality.
+            </summary>
+      <param name="s">Size for comparison.</param>
+      <param name="epsilon">The amount by which coordinates can differ and still be equal.</param>
+      <returns>True if the objects are equal Sizes.</returns>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Size.GetHashCode">
+      <summary>
+            Obtain a hash code for the Size.
+            </summary>
+      <returns>The hash code.</returns>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Size.Height">
+      <summary>
+            The vertical component of the Size.
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Size.IsZero">
+      <summary>
+            True if both components of the size are zero.
+            </summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Size.op_Addition(WebSupergoo.WordGlue4.Size,WebSupergoo.WordGlue4.Size)">
+      <summary>
+            Add two Sizes returning the vector sum.
+            </summary>
+      <param name="a">First Size for addition.</param>
+      <param name="b">Second Size for addition.</param>
+      <returns>A Size containing the result.</returns>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Size.op_Division(WebSupergoo.WordGlue4.Size,System.Double)">
+      <summary>
+            Divide a vector Size by a scalar.
+            </summary>
+      <param name="a">The Size for division.</param>
+      <param name="b">Scalar that the components of the Size should be divided by.</param>
+      <returns>A Size containing the result.</returns>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Size.op_Equality(WebSupergoo.WordGlue4.Size,WebSupergoo.WordGlue4.Size)">
+      <summary>
+            Compare two Sizes for equality.
+            </summary>
+      <param name="x">First Size for comparision.</param>
+      <param name="y">Second Size for comparision.</param>
+      <returns>True if the values are equal.</returns>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Size.op_Inequality(WebSupergoo.WordGlue4.Size,WebSupergoo.WordGlue4.Size)">
+      <summary>
+            Compare two Sizes for inequality.
+            </summary>
+      <param name="x">First Size for comparision.</param>
+      <param name="y">Second Size for comparision.</param>
+      <returns>True if the values are not equal.</returns>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Size.op_Multiply(WebSupergoo.WordGlue4.Size,System.Double)">
+      <summary>
+            Multiply a vector Size by a scalar.
+            </summary>
+      <param name="a">The Size for multiplication.</param>
+      <param name="b">Scalar that the components of the Size should be multiplied by.</param>
+      <returns>A Size containing the result.</returns>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Size.op_Subtraction(WebSupergoo.WordGlue4.Size,WebSupergoo.WordGlue4.Size)">
+      <summary>
+            Subtract the components of one Size from another.
+            </summary>
+      <param name="a">The Size that should be subtracted from.</param>
+      <param name="b">The Size that should be subtracted.</param>
+      <returns>A Point containing the result.</returns>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Size.op_UnaryNegation(WebSupergoo.WordGlue4.Size)">
+      <summary>
+            Unary negative of a vector Size.
+            </summary>
+      <param name="a">The Size.</param>
+      <returns>A Size containing the negative result.</returns>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Size.ToString">
+      <summary>
+            Convert the Size to a human readable string such as 'W=10; H=20'.
+            </summary>
+      <returns>A string representation of the Pont.</returns>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Size.ToString(System.IFormatProvider)">
+      <summary>
+            Convert the Size to a human readable string such as 'W=10; H=20'.
+            </summary>
+      <returns>A string representation of the Pont.</returns>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Size.Width">
+      <summary>
+            The horizontal component of the Size.
+            </summary>
+    </member>
+    <member name="T:WebSupergoo.WordGlue4.Status">
+      <summary>
+            An object describing the state of a doc object. This can be useful for
+            monitoring load operations for large documents. These methods and properties 
+            are thread safe.
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Status.Activity">
+      <summary>
+            The current activity being performed by the document.
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Status.CurrentPage">
+      <summary>
+            The current page which is being processed.
+            Pages are generally, but not always, processed in order. For example a document at the end of
+            a document we may need to skip back to the start to update the page numbers in the
+            table of contents.
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Status.FrameCount">
+      <summary>
+            The total number of frames in the document.
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Status.PagesLoaded">
+      <summary>
+            The number of pages in the document that are currently loaded.
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Status.ReflowCount">
+      <summary>
+            The reflow count indicates the current number of steps that have been required to paginate the document.
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Status.ReflowCounts">
+      <summary>
+            The reflow count indicates the current number of steps that have been required to paginate the document.
+            This property breaks down the reflow count by the type of object that required it.
+            This information is only gathered if the Options.LogReflow property is true.
+            </summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Status.SetAbort">
+      <summary>
+            Asks that any ongoing  load process be aborted. The final document may appear in a partially constructed state.
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Status.Timers">
+      <summary>
+            The amount of time taken at each stage of document processing.
+            </summary>
+    </member>
+    <member name="T:WebSupergoo.WordGlue4.Layout.AltChunkFrame">
+      <summary>
+            An empty frame representing an embedded file referenced via an AltChunk tag.
+            </summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Layout.AltChunkFrame.#ctor">
+      <summary>
+            Create a new AltChunkFrame.
+            </summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Layout.AltChunkFrame.Dispose">
+      <summary>
+            Dispose of any disposable resources.
+            </summary>
+    </member>
+    <member name="T:WebSupergoo.WordGlue4.Layout.BookmarkFrame">
+      <summary>
+            A frame representing a Word bookmark.
+            </summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Layout.BookmarkFrame.#ctor(System.String)">
+      <summary>
+            Create a new BookmarkFrame.
+            </summary>
+      <param name="name">The name for the bookmark.</param>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Layout.BookmarkFrame.Summary">
+      <summary>
+            A human readable summary of this frame and the properties associated with it.
+            </summary>
+    </member>
+    <member name="T:WebSupergoo.WordGlue4.Layout.BoxFrame">
+      <summary>
+            A frame which represents a separate box shaped frame within the parent.
+            </summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Layout.BoxFrame.#ctor">
+      <summary>
+            Create a new BoxFrame.
+            </summary>
+    </member>
+    <member name="T:WebSupergoo.WordGlue4.Layout.CascadingStyleStore">
+      <summary>
+            A style store which may inherit from other style stores.
+            </summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Layout.CascadingStyleStore.#ctor">
+      <summary>
+            Create a new CascadingStyleStore.
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Layout.CascadingStyleStore.All">
+      <summary>
+        <para>All the CascadingStyleStores indexed by ID.</para>
+        <para>This property is only set if TrackAll(true) has previously been called.</para>
+      </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Layout.CascadingStyleStore.BasedOn">
+      <summary>
+            The CascadingStyleStore from which this inherits.
+            <para>Properties which are not defined in this CascadingStyleStore will be inherited from the CascadingStyleStore referenced here.</para></summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Layout.CascadingStyleStore.Clone">
+      <summary>
+            Make a clone of this style store.
+            </summary>
+      <returns>The new CascadingStyleStore.</returns>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Layout.CascadingStyleStore.Entries">
+      <summary>
+            A dictionary containing the values in the styles store.
+            Add to or change these values to change the styles in the store.
+            The keys and values you use need to match up with the possible styles and style values. If they do not then an exception will be thrown.
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Layout.CascadingStyleStore.Frame">
+      <summary>
+        <para>The Frame which contains this CascadingStyleStore.</para>
+        <para>A CascadingStyleStore may be shared by multiple Frames. For example if a ParagraphFrame spans two pages it will need to be split into two. 
+            In this case both ParagraphFrames will reference the same CascadingStyleStore.</para>
+        <para>This property represents the original Frame to which this CascadingStyleStore was assigned.</para>
+      </summary>
+    </member>
+    <member name="F:WebSupergoo.WordGlue4.Layout.CascadingStyleStore.ID">
+      <summary>
+            The ID for this CascadingStyleStore. IDs are allocated incrementally.
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Layout.CascadingStyleStore.Parent">
+      <summary>
+        <para>The parent CascadingStyleStore.</para>
+        <para>The parent parallels the Frame.Parent in the document. This is needed because some properties can be specified on multiple objects.</para>
+        <para>For example a cell border might be specified for the entire table but then overridden in a cell.</para>
+      </summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Layout.CascadingStyleStore.StartTimers">
+      <summary>
+            Starts style timers. These allow you to determine how much time is spent on different styles.
+            </summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Layout.CascadingStyleStore.StopTimers(System.String,System.Nullable{System.TimeSpan})">
+      <summary>
+        <para>Stops any started timers and returns the results.</para>
+        <para>If no results have been gathered the result will be null.</para>
+        <para>If you pass a time then a percentage can be calculated. If you pass null then the percentage will be zero.</para>
+      </summary>
+      <param name="header">The header to be used for the percentage column.</param>
+      <param name="time">The total time to be used when calculating the percentage.</param>
+      <returns>A summary of the times gathered.</returns>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Layout.CascadingStyleStore.StyleName">
+      <summary>
+        <para>The name of this style.</para>
+        <para>The value of this property may be null if no name has been assigned.</para>
+        <para>In the case of a null value, typically the name of the BasedOn CascadingStyleStore is used.</para>
+      </summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Layout.CascadingStyleStore.TrackAll(System.Boolean)">
+      <summary>
+            Enable or disable tracking of CascadingStyleStores.
+            When tracking is enabled CascadingStyleStores are available via the All property.
+            When this function is called the next ID is reset to zero. For this reason you may wish to set EntryOverrides to null.
+            </summary>
+      <param name="enabled"></param>
+    </member>
+    <member name="T:WebSupergoo.WordGlue4.Layout.ColumnFrame">
+      <summary>
+            A frame representing a column in a document.
+            </summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Layout.ColumnFrame.#ctor">
+      <summary>
+            Create a new ColumnFrame.
+            </summary>
+    </member>
+    <member name="T:WebSupergoo.WordGlue4.Layout.DocumentFrame">
+      <summary>
+            A top level frame representing the root of the document.
+            </summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Layout.DocumentFrame.#ctor">
+      <summary>
+            Create a new DocumentFrame.
+            </summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Layout.DocumentFrame.Dispose">
+      <summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:WebSupergoo.WordGlue4.Layout.DocumentFrame.Dispose</parameter>
+          </include>
+        </markup>
+      </summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Layout.DocumentFrame.GetPage(System.Int32)">
+      <summary>
+            Get the PageFrame by page number.
+            If the page does not exist an ArgumentOutOfRange exception will be thrown.
+            </summary>
+      <param name="pageNumber">The page number. One indicates the first page.</param>
+      <returns>The PageFrame.</returns>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Layout.DocumentFrame.ReflowState">
+      <summary>
+            The current layout state.
+            </summary>
+    </member>
+    <member name="T:WebSupergoo.WordGlue4.Layout.DrawingFrame">
+      <summary>
+            A frame representing a drawing or image.
+            </summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Layout.DrawingFrame.#ctor">
+      <summary>
+            Create a new DrawingFrame.
+            </summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Layout.DrawingFrame.Dispose">
+      <summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:WebSupergoo.WordGlue4.Layout.DrawingFrame.Dispose</parameter>
+          </include>
+        </markup>
+      </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Layout.DrawingFrame.Hidden">
+      <summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>P:WebSupergoo.WordGlue4.Layout.DrawingFrame.Hidden</parameter>
+          </include>
+        </markup>
+      </summary>
+    </member>
+    <member name="T:WebSupergoo.WordGlue4.Layout.Frame">
+      <summary>
+            Abstract root of all frame types.
+            </summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Layout.Frame.#ctor">
+      <summary>
+            Create a new Frame.
+            </summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Layout.Frame.Adopt(System.Collections.Generic.LinkedListNode{WebSupergoo.WordGlue4.Layout.Frame})">
+      <summary>
+            Adopt a Frame updating references as appropriate.
+            This function should be called after adding a Frame to the Children of another Frame.
+            </summary>
+      <param name="node">The node containing the child to adopt.</param>
+      <returns></returns>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Layout.Frame.All">
+      <summary>
+            All the Frames that are currently referenced, indexed by ID.
+            This property is only set if TrackAll(true) has previously been called.
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Layout.Frame.BaseUri">
+      <summary>
+            The zip URI to the original document on which this frame was based.
+            </summary>
+    </member>
+    <member name="F:WebSupergoo.WordGlue4.Layout.Frame.Bounds">
+      <summary>
+            The bounds of this Frame.
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Layout.Frame.Children">
+      <summary>
+        <para>The children of this frame.</para>
+        <para>For example a ParagraphFrame may a number of LineFrames as children.</para>
+      </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Layout.Frame.DrawAnnotations">
+      <summary>
+            Whether to highlight and annotate this frame for debugging purposes.
+            The bounds, margins, padding and clip rectangle will be shown if they are available.
+            </summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Layout.Frame.GetOriginalXml(WebSupergoo.WordGlue4.Layout.DocumentFrame)">
+      <summary>
+            Gets from within the Word package, the original document on which a frame was based.
+            </summary>
+      <returns>The Strem containing the document content.</returns>
+    </member>
+    <member name="F:WebSupergoo.WordGlue4.Layout.Frame.ID">
+      <summary>
+            The ID for this Frame. IDs are allocated incrementally.
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Layout.Frame.LineNumber">
+      <summary>
+            The line number within the original document on which this frame was based.
+            If there is no obvious relationship with a particular line then the value will be -1.
+            In this case you may wish to look at the line associated with the parent object.
+            If you want to take advantage of the this property you will typically first want to set Options.FormatXml to true.
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Layout.Frame.Margins">
+      <summary>
+            Get the margins for the frame.
+            The margins extend out from the bounds of the frame and are kept clear of other content.
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Layout.Frame.OriginalSelf">
+      <summary>
+        <para>The original Frame on which this is based.</para>
+        <para>A Frame may spawn siblings. For example if a ParagraphFrame spans two pages it will need to be split into two. 
+            However the OriginalSelf for both ParagraphFrames will be the first - original - one.</para>
+      </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Layout.Frame.Padding">
+      <summary>
+            Get the padding for the frame.
+            The padding extends in from the bounds of the frame and is kept clear of content within the frame.
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Layout.Frame.Parent">
+      <summary>
+        <para>The parent of this Frame.</para>
+        <para>For example the parent of a TextRunFrame is typically a LineFrame. The parent of that is a ParagraphFrame.</para>
+      </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Layout.Frame.ReflowCount">
+      <summary>
+            The number of times which this Frame has been asked to reflow.
+            </summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Layout.Frame.Scan(System.Action{WebSupergoo.WordGlue4.Layout.Frame})">
+      <summary>
+            Perform an action on this frame and all frames underneath it in the tree.
+            </summary>
+      <param name="action"></param>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Layout.Frame.StyleStore">
+      <summary>
+            The CascadingStyleStore for this Frame.
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Layout.Frame.Summary">
+      <summary>
+            A human readable summary of this frame and the properties associated with it.
+            </summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Layout.Frame.TrackAll(System.Boolean)">
+      <summary>
+            Enable or disable tracking of Frames.
+            When tracking is enabled Frames are available via the All property.
+            When this function is called the next ID is reset to zero.
+            </summary>
+      <param name="enabled"></param>
+    </member>
+    <member name="T:WebSupergoo.WordGlue4.Layout.HorizontalRuleFrame">
+      <summary>
+            A frame representing a horizonal rule.
+            </summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Layout.HorizontalRuleFrame.#ctor">
+      <summary>
+            Create a new HorizontalRuleFrame.
+            </summary>
+    </member>
+    <member name="T:WebSupergoo.WordGlue4.Layout.LineFrame">
+      <summary>
+            A frame representing a line of text within a paragraph.
+            </summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Layout.LineFrame.#ctor">
+      <summary>
+            Create a new LineFrame.
+            </summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Layout.LineFrame.GetClip">
+      <summary>
+            Gets the current clip rectangle for the LineFrame.
+            </summary>
+      <returns>The clip rect, which may be null is there is no clip rect.</returns>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Layout.LineFrame.Summary">
+      <summary>
+            A human readable summary of this frame and the properties associated with it.
+            </summary>
+    </member>
+    <member name="T:WebSupergoo.WordGlue4.Layout.NullFrame">
+      <summary>
+            An empty frame representing one of a number of roles.
+            </summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Layout.NullFrame.#ctor">
+      <summary>
+            Create a new NullFrame.
+            </summary>
+    </member>
+    <member name="T:WebSupergoo.WordGlue4.Layout.PageFrame">
+      <summary>
+            A frame representing a page in the document.
+            </summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Layout.PageFrame.#ctor">
+      <summary>
+            Create a new PageFrame.
+            </summary>
+    </member>
+    <member name="T:WebSupergoo.WordGlue4.Layout.ParagraphFrame">
+      <summary>
+            A frame representing a paragraph of text.
+            </summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Layout.ParagraphFrame.#ctor">
+      <summary>
+            Create a new ParagraphFrame.
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Layout.ParagraphFrame.NumberingInfoParagraphStyle">
+      <summary>
+            The style for the numbering information paragraph. This value will be null if none exists.
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Layout.ParagraphFrame.NumberingInfoRunStyle">
+      <summary>
+            The style for the numbering information text run. This value will be null if none exists.
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Layout.ParagraphFrame.Summary">
+      <summary>
+            A human readable summary of this frame and the properties associated with it.
+            </summary>
+    </member>
+    <member name="T:WebSupergoo.WordGlue4.Layout.ReflowState">
+      <summary>
+            The current state for the layout process.
+            </summary>
+    </member>
+    <member name="F:WebSupergoo.WordGlue4.Layout.ReflowState.Constraint">
+      <summary>
+            A rectangle indicating the area in which content can be placed.
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Layout.ReflowState.Current">
+      <summary>
+            Each frame may clone the ReflowState before passing it down to children. So the ReflowState for one frame may be different from that for another.
+            This property contains the current layout state for the current frame.
+            There are overheads associated with maintaining this state so it is only enabled when Options.TrackReflowState is enabled.
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Layout.ReflowState.CurrentFrame">
+      <summary>
+            The current frame that is being reflowed.
+            </summary>
+    </member>
+    <member name="F:WebSupergoo.WordGlue4.Layout.ReflowState.Cursor">
+      <summary>
+            The current cursor indicating the location at which new content should be placed.
+            </summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Layout.ReflowState.Dispose">
+      <summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:WebSupergoo.WordGlue4.Layout.ReflowState.Dispose</parameter>
+          </include>
+        </markup>
+      </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Layout.ReflowState.Notes">
+      <summary>
+            Any notes associated with the current state.
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Layout.ReflowState.Parent">
+      <summary>
+            The parent ReflowState in cases where a clone of the current state has been passed to a child Frame.
+            </summary>
+    </member>
+    <member name="T:WebSupergoo.WordGlue4.Layout.SectionFrame">
+      <summary>
+            A frame representing a section within the document.
+            </summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Layout.SectionFrame.#ctor">
+      <summary>
+            Create a new SectionFrame.
+            </summary>
+    </member>
+    <member name="T:WebSupergoo.WordGlue4.Layout.TabFrame">
+      <summary>
+            A frame representing a tab stop.
+            </summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Layout.TabFrame.#ctor">
+      <summary>
+            Create a new TabFrame.
+            </summary>
+    </member>
+    <member name="T:WebSupergoo.WordGlue4.Layout.TableCellFrame">
+      <summary>
+            A frame representing a cell in a table.
+            </summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Layout.TableCellFrame.#ctor">
+      <summary>
+            Create a new TableCellFrame.
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Layout.TableCellFrame.Summary">
+      <summary>
+            A human readable summary of this frame and the properties associated with it.
+            </summary>
+    </member>
+    <member name="T:WebSupergoo.WordGlue4.Layout.TableFrame">
+      <summary>
+            A frame representing a table.
+            </summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Layout.TableFrame.#ctor">
+      <summary>
+            Create a new TableFrame.
+            </summary>
+    </member>
+    <member name="T:WebSupergoo.WordGlue4.Layout.TableRowFrame">
+      <summary>
+            A frame representing a row in a table.
+            </summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Layout.TableRowFrame.#ctor">
+      <summary>
+            Create a new TableRowFrame.
+            </summary>
+    </member>
+    <member name="T:WebSupergoo.WordGlue4.Layout.TextRunFrame">
+      <summary>
+            A frame representing run of text in a particular style.
+            </summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Layout.TextRunFrame.#ctor">
+      <summary>
+            Create a new TextRunFrame.
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Layout.TextRunFrame.Summary">
+      <summary>
+            A human readable summary of this frame and the properties associated with it.
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Layout.TextRunFrame.Text">
+      <summary>
+            Allows you access to the text of this TextRunFrame.
+            </summary>
+    </member>
+    <member name="T:WebSupergoo.WordGlue4.Product.InternalLicense">
+      <summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>T:WebSupergoo.WordGlue4.Product.InternalLicense</parameter>
+          </include>
+        </markup>
+      </summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Product.InternalLicense.#ctor(System.String,System.String,WebSupergoo.WordGlue4.Product.InternalLicenseType,System.Nullable{System.DateTime})">
+      <summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:WebSupergoo.WordGlue4.Product.InternalLicense.#ctor(System.String,System.String,WebSupergoo.WordGlue4.Product.InternalLicenseType,System.Nullable{System.DateTime})</parameter>
+          </include>
+        </markup>
+      </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Product.InternalLicense.AdditionalInfo">
+      <summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>P:WebSupergoo.WordGlue4.Product.InternalLicense.AdditionalInfo</parameter>
+          </include>
+        </markup>
+      </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Product.InternalLicense.Expiry">
+      <summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>P:WebSupergoo.WordGlue4.Product.InternalLicense.Expiry</parameter>
+          </include>
+        </markup>
+      </summary>
+    </member>
+    <member name="F:WebSupergoo.WordGlue4.Product.InternalLicense.kStructureVersion">
+      <summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>F:WebSupergoo.WordGlue4.Product.InternalLicense.kStructureVersion</parameter>
+          </include>
+        </markup>
+      </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Product.InternalLicense.Licensee">
+      <summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>P:WebSupergoo.WordGlue4.Product.InternalLicense.Licensee</parameter>
+          </include>
+        </markup>
+      </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Product.InternalLicense.OrderRef">
+      <summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>P:WebSupergoo.WordGlue4.Product.InternalLicense.OrderRef</parameter>
+          </include>
+        </markup>
+      </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Product.InternalLicense.ProductName">
+      <summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>P:WebSupergoo.WordGlue4.Product.InternalLicense.ProductName</parameter>
+          </include>
+        </markup>
+      </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Product.InternalLicense.ProductVersion">
+      <summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>P:WebSupergoo.WordGlue4.Product.InternalLicense.ProductVersion</parameter>
+          </include>
+        </markup>
+      </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Product.InternalLicense.Type">
+      <summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>P:WebSupergoo.WordGlue4.Product.InternalLicense.Type</parameter>
+          </include>
+        </markup>
+      </summary>
+    </member>
+    <member name="T:WebSupergoo.WordGlue4.Product.InternalLicenseType">
+      <summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>T:WebSupergoo.WordGlue4.Product.InternalLicenseType</parameter>
+          </include>
+        </markup>
+      </summary>
+    </member>
+    <member name="T:WebSupergoo.WordGlue4.Product.LicenseManager">
+      <summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>T:WebSupergoo.WordGlue4.Product.LicenseManager</parameter>
+          </include>
+        </markup>
+      </summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Product.LicenseManager.#ctor">
+      <summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:WebSupergoo.WordGlue4.Product.LicenseManager.#ctor</parameter>
+          </include>
+        </markup>
+      </summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Product.LicenseManager.Encode(WebSupergoo.WordGlue4.Product.InternalLicense,System.String)">
+      <summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:WebSupergoo.WordGlue4.Product.LicenseManager.Encode(WebSupergoo.WordGlue4.Product.InternalLicense,System.String)</parameter>
+          </include>
+        </markup>
+      </summary>
+      <returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>returns</parameter>
+            <parameter>M:WebSupergoo.WordGlue4.Product.LicenseManager.Encode(WebSupergoo.WordGlue4.Product.InternalLicense,System.String)</parameter>
+          </include>
+        </markup>
+      </returns>
+    </member>
+    <member name="F:WebSupergoo.WordGlue4.Product.LicenseManager.Instance">
+      <summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>F:WebSupergoo.WordGlue4.Product.LicenseManager.Instance</parameter>
+          </include>
+        </markup>
+      </summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Product.LicenseManager.MakeLicenseString(WebSupergoo.WordGlue4.Product.InternalLicense,System.Security.Cryptography.X509Certificates.X509Certificate2,System.String)">
+      <summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:WebSupergoo.WordGlue4.Product.LicenseManager.MakeLicenseString(WebSupergoo.WordGlue4.Product.InternalLicense,System.Security.Cryptography.X509Certificates.X509Certificate2,System.String)</parameter>
+          </include>
+        </markup>
+      </summary>
+      <returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>returns</parameter>
+            <parameter>M:WebSupergoo.WordGlue4.Product.LicenseManager.MakeLicenseString(WebSupergoo.WordGlue4.Product.InternalLicense,System.Security.Cryptography.X509Certificates.X509Certificate2,System.String)</parameter>
+          </include>
+        </markup>
+      </returns>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Product.LicenseManager.MakeTrialLicense">
+      <summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:WebSupergoo.WordGlue4.Product.LicenseManager.MakeTrialLicense</parameter>
+          </include>
+        </markup>
+      </summary>
+      <returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>returns</parameter>
+            <parameter>M:WebSupergoo.WordGlue4.Product.LicenseManager.MakeTrialLicense</parameter>
+          </include>
+        </markup>
+      </returns>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Product.LicenseManager.MakeX509Certificate2(System.Byte[])">
+      <summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:WebSupergoo.WordGlue4.Product.LicenseManager.MakeX509Certificate2(System.Byte[])</parameter>
+          </include>
+        </markup>
+      </summary>
+      <returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>returns</parameter>
+            <parameter>M:WebSupergoo.WordGlue4.Product.LicenseManager.MakeX509Certificate2(System.Byte[])</parameter>
+          </include>
+        </markup>
+      </returns>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Product.LicenseManager.ReadLicenseString(System.String)">
+      <summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:WebSupergoo.WordGlue4.Product.LicenseManager.ReadLicenseString(System.String)</parameter>
+          </include>
+        </markup>
+      </summary>
+      <returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>returns</parameter>
+            <parameter>M:WebSupergoo.WordGlue4.Product.LicenseManager.ReadLicenseString(System.String)</parameter>
+          </include>
+        </markup>
+      </returns>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Product.LicenseManager.UseMachineSet">
+      <summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>P:WebSupergoo.WordGlue4.Product.LicenseManager.UseMachineSet</parameter>
+          </include>
+        </markup>
+      </summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Product.LicenseManager.Validate(WebSupergoo.WordGlue4.Product.InternalLicense)">
+      <summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:WebSupergoo.WordGlue4.Product.LicenseManager.Validate(WebSupergoo.WordGlue4.Product.InternalLicense)</parameter>
+          </include>
+        </markup>
+      </summary>
+      <returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>returns</parameter>
+            <parameter>M:WebSupergoo.WordGlue4.Product.LicenseManager.Validate(WebSupergoo.WordGlue4.Product.InternalLicense)</parameter>
+          </include>
+        </markup>
+      </returns>
+    </member>
+    <member name="T:WebSupergoo.WordGlue4.Rendering.ABCpdfRenderingContext">
+      <summary>
+            A rendering context that pipes drawing commands into
+            an ABCpdf Doc object for PDF output.
+            </summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.ABCpdfRenderingContext.#ctor(System.Object)">
+      <summary>Construct an ABCpdfRenderingContext.</summary>
+      <param name="pdfDoc">The ABCpdf Doc object to use.</param>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.ABCpdfRenderingContext.AddHyperlinks">
+      <summary>
+            Whether to add active hyperlinks to the output PDF.
+            </summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.ABCpdfRenderingContext.Dispose">
+      <summary>Dispose of the Context.</summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.ABCpdfRenderingContext.DrawEllipse(WebSupergoo.WordGlue4.Rendering.Brush,WebSupergoo.WordGlue4.Rendering.Pen,WebSupergoo.WordGlue4.Rect)">
+      <summary>Draw an ellipse using a specific Pen and Brush.</summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.ABCpdfRenderingContext.DrawImage(WebSupergoo.WordGlue4.Rendering.Bitmap,WebSupergoo.WordGlue4.Rect)">
+      <summary>Draw a raster image into a particular rectangle.</summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.ABCpdfRenderingContext.DrawLine(WebSupergoo.WordGlue4.Rendering.Pen,WebSupergoo.WordGlue4.Point,WebSupergoo.WordGlue4.Point)">
+      <summary>Draw a line using a specific Pen.</summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.ABCpdfRenderingContext.DrawPath(WebSupergoo.WordGlue4.Rendering.Brush,WebSupergoo.WordGlue4.Rendering.Pen,WebSupergoo.WordGlue4.Rendering.GraphicsPath)">
+      <summary>Draw a path using a specific Pen and Brush.</summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.ABCpdfRenderingContext.DrawRectangle(WebSupergoo.WordGlue4.Rendering.Brush,WebSupergoo.WordGlue4.Rendering.Pen,WebSupergoo.WordGlue4.Rect)">
+      <summary>Draw a rectangle using a specific Pen and Brush.</summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.ABCpdfRenderingContext.DrawText(WebSupergoo.WordGlue4.Rendering.TextRun,WebSupergoo.WordGlue4.Point)">
+      <summary>Draw text from a TextRun at a specific Point.</summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.ABCpdfRenderingContext.FrameEnd(WebSupergoo.WordGlue4.Layout.Frame)">
+      <summary>Lets you know when a frame has just been rendered.
+            You can use this for linking semantic information with drawing instructions.</summary>
+      <param name="frame">The frame.</param>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.ABCpdfRenderingContext.FrameStart(WebSupergoo.WordGlue4.Layout.Frame)">
+      <summary>Lets you know when a frame is about to be rendered.
+            You can use this for linking semantic information with drawing instructions.</summary>
+      <param name="frame">The frame.</param>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.ABCpdfRenderingContext.LoadPrivateFonts">
+      <summary>
+            Whether to load private fonts embedded in the docx file.
+            Loading them allows them to be used when constructing
+            the output PDF.
+            </summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.ABCpdfRenderingContext.PopClip">
+      <summary>Pop the clip state, restoring to the last clip rect.</summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.ABCpdfRenderingContext.PreferEmbeddedFonts">
+      <summary>
+            Whether to prefer embedded fonts in the output PDF.
+            Some types of fonts have to be embedded. For others
+            they can be referenced or embedded. Embedded fonts produce a reliable
+            and consistent viewing experience at the cost of larger documents.
+            </summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.ABCpdfRenderingContext.PushClip(WebSupergoo.WordGlue4.Rect)">
+      <summary>Push the clip state then assign a new clip rect.</summary>
+    </member>
+    <member name="T:WebSupergoo.WordGlue4.Rendering.Bitmap">
+      <summary>
+            A bitmap or raster image.
+            </summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.Bitmap.#ctor">
+      <summary>
+            Create a new Bitmap.
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Bitmap.BitmapSource">
+      <summary>Gets this bitmap as a System.Windows.Media.Imaging BitmapSource.</summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.Bitmap.Clone">
+      <summary>Clones this bitmap</summary>
+      <returns>A deep copy of the original.</returns>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.Bitmap.Dispose">
+      <summary>
+            Dispooses of this bitmap.
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Bitmap.DrawingBitmap">
+      <summary>Gets or sets this bitmap as a System.Drawing Bitmap.</summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Bitmap.Format">
+      <summary>The pixel format for this Bitmap.</summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.Bitmap.FromStream(System.IO.Stream,System.Uri)">
+      <summary>
+            Initializes a new instance of the Bitmap class from a specified stream.
+            </summary>
+      <param name="stream">The stream on which to base this bitmap.</param>
+      <param name="uri">The URI from which this stream was obtained.</param>
+      <returns>A Bitmap containing the image.</returns>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Bitmap.Height">
+      <summary>The height of the image in pixels.</summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.Bitmap.LockBits">
+      <summary>Locks the pixels in the bitmap and returns them as a pointer in memory. This call should be matched by a call to UnlockBits.</summary>
+      <returns>A BitmapData structure detailing the location of the pixels in memory.</returns>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Bitmap.Modified">
+      <summary>Whether the Bitmap is different from the Stream. This may happen if, for example, effects or filters are applied.</summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Bitmap.Stream">
+      <summary>The stream used as the base for the creation of this Bitmap.</summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.Bitmap.UnlockBits(WebSupergoo.WordGlue4.Rendering.BitmapData)">
+      <summary>Unlocks the pixels in the bitmap.</summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Bitmap.Uri">
+      <summary>The URI to the resource used as the base for the creation of the Bitmap.</summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Bitmap.Width">
+      <summary>The width of the image in pixels.</summary>
+    </member>
+    <member name="T:WebSupergoo.WordGlue4.Rendering.BitmapData">
+      <summary>
+            A locked set of bitmap data in memory.
+            </summary>
+    </member>
+    <member name="F:WebSupergoo.WordGlue4.Rendering.BitmapData.Format">
+      <summary>The format of data held in each pixel.</summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.BitmapData.GetBytes">
+      <summary>Gets the pixels as an array of bytes.</summary>
+      <returns>The array of bytes.</returns>
+    </member>
+    <member name="F:WebSupergoo.WordGlue4.Rendering.BitmapData.Height">
+      <summary>The height of the image in pixels.</summary>
+    </member>
+    <member name="F:WebSupergoo.WordGlue4.Rendering.BitmapData.Scan0">
+      <summary>A pointer to the first pixel in memory.</summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.BitmapData.SetBytes(System.Byte[])">
+      <summary>Sets the pixels from an array of bytes.</summary>
+      <param name="bytes"></param>
+    </member>
+    <member name="F:WebSupergoo.WordGlue4.Rendering.BitmapData.Step">
+      <summary>The number of bits in one pixel.</summary>
+    </member>
+    <member name="F:WebSupergoo.WordGlue4.Rendering.BitmapData.Stride">
+      <summary>The number of bytes in one horizontal line. This may include some end of line padding.</summary>
+    </member>
+    <member name="F:WebSupergoo.WordGlue4.Rendering.BitmapData.Width">
+      <summary>The width of the image in pixels.</summary>
+    </member>
+    <member name="T:WebSupergoo.WordGlue4.Rendering.Brush">
+      <summary>
+            Used to fill the interiors of graphical shapes such as rectangles, ellipses, pies, polygons, and paths.
+            </summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.Brush.#ctor(WebSupergoo.WordGlue4.Rendering.Color)">
+      <summary>
+            Initializes a new instance of the Brush class with the specified Color property.
+            </summary>
+      <param name="color">The color of this brush.</param>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Brush.Color">
+      <summary>
+            Gets or sets the primary color of this Brush object.  
+            </summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.Brush.Equals(System.Object)">
+      <summary>
+            Test whether the two objects are the same.
+            </summary>
+      <param name="obj">The object to test against.</param>
+      <returns>Whether the objects are equal.</returns>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.Brush.GetHashCode">
+      <summary> A hash code for the object.
+             </summary>
+      <returns>The returned hash code.</returns>
+    </member>
+    <member name="T:WebSupergoo.WordGlue4.Rendering.Color">
+      <summary>
+            A color in RGB, CMYK or Grayscale.
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.A">
+      <summary>
+            Gets or sets the alpha component.
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.AliceBlue">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.AntiqueWhite">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.AppWorkspace">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.Aqua">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.Aquamarine">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.Azure">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.B">
+      <summary>
+            Gets or sets the blue component.
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.Beige">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.Bisque">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.Black">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.BlanchedAlmond">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.Blue">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.BlueViolet">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.Brown">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.BurlyWood">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.CadetBlue">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.Chartreuse">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.Chocolate">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.Control">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.ControlDark">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.ControlDarkDark">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.ControlLight">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.ControlLightLight">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.ControlText">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.Coral">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.CornflowerBlue">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.Cornsilk">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.Crimson">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.Cyan">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.DarkBlue">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.DarkCyan">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.DarkGoldenrod">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.DarkGray">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.DarkGreen">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.DarkKhaki">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.DarkMagenta">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.DarkOliveGreen">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.DarkOrange">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.DarkOrchid">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.DarkRed">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.DarkSalmon">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.DarkSeaGreen">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.DarkSlateBlue">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.DarkSlateGray">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.DarkTurquoise">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.DarkViolet">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.DeepPink">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.DeepSkyBlue">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.Desktop">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.DimGray">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.DodgerBlue">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.Color.Equals(System.Object)">
+      <summary>
+            Test whether the two objects are the same.
+            </summary>
+      <param name="obj">The object to test against.</param>
+      <returns>Whether the objects are equal.</returns>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.Firebrick">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.FloralWhite">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.ForestGreen">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.Color.FromArgb(System.Byte,System.Byte,System.Byte)">
+      <summary>
+            Creates a Color from the specified 8-bit color values 
+            (red, green, and blue). The alpha value is implicitly 255 (fully opaque). 
+            </summary>
+      <param name="red">The red component value. Valid values are 0 through 255.</param>
+      <param name="green">The green component value. Valid values are 0 through 255.</param>
+      <param name="blue">The blue component value. Valid values are 0 through 255.</param>
+      <returns>The Color that this method creates.</returns>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.Color.FromArgb(System.Byte,System.Byte,System.Byte,System.Byte)">
+      <summary>
+            Creates a Color from the specified 8-bit RGB color values 
+            (alpha, red, green, and blue). 
+            </summary>
+      <param name="alpha">The alpha component value. Valid values are 0 through 255.</param>
+      <param name="red">The red component value. Valid values are 0 through 255.</param>
+      <param name="green">The green component value. Valid values are 0 through 255.</param>
+      <param name="blue">The blue component value. Valid values are 0 through 255.</param>
+      <returns>The Color that this method creates.</returns>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.Color.FromArgb(System.Int32)">
+      <summary>
+            Creates a Color from a 32-bit ARGB value.
+            </summary>
+      <param name="argb">A value specifying the 32-bit ARGB value.</param>
+      <returns>The Color that this method creates.</returns>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.Color.FromKnownColor(System.Drawing.KnownColor)">
+      <summary>
+            Creates a Color from the specified pre-defined color.
+            </summary>
+      <param name="color">An element of the System.Drawing.KnownColor enumeration.</param>
+      <returns>The Color that this method creates.</returns>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.Fuchsia">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.G">
+      <summary>
+            Gets or sets the green component.
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.Gainsboro">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.Color.GetHashCode">
+      <summary> A hash code for the object.
+             </summary>
+      <returns>The returned hash code.</returns>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.GhostWhite">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.Gold">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.Goldenrod">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.Gray">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.GrayText">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.Green">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.GreenYellow">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.Highlight">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.HighlightText">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.Honeydew">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.HotPink">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.HotTrack">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.InactiveBorder">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.InactiveCaption">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.InactiveCaptionText">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.IndianRed">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.Indigo">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.Info">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.InfoText">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.Ivory">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.Khaki">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.Lavender">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.LavenderBlush">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.LawnGreen">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.LemonChiffon">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.LightBlue">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.LightCoral">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.LightCyan">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.LightGoldenrodYellow">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.LightGray">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.LightGreen">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.LightPink">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.LightSalmon">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.LightSeaGreen">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.LightSkyBlue">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.LightSlateGray">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.LightSteelBlue">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.LightYellow">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.Lime">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.LimeGreen">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.Linen">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.Magenta">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.Maroon">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.MediumAquamarine">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.MediumBlue">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.MediumOrchid">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.MediumPurple">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.MediumSeaGreen">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.MediumSlateBlue">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.MediumSpringGreen">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.MediumTurquoise">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.MediumVioletRed">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.Menu">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.MenuText">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.MidnightBlue">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.MintCream">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.MistyRose">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.Moccasin">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.NavajoWhite">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.Navy">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.OldLace">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.Olive">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.OliveDrab">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.Orange">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.OrangeRed">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.Orchid">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.PaleGoldenrod">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.PaleGreen">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.PaleTurquoise">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.PaleVioletRed">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.PapayaWhip">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.PeachPuff">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.Peru">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.Pink">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.Plum">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.PowderBlue">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.Purple">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.R">
+      <summary>
+            Gets or sets the red component.
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.Red">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.RosyBrown">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.RoyalBlue">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.SaddleBrown">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.Salmon">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.SandyBrown">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.ScrollBar">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.SeaGreen">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.SeaShell">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.Sienna">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.Silver">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.SkyBlue">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.SlateBlue">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.SlateGray">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.Snow">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.SpringGreen">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.SteelBlue">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.Tan">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.Teal">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.Thistle">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.Tomato">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.Transparent">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.Turquoise">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.Violet">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.Wheat">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.White">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.WhiteSmoke">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.Window">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.WindowFrame">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.WindowText">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.Yellow">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Color.YellowGreen">
+      <summary>
+            Gets a system defined color
+            </summary>
+    </member>
+    <member name="T:WebSupergoo.WordGlue4.Rendering.DashCap">
+      <summary>The dash cap style specifies the shape to be used at the
+            ends of dashes in a stroked line.</summary>
+    </member>
+    <member name="F:WebSupergoo.WordGlue4.Rendering.DashCap.Flat">
+      <summary>A square cap.</summary>
+    </member>
+    <member name="F:WebSupergoo.WordGlue4.Rendering.DashCap.Round">
+      <summary>A round cap.</summary>
+    </member>
+    <member name="F:WebSupergoo.WordGlue4.Rendering.DashCap.Triangle">
+      <summary>A triangular cap.</summary>
+    </member>
+    <member name="T:WebSupergoo.WordGlue4.Rendering.Font">
+      <summary>
+            A font is used to draw text. This class cannot be inherited. 
+            </summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.Font.#ctor(System.String,System.Double)">
+      <summary>Initializes a new instance of a Font with the specified settings.</summary>
+      <param name="name">The font family name.</param>
+      <param name="size">The em size required.</param>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.Font.#ctor(System.String,System.Double,WebSupergoo.WordGlue4.Rendering.FontStyle)">
+      <summary>Initializes a new instance of a Font with the specified settings.</summary>
+      <param name="name">The font family name.</param>
+      <param name="size">The em size required.</param>
+      <param name="style">The style required.</param>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Font.Bold">
+      <summary>
+            Whether the font is bold or not.
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Font.FontFamily">
+      <summary>
+            The family of the font. For example Arial Condensed is part of the Arial family.
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Font.Italic">
+      <summary>
+            Whether the font is italic.
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Font.Name">
+      <summary>
+            The name of the font. This is generally, but not always, unique.
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Font.Size">
+      <summary>
+            The size of the font in points.
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Font.Strikeout">
+      <summary>
+            Whether the font is struck out.
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Font.Style">
+      <summary>
+            The style of the font.
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Font.Underline">
+      <summary>
+            Whether the font is underlined.
+            </summary>
+    </member>
+    <member name="T:WebSupergoo.WordGlue4.Rendering.FontFamily">
+      <summary>
+            A fonts are members of families, each item being of a different style.
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.FontFamily.Name">
+      <summary>
+            The name of the font family.
+            </summary>
+    </member>
+    <member name="T:WebSupergoo.WordGlue4.Rendering.FontStyle">
+      <summary>The style of a font.</summary>
+    </member>
+    <member name="F:WebSupergoo.WordGlue4.Rendering.FontStyle.Regular">
+      <summary>Norma;.</summary>
+    </member>
+    <member name="F:WebSupergoo.WordGlue4.Rendering.FontStyle.Bold">
+      <summary>Bold.</summary>
+    </member>
+    <member name="F:WebSupergoo.WordGlue4.Rendering.FontStyle.Italic">
+      <summary>Italic or oblique.</summary>
+    </member>
+    <member name="F:WebSupergoo.WordGlue4.Rendering.FontStyle.Underline">
+      <summary>Single underline.</summary>
+    </member>
+    <member name="F:WebSupergoo.WordGlue4.Rendering.FontStyle.Strikeout">
+      <summary>Single strikeout.</summary>
+    </member>
+    <member name="F:WebSupergoo.WordGlue4.Rendering.FontStyle.Hidden">
+      <summary>Hidden.</summary>
+    </member>
+    <member name="F:WebSupergoo.WordGlue4.Rendering.FontStyle.Caps">
+      <summary>Capitals.</summary>
+    </member>
+    <member name="F:WebSupergoo.WordGlue4.Rendering.FontStyle.SmallCaps">
+      <summary>Small capitals.</summary>
+    </member>
+    <member name="F:WebSupergoo.WordGlue4.Rendering.FontStyle.Strikeout2">
+      <summary>Double strikeout.</summary>
+    </member>
+    <member name="T:WebSupergoo.WordGlue4.Rendering.GdiRenderingContext">
+      <summary>
+            A rendering context that pipes drawing commands into 
+            GDI through System.Drawing.Graphics.
+            </summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.GdiRenderingContext.#ctor(System.Drawing.Graphics)">
+      <summary>Construct a GdiRenderingContext.</summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.GdiRenderingContext.DrawEllipse(WebSupergoo.WordGlue4.Rendering.Brush,WebSupergoo.WordGlue4.Rendering.Pen,WebSupergoo.WordGlue4.Rect)">
+      <summary>Draw an ellipse using a specific Pen and Brush.</summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.GdiRenderingContext.DrawImage(WebSupergoo.WordGlue4.Rendering.Bitmap,WebSupergoo.WordGlue4.Rect)">
+      <summary>Draw a raster image into a particular rectangle.</summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.GdiRenderingContext.DrawLine(WebSupergoo.WordGlue4.Rendering.Pen,WebSupergoo.WordGlue4.Point,WebSupergoo.WordGlue4.Point)">
+      <summary>Draw a line using a specific Pen.</summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.GdiRenderingContext.DrawPath(WebSupergoo.WordGlue4.Rendering.Brush,WebSupergoo.WordGlue4.Rendering.Pen,WebSupergoo.WordGlue4.Rendering.GraphicsPath)">
+      <summary>Draw a path using a specific Pen and Brush.</summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.GdiRenderingContext.DrawRectangle(WebSupergoo.WordGlue4.Rendering.Brush,WebSupergoo.WordGlue4.Rendering.Pen,WebSupergoo.WordGlue4.Rect)">
+      <summary>Draw a rectangle using a specific Pen and Brush.</summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.GdiRenderingContext.DrawText(WebSupergoo.WordGlue4.Rendering.TextRun,WebSupergoo.WordGlue4.Point)">
+      <summary>Draw text from a TextRun at a specific Point.</summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.GdiRenderingContext.FrameEnd(WebSupergoo.WordGlue4.Layout.Frame)">
+      <summary>Lets you know when a frame has just been rendered.
+            You can use this for linking semantic information with drawing instructions.</summary>
+      <param name="frame">The frame.</param>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.GdiRenderingContext.FrameStart(WebSupergoo.WordGlue4.Layout.Frame)">
+      <summary>Lets you know when a frame is about to be rendered.
+            You can use this for linking semantic information with drawing instructions.</summary>
+      <param name="frame">The frame.</param>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.GdiRenderingContext.PopClip">
+      <summary>Pop the clip state, restoring to the last clip rect.</summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.GdiRenderingContext.PushClip(WebSupergoo.WordGlue4.Rect)">
+      <summary>Push the clip state then assign a new clip rect.</summary>
+    </member>
+    <member name="T:WebSupergoo.WordGlue4.Rendering.GraphicsPath">
+      <summary>
+            A class representing a graphics path comprising lines and curves.
+            </summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.GraphicsPath.#ctor">
+      <summary>
+            Construct a new empty GraphicsPath.
+            </summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.GraphicsPath.#ctor(WebSupergoo.WordGlue4.Rendering.GraphicsPath)">
+      <summary>
+            Construct a deep copy of an existing GraphicsPath.
+            </summary>
+      <param name="clone">The path to be cloned.</param>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.GraphicsPath.AddArc(System.Double,System.Double,System.Double,System.Double,System.Double,System.Double,System.Double,System.Nullable{WebSupergoo.WordGlue4.Rendering.GraphicsPath.EntryType})">
+      <summary>
+            Append an arc segment to path.
+            </summary>
+      <param name="start">Start angle of the arc in degrees</param>
+      <param name="end">End angle of the arc in degrees</param>
+      <param name="cx">Horizontal center of the arc</param>
+      <param name="cy">Vertical center of the arc</param>
+      <param name="rx">Horizontal radius of the arc</param>
+      <param name="ry">Vertical radius of the arc</param>
+      <param name="angle">Rotate angle</param>
+      <param name="inMove">If true, move to the first point of the arc</param>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.GraphicsPath.AddLine(WebSupergoo.WordGlue4.Point,WebSupergoo.WordGlue4.Point)">
+      <summary>
+            Add a line as a closed subpath.
+            </summary>
+      <param name="p0"></param>
+      <param name="p1"></param>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.GraphicsPath.AddOval(WebSupergoo.WordGlue4.Rect)">
+      <summary>
+            Add an oval as a closed subpath.
+            </summary>
+      <param name="rect">The bounds of the oval.</param>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.GraphicsPath.AddPath(WebSupergoo.WordGlue4.Rendering.GraphicsPath)">
+      <summary>
+            Add a path to this one.
+            </summary>
+      <param name="path">The path which should be appended to this one.</param>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.GraphicsPath.AddRect(WebSupergoo.WordGlue4.Rect)">
+      <summary>
+            Add a rectangle as a closed subpath.
+            </summary>
+      <param name="rect">The bounds of the rectangle.</param>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.GraphicsPath.AddRoundRect(WebSupergoo.WordGlue4.Rect,System.Double)">
+      <summary>
+            Add a rectangle with rounded corners, as a closed subpath.
+            </summary>
+      <param name="rect">The bounds of the rectangle.</param>
+      <param name="radius">The radius of the rounded corners.</param>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.GraphicsPath.Entries">
+      <summary>
+            The entries which make up this GraphicsPath.
+            </summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.GraphicsPath.GetBounds(System.Double)">
+      <summary>
+            Get the bounds of the GraphicsPath.
+            </summary>
+      <param name="lineWidth">Expand the bounds to encopass stroking with a specified line width.</param>
+      <returns>The bounding rectangle.</returns>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.GraphicsPath.Transform(WebSupergoo.WordGlue4.Rendering.Transform)">
+      <summary>
+            Transform the points in this GraphicsPath using an affine transform.
+            </summary>
+      <param name="xform">The transform to use.</param>
+    </member>
+    <member name="T:WebSupergoo.WordGlue4.Rendering.GraphicsPath.Entry">
+      <summary>
+            An entry within a GraphicsPath.
+            </summary>
+    </member>
+    <member name="F:WebSupergoo.WordGlue4.Rendering.GraphicsPath.Entry.Points">
+      <summary>
+            Any points associated with the entry. Move and Line elements have one point, Curve elements have three.
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.GraphicsPath.Entry.Type">
+      <summary>
+            The type of entry.
+            </summary>
+    </member>
+    <member name="T:WebSupergoo.WordGlue4.Rendering.GraphicsPath.EntryType">
+      <summary>
+            The type of element inside a GraphicsPath.
+            </summary>
+    </member>
+    <member name="F:WebSupergoo.WordGlue4.Rendering.GraphicsPath.EntryType.NoOp">
+      <summary>
+            No operation.
+            </summary>
+    </member>
+    <member name="F:WebSupergoo.WordGlue4.Rendering.GraphicsPath.EntryType.Move">
+      <summary>
+            Move to a point starting a new subpath.
+            </summary>
+    </member>
+    <member name="F:WebSupergoo.WordGlue4.Rendering.GraphicsPath.EntryType.Line">
+      <summary>
+            Draw a line from the current point to a new point.
+            </summary>
+    </member>
+    <member name="F:WebSupergoo.WordGlue4.Rendering.GraphicsPath.EntryType.Curve">
+      <summary>
+            Draw a Bezier curve from the current point to a final point, using two intermediate points as controls.
+            </summary>
+    </member>
+    <member name="F:WebSupergoo.WordGlue4.Rendering.GraphicsPath.EntryType.CloseSubpath">
+      <summary>
+            Close the current subpath.
+            </summary>
+    </member>
+    <member name="T:WebSupergoo.WordGlue4.Rendering.IRenderingContext">
+      <summary>
+        <para>An interface that receives drawing commands and converts them into a desired output format.</para>
+        <para>Implement this interface to create new converters.</para>
+        <para>You can assume that all brushes will be solid and will specify a color in RGB and possibly Alpha.</para>
+        <para>For pens you need to implement an interface which uses the Brush, Width, DashCap (Flat and Round only) and DashPattern.</para>
+      </summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.IRenderingContext.DrawEllipse(WebSupergoo.WordGlue4.Rendering.Brush,WebSupergoo.WordGlue4.Rendering.Pen,WebSupergoo.WordGlue4.Rect)">
+      <summary>Draw an ellipse which may be filled, outlined or both.</summary>
+      <param name="brush">The brush with which the ellipse should be filled. If this parameter is null then there is no fill.</param>
+      <param name="pen">The pen with which the ellipse should be outlined. If this parameter is null then there is no outline.</param>
+      <param name="rect">The rectangle area.</param>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.IRenderingContext.DrawImage(WebSupergoo.WordGlue4.Rendering.Bitmap,WebSupergoo.WordGlue4.Rect)">
+      <summary>Draw a raster image into a particular rectangle.</summary>
+      <param name="bitmap">A bitmap representation of the image.</param>
+      <param name="bounds">The area into which the image should be drawn.</param>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.IRenderingContext.DrawLine(WebSupergoo.WordGlue4.Rendering.Pen,WebSupergoo.WordGlue4.Point,WebSupergoo.WordGlue4.Point)">
+      <summary>Draw a line using a specific Pen.</summary>
+      <param name="pen">The pen with which the line should be drawn.</param>
+      <param name="point0">The start point of the line.</param>
+      <param name="point1">The end point of the line.</param>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.IRenderingContext.DrawPath(WebSupergoo.WordGlue4.Rendering.Brush,WebSupergoo.WordGlue4.Rendering.Pen,WebSupergoo.WordGlue4.Rendering.GraphicsPath)">
+      <summary>Draw a path which may be filled, outlined or both.</summary>
+      <param name="brush">The brush with which the path should be filled. If this parameter is null then there is no fill.</param>
+      <param name="pen">The pen with which the path should be outlined. If this parameter is null then there is no outline.</param>
+      <param name="path">The path.</param>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.IRenderingContext.DrawRectangle(WebSupergoo.WordGlue4.Rendering.Brush,WebSupergoo.WordGlue4.Rendering.Pen,WebSupergoo.WordGlue4.Rect)">
+      <summary>Draw a rectangle which may be filled, outlined or both.</summary>
+      <param name="brush">The brush with which the rectangle should be filled. If this parameter is null then there is no fill.</param>
+      <param name="pen">The pen with which the rectangle should be outlined. If this parameter is null then there is no outline.</param>
+      <param name="rect">The rectangle area.</param>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.IRenderingContext.DrawText(WebSupergoo.WordGlue4.Rendering.TextRun,WebSupergoo.WordGlue4.Point)">
+      <summary>Draw text from a TextRun at a specific Point.</summary>
+      <param name="run">The text to be drawn.</param>
+      <param name="point">The point at which the left baseline of the first character should apppear.</param>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.IRenderingContext.FrameEnd(WebSupergoo.WordGlue4.Layout.Frame)">
+      <summary>Lets you know when a frame has just been rendered.
+            You can use this for linking semantic information with drawing instructions.</summary>
+      <param name="frame">The frame.</param>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.IRenderingContext.FrameStart(WebSupergoo.WordGlue4.Layout.Frame)">
+      <summary>Lets you know when a frame is about to be rendered.
+            You can use this for linking semantic information with drawing instructions.</summary>
+      <param name="frame">The frame.</param>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.IRenderingContext.PopClip">
+      <summary>Pop the clip state, restoring to the last clip rect.</summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.IRenderingContext.PushClip(WebSupergoo.WordGlue4.Rect)">
+      <summary>Push the clip state then assign a new clip rect.
+            Typically you will hold the clip state in a Stack of Rects, pusshing and popping as PushClip and PopClip are called.
+            To determine the new rect simply intersect the Rect on the top of the stack with the one supplied in PushClip.
+            When drawing you need to ensure that any drawing you do is clipped to the Rect at the top of the stack - if any.
+            </summary>
+      <param name="rect">The clip rectangle to be applied to the current graphics state.</param>
+    </member>
+    <member name="T:WebSupergoo.WordGlue4.Rendering.LineCap">
+      <summary>The line cap style specifies the shape to be used at the
+            ends of open subpaths when they are stroked.</summary>
+    </member>
+    <member name="F:WebSupergoo.WordGlue4.Rendering.LineCap.None">
+      <summary>No symbol.</summary>
+    </member>
+    <member name="F:WebSupergoo.WordGlue4.Rendering.LineCap.Square">
+      <summary>A square block.</summary>
+    </member>
+    <member name="F:WebSupergoo.WordGlue4.Rendering.LineCap.Circle">
+      <summary>A filled circle.</summary>
+    </member>
+    <member name="F:WebSupergoo.WordGlue4.Rendering.LineCap.Diamond">
+      <summary>A filled diamond.</summary>
+    </member>
+    <member name="F:WebSupergoo.WordGlue4.Rendering.LineCap.OpenArrow">
+      <summary>Two lines forming an arrow.</summary>
+    </member>
+    <member name="F:WebSupergoo.WordGlue4.Rendering.LineCap.ClosedArrow">
+      <summary>A triangular arrow.</summary>
+    </member>
+    <member name="F:WebSupergoo.WordGlue4.Rendering.LineCap.Butt">
+      <summary>A perpendicular line.</summary>
+    </member>
+    <member name="F:WebSupergoo.WordGlue4.Rendering.LineCap.BigButt">
+      <summary>A longer perpendicular line.</summary>
+    </member>
+    <member name="F:WebSupergoo.WordGlue4.Rendering.LineCap.ReverseOpenArrow">
+      <summary>The same as OpenArrow, but pointing backwards rather than forwards.</summary>
+    </member>
+    <member name="F:WebSupergoo.WordGlue4.Rendering.LineCap.ReverseClosedArrow">
+      <summary>The same as ClosedArrow, but pointing backwards rather than forwards.</summary>
+    </member>
+    <member name="F:WebSupergoo.WordGlue4.Rendering.LineCap.Slash">
+      <summary>A 30 degree line.</summary>
+    </member>
+    <member name="F:WebSupergoo.WordGlue4.Rendering.LineCap.Arrowhead">
+      <summary>A barbed arrowhead.</summary>
+    </member>
+    <member name="T:WebSupergoo.WordGlue4.Rendering.LineCapStyle">
+      <summary>
+            This class represents a particular style of line cap at a particular size. This class cannot be inherited. 
+            </summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.LineCapStyle.#ctor">
+      <summary>
+            Initializes a new instance of the LineCapStyle class. 
+            </summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.LineCapStyle.#ctor(WebSupergoo.WordGlue4.Rendering.LineCap,System.Double,System.Double)">
+      <summary>
+            Initializes a new instance of the LineCapStyle class. 
+            </summary>
+      <param name="style">The style of line cap.</param>
+      <param name="width">The relative width of the cap.</param>
+      <param name="length">The relative height of the cap.</param>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.LineCapStyle.Equals(System.Object)">
+      <summary>
+            Test whether the two objects are the same.
+            </summary>
+      <param name="obj">The object to test against.</param>
+      <returns>Whether the objects are equal.</returns>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.LineCapStyle.Length">
+      <summary>
+            Gets or sets the relative length of the cap.  
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.LineCapStyle.Style">
+      <summary>
+            Gets or sets the line cap style.  
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.LineCapStyle.Width">
+      <summary>
+            Gets or sets the relative width of the cap.  
+            </summary>
+    </member>
+    <member name="T:WebSupergoo.WordGlue4.Rendering.LineJoin">
+      <summary>The line join style specifies the shape to be used at
+            the corners of paths that are stroked.</summary>
+    </member>
+    <member name="F:WebSupergoo.WordGlue4.Rendering.LineJoin.Miter">
+      <summary>Miter join. The outer edges of the strokes for the two
+            segments are extended until they meet at an angle. If the segments
+            meet at too sharp an angle, a bevel join is used instead.</summary>
+    </member>
+    <member name="F:WebSupergoo.WordGlue4.Rendering.LineJoin.Round">
+      <summary>Round join. An arc of a circle with a diameter equal to
+            the line width is drawn around the point where the two segments
+            meet, connecting the outer edges of the strokes for the two segments.
+            This pieslice-shaped figure is filled in, producing a rounded corner.</summary>
+    </member>
+    <member name="F:WebSupergoo.WordGlue4.Rendering.LineJoin.Bevel">
+      <summary>Bevel join. The two segments are finished with butt caps
+            and the resulting notch beyond the ends of the segments is filled
+            with a triangle.</summary>
+    </member>
+    <member name="T:WebSupergoo.WordGlue4.Rendering.Pen">
+      <summary>
+            Pens can be used to draw lines and curves. This class cannot be inherited. 
+            </summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.Pen.#ctor">
+      <summary>
+            Initializes a new instance of the Pen class with zero width and a transparent color. 
+            </summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.Pen.#ctor(WebSupergoo.WordGlue4.Rendering.Color)">
+      <summary>
+            Initializes a new instance of the Pen class with the specified color. 
+            </summary>
+      <param name="color">The color of this Pen object.</param>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.Pen.#ctor(WebSupergoo.WordGlue4.Rendering.Color,System.Double)">
+      <summary>
+            Initializes a new instance of the Pen class with the specified Color and Width properties.
+            </summary>
+      <param name="color">The color of this Pen object.</param>
+      <param name="width">The width of this Pen object.</param>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Pen.Color">
+      <summary>
+            Gets or sets the color of this Pen.  
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Pen.DashCap">
+      <summary>
+            Gets or sets the cap style for dashes on a dashed line. 
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Pen.Dashed">
+      <summary>
+            True if this pen has a dash pattern. If true then the DashPattern has a length greater than zero and a valid set of dash and space values.
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Pen.DashOffset">
+      <summary>
+            Gets or sets the distance from the start of a line to the beginning of a dash pattern. 
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Pen.DashPattern">
+      <summary>
+            Gets or sets an array of custom dashes and spaces. 
+            </summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.Pen.Equals(System.Object)">
+      <summary>
+            Test whether the two objects are the same.
+            </summary>
+      <param name="obj">The object to test against.</param>
+      <returns>Whether the objects are equal.</returns>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.Pen.GetHashCode">
+      <summary> A hash code for the object.
+             </summary>
+      <returns>The returned hash code.</returns>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Pen.LineEnd">
+      <summary>
+            Gets or sets the cap style used for lines drawn with this Pen. 
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Pen.LineJoin">
+      <summary>
+            Gets or sets the join style for the ends of two consecutive lines drawn with this Pen.
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Pen.LineStart">
+      <summary>
+            Gets or sets the cap style used for lines drawn with this Pen. 
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Pen.MiterLimit">
+      <summary>
+            Gets or sets the limit of the thickness of the join on a mitered corner. 
+            The default value is 10.0f.
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Pen.Width">
+      <summary>
+            Gets or sets the width of this Pen.  
+            </summary>
+    </member>
+    <member name="T:WebSupergoo.WordGlue4.Rendering.PixelFormat">
+      <summary>
+            The data format of pixels in a bitmap.
+            </summary>
+    </member>
+    <member name="F:WebSupergoo.WordGlue4.Rendering.PixelFormat.None">
+      <summary>
+            No format defined.
+            </summary>
+    </member>
+    <member name="F:WebSupergoo.WordGlue4.Rendering.PixelFormat.Format1bppIndexed">
+      <summary>
+            One bit per pixel indexed color.
+            </summary>
+    </member>
+    <member name="F:WebSupergoo.WordGlue4.Rendering.PixelFormat.Format32bppArgb">
+      <summary>
+            Four bytes per pixel representing Blue, Green, Red and Alpha respectively.
+            </summary>
+    </member>
+    <member name="T:WebSupergoo.WordGlue4.Rendering.SvgRenderingContext">
+      <summary>
+            A rendering context for SVG output.
+            </summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.SvgRenderingContext.#ctor(WebSupergoo.WordGlue4.Size,WebSupergoo.WordGlue4.Rendering.SvgRenderingContext.ImageHandling,System.Double)">
+      <summary>
+            Create an SVG rendering context.
+            </summary>
+      <param name="size">The size of the page in points.</param>
+      <param name="imageHandling">The way that images should be encoded.</param>
+      <param name="scale">The scale at which the SVG should be drawn. Use 1.0 for most purposes.</param>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.SvgRenderingContext.AddFrameIDs">
+      <summary>
+            Whether to add comments indicating Frame ID information to the SVG output.
+            </summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.SvgRenderingContext.DrawEllipse(WebSupergoo.WordGlue4.Rendering.Brush,WebSupergoo.WordGlue4.Rendering.Pen,WebSupergoo.WordGlue4.Rect)">
+      <summary>Draw an ellipse using a specific Pen and Brush.</summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.SvgRenderingContext.DrawImage(WebSupergoo.WordGlue4.Rendering.Bitmap,WebSupergoo.WordGlue4.Rect)">
+      <summary>Draw a raster image into a particular rectangle.</summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.SvgRenderingContext.DrawLine(WebSupergoo.WordGlue4.Rendering.Pen,WebSupergoo.WordGlue4.Point,WebSupergoo.WordGlue4.Point)">
+      <summary>Draw a line using a specific Pen.</summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.SvgRenderingContext.DrawPath(WebSupergoo.WordGlue4.Rendering.Brush,WebSupergoo.WordGlue4.Rendering.Pen,WebSupergoo.WordGlue4.Rendering.GraphicsPath)">
+      <summary>Draw a path using a specific Pen and Brush.</summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.SvgRenderingContext.DrawRectangle(WebSupergoo.WordGlue4.Rendering.Brush,WebSupergoo.WordGlue4.Rendering.Pen,WebSupergoo.WordGlue4.Rect)">
+      <summary>Draw a rectangle using a specific Pen and Brush.</summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.SvgRenderingContext.DrawText(WebSupergoo.WordGlue4.Rendering.TextRun,WebSupergoo.WordGlue4.Point)">
+      <summary>Draw text from a TextRun at a specific Point.</summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.SvgRenderingContext.FrameEnd(WebSupergoo.WordGlue4.Layout.Frame)">
+      <summary>Lets you know when a frame has just been rendered.
+            You can use this for linking semantic information with drawing instructions.</summary>
+      <param name="frame">The frame.</param>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.SvgRenderingContext.FrameStart(WebSupergoo.WordGlue4.Layout.Frame)">
+      <summary>Lets you know when a frame is about to be rendered.
+            You can use this for linking semantic information with drawing instructions.</summary>
+      <param name="frame">The frame.</param>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.SvgRenderingContext.PopClip">
+      <summary>Pop the clip state, restoring to the last clip rect.</summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.SvgRenderingContext.PushClip(WebSupergoo.WordGlue4.Rect)">
+      <summary>Push the clip state then assign a new clip rect.</summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.SvgRenderingContext.Save(System.String)">
+      <summary>
+            Save the SVG content to file.
+            If image handing has been specified as relative files then these will be saved in a folder the same name as the file.
+            </summary>
+      <param name="path">The destination path for the SVG file.</param>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.SvgRenderingContext.Save(System.Text.StringBuilder,System.String)">
+      <summary>
+            Save the SVG content to a StringBuilder.
+            If image handing has been specified as relative files then these will be saved too.
+            For relative files a path to a dummy SVG output file is required.
+            </summary>
+      <param name="svg">The StringBuilder to which the SVG content will be written.</param>
+      <param name="path">A destination path for an SVG file, used to determine where to save relative images.
+            If you are not using ImageHandling.RelativeFiles then you can pass null for this parameter.</param>
+    </member>
+    <member name="T:WebSupergoo.WordGlue4.Rendering.SvgRenderingContext.ImageHandling">
+      <summary>
+            How images should be put into the SVG.
+            </summary>
+    </member>
+    <member name="F:WebSupergoo.WordGlue4.Rendering.SvgRenderingContext.ImageHandling.None">
+      <summary>No images embedded.</summary>
+    </member>
+    <member name="F:WebSupergoo.WordGlue4.Rendering.SvgRenderingContext.ImageHandling.Placeholder">
+      <summary>A placeholder will be used for all images</summary>
+    </member>
+    <member name="F:WebSupergoo.WordGlue4.Rendering.SvgRenderingContext.ImageHandling.RelativeFiles">
+      <summary>Images will be saved as files relative to the SVG location.</summary>
+    </member>
+    <member name="F:WebSupergoo.WordGlue4.Rendering.SvgRenderingContext.ImageHandling.Embedded">
+      <summary>Images will be embedded in base 64 format.</summary>
+    </member>
+    <member name="T:WebSupergoo.WordGlue4.Rendering.TextRun">
+      <summary>
+            Represents some text to be drawn, accompanied by
+            style information.
+            </summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.TextRun.#ctor(System.String,WebSupergoo.WordGlue4.Rendering.Brush,WebSupergoo.WordGlue4.Rendering.Font)">
+      <summary>
+            Create a TextRun.
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.TextRun.Brush">
+      <summary>
+            The brush which should be used to paint the run.
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.TextRun.CharScale">
+      <summary>
+            The character scaling which should be used to increase or decrease the
+            width of the characters in the text. This is very similar to a horizontal scale transform.
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.TextRun.CharSpacing">
+      <summary>
+            The character spacing which should be used to increase or decrease the
+            distance between characters. This parameter is sometimes called tracking 
+            or kerning. The term kerning is not actually correct because kerning relates
+            to spacing between specific characters. However it is a similar concept.
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.TextRun.Font">
+      <summary>
+            The font which should be used to draw the text.
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.TextRun.Text">
+      <summary>
+            The text for the run.
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.TextRun.Widths">
+      <summary>
+            The width for each of the characters in the run.
+            This value includes the character scaling and spacing so it can be used to
+            determine the advance width for each character in the run.
+            </summary>
+    </member>
+    <member name="T:WebSupergoo.WordGlue4.Rendering.Transform">
+      <summary>
+            An affine transformation in 2D space.
+            </summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.Transform.#ctor">
+      <summary>Create a new identity transformation.</summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.Transform.#ctor(System.Double,System.Double,System.Double,System.Double,System.Double,System.Double)">
+      <summary>Constructs a transformation.</summary>
+      <param name="m11">M11 coefficient.</param>
+      <param name="m12">M12 coefficient.</param>
+      <param name="m21">M21 coefficient.</param>
+      <param name="m22">M22 coefficient.</param>
+      <param name="offsetX">OffsetX coefficient.</param>
+      <param name="offsetY">OffsetY coefficient.</param>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.Transform.#ctor(WebSupergoo.WordGlue4.Rect,WebSupergoo.WordGlue4.Rect)">
+      <summary>Constructs a transformation.</summary>
+      <param name="src">Source rect.</param>
+      <param name="dst">Destination rect.</param>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.Transform.#ctor(WebSupergoo.WordGlue4.Rendering.Transform)">
+      <summary>Create a clone of a transformation.</summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.Transform.Append(WebSupergoo.WordGlue4.Rendering.Transform)">
+      <summary>Appends the specified transformation to this transformation.</summary>
+      <param name="transform">The transformation to append.</param>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.Transform.Clone">
+      <summary>Returns a new copy of this transformation.</summary>
+      <returns>A copy of this transformation.</returns>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Transform.Determinant">
+      <summary>Gets the determinant.</summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.Transform.Equals(System.Object)">
+      <summary>Determines whether the specified Object is a transformation identical to this transformation.</summary>
+      <param name="obj">The Object to compare.</param>
+      <returns>true if obj is a transformation identical to this transformation; otherwise, false.</returns>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.Transform.GetHashCode">
+      <summary>Returns the hash code for this transformation.</summary>
+      <returns>The hash code.</returns>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Transform.HasInverse">
+      <summary>Gets a value that indicates whether this transformation is invertible.</summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.Transform.Invert">
+      <summary>Inverts this transformation.</summary>
+      <exception cref="T:System.InvalidOperationException">This transformation is not invertible.</exception>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Transform.IsIdentity">
+      <summary>Gets a value that indicates whether this transformation is identity.</summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Transform.M11">
+      <summary>Gets or sets the M11 coefficient.</summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Transform.M12">
+      <summary>Gets or sets the M12 coefficient.</summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Transform.M21">
+      <summary>Gets or sets the M21 coefficient.</summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Transform.M22">
+      <summary>Gets or sets the M22 coefficient.</summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.Transform.NewIdentity">
+      <summary>Returns a new identity transformation.</summary>
+      <returns>An identity transformation.</returns>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Transform.OffsetX">
+      <summary>Gets or sets the OffsetX coefficient.</summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Rendering.Transform.OffsetY">
+      <summary>Gets or sets the OffsetY coefficient.</summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.Transform.Prepend(WebSupergoo.WordGlue4.Rendering.Transform)">
+      <summary>Prepends the specified transformation to this transformation.</summary>
+      <param name="transform">The transformation to prepend.</param>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.Transform.Rotate(System.Double)">
+      <summary>Appends the specified rotation to this transformation.</summary>
+      <param name="angle">The angle of rotation in degrees.</param>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.Transform.RotatePrepend(System.Double)">
+      <summary>Prepends the specified rotation to this transformation.</summary>
+      <param name="angle">The angle of rotation in degrees.</param>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.Transform.Scale(System.Double,System.Double)">
+      <summary>Appends the specified scaling to this transformation.</summary>
+      <param name="scaleX">The scaling of the x-coordinate.</param>
+      <param name="scaleY">The scaling of the y-coordinate.</param>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.Transform.ScalePrepend(System.Double,System.Double)">
+      <summary>Prepends the specified scaling to this transformation.</summary>
+      <param name="scaleX">The scaling of the x-coordinate.</param>
+      <param name="scaleY">The scaling of the y-coordinate.</param>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.Transform.SetIdentity">
+      <summary>Changes this transformation to identity.</summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.Transform.Shear(System.Double,System.Double)">
+      <summary>Appends the specified shear to this transformation.</summary>
+      <param name="shearX">The shear factor of the x-coordinate.</param>
+      <param name="shearY">The shear factor of the y-coordinate.</param>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.Transform.ShearPrepend(System.Double,System.Double)">
+      <summary>Prepends the specified shear to this transformation.</summary>
+      <param name="shearX">The shear factor of the x-coordinate.</param>
+      <param name="shearY">The shear factor of the y-coordinate.</param>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.Transform.Skew(System.Double,System.Double)">
+      <summary>Appends the specified skew to this transformation.</summary>
+      <param name="skewX">The skew angle of the x-coordinate.</param>
+      <param name="skewY">The skew angle of the y-coordinate.</param>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.Transform.SkewPrepend(System.Double,System.Double)">
+      <summary>Prepends the specified skew to this transformation.</summary>
+      <param name="skewX">The skew angle of the x-coordinate.</param>
+      <param name="skewY">The skew angle of the y-coordinate.</param>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.Transform.ToString">
+      <summary>Returns a string representation of this transformation.</summary>
+      <returns>A string containing M11, M12, M21, M22, OffsetX, and OffsetY.</returns>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.Transform.TransformPoint(WebSupergoo.WordGlue4.Point)">
+      <summary>Transforms the specified point and returns the result.</summary>
+      <param name="point">The point to transform.</param>
+      <returns>The result of transformation.</returns>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.Transform.TransformPoints(WebSupergoo.WordGlue4.Point[])">
+      <summary>Transforms the specified points in-place.</summary>
+      <param name="pts">The points to transform.</param>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.Transform.TransformVector(WebSupergoo.WordGlue4.Point)">
+      <summary>Transforms the specified point without translation and returns the result.</summary>
+      <param name="point">The point to transform.</param>
+      <returns>The result of transformation.</returns>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.Transform.TransformVectors(WebSupergoo.WordGlue4.Point[])">
+      <summary>Transforms the specified points in-place without translation.</summary>
+      <param name="pts">The points to transform.</param>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.Transform.Translate(System.Double,System.Double)">
+      <summary>Appends the specified translation to this transformation.</summary>
+      <param name="offsetX">The translation of the x-coordinate.</param>
+      <param name="offsetY">The translation of the y-coordinate.</param>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.Transform.TranslatePrepend(System.Double,System.Double)">
+      <summary>Prepends the specified translation to this transformation.</summary>
+      <param name="offsetX">The translation of the x-coordinate.</param>
+      <param name="offsetY">The translation of the y-coordinate.</param>
+    </member>
+    <member name="T:WebSupergoo.WordGlue4.Rendering.WpfRenderingContext">
+      <summary>
+            A rendering context that pipes drawing commands into a 
+            WPF DrawingContext.
+            </summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.WpfRenderingContext.#ctor(System.Windows.Media.DrawingContext)">
+      <summary>
+            Construct a WpfRenderingContext.
+            </summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.WpfRenderingContext.DrawEllipse(WebSupergoo.WordGlue4.Rendering.Brush,WebSupergoo.WordGlue4.Rendering.Pen,WebSupergoo.WordGlue4.Rect)">
+      <summary>
+            Draw an ellipse using a specific Pen and Brush.
+            </summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.WpfRenderingContext.DrawImage(WebSupergoo.WordGlue4.Rendering.Bitmap,WebSupergoo.WordGlue4.Rect)">
+      <summary>
+            Draw a raster image into a particular rectangle.
+            </summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.WpfRenderingContext.DrawLine(WebSupergoo.WordGlue4.Rendering.Pen,WebSupergoo.WordGlue4.Point,WebSupergoo.WordGlue4.Point)">
+      <summary>
+            Draw a line using a specific Pen.
+            </summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.WpfRenderingContext.DrawPath(WebSupergoo.WordGlue4.Rendering.Brush,WebSupergoo.WordGlue4.Rendering.Pen,WebSupergoo.WordGlue4.Rendering.GraphicsPath)">
+      <summary>
+            Draw a path using a specific Pen and Brush.
+            </summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.WpfRenderingContext.DrawRectangle(WebSupergoo.WordGlue4.Rendering.Brush,WebSupergoo.WordGlue4.Rendering.Pen,WebSupergoo.WordGlue4.Rect)">
+      <summary>
+            Draw a rectangle using a specific Pen and Brush.
+            </summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.WpfRenderingContext.DrawText(WebSupergoo.WordGlue4.Rendering.TextRun,WebSupergoo.WordGlue4.Point)">
+      <summary>
+            Draw text from a TextRun at a specific Point.
+            </summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.WpfRenderingContext.FrameEnd(WebSupergoo.WordGlue4.Layout.Frame)">
+      <summary>Lets you know when a frame has just been rendered.
+            You can use this for linking semantic information with drawing instructions.</summary>
+      <param name="frame">The frame.</param>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.WpfRenderingContext.FrameStart(WebSupergoo.WordGlue4.Layout.Frame)">
+      <summary>Lets you know when a frame is about to be rendered.
+            You can use this for linking semantic information with drawing instructions.</summary>
+      <param name="frame">The frame.</param>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.WpfRenderingContext.PopClip">
+      <summary>
+            Pop the clip state, restoring to the last clip rect.
+            </summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Rendering.WpfRenderingContext.PushClip(WebSupergoo.WordGlue4.Rect)">
+      <summary>
+            Push the clip state then assign a new clip rect.
+            </summary>
+    </member>
+    <member name="T:WebSupergoo.WordGlue4.Utilities.InvalidLicenseException">
+      <summary>
+            An error occurred due to invalid license.
+            </summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Utilities.InvalidLicenseException.#ctor">
+      <summary>
+            Initialize a new instance of the InvalidLicenseException class.
+            </summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Utilities.InvalidLicenseException.#ctor(System.Exception)">
+      <summary>
+            Initialize a new instance of the InvalidLicenseException class.
+            </summary>
+      <param name="inner">The exception that is the cause of
+            the current exception, or a null reference if no
+            inner exception is specified.</param>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Utilities.InvalidLicenseException.#ctor(System.String,System.Exception)">
+      <summary>
+            Initialize a new instance of the InvalidLicenseException class.
+            </summary>
+      <param name="message">The message to be displayed.</param>
+      <param name="inner">The exception that is the cause of
+            the current exception, or a null reference if no
+            inner exception is specified.</param>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Utilities.InvalidLicenseException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>
+            Used for serialization. Derived classes should override this 
+            function to serialize additional members.
+            </summary>
+    </member>
+    <member name="T:WebSupergoo.WordGlue4.Utilities.License">
+      <summary>
+            License information.
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Utilities.License.Description">
+      <summary>
+            Description of the license's details.
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Utilities.License.Expiry">
+      <summary>
+            License expiry date.
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Utilities.License.IsValid">
+      <summary>
+            If the license is valid
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Utilities.License.Licensee">
+      <summary>
+            Licensee name.
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Utilities.License.LicenseType">
+      <summary>
+            License type.
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Utilities.License.OrderRef">
+      <summary>
+            Order reference number.
+            </summary>
+    </member>
+    <member name="T:WebSupergoo.WordGlue4.Utilities.LicenseType">
+      <summary>
+            A license's type.
+            </summary>
+    </member>
+    <member name="F:WebSupergoo.WordGlue4.Utilities.LicenseType.Trial">
+      <summary>
+            Trial license.
+            </summary>
+    </member>
+    <member name="F:WebSupergoo.WordGlue4.Utilities.LicenseType.Standard">
+      <summary>
+            Standard license.
+            </summary>
+    </member>
+    <member name="T:WebSupergoo.WordGlue4.Utilities.Log">
+      <summary>
+            A thread safe class for logging messages.
+            </summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Utilities.Log.#ctor">
+      <summary>
+            Create a new Log.
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Utilities.Log.StringBuilder">
+      <summary>
+            The StringBuilder containing the content of this log.
+            </summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Utilities.Log.ToString">
+      <summary>
+            Get the value of the Log as a string.
+            </summary>
+      <returns>The string value.</returns>
+    </member>
+    <member name="T:WebSupergoo.WordGlue4.Utilities.Settings">
+      <summary>
+            Manages global configurations and license information.
+            </summary>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Utilities.Settings.InstallLicense(System.String,System.Boolean)">
+      <summary>
+            Install a license. After this application the license will 
+            be effective for the current AppDomain.
+            </summary>
+      <param name="license">The license string to be installed.
+            This may be a purchased license or a trial license copied from the WGSettings application on your computer.
+            The latter is useful for trial installation on servers.</param>
+      <param name="server">Whether the installation is on a server without user settings such as Azure.</param>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Utilities.Settings.InstallLicenseOnSystem(System.String)">
+      <summary>
+            Install a license on a system-wide basis. Successfully installed 
+            license will stay in the system and be picked up by WordGlue 
+            automatically in the future.
+            </summary>
+      <param name="license">The license string to be installed.
+            This may be a purchased license or a trial license copied from the WGSettings application on your computer.
+            The latter is useful for trial installation on servers.</param>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Utilities.Settings.License">
+      <summary>
+            The currently installed license.
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Utilities.Settings.LoadTimeout">
+      <summary>Obsolete.</summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Utilities.Settings.OnDrawingTypeError">
+      <summary>Obsolete.</summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Utilities.Settings.OnMultipageError">
+      <summary>Obsolete.</summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Utilities.Settings.OnReflowError">
+      <summary>Obsolete.</summary>
+    </member>
+    <member name="T:WebSupergoo.WordGlue4.Utilities.WeakArray`1">
+      <summary>
+            An array of objects referenced by WeakReferences.
+            This collection is thread safe for reads and writes.
+            </summary>
+      <typeparam name="T">The type of object to be contained.</typeparam>
+    </member>
+    <member name="M:WebSupergoo.WordGlue4.Utilities.WeakArray`1.#ctor">
+      <summary>
+            Create a new WeakArray.
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Utilities.WeakArray`1.AllowOutOfRangeRequests">
+      <summary>
+            Whether to throw an ArgumentOutOfRangeExceptions if the requested index is not in the array.
+            If true then no exception will be thrown and null will be returned.
+            The default value is true.
+            </summary>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Utilities.WeakArray`1.Item(System.Int64)">
+      <summary>
+            Get value by index.
+            This method may throw an ArgumentOutOfRangeException.
+            </summary>
+      <param name="i">Zero based index.</param>
+      <returns>The item in the array.</returns>
+    </member>
+    <member name="P:WebSupergoo.WordGlue4.Utilities.WeakArray`1.Length">
+      <summary>
+            The length of the array.
+            </summary>
+    </member>
+  </members>
+</doc>

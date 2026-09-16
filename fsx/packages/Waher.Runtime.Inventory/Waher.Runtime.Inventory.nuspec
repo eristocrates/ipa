@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>Waher.Runtime.Inventory</id>
+    <version>1.4.6</version>
+    <authors>Peter Waher</authors>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <license type="file">LICENSE.txt</license>
+    <licenseUrl>https://aka.ms/deprecateLicenseUrl</licenseUrl>
+    <icon>Icon_64x64.png</icon>
+    <projectUrl>https://github.com/PeterWaher/IoTGateway/tree/master/Runtime/Waher.Runtime.Inventory</projectUrl>
+    <description>Class library that keeps an inventory of types and interfaces available in your code. It also provides a means to access available types given an interface, and can find the best implementation to process a task or item. It can be used to implement an Inversion of Control Pattern, and helps instantiate interfaces, abstract classes and normal classes, including recursively instantiating constructor arguments. Handles singleton types.</description>
+    <copyright>Copyright © Waher Data AB 2016-2026. All rights reserved.</copyright>
+    <tags>inventory reflection runtime IoC singleton interface</tags>
+    <repository type="GitHub" url="https://github.com/PeterWaher/IoTGateway" commit="a9114813945e946bd5d4aa79cbfb956e49a853d6" />
+    <dependencies>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="Waher.Events" version="1.4.7" exclude="Build,Analyzers" />
+        <dependency id="Waher.Runtime.Collections" version="1.0.3" exclude="Build,Analyzers" />
+        <dependency id="System.Net.Http" version="4.3.4" exclude="Build,Analyzers" />
+        <dependency id="System.Text.RegularExpressions" version="4.3.1" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

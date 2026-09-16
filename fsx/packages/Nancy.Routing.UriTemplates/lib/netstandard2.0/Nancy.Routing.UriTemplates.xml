@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Nancy.Routing.UriTemplates</name>
+    </assembly>
+    <members>
+        <member name="T:Nancy.Routing.UriTemplates.IUriTemplateRouting">
+            <summary>
+            A Nancy module extended with support for URI Template routes
+            </summary>
+            <seealso cref="T:Nancy.INancyModule" />
+        </member>
+        <member name="P:Nancy.Routing.UriTemplates.IUriTemplateRouting.TemplateRoutes">
+            <summary>
+            Gets the URI Template routes.
+            </summary>
+        </member>
+        <member name="T:Nancy.Routing.UriTemplates.UriTemplateRouteResolver">
+            <summary>
+            Uses URI Templates (RFC6570) to resolve route to execute
+            </summary>
+            <seealso cref="T:Nancy.Routing.IRouteResolver" />
+        </member>
+        <member name="M:Nancy.Routing.UriTemplates.UriTemplateRouteResolver.#ctor(Nancy.Routing.DefaultRouteResolver,Nancy.INancyModuleCatalog,Nancy.Routing.INancyModuleBuilder,Nancy.Configuration.INancyEnvironment)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Nancy.Routing.UriTemplates.UriTemplateRouteResolver"/> class.
+            </summary>
+            <param name="inner">The inner.</param>
+            <param name="moduleCatalog">The module catalog.</param>
+            <param name="builder">The builder.</param>
+            <param name="environment">The environment.</param>
+        </member>
+        <member name="M:Nancy.Routing.UriTemplates.UriTemplateRouteResolver.Resolve(Nancy.NancyContext)">
+            <summary>
+            Gets the route, and the corresponding parameter dictionary from the URL
+            </summary>
+            <param name="context">Current context</param>
+            <returns>
+            A <see cref="T:Nancy.Routing.ResolveResult" /> containing the resolved route information.
+            </returns>
+        </member>
+    </members>
+</doc>

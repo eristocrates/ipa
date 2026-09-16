@@ -1,0 +1,164 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Phoenixml.Platform.Editor.Xml</name>
+    </assembly>
+    <members>
+        <member name="T:Phoenixml.Platform.Editor.Xml.Tree.XmlTreeNode">
+            <summary>
+            <see cref="T:Phoenixml.Platform.Abstractions.Editing.ITreeNode"/> adapter for an XDM node. Wraps the XdmNode and exposes its
+            kind-appropriate display label.
+            </summary>
+        </member>
+        <member name="M:Phoenixml.Platform.Editor.Xml.Tree.XmlTreeNode.#ctor(Phoenixml.Platform.Editor.Xml.XmlDocument,PhoenixmlDb.Xdm.Nodes.XdmNode)">
+            <summary>
+            Initializes a new <see cref="T:Phoenixml.Platform.Editor.Xml.Tree.XmlTreeNode"/> for the given XDM node.
+            </summary>
+            <param name="document">The owning XML document.</param>
+            <param name="node">The XDM node to wrap.</param>
+        </member>
+        <member name="P:Phoenixml.Platform.Editor.Xml.Tree.XmlTreeNode.XdmNode">
+            <summary>The wrapped XDM node.</summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Editor.Xml.Tree.XmlTreeNode.Id">
+            <inheritdoc/>
+        </member>
+        <member name="P:Phoenixml.Platform.Editor.Xml.Tree.XmlTreeNode.Label">
+            <inheritdoc/>
+        </member>
+        <member name="P:Phoenixml.Platform.Editor.Xml.Tree.XmlTreeNode.IconKey">
+            <inheritdoc/>
+        </member>
+        <member name="P:Phoenixml.Platform.Editor.Xml.Tree.XmlTreeNode.HasChildren">
+            <inheritdoc/>
+        </member>
+        <member name="T:Phoenixml.Platform.Editor.Xml.Tree.XmlTreeNodeProvider">
+            <summary>
+            <see cref="T:Phoenixml.Platform.Abstractions.Editing.ITreeNodeProvider"/> over an <see cref="T:Phoenixml.Platform.Editor.Xml.XmlDocument"/>'s XDM tree.
+            Roots is a single-element list containing the document node;
+            children of an element include its attributes (rendered first) and its child nodes.
+            </summary>
+        </member>
+        <member name="M:Phoenixml.Platform.Editor.Xml.Tree.XmlTreeNodeProvider.#ctor(Phoenixml.Platform.Editor.Xml.XmlDocument)">
+            <summary>
+            Initializes a new <see cref="T:Phoenixml.Platform.Editor.Xml.Tree.XmlTreeNodeProvider"/> for the given document.
+            </summary>
+            <param name="document">The XML document whose XDM tree this provider exposes.</param>
+        </member>
+        <member name="P:Phoenixml.Platform.Editor.Xml.Tree.XmlTreeNodeProvider.Roots">
+            <inheritdoc/>
+        </member>
+        <member name="M:Phoenixml.Platform.Editor.Xml.Tree.XmlTreeNodeProvider.GetChildren(Phoenixml.Platform.Abstractions.Editing.ITreeNode)">
+            <inheritdoc/>
+        </member>
+        <member name="E:Phoenixml.Platform.Editor.Xml.Tree.XmlTreeNodeProvider.Changed">
+            <inheritdoc/>
+        </member>
+        <member name="T:Phoenixml.Platform.Editor.Xml.Validation.XmlDiagnostic">
+            <summary>
+            <see cref="T:Phoenixml.Platform.Abstractions.Editing.IDiagnostic"/> for an XML validation finding. Location payload is the
+            offending XdmNode (or null when the error is structural and lacks a node anchor).
+            </summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Editor.Xml.Validation.XmlDiagnostic.Severity">
+            <inheritdoc/>
+        </member>
+        <member name="P:Phoenixml.Platform.Editor.Xml.Validation.XmlDiagnostic.Code">
+            <inheritdoc/>
+        </member>
+        <member name="P:Phoenixml.Platform.Editor.Xml.Validation.XmlDiagnostic.Message">
+            <inheritdoc/>
+        </member>
+        <member name="P:Phoenixml.Platform.Editor.Xml.Validation.XmlDiagnostic.Location">
+            <inheritdoc/>
+        </member>
+        <member name="T:Phoenixml.Platform.Editor.Xml.Validation.XmlSchemaValidator">
+            <summary>
+            Validates an <see cref="T:Phoenixml.Platform.Editor.Xml.XmlDocument"/> against an XSD schema set. Surfaces violations
+            as <see cref="T:Phoenixml.Platform.Editor.Xml.Validation.XmlDiagnostic"/> for binding to ProblemsView.
+            </summary>
+        </member>
+        <member name="M:Phoenixml.Platform.Editor.Xml.Validation.XmlSchemaValidator.Validate(Phoenixml.Platform.Editor.Xml.XmlDocument,System.Xml.Schema.XmlSchemaSet)">
+            <summary>
+            Validates <paramref name="document"/> against <paramref name="schemas"/>.
+            </summary>
+            <param name="document">The XML document to validate.</param>
+            <param name="schemas">The compiled XSD schema set to validate against.</param>
+            <returns>A read-only list of diagnostics; empty if the document is valid.</returns>
+        </member>
+        <member name="M:Phoenixml.Platform.Editor.Xml.Validation.XmlSchemaValidator.LoadSchema(System.String)">
+            <summary>Loads an XSD schema from a file path and returns a compiled schema set.</summary>
+            <param name="xsdPath">Absolute path to the XSD file.</param>
+            <returns>A compiled <see cref="T:System.Xml.Schema.XmlSchemaSet"/>.</returns>
+        </member>
+        <member name="T:Phoenixml.Platform.Editor.Xml.XmlDocument">
+            <summary>
+            XML document backed by PhoenixmlDb.Core's XDM model. Constructed by parsing a
+            source string or stream; serializable back to XML via Save.
+            </summary>
+        </member>
+        <member name="M:Phoenixml.Platform.Editor.Xml.XmlDocument.#ctor(Phoenixml.Platform.Abstractions.Documents.DocumentId,System.Uri,System.String,PhoenixmlDb.Xdm.Parsing.ParseResult,System.Collections.Generic.Dictionary{PhoenixmlDb.Core.NamespaceId,System.String})">
+            <summary>
+            Initializes a new <see cref="T:Phoenixml.Platform.Editor.Xml.XmlDocument"/> from a parsed result.
+            </summary>
+            <param name="id">The stable platform document identifier.</param>
+            <param name="source">Source URI, or <see langword="null"/> for new unsaved documents.</param>
+            <param name="displayName">Display name shown in tabs and title bars.</param>
+            <param name="parseResult">The XDM parse result from <c>XmlDocumentParser</c>.</param>
+            <param name="namespaceById">Namespace URI lookup keyed by <see cref="T:PhoenixmlDb.Core.NamespaceId"/>.</param>
+        </member>
+        <member name="P:Phoenixml.Platform.Editor.Xml.XmlDocument.Root">
+            <summary>The XDM document root. Mutating XDM directly is not supported in v0.1; use commands via the document's <c>Undo</c> stack.</summary>
+        </member>
+        <member name="M:Phoenixml.Platform.Editor.Xml.XmlDocument.Resolve(PhoenixmlDb.Core.NodeId)">
+            <summary>Resolves a NodeId to its XdmNode. Returns null if not found.</summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Editor.Xml.XmlDocument.TreeNodes">
+            <summary>Tree-node provider for binding to <c>TreeEditorView</c>.</summary>
+        </member>
+        <member name="M:Phoenixml.Platform.Editor.Xml.XmlDocument.LoadAsync(System.String,System.Threading.CancellationToken)">
+            <summary>Loads an XML document from <paramref name="path"/>.</summary>
+            <param name="path">Absolute file path to the XML document.</param>
+            <param name="ct">Cancellation token.</param>
+            <returns>A loaded <see cref="T:Phoenixml.Platform.Editor.Xml.XmlDocument"/> instance.</returns>
+        </member>
+        <member name="M:Phoenixml.Platform.Editor.Xml.XmlDocument.SaveAsync(System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Phoenixml.Platform.Editor.Xml.XmlDocument.SaveAsAsync(System.Uri,System.Threading.CancellationToken)">
+            <summary>Saves the document to a different location and updates the Source URI.</summary>
+            <param name="target">Target file URI.</param>
+            <param name="ct">Cancellation token.</param>
+        </member>
+        <member name="M:Phoenixml.Platform.Editor.Xml.XmlDocument.SerializeToString">
+            <summary>Serializes the XDM document back to an XML string.</summary>
+        </member>
+        <member name="M:Phoenixml.Platform.Editor.Xml.XmlDocument.ParseXml(System.String,System.String)">
+            <summary>
+            Parses XML text into an XDM tree, returning the result and namespace lookup table.
+            </summary>
+            <param name="xml">The XML text to parse.</param>
+            <param name="documentUri">Optional document URI.</param>
+            <returns>The parse result and a dictionary mapping <see cref="T:PhoenixmlDb.Core.NamespaceId"/> to URI string.</returns>
+        </member>
+        <member name="T:Phoenixml.Platform.Editor.Xml.XmlDocumentProvider">
+            <summary>
+            <see cref="T:Phoenixml.Platform.Abstractions.Documents.IDocumentProvider"/> for .xml, .xsd, .xsl, .xslt, .rng, and .sch files.
+            Constructed by the host's DI; registered with the document service so "Open file"
+            routes XML-shaped documents through this provider.
+            </summary>
+        </member>
+        <member name="P:Phoenixml.Platform.Editor.Xml.XmlDocumentProvider.Kind">
+            <inheritdoc/>
+        </member>
+        <member name="M:Phoenixml.Platform.Editor.Xml.XmlDocumentProvider.CanOpen(System.Uri)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Phoenixml.Platform.Editor.Xml.XmlDocumentProvider.OpenAsync(System.Uri,System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Phoenixml.Platform.Editor.Xml.XmlDocumentProvider.NewAsync(System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+    </members>
+</doc>

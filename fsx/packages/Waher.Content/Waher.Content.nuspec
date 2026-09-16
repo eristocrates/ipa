@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>Waher.Content</id>
+    <version>3.6.4</version>
+    <authors>Peter Waher</authors>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <license type="file">LICENSE.txt</license>
+    <licenseUrl>https://aka.ms/deprecateLicenseUrl</licenseUrl>
+    <icon>Icon_64x64.png</icon>
+    <projectUrl>https://github.com/PeterWaher/IoTGateway/tree/master/Content/Waher.Content</projectUrl>
+    <description>Library that provides basic abstraction for Internet Content Type, and basic encodings and decodings. This includes handling and parsing of common data types, text, JSON, CSV, binary data and multi-part content, forms, etc. Encoding can be easily extended in external libraries.</description>
+    <copyright>Copyright © Waher Data AB 2016-2026. All rights reserved.</copyright>
+    <tags>internet content data type encoding decoding extensible</tags>
+    <repository type="GitHub" url="https://github.com/PeterWaher/IoTGateway" commit="fab0a8554dff42630c038475b66a2c7b7ec69f00" />
+    <dependencies>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="Waher.Runtime.Inventory" version="1.4.6" exclude="Build,Analyzers" />
+        <dependency id="Waher.Runtime.IO" version="1.0.6" exclude="Build,Analyzers" />
+        <dependency id="Waher.Runtime.Temporary" version="1.1.0" exclude="Build,Analyzers" />
+        <dependency id="Waher.Script" version="2.15.2" exclude="Build,Analyzers" />
+        <dependency id="Waher.Security" version="1.4.0" exclude="Build,Analyzers" />
+        <dependency id="System.Net.Http" version="4.3.4" exclude="Build,Analyzers" />
+        <dependency id="System.Text.RegularExpressions" version="4.3.1" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

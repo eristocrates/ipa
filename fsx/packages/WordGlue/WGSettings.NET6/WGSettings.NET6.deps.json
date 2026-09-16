@@ -1,0 +1,52 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "WGSettings.NET6/1.0.0": {
+        "dependencies": {
+          "WordGlue4.NET6": "1.0.0",
+          "WordGlue4.NET6.Reference": "4.1.0.1"
+        },
+        "runtime": {
+          "WGSettings.NET6.dll": {}
+        }
+      },
+      "WordGlue4.NET6/1.0.0": {
+        "runtime": {
+          "WordGlue4.NET6.dll": {
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "WordGlue4.NET6.Reference/4.1.0.1": {
+        "runtime": {
+          "WordGlue4.NET6.dll": {
+            "assemblyVersion": "4.1.0.1",
+            "fileVersion": "4.1.0.1"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "WGSettings.NET6/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "WordGlue4.NET6/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "WordGlue4.NET6.Reference/4.1.0.1": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

@@ -1,0 +1,1403 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SimpleCrawler.Core</name>
+    </assembly>
+    <members>
+        <member name="T:SimpleCrawler.Core.AbstractCrawler`3">
+            <summary>
+            Drives the two-stage crawl pipeline: an unbounded URL channel feeds fetch workers, which hand
+            responses to a bounded parse channel feeding parse workers. Each enqueued URL is tracked by an
+            outstanding-count that is decremented when the URL leaves the system (fetch failure or parse
+            completion); when it reaches zero both channels are completed and the crawl drains. Subclasses
+            supply the backend-specific load/parse/extract hooks and, via the intermediate abstract layers,
+            robots.txt, sitemap discovery, and per-document analysis.
+            </summary>
+        </member>
+        <member name="P:SimpleCrawler.Core.AbstractCrawler`3.HasCollectors">
+            <summary>
+            True when at least one <see cref="T:SimpleCrawler.Core.Collectors.ICrawlCollector"/> is registered. Backends read this to gate the
+            neutral response material (headers, cookie names) that collectors may consume, so a plain crawl with
+            no collectors builds none of it.
+            </summary>
+        </member>
+        <member name="P:SimpleCrawler.Core.AbstractCrawler`3.DomCollectors">
+            <summary>
+            The registered <see cref="T:SimpleCrawler.Core.Collectors.IDomCollector"/>s, in registration order. Backends gate their DOM extraction
+            on this being non-empty and feed each collector its per-page DOM material; the set is fixed for the
+            crawl, so backends can compose their in-page extraction script from it once.
+            </summary>
+        </member>
+        <member name="M:SimpleCrawler.Core.AbstractCrawler`3.VerifyUniqueCollectorKeys(System.Collections.Generic.IReadOnlyList{SimpleCrawler.Core.Collectors.IDomCollector})">
+            <summary>
+            Throws when two registered <see cref="T:SimpleCrawler.Core.Collectors.IDomCollector"/>s share a <see cref="P:SimpleCrawler.Core.Collectors.IDomCollector.Key"/>. On the
+            rendered backends the keys collide in the in-page envelope (last writer wins) and each colliding
+            collector then reads the same slice — silent data corruption, surfaced here once at construction rather
+            than as mysterious results mid-crawl.
+            </summary>
+        </member>
+        <member name="M:SimpleCrawler.Core.AbstractCrawler`3.BuildWorkerTasks(System.Threading.CancellationToken)">
+            <summary>
+            Builds the crawl's worker tasks: one background-discovery task that seeds the frontier, the single
+            dispatcher that feeds host-ready URLs to the fetch workers, plus the fetch and parse worker pools
+            sized by the effective concurrency options.
+            </summary>
+        </member>
+        <member name="M:SimpleCrawler.Core.AbstractCrawler`3.RunDispatcher(System.Threading.CancellationToken)">
+            <summary>
+            Pulls host-ready URLs from the frontier one at a time and hands them to the fetch workers through the
+            bounded channel, enforcing per-host spacing here so no fetch worker ever parks on a not-ready host.
+            Completes the fetch channel when the frontier drains so the workers can exit.
+            </summary>
+        </member>
+        <member name="M:SimpleCrawler.Core.AbstractCrawler`3.RunDiscovery(System.Threading.CancellationToken)">
+            <summary>
+            Runs background sitemap discovery, then balances the outstanding-count seeded for it in Start so
+            the crawl can complete once discovery and all enqueued URLs have drained.
+            </summary>
+        </member>
+        <member name="M:SimpleCrawler.Core.AbstractCrawler`3.StartAutosave(System.Threading.CancellationToken)">
+            <summary>
+            Starts the checkpoint autosave loop as a background sidecar, or returns an idle one when
+            checkpointing is disabled.
+            </summary>
+        </member>
+        <member name="M:SimpleCrawler.Core.AbstractCrawler`3.StartProgress(System.Threading.CancellationToken)">
+            <summary>
+            Starts the progress reporter as a background sidecar, or returns an idle one when progress
+            reporting is disabled.
+            </summary>
+        </member>
+        <member name="M:SimpleCrawler.Core.AbstractCrawler`3.InitializeCrawl(System.Collections.Generic.IReadOnlyList{System.String},System.Threading.CancellationToken)">
+            <summary>
+            Fully resets per-crawl state so a single crawler instance can be reused across Start calls.
+            </summary>
+        </member>
+        <member name="M:SimpleCrawler.Core.AbstractCrawler`3.EnqueuePending">
+            <summary>
+            Re-queues the frontier left by a restored checkpoint: every still-pending URL at its stored depth.
+            A URL no longer allowed (e.g. by changed robots rules) is dropped from the frontier map.
+            </summary>
+        </member>
+        <member name="M:SimpleCrawler.Core.AbstractCrawler`3.CreateFetchChannel">
+            <summary>
+            Bounded hand-off from the single dispatcher to the fetch workers. Bounding it at the fetch width lets
+            the dispatcher stop scheduling once workers are saturated, so its host-readiness decisions stay fresh
+            rather than being made against a queue dumped all at once.
+            </summary>
+        </member>
+        <member name="M:SimpleCrawler.Core.AbstractCrawler`3.CompleteUrl">
+            <summary>
+            A URL leaves the system when its fetch fails or its parse completes; when none remain in flight,
+            both stages are drained and safe to complete (parse workers only block on read; only fetch workers
+            block on the bounded parse-channel write, which a non-empty system always drains).
+            </summary>
+        </member>
+        <member name="M:SimpleCrawler.Core.AbstractCrawler`3.Abort(System.String)">
+            <summary>
+            Soft-abort: stop scheduling new fetches (completing the frontier makes Enqueue a no-op and drains the
+            still-queued URLs through the fetch workers, which skip them) while letting in-flight parses finish,
+            so Start returns partial results.
+            </summary>
+        </member>
+        <member name="M:SimpleCrawler.Core.AbstractCrawler`3.MarkProcessed(System.String)">
+            <summary>
+            Records a URL as fully processed (parse done, or a terminal fetch failure) and bumps the MaxPages
+            counter. Distinct from CompleteUrl, which balances the outstanding-count tracking the URL through
+            the pipeline; both fire together as a URL exits.
+            </summary>
+        </member>
+        <member name="M:SimpleCrawler.Core.AbstractCrawler`3.FetchOneAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Fetches a single dequeued URL (already spaced by the dispatcher): loads the response and either hands
+            it to the parse channel or finalizes a failure. Skipped URLs (MaxPages reached, or aborted) still
+            balance their outstanding-count via CompleteUrl so the crawl can drain.
+            </summary>
+        </member>
+        <member name="M:SimpleCrawler.Core.AbstractCrawler`3.DiscoverOutgoing(System.Uri,System.Collections.Generic.IReadOnlyList{System.String},System.String,System.Int32)">
+            <summary>
+            Resolves and enqueues the outgoing links of a parsed page one level deeper than the page itself,
+            returning how many were newly queued.
+            </summary>
+        </member>
+        <member name="M:SimpleCrawler.Core.AbstractCrawler`3.ReportResponse(System.String,SimpleCrawler.Core.Models.ResponseSignal)">
+            <summary>
+            Called by fetch backends once the HTTP response is known, to enrich the per-URL report with the
+            facts only the backend can see (status, size, type) and to hand the normalized response to every
+            registered <see cref="T:SimpleCrawler.Core.Collectors.ICrawlCollector"/>. Safe to call for any URL currently being fetched.
+            </summary>
+        </member>
+        <member name="M:SimpleCrawler.Core.AbstractCrawler`3.InvokeDocumentCollectors(SimpleCrawler.Core.Models.UrlReport,SimpleCrawler.Core.Collectors.IDomDispatch,System.String)">
+            <summary>
+            Feeds the parsed page's DOM material to every registered <see cref="T:SimpleCrawler.Core.Collectors.IDomCollector"/> via the backend's
+            <paramref name="dom"/> dispatch (<c>null</c> when no DOM collectors are registered). Each collector is
+            isolated: a throw is logged and swallowed so one faulty collector neither aborts the crawl nor skips
+            the others (matching the documented collector contract).
+            </summary>
+        </member>
+        <member name="M:SimpleCrawler.Core.AbstractCrawler`3.FinalizeFetchFailure(SimpleCrawler.Core.Models.UrlReport)">
+            <summary>
+            Runs only on the fetch-failure path (no response handed to parsing), so a still-default Success
+            outcome means no catch classified it: derive the failure from whatever status the backend reported.
+            </summary>
+        </member>
+        <member name="M:SimpleCrawler.Core.AbstractCrawler`3.Enqueue(System.String,System.Int32)">
+            <summary>
+            Records a newly discovered URL at the given link depth and schedules it, unless it is over the depth
+            limit or already known. A URL over the limit is not marked discovered, so a later shorter path can
+            still reach it.
+            </summary>
+        </member>
+        <member name="M:SimpleCrawler.Core.AbstractCrawler`3.EnqueueKnownUrl(System.String)">
+            <summary>
+            Schedules a URL already recorded in Discovered (e.g. restored from a checkpoint), bypassing the
+            discovered-set dedupe that Enqueue performs.
+            </summary>
+        </member>
+        <member name="M:SimpleCrawler.Core.AbstractHeadlessCrawler`2.ToResponseSignal(System.Int32,System.Collections.Generic.IReadOnlyDictionary{System.String,System.String})">
+            <summary>
+            Normalizes a headless navigation result into a <see cref="T:SimpleCrawler.Core.Models.ResponseSignal"/>. The headless
+            backends surface no content length/type, so only status and (when captured) the header-derived
+            signals are populated. Headers arrive already lower-cased and newline-joined per repeated name;
+            cookie names are split back out of <c>Set-Cookie</c>.
+            </summary>
+        </member>
+        <member name="M:SimpleCrawler.Core.AbstractStaticHtmlCrawler`2.ExtractStatic(`0)">
+            <summary>
+            The <see cref="P:SimpleCrawler.Core.Models.PageExtract.Dom"/> is a neutral handle for registered DOM collectors to read; it should
+            be built (non-null) only when <see cref="P:SimpleCrawler.Core.AbstractCrawler`3.DomCollectors"/>
+            is non-empty, so crawls with no DOM collector pay no extra per-page cost.
+            </summary>
+        </member>
+        <member name="T:SimpleCrawler.Core.Checkpoints.CrawlState">
+             <summary>
+             The full resumable state of a crawl, owned as a single object by the crawler and handed to the
+             checkpoint store whole. The sets are the live, thread-safe collections the crawl mutates as it runs;
+             a checkpoint is just a serialized snapshot of this object.
+            
+             The dedup set <see cref="P:SimpleCrawler.Core.Checkpoints.CrawlState.Discovered"/> is kept in memory only: a large crawl's corpus need not be
+             written to every checkpoint, so it is left unserialized and rebuilt on load from Processed plus the
+             still-pending Frontier. What is serialized is only the pending frontier (with per-URL depth), which
+             empties out as the crawl completes.
+             </summary>
+        </member>
+        <member name="P:SimpleCrawler.Core.Checkpoints.CrawlState.Discovered">
+            <summary>
+            Every URL ever enqueued; prevents re-discovery. In-memory only - rebuilt on load from
+            <see cref="P:SimpleCrawler.Core.Checkpoints.CrawlState.Processed"/> and <see cref="P:SimpleCrawler.Core.Checkpoints.CrawlState.Frontier"/> rather than serialized, so the full corpus is
+            never written to a checkpoint.
+            </summary>
+        </member>
+        <member name="P:SimpleCrawler.Core.Checkpoints.CrawlState.Frontier">
+            <summary>
+            The pending frontier: every URL that has entered the frontier but not yet been processed, mapped to
+            its link depth. Entries are pruned as URLs are processed, so a completed crawl serializes an empty
+            map. This is the only place per-URL depth is persisted.
+            </summary>
+        </member>
+        <member name="P:SimpleCrawler.Core.Checkpoints.CrawlState.Processed">
+            <summary>
+            URLs whose fetch+parse has completed or permanently failed. Combined with <see cref="P:SimpleCrawler.Core.Checkpoints.CrawlState.Frontier"/> it
+            reconstitutes <see cref="P:SimpleCrawler.Core.Checkpoints.CrawlState.Discovered"/> on load.
+            </summary>
+        </member>
+        <member name="P:SimpleCrawler.Core.Checkpoints.CrawlState.Visited">
+            <summary>
+            Indexable URLs that make up the crawl result.
+            </summary>
+        </member>
+        <member name="P:SimpleCrawler.Core.Checkpoints.CrawlState.Reports">
+            <summary>
+            Per-URL report for every fetched page, keyed by requested URL. Checkpointed alongside the sets
+            so a resumed crawl's report stays consistent with Visited rather than losing pre-checkpoint pages.
+            </summary>
+        </member>
+        <member name="M:SimpleCrawler.Core.Checkpoints.CrawlState.RebuildAfterLoad">
+            <summary>
+            Populates the in-memory <see cref="P:SimpleCrawler.Core.Checkpoints.CrawlState.Discovered"/> dedup set from the serialized state after a
+            checkpoint load: the union of already-processed URLs and the still-pending frontier.
+            </summary>
+        </member>
+        <member name="P:SimpleCrawler.Core.Checkpoints.ICheckpointStore.Target">
+            <summary>
+            Human-readable description of where the checkpoint is persisted, for log output.
+            </summary>
+        </member>
+        <member name="T:SimpleCrawler.Core.Collections.ConcurrentHashSetJsonConverter">
+            <summary>
+            Serializes a ConcurrentHashSet&lt;string&gt; as a plain JSON array. Written by hand (no reflection) so it
+            stays trim/AOT-safe and usable from a source-generated JsonSerializerContext.
+            </summary>
+        </member>
+        <member name="M:SimpleCrawler.Core.Collectors.CollectorServiceCollectionExtensions.AddCrawlCollectors(Microsoft.Extensions.DependencyInjection.IServiceCollection,SimpleCrawler.Core.CrawlerOptions)">
+            <summary>
+            Registers the built-in collectors implied by <paramref name="options"/> — currently the
+            <see cref="T:SimpleCrawler.Core.Collectors.PageSignalsCollector"/> when <see cref="P:SimpleCrawler.Core.CrawlerOptions.CapturePageSignals"/> is on.
+            Callers can register additional <see cref="T:SimpleCrawler.Core.Collectors.ICrawlCollector"/>s before or after; every backend
+            resolves the full set. Idempotent per implementation type, so wiring several backends into one
+            container (as the tests do) never double-registers a built-in collector.
+            </summary>
+        </member>
+        <member name="T:SimpleCrawler.Core.Collectors.DomScriptComposer">
+            <summary>
+            Bridges registered <see cref="T:SimpleCrawler.Core.Collectors.IDomCollector"/> fragments to the rendered backends' single in-page
+            evaluation. <see cref="M:SimpleCrawler.Core.Collectors.DomScriptComposer.CollectorBlock(System.Collections.Generic.IReadOnlyList{SimpleCrawler.Core.Collectors.IRenderedDomCollector})"/> emits the JavaScript that
+            runs each collector's fragment and keys its result under
+            <see cref="P:SimpleCrawler.Core.Collectors.IDomCollector.Key"/>; <see cref="M:SimpleCrawler.Core.Collectors.DomScriptComposer.ReadCollectors(System.Text.Json.JsonElement)"/> reads those keyed
+            results back out of the returned envelope. Each fragment is invoked in its own scope, its result serialized
+            independently, and the whole wrapped so a fragment that throws or returns an unserializable value yields
+            <c>null</c> for its slice without disturbing the crawl-essential fields or the other collectors.
+            </summary>
+        </member>
+        <member name="M:SimpleCrawler.Core.Collectors.DomScriptComposer.CollectorBlock(System.Collections.Generic.IReadOnlyList{SimpleCrawler.Core.Collectors.IRenderedDomCollector})">
+            <summary>
+            JavaScript statements that populate <c>out.collectors</c> — an object keyed by collector — assuming an
+            <c>out</c> variable already exists in the surrounding scope. Each slice is the fragment's result run
+            through <c>JSON.stringify</c>, so <see cref="M:SimpleCrawler.Core.Collectors.DomScriptComposer.ReadCollectors(System.Text.Json.JsonElement)"/> reparses it; wrapping each in its own
+            <c>try</c> keeps one misbehaving fragment from poisoning the envelope.
+            </summary>
+        </member>
+        <member name="M:SimpleCrawler.Core.Collectors.DomScriptComposer.CollectorBlock(System.Collections.Generic.IReadOnlyList{System.ValueTuple{System.String,System.String}})">
+            <summary>
+            <see cref="M:SimpleCrawler.Core.Collectors.DomScriptComposer.CollectorBlock(System.Collections.Generic.IReadOnlyList{SimpleCrawler.Core.Collectors.IRenderedDomCollector})"/> over bare key/script pairs, for a
+            caller composing a block without a crawl behind it. Composition only ever needed the key and the
+            fragment; requiring a whole <see cref="T:SimpleCrawler.Core.Collectors.IRenderedDomCollector"/> additionally required an
+            <see cref="M:SimpleCrawler.Core.Collectors.ICrawlCollector.OnResponse(SimpleCrawler.Core.Models.UrlReport,SimpleCrawler.Core.Models.ResponseSignal)"/> and an <see cref="M:SimpleCrawler.Core.Collectors.IRenderedDomCollector.OnRendered(SimpleCrawler.Core.Models.UrlReport,System.Text.Json.JsonElement,System.String)"/> that a
+            caller driving <c>JsRenderer.CollectAsync</c> has no crawl to implement against, and a
+            <see cref="T:SimpleCrawler.Core.Models.UrlReport"/> to name in order to no-op them.
+            </summary>
+        </member>
+        <member name="M:SimpleCrawler.Core.Collectors.DomScriptComposer.ReadCollectors(System.Text.Json.JsonElement)">
+            <summary>
+            Reads the <c>collectors</c> object from a rendered extraction envelope into per-collector slices. Each
+            value is itself a JSON string (the fragment's independently-serialized result) or <c>null</c>; this
+            reparses each into a standalone <see cref="T:System.Text.Json.JsonElement"/>. Returns an empty map when absent.
+            </summary>
+        </member>
+        <member name="T:SimpleCrawler.Core.Collectors.ICrawlCollector">
+            <summary>
+            The extension seam for per-page data capture. An implementation observes every fetched page's HTTP
+            response and records whatever it derives — onto the page's <see cref="T:SimpleCrawler.Core.Models.UrlReport"/>, or into any external
+            sink it owns. Register one via DI (see <see cref="M:SimpleCrawler.Core.Collectors.CollectorServiceCollectionExtensions.AddCrawlCollectors(Microsoft.Extensions.DependencyInjection.IServiceCollection,SimpleCrawler.Core.CrawlerOptions)"/>)
+            and it runs for every backend — static, JS, or headless — with no change to the core pipeline or the
+            backends. To also derive data from the page's DOM, implement <see cref="T:SimpleCrawler.Core.Collectors.IDomCollector"/>, which owns that
+            extraction in the extension rather than in any backend. The built-in <see cref="T:SimpleCrawler.Core.Collectors.PageSignalsCollector"/> is
+            one such implementation.
+            </summary>
+        </member>
+        <member name="M:SimpleCrawler.Core.Collectors.ICrawlCollector.OnResponse(SimpleCrawler.Core.Models.UrlReport,SimpleCrawler.Core.Models.ResponseSignal)">
+            <summary>
+            Fetch stage: called once the normalized HTTP <paramref name="response"/> is known, before the
+            body is parsed. This is the only stage with access to response headers and cookie names.
+            </summary>
+        </member>
+        <member name="T:SimpleCrawler.Core.Collectors.IDomCollector">
+            <summary>
+            An <see cref="T:SimpleCrawler.Core.Collectors.ICrawlCollector"/> that also derives data from the page's DOM. Because there is no shared
+            C# DOM across backends, this is an abstraction layer for <see cref="T:SimpleCrawler.Core.Collectors.IStaticDomCollector"/> and
+            <see cref="T:SimpleCrawler.Core.Collectors.IRenderedDomCollector"/>
+            </summary>
+        </member>
+        <member name="P:SimpleCrawler.Core.Collectors.IDomCollector.Key">
+            <summary>
+            A stable identifier for this collector, unique among registered collectors. It keys the collector's
+            slice of the rendered backends' extraction envelope, so results route back to the right collector
+            regardless of registration order.
+            </summary>
+        </member>
+        <member name="T:SimpleCrawler.Core.Collectors.IDomDispatch">
+            <summary>
+            The DOM material a backend produced for one page, in a form that can feed any registered
+            <see cref="T:SimpleCrawler.Core.Collectors.IDomCollector"/> without the core pipeline knowing which backend family produced it. A static
+            backend supplies a dispatch backed by an <see cref="T:SimpleCrawler.Core.Collectors.IPageDom"/>; a rendered backend one backed by the
+            per-collector JSON slices of its in-page extraction.
+            </summary>
+        </member>
+        <member name="M:SimpleCrawler.Core.Collectors.IDomDispatch.Dispatch(SimpleCrawler.Core.Models.UrlReport,SimpleCrawler.Core.Collectors.IDomCollector,System.String)">
+            <summary>Feeds this page's DOM material for <paramref name="collector"/> to that collector.</summary>
+        </member>
+        <member name="T:SimpleCrawler.Core.Collectors.IDomElement">
+            <summary>
+            A backend-neutral, read-only view of one parsed DOM element, exposing only what a collector needs to
+            inspect it — its attributes and text — over whichever native node the static backend produced. It lets
+            an <see cref="T:SimpleCrawler.Core.Collectors.IDomCollector"/> extract data without depending on a specific HTML library.
+            </summary>
+        </member>
+        <member name="M:SimpleCrawler.Core.Collectors.IDomElement.GetAttribute(System.String)">
+            <summary>The value of the <paramref name="name"/> attribute, or <c>null</c> when it is absent.</summary>
+        </member>
+        <member name="P:SimpleCrawler.Core.Collectors.IDomElement.Text">
+            <summary>The element's text content — its descendant text concatenated.</summary>
+        </member>
+        <member name="T:SimpleCrawler.Core.Collectors.IPageDom">
+            <summary>
+            A backend-neutral, read-only handle to a parsed static document, handed to an <see cref="T:SimpleCrawler.Core.Collectors.IDomCollector"/>
+            so it can pull out whatever it needs without the backend knowing what that is. The static backends
+            (AngleSharp, HtmlAgilityPack) implement it over their own parse tree; the rendered backends have no C#
+            tree and instead run the collector's <see cref="P:SimpleCrawler.Core.Collectors.IRenderedDomCollector.DomScript"/> in-page.
+            </summary>
+        </member>
+        <member name="M:SimpleCrawler.Core.Collectors.IPageDom.QueryAll(System.String)">
+            <summary>
+            Every element whose lower-cased tag name equals <paramref name="localName"/>, in document order.
+            </summary>
+        </member>
+        <member name="P:SimpleCrawler.Core.Collectors.IRenderedDomCollector.DomScript">
+            <summary>
+            A JavaScript expression evaluating to a zero-argument function that returns a JSON-serializable value,
+            e.g. <c>() =&gt; ({ ... })</c>. It runs in-page on the rendered backends — a real browser under
+            Playwright/Puppeteer, or the in-process JS DOM — so it must use only standard DOM read APIs. It runs in
+            its own function scope and is isolated: a throw, or a result that will not serialize, yields no data for
+            this collector without disturbing the crawl or the other collectors.
+            </summary>
+        </member>
+        <member name="M:SimpleCrawler.Core.Collectors.IRenderedDomCollector.OnRendered(SimpleCrawler.Core.Models.UrlReport,System.Text.Json.JsonElement,System.String)">
+            <summary>
+            Rendered-backend path: consume the JSON <paramref name="result"/> that <see cref="P:SimpleCrawler.Core.Collectors.IRenderedDomCollector.DomScript"/> produced
+            onto <paramref name="report"/>. Not called when the fragment produced no result.
+            </summary>
+        </member>
+        <member name="T:SimpleCrawler.Core.Collectors.IStaticDomCollector">
+            <summary>
+            An <see cref="T:SimpleCrawler.Core.Collectors.IDomCollector"/> that also derives data from the page's DOM that acts on neutral '
+            <see cref="T:SimpleCrawler.Core.Collectors.IPageDom"/> the static backends provide (<see cref="M:SimpleCrawler.Core.Collectors.IStaticDomCollector.OnDocument(SimpleCrawler.Core.Models.UrlReport,SimpleCrawler.Core.Collectors.IPageDom,System.String)"/>).
+            </summary>
+        </member>
+        <member name="M:SimpleCrawler.Core.Collectors.IStaticDomCollector.OnDocument(SimpleCrawler.Core.Models.UrlReport,SimpleCrawler.Core.Collectors.IPageDom,System.String)">
+            <summary>
+            Static-backend path: derive data from the parsed <paramref name="dom"/> onto <paramref name="report"/>,
+            for the page whose resolved canonical URL is <paramref name="resolvedUrl"/>.
+            </summary>
+        </member>
+        <member name="T:SimpleCrawler.Core.Collectors.PageSignalsCollector">
+            <summary>
+            The built-in collector behind <see cref="P:SimpleCrawler.Core.CrawlerOptions.CapturePageSignals" />: merges the HTTP half (headers,
+            cookie names) from <see cref="M:SimpleCrawler.Core.Collectors.PageSignalsCollector.OnResponse(SimpleCrawler.Core.Models.UrlReport,SimpleCrawler.Core.Models.ResponseSignal)"/> and the DOM half (script sources, meta tags, JSON-LD) onto a single
+            <see cref="P:SimpleCrawler.Core.Models.UrlReport.Signals"/> instance. It is the sole owner of what a "signal" is: the DOM half is expressed
+            once as an <see cref="T:SimpleCrawler.Core.Collectors.IPageDom"/> walk for the static backends (<see cref="M:SimpleCrawler.Core.Collectors.PageSignalsCollector.OnDocument(SimpleCrawler.Core.Models.UrlReport,SimpleCrawler.Core.Collectors.IPageDom,System.String)"/>) and once as a JS
+            fragment (<see cref="P:SimpleCrawler.Core.Collectors.PageSignalsCollector.DomScript"/>) the rendered backends run in-page (<see cref="M:SimpleCrawler.Core.Collectors.PageSignalsCollector.OnRendered(SimpleCrawler.Core.Models.UrlReport,System.Text.Json.JsonElement,System.String)"/>) — no backend
+            carries any signal-specific code.
+            </summary>
+        </member>
+        <member name="P:SimpleCrawler.Core.Collectors.PageSignalsCollector.Key">
+            <summary>The stable key under which this collector's rendered-extraction slice is returned.</summary>
+        </member>
+        <member name="P:SimpleCrawler.Core.Collectors.PageSignalsCollector.DomScript">
+            <summary>
+            The in-page fragment mirroring <see cref="M:SimpleCrawler.Core.Collectors.PageSignalsCollector.OnDocument(SimpleCrawler.Core.Models.UrlReport,SimpleCrawler.Core.Collectors.IPageDom,System.String)"/>: it collects script sources, meta tags, and
+            JSON-LD blocks into the same shape <see cref="M:SimpleCrawler.Core.Helpers.PageSignalsParser.Read(System.Text.Json.JsonElement)"/> reads back. Index-based loops
+            (not <c>for…of</c>) keep it runnable on the in-process JS DOM as well as a real browser.
+            </summary>
+        </member>
+        <member name="T:SimpleCrawler.Core.Collectors.RenderedDomDispatch">
+            <summary>
+            <see cref="T:SimpleCrawler.Core.Collectors.IDomDispatch"/> for the rendered backends: each collector's <see cref="P:SimpleCrawler.Core.Collectors.IRenderedDomCollector.DomScript"/>
+            ran in-page and its JSON result was keyed by <see cref="P:SimpleCrawler.Core.Collectors.IDomCollector.Key"/>. Dispatch hands each collector
+            its own slice; a collector whose fragment produced nothing — it threw, or returned an unserializable value —
+            has no slice and is skipped.
+            </summary>
+        </member>
+        <member name="T:SimpleCrawler.Core.Collectors.StaticDomDispatch">
+            <summary>
+            <see cref="T:SimpleCrawler.Core.Collectors.IDomDispatch"/> for the static backends: every collector reads the same parsed
+            <see cref="T:SimpleCrawler.Core.Collectors.IPageDom"/> directly.
+            </summary>
+        </member>
+        <member name="P:SimpleCrawler.Core.CrawlerOptions.MaxDepth">
+            <summary>
+            Maximum link depth from the entry points, where the entries are depth 0 and each followed link is one
+            deeper. A value of 0 imposes no limit.
+            </summary>
+        </member>
+        <member name="P:SimpleCrawler.Core.CrawlerOptions.NormalizeUrls">
+            <summary>
+            Canonicalizes discovered URLs before they are deduplicated and queued: drops the fragment, lowercases
+            scheme and host, removes the default port, and collapses a trailing slash. The query string is left
+            untouched.
+            </summary>
+        </member>
+        <member name="P:SimpleCrawler.Core.CrawlerOptions.IncludePatterns">
+            <summary>
+            robots.txt-style path patterns (<c>*</c> wildcard, <c>$</c> end-anchor) that a discovered link must
+            match to be crawled. When empty, every link is allowed unless excluded.
+            </summary>
+        </member>
+        <member name="P:SimpleCrawler.Core.CrawlerOptions.ExcludePatterns">
+            <summary>
+            robots.txt-style path patterns (<c>*</c> wildcard, <c>$</c> end-anchor) that exclude a discovered link
+            from the crawl. An exclude out-matches an include by the same longest-match rule robots.txt uses.
+            </summary>
+        </member>
+        <member name="P:SimpleCrawler.Core.CrawlerOptions.MaxResponseBodySize">
+            <summary>
+            Cap on the decompressed response body size, in bytes. A value of 0 or less disables the cap.
+            </summary>
+        </member>
+        <member name="P:SimpleCrawler.Core.CrawlerOptions.CapturePageSignals">
+            <summary>
+            Opt-in: capture per-page HTTP/DOM signals (response headers, cookie names, script sources, meta
+            tags, JSON-LD blocks) into <see cref="P:SimpleCrawler.Core.Models.UrlReport.Signals"/>. When set, <c>AddCrawlerCollectors</c>
+            registers the built-in <c>PageSignalsCollector</c>; the pipeline itself knows nothing about signals,
+            so this is just the switch that turns on one built-in <c>ICrawlCollector</c>. Off by default because
+            <c>UrlReport</c> is checkpointed and the whole checkpoint is rewritten on every autosave, so capturing
+            for every page would bloat every autosave with the full crawl history rather than just the in-flight URLs.
+            </summary>
+        </member>
+        <member name="M:SimpleCrawler.Core.Extensions.HttpContentExtensions.ReadCappedByteArrayAsync(System.Net.Http.HttpContent,System.Int64,System.Threading.CancellationToken)">
+            <summary>
+            Reads the decompressed response body but aborts once maxBytes is exceeded, returning null.
+            Content-Length can't be trusted after decompression, so the limit is enforced while streaming.
+            </summary>
+        </member>
+        <member name="T:SimpleCrawler.Core.Filtering.UrlFilter">
+             <summary>
+             Decides whether a discovered URL path is in scope, using the same robots.txt matching primitives
+             (<see cref="T:SimpleCrawler.Core.Robots.UrlPathPattern"/> globs and longest-match, allow-wins resolution) rather than robots
+             semantics themselves: no <c>/robots.txt</c> exemption and no empty-set default.
+            
+             Excludes become disallow rules. Includes become allow rules plus an implicit disallow of everything,
+             which loses to any matching include under longest-match, so a URL matching no include is denied.
+             </summary>
+        </member>
+        <member name="M:SimpleCrawler.Core.Filtering.UrlFilter.Create(System.Collections.Generic.IReadOnlyList{System.String},System.Collections.Generic.IReadOnlyList{System.String})">
+            <summary>
+            Builds a filter from include/exclude path patterns, or returns null when neither is supplied so the
+            crawler can skip filtering entirely.
+            </summary>
+        </member>
+        <member name="M:SimpleCrawler.Core.Filtering.UrlFilter.IsAllowed(System.String)">
+            <summary>
+            True when the path-and-query is allowed by the configured includes/excludes. The most specific rule
+            wins; an allow and a disallow of equal specificity resolve to allow.
+            </summary>
+        </member>
+        <member name="F:SimpleCrawler.Core.HeadlessCrawlerOptions._defaultHeadlessMaxRetries">
+            <summary>
+            A headless navigation is far costlier than an HTTP GET, so retrying a persistently-dead URL
+            several times hurts more than it helps; headless defaults to a smaller budget than static.
+            </summary>
+        </member>
+        <member name="P:SimpleCrawler.Core.HeadlessCrawlerOptions.NetworkIdleGraceMs">
+            <summary>
+            Upper bound, in milliseconds, on the best-effort wait for network idle after a page loads.
+            A page that never goes idle (constant analytics/tracking traffic) is extracted once this
+            elapses rather than failing, so it caps per-page latency rather than guaranteeing idle.
+            </summary>
+        </member>
+        <member name="T:SimpleCrawler.Core.Helpers.HttpSignalCollector">
+            <summary>
+            Builds the backend-neutral <see cref="T:SimpleCrawler.Core.Models.ResponseSignal"/> (status, size, type, and — when captured —
+            headers and cookie names) from a raw <see cref="T:System.Net.Http.HttpResponseMessage"/>. Shared by every backend
+            that fetches via <see cref="T:System.Net.Http.HttpClient"/>: the static crawlers and the JS renderer's page-shell fetch.
+            </summary>
+        </member>
+        <member name="M:SimpleCrawler.Core.Helpers.HttpSignalCollector.ToResponseSignal(System.Net.Http.HttpResponseMessage,System.Boolean)">
+            <summary>
+            Normalizes <paramref name="response"/> into a <see cref="T:SimpleCrawler.Core.Models.ResponseSignal"/>. Headers and cookie
+            names are collected only when <paramref name="captureSignals"/> is set, so a plain crawl pays for
+            nothing beyond status/size/type.
+            </summary>
+        </member>
+        <member name="M:SimpleCrawler.Core.Helpers.HttpSignalCollector.CollectHeaders(System.Net.Http.HttpResponseMessage)">
+            <summary>Response headers, lower-cased keys to single joined values.</summary>
+        </member>
+        <member name="M:SimpleCrawler.Core.Helpers.HttpSignalCollector.CollectCookieNames(System.Net.Http.HttpResponseMessage)">
+            <summary>Names of cookies set via <c>Set-Cookie</c> (values are intentionally dropped).</summary>
+        </member>
+        <member name="T:SimpleCrawler.Core.Helpers.JsonLiteral">
+            <summary>
+            Reflection-free JSON encoding for values embedded into generated JS source. JsonSerializer.Serialize&lt;T&gt;
+            resolves a contract for T through reflection (a trimming / NativeAOT hazard); Utf8JsonWriter's primitive
+            writes carry no reflection and produce the same output. The default encoder escapes non-ASCII, so the
+            results are valid JS string/array literals as well as valid JSON.
+            </summary>
+        </member>
+        <member name="T:SimpleCrawler.Core.Helpers.PageSignalsParser">
+            <summary>
+            Reads the DOM half of a <see cref="T:SimpleCrawler.Core.Models.PageSignals"/> (script sources, meta tags, JSON-LD blocks) out of the
+            JSON that <see cref="P:SimpleCrawler.Core.Collectors.PageSignalsCollector.DomScript"/> produces in-page. Kept next to that
+            collector's static-DOM walk so the two forms of the same extraction stay shaped identically.
+            </summary>
+        </member>
+        <member name="M:SimpleCrawler.Core.Helpers.PageSignalsParser.Read(System.Text.Json.JsonElement)">
+            <summary>Reads script sources, meta tags, and JSON-LD blocks from <paramref name="element"/>.</summary>
+        </member>
+        <member name="T:SimpleCrawler.Core.Helpers.RenderedPageExtractor">
+             <summary>
+             Builds the one in-browser evaluation a headless backend runs per page: it returns every anchor href, the
+             canonical link, and the meta-robots directive, collapsing one protocol round-trip per element into one per
+             page. When DOM collectors are registered, <see cref="M:SimpleCrawler.Core.Helpers.RenderedPageExtractor.Compose(System.Collections.Generic.IReadOnlyList{SimpleCrawler.Core.Collectors.IRenderedDomCollector})"/> also injects their fragments (see
+             <see cref="T:SimpleCrawler.Core.Collectors.DomScriptComposer"/>) so their data rides the same single pass.
+            
+             The result is returned as a <c>JSON.stringify</c> string, not a live object: Playwright's evaluate
+             protocol injects reference-tracking <c>$id</c> keys into every object it serializes, which would otherwise
+             leak into a generically-enumerated collector result. Serializing in-page sidesteps that (and matches how
+             the in-process JS backends already return their extract).
+             </summary>
+        </member>
+        <member name="M:SimpleCrawler.Core.Helpers.RenderedPageExtractor.Compose(System.Collections.Generic.IReadOnlyList{SimpleCrawler.Core.Collectors.IRenderedDomCollector})">
+            <summary>
+            The core extractor script, composed once from the registered <paramref name="collectors"/>. Their
+            fragments populate <c>out.collectors</c> alongside the crawl-essential links/canonical/robots, each
+            isolated so a faulty fragment can never break the core extraction.
+            </summary>
+        </member>
+        <member name="M:SimpleCrawler.Core.Helpers.UriHelper.TryCreateHttpAbsolute(System.String,System.Uri@)">
+            <summary>
+            On Unix, Uri.TryCreate("/path", Absolute) succeeds as a file:// URI, so a plain absolute-parse
+            misreads root-relative paths as external file URLs. Only http/https are crawlable absolutes;
+            anything else must be resolved against a base URI.
+            </summary>
+        </member>
+        <member name="M:SimpleCrawler.Core.Helpers.UriHelper.Normalize(System.String)">
+            <summary>
+            Canonicalizes an absolute http(s) URL for deduplication: drops the fragment, lowercases scheme and
+            host, removes the default port, and collapses a trailing slash (except on the root path). The query
+            string is preserved verbatim. Returns the input unchanged when it is not an absolute http(s) URL.
+            </summary>
+        </member>
+        <member name="T:SimpleCrawler.Core.Models.PageExtract">
+            <summary>
+            The crawl-essential data a backend extracts from one page in its single parse pass: the canonical URL,
+            meta-robots directive, and outgoing link hrefs. <paramref name="Dom"/> is an opaque handle to that page's
+            DOM material for any registered <see cref="T:SimpleCrawler.Core.Collectors.IDomCollector"/> to consume — <c>null</c> unless a DOM collector
+            is registered — so the pipeline can route DOM data to collectors without knowing what they collect.
+            </summary>
+        </member>
+        <member name="M:SimpleCrawler.Core.Models.PageExtract.#ctor(System.String,SimpleCrawler.Core.Models.RobotsRules,System.Collections.Generic.IReadOnlyList{System.String},SimpleCrawler.Core.Collectors.IDomDispatch)">
+            <summary>
+            The crawl-essential data a backend extracts from one page in its single parse pass: the canonical URL,
+            meta-robots directive, and outgoing link hrefs. <paramref name="Dom"/> is an opaque handle to that page's
+            DOM material for any registered <see cref="T:SimpleCrawler.Core.Collectors.IDomCollector"/> to consume — <c>null</c> unless a DOM collector
+            is registered — so the pipeline can route DOM data to collectors without knowing what they collect.
+            </summary>
+        </member>
+        <member name="T:SimpleCrawler.Core.Models.PageSignals">
+            <summary>
+            Optional, opt-in per-page HTTP/DOM signals captured alongside a <see cref="T:SimpleCrawler.Core.Models.UrlReport"/> when the
+            crawl is run with signal capture enabled: response headers, cookie names, script sources, meta
+            tags, and JSON-LD blocks. Populated in two passes — headers/cookies at fetch time, the rest at
+            parse time — onto the same instance, so consumers should treat any individual list/dictionary as
+            possibly still empty until the report is finalized.
+            </summary>
+        </member>
+        <member name="P:SimpleCrawler.Core.Models.PageSignals.Headers">
+            <summary>Response headers, lower-cased keys to single joined values.</summary>
+        </member>
+        <member name="P:SimpleCrawler.Core.Models.PageSignals.CookieNames">
+            <summary>Names of cookies set via <c>Set-Cookie</c> (values are intentionally dropped).</summary>
+        </member>
+        <member name="P:SimpleCrawler.Core.Models.PageSignals.ScriptSources">
+            <summary><c>src</c> values of <c>&lt;script&gt;</c> tags found in the body.</summary>
+        </member>
+        <member name="P:SimpleCrawler.Core.Models.PageSignals.MetaTags">
+            <summary>Meta tag name/property to content, e.g. <c>generator</c> → <c>WordPress 6.4</c>.</summary>
+        </member>
+        <member name="P:SimpleCrawler.Core.Models.PageSignals.JsonLdBlocks">
+            <summary>
+            Raw contents of <c>&lt;script type="application/ld+json"&gt;</c> blocks — schema.org structured
+            data that commercial sites use to describe their organization.
+            </summary>
+        </member>
+        <member name="T:SimpleCrawler.Core.Models.ResponseSignal">
+            <summary>
+            Backend-neutral, normalized view of a page's HTTP response, produced once per fetched URL and
+            handed to every registered <see cref="T:SimpleCrawler.Core.Collectors.ICrawlCollector"/>. Static and JS backends build
+            it from an <see cref="T:System.Net.Http.HttpResponseMessage"/>; headless backends from the browser's response object.
+            <see cref="P:SimpleCrawler.Core.Models.ResponseSignal.Headers"/>/<see cref="P:SimpleCrawler.Core.Models.ResponseSignal.CookieNames"/> are populated only when a collector is registered,
+            so a plain crawl pays for nothing beyond status/size/type.
+            </summary>
+        </member>
+        <member name="F:SimpleCrawler.Core.Models.ResponseSignal.EmptyHeaders">
+            <summary>Shared empty header map, so the no-collector path allocates nothing.</summary>
+        </member>
+        <member name="F:SimpleCrawler.Core.Models.ResponseSignal.HeaderValueSeparator">
+            <summary>
+            Delimiter joining the values of a header that appears more than once, so <see cref="P:SimpleCrawler.Core.Models.ResponseSignal.Headers"/>
+            reads the same across every backend. A newline, not <c>", "</c>: <c>Set-Cookie</c> values embed
+            commas (in <c>Expires</c> dates) and must never be comma-joined, and it matches how the headless
+            browsers' CDP already concatenates repeated headers.
+            </summary>
+        </member>
+        <member name="P:SimpleCrawler.Core.Models.ResponseSignal.Headers">
+            <summary>Response headers, lower-cased keys to single joined values; empty unless captured.</summary>
+        </member>
+        <member name="P:SimpleCrawler.Core.Models.ResponseSignal.CookieNames">
+            <summary>Names of cookies set via <c>Set-Cookie</c> (values dropped); empty unless captured.</summary>
+        </member>
+        <member name="T:SimpleCrawler.Core.Models.UrlReport">
+            <summary>
+            The live report for a single fetched URL. It is the value stored in CrawlState.Reports and is
+            mutated in place as the URL moves through the fetch and parse stages (one worker at a time), so
+            the report is part of the checkpointable state rather than a copy assembled on the side.
+            </summary>
+        </member>
+        <member name="P:SimpleCrawler.Core.Models.UrlReport.Depth">
+            <summary>
+            Link depth from the nearest entry point: entries are 0 and each followed link is one deeper.
+            </summary>
+        </member>
+        <member name="P:SimpleCrawler.Core.Models.UrlReport.Signals">
+            <summary>
+            Opt-in HTTP/DOM signals (headers, cookies, scripts, meta, JSON-LD), populated only when the
+            crawl is run with signal capture enabled. <c>null</c> otherwise, so unsignaled crawls keep the
+            same report shape and checkpoint size as before this field existed.
+            </summary>
+        </member>
+        <member name="T:SimpleCrawler.Core.Progress.CrawlProgressEstimator">
+            <summary>
+            Projects how long a crawl still has to run from a bounded, recent slice of its history.
+            </summary>
+            <remarks>
+            The crawl ends when processed catches discovered, i.e. when the pending frontier F = D - P drains.
+            Over the window we fit two lines: throughput mu = dP/dt (pages/sec) and yield g = dD/dP (new URLs per
+            processed page, the quantity that decays as the site saturates). Once g &lt; 1 the frontier is
+            contracting and the remaining work is the geometric sum F + gF + g^2F + ... = F / (1 - g); dividing by
+            mu turns that into an ETA. The g estimate carries its regression standard error, which fans out into
+            an optimistic/pessimistic ETA band.
+            <para>
+            A discovery cliff (a page that reveals a whole new section) can't be predicted from local history, so
+            a lone window seeing g &lt; 1 is not trusted: an ETA is only emitted once the frontier has been
+            contracting for a sustained period. A burst that pushes g back to &gt;= 1 resets that clock, so the
+            estimate reverts to "expanding" rather than whipsawing between confident-but-wrong numbers.
+            </para>
+            </remarks>
+        </member>
+        <member name="F:SimpleCrawler.Core.Progress.CrawlProgressEstimator._maxYield">
+            <summary>
+            Kept just below 1 so the geometric remaining-work sum stays finite; a page budget clamps it further.
+            </summary>
+        </member>
+        <member name="M:SimpleCrawler.Core.Progress.CrawlProgressEstimator.AddSample(System.Int32,System.Int32,System.Int64)">
+            <summary>
+            Records one observation of the crawl's counters. Call periodically on a fixed cadence.
+            </summary>
+            <param name="processed">Pages fully processed so far.</param>
+            <param name="discovered">Distinct URLs discovered so far.</param>
+            <param name="timestamp">A <see cref="M:System.Diagnostics.Stopwatch.GetTimestamp"/> reading for this sample.</param>
+        </member>
+        <member name="M:SimpleCrawler.Core.Progress.CrawlProgressEstimator.UpdateDrainStreak(System.Int32,System.Double)">
+            <summary>
+            Tracks how long the frontier has been contracting without interruption. A window that is still
+            expanding (or a burst that flips it back to expanding) clears the streak, so the sustained-drain
+            gate has to be earned again from scratch.
+            </summary>
+        </member>
+        <member name="M:SimpleCrawler.Core.Progress.CrawlProgressEstimator.Compute(System.Int32)">
+            <summary>
+            Produces the current estimate from the window of samples collected so far.
+            </summary>
+            <param name="maxPages">The crawl's page budget, used to clamp the projected total.</param>
+        </member>
+        <member name="M:SimpleCrawler.Core.Progress.CrawlProgressEstimator.TryFit(System.Double[],System.Double[],System.Double@,System.Double@)">
+            <summary>
+            Ordinary least-squares slope of y on x, plus the standard error of that slope (0 when there are
+            too few points to estimate residual spread).
+            </summary>
+            <returns><c>false</c> when x has no spread to regress against; otherwise <c>true</c>.</returns>
+        </member>
+        <member name="T:SimpleCrawler.Core.Progress.CrawlProgressReporter">
+            <summary>
+            Background loop that periodically samples a crawl's progress into a <see cref="T:SimpleCrawler.Core.Progress.CrawlProgressEstimator"/>
+            and logs a human-readable estimate. Runs alongside the crawl workers and stops when its token is
+            cancelled; owns all progress logging so the crawler itself stays free of it.
+            </summary>
+        </member>
+        <member name="M:SimpleCrawler.Core.Progress.CrawlProgressReporter.RunAsync(System.Func{System.ValueTuple{System.Int32,System.Int32}},System.Int32,System.Threading.CancellationToken)">
+            <summary>
+            Samples <paramref name="sample"/> every <see cref="P:SimpleCrawler.Core.Progress.ProgressOptions.SampleInterval"/> and emits a
+            progress line every <see cref="P:SimpleCrawler.Core.Progress.ProgressOptions.LogInterval"/> until cancelled.
+            </summary>
+            <param name="sample">Reads the current (processed, discovered) counts; called on the reporter thread.</param>
+            <param name="maxPages">The crawl's page budget, used to clamp the projected total.</param>
+        </member>
+        <member name="T:SimpleCrawler.Core.Progress.ProgressEstimate">
+            <summary>
+            A snapshot of a crawl's projected completion, produced by <see cref="T:SimpleCrawler.Core.Progress.CrawlProgressEstimator"/> from a
+            recent window of samples. The ETA fields are only populated when <see cref="P:SimpleCrawler.Core.Progress.ProgressEstimate.State"/> is
+            <see cref="F:SimpleCrawler.Core.Progress.ProgressState.Estimating"/>.
+            </summary>
+        </member>
+        <member name="P:SimpleCrawler.Core.Progress.ProgressEstimate.State">
+            <summary>Which confidence phase the estimate is in.</summary>
+        </member>
+        <member name="P:SimpleCrawler.Core.Progress.ProgressEstimate.Processed">
+            <summary>Pages fully processed so far.</summary>
+        </member>
+        <member name="P:SimpleCrawler.Core.Progress.ProgressEstimate.Discovered">
+            <summary>Distinct URLs discovered so far (processed plus the pending frontier).</summary>
+        </member>
+        <member name="P:SimpleCrawler.Core.Progress.ProgressEstimate.Pending">
+            <summary>URLs discovered but not yet processed (the frontier, <c>Discovered - Processed</c>).</summary>
+        </member>
+        <member name="P:SimpleCrawler.Core.Progress.ProgressEstimate.Throughput">
+            <summary>Pages processed per second, from the window (0 until measurable).</summary>
+        </member>
+        <member name="P:SimpleCrawler.Core.Progress.ProgressEstimate.Yield">
+            <summary>New URLs discovered per page processed, from the window (the decaying yield g).</summary>
+        </member>
+        <member name="P:SimpleCrawler.Core.Progress.ProgressEstimate.RemainingPages">
+            <summary>Expected pages still to process. Only meaningful when <see cref="F:SimpleCrawler.Core.Progress.ProgressState.Estimating"/>.</summary>
+        </member>
+        <member name="P:SimpleCrawler.Core.Progress.ProgressEstimate.EstimatedTotalPages">
+            <summary>Projected grand total of pages. Only meaningful when <see cref="F:SimpleCrawler.Core.Progress.ProgressState.Estimating"/>.</summary>
+        </member>
+        <member name="P:SimpleCrawler.Core.Progress.ProgressEstimate.EtaLow">
+            <summary>Optimistic end of the ETA band (uses the optimistic yield); null unless estimating.</summary>
+        </member>
+        <member name="P:SimpleCrawler.Core.Progress.ProgressEstimate.EtaHigh">
+            <summary>Pessimistic end of the ETA band (uses the pessimistic yield); null unless estimating.</summary>
+        </member>
+        <member name="T:SimpleCrawler.Core.Progress.ProgressOptions">
+            <summary>
+            Tuning for the live crawl-time estimate: how often it samples, how much recent history it keeps, how
+            often it logs, and how much certainty it demands before showing an ETA.
+            </summary>
+        </member>
+        <member name="P:SimpleCrawler.Core.Progress.ProgressOptions.Enabled">
+            <summary>Whether the crawl logs periodic time estimates at all.</summary>
+        </member>
+        <member name="P:SimpleCrawler.Core.Progress.ProgressOptions.SampleInterval">
+            <summary>
+            How often the reporter snapshots (processed, discovered) into its bounded history slice.
+            </summary>
+        </member>
+        <member name="P:SimpleCrawler.Core.Progress.ProgressOptions.WindowSize">
+            <summary>
+            Number of recent samples kept for the regression. The window spans WindowSize * SampleInterval, so
+            the estimate reacts to current conditions rather than the whole-crawl average.
+            </summary>
+        </member>
+        <member name="P:SimpleCrawler.Core.Progress.ProgressOptions.LogInterval">
+            <summary>How often a progress line is emitted to the log.</summary>
+        </member>
+        <member name="P:SimpleCrawler.Core.Progress.ProgressOptions.MinPagesBeforeEstimate">
+            <summary>
+            Suppress any projection until at least this many pages are done, to skip the noisy warm-up.
+            </summary>
+        </member>
+        <member name="P:SimpleCrawler.Core.Progress.ProgressOptions.SustainedDrain">
+            <summary>
+            Once the frontier starts contracting, how long that must hold continuously before an ETA is
+            trusted. Guards against a brief dip in discovery yielding a confident estimate that a later burst
+            of new links overturns. A single window seeing yield &lt; 1 is not enough; the drain must persist.
+            </summary>
+        </member>
+        <member name="T:SimpleCrawler.Core.Progress.ProgressState">
+            <summary>
+            The confidence phase a crawl's time estimate is in, progressing from too-little-data through frontier
+            expansion and contraction to a trusted estimate.
+            </summary>
+        </member>
+        <member name="F:SimpleCrawler.Core.Progress.ProgressState.WarmingUp">
+            <summary>Too little data yet (crawl just started, or no forward progress in the window).</summary>
+        </member>
+        <member name="F:SimpleCrawler.Core.Progress.ProgressState.Expanding">
+            <summary>
+            Each processed page still yields more than one new URL on average, so the frontier is growing and
+            no finish time can be projected.
+            </summary>
+        </member>
+        <member name="F:SimpleCrawler.Core.Progress.ProgressState.Draining">
+            <summary>
+            The frontier has started contracting, but not yet for long enough to trust: a later burst of new
+            links could still overturn it, so an ETA is withheld.
+            </summary>
+        </member>
+        <member name="F:SimpleCrawler.Core.Progress.ProgressState.Estimating">
+            <summary>
+            The frontier has been contracting long enough to trust; a projected total and ETA are available.
+            </summary>
+        </member>
+        <member name="T:SimpleCrawler.Core.Proxy.ProxyLabel">
+            <summary>
+            Renders a proxy for log output, collapsing the no-proxy case to a stable word so templates using
+            "via {proxy}" never dangle as "via " when the crawl runs without a pool.
+            </summary>
+        </member>
+        <member name="T:SimpleCrawler.Core.Retry.RetryExecutor">
+            <summary>
+            Single home for the acquire/report/retry loop shared by every fetch path (static handler,
+            headless crawlers, robots probes). A proxy pool is optional: with one, attempts rotate through
+            proxies and report health; without one, attempts still retry transient failures with backoff.
+            Callers supply one classified attempt; this decides rotation, backoff, timeout and exhaustion so
+            that logic lives in exactly one place.
+            </summary>
+        </member>
+        <member name="M:SimpleCrawler.Core.Retry.RetryExecutor.ExecuteAsync``1(System.Func{SimpleCrawler.Core.Proxy.ProxyInfo,System.Threading.CancellationToken,System.Threading.Tasks.Task{SimpleCrawler.Core.Retry.RetryAttempt{``0}}},System.Func{``0},System.Threading.CancellationToken)">
+            <summary>
+            Retries until one attempt succeeds. With a pool, exhausting it (below cutoff) aborts the crawl;
+            exhausting the retry budget yields onExhausted().
+            </summary>
+        </member>
+        <member name="M:SimpleCrawler.Core.Retry.RetryExecutor.ExecuteWithDirectFallbackAsync``1(System.Func{SimpleCrawler.Core.Proxy.ProxyInfo,System.Threading.CancellationToken,System.Threading.Tasks.Task{SimpleCrawler.Core.Retry.RetryAttempt{``0}}},System.Func{``0},System.Threading.CancellationToken)">
+            <summary>
+            As <see cref="M:SimpleCrawler.Core.Retry.RetryExecutor.ExecuteAsync``1(System.Func{SimpleCrawler.Core.Proxy.ProxyInfo,System.Threading.CancellationToken,System.Threading.Tasks.Task{SimpleCrawler.Core.Retry.RetryAttempt{``0}}},System.Func{``0},System.Threading.CancellationToken)"/>, but an empty pool falls back to a direct (un-proxied) attempt
+            instead of aborting - used for robots/sitemap probes, which must not fail the whole crawl.
+            </summary>
+        </member>
+        <member name="M:SimpleCrawler.Core.Retry.RetryExecutor.Execute``1(System.Func{SimpleCrawler.Core.Proxy.ProxyInfo,System.Threading.CancellationToken,SimpleCrawler.Core.Retry.RetryAttempt{``0}},System.Func{``0},System.Threading.CancellationToken)">
+            <summary>
+            Synchronous sibling of <see cref="M:SimpleCrawler.Core.Retry.RetryExecutor.ExecuteAsync``1(System.Func{SimpleCrawler.Core.Proxy.ProxyInfo,System.Threading.CancellationToken,System.Threading.Tasks.Task{SimpleCrawler.Core.Retry.RetryAttempt{``0}}},System.Func{``0},System.Threading.CancellationToken)"/>, for callers that must issue a blocking send
+            (the JS runtime resolves module imports and its fetch shim synchronously to fit its
+            single-threaded drain loop).
+            </summary>
+        </member>
+        <member name="T:SimpleCrawler.Core.Retry.RetryHandler">
+            <summary>
+            Primary HTTP handler that routes every request through the shared RetryExecutor. A DelegatingHandler
+            cannot swap its inner transport per attempt, so this owns routing directly: with a pool it sends via
+            the per-proxy client; without one it sends via an owned direct transport and simply retries.
+            </summary>
+        </member>
+        <member name="M:SimpleCrawler.Core.Retry.RetryHandler.Send(System.Net.Http.HttpRequestMessage,System.Threading.CancellationToken)">
+            <summary>
+            The JS runtime issues blocking sends; without a synchronous override the base handler would throw
+            NotSupportedException, so this mirrors SendAsync over the synchronous send path.
+            </summary>
+        </member>
+        <member name="P:SimpleCrawler.Core.Retry.RetryOptions.MaxRetries">
+            <summary>
+            Additional attempts after the first; total attempts = MaxRetries + 1.
+            </summary>
+        </member>
+        <member name="P:SimpleCrawler.Core.Retry.RetryOptions.JitterFactor">
+            <summary>
+            Fraction of the computed delay applied as ± random jitter (0.2 = ±20%).
+            </summary>
+        </member>
+        <member name="P:SimpleCrawler.Core.Retry.RetryOptions.DelayOnRateLimit">
+            <summary>
+            Back off before retrying a rate-limited (429) response even when a fresh proxy is available,
+            treating the limit as target-side rather than route-side.
+            </summary>
+        </member>
+        <member name="P:SimpleCrawler.Core.Retry.RetryOptions.AttemptTimeout">
+            <summary>
+            Upper bound on a single attempt; a slower attempt is cancelled and retried. Zero disables it.
+            </summary>
+        </member>
+        <member name="T:SimpleCrawler.Core.Robots.ChangeFrequency">
+            <summary>
+            Change frequency values used in the sitemap specification
+            </summary>
+        </member>
+        <member name="F:SimpleCrawler.Core.Robots.ChangeFrequency.Always">
+            <summary>
+            Describes a document that changes every time it is accessed
+            </summary>
+        </member>
+        <member name="F:SimpleCrawler.Core.Robots.ChangeFrequency.Hourly">
+            <summary>
+            Hints that a document is expected to change hourly
+            </summary>
+        </member>
+        <member name="F:SimpleCrawler.Core.Robots.ChangeFrequency.Daily">
+            <summary>
+            Hints that a document is expected to change daily
+            </summary>
+        </member>
+        <member name="F:SimpleCrawler.Core.Robots.ChangeFrequency.Weekly">
+            <summary>
+            Hints that a document is expected to change weekly
+            </summary>
+        </member>
+        <member name="F:SimpleCrawler.Core.Robots.ChangeFrequency.Monthly">
+            <summary>
+            Hints that a document is expected to change monthly
+            </summary>
+        </member>
+        <member name="F:SimpleCrawler.Core.Robots.ChangeFrequency.Yearly">
+            <summary>
+            Hints that a document is expected to change yearly
+            </summary>
+        </member>
+        <member name="F:SimpleCrawler.Core.Robots.ChangeFrequency.Never">
+            <summary>
+            Describes an archived URL
+            </summary>
+        </member>
+        <member name="T:SimpleCrawler.Core.Robots.Http.RobotWebClient">
+            <summary>
+            Client for retrieving robots.txt from a website
+            </summary>
+        </member>
+        <member name="T:SimpleCrawler.Core.Robots.IRobotClient">
+            <summary>
+            Client for retrieving robots.txt
+            </summary>
+        </member>
+        <member name="M:SimpleCrawler.Core.Robots.IRobotClient.LoadRobotsTxtAsync(System.Uri,System.Threading.CancellationToken)">
+            <summary>
+            Loads and parses the <see cref="T:SimpleCrawler.Core.Robots.IRobotsTxt"/> file from the website
+            </summary>
+            <exception cref="T:System.Net.Http.HttpRequestException">Thrown if a status code that cannot be handled is returned.</exception>
+        </member>
+        <member name="T:SimpleCrawler.Core.Robots.IRobotRuleChecker">
+            <summary>
+            Provides the ability to check accessibility of URLs for a robot
+            </summary>
+        </member>
+        <member name="M:SimpleCrawler.Core.Robots.IRobotRuleChecker.IsAllowed(System.String)">
+            <summary>
+            Checks if the robot is allowed to access the path
+            </summary>
+            <param name="path">The path to check</param>
+            <returns>True if the robots is allowed to access the path; otherwise false</returns>
+        </member>
+        <member name="T:SimpleCrawler.Core.Robots.IRobotsTxt">
+            <summary>
+            A representation of the contained directives in a robots.txt file
+            </summary>
+        </member>
+        <member name="M:SimpleCrawler.Core.Robots.IRobotsTxt.LoadSitemapAsync(System.Uri,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            Retrieves the sitemap
+            </summary>
+            <param name="modifiedSince">Filter to retrieve site maps modified after this date</param>
+            <param name="cancellationToken">Cancellation token</param>
+            <returns>A sitemap, or null or no sitemap is found</returns>
+        </member>
+        <member name="M:SimpleCrawler.Core.Robots.IRobotsTxt.TryGetCrawlDelay(SimpleCrawler.Core.Robots.ProductToken,System.Int32@)">
+            <summary>
+            Retrieves the crawl delay specified for a User-Agent
+            </summary>
+            <param name="userAgent">User-Agent header to retrieve rules for</param>
+            <param name="crawlDelay">The crawl delay in seconds</param>
+            <returns>True if a crawl delay directive exists; otherwise false</returns>
+        </member>
+        <member name="M:SimpleCrawler.Core.Robots.IRobotsTxt.TryGetHost(System.String@)">
+            <summary>
+            Retrieves the website host
+            </summary>
+            <param name="host">The website host address</param>
+            <returns>True if the host directive exists; otherwise false</returns>
+        </member>
+        <member name="M:SimpleCrawler.Core.Robots.IRobotsTxt.TryGetRules(SimpleCrawler.Core.Robots.ProductToken,SimpleCrawler.Core.Robots.IRobotRuleChecker@)">
+            <summary>
+            Retrieves rules which apply to a User-Agent
+            </summary>
+            <param name="userAgent">User-Agent header to retrieve rules for</param>
+            <param name="ruleChecker">A rule checker for the User-Agent</param>
+            <returns>True if any rules are found; otherwise false</returns>
+        </member>
+        <member name="T:SimpleCrawler.Core.Robots.ISitemap">
+            <summary>
+            Describes a Sitemap
+            </summary>
+        </member>
+        <member name="P:SimpleCrawler.Core.Robots.ISitemap.UrlSet">
+            <summary>
+            Url set included in the Sitemap
+            </summary>
+        </member>
+        <member name="T:SimpleCrawler.Core.Robots.ProductToken">
+            <summary>
+            Crawler name, used as the User-agent value within a robots.txt file
+            </summary>
+        </member>
+        <member name="M:SimpleCrawler.Core.Robots.ProductToken.Parse(System.String)">
+            <summary>
+            Parses a <see cref="T:SimpleCrawler.Core.Robots.ProductToken"/>
+            </summary>
+            <param name="value">Raw product token value</param>
+            <returns><see cref="T:SimpleCrawler.Core.Robots.ProductToken"/> that identifies a robot rule group</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">Product token is formatted incorrectly</exception>
+        </member>
+        <member name="M:SimpleCrawler.Core.Robots.ProductToken.TryParse(System.String,SimpleCrawler.Core.Robots.ProductToken@)">
+            <summary>
+            Attempts to parse a <see cref="T:SimpleCrawler.Core.Robots.ProductToken"/>
+            </summary>
+            <param name="value">Raw product token value</param>
+            <param name="productToken">Parsed product token, or wildcard if the token could not be parsed</param>
+            <returns>True if the <see cref="T:SimpleCrawler.Core.Robots.ProductToken"/> could be parsed; otherwise false</returns>
+        </member>
+        <member name="M:SimpleCrawler.Core.Robots.ProductToken.ProductTokenValidationRegex">
+            <remarks>
+            Pattern:<br/>
+            <code>^[a-zA-Z-_]+$</code><br/>
+            Options:<br/>
+            <code>RegexOptions.Compiled</code><br/>
+            Explanation:<br/>
+            <code>
+            ○ Match if at the beginning of the string.<br/>
+            ○ Match a character in the set [\-A-Z_a-z] atomically at least once.<br/>
+            ○ Match if at the end of the string or if before an ending newline.<br/>
+            </code>
+            </remarks>
+        </member>
+        <member name="M:SimpleCrawler.Core.Robots.ProductToken.Equals(System.Object)">
+            <summary>
+            Assesses product token equality. Product tokens are case-insensitive.
+            </summary>
+            <param name="obj">Comparison value</param>
+            <returns>True if the product token is equal; otherwise false</returns>
+        </member>
+        <member name="M:SimpleCrawler.Core.Robots.ProductToken.Equals(System.String)">
+            <summary>
+            Assesses product token equality. Product tokens are case-insensitive.
+            </summary>
+            <param name="other">Comparison value</param>
+            <returns>True if the product token is equal; otherwise false</returns>
+        </member>
+        <member name="M:SimpleCrawler.Core.Robots.ProductToken.Equals(SimpleCrawler.Core.Robots.ProductToken)">
+            <summary>
+            Assesses product token equality. Product tokens are case-insensitive.
+            </summary>
+            <param name="other">Comparison value</param>
+            <returns>True if the product token is equal; otherwise false</returns>
+        </member>
+        <member name="M:SimpleCrawler.Core.Robots.ProductToken.GetHashCode">
+            <inheritdoc />
+        </member>
+        <member name="T:SimpleCrawler.Core.Robots.RobotRuleChecker">
+            <summary>
+            Provides the ability to check accessibility of URLs for a robot
+            </summary>
+        </member>
+        <member name="M:SimpleCrawler.Core.Robots.RobotRuleChecker.#ctor(System.Collections.Generic.HashSet{SimpleCrawler.Core.Robots.UrlRule})">
+            <summary>
+            Creates a rule checker with a specified set of rules
+            </summary>
+            <param name="rules">A set of path rules</param>
+        </member>
+        <member name="M:SimpleCrawler.Core.Robots.RobotRuleChecker.IsAllowed(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="T:SimpleCrawler.Core.Robots.RobotsTxt">
+            <summary>
+            A representation of the contained directives in a robots.txt file
+            </summary>
+        </member>
+        <member name="M:SimpleCrawler.Core.Robots.RobotsTxt.LoadSitemapAsync(System.Uri,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:SimpleCrawler.Core.Robots.RobotsTxt.TryGetCrawlDelay(SimpleCrawler.Core.Robots.ProductToken,System.Int32@)">
+            <inheritdoc />
+        </member>
+        <member name="M:SimpleCrawler.Core.Robots.RobotsTxt.TryGetHost(System.String@)">
+            <inheritdoc />
+        </member>
+        <member name="M:SimpleCrawler.Core.Robots.RobotsTxt.TryGetRules(SimpleCrawler.Core.Robots.ProductToken,SimpleCrawler.Core.Robots.IRobotRuleChecker@)">
+            <inheritdoc />
+        </member>
+        <member name="T:SimpleCrawler.Core.Robots.RobotsTxtException">
+            <summary>
+            Exception raised when parsing a robots.txt file
+            </summary>
+        </member>
+        <member name="T:SimpleCrawler.Core.Robots.RobotsTxtParser">
+            <summary>
+            Provides the ability to parse robots.txt 
+            </summary>
+        </member>
+        <member name="M:SimpleCrawler.Core.Robots.RobotsTxtParser.#ctor(SimpleCrawler.Core.Robots.IRobotClient)">
+            <summary>
+            Creates a robots.txt parser
+            </summary>
+            <param name="robotClient">Client used to send requests to the website</param>
+        </member>
+        <member name="M:SimpleCrawler.Core.Robots.RobotsTxtParser.ReadFromStreamAsync(System.IO.Stream,System.Threading.CancellationToken)">
+            <summary>
+            Parses <see cref="T:SimpleCrawler.Core.Robots.RobotsTxt"/> from a <see cref="T:System.IO.Stream"/>
+            </summary>
+            <param name="stream">The input stream</param>
+            <param name="cancellationToken">Cancellation token</param>
+            <returns>Parsed <see cref="T:SimpleCrawler.Core.Robots.IRobotsTxt"/></returns>
+            <exception cref="T:SimpleCrawler.Core.Robots.RobotsTxtException">Raised when there is an error parsing the robots.txt file</exception>
+        </member>
+        <member name="T:SimpleCrawler.Core.Robots.RuleType">
+            <summary>
+            Robots.txt rule type
+            </summary>
+        </member>
+        <member name="T:SimpleCrawler.Core.Robots.SimpleTextSitemapParser">
+            <summary>
+            Parses a <see cref="T:SimpleCrawler.Core.Robots.Sitemap"/> TXT document
+            </summary>
+        </member>
+        <member name="M:SimpleCrawler.Core.Robots.SimpleTextSitemapParser.ReadFromStreamAsync(System.IO.Stream,System.Threading.CancellationToken)">
+            <summary>
+            Parses a <see cref="T:SimpleCrawler.Core.Robots.Sitemap"/> from a <see cref="T:System.IO.Stream"/>
+            </summary>
+            <param name="stream">Sitemap document stream</param>
+            <param name="cancellationToken">Cancellation token</param>
+            <returns>The parsed <see cref="T:SimpleCrawler.Core.Robots.Sitemap"/></returns>
+            <exception cref="T:SimpleCrawler.Core.Robots.SitemapException">Raised when there is an error parsing the Sitemap</exception>
+        </member>
+        <member name="T:SimpleCrawler.Core.Robots.Sitemap">
+            <summary>
+            Describes a Sitemap
+            </summary>
+        </member>
+        <member name="P:SimpleCrawler.Core.Robots.Sitemap.UrlSet">
+            <inheritdoc />
+        </member>
+        <member name="T:SimpleCrawler.Core.Robots.SitemapException">
+            <summary>
+            Exception raised when parsing a sitemap
+            </summary>
+        </member>
+        <member name="P:SimpleCrawler.Core.Robots.SitemapItem.Location">
+            <summary>
+            URL location
+            </summary>
+        </member>
+        <member name="P:SimpleCrawler.Core.Robots.SitemapItem.LastModified">
+            <summary>
+            Date and time that the contents of the URL was last modified
+            </summary>
+        </member>
+        <member name="T:SimpleCrawler.Core.Robots.SitemapParser">
+            <summary>
+            Parses a <see cref="T:SimpleCrawler.Core.Robots.Sitemap"/> XML document
+            </summary>
+        </member>
+        <member name="M:SimpleCrawler.Core.Robots.SitemapParser.ReadFromStreamAsync(System.IO.Stream,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            Parses a <see cref="T:SimpleCrawler.Core.Robots.Sitemap"/> from a <see cref="T:System.IO.Stream"/>
+            </summary>
+            <param name="stream">Sitemap document stream</param>
+            <param name="modifiedSince">Filters the sitemap on the modified date</param>
+            <param name="cancellationToken">Cancellation token</param>
+            <returns>The parsed <see cref="T:SimpleCrawler.Core.Robots.Sitemap"/></returns>
+            <exception cref="T:SimpleCrawler.Core.Robots.SitemapException">Raised when there is an error parsing the Sitemap</exception>
+        </member>
+        <member name="T:SimpleCrawler.Core.Robots.UriPath">
+            <summary>
+            A URI path that is normalized so that it can be compared with rules in a robots.txt file
+            </summary>
+        </member>
+        <member name="T:SimpleCrawler.Core.Robots.UrlPathPattern">
+            <summary>
+            Represents a URL path pattern in a robots.txt file
+            </summary>
+        </member>
+        <member name="P:SimpleCrawler.Core.Robots.UrlPathPattern.Length">
+            <summary>
+            Length of the normalized URL path pattern
+            </summary>
+        </member>
+        <member name="M:SimpleCrawler.Core.Robots.UrlPathPattern.Matches(SimpleCrawler.Core.Robots.UriPath)">
+            <summary>
+            Checks if a path matches the URL rule
+            </summary>
+            <param name="path">The URL path</param>
+            <returns>True if the path matches or is a sub-path; otherwise false</returns>
+        </member>
+        <member name="T:SimpleCrawler.Core.Robots.UrlRule">
+            <summary>
+            Describes a robots.txt rule for a URL
+            </summary>
+            <param name="Type">Rule type; either <see cref="F:SimpleCrawler.Core.Robots.RuleType.Allow"/> or <see cref="F:SimpleCrawler.Core.Robots.RuleType.Disallow"/></param>
+            <param name="Pattern">URL path pattern</param>
+        </member>
+        <member name="M:SimpleCrawler.Core.Robots.UrlRule.#ctor(SimpleCrawler.Core.Robots.RuleType,SimpleCrawler.Core.Robots.UrlPathPattern)">
+            <summary>
+            Describes a robots.txt rule for a URL
+            </summary>
+            <param name="Type">Rule type; either <see cref="F:SimpleCrawler.Core.Robots.RuleType.Allow"/> or <see cref="F:SimpleCrawler.Core.Robots.RuleType.Disallow"/></param>
+            <param name="Pattern">URL path pattern</param>
+        </member>
+        <member name="P:SimpleCrawler.Core.Robots.UrlRule.Type">
+            <summary>Rule type; either <see cref="F:SimpleCrawler.Core.Robots.RuleType.Allow"/> or <see cref="F:SimpleCrawler.Core.Robots.RuleType.Disallow"/></summary>
+        </member>
+        <member name="P:SimpleCrawler.Core.Robots.UrlRule.Pattern">
+            <summary>URL path pattern</summary>
+        </member>
+        <member name="T:SimpleCrawler.Core.Robots.UrlSetItem">
+            <summary>
+            Url item described in a sitemap
+            </summary>
+        </member>
+        <member name="P:SimpleCrawler.Core.Robots.UrlSetItem.ChangeFrequency">
+            <summary>
+            Hint for how often the URL is expected to change
+            </summary>
+        </member>
+        <member name="P:SimpleCrawler.Core.Robots.UrlSetItem.Priority">
+            <summary>
+            Hint for the priority that should be assigned to the URL
+            </summary>
+        </member>
+        <member name="T:SimpleCrawler.Core.Scheduling.BackgroundOperation">
+            <summary>
+            An optional background operation (checkpoint autosave, progress reporting) that runs alongside the
+            crawl workers under its own cancellation, stopped in reverse-start order at the end of Start. An
+            idle sidecar (<see cref="M:SimpleCrawler.Core.Scheduling.BackgroundOperation.None"/>) represents a disabled feature and is a no-op to stop and dispose.
+            </summary>
+        </member>
+        <member name="M:SimpleCrawler.Core.Scheduling.BackgroundOperation.StopAsync">
+            <summary>
+            Signals cancellation and awaits the operation's exit; a no-op for an idle sidecar.
+            </summary>
+        </member>
+        <member name="T:SimpleCrawler.Core.Scheduling.HostFrontier">
+             <summary>
+             Host-aware crawl frontier: pending URLs are partitioned into a FIFO queue per authority, and a single
+             consumer pulls the URL of whichever host is soonest allowed to fetch. Because a host's per-request
+             spacing is enforced by picking a different ready host rather than by parking the consumer, one
+             rate-limited or slow host can never hold up URLs bound for other hosts.
+            
+             Sharding: no state is shared across hosts except the per-shard round-robin counter, so a partition of
+             authorities can run as an independent HostFrontier driven by its own single consumer. Keep it that way -
+             the DequeueReadyAsync signal handshake assumes exactly one consumer per instance.
+             </summary>
+        </member>
+        <member name="M:SimpleCrawler.Core.Scheduling.HostFrontier.Enqueue(System.String)">
+            <summary>
+            Buckets a URL onto its host's queue and wakes the consumer. Returns false once the frontier is
+            completed, so the caller can balance the outstanding-count it reserved for the URL.
+            </summary>
+        </member>
+        <member name="M:SimpleCrawler.Core.Scheduling.HostFrontier.Complete">
+            <summary>
+            Stops accepting new work and lets the consumer drain whatever is still queued, ignoring per-host
+            spacing so an aborting or finishing crawl unwinds immediately.
+            </summary>
+        </member>
+        <member name="M:SimpleCrawler.Core.Scheduling.HostFrontier.DequeueReadyAsync(System.Threading.CancellationToken)">
+            <summary>
+            Returns the next URL whose host is allowed to fetch now, waiting only when no host is ready yet.
+            Single-consumer: exactly one caller may be in flight at a time. Returns null once the frontier is
+            completed and drained.
+            </summary>
+        </member>
+        <member name="M:SimpleCrawler.Core.Scheduling.HostFrontier.SelectReadiest(System.Int64)">
+            <summary>
+            Picks the host whose next fetch slot opens soonest, breaking ties toward the least recently served
+            host so equally-ready (e.g. unthrottled) hosts are dispatched round-robin rather than one at a time.
+            </summary>
+        </member>
+        <member name="M:SimpleCrawler.Core.Scheduling.HostFrontier.Dispatch(System.String)">
+            <summary>
+            Reserves the host's slot and hands out one of its URLs; must be called under the lock.
+            </summary>
+        </member>
+        <member name="M:SimpleCrawler.Core.Scheduling.HostFrontier.DrainOne">
+            <summary>
+            Hands out any queued URL without spacing, for the completed/aborting drain; must be called under the
+            lock. Returns null once nothing is left.
+            </summary>
+        </member>
+        <member name="M:SimpleCrawler.Core.Scheduling.HostFrontier.ResetSignal">
+            <summary>
+            Returns a fresh, uncompleted wake task to await; must be called under the lock. Safe for the single
+            consumer to reset because a producer only ever completes the current instance under the same lock.
+            </summary>
+        </member>
+        <member name="M:SimpleCrawler.Core.Scheduling.HostFrontier.WaitForReadyOrSignal(System.Threading.Tasks.Task,System.Int64,System.Threading.CancellationToken)">
+            <summary>
+            Waits until the earliest-ready host's slot opens or a newly enqueued URL signals sooner, cancelling
+            the timer on signal so a long per-host penalty never keeps a stale timer alive.
+            </summary>
+        </member>
+        <member name="T:SimpleCrawler.Core.Scheduling.HostFrontier.HostQueue">
+            <summary>
+            A host's pending URLs plus the round-robin marker of when it was last dispatched.
+            </summary>
+        </member>
+        <member name="T:SimpleCrawler.Core.Throttling.AdaptiveThrottler">
+            <summary>
+            Per-host request spacing with an adaptive rate-limit penalty. Each authority gets its own HostThrottle
+            so one host's delay never stalls another; the base (configured/robots) delay is supplied per call so a
+            robots.txt Crawl-delay resolved after construction is still honoured.
+            </summary>
+        </member>
+        <member name="M:SimpleCrawler.Core.Throttling.AdaptiveThrottler.PeekNextReady(System.String,System.Double,System.Int64)">
+            <summary>
+            Returns the Stopwatch timestamp at which this host's next fetch may fire, without reserving the slot,
+            so a scheduler can order hosts by readiness before committing a URL to a worker. The caller passes a
+            single shared <paramref name="now"/> so that every host ready at this instant reports the same value
+            and ties break on the scheduler's own fairness order rather than on peek order. Unknown or unthrottled
+            hosts read as ready now.
+            </summary>
+        </member>
+        <member name="M:SimpleCrawler.Core.Throttling.AdaptiveThrottler.ReserveSlot(System.String,System.Double)">
+            <summary>
+            Reserves this host's next fetch slot and returns the Stopwatch timestamp the caller must wait until
+            before fetching. A host with no spacing and no active penalty reserves nothing and fires immediately,
+            so unthrottled hosts keep full throughput.
+            </summary>
+        </member>
+        <member name="T:SimpleCrawler.Core.Throttling.HostThrottle">
+            <summary>
+            Per-host request spacing plus an adaptive rate-limit penalty. A single lock guards all mutable state,
+            held only for the brief slot reservation or penalty update - never across the actual wait - so the
+            fetch workers space themselves out without one host's delay ever blocking another's bookkeeping.
+            </summary>
+        </member>
+        <member name="M:SimpleCrawler.Core.Throttling.HostThrottle.PeekNextSlot(System.Int64)">
+            <summary>
+            Returns the Stopwatch timestamp at which this host's next fetch may fire, without reserving the slot.
+            Used by the frontier to order hosts by readiness before committing a URL to a worker.
+            </summary>
+        </member>
+        <member name="M:SimpleCrawler.Core.Throttling.HostThrottle.Reserve(System.Double)">
+            <summary>
+            Reserves the next fetch slot, spaced delaySeconds after the previous one, and returns the Stopwatch
+            timestamp the caller should wait until.
+            </summary>
+        </member>
+        <member name="M:SimpleCrawler.Core.Throttling.HostThrottle.PenalizeRateLimit(System.Double,System.Nullable{System.TimeSpan})">
+            <summary>
+            Raises the penalty (seeded at _initialPenalty, doubling thereafter, capped at maxSeconds) and, when
+            the response carried a Retry-After, pushes the next slot out by that grace. Returns the new penalty.
+            </summary>
+        </member>
+        <member name="M:SimpleCrawler.Core.Throttling.HostThrottle.RegisterSuccess">
+            <summary>
+            Halves the penalty once a host serves _successesBeforeDecay responses in a row without rate limiting.
+            </summary>
+        </member>
+        <member name="P:SimpleCrawler.Core.Throttling.ThrottleOptions.MaxDelaySeconds">
+            <summary>
+            Ceiling, in seconds, on the total effective delay (base + rate-limit penalty) for a host.
+            </summary>
+        </member>
+        <member name="T:System.Text.RegularExpressions.Generated.ProductTokenValidationRegex_0">
+            <summary>Custom <see cref="T:System.Text.RegularExpressions.Regex"/>-derived type for the ProductTokenValidationRegex method.</summary>
+        </member>
+        <member name="F:System.Text.RegularExpressions.Generated.ProductTokenValidationRegex_0.Instance">
+            <summary>Cached, thread-safe singleton instance.</summary>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.ProductTokenValidationRegex_0.#ctor">
+            <summary>Initializes the instance.</summary>
+        </member>
+        <member name="T:System.Text.RegularExpressions.Generated.ProductTokenValidationRegex_0.RunnerFactory">
+            <summary>Provides a factory for creating <see cref="T:System.Text.RegularExpressions.RegexRunner"/> instances to be used by methods on <see cref="T:System.Text.RegularExpressions.Regex"/>.</summary>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.ProductTokenValidationRegex_0.RunnerFactory.CreateInstance">
+            <summary>Creates an instance of a <see cref="T:System.Text.RegularExpressions.RegexRunner"/> used by methods on <see cref="T:System.Text.RegularExpressions.Regex"/>.</summary>
+        </member>
+        <member name="T:System.Text.RegularExpressions.Generated.ProductTokenValidationRegex_0.RunnerFactory.Runner">
+            <summary>Provides the runner that contains the custom logic implementing the specified regular expression.</summary>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.ProductTokenValidationRegex_0.RunnerFactory.Runner.Scan(System.ReadOnlySpan{System.Char})">
+            <summary>Scan the <paramref name="inputSpan"/> starting from base.runtextstart for the next match.</summary>
+            <param name="inputSpan">The text being scanned by the regular expression.</param>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.ProductTokenValidationRegex_0.RunnerFactory.Runner.TryFindNextPossibleStartingPosition(System.ReadOnlySpan{System.Char})">
+            <summary>Search <paramref name="inputSpan"/> starting from base.runtextpos for the next location a match could possibly start.</summary>
+            <param name="inputSpan">The text being scanned by the regular expression.</param>
+            <returns>true if a possible match was found; false if no more matches are possible.</returns>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.ProductTokenValidationRegex_0.RunnerFactory.Runner.TryMatchAtCurrentPosition(System.ReadOnlySpan{System.Char})">
+            <summary>Determine whether <paramref name="inputSpan"/> at base.runtextpos is a match for the regular expression.</summary>
+            <param name="inputSpan">The text being scanned by the regular expression.</param>
+            <returns>true if the regular expression matches at the current position; otherwise, false.</returns>
+        </member>
+        <member name="T:System.Text.RegularExpressions.Generated.Utilities">
+            <summary>Helper methods used by generated <see cref="T:System.Text.RegularExpressions.Regex"/>-derived implementations.</summary>
+        </member>
+        <member name="F:System.Text.RegularExpressions.Generated.Utilities.s_defaultTimeout">
+            <summary>Default timeout value set in <see cref="T:System.AppContext"/>, or <see cref="F:System.Text.RegularExpressions.Regex.InfiniteMatchTimeout"/> if none was set.</summary>
+        </member>
+        <member name="F:System.Text.RegularExpressions.Generated.Utilities.s_hasTimeout">
+            <summary>Whether <see cref="F:System.Text.RegularExpressions.Generated.Utilities.s_defaultTimeout"/> is non-infinite.</summary>
+        </member>
+        <member name="F:System.Text.RegularExpressions.Generated.Utilities.s_ascii_200000FEFFFF87FEFFFF07">
+            <summary>Supports searching for characters in or not in "-ABCDEFGHIJKLMNOPQRSTUVWXYZ_abcdefghijklmnopqrstuvwxyz".</summary>
+        </member>
+    </members>
+</doc>

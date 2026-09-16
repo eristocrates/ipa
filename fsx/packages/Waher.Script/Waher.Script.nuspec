@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>Waher.Script</id>
+    <version>2.15.2</version>
+    <authors>Peter Waher</authors>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <license type="file">LICENSE.txt</license>
+    <licenseUrl>https://aka.ms/deprecateLicenseUrl</licenseUrl>
+    <icon>Icon_64x64.png</icon>
+    <projectUrl>https://github.com/PeterWaher/IoTGateway/tree/master/Script/Waher.Script</projectUrl>
+    <description>Class library that defines a script language and an object abstraction of computable elements. The library helps application parse and execute script. Script is extensible, and it is easy for modules to extend the script engine.
+
+ Script can be evaluated using either synchronous or asynchronous processing.
+
+Script Syntax: https://waher.se/Script.md</description>
+    <copyright>Copyright © Waher Data AB 2016-2026. All rights reserved.</copyright>
+    <tags>script execution parsing</tags>
+    <repository type="GitHub" url="https://github.com/PeterWaher/IoTGateway" commit="fab0a8554dff42630c038475b66a2c7b7ec69f00" />
+    <dependencies>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="Waher.Events" version="1.4.7" exclude="Build,Analyzers" />
+        <dependency id="Waher.Runtime.Collections" version="1.0.4" exclude="Build,Analyzers" />
+        <dependency id="Waher.Runtime.Inventory" version="1.4.6" exclude="Build,Analyzers" />
+        <dependency id="System.Net.Http" version="4.3.4" exclude="Build,Analyzers" />
+        <dependency id="System.Text.RegularExpressions" version="4.3.1" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

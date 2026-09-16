@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
+  <Relationship Type="http://schemas.microsoft.com/packaging/2010/07/manifest" Target="/ModelingEvolution.Ipv4.nuspec" Id="R3C699BAE5E1B7C6A" />
+  <Relationship Type="http://schemas.openxmlformats.org/package/2006/relationships/metadata/core-properties" Target="/package/services/metadata/core-properties/98564595718a40df8cb6147f832e8e00.psmdcp" Id="R57F01F15917047A4" />
+</Relationships>

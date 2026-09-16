@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>WebFlux</id>
+    <version>0.7.1</version>
+    <title>WebFlux - AI-Optimized Web Content Processing SDK</title>
+    <authors>iyulab</authors>
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <icon>logo.png</icon>
+    <readme>README.md</readme>
+    <projectUrl>https://github.com/iyulab/WebFlux</projectUrl>
+    <description>A .NET SDK for preprocessing web content for RAG (Retrieval-Augmented Generation) systems</description>
+    <copyright>Copyright (c) Iyulab Corporation 2025.</copyright>
+    <tags>RAG AI Web Crawling Content Processing Chunking Web Intelligence NLP Machine Learning SDK DotNet CSharp Web Scraping Text Processing Multimodal Document Processing Semantic Chunking Auto Strategy</tags>
+    <repository type="git" url="https://github.com/iyulab/WebFlux" branch="refs/heads/main" commit="b5052f0ca2c639cfb94cf65af2aeb7d477484603" />
+    <dependencies>
+      <group targetFramework="net10.0">
+        <dependency id="AngleSharp" version="1.5.2" exclude="Build,Analyzers" />
+        <dependency id="Flux.Abstractions" version="0.24.0" exclude="Build,Analyzers" />
+        <dependency id="FluxCurator" version="0.8.1" exclude="Build,Analyzers" />
+        <dependency id="FluxCurator.Core" version="0.8.1" exclude="Build,Analyzers" />
+        <dependency id="HtmlAgilityPack" version="1.12.4" exclude="Build,Analyzers" />
+        <dependency id="Markdig" version="1.2.0" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Extensions.Caching.Abstractions" version="10.0.8" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Extensions.Caching.Memory" version="10.0.8" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Extensions.Configuration" version="10.0.8" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Extensions.Configuration.Abstractions" version="10.0.8" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Extensions.Configuration.Binder" version="10.0.8" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Extensions.DependencyInjection" version="10.0.8" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Extensions.DependencyInjection.Abstractions" version="10.0.8" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Extensions.Http" version="10.0.8" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Extensions.Logging" version="10.0.8" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Extensions.Logging.Abstractions" version="10.0.8" exclude="Build,Analyzers" />
+        <dependency id="Polly" version="8.6.6" exclude="Build,Analyzers" />
+        <dependency id="Polly.Extensions.Http" version="3.0.0" exclude="Build,Analyzers" />
+        <dependency id="ReverseMarkdown" version="6.2.1" exclude="Build,Analyzers" />
+        <dependency id="YamlDotNet" version="18.1.0" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

@@ -1,0 +1,17 @@
+D: /lib
+D: /lib/net6.0
+F: /lib/net6.0/SixLabors.Fonts.dll
+F: /lib/net6.0/SixLabors.Fonts.xml
+D: /package
+D: /package/services
+D: /package/services/metadata
+D: /package/services/metadata/core-properties
+F: /package/services/metadata/core-properties/bb7e1ced772f40ea8500310c06e74ebd.psmdcp
+D: /_rels
+F: /_rels/.rels
+F: /.signature.p7s
+F: /LICENSE
+F: /sixlabors.fonts.128.png
+F: /sixlabors.fonts.2.1.3.nupkg
+F: /SixLabors.Fonts.nuspec
+F: /[Content_Types].xml

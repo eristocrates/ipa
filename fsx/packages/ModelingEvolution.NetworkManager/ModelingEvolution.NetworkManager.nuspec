@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>ModelingEvolution.NetworkManager</id>
+    <version>1.0.1</version>
+    <authors>ModelingEvolution</authors>
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <readme>README.md</readme>
+    <projectUrl>https://github.com/modelingevolution/networkmanager</projectUrl>
+    <description>A .NET wrapper for NetworkManager D-Bus interface providing comprehensive network management capabilities for Linux systems. Supports WiFi, Ethernet, bridging, and advanced network configuration.</description>
+    <tags>NetworkManager D-Bus Linux WiFi Ethernet Network Bridge Connection</tags>
+    <repository type="git" url="https://github.com/modelingevolution/networkmanager" commit="433adf7f0e64a81891ca153639d05bf1f21c88cf" />
+    <dependencies>
+      <group targetFramework="net9.0">
+        <dependency id="ModelingEvolution.Ipv4" version="1.0.0" exclude="Build,Analyzers" />
+        <dependency id="ModelingEvolution.JsonParsableConverter" version="1.0.0" exclude="Build,Analyzers" />
+        <dependency id="System.Linq.Async" version="6.0.3" exclude="Build,Analyzers" />
+        <dependency id="Tmds.DBus.Protocol" version="0.21.2" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

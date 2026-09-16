@@ -1,0 +1,582 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Waher.Runtime.IO</name>
+    </assembly>
+    <members>
+        <member name="T:Waher.Runtime.IO.Certificates">
+            <summary>
+            Static class managing certificate resources.
+            </summary>
+        </member>
+        <member name="M:Waher.Runtime.IO.Certificates.LoadCertificate(System.String)">
+            <summary>
+            Loads a certificate from an embedded resource.
+            </summary>
+            <param name="ResourceName">Resource Name.</param>
+            <returns>Certificate.</returns>
+            <exception cref="T:System.IO.IOException">If Resource name is not valid or resource not found.</exception>
+        </member>
+        <member name="M:Waher.Runtime.IO.Certificates.LoadCertificate(System.String,System.Reflection.Assembly)">
+            <summary>
+            Loads a certificate from an embedded resource.
+            </summary>
+            <param name="ResourceName">Resource Name.</param>
+            <param name="Assembly">Assembly containing the resource.</param>
+            <returns>Certificate.</returns>
+            <exception cref="T:System.IO.IOException">If Resource name is not valid or resource not found.</exception>
+        </member>
+        <member name="M:Waher.Runtime.IO.Certificates.LoadCertificate(System.String,System.String)">
+            <summary>
+            Loads a certificate from an embedded resource.
+            </summary>
+            <param name="ResourceName">Resource Name.</param>
+            <param name="Password">Optional password.</param>
+            <returns>Certificate.</returns>
+            <exception cref="T:System.IO.IOException">If Resource name is not valid or resource not found.</exception>
+        </member>
+        <member name="M:Waher.Runtime.IO.Certificates.LoadCertificate(System.String,System.String,System.Reflection.Assembly)">
+            <summary>
+            Loads a certificate from an embedded resource.
+            </summary>
+            <param name="ResourceName">Resource Name.</param>
+            <param name="Password">Optional password.</param>
+            <param name="Assembly">Assembly containing the resource.</param>
+            <returns>Certificate.</returns>
+            <exception cref="T:System.IO.IOException">If Resource name is not valid or resource not found.</exception>
+        </member>
+        <member name="T:Waher.Runtime.IO.FileNameTimeSequence">
+            <summary>
+            Class that generates a sequence of file names, based on the system time.
+            </summary>
+        </member>
+        <member name="F:Waher.Runtime.IO.FileNameTimeSequence.DefaultYearPlaceholder">
+            <summary>
+            %YEAR%
+            </summary>
+        </member>
+        <member name="F:Waher.Runtime.IO.FileNameTimeSequence.DefaultMonthPlaceholder">
+            <summary>
+            %MONTH%
+            </summary>
+        </member>
+        <member name="F:Waher.Runtime.IO.FileNameTimeSequence.DefaultDayPlaceholder">
+            <summary>
+            %DAY%
+            </summary>
+        </member>
+        <member name="F:Waher.Runtime.IO.FileNameTimeSequence.DefaultHourPlaceholder">
+            <summary>
+            %HOUR%
+            </summary>
+        </member>
+        <member name="F:Waher.Runtime.IO.FileNameTimeSequence.DefaultMinutePlaceholder">
+            <summary>
+            %MINUTE%
+            </summary>
+        </member>
+        <member name="F:Waher.Runtime.IO.FileNameTimeSequence.DefaultSecondPlaceholder">
+            <summary>
+            %SECOND%
+            </summary>
+        </member>
+        <member name="M:Waher.Runtime.IO.FileNameTimeSequence.#ctor(System.String)">
+            <summary>
+            Class that generates a sequence of file names, based on the system time.
+            </summary>
+            <param name="FileNamePattern">File Name Pattern</param>
+        </member>
+        <member name="M:Waher.Runtime.IO.FileNameTimeSequence.#ctor(System.String,System.Boolean)">
+            <summary>
+            Class that generates a sequence of file names, based on the system time.
+            </summary>
+            <param name="FileNamePattern">File Name Pattern</param>
+            <param name="Utc">If UTC time (true) or local time (false) should be used.</param>
+        </member>
+        <member name="M:Waher.Runtime.IO.FileNameTimeSequence.#ctor(System.String,System.String,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Class that generates a sequence of file names, based on the system time.
+            </summary>
+            <param name="FileNamePattern">File Name Pattern</param>
+            <param name="YearPlaceholder">Placeholder string that will be replaced by the current year.</param>
+            <param name="MonthPlaceholder">Placeholder string that will be replaced by the current month.</param>
+            <param name="DayPlaceholder">Placeholder string that will be replaced by the current day.</param>
+            <param name="HourPlaceholder">Placeholder string that will be replaced by the current hour.</param>
+            <param name="MinutePlaceholder">Placeholder string that will be replaced by the current minute.</param>
+            <param name="SecondPlaceholder">Placeholder string that will be replaced by the current second.</param>
+        </member>
+        <member name="M:Waher.Runtime.IO.FileNameTimeSequence.#ctor(System.String,System.Boolean,System.String,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Class that generates a sequence of file names, based on the system time.
+            </summary>
+            <param name="FileNamePattern">File Name Pattern</param>
+            <param name="Utc">If UTC time (true) or local time (false) should be used.</param>
+            <param name="YearPlaceholder">Placeholder string that will be replaced by the current year.</param>
+            <param name="MonthPlaceholder">Placeholder string that will be replaced by the current month.</param>
+            <param name="DayPlaceholder">Placeholder string that will be replaced by the current day.</param>
+            <param name="HourPlaceholder">Placeholder string that will be replaced by the current hour.</param>
+            <param name="MinutePlaceholder">Placeholder string that will be replaced by the current minute.</param>
+            <param name="SecondPlaceholder">Placeholder string that will be replaced by the current second.</param>
+        </member>
+        <member name="P:Waher.Runtime.IO.FileNameTimeSequence.Utc">
+            <summary>
+            If UTC timestamps are used.
+            </summary>
+        </member>
+        <member name="P:Waher.Runtime.IO.FileNameTimeSequence.FileNamePattern">
+            <summary>
+            File name pattern.
+            </summary>
+        </member>
+        <member name="P:Waher.Runtime.IO.FileNameTimeSequence.PlaceholderYear">
+            <summary>
+            Placeholder for the current year.
+            </summary>
+        </member>
+        <member name="P:Waher.Runtime.IO.FileNameTimeSequence.PlaceholderMonth">
+            <summary>
+            Placeholder for the current month.
+            </summary>
+        </member>
+        <member name="P:Waher.Runtime.IO.FileNameTimeSequence.PlaceholderDay">
+            <summary>
+            Placeholder for the current day.
+            </summary>
+        </member>
+        <member name="P:Waher.Runtime.IO.FileNameTimeSequence.PlaceholderHour">
+            <summary>
+            Placeholder for the current hour.
+            </summary>
+        </member>
+        <member name="P:Waher.Runtime.IO.FileNameTimeSequence.PlaceholderMinute">
+            <summary>
+            Placeholder for the current minute.
+            </summary>
+        </member>
+        <member name="P:Waher.Runtime.IO.FileNameTimeSequence.PlaceholderSecond">
+            <summary>
+            Placeholder for the current second.
+            </summary>
+        </member>
+        <member name="P:Waher.Runtime.IO.FileNameTimeSequence.UsesYearPlaceholder">
+            <summary>
+            If the placeholder for the current year is used.
+            </summary>
+        </member>
+        <member name="P:Waher.Runtime.IO.FileNameTimeSequence.UsesMonthPlaceholder">
+            <summary>
+            If the placeholder for the current month is used.
+            </summary>
+        </member>
+        <member name="P:Waher.Runtime.IO.FileNameTimeSequence.UsesDayPlaceholder">
+            <summary>
+            If the placeholder for the current day is used.
+            </summary>
+        </member>
+        <member name="P:Waher.Runtime.IO.FileNameTimeSequence.UsesHourPlaceholder">
+            <summary>
+            If the placeholder for the current hour is used.
+            </summary>
+        </member>
+        <member name="P:Waher.Runtime.IO.FileNameTimeSequence.UsesMinutePlaceholder">
+            <summary>
+            If the placeholder for the current minute is used.
+            </summary>
+        </member>
+        <member name="P:Waher.Runtime.IO.FileNameTimeSequence.UsesSecondPlaceholder">
+            <summary>
+            If the placeholder for the current second is used.
+            </summary>
+        </member>
+        <member name="P:Waher.Runtime.IO.FileNameTimeSequence.Last">
+            <summary>
+            Last timestamp that generated a new file name.
+            </summary>
+        </member>
+        <member name="M:Waher.Runtime.IO.FileNameTimeSequence.MakeUnique(System.String@)">
+            <summary>
+            Returns a unique file name, if a file with the name already exists.
+            </summary>
+            <param name="FileName"></param>
+            <returns>If possible to find a unique file name.</returns>
+        </member>
+        <member name="M:Waher.Runtime.IO.FileNameTimeSequence.TryGetNewFileName(System.String@)">
+            <summary>
+            Tries to get a new file name.
+            </summary>
+            <param name="FileName">Resulting new file name, or null if no new file name
+            is generated.</param>
+            <returns>If a new file name was created.</returns>
+        </member>
+        <member name="T:Waher.Runtime.IO.Files">
+            <summary>
+            Contains static methods
+            </summary>
+        </member>
+        <member name="M:Waher.Runtime.IO.Files.ReadAllBytesAsync(System.String)">
+            <summary>
+            Reads a binary file asynchronously.
+            </summary>
+            <param name="FileName">Filename.</param>
+            <returns>Binary content.</returns>
+        </member>
+        <member name="M:Waher.Runtime.IO.Files.WriteAllBytesAsync(System.String,System.Byte[])">
+            <summary>
+            Creates a binary file asynchronously.
+            </summary>
+            <param name="FileName">Filename.</param>
+            <param name="Data">Binary data</param>
+        </member>
+        <member name="M:Waher.Runtime.IO.Files.WriteAllBytesAsync(System.String,System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            Creates a binary file asynchronously.
+            </summary>
+            <param name="FileName">Filename.</param>
+            <param name="Data">Binary data</param>
+            <param name="Offset">Offset into <paramref name="Data"/> to start.</param>
+            <param name="Length">Number of bytes to write.</param>
+        </member>
+        <member name="M:Waher.Runtime.IO.Files.AppendAllBytesAsync(System.String,System.Byte[])">
+            <summary>
+            Appends a binary file asynchronously.
+            </summary>
+            <param name="FileName">Filename.</param>
+            <param name="Data">Binary data</param>
+        </member>
+        <member name="M:Waher.Runtime.IO.Files.AppendAllBytesAsync(System.String,System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            Appends a binary file asynchronously.
+            </summary>
+            <param name="FileName">Filename.</param>
+            <param name="Data">Binary data</param>
+            <param name="Offset">Offset into <paramref name="Data"/> to start.</param>
+            <param name="Length">Number of bytes to write.</param>
+        </member>
+        <member name="M:Waher.Runtime.IO.Files.ReadAllTextAsync(System.String)">
+            <summary>
+            Reads a text file asynchronously.
+            </summary>
+            <param name="FileName">Filename.</param>
+            <returns>Decoded text.</returns>
+        </member>
+        <member name="M:Waher.Runtime.IO.Files.WriteAllTextAsync(System.String,System.String)">
+            <summary>
+            Creates a text file asynchronously.
+            </summary>
+            <param name="FileName">Filename.</param>
+            <param name="Text">Text</param>
+        </member>
+        <member name="M:Waher.Runtime.IO.Files.WriteAllTextAsync(System.String,System.String,System.Text.Encoding)">
+            <summary>
+            Creates a text file asynchronously.
+            </summary>
+            <param name="FileName">Filename.</param>
+            <param name="Text">Text</param>
+            <param name="Encoding">Encoding to use</param>
+        </member>
+        <member name="M:Waher.Runtime.IO.Files.DeleteOldFiles(System.String,System.TimeSpan)">
+            <summary>
+            Deletes old files.
+            </summary>
+            <param name="FolderName">Folder to search for old files. Search is not recursive.</param>
+            <param name="MaxAge">Maximum age.</param>
+        </member>
+        <member name="M:Waher.Runtime.IO.Files.DeleteOldFiles(System.String,System.TimeSpan,System.IO.SearchOption,System.Boolean)">
+            <summary>
+            Deletes old files.
+            </summary>
+            <param name="FolderName">Folder to search for old files.</param>
+            <param name="MaxAge">Maximum age.</param>
+            <param name="SearchOption">Search options.</param>
+            <param name="DeleteEmptySubFolders">If empty sub-folders should be deleted.</param>
+        </member>
+        <member name="T:Waher.Runtime.IO.IpCidr">
+            <summary>
+            IP Address Rangee, expressed using CIDR format.
+            </summary>
+        </member>
+        <member name="M:Waher.Runtime.IO.IpCidr.#ctor(System.Net.IPAddress,System.Int32)">
+            <summary>
+            IP Address Rangee, expressed using CIDR format.
+            </summary>
+            <param name="Address">Address</param>
+            <param name="Range">Range (0-8*bytelen)</param>
+        </member>
+        <member name="M:Waher.Runtime.IO.IpCidr.#ctor(System.Net.IPAddress,System.Byte[],System.Int32)">
+            <summary>
+            IP Address Rangee, expressed using CIDR format.
+            </summary>
+            <param name="Address">Address</param>
+            <param name="Binary">Binary representation of address.</param>
+            <param name="Range">Range (0-8*bytelen)</param>
+        </member>
+        <member name="P:Waher.Runtime.IO.IpCidr.Address">
+            <summary>
+            Parsed IP Address
+            </summary>
+        </member>
+        <member name="P:Waher.Runtime.IO.IpCidr.Range">
+            <summary>
+            Range
+            </summary>
+        </member>
+        <member name="M:Waher.Runtime.IO.IpCidr.TryParse(System.String,Waher.Runtime.IO.IpCidr@)">
+            <summary>
+            Tries to parse an IP Range in CIDR format. (An IP Address alone is considered implicitly having a mask of 8*byte length of address);
+            </summary>
+            <param name="s">String</param>
+            <param name="Parsed">Parsed object, if function returns true.</param>
+            <returns>If the string could be parsed.</returns>
+        </member>
+        <member name="M:Waher.Runtime.IO.IpCidr.Matches(System.String)">
+            <summary>
+            Checks if an IP Address matches the defined range.
+            </summary>
+            <param name="Endpoint">Endpoint.</param>
+            <returns>If it matches.</returns>
+        </member>
+        <member name="M:Waher.Runtime.IO.IpCidr.Matches(System.Net.IPAddress)">
+            <summary>
+            Checks if an IP Address matches the defined range.
+            </summary>
+            <param name="Address">IP Address.</param>
+            <returns>If it matches.</returns>
+        </member>
+        <member name="T:Waher.Runtime.IO.Resources">
+            <summary>
+            Static class managing loading of resources stored as embedded resources or in content files.
+            </summary>
+        </member>
+        <member name="M:Waher.Runtime.IO.Resources.LoadResource(System.String)">
+            <summary>
+            Loads a resource from an embedded resource.
+            </summary>
+            <param name="ResourceName">Resource Name.</param>
+            <returns>Binary content.</returns>
+            <exception cref="T:System.IO.IOException">If Resource name is not valid or resource not found.</exception>
+        </member>
+        <member name="M:Waher.Runtime.IO.Resources.LoadResource(System.String,System.Reflection.Assembly)">
+            <summary>
+            Loads a resource from an embedded resource.
+            </summary>
+            <param name="ResourceName">Resource Name.</param>
+            <param name="Assembly">Assembly containing the resource.</param>
+            <returns>Binary content.</returns>
+            <exception cref="T:System.IO.IOException">If Resource name is not valid or resource not found.</exception>
+        </member>
+        <member name="M:Waher.Runtime.IO.Resources.LoadResourceAsText(System.String)">
+            <summary>
+            Loads a text resource from an embedded resource.
+            </summary>
+            <param name="ResourceName">Resource Name.</param>
+            <returns>Text content.</returns>
+            <exception cref="T:System.IO.IOException">If Resource name is not valid or resource not found.</exception>
+        </member>
+        <member name="M:Waher.Runtime.IO.Resources.LoadResourceAsText(System.String,System.Reflection.Assembly)">
+            <summary>
+            Loads a text resource from an embedded resource.
+            </summary>
+            <param name="ResourceName">Resource Name.</param>
+            <param name="Assembly">Assembly containing the resource.</param>
+            <returns>Text content.</returns>
+            <exception cref="T:System.IO.IOException">If Resource name is not valid or resource not found.</exception>
+        </member>
+        <member name="T:Waher.Runtime.IO.StreamExtensions">
+            <summary>
+            Static class that extends the <see cref="T:System.IO.Stream"/> class with secured buffer operations.
+            </summary>
+        </member>
+        <member name="M:Waher.Runtime.IO.StreamExtensions.ReadAll(System.IO.Stream,System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            Reads data from a stream to a buffer. Multiple read operations are performed until
+            either all requested bytes have been read, or no more bytes are available to be
+            read, in which case an <see cref="T:System.IO.IOException"/> is thrown.
+            </summary>
+            <param name="f">Stream to read from.</param>
+            <param name="Buffer">Buffer to read into.</param>
+            <param name="Pos">Position in buffer to read to.</param>
+            <param name="Count">Number of bytes to read.</param>
+            <exception cref="T:System.ArgumentOutOfRangeException">If <paramref name="Count"/> or <paramref name="Pos"/> are negative,
+            or go beyond the range of the buffer.</exception>
+            <exception cref="T:System.IO.IOException">If not sufficient bytes exist to be read.</exception>
+        </member>
+        <member name="M:Waher.Runtime.IO.StreamExtensions.TryReadAll(System.IO.Stream,System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            Reads data from a stream to a buffer. Multiple read operations are performed until
+            either all requested bytes have been read, or no more bytes are available to be
+            read.
+            </summary>
+            <param name="f">Stream to read from.</param>
+            <param name="Buffer">Buffer to read into.</param>
+            <param name="Pos">Position in buffer to read to.</param>
+            <param name="Count">Number of bytes to read.</param>
+            <returns>The number of bytes reached.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">If <paramref name="Count"/> or <paramref name="Pos"/> are negative,
+            or go beyond the range of the buffer.</exception>
+        </member>
+        <member name="M:Waher.Runtime.IO.StreamExtensions.ReadAllAsync(System.IO.Stream)">
+            <summary>
+            Reads all available data from a stream to a buffer. Multiple read operations are performed until
+            either all requested bytes have been read, or no more bytes are available to be
+            read, in which case an <see cref="T:System.IO.IOException"/> is thrown.
+            </summary>
+            <param name="f">Stream to read from.</param>
+            <exception cref="T:System.IO.IOException">If not sufficient bytes exist to be read.</exception>
+            <exception cref="T:System.IO.InternalBufferOverflowException">If more data is available than can be read
+            into a byte buffer.</exception>
+        </member>
+        <member name="M:Waher.Runtime.IO.StreamExtensions.ReadAllAsync(System.IO.Stream,System.Byte[])">
+            <summary>
+            Reads data from a stream to a buffer. Multiple read operations are performed until
+            either all requested bytes have been read, or no more bytes are available to be
+            read, in which case an <see cref="T:System.IO.IOException"/> is thrown.
+            </summary>
+            <param name="f">Stream to read from.</param>
+            <param name="Buffer">Buffer to read into.</param>
+            <exception cref="T:System.IO.IOException">If not sufficient bytes exist to be read.</exception>
+        </member>
+        <member name="M:Waher.Runtime.IO.StreamExtensions.ReadAllAsync(System.IO.Stream,System.Int32)">
+            <summary>
+            Reads data from a stream to a buffer. Multiple read operations are performed until
+            either all requested bytes have been read, or no more bytes are available to be
+            read, in which case an <see cref="T:System.IO.IOException"/> is thrown.
+            </summary>
+            <param name="f">Stream to read from.</param>
+            <param name="NrBytes">Number of bytes to read.</param>
+            <exception cref="T:System.IO.IOException">If not sufficient bytes exist to be read.</exception>
+        </member>
+        <member name="M:Waher.Runtime.IO.StreamExtensions.ReadAllAsync(System.IO.Stream,System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            Reads data from a stream to a buffer. Multiple read operations are performed until
+            either all requested bytes have been read, or no more bytes are available to be
+            read, in which case an <see cref="T:System.IO.IOException"/> is thrown.
+            </summary>
+            <param name="f">Stream to read from.</param>
+            <param name="Buffer">Buffer to read into.</param>
+            <param name="Pos">Position in buffer to read to.</param>
+            <param name="Count">Number of bytes to read.</param>
+            <exception cref="T:System.ArgumentOutOfRangeException">If <paramref name="Count"/> or <paramref name="Pos"/> are negative,
+            or go beyond the range of the buffer.</exception>
+            <exception cref="T:System.IO.IOException">If not sufficient bytes exist to be read.</exception>
+        </member>
+        <member name="M:Waher.Runtime.IO.StreamExtensions.TryReadAllAsync(System.IO.Stream,System.Byte[])">
+            <summary>
+            Reads data from a stream to a buffer. Multiple read operations are performed until
+            either all requested bytes have been read, or no more bytes are available to be
+            read.
+            </summary>
+            <param name="f">Stream to read from.</param>
+            <param name="Buffer">Buffer to read into.</param>
+            <returns>The number of bytes reached.</returns>
+        </member>
+        <member name="M:Waher.Runtime.IO.StreamExtensions.TryReadAllAsync(System.IO.Stream,System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            Reads data from a stream to a buffer. Multiple read operations are performed until
+            either all requested bytes have been read, or no more bytes are available to be
+            read.
+            </summary>
+            <param name="f">Stream to read from.</param>
+            <param name="Buffer">Buffer to read into.</param>
+            <param name="Pos">Position in buffer to read to.</param>
+            <param name="Count">Number of bytes to read.</param>
+            <returns>The number of bytes reached.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">If <paramref name="Count"/> or <paramref name="Pos"/> are negative,
+            or go beyond the range of the buffer.</exception>
+        </member>
+        <member name="T:Waher.Runtime.IO.Strings">
+            <summary>
+            Static class managing binary representations of strings.
+            </summary>
+        </member>
+        <member name="M:Waher.Runtime.IO.Strings.GetEncoding(System.Byte[],System.Text.Encoding,System.Int32@)">
+            <summary>
+            Gets the encoding of a string from a its binary representation, taking
+            any Byte Order Mark (BOM) into account.
+            
+            If no BOM is found, the default encoding in <paramref name="DefaultEncoding"/>
+            is used, if defined. If not, ISO-8859-1 is used
+            </summary>
+            <param name="Data">Binary Data</param>
+            <param name="DefaultEncoding">Default encoding to use, in case
+            a Byte Order Mark (BOM) is not found in the binary representation.</param>
+            <param name="BomLength">Length of Byte Order Mark (BOM).</param>
+            <returns>Encoding</returns>
+        </member>
+        <member name="M:Waher.Runtime.IO.Strings.GetEncoding(System.Byte[],System.Int32,System.Int32,System.Text.Encoding,System.Int32@)">
+            <summary>
+            Gets the encoding of a string from a its binary representation, taking
+            any Byte Order Mark (BOM) into account.
+            
+            If no BOM is found, the default encoding in <paramref name="DefaultEncoding"/>
+            is used, if defined. If not, ISO-8859-1 is used
+            </summary>
+            <param name="Data">Binary Data</param>
+            <param name="Offset">Offset into array where string is encoded.</param>
+            <param name="Count">Number of bytes of encoded string.</param>
+            <param name="DefaultEncoding">Default encoding to use, in case
+            a Byte Order Mark (BOM) is not found in the binary representation.</param>
+            <param name="BomLength">Length of Byte Order Mark (BOM).</param>
+            <returns>Encoding</returns>
+        </member>
+        <member name="M:Waher.Runtime.IO.Strings.GetString(System.Byte[],System.Int32,System.Int32,System.Text.Encoding)">
+            <summary>
+            Gets a string from its binary representation, taking
+            any Byte Order Mark (BOM) into account.
+            
+            If no BOM is found, the default encoding in <paramref name="DefaultEncoding"/>
+            is used, if defined. If not, ISO-8859-1 is used
+            </summary>
+            <param name="Data">Binary Data</param>
+            <param name="Offset">Offset into array where string is encoded.</param>
+            <param name="Count">Number of bytes of encoded string.</param>
+            <param name="DefaultEncoding">Default encoding to use, in case
+            a Byte Order Mark (BOM) is not found in the binary representation.</param>
+            <returns>Decoded string</returns>
+        </member>
+        <member name="M:Waher.Runtime.IO.Strings.GetString(System.Byte[],System.Text.Encoding)">
+            <summary>
+            Gets a string from its binary representation, taking
+            any Byte Order Mark (BOM) into account.
+            
+            If no BOM is found, the default encoding in <paramref name="DefaultEncoding"/>
+            is used, if defined. If not, ISO-8859-1 is used
+            </summary>
+            <param name="Data">Binary Data</param>
+            <param name="DefaultEncoding">Default encoding to use, in case
+            a Byte Order Mark (BOM) is not found in the binary representation.</param>
+            <returns>Decoded string</returns>
+        </member>
+        <member name="P:Waher.Runtime.IO.Strings.ISO_8859_1">
+            <summary>
+            ISO-8859-1 encoding.
+            </summary>
+        </member>
+        <member name="P:Waher.Runtime.IO.Strings.BigEndianUnicode32">
+            <summary>
+            ISO-8859-1 encoding.
+            </summary>
+        </member>
+        <member name="P:Waher.Runtime.IO.Strings.GB18030">
+            <summary>
+            GB18030 encoding (simplified Chinese).
+            </summary>
+        </member>
+        <member name="P:Waher.Runtime.IO.Strings.Utf8WithBom">
+            <summary>
+            UTF-8 encoding with Byte Order Mark (BOM)
+            </summary>
+        </member>
+        <member name="P:Waher.Runtime.IO.Strings.Utf8WithoutBom">
+            <summary>
+            UTF-8 encoding without Byte Order Mark (BOM)
+            </summary>
+        </member>
+        <member name="M:Waher.Runtime.IO.Strings.RemovePortNumber(System.String)">
+            <summary>
+            Returns the port number at the end of a string, if found.
+            </summary>
+            <param name="s">String</param>
+            <returns>String without port number.</returns>
+        </member>
+    </members>
+</doc>

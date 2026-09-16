@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<coreProperties xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.openxmlformats.org/package/2006/metadata/core-properties">
+  <dc:creator>Tomasz Pluskiewicz T+Code</dc:creator>
+  <dc:description>Statically typed classes generated from various RDF Vocabularies or OWL Ontologies</dc:description>
+  <dc:identifier>Rdf.Vocabularies</dc:identifier>
+  <version>1.4.0</version>
+  <keywords>rdf semantic web</keywords>
+  <lastModifiedBy>NuGet.Build.Tasks.Pack, Version=5.1.0.5, Culture=neutral, PublicKeyToken=31bf3856ad364e35;</lastModifiedBy>
+</coreProperties>

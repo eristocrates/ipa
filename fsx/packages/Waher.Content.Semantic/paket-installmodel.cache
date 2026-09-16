@@ -1,0 +1,17 @@
+D: /lib
+D: /lib/netstandard2.0
+F: /lib/netstandard2.0/Waher.Content.Semantic.dll
+F: /lib/netstandard2.0/Waher.Content.Semantic.xml
+D: /package
+D: /package/services
+D: /package/services/metadata
+D: /package/services/metadata/core-properties
+F: /package/services/metadata/core-properties/9e0f4d2dc102463eb1c7741e0d33c46f.psmdcp
+D: /_rels
+F: /_rels/.rels
+F: /.signature.p7s
+F: /Icon_64x64.png
+F: /LICENSE.txt
+F: /waher.content.semantic.2.3.2.nupkg
+F: /Waher.Content.Semantic.nuspec
+F: /[Content_Types].xml

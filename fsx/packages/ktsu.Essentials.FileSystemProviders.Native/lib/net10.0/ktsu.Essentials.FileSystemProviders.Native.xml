@@ -1,0 +1,174 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ktsu.Essentials.FileSystemProviders.Native</name>
+    </assembly>
+    <members>
+        <member name="M:Polyfills.Polyfill.Except``1(System.Collections.Generic.IEnumerable{``0},``0)">
+            <summary>
+            Produces a set items excluding <paramref name="item"/> by using the default equality comparer to compare values.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.Except``1(System.Collections.Generic.IEnumerable{``0},``0,System.Collections.Generic.IEqualityComparer{``0})">
+            <summary>
+            Produces a set items excluding <paramref name="item"/> by using <paramref name="comparer"/> to compare values.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.Except``1(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEqualityComparer{``0},``0[])">
+            <summary>
+            Produces the set difference of two sequences by <paramref name="comparer"/> to compare values.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.IsGenericMethodParameter(System.Type)">
+            <summary>
+            Gets a value that indicates whether the current Type represents a type parameter in the definition of a generic method.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.IsAssignableTo``1(System.Type)">
+            <summary>
+            Generic version of Type.IsAssignableTo https://learn.microsoft.com/en-us/dotnet/api/system.type.isassignableto.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.IsAssignableFrom``1(System.Type)">
+            <summary>
+            Generic version of Type.IsAssignableFrom https://learn.microsoft.com/en-us/dotnet/api/system.type.isassignablefrom.
+            </summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.Append(System.Text.StringBuilder,System.Text.StringBuilder.AppendInterpolatedStringHandler@)">
+            <summary>Appends the specified interpolated string to this instance.</summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.Append(System.Text.StringBuilder,System.IFormatProvider,System.Text.StringBuilder.AppendInterpolatedStringHandler@)">
+            <summary>Appends the specified interpolated string to this instance.</summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.AppendLine(System.Text.StringBuilder,System.Text.StringBuilder.AppendInterpolatedStringHandler@)">
+            <summary>Appends the specified interpolated string followed by the default line terminator to the end of the current StringBuilder object.</summary>
+        </member>
+        <member name="M:Polyfills.Polyfill.AppendLine(System.Text.StringBuilder,System.IFormatProvider,System.Text.StringBuilder.AppendInterpolatedStringHandler@)">
+            <summary>Appends the specified interpolated string followed by the default line terminator to the end of the current StringBuilder object.</summary>
+        </member>
+        <member name="M:Polyfills.Ensure.Equal``1(``0,``0,System.String)">
+            <summary>Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is not equal to <paramref name="other"/>.</summary>
+            <param name="value">The argument to validate as equal to <paramref name="other"/>.</param>
+            <param name="other">The value to compare with <paramref name="value"/>.</param>
+            <param name="name">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+        </member>
+        <member name="M:Polyfills.Ensure.NotEqual``1(``0,``0,System.String)">
+            <summary>Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is equal to <paramref name="other"/>.</summary>
+            <param name="value">The argument to validate as not equal to <paramref name="other"/>.</param>
+            <param name="other">The value to compare with <paramref name="value"/>.</param>
+            <param name="name">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+        </member>
+        <member name="M:Polyfills.Ensure.NotGreaterThan``1(``0,``0,System.String)">
+            <summary>Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is greater than <paramref name="other"/>.</summary>
+            <param name="value">The argument to validate as less or equal than <paramref name="other"/>.</param>
+            <param name="other">The value to compare with <paramref name="value"/>.</param>
+            <param name="name">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+        </member>
+        <member name="M:Polyfills.Ensure.NotGreaterThanOrEqual``1(``0,``0,System.String)">
+            <summary>Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is greater than or equal <paramref name="other"/>.</summary>
+            <param name="value">The argument to validate as less than <paramref name="other"/>.</param>
+            <param name="other">The value to compare with <paramref name="value"/>.</param>
+            <param name="name">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+        </member>
+        <member name="M:Polyfills.Ensure.NotLessThan``1(``0,``0,System.String)">
+            <summary>Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is less than <paramref name="other"/>.</summary>
+            <param name="value">The argument to validate as greater than or equal than <paramref name="other"/>.</param>
+            <param name="other">The value to compare with <paramref name="value"/>.</param>
+            <param name="name">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+        </member>
+        <member name="M:Polyfills.Ensure.NotLessThanOrEqual``1(``0,``0,System.String)">
+            <summary>Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is less than or equal <paramref name="other"/>.</summary>
+            <param name="value">The argument to validate as greater than <paramref name="other"/>.</param>
+            <param name="other">The value to compare with <paramref name="value"/>.</param>
+            <param name="name">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+        </member>
+        <member name="M:Polyfills.Ensure.NotNegative``1(``0,System.String)">
+            <summary>Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is negative.</summary>
+            <param name="value">The argument to validate as non-negative.</param>
+            <param name="name">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+        </member>
+        <member name="M:Polyfills.Ensure.NotNegativeOrZero``1(``0,System.String)">
+            <summary>Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is negative or zero.</summary>
+            <param name="value">The argument to validate as non-zero or non-negative.</param>
+            <param name="name">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+        </member>
+        <member name="M:Polyfills.Ensure.NotZero``1(``0,System.String)">
+            <summary>Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is zero.</summary>
+            <param name="value">The argument to validate as non-zero.</param>
+            <param name="name">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+        </member>
+        <member name="T:ktsu.Essentials.FileSystemProviders.Native.NativeFileSystemProvider">
+            <summary>
+            A default file system provider that provides access to the real file system.
+            </summary>
+        </member>
+        <member name="M:ktsu.Essentials.FileSystemProviders.Native.NativeFileSystemProvider.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:ktsu.Essentials.FileSystemProviders.Native.NativeFileSystemProvider"/> class.
+            </summary>
+        </member>
+        <member name="P:ktsu.Essentials.FileSystemProviders.Native.NativeFileSystemProvider.Directory">
+            <summary>
+            Gets the directory operations.
+            </summary>
+        </member>
+        <member name="P:ktsu.Essentials.FileSystemProviders.Native.NativeFileSystemProvider.DirectoryInfo">
+            <summary>
+            Gets the directory info factory.
+            </summary>
+        </member>
+        <member name="P:ktsu.Essentials.FileSystemProviders.Native.NativeFileSystemProvider.DriveInfo">
+            <summary>
+            Gets the drive info factory.
+            </summary>
+        </member>
+        <member name="P:ktsu.Essentials.FileSystemProviders.Native.NativeFileSystemProvider.File">
+            <summary>
+            Gets the file operations.
+            </summary>
+        </member>
+        <member name="P:ktsu.Essentials.FileSystemProviders.Native.NativeFileSystemProvider.FileInfo">
+            <summary>
+            Gets the file info factory.
+            </summary>
+        </member>
+        <member name="P:ktsu.Essentials.FileSystemProviders.Native.NativeFileSystemProvider.FileStream">
+            <summary>
+            Gets the file stream factory.
+            </summary>
+        </member>
+        <member name="P:ktsu.Essentials.FileSystemProviders.Native.NativeFileSystemProvider.FileSystemWatcher">
+            <summary>
+            Gets the file system watcher factory.
+            </summary>
+        </member>
+        <member name="P:ktsu.Essentials.FileSystemProviders.Native.NativeFileSystemProvider.Path">
+            <summary>
+            Gets the path operations.
+            </summary>
+        </member>
+        <member name="P:ktsu.Essentials.FileSystemProviders.Native.NativeFileSystemProvider.FileVersionInfo">
+            <summary>
+            Gets the file version info factory.
+            </summary>
+        </member>
+        <member name="T:ktsu.Essentials.FileSystemProviders.Native.ServiceCollectionExtensions">
+            <summary>
+            Dependency injection registration for the native filesystem provider.
+            </summary>
+        </member>
+        <member name="M:ktsu.Essentials.FileSystemProviders.Native.ServiceCollectionExtensions.AddNativeFileSystemProvider(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Registers the native filesystem provider.
+            </summary>
+            <remarks>
+            The provider is registered as a singleton, both as its concrete type and as an additional
+            <see cref="T:ktsu.Essentials.IFileSystemProvider"/> in the resolvable set, so it can be resolved either way. The container
+            constructs and owns each registration, which means disposable providers are disposed with it.
+            Calling this more than once is a no-op.
+            </remarks>
+            <param name="services">The service collection to add the provider to.</param>
+            <returns>The same service collection, to allow chaining.</returns>
+        </member>
+    </members>
+</doc>

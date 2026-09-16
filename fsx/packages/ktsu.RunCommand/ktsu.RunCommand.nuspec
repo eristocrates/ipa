@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>ktsu.RunCommand</id>
+    <version>1.5.18</version>
+    <title>ktsu.RunCommand</title>
+    <authors>ktsu.dev contributors</authors>
+    <license type="file">LICENSE.md</license>
+    <licenseUrl>https://aka.ms/deprecateLicenseUrl</licenseUrl>
+    <icon>icon.png</icon>
+    <readme>README.md</readme>
+    <projectUrl>https://github.com/ktsu-dev/RunCommand</projectUrl>
+    <description>A .NET library for executing external commands and handling their output through delegates, with both synchronous and asynchronous APIs. Delivers standard output and standard error as raw chunks or complete lines as the process produces them, passes arguments as a vector so paths with spaces need no quoting, and shapes the spawned process with a working directory, an environment variable overlay, Windows elevation, and cancellation that terminates the process tree.</description>
+    <releaseNotes>## v1.5.18 (patch)
+
+Changes since v1.5.17:
+
+- ci: adopt the consolidated .NET workflow [patch] ([@Claude](https://github.com/Claude))</releaseNotes>
+    <copyright>Copyright (c) 2023-2026 ktsu-dev contributors</copyright>
+    <tags>.NET;C#;dotnet;csharp;run command;shell command;command line;process;process execution;subprocess;child process;output handling;stdout;stderr;output redirection;async execution;asynchronous;cancellation;working directory;environment variables;elevation;uac;cli;exit code;delegates</tags>
+    <repository type="git" commit="e5698453578b2f5b2e3c74c255ecbef04cd88c1a" />
+    <dependencies>
+      <group targetFramework="net10.0">
+        <dependency id="ktsu.Semantics.Paths" version="4.2.0" exclude="Build,Analyzers" />
+        <dependency id="ktsu.Semantics.Strings" version="4.2.0" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework="net8.0">
+        <dependency id="ktsu.Semantics.Paths" version="4.2.0" exclude="Build,Analyzers" />
+        <dependency id="ktsu.Semantics.Strings" version="4.2.0" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework="net9.0">
+        <dependency id="ktsu.Semantics.Paths" version="4.2.0" exclude="Build,Analyzers" />
+        <dependency id="ktsu.Semantics.Strings" version="4.2.0" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="System.Memory" version="4.6.3" exclude="Build,Analyzers" />
+        <dependency id="System.Threading.Tasks.Extensions" version="4.6.3" exclude="Build,Analyzers" />
+        <dependency id="ktsu.Semantics.Paths" version="4.2.0" exclude="Build,Analyzers" />
+        <dependency id="ktsu.Semantics.Strings" version="4.2.0" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework=".NETStandard2.1">
+        <dependency id="ktsu.Semantics.Paths" version="4.2.0" exclude="Build,Analyzers" />
+        <dependency id="ktsu.Semantics.Strings" version="4.2.0" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

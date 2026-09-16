@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>SolarWinds.Api</id>
+    <version>2026.5.57</version>
+    <authors>Panoramic Data Limited</authors>
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <icon>SolarWindsLogo.png</icon>
+    <readme>README.md</readme>
+    <projectUrl>https://github.com/panoramicdata/SolarWinds.Api</projectUrl>
+    <description>A .NET API client for SolarWinds Orion and Service Desk</description>
+    <releaseNotes>Security fix: sensitive HTTP headers are now redacted in diagnostic output.
+
+			Previously LoggingDelegatingHandler wrote every request and response header verbatim into
+			its Debug level log message. Service Desk authenticates with an X-Samanage-Authorization
+			header, so a usable access token was written out whenever a consumer ran at Debug, and was
+			retained for the life of its log store.
+
+			Authorization, Proxy-Authorization, Cookie, Set-Cookie and common API key headers are now
+			redacted, along with any vendor-prefixed variant whose name ends in "Authorization", which
+			is what covers this client's own credential. The authentication scheme and the credential
+			length are retained, so requests remain diagnosable without exposing the credential.
+
+			The log message format is otherwise unchanged. Consumers should upgrade and then review
+			existing Debug logs for previously captured tokens.
+
+			See CHANGELOG.md for release notes.</releaseNotes>
+    <copyright>Copyright © Panoramic Data Limited 2026</copyright>
+    <tags>solarwinds api orion service-desk monitoring network</tags>
+    <repository type="git" url="https://github.com/panoramicdata/SolarWinds.Api" commit="1712398a2feb7af1602bad965ed4363e442d3bc2" />
+    <dependencies>
+      <group targetFramework="net10.0">
+        <dependency id="Microsoft.Extensions.Logging.Abstractions" version="10.0.11" exclude="Build,Analyzers" />
+        <dependency id="Newtonsoft.Json" version="13.0.4" exclude="Build,Analyzers" />
+        <dependency id="Refit" version="15.2.0" exclude="Build,Analyzers" />
+        <dependency id="Refit.HttpClientFactory" version="15.2.0" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

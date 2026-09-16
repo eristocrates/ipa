@@ -1,0 +1,1278 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ModelingEvolution.Ipv4</name>
+    </assembly>
+    <members>
+        <member name="T:ModelingEvolution.Ipv4.IpPort">
+             <summary>
+             Represents a TCP/UDP port number (0-65535).
+             </summary>
+             <remarks>
+             <para>
+             This struct provides a strongly-typed representation of network ports with
+             built-in validation, well-known port constants, and range classification.
+             It implements <see cref="T:System.IParsable`1"/> for seamless JSON serialization.
+             </para>
+             </remarks>
+             <example>
+             <code>
+             // Create ports
+             var port1 = new IpPort(8080);
+             var port2 = IpPort.Parse("443");
+             var port3 = IpPort.Http;
+            
+             // Properties
+             bool isWellKnown = port1.IsWellKnown;     // false (8080 > 1023)
+             bool isRegistered = port1.IsRegistered;   // true (1024-49151)
+             bool isDynamic = port1.IsDynamic;         // false
+            
+             // Implicit conversions
+             ushort value = port1;  // 8080
+             IpPort port4 = 3000;   // implicit from int
+            
+             // Well-known ports
+             var http = IpPort.Http;        // 80
+             var https = IpPort.Https;      // 443
+             var ssh = IpPort.Ssh;          // 22
+             </code>
+             </example>
+        </member>
+        <member name="P:ModelingEvolution.Ipv4.IpPort.FtpData">
+            <summary>FTP Data (20)</summary>
+        </member>
+        <member name="P:ModelingEvolution.Ipv4.IpPort.Ftp">
+            <summary>FTP Control (21)</summary>
+        </member>
+        <member name="P:ModelingEvolution.Ipv4.IpPort.Ssh">
+            <summary>SSH (22)</summary>
+        </member>
+        <member name="P:ModelingEvolution.Ipv4.IpPort.Telnet">
+            <summary>Telnet (23)</summary>
+        </member>
+        <member name="P:ModelingEvolution.Ipv4.IpPort.Smtp">
+            <summary>SMTP (25)</summary>
+        </member>
+        <member name="P:ModelingEvolution.Ipv4.IpPort.Dns">
+            <summary>DNS (53)</summary>
+        </member>
+        <member name="P:ModelingEvolution.Ipv4.IpPort.DhcpServer">
+            <summary>DHCP Server (67)</summary>
+        </member>
+        <member name="P:ModelingEvolution.Ipv4.IpPort.DhcpClient">
+            <summary>DHCP Client (68)</summary>
+        </member>
+        <member name="P:ModelingEvolution.Ipv4.IpPort.Tftp">
+            <summary>TFTP (69)</summary>
+        </member>
+        <member name="P:ModelingEvolution.Ipv4.IpPort.Http">
+            <summary>HTTP (80)</summary>
+        </member>
+        <member name="P:ModelingEvolution.Ipv4.IpPort.Kerberos">
+            <summary>Kerberos (88)</summary>
+        </member>
+        <member name="P:ModelingEvolution.Ipv4.IpPort.Pop3">
+            <summary>POP3 (110)</summary>
+        </member>
+        <member name="P:ModelingEvolution.Ipv4.IpPort.Ntp">
+            <summary>NTP (123)</summary>
+        </member>
+        <member name="P:ModelingEvolution.Ipv4.IpPort.NetBiosNs">
+            <summary>NetBIOS Name Service (137)</summary>
+        </member>
+        <member name="P:ModelingEvolution.Ipv4.IpPort.NetBiosSs">
+            <summary>NetBIOS Session Service (139)</summary>
+        </member>
+        <member name="P:ModelingEvolution.Ipv4.IpPort.Imap">
+            <summary>IMAP (143)</summary>
+        </member>
+        <member name="P:ModelingEvolution.Ipv4.IpPort.Snmp">
+            <summary>SNMP (161)</summary>
+        </member>
+        <member name="P:ModelingEvolution.Ipv4.IpPort.Ldap">
+            <summary>LDAP (389)</summary>
+        </member>
+        <member name="P:ModelingEvolution.Ipv4.IpPort.Https">
+            <summary>HTTPS (443)</summary>
+        </member>
+        <member name="P:ModelingEvolution.Ipv4.IpPort.Smb">
+            <summary>SMB (445)</summary>
+        </member>
+        <member name="P:ModelingEvolution.Ipv4.IpPort.SmtpTls">
+            <summary>SMTP over TLS (465)</summary>
+        </member>
+        <member name="P:ModelingEvolution.Ipv4.IpPort.Ldaps">
+            <summary>LDAPS (636)</summary>
+        </member>
+        <member name="P:ModelingEvolution.Ipv4.IpPort.SmtpSubmission">
+            <summary>SMTP Submission (587)</summary>
+        </member>
+        <member name="P:ModelingEvolution.Ipv4.IpPort.Imaps">
+            <summary>IMAPS (993)</summary>
+        </member>
+        <member name="P:ModelingEvolution.Ipv4.IpPort.Pop3s">
+            <summary>POP3S (995)</summary>
+        </member>
+        <member name="P:ModelingEvolution.Ipv4.IpPort.Socks">
+            <summary>SOCKS Proxy (1080)</summary>
+        </member>
+        <member name="P:ModelingEvolution.Ipv4.IpPort.OpenVpn">
+            <summary>OpenVPN (1194)</summary>
+        </member>
+        <member name="P:ModelingEvolution.Ipv4.IpPort.MsSql">
+            <summary>MS SQL Server (1433)</summary>
+        </member>
+        <member name="P:ModelingEvolution.Ipv4.IpPort.Oracle">
+            <summary>Oracle Database (1521)</summary>
+        </member>
+        <member name="P:ModelingEvolution.Ipv4.IpPort.MySql">
+            <summary>MySQL (3306)</summary>
+        </member>
+        <member name="P:ModelingEvolution.Ipv4.IpPort.Rdp">
+            <summary>RDP (3389)</summary>
+        </member>
+        <member name="P:ModelingEvolution.Ipv4.IpPort.PostgreSql">
+            <summary>PostgreSQL (5432)</summary>
+        </member>
+        <member name="P:ModelingEvolution.Ipv4.IpPort.Vnc">
+            <summary>VNC (5900)</summary>
+        </member>
+        <member name="P:ModelingEvolution.Ipv4.IpPort.Redis">
+            <summary>Redis (6379)</summary>
+        </member>
+        <member name="P:ModelingEvolution.Ipv4.IpPort.HttpProxy">
+            <summary>HTTP Proxy (8080)</summary>
+        </member>
+        <member name="P:ModelingEvolution.Ipv4.IpPort.HttpsAlt">
+            <summary>HTTPS Alternate (8443)</summary>
+        </member>
+        <member name="P:ModelingEvolution.Ipv4.IpPort.Elasticsearch">
+            <summary>Elasticsearch HTTP (9200)</summary>
+        </member>
+        <member name="P:ModelingEvolution.Ipv4.IpPort.MongoDb">
+            <summary>MongoDB (27017)</summary>
+        </member>
+        <member name="M:ModelingEvolution.Ipv4.IpPort.#ctor(System.UInt16)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ModelingEvolution.Ipv4.IpPort"/> struct.
+            </summary>
+            <param name="value">The port number (0-65535).</param>
+        </member>
+        <member name="M:ModelingEvolution.Ipv4.IpPort.#ctor(System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ModelingEvolution.Ipv4.IpPort"/> struct.
+            </summary>
+            <param name="value">The port number (must be 0-65535).</param>
+            <exception cref="T:System.ArgumentOutOfRangeException">Thrown when value is outside 0-65535 range.</exception>
+        </member>
+        <member name="P:ModelingEvolution.Ipv4.IpPort.Value">
+            <summary>
+            Gets the port number value.
+            </summary>
+        </member>
+        <member name="P:ModelingEvolution.Ipv4.IpPort.IsWellKnown">
+            <summary>
+            Gets whether this is a well-known port (0-1023).
+            </summary>
+            <remarks>
+            Well-known ports are assigned by IANA and typically require root/admin privileges to bind.
+            </remarks>
+        </member>
+        <member name="P:ModelingEvolution.Ipv4.IpPort.IsRegistered">
+            <summary>
+            Gets whether this is a registered port (1024-49151).
+            </summary>
+            <remarks>
+            Registered ports are assigned by IANA for specific services but don't require special privileges.
+            </remarks>
+        </member>
+        <member name="P:ModelingEvolution.Ipv4.IpPort.IsDynamic">
+            <summary>
+            Gets whether this is a dynamic/ephemeral port (49152-65535).
+            </summary>
+            <remarks>
+            Dynamic ports are used for temporary connections and are typically assigned by the OS.
+            </remarks>
+        </member>
+        <member name="M:ModelingEvolution.Ipv4.IpPort.ToString">
+            <summary>
+            Returns the string representation of this port.
+            </summary>
+        </member>
+        <member name="M:ModelingEvolution.Ipv4.IpPort.Parse(System.String,System.IFormatProvider)">
+            <summary>
+            Parses a string representation of a port number.
+            </summary>
+            <param name="s">A string containing a port number.</param>
+            <param name="provider">An object that provides culture-specific formatting information (not used).</param>
+            <returns>A <see cref="T:ModelingEvolution.Ipv4.IpPort"/> equivalent to the number contained in <paramref name="s"/>.</returns>
+            <exception cref="T:System.FormatException">Thrown when <paramref name="s"/> is not a valid port number.</exception>
+            <exception cref="T:System.ArgumentNullException">Thrown when <paramref name="s"/> is null.</exception>
+        </member>
+        <member name="M:ModelingEvolution.Ipv4.IpPort.TryParse(System.String,System.IFormatProvider,ModelingEvolution.Ipv4.IpPort@)">
+            <summary>
+            Attempts to parse a string representation of a port number.
+            </summary>
+            <param name="s">A string containing a port number.</param>
+            <param name="provider">An object that provides culture-specific formatting information (not used).</param>
+            <param name="result">When this method returns, contains the parsed port if successful.</param>
+            <returns><c>true</c> if parsing succeeded; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:ModelingEvolution.Ipv4.IpPort.CompareTo(ModelingEvolution.Ipv4.IpPort)">
+            <summary>
+            Compares this instance with another <see cref="T:ModelingEvolution.Ipv4.IpPort"/>.
+            </summary>
+        </member>
+        <member name="M:ModelingEvolution.Ipv4.IpPort.op_Implicit(ModelingEvolution.Ipv4.IpPort)~System.UInt16">
+            <summary>
+            Implicitly converts an <see cref="T:ModelingEvolution.Ipv4.IpPort"/> to a <see cref="T:System.UInt16"/>.
+            </summary>
+        </member>
+        <member name="M:ModelingEvolution.Ipv4.IpPort.op_Implicit(System.UInt16)~ModelingEvolution.Ipv4.IpPort">
+            <summary>
+            Implicitly converts a <see cref="T:System.UInt16"/> to an <see cref="T:ModelingEvolution.Ipv4.IpPort"/>.
+            </summary>
+        </member>
+        <member name="M:ModelingEvolution.Ipv4.IpPort.op_Implicit(System.Int32)~ModelingEvolution.Ipv4.IpPort">
+            <summary>
+            Implicitly converts an <see cref="T:System.Int32"/> to an <see cref="T:ModelingEvolution.Ipv4.IpPort"/>.
+            </summary>
+            <exception cref="T:System.ArgumentOutOfRangeException">Thrown when value is outside 0-65535 range.</exception>
+        </member>
+        <member name="M:ModelingEvolution.Ipv4.IpPort.op_Implicit(System.String)~ModelingEvolution.Ipv4.IpPort">
+            <summary>
+            Implicitly converts a string to an <see cref="T:ModelingEvolution.Ipv4.IpPort"/>.
+            </summary>
+        </member>
+        <member name="T:ModelingEvolution.Ipv4.Ipv4Address">
+            <summary>
+            Represents an IPv4 address with high-performance operations and JSON serialization support.
+            </summary>
+            <remarks>
+            <para>
+            This struct provides a lightweight, strongly-typed representation of IPv4 addresses with
+            built-in parsing, formatting, and network calculation capabilities. It implements
+            <see cref="T:System.IParsable`1"/> for seamless integration with JSON serialization and
+            various .NET APIs.
+            </para>
+            <para>
+            The internal representation uses a 32-bit unsigned integer in network byte order
+            for efficient storage and calculations.
+            </para>
+            </remarks>
+            <example>
+            <code>
+            // Create IPv4 addresses
+            var localhost = Ipv4Address.Loopback;
+            var address = Ipv4Address.Parse("192.168.1.1");
+            var fromUint = new Ipv4Address(0xC0A80101u);
+            
+            // Network calculations
+            var network = address.GetNetwork(24); // 192.168.1.0
+            var broadcast = address.GetBroadcast(24); // 192.168.1.255
+            bool isInNetwork = address.IsInNetwork(network, 24);
+            
+            // JSON serialization works automatically
+            string json = JsonSerializer.Serialize(address);
+            Ipv4Address deserialized = JsonSerializer.Deserialize&lt;Ipv4Address&gt;(json);
+            </code>
+            </example>
+        </member>
+        <member name="P:ModelingEvolution.Ipv4.Ipv4Address.Loopback">
+            <summary>
+            Gets the loopback address (127.0.0.1).
+            </summary>
+        </member>
+        <member name="P:ModelingEvolution.Ipv4.Ipv4Address.Any">
+            <summary>
+            Gets the "any" address (0.0.0.0).
+            </summary>
+        </member>
+        <member name="P:ModelingEvolution.Ipv4.Ipv4Address.Broadcast">
+            <summary>
+            Gets the broadcast address (255.255.255.255).
+            </summary>
+        </member>
+        <member name="M:ModelingEvolution.Ipv4.Ipv4Address.#ctor(System.UInt32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ModelingEvolution.Ipv4.Ipv4Address"/> struct from a 32-bit unsigned integer.
+            </summary>
+            <param name="value">The IPv4 address as a 32-bit unsigned integer in network byte order.</param>
+        </member>
+        <member name="M:ModelingEvolution.Ipv4.Ipv4Address.#ctor(System.Byte,System.Byte,System.Byte,System.Byte)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ModelingEvolution.Ipv4.Ipv4Address"/> struct from four octets.
+            </summary>
+            <param name="a">The first octet (0-255).</param>
+            <param name="b">The second octet (0-255).</param>
+            <param name="c">The third octet (0-255).</param>
+            <param name="d">The fourth octet (0-255).</param>
+            <exception cref="T:System.ArgumentOutOfRangeException">Thrown when any octet is outside the range 0-255.</exception>
+        </member>
+        <member name="P:ModelingEvolution.Ipv4.Ipv4Address.Value">
+            <summary>
+            Gets the 32-bit unsigned integer representation of this IPv4 address in network byte order.
+            </summary>
+        </member>
+        <member name="P:ModelingEvolution.Ipv4.Ipv4Address.A">
+            <summary>
+            Gets the first octet of the IPv4 address.
+            </summary>
+        </member>
+        <member name="P:ModelingEvolution.Ipv4.Ipv4Address.B">
+            <summary>
+            Gets the second octet of the IPv4 address.
+            </summary>
+        </member>
+        <member name="P:ModelingEvolution.Ipv4.Ipv4Address.C">
+            <summary>
+            Gets the third octet of the IPv4 address.
+            </summary>
+        </member>
+        <member name="P:ModelingEvolution.Ipv4.Ipv4Address.D">
+            <summary>
+            Gets the fourth octet of the IPv4 address.
+            </summary>
+        </member>
+        <member name="M:ModelingEvolution.Ipv4.Ipv4Address.GetNetwork(System.Int32)">
+            <summary>
+            Calculates the network address for this IP address with the specified subnet mask prefix length.
+            </summary>
+            <param name="prefixLength">The subnet mask prefix length (0-32).</param>
+            <returns>The network address.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">Thrown when prefixLength is outside the range 0-32.</exception>
+            <example>
+            <code>
+            var address = Ipv4Address.Parse("192.168.1.100");
+            var network = address.GetNetwork(24); // Returns 192.168.1.0
+            </code>
+            </example>
+        </member>
+        <member name="M:ModelingEvolution.Ipv4.Ipv4Address.GetBroadcast(System.Int32)">
+            <summary>
+            Calculates the broadcast address for this IP address with the specified subnet mask prefix length.
+            </summary>
+            <param name="prefixLength">The subnet mask prefix length (0-32).</param>
+            <returns>The broadcast address.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">Thrown when prefixLength is outside the range 0-32.</exception>
+            <example>
+            <code>
+            var address = Ipv4Address.Parse("192.168.1.100");
+            var broadcast = address.GetBroadcast(24); // Returns 192.168.1.255
+            </code>
+            </example>
+        </member>
+        <member name="M:ModelingEvolution.Ipv4.Ipv4Address.IsInNetwork(ModelingEvolution.Ipv4.Ipv4Address,System.Int32)">
+            <summary>
+            Determines whether this IP address is within the specified network.
+            </summary>
+            <param name="networkAddress">The network address.</param>
+            <param name="prefixLength">The subnet mask prefix length (0-32).</param>
+            <returns><c>true</c> if this address is within the specified network; otherwise, <c>false</c>.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">Thrown when prefixLength is outside the range 0-32.</exception>
+            <example>
+            <code>
+            var address = Ipv4Address.Parse("192.168.1.100");
+            var network = Ipv4Address.Parse("192.168.1.0");
+            bool isInNetwork = address.IsInNetwork(network, 24); // Returns true
+            </code>
+            </example>
+        </member>
+        <member name="M:ModelingEvolution.Ipv4.Ipv4Address.IsPrivate">
+            <summary>
+            Determines whether this IP address represents a private address according to RFC 1918.
+            </summary>
+            <returns><c>true</c> if this is a private address; otherwise, <c>false</c>.</returns>
+            <remarks>
+            Private address ranges are:
+            - 10.0.0.0/8 (10.0.0.0 to 10.255.255.255)
+            - 172.16.0.0/12 (172.16.0.0 to 172.31.255.255)
+            - 192.168.0.0/16 (192.168.0.0 to 192.168.255.255)
+            </remarks>
+        </member>
+        <member name="M:ModelingEvolution.Ipv4.Ipv4Address.IsLoopback">
+            <summary>
+            Determines whether this IP address represents a loopback address (127.0.0.0/8).
+            </summary>
+            <returns><c>true</c> if this is a loopback address; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:ModelingEvolution.Ipv4.Ipv4Address.IsMulticast">
+            <summary>
+            Determines whether this IP address represents a multicast address (224.0.0.0/4).
+            </summary>
+            <returns><c>true</c> if this is a multicast address; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:ModelingEvolution.Ipv4.Ipv4Address.ToString">
+            <summary>
+            Converts this IPv4 address to its standard dotted decimal string representation.
+            </summary>
+            <returns>A string representation of this IPv4 address (e.g., "192.168.1.1").</returns>
+        </member>
+        <member name="M:ModelingEvolution.Ipv4.Ipv4Address.ToIPAddress">
+            <summary>
+            Converts this IPv4 address to a <see cref="T:System.Net.IPAddress"/> instance.
+            </summary>
+            <returns>An <see cref="T:System.Net.IPAddress"/> representing this IPv4 address.</returns>
+        </member>
+        <member name="M:ModelingEvolution.Ipv4.Ipv4Address.Parse(System.String,System.IFormatProvider)">
+            <summary>
+            Parses a string representation of an IPv4 address.
+            </summary>
+            <param name="s">A string containing an IPv4 address in dotted decimal notation.</param>
+            <param name="provider">An object that provides culture-specific formatting information (not used).</param>
+            <returns>An <see cref="T:ModelingEvolution.Ipv4.Ipv4Address"/> equivalent to the IPv4 address contained in <paramref name="s"/>.</returns>
+            <exception cref="T:System.FormatException">Thrown when <paramref name="s"/> is not a valid IPv4 address.</exception>
+            <exception cref="T:System.ArgumentNullException">Thrown when <paramref name="s"/> is null.</exception>
+        </member>
+        <member name="M:ModelingEvolution.Ipv4.Ipv4Address.TryParse(System.String,System.IFormatProvider,ModelingEvolution.Ipv4.Ipv4Address@)">
+            <summary>
+            Attempts to parse a string representation of an IPv4 address.
+            </summary>
+            <param name="s">A string containing an IPv4 address in dotted decimal notation.</param>
+            <param name="provider">An object that provides culture-specific formatting information (not used).</param>
+            <param name="result">
+            When this method returns, contains the <see cref="T:ModelingEvolution.Ipv4.Ipv4Address"/> equivalent of the IPv4 address
+            contained in <paramref name="s"/>, if the conversion succeeded, or default if the conversion failed.
+            </param>
+            <returns><c>true</c> if <paramref name="s"/> was converted successfully; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:ModelingEvolution.Ipv4.Ipv4Address.From(System.UInt32)">
+            <summary>
+            Creates an <see cref="T:ModelingEvolution.Ipv4.Ipv4Address"/> from a 32-bit unsigned integer.
+            </summary>
+            <param name="value">The IPv4 address as a 32-bit unsigned integer in network byte order.</param>
+            <returns>An <see cref="T:ModelingEvolution.Ipv4.Ipv4Address"/> equivalent to the specified integer.</returns>
+            <example>
+            <code>
+            var address = Ipv4Address.From(0xC0A80101u); // 192.168.1.1
+            </code>
+            </example>
+        </member>
+        <member name="M:ModelingEvolution.Ipv4.Ipv4Address.FromIPAddress(System.Net.IPAddress)">
+            <summary>
+            Creates an <see cref="T:ModelingEvolution.Ipv4.Ipv4Address"/> from a <see cref="T:System.Net.IPAddress"/>.
+            </summary>
+            <param name="ipAddress">The <see cref="T:System.Net.IPAddress"/> to convert.</param>
+            <returns>An <see cref="T:ModelingEvolution.Ipv4.Ipv4Address"/> equivalent to the specified <see cref="T:System.Net.IPAddress"/>.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when <paramref name="ipAddress"/> is null.</exception>
+            <exception cref="T:System.ArgumentException">Thrown when <paramref name="ipAddress"/> is not an IPv4 address.</exception>
+        </member>
+        <member name="M:ModelingEvolution.Ipv4.Ipv4Address.CompareTo(ModelingEvolution.Ipv4.Ipv4Address)">
+            <summary>
+            Compares this instance with another <see cref="T:ModelingEvolution.Ipv4.Ipv4Address"/> and returns an integer that indicates
+            whether this instance precedes, follows, or occurs in the same position in the sort order as the other instance.
+            </summary>
+            <param name="other">An <see cref="T:ModelingEvolution.Ipv4.Ipv4Address"/> to compare with this instance.</param>
+            <returns>
+            A value that indicates the relative order of the objects being compared:
+            - Less than zero: This instance precedes <paramref name="other"/> in the sort order.
+            - Zero: This instance occurs in the same position in the sort order as <paramref name="other"/>.
+            - Greater than zero: This instance follows <paramref name="other"/> in the sort order.
+            </returns>
+        </member>
+        <member name="M:ModelingEvolution.Ipv4.Ipv4Address.op_Implicit(System.String)~ModelingEvolution.Ipv4.Ipv4Address">
+            <summary>
+            Implicitly converts a string to an <see cref="T:ModelingEvolution.Ipv4.Ipv4Address"/>.
+            </summary>
+            <param name="value">The string representation of an IPv4 address.</param>
+            <returns>An <see cref="T:ModelingEvolution.Ipv4.Ipv4Address"/> equivalent to the specified string.</returns>
+            <exception cref="T:System.FormatException">Thrown when the string is not a valid IPv4 address.</exception>
+        </member>
+        <member name="M:ModelingEvolution.Ipv4.Ipv4Address.op_Implicit(System.UInt32)~ModelingEvolution.Ipv4.Ipv4Address">
+            <summary>
+            Implicitly converts a 32-bit unsigned integer to an <see cref="T:ModelingEvolution.Ipv4.Ipv4Address"/>.
+            </summary>
+            <param name="value">The 32-bit unsigned integer representation of an IPv4 address in network byte order.</param>
+            <returns>An <see cref="T:ModelingEvolution.Ipv4.Ipv4Address"/> equivalent to the specified integer.</returns>
+        </member>
+        <member name="M:ModelingEvolution.Ipv4.Ipv4Address.op_Explicit(ModelingEvolution.Ipv4.Ipv4Address)~System.UInt32">
+            <summary>
+            Explicitly converts an <see cref="T:ModelingEvolution.Ipv4.Ipv4Address"/> to a 32-bit unsigned integer.
+            </summary>
+            <param name="address">The IPv4 address to convert.</param>
+            <returns>The 32-bit unsigned integer representation in network byte order.</returns>
+        </member>
+        <member name="M:ModelingEvolution.Ipv4.Ipv4Address.op_Implicit(ModelingEvolution.Ipv4.Ipv4Address)~System.Net.IPAddress">
+            <summary>
+            Implicitly converts an <see cref="T:ModelingEvolution.Ipv4.Ipv4Address"/> to a <see cref="T:System.Net.IPAddress"/>.
+            </summary>
+            <param name="address">The IPv4 address to convert.</param>
+            <returns>An <see cref="T:System.Net.IPAddress"/> equivalent to the specified <see cref="T:ModelingEvolution.Ipv4.Ipv4Address"/>.</returns>
+        </member>
+        <member name="M:ModelingEvolution.Ipv4.Ipv4Address.op_Implicit(System.Net.IPAddress)~ModelingEvolution.Ipv4.Ipv4Address">
+            <summary>
+            Implicitly converts a <see cref="T:System.Net.IPAddress"/> to an <see cref="T:ModelingEvolution.Ipv4.Ipv4Address"/>.
+            </summary>
+            <param name="ipAddress">The <see cref="T:System.Net.IPAddress"/> to convert.</param>
+            <returns>An <see cref="T:ModelingEvolution.Ipv4.Ipv4Address"/> equivalent to the specified <see cref="T:System.Net.IPAddress"/>.</returns>
+            <exception cref="T:System.ArgumentException">Thrown when the <see cref="T:System.Net.IPAddress"/> is not an IPv4 address.</exception>
+        </member>
+        <member name="M:ModelingEvolution.Ipv4.Ipv4Address.op_Addition(ModelingEvolution.Ipv4.Ipv4Address,ModelingEvolution.Ipv4.IpPort)">
+            <summary>
+            Creates an <see cref="T:ModelingEvolution.Ipv4.Ipv4Endpoint"/> by combining an address and port.
+            </summary>
+            <param name="address">The IPv4 address.</param>
+            <param name="port">The port.</param>
+            <returns>A new <see cref="T:ModelingEvolution.Ipv4.Ipv4Endpoint"/> instance.</returns>
+            <example>
+            <code>
+            var endpoint = Ipv4Address.Parse("192.168.1.100") + IpPort.Http;
+            </code>
+            </example>
+        </member>
+        <member name="T:ModelingEvolution.Ipv4.Ipv4Configuration">
+            <summary>
+            Represents an IPv4 network configuration with address, subnet, and gateway information.
+            </summary>
+            <remarks>
+            <para>
+            This record provides a complete IPv4 configuration typically used for network interfaces,
+            including the IP address, subnet prefix length, and gateway address. It supports
+            JSON serialization and provides convenient string representations.
+            </para>
+            </remarks>
+            <example>
+            <code>
+            // Create configurations
+            var config = new Ipv4Configuration(
+                address: "192.168.1.100",
+                prefixLength: 24,
+                gateway: "192.168.1.1"
+            );
+            
+            // Alternative creation methods
+            var config2 = Ipv4Configuration.Parse("192.168.1.100/24 gw 192.168.1.1");
+            var config3 = Ipv4Configuration.FromNetwork(
+                network: "192.168.1.0/24",
+                hostAddress: "192.168.1.100",
+                gateway: "192.168.1.1"
+            );
+            
+            // Access properties
+            var network = config.Network;           // 192.168.1.0/24
+            var broadcast = config.BroadcastAddress; // 192.168.1.255
+            bool isValid = config.IsValid();        // true if gateway is in network
+            
+            // String representation
+            Console.WriteLine(config); // "192.168.1.100/24 gw 192.168.1.1"
+            </code>
+            </example>
+        </member>
+        <member name="P:ModelingEvolution.Ipv4.Ipv4Configuration.Address">
+            <summary>
+            Gets the IPv4 address.
+            </summary>
+        </member>
+        <member name="P:ModelingEvolution.Ipv4.Ipv4Configuration.PrefixLength">
+            <summary>
+            Gets the subnet prefix length (0-32).
+            </summary>
+        </member>
+        <member name="P:ModelingEvolution.Ipv4.Ipv4Configuration.Gateway">
+            <summary>
+            Gets the gateway IPv4 address.
+            </summary>
+        </member>
+        <member name="M:ModelingEvolution.Ipv4.Ipv4Configuration.#ctor(ModelingEvolution.Ipv4.Ipv4Address,System.Int32,ModelingEvolution.Ipv4.Ipv4Address)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ModelingEvolution.Ipv4.Ipv4Configuration"/> struct.
+            </summary>
+            <param name="address">The IPv4 address.</param>
+            <param name="prefixLength">The subnet prefix length (0-32).</param>
+            <param name="gateway">The gateway IPv4 address.</param>
+            <exception cref="T:System.ArgumentOutOfRangeException">Thrown when prefixLength is outside the range 0-32.</exception>
+        </member>
+        <member name="P:ModelingEvolution.Ipv4.Ipv4Configuration.Network">
+            <summary>
+            Gets the network that this configuration belongs to.
+            </summary>
+        </member>
+        <member name="P:ModelingEvolution.Ipv4.Ipv4Configuration.NetworkAddress">
+            <summary>
+            Gets the network address for this configuration.
+            </summary>
+        </member>
+        <member name="P:ModelingEvolution.Ipv4.Ipv4Configuration.BroadcastAddress">
+            <summary>
+            Gets the broadcast address for this configuration.
+            </summary>
+        </member>
+        <member name="P:ModelingEvolution.Ipv4.Ipv4Configuration.SubnetMask">
+            <summary>
+            Gets the subnet mask for this configuration.
+            </summary>
+        </member>
+        <member name="M:ModelingEvolution.Ipv4.Ipv4Configuration.IsValid">
+            <summary>
+            Determines whether this configuration is valid.
+            </summary>
+            <returns>
+            <c>true</c> if the configuration is valid (address and gateway are in the same network);
+            otherwise, <c>false</c>.
+            </returns>
+            <remarks>
+            A configuration is considered valid if:
+            - The address is not the network address (unless it's a /31 or /32 network)
+            - The address is not the broadcast address (unless it's a /31 or /32 network)
+            - The gateway is within the same network as the address
+            </remarks>
+        </member>
+        <member name="M:ModelingEvolution.Ipv4.Ipv4Configuration.CanReachDirectly(ModelingEvolution.Ipv4.Ipv4Address)">
+            <summary>
+            Determines whether the specified address can communicate directly with this configuration
+            (i.e., it's in the same network).
+            </summary>
+            <param name="other">The address to check.</param>
+            <returns><c>true</c> if the address is in the same network; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:ModelingEvolution.Ipv4.Ipv4Configuration.FromNetwork(ModelingEvolution.Ipv4.Ipv4Network,ModelingEvolution.Ipv4.Ipv4Address,ModelingEvolution.Ipv4.Ipv4Address)">
+            <summary>
+            Creates an IPv4 configuration from a network and specific host address.
+            </summary>
+            <param name="network">The network.</param>
+            <param name="hostAddress">The host address within the network.</param>
+            <param name="gateway">The gateway address.</param>
+            <returns>A new <see cref="T:ModelingEvolution.Ipv4.Ipv4Configuration"/> instance.</returns>
+            <exception cref="T:System.ArgumentException">Thrown when the host address is not within the specified network.</exception>
+        </member>
+        <member name="M:ModelingEvolution.Ipv4.Ipv4Configuration.FromNetworkFirstHost(ModelingEvolution.Ipv4.Ipv4Network,ModelingEvolution.Ipv4.Ipv4Address)">
+            <summary>
+            Creates an IPv4 configuration using the first available host address in the specified network.
+            </summary>
+            <param name="network">The network.</param>
+            <param name="gateway">The gateway address.</param>
+            <returns>A new <see cref="T:ModelingEvolution.Ipv4.Ipv4Configuration"/> instance using the first host address.</returns>
+        </member>
+        <member name="M:ModelingEvolution.Ipv4.Ipv4Configuration.ToString">
+            <summary>
+            Returns the string representation of this IPv4 configuration.
+            </summary>
+            <returns>A string in the format "address/prefix gw gateway" (e.g., "192.168.1.100/24 gw 192.168.1.1").</returns>
+        </member>
+        <member name="M:ModelingEvolution.Ipv4.Ipv4Configuration.Parse(System.String,System.IFormatProvider)">
+            <summary>
+            Parses a string representation of an IPv4 configuration.
+            </summary>
+            <param name="s">A string containing an IPv4 configuration in the format "address/prefix gw gateway".</param>
+            <param name="provider">An object that provides culture-specific formatting information (not used).</param>
+            <returns>An <see cref="T:ModelingEvolution.Ipv4.Ipv4Configuration"/> equivalent to the configuration contained in <paramref name="s"/>.</returns>
+            <exception cref="T:System.FormatException">Thrown when <paramref name="s"/> is not a valid IPv4 configuration.</exception>
+            <exception cref="T:System.ArgumentNullException">Thrown when <paramref name="s"/> is null.</exception>
+            <example>
+            <code>
+            var config = Ipv4Configuration.Parse("192.168.1.100/24 gw 192.168.1.1");
+            var config2 = Ipv4Configuration.Parse("10.0.0.5/8 gateway 10.0.0.1");
+            </code>
+            </example>
+        </member>
+        <member name="M:ModelingEvolution.Ipv4.Ipv4Configuration.TryParse(System.String,System.IFormatProvider,ModelingEvolution.Ipv4.Ipv4Configuration@)">
+            <summary>
+            Attempts to parse a string representation of an IPv4 configuration.
+            </summary>
+            <param name="s">A string containing an IPv4 configuration.</param>
+            <param name="provider">An object that provides culture-specific formatting information (not used).</param>
+            <param name="result">
+            When this method returns, contains the <see cref="T:ModelingEvolution.Ipv4.Ipv4Configuration"/> equivalent of the configuration
+            contained in <paramref name="s"/>, if the conversion succeeded, or default if the conversion failed.
+            </param>
+            <returns><c>true</c> if <paramref name="s"/> was converted successfully; otherwise, <c>false</c>.</returns>
+            <remarks>
+            Supported formats:
+            - "192.168.1.100/24 gw 192.168.1.1"
+            - "192.168.1.100/24 gateway 192.168.1.1"
+            - "192.168.1.100/24,192.168.1.1" (comma-separated)
+            </remarks>
+        </member>
+        <member name="M:ModelingEvolution.Ipv4.Ipv4Configuration.op_Implicit(System.String)~ModelingEvolution.Ipv4.Ipv4Configuration">
+            <summary>
+            Implicitly converts a string to an <see cref="T:ModelingEvolution.Ipv4.Ipv4Configuration"/>.
+            </summary>
+            <param name="value">The string representation of an IPv4 configuration.</param>
+            <returns>An <see cref="T:ModelingEvolution.Ipv4.Ipv4Configuration"/> equivalent to the specified string.</returns>
+            <exception cref="T:System.FormatException">Thrown when the string is not a valid IPv4 configuration.</exception>
+        </member>
+        <member name="T:ModelingEvolution.Ipv4.Ipv4Endpoint">
+             <summary>
+             Represents an IPv4 endpoint (address and port combination).
+             </summary>
+             <remarks>
+             <para>
+             This struct provides a strongly-typed representation of network endpoints combining
+             an <see cref="T:ModelingEvolution.Ipv4.Ipv4Address"/> with a <see cref="T:ModelingEvolution.Ipv4.IpPort"/>. It implements
+             <see cref="T:System.IParsable`1"/> for seamless JSON serialization and provides
+             implicit conversions to/from <see cref="T:System.Net.IPEndPoint"/>.
+             </para>
+             </remarks>
+             <example>
+             <code>
+             // Create endpoints
+             var endpoint1 = new Ipv4Endpoint("192.168.1.100", 8080);
+             var endpoint2 = Ipv4Endpoint.Parse("192.168.1.100:443");
+             var endpoint3 = new Ipv4Endpoint(Ipv4Address.Loopback, IpPort.Http);
+            
+             // From IPEndPoint
+             var ipEndPoint = new IPEndPoint(IPAddress.Parse("10.0.0.1"), 3000);
+             Ipv4Endpoint endpoint4 = ipEndPoint;
+            
+             // To IPEndPoint
+             IPEndPoint converted = endpoint1;
+            
+             // Properties
+             var address = endpoint1.Address;  // 192.168.1.100
+             var port = endpoint1.Port;        // 8080
+            
+             // String representation
+             string str = endpoint1.ToString(); // "192.168.1.100:8080"
+             </code>
+             </example>
+        </member>
+        <member name="P:ModelingEvolution.Ipv4.Ipv4Endpoint.Address">
+            <summary>
+            Gets the IPv4 address component.
+            </summary>
+        </member>
+        <member name="P:ModelingEvolution.Ipv4.Ipv4Endpoint.Port">
+            <summary>
+            Gets the port component.
+            </summary>
+        </member>
+        <member name="M:ModelingEvolution.Ipv4.Ipv4Endpoint.#ctor(ModelingEvolution.Ipv4.Ipv4Address,ModelingEvolution.Ipv4.IpPort)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ModelingEvolution.Ipv4.Ipv4Endpoint"/> struct.
+            </summary>
+            <param name="address">The IPv4 address.</param>
+            <param name="port">The port number.</param>
+        </member>
+        <member name="M:ModelingEvolution.Ipv4.Ipv4Endpoint.#ctor(ModelingEvolution.Ipv4.Ipv4Address,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ModelingEvolution.Ipv4.Ipv4Endpoint"/> struct.
+            </summary>
+            <param name="address">The IPv4 address.</param>
+            <param name="port">The port number (0-65535).</param>
+        </member>
+        <member name="M:ModelingEvolution.Ipv4.Ipv4Endpoint.#ctor(System.String,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ModelingEvolution.Ipv4.Ipv4Endpoint"/> struct from string address.
+            </summary>
+            <param name="address">The IPv4 address as string.</param>
+            <param name="port">The port number.</param>
+        </member>
+        <member name="M:ModelingEvolution.Ipv4.Ipv4Endpoint.FromIPEndPoint(System.Net.IPEndPoint)">
+            <summary>
+            Creates an endpoint from an <see cref="T:System.Net.IPEndPoint"/>.
+            </summary>
+            <param name="endPoint">The IPEndPoint to convert.</param>
+            <returns>A new <see cref="T:ModelingEvolution.Ipv4.Ipv4Endpoint"/> instance.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when endPoint is null.</exception>
+            <exception cref="T:System.ArgumentException">Thrown when endPoint is not an IPv4 endpoint.</exception>
+        </member>
+        <member name="M:ModelingEvolution.Ipv4.Ipv4Endpoint.ToIPEndPoint">
+            <summary>
+            Converts this endpoint to an <see cref="T:System.Net.IPEndPoint"/>.
+            </summary>
+            <returns>An equivalent <see cref="T:System.Net.IPEndPoint"/>.</returns>
+        </member>
+        <member name="M:ModelingEvolution.Ipv4.Ipv4Endpoint.ToString">
+            <summary>
+            Returns the string representation of this endpoint.
+            </summary>
+            <returns>A string in the format "address:port" (e.g., "192.168.1.100:8080").</returns>
+        </member>
+        <member name="M:ModelingEvolution.Ipv4.Ipv4Endpoint.Parse(System.String,System.IFormatProvider)">
+            <summary>
+            Parses a string representation of an IPv4 endpoint.
+            </summary>
+            <param name="s">A string containing an endpoint in the format "address:port".</param>
+            <param name="provider">An object that provides culture-specific formatting information (not used).</param>
+            <returns>An <see cref="T:ModelingEvolution.Ipv4.Ipv4Endpoint"/> equivalent to the endpoint contained in <paramref name="s"/>.</returns>
+            <exception cref="T:System.FormatException">Thrown when <paramref name="s"/> is not a valid endpoint.</exception>
+            <exception cref="T:System.ArgumentNullException">Thrown when <paramref name="s"/> is null.</exception>
+        </member>
+        <member name="M:ModelingEvolution.Ipv4.Ipv4Endpoint.TryParse(System.String,System.IFormatProvider,ModelingEvolution.Ipv4.Ipv4Endpoint@)">
+            <summary>
+            Attempts to parse a string representation of an IPv4 endpoint.
+            </summary>
+            <param name="s">A string containing an endpoint in the format "address:port".</param>
+            <param name="provider">An object that provides culture-specific formatting information (not used).</param>
+            <param name="result">When this method returns, contains the parsed endpoint if successful.</param>
+            <returns><c>true</c> if parsing succeeded; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:ModelingEvolution.Ipv4.Ipv4Endpoint.CompareTo(ModelingEvolution.Ipv4.Ipv4Endpoint)">
+            <summary>
+            Compares this instance with another <see cref="T:ModelingEvolution.Ipv4.Ipv4Endpoint"/>.
+            </summary>
+            <remarks>
+            Endpoints are first compared by address, then by port.
+            </remarks>
+        </member>
+        <member name="M:ModelingEvolution.Ipv4.Ipv4Endpoint.op_Implicit(System.String)~ModelingEvolution.Ipv4.Ipv4Endpoint">
+            <summary>
+            Implicitly converts a string to an <see cref="T:ModelingEvolution.Ipv4.Ipv4Endpoint"/>.
+            </summary>
+        </member>
+        <member name="M:ModelingEvolution.Ipv4.Ipv4Endpoint.op_Implicit(ModelingEvolution.Ipv4.Ipv4Endpoint)~System.Net.IPEndPoint">
+            <summary>
+            Implicitly converts an <see cref="T:ModelingEvolution.Ipv4.Ipv4Endpoint"/> to an <see cref="T:System.Net.IPEndPoint"/>.
+            </summary>
+        </member>
+        <member name="M:ModelingEvolution.Ipv4.Ipv4Endpoint.op_Implicit(System.Net.IPEndPoint)~ModelingEvolution.Ipv4.Ipv4Endpoint">
+            <summary>
+            Implicitly converts an <see cref="T:System.Net.IPEndPoint"/> to an <see cref="T:ModelingEvolution.Ipv4.Ipv4Endpoint"/>.
+            </summary>
+            <exception cref="T:System.ArgumentException">Thrown when IPEndPoint is not an IPv4 endpoint.</exception>
+        </member>
+        <member name="M:ModelingEvolution.Ipv4.Ipv4Endpoint.Deconstruct(ModelingEvolution.Ipv4.Ipv4Address@,ModelingEvolution.Ipv4.IpPort@)">
+            <summary>
+            Deconstructs this endpoint into its components.
+            </summary>
+            <param name="address">The IPv4 address.</param>
+            <param name="port">The port number.</param>
+        </member>
+        <member name="T:ModelingEvolution.Ipv4.Ipv4Network">
+            <summary>
+            Represents an IPv4 network with CIDR notation support.
+            </summary>
+            <remarks>
+            <para>
+            This struct provides a lightweight representation of IPv4 networks using CIDR notation
+            (e.g., "192.168.1.0/24"). It supports network calculations, address enumeration,
+            and contains/overlaps operations.
+            </para>
+            <para>
+            The struct implements <see cref="T:System.IParsable`1"/> for seamless JSON serialization
+            and integration with .NET APIs.
+            </para>
+            </remarks>
+            <example>
+            <code>
+            // Create networks
+            var network = Ipv4Network.Parse("192.168.1.0/24");
+            var network2 = new Ipv4Network(Ipv4Address.Parse("10.0.0.0"), 8);
+            
+            // Network properties
+            var networkAddr = network.NetworkAddress;    // 192.168.1.0
+            var broadcast = network.BroadcastAddress;    // 192.168.1.255
+            var hostCount = network.HostCount;           // 254
+            var totalCount = network.TotalAddressCount;  // 256
+            
+            // Check if address is in network
+            bool contains = network.Contains(Ipv4Address.Parse("192.168.1.100")); // true
+            
+            // Check network overlap
+            var other = Ipv4Network.Parse("192.168.1.128/25");
+            bool overlaps = network.Overlaps(other); // true
+            
+            // Enumerate addresses
+            foreach (var addr in network.GetAddresses())
+            {
+                Console.WriteLine(addr);
+            }
+            </code>
+            </example>
+        </member>
+        <member name="P:ModelingEvolution.Ipv4.Ipv4Network.NetworkAddress">
+            <summary>
+            Gets the network address (base address with host bits set to zero).
+            </summary>
+        </member>
+        <member name="P:ModelingEvolution.Ipv4.Ipv4Network.PrefixLength">
+            <summary>
+            Gets the subnet mask prefix length (0-32).
+            </summary>
+        </member>
+        <member name="M:ModelingEvolution.Ipv4.Ipv4Network.#ctor(ModelingEvolution.Ipv4.Ipv4Address,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ModelingEvolution.Ipv4.Ipv4Network"/> struct.
+            </summary>
+            <param name="address">Any address within the network.</param>
+            <param name="prefixLength">The subnet mask prefix length (0-32).</param>
+            <exception cref="T:System.ArgumentOutOfRangeException">Thrown when prefixLength is outside the range 0-32.</exception>
+        </member>
+        <member name="P:ModelingEvolution.Ipv4.Ipv4Network.BroadcastAddress">
+            <summary>
+            Gets the broadcast address for this network.
+            </summary>
+        </member>
+        <member name="P:ModelingEvolution.Ipv4.Ipv4Network.SubnetMask">
+            <summary>
+            Gets the subnet mask for this network.
+            </summary>
+        </member>
+        <member name="P:ModelingEvolution.Ipv4.Ipv4Network.TotalAddressCount">
+            <summary>
+            Gets the total number of addresses in this network (including network and broadcast addresses).
+            </summary>
+        </member>
+        <member name="P:ModelingEvolution.Ipv4.Ipv4Network.HostCount">
+            <summary>
+            Gets the number of host addresses in this network (excluding network and broadcast addresses).
+            </summary>
+            <remarks>
+            For /31 and /32 networks, this returns the total address count as these are special cases
+            where all addresses can be used for hosts.
+            </remarks>
+        </member>
+        <member name="P:ModelingEvolution.Ipv4.Ipv4Network.FirstHostAddress">
+            <summary>
+            Gets the first host address in this network.
+            </summary>
+            <remarks>
+            For /31 and /32 networks, this returns the network address.
+            For other networks, this returns the address after the network address.
+            </remarks>
+        </member>
+        <member name="P:ModelingEvolution.Ipv4.Ipv4Network.LastHostAddress">
+            <summary>
+            Gets the last host address in this network.
+            </summary>
+            <remarks>
+            For /31 and /32 networks, this returns the broadcast address.
+            For other networks, this returns the address before the broadcast address.
+            </remarks>
+        </member>
+        <member name="M:ModelingEvolution.Ipv4.Ipv4Network.Contains(ModelingEvolution.Ipv4.Ipv4Address)">
+            <summary>
+            Determines whether the specified address is contained within this network.
+            </summary>
+            <param name="address">The address to check.</param>
+            <returns><c>true</c> if the address is within this network; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:ModelingEvolution.Ipv4.Ipv4Network.Overlaps(ModelingEvolution.Ipv4.Ipv4Network)">
+            <summary>
+            Determines whether this network overlaps with another network.
+            </summary>
+            <param name="other">The other network to check for overlap.</param>
+            <returns><c>true</c> if the networks overlap; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:ModelingEvolution.Ipv4.Ipv4Network.ContainsNetwork(ModelingEvolution.Ipv4.Ipv4Network)">
+            <summary>
+            Determines whether this network completely contains another network.
+            </summary>
+            <param name="other">The other network to check.</param>
+            <returns><c>true</c> if this network completely contains the other network; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:ModelingEvolution.Ipv4.Ipv4Network.GetAddresses">
+            <summary>
+            Gets all addresses in this network.
+            </summary>
+            <returns>An enumerable of all addresses in the network.</returns>
+            <remarks>
+            This method returns all addresses including the network and broadcast addresses.
+            Use <see cref="M:ModelingEvolution.Ipv4.Ipv4Network.GetHostAddresses"/> to get only usable host addresses.
+            </remarks>
+        </member>
+        <member name="M:ModelingEvolution.Ipv4.Ipv4Network.GetHostAddresses">
+            <summary>
+            Gets all host addresses in this network (excluding network and broadcast addresses).
+            </summary>
+            <returns>An enumerable of usable host addresses in the network.</returns>
+            <remarks>
+            For /31 and /32 networks, this returns all addresses as they are all usable for hosts.
+            </remarks>
+        </member>
+        <member name="M:ModelingEvolution.Ipv4.Ipv4Network.Subnet(System.Int32)">
+            <summary>
+            Splits this network into smaller subnets with the specified prefix length.
+            </summary>
+            <param name="newPrefixLength">The prefix length for the new subnets (must be greater than current prefix length).</param>
+            <returns>An enumerable of subnet networks.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">Thrown when newPrefixLength is not greater than the current prefix length or is outside the range 0-32.</exception>
+            <example>
+            <code>
+            var network = Ipv4Network.Parse("192.168.1.0/24");
+            var subnets = network.Subnet(26); // Split into /26 subnets
+            // Returns: 192.168.1.0/26, 192.168.1.64/26, 192.168.1.128/26, 192.168.1.192/26
+            </code>
+            </example>
+        </member>
+        <member name="M:ModelingEvolution.Ipv4.Ipv4Network.ToString">
+            <summary>
+            Returns the string representation of this network in CIDR notation.
+            </summary>
+            <returns>A string in the format "x.x.x.x/y" representing this network.</returns>
+        </member>
+        <member name="M:ModelingEvolution.Ipv4.Ipv4Network.Parse(System.String,System.IFormatProvider)">
+            <summary>
+            Parses a string representation of an IPv4 network in CIDR notation.
+            </summary>
+            <param name="s">A string containing an IPv4 network in CIDR notation (e.g., "192.168.1.0/24").</param>
+            <param name="provider">An object that provides culture-specific formatting information (not used).</param>
+            <returns>An <see cref="T:ModelingEvolution.Ipv4.Ipv4Network"/> equivalent to the network contained in <paramref name="s"/>.</returns>
+            <exception cref="T:System.FormatException">Thrown when <paramref name="s"/> is not a valid IPv4 network in CIDR notation.</exception>
+            <exception cref="T:System.ArgumentNullException">Thrown when <paramref name="s"/> is null.</exception>
+        </member>
+        <member name="M:ModelingEvolution.Ipv4.Ipv4Network.TryParse(System.String,System.IFormatProvider,ModelingEvolution.Ipv4.Ipv4Network@)">
+            <summary>
+            Attempts to parse a string representation of an IPv4 network in CIDR notation.
+            </summary>
+            <param name="s">A string containing an IPv4 network in CIDR notation.</param>
+            <param name="provider">An object that provides culture-specific formatting information (not used).</param>
+            <param name="result">
+            When this method returns, contains the <see cref="T:ModelingEvolution.Ipv4.Ipv4Network"/> equivalent of the network
+            contained in <paramref name="s"/>, if the conversion succeeded, or default if the conversion failed.
+            </param>
+            <returns><c>true</c> if <paramref name="s"/> was converted successfully; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:ModelingEvolution.Ipv4.Ipv4Network.CompareTo(ModelingEvolution.Ipv4.Ipv4Network)">
+            <summary>
+            Compares this instance with another <see cref="T:ModelingEvolution.Ipv4.Ipv4Network"/> and returns an integer that indicates
+            whether this instance precedes, follows, or occurs in the same position in the sort order as the other instance.
+            </summary>
+            <param name="other">An <see cref="T:ModelingEvolution.Ipv4.Ipv4Network"/> to compare with this instance.</param>
+            <returns>
+            A value that indicates the relative order of the objects being compared.
+            Networks are first compared by network address, then by prefix length.
+            </returns>
+        </member>
+        <member name="M:ModelingEvolution.Ipv4.Ipv4Network.GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through all addresses in this network.
+            </summary>
+            <returns>An enumerator for the addresses in this network.</returns>
+        </member>
+        <member name="M:ModelingEvolution.Ipv4.Ipv4Network.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through all addresses in this network.
+            </summary>
+            <returns>An enumerator for the addresses in this network.</returns>
+        </member>
+        <member name="M:ModelingEvolution.Ipv4.Ipv4Network.op_Implicit(System.String)~ModelingEvolution.Ipv4.Ipv4Network">
+            <summary>
+            Implicitly converts a string to an <see cref="T:ModelingEvolution.Ipv4.Ipv4Network"/>.
+            </summary>
+            <param name="value">The string representation of an IPv4 network in CIDR notation.</param>
+            <returns>An <see cref="T:ModelingEvolution.Ipv4.Ipv4Network"/> equivalent to the specified string.</returns>
+            <exception cref="T:System.FormatException">Thrown when the string is not a valid IPv4 network.</exception>
+        </member>
+        <member name="T:ModelingEvolution.Ipv4.MacAddress">
+             <summary>
+             Represents a MAC (Media Access Control) hardware address.
+             </summary>
+             <remarks>
+             <para>
+             This struct provides a strongly-typed representation of 48-bit MAC addresses with
+             built-in parsing, formatting, and comparison capabilities. It implements
+             <see cref="T:System.IParsable`1"/> for seamless integration with JSON serialization.
+             </para>
+             <para>
+             Supports multiple input formats: colon-separated (AA:BB:CC:DD:EE:FF),
+             dash-separated (AA-BB-CC-DD-EE-FF), and continuous (AABBCCDDEEFF).
+             </para>
+             </remarks>
+             <example>
+             <code>
+             // Create MAC addresses
+             var mac1 = MacAddress.Parse("AA:BB:CC:DD:EE:FF");
+             var mac2 = MacAddress.Parse("AA-BB-CC-DD-EE-FF");
+             var mac3 = MacAddress.Parse("AABBCCDDEEFF");
+             var mac4 = MacAddress.From(new byte[] { 0xAA, 0xBB, 0xCC, 0xDD, 0xEE, 0xFF });
+            
+             // Properties
+             bool isBroadcast = mac1.IsBroadcast;
+             bool isMulticast = mac1.IsMulticast;
+             bool isUnicast = mac1.IsUnicast;
+             byte[] bytes = mac1.GetBytes();
+            
+             // String output (canonical colon format)
+             string str = mac1.ToString(); // "AA:BB:CC:DD:EE:FF"
+             </code>
+             </example>
+        </member>
+        <member name="P:ModelingEvolution.Ipv4.MacAddress.Broadcast">
+            <summary>
+            Gets the broadcast MAC address (FF:FF:FF:FF:FF:FF).
+            </summary>
+        </member>
+        <member name="P:ModelingEvolution.Ipv4.MacAddress.None">
+            <summary>
+            Gets the zero/empty MAC address (00:00:00:00:00:00).
+            </summary>
+        </member>
+        <member name="M:ModelingEvolution.Ipv4.MacAddress.#ctor(System.UInt64)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ModelingEvolution.Ipv4.MacAddress"/> struct from a 48-bit value.
+            </summary>
+            <param name="value">The MAC address as a 64-bit unsigned integer (lower 48 bits used).</param>
+        </member>
+        <member name="M:ModelingEvolution.Ipv4.MacAddress.#ctor(System.Byte,System.Byte,System.Byte,System.Byte,System.Byte,System.Byte)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ModelingEvolution.Ipv4.MacAddress"/> struct from six bytes.
+            </summary>
+        </member>
+        <member name="P:ModelingEvolution.Ipv4.MacAddress.Value">
+            <summary>
+            Gets the raw 48-bit value of this MAC address.
+            </summary>
+        </member>
+        <member name="P:ModelingEvolution.Ipv4.MacAddress.B0">
+            <summary>
+            Gets the first byte of the MAC address.
+            </summary>
+        </member>
+        <member name="P:ModelingEvolution.Ipv4.MacAddress.B1">
+            <summary>
+            Gets the second byte of the MAC address.
+            </summary>
+        </member>
+        <member name="P:ModelingEvolution.Ipv4.MacAddress.B2">
+            <summary>
+            Gets the third byte of the MAC address.
+            </summary>
+        </member>
+        <member name="P:ModelingEvolution.Ipv4.MacAddress.B3">
+            <summary>
+            Gets the fourth byte of the MAC address.
+            </summary>
+        </member>
+        <member name="P:ModelingEvolution.Ipv4.MacAddress.B4">
+            <summary>
+            Gets the fifth byte of the MAC address.
+            </summary>
+        </member>
+        <member name="P:ModelingEvolution.Ipv4.MacAddress.B5">
+            <summary>
+            Gets the sixth byte of the MAC address.
+            </summary>
+        </member>
+        <member name="P:ModelingEvolution.Ipv4.MacAddress.IsBroadcast">
+            <summary>
+            Gets whether this is the broadcast address (FF:FF:FF:FF:FF:FF).
+            </summary>
+        </member>
+        <member name="P:ModelingEvolution.Ipv4.MacAddress.IsMulticast">
+            <summary>
+            Gets whether this is a multicast address (least significant bit of first byte is 1).
+            </summary>
+        </member>
+        <member name="P:ModelingEvolution.Ipv4.MacAddress.IsUnicast">
+            <summary>
+            Gets whether this is a unicast address (least significant bit of first byte is 0).
+            </summary>
+        </member>
+        <member name="P:ModelingEvolution.Ipv4.MacAddress.IsLocallyAdministered">
+            <summary>
+            Gets whether this is a locally administered address (second least significant bit of first byte is 1).
+            </summary>
+        </member>
+        <member name="P:ModelingEvolution.Ipv4.MacAddress.IsUniversallyAdministered">
+            <summary>
+            Gets whether this is a universally administered (OUI-based) address.
+            </summary>
+        </member>
+        <member name="P:ModelingEvolution.Ipv4.MacAddress.Oui">
+            <summary>
+            Gets the OUI (Organizationally Unique Identifier) - the upper 24 bits.
+            </summary>
+        </member>
+        <member name="M:ModelingEvolution.Ipv4.MacAddress.GetBytes">
+            <summary>
+            Gets the bytes of this MAC address.
+            </summary>
+            <returns>A 6-byte array containing the MAC address.</returns>
+        </member>
+        <member name="M:ModelingEvolution.Ipv4.MacAddress.CopyTo(System.Byte[],System.Int32)">
+            <summary>
+            Copies the MAC address bytes to the specified byte array.
+            </summary>
+            <param name="destination">The destination byte array.</param>
+            <param name="offset">The zero-based offset in destination at which copying begins.</param>
+            <exception cref="T:System.ArgumentNullException">Thrown when destination is null.</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">Thrown when offset is negative or destination is too small.</exception>
+        </member>
+        <member name="M:ModelingEvolution.Ipv4.MacAddress.CopyTo(System.Span{System.Byte})">
+            <summary>
+            Copies the MAC address bytes to the specified span.
+            </summary>
+            <param name="destination">The destination span.</param>
+            <exception cref="T:System.ArgumentException">Thrown when destination is too small.</exception>
+        </member>
+        <member name="M:ModelingEvolution.Ipv4.MacAddress.From(System.UInt64)">
+            <summary>
+            Creates a <see cref="T:ModelingEvolution.Ipv4.MacAddress"/> from a 48-bit unsigned integer.
+            </summary>
+            <param name="value">The MAC address as a 64-bit unsigned integer (lower 48 bits used).</param>
+            <returns>A new <see cref="T:ModelingEvolution.Ipv4.MacAddress"/> instance.</returns>
+        </member>
+        <member name="M:ModelingEvolution.Ipv4.MacAddress.From(System.Byte[])">
+            <summary>
+            Creates a <see cref="T:ModelingEvolution.Ipv4.MacAddress"/> from a byte array.
+            </summary>
+            <param name="bytes">A 6-byte array containing the MAC address.</param>
+            <returns>A new <see cref="T:ModelingEvolution.Ipv4.MacAddress"/> instance.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when bytes is null.</exception>
+            <exception cref="T:System.ArgumentException">Thrown when bytes is not exactly 6 bytes.</exception>
+        </member>
+        <member name="M:ModelingEvolution.Ipv4.MacAddress.From(System.ReadOnlySpan{System.Byte})">
+            <summary>
+            Creates a <see cref="T:ModelingEvolution.Ipv4.MacAddress"/> from a span of bytes.
+            </summary>
+            <param name="bytes">A span containing exactly 6 bytes.</param>
+            <returns>A new <see cref="T:ModelingEvolution.Ipv4.MacAddress"/> instance.</returns>
+            <exception cref="T:System.ArgumentException">Thrown when span is not exactly 6 bytes.</exception>
+        </member>
+        <member name="M:ModelingEvolution.Ipv4.MacAddress.ToString">
+            <summary>
+            Returns the canonical string representation (colon-separated uppercase).
+            </summary>
+            <returns>A string in the format "AA:BB:CC:DD:EE:FF".</returns>
+        </member>
+        <member name="M:ModelingEvolution.Ipv4.MacAddress.ToString(System.Nullable{System.Char},System.Boolean)">
+            <summary>
+            Returns the string representation in the specified format.
+            </summary>
+            <param name="separator">The separator character (':' or '-'), or null for no separator.</param>
+            <param name="uppercase">Whether to use uppercase hex digits.</param>
+            <returns>The formatted MAC address string.</returns>
+        </member>
+        <member name="M:ModelingEvolution.Ipv4.MacAddress.Parse(System.String,System.IFormatProvider)">
+            <summary>
+            Parses a string representation of a MAC address.
+            </summary>
+            <param name="s">A string containing a MAC address.</param>
+            <param name="provider">An object that provides culture-specific formatting information (not used).</param>
+            <returns>A <see cref="T:ModelingEvolution.Ipv4.MacAddress"/> equivalent to the address contained in <paramref name="s"/>.</returns>
+            <exception cref="T:System.FormatException">Thrown when <paramref name="s"/> is not a valid MAC address.</exception>
+            <exception cref="T:System.ArgumentNullException">Thrown when <paramref name="s"/> is null.</exception>
+        </member>
+        <member name="M:ModelingEvolution.Ipv4.MacAddress.TryParse(System.String,System.IFormatProvider,ModelingEvolution.Ipv4.MacAddress@)">
+            <summary>
+            Attempts to parse a string representation of a MAC address.
+            </summary>
+            <param name="s">A string containing a MAC address.</param>
+            <param name="provider">An object that provides culture-specific formatting information (not used).</param>
+            <param name="result">When this method returns, contains the parsed MAC address if successful.</param>
+            <returns><c>true</c> if parsing succeeded; otherwise, <c>false</c>.</returns>
+            <remarks>
+            Supports formats:
+            - Colon-separated: "AA:BB:CC:DD:EE:FF"
+            - Dash-separated: "AA-BB-CC-DD-EE-FF"
+            - Continuous: "AABBCCDDEEFF"
+            </remarks>
+        </member>
+        <member name="M:ModelingEvolution.Ipv4.MacAddress.CompareTo(ModelingEvolution.Ipv4.MacAddress)">
+            <summary>
+            Compares this instance with another <see cref="T:ModelingEvolution.Ipv4.MacAddress"/>.
+            </summary>
+        </member>
+        <member name="M:ModelingEvolution.Ipv4.MacAddress.op_Implicit(System.String)~ModelingEvolution.Ipv4.MacAddress">
+            <summary>
+            Implicitly converts a string to a <see cref="T:ModelingEvolution.Ipv4.MacAddress"/>.
+            </summary>
+        </member>
+        <member name="M:ModelingEvolution.Ipv4.MacAddress.op_Implicit(System.Byte[])~ModelingEvolution.Ipv4.MacAddress">
+            <summary>
+            Implicitly converts a byte array to a <see cref="T:ModelingEvolution.Ipv4.MacAddress"/>.
+            </summary>
+        </member>
+        <member name="M:ModelingEvolution.Ipv4.MacAddress.op_Implicit(System.UInt64)~ModelingEvolution.Ipv4.MacAddress">
+            <summary>
+            Implicitly converts a <see cref="T:System.UInt64"/> to a <see cref="T:ModelingEvolution.Ipv4.MacAddress"/>.
+            </summary>
+        </member>
+        <member name="M:ModelingEvolution.Ipv4.MacAddress.op_Explicit(ModelingEvolution.Ipv4.MacAddress)~System.UInt64">
+            <summary>
+            Explicitly converts a <see cref="T:ModelingEvolution.Ipv4.MacAddress"/> to a <see cref="T:System.UInt64"/>.
+            </summary>
+        </member>
+    </members>
+</doc>

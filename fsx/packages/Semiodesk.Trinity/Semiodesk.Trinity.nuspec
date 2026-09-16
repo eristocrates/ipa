@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>Semiodesk.Trinity</id>
+    <version>1.0.3.77</version>
+    <title>Semiodesk.Trinity</title>
+    <authors>Semiodesk GmbH</authors>
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <icon>trinity-logo.png</icon>
+    <projectUrl>https://trinity-rdf.net/</projectUrl>
+    <description>Enterprise ready object mapper for developing RDF knowledge graph applications with .NET</description>
+    <copyright>Copyright © Semiodesk GmbH 2015-2020</copyright>
+    <tags>RDF SPARQL ORM object mapping linked data semantic web knowledge graph database</tags>
+    <repository type="git" url="https://github.com/semiodesk/trinity-rdf" />
+    <dependencies>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="Newtonsoft.Json" version="13.0.1" exclude="Build,Analyzers" />
+        <dependency id="Remotion.Linq" version="2.2.0" exclude="Build,Analyzers" />
+        <dependency id="System.Composition" version="1.1.0" exclude="Build,Analyzers" />
+        <dependency id="dotNetRDF" version="2.7.0" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

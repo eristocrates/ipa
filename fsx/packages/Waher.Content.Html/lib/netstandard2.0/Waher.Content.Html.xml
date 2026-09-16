@@ -1,0 +1,3062 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Waher.Content.Html</name>
+    </assembly>
+    <members>
+        <member name="T:Waher.Content.Html.CDATA">
+            <summary>
+            CDATA content.
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.CDATA.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32,System.Int32,System.String)">
+            <summary>
+            CDATA content.
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+            <param name="EndPosition">End position.</param>
+            <param name="Content">CDATA Content</param>
+        </member>
+        <member name="P:Waher.Content.Html.CDATA.Content">
+            <summary>
+            CDATA Content
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.CDATA.Export(System.Xml.XmlWriter,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Exports the HTML document to XML.
+            </summary>
+            <param name="Namespaces">Namespaces defined, by prefix.</param>
+            <param name="Output">XML Output</param>
+        </member>
+        <member name="M:Waher.Content.Html.CDATA.Export(System.Text.StringBuilder)">
+            <summary>
+            Exports the HTML document to XML.
+            </summary>
+            <param name="Output">XML Output</param>
+        </member>
+        <member name="M:Waher.Content.Html.CDATA.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="T:Waher.Content.Html.Comment">
+            <summary>
+            Inline comment found in the document.
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Comment.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32,System.Int32,System.String)">
+            <summary>
+            Inline comment found in the document.
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+            <param name="EndPosition">End position.</param>
+            <param name="Comment">Comment</param>
+        </member>
+        <member name="P:Waher.Content.Html.Comment.CommentText">
+            <summary>
+            Comment
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Comment.Export(System.Xml.XmlWriter,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Exports the HTML document to XML.
+            </summary>
+            <param name="Namespaces">Namespaces defined, by prefix.</param>
+            <param name="Output">XML Output</param>
+        </member>
+        <member name="M:Waher.Content.Html.Comment.Export(System.Text.StringBuilder)">
+            <summary>
+            Exports the HTML document to XML.
+            </summary>
+            <param name="Output">XML Output</param>
+        </member>
+        <member name="T:Waher.Content.Html.Css.CssCodec">
+            <summary>
+            CSS encoder/decoder.
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Css.CssCodec.#ctor">
+            <summary>
+            CSS encoder/decoder.
+            </summary>
+        </member>
+        <member name="F:Waher.Content.Html.Css.CssCodec.DefaultContentType">
+            <summary>
+            Content-Type for CSS files.
+            </summary>
+        </member>
+        <member name="F:Waher.Content.Html.Css.CssCodec.CssContentTypes">
+            <summary>
+            CSS content types.
+            </summary>
+        </member>
+        <member name="F:Waher.Content.Html.Css.CssCodec.CssFileExtensions">
+            <summary>
+            Plain text file extensions.
+            </summary>
+        </member>
+        <member name="P:Waher.Content.Html.Css.CssCodec.ContentTypes">
+            <summary>
+            Supported content types.
+            </summary>
+        </member>
+        <member name="P:Waher.Content.Html.Css.CssCodec.FileExtensions">
+            <summary>
+            Supported file extensions.
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Css.CssCodec.Decodes(System.String,Waher.Runtime.Inventory.Grade@)">
+            <summary>
+            If the decoder decodes an object with a given content type.
+            </summary>
+            <param name="ContentType">Content type to decode.</param>
+            <param name="Grade">How well the decoder decodes the object.</param>
+            <returns>If the decoder can decode an object with the given type.</returns>
+        </member>
+        <member name="M:Waher.Content.Html.Css.CssCodec.DecodeAsync(System.String,System.Byte[],System.Text.Encoding,System.Collections.Generic.KeyValuePair{System.String,System.String}[],System.Uri,Waher.Content.ICodecProgress)">
+            <summary>
+            Decodes an object.
+            </summary>
+            <param name="ContentType">Internet Content Type.</param>
+            <param name="Data">Encoded object.</param>
+            <param name="Encoding">Any encoding specified. Can be null if no encoding specified.</param>
+            <param name="Fields">Any content-type related fields and their corresponding values.</param>
+            <param name="BaseUri">Base URI, if any. If not available, value is null.</param>
+            <param name="Progress">Optional progress reporting of encoding/decoding. Can be null.</param>
+            <returns>Decoded object.</returns>
+        </member>
+        <member name="M:Waher.Content.Html.Css.CssCodec.TryGetContentType(System.String,System.String@)">
+            <summary>
+            Tries to get the content type of an item, given its file extension.
+            </summary>
+            <param name="FileExtension">File extension.</param>
+            <param name="ContentType">Content type.</param>
+            <returns>If the extension was recognized.</returns>
+        </member>
+        <member name="M:Waher.Content.Html.Css.CssCodec.TryGetFileExtension(System.String,System.String@)">
+            <summary>
+            Tries to get the file extension of an item, given its Content-Type.
+            </summary>
+            <param name="ContentType">Content type.</param>
+            <param name="FileExtension">File extension.</param>
+            <returns>If the Content-Type was recognized.</returns>
+        </member>
+        <member name="M:Waher.Content.Html.Css.CssCodec.Encodes(System.Object,Waher.Runtime.Inventory.Grade@,System.String[])">
+            <summary>
+            If the encoder encodes a given object.
+            </summary>
+            <param name="Object">Object to encode.</param>
+            <param name="Grade">How well the encoder encodes the object.</param>
+            <param name="AcceptedContentTypes">Optional array of accepted content types. If array is empty, all content types are accepted.</param>
+            <returns>If the encoder can encode the given object.</returns>
+        </member>
+        <member name="M:Waher.Content.Html.Css.CssCodec.EncodeAsync(System.Object,System.Text.Encoding,Waher.Content.ICodecProgress,System.String[])">
+            <summary>
+            Encodes an object.
+            </summary>
+            <param name="Object">Object to encode.</param>
+            <param name="Encoding">Desired encoding of text. Can be null if no desired encoding is speified.</param>
+            <param name="Progress">Optional progress reporting of encoding/decoding. Can be null.</param>
+            <param name="AcceptedContentTypes">Optional array of accepted content types. If array is empty, all content types are accepted.</param>
+            <returns>Encoded object, as well as Content Type of encoding. Includes information about any text encodings used.</returns>
+        </member>
+        <member name="T:Waher.Content.Html.Css.CssDocument">
+            <summary>
+            Encapsulates a CSS Document
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Css.CssDocument.#ctor(System.String)">
+            <summary>
+            Encapsulates a CSS Document
+            </summary>
+            <param name="Css">CSS Text</param>
+        </member>
+        <member name="P:Waher.Content.Html.Css.CssDocument.Css">
+            <summary>
+            CSS Text
+            </summary>
+        </member>
+        <member name="T:Waher.Content.Html.DtdInstruction">
+            <summary>
+            Represents a DTD instruction inside the document.
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.DtdInstruction.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32,System.Int32,System.String)">
+            <summary>
+            Represents a DTD instruction inside the document.
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+            <param name="EndPosition">End position.</param>
+            <param name="Instruction">Instruction</param>
+        </member>
+        <member name="P:Waher.Content.Html.DtdInstruction.Instruction">
+            <summary>
+            Unparsed DTD instruction.
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.DtdInstruction.Export(System.Xml.XmlWriter,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Exports the HTML document to XML.
+            </summary>
+            <param name="Namespaces">Namespaces defined, by prefix.</param>
+            <param name="Output">XML Output</param>
+        </member>
+        <member name="M:Waher.Content.Html.DtdInstruction.Export(System.Text.StringBuilder)">
+            <summary>
+            Exports the HTML document to XML.
+            </summary>
+            <param name="Output">XML Output</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.A">
+            <summary>
+            A element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.A.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            A element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.Abbr">
+            <summary>
+            ABBR element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.Abbr.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            ABBR element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.Acronym">
+            <summary>
+            ACRONYM element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.Acronym.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            ACRONYM element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.Address">
+            <summary>
+            ADDRESS element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.Address.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            ADDRESS element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.Applet">
+            <summary>
+            APPLET element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.Applet.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            APPLET element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.Area">
+            <summary>
+            AREA element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.Area.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            AREA element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.Article">
+            <summary>
+            ARTICLE element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.Article.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            ARTICLE element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.Aside">
+            <summary>
+            ASIDE element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.Aside.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            ASIDE element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.Audio">
+            <summary>
+            AUDIO element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.Audio.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            AUDIO element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.B">
+            <summary>
+            B element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.B.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            B element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.Base">
+            <summary>
+            BASE element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.Base.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            BASE element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.BaseFont">
+            <summary>
+            BASEFONT element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.BaseFont.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            BASEFONT element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.Bdi">
+            <summary>
+            BDI element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.Bdi.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            BDI element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.Bdo">
+            <summary>
+            BDO element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.Bdo.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            BDO element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.BgSound">
+            <summary>
+            BGSOUND element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.BgSound.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            BGSOUND element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.Big">
+            <summary>
+            BIG element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.Big.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            BIG element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.BLink">
+            <summary>
+            BLINK element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.BLink.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            BLINK element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.BlockQuote">
+            <summary>
+            BLOCKQUOTE element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.BlockQuote.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            BLOCKQUOTE element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.Body">
+            <summary>
+            BODY element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.Body.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            BODY element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.Br">
+            <summary>
+            BR element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.Br.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            BR element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.Button">
+            <summary>
+            BUTTON element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.Button.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            BUTTON element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.Canvas">
+            <summary>
+            CANVAS element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.Canvas.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            CANVAS element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.Caption">
+            <summary>
+            CAPTION element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.Caption.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            CAPTION element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.Center">
+            <summary>
+            CENTER element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.Center.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            CENTER element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.Cite">
+            <summary>
+            CITE element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.Cite.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            CITE element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.Code">
+            <summary>
+            CODE element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.Code.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            CODE element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.Col">
+            <summary>
+            COL element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.Col.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            COL element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.ColGroup">
+            <summary>
+            COLGROUP element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.ColGroup.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            COLGROUP element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.Command">
+            <summary>
+            COMMAND element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.Command.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            COMMAND element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.Content">
+            <summary>
+            CONTENT element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.Content.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            CONTENT element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.Data">
+            <summary>
+            DATA element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.Data.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            DATA element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.DataList">
+            <summary>
+            DATALIST element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.DataList.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            DATALIST element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.Dd">
+            <summary>
+            DD element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.Dd.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            DD element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.Del">
+            <summary>
+            DEL element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.Del.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            DEL element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.Details">
+            <summary>
+            DETAILS element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.Details.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            DETAILS element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.Dfn">
+            <summary>
+            DFN element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.Dfn.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            DFN element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.Dialog">
+            <summary>
+            DIALOG element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.Dialog.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            DIALOG element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.Dir">
+            <summary>
+            DIR element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.Dir.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            DIR element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.Div">
+            <summary>
+            DIV element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.Div.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            DIV element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.Dl">
+            <summary>
+            DL element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.Dl.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            DL element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.Dt">
+            <summary>
+            DT element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.Dt.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            DT element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.Element">
+            <summary>
+            ELEMENT element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.Element.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            ELEMENT element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.Em">
+            <summary>
+            EM element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.Em.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            EM element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.Embed">
+            <summary>
+            EMBED element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.Embed.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            EMBED element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.FieldSet">
+            <summary>
+            FIELDSET element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.FieldSet.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            FIELDSET element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.FigCaption">
+            <summary>
+            FIGCAPTION element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.FigCaption.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            FIGCAPTION element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.Figure">
+            <summary>
+            FIGURE element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.Figure.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            FIGURE element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.Font">
+            <summary>
+            FONT element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.Font.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            FONT element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.Footer">
+            <summary>
+            FOOTER element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.Footer.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            FOOTER element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.Form">
+            <summary>
+            FORM element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.Form.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            FORM element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.Frame">
+            <summary>
+            FRAME element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.Frame.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            FRAME element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.FrameSet">
+            <summary>
+            FRAMESET element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.FrameSet.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            FRAMESET element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.Head">
+            <summary>
+            HEAD element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.Head.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            HEAD element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.Header">
+            <summary>
+            HEADER element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.Header.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            HEADER element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.HGroup">
+            <summary>
+            HGROUP element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.HGroup.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            HGROUP element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.Hn">
+            <summary>
+            H&lt;n&gt; element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.Hn.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32,System.Int32)">
+            <summary>
+            H&lt;n&gt; element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+            <param name="Level">Header level.</param>
+        </member>
+        <member name="P:Waher.Content.Html.Elements.Hn.Level">
+            <summary>
+            Header level.
+            </summary>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.Hr">
+            <summary>
+            HR element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.Hr.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            HR element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.Html">
+            <summary>
+            HTML element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.Html.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            HTML element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.I">
+            <summary>
+            I element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.I.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            I element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.IFrame">
+            <summary>
+            IFRAME element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.IFrame.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            IFRAME element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.Image">
+            <summary>
+            IMAGE element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.Image.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            IMAGE element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.Img">
+            <summary>
+            IMG element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.Img.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            IMG element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.Input">
+            <summary>
+            INPUT element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.Input.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            INPUT element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.Ins">
+            <summary>
+            INS element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.Ins.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            INS element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.IsIndex">
+            <summary>
+            ISINDEX element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.IsIndex.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            ISINDEX element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.Kbd">
+            <summary>
+            KBD element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.Kbd.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            KBD element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.Keygen">
+            <summary>
+            KEYGEN element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.Keygen.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            KEYGEN element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.Label">
+            <summary>
+            LABEL element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.Label.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            LABEL element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.Legend">
+            <summary>
+            LEGEND element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.Legend.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            LEGEND element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.Li">
+            <summary>
+            LI element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.Li.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            LI element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.Link">
+            <summary>
+            LINK element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.Link.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            LINK element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.Listing">
+            <summary>
+            LISTING element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.Listing.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            LISTING element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.Main">
+            <summary>
+            MAIN element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.Main.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            MAIN element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.Map">
+            <summary>
+            MAP element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.Map.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            MAP element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.Mark">
+            <summary>
+            MARK element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.Mark.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            MARK element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.Marquee">
+            <summary>
+            MARQUEE element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.Marquee.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            MARQUEE element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.Menu">
+            <summary>
+            MENU element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.Menu.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            MENU element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.MenuItem">
+            <summary>
+            MENUITEM element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.MenuItem.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            MENUITEM element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.Meta">
+            <summary>
+            META element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.Meta.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            META element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.Meter">
+            <summary>
+            METER element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.Meter.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            METER element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.MultiCol">
+            <summary>
+            MULTICOL element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.MultiCol.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            MULTICOL element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.Nav">
+            <summary>
+            NAV element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.Nav.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            NAV element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.NextId">
+            <summary>
+            NEXTID element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.NextId.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            NEXTID element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.NoBr">
+            <summary>
+            NOBR element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.NoBr.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            NOBR element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.NoEmbed">
+            <summary>
+            NOEMBED element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.NoEmbed.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            NOEMBED element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.NoFrames">
+            <summary>
+            NOFRAMES element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.NoFrames.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            NOFRAMES element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.NoScript">
+            <summary>
+            NOSCRIPT element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.NoScript.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            NOSCRIPT element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.Object">
+            <summary>
+            OBJECT element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.Object.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            OBJECT element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.Ol">
+            <summary>
+            OL element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.Ol.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            OL element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.OptGroup">
+            <summary>
+            OPTGROUP element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.OptGroup.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            OPTGROUP element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.Option">
+            <summary>
+            OPTION element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.Option.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            OPTION element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.Output">
+            <summary>
+            OUTPUT element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.Output.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            OUTPUT element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.P">
+            <summary>
+            P element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.P.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            P element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.Param">
+            <summary>
+            PARAM element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.Param.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            PARAM element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.Picture">
+            <summary>
+            PICTURE element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.Picture.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            PICTURE element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.PlainText">
+            <summary>
+            PLAINTEXT element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.PlainText.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            PLAINTEXT element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.Pre">
+            <summary>
+            PRE element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.Pre.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            PRE element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.Progress">
+            <summary>
+            PROGRESS element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.Progress.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            PROGRESS element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.Q">
+            <summary>
+            Q element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.Q.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            Q element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.Rp">
+            <summary>
+            RP element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.Rp.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            RP element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.Rt">
+            <summary>
+            RT element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.Rt.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            RT element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.Rtc">
+            <summary>
+            RTC element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.Rtc.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            RTC element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.Ruby">
+            <summary>
+            RUBY element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.Ruby.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            RUBY element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.S">
+            <summary>
+            S element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.S.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            S element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.Samp">
+            <summary>
+            SAMP element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.Samp.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            SAMP element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.Script">
+            <summary>
+            SCRIPT element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.Script.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            SCRIPT element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.Section">
+            <summary>
+            SECTION element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.Section.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            SECTION element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.Select">
+            <summary>
+            SELECT element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.Select.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            SELECT element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.Shadow">
+            <summary>
+            SHADOW element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.Shadow.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            SHADOW element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.Slot">
+            <summary>
+            SLOT element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.Slot.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            SLOT element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.Small">
+            <summary>
+            SMALL element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.Small.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            SMALL element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.Source">
+            <summary>
+            SOURCE element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.Source.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            SOURCE element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.Spacer">
+            <summary>
+            SPACER element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.Spacer.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            SPACER element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.Span">
+            <summary>
+            SPAN element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.Span.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            SPAN element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.Strike">
+            <summary>
+            STRIKE element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.Strike.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            STRIKE element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.Strong">
+            <summary>
+            STRONG element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.Strong.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            STRONG element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.Style">
+            <summary>
+            STYLE element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.Style.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            STYLE element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.Sub">
+            <summary>
+            SUB element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.Sub.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            SUB element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.Summary">
+            <summary>
+            SUMMARY element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.Summary.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            SUMMARY element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.Sup">
+            <summary>
+            SUP element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.Sup.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            SUP element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.Table">
+            <summary>
+            TABLE element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.Table.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            TABLE element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.TBody">
+            <summary>
+            TBODY element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.TBody.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            TBODY element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.Td">
+            <summary>
+            TD element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.Td.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            TD element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.Template">
+            <summary>
+            TEMPLATE element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.Template.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            TEMPLATE element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.TextArea">
+            <summary>
+            TEXTAREA element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.TextArea.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            TEXTAREA element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.TFoot">
+            <summary>
+            TFOOT element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.TFoot.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            TFOOT element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.Th">
+            <summary>
+            TH element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.Th.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            TH element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.THead">
+            <summary>
+            THEAD element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.THead.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            THEAD element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.Time">
+            <summary>
+            TIME element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.Time.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            TIME element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.Title">
+            <summary>
+            TITLE element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.Title.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            TITLE element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.Tr">
+            <summary>
+            TR element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.Tr.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            TR element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.Track">
+            <summary>
+            TRACK element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.Track.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            TRACK element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.Tt">
+            <summary>
+            TT element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.Tt.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            TT element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.U">
+            <summary>
+            U element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.U.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            U element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.Ul">
+            <summary>
+            UL element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.Ul.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            UL element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.Var">
+            <summary>
+            VAR element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.Var.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            VAR element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.Video">
+            <summary>
+            VIDEO element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.Video.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            VIDEO element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.Wbr">
+            <summary>
+            WBR element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.Wbr.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            WBR element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.Elements.Xmp">
+            <summary>
+            XMP element
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.Elements.Xmp.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32)">
+            <summary>
+            XMP element
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="T:Waher.Content.Html.HtmlAttribute">
+            <summary>
+            HTML attribute
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.HtmlAttribute.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32,System.Int32,System.String,System.String)">
+            <summary>
+            HTML attribute
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Element to whom the attribute belongs.</param>
+            <param name="StartPosition">Start position.</param>
+            <param name="EndPosition">End position.</param>
+            <param name="Name">Attribute name.</param>
+            <param name="Value">Attribute value.</param>
+        </member>
+        <member name="M:Waher.Content.Html.HtmlAttribute.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32,System.Int32,System.String)">
+            <summary>
+            HTML attribute
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Element to whom the attribute belongs.</param>
+            <param name="StartPosition">Start position.</param>
+            <param name="EndPosition">End position.</param>
+            <param name="Name">Attribute name.</param>
+        </member>
+        <member name="M:Waher.Content.Html.HtmlAttribute.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32,System.String,System.String)">
+            <summary>
+            HTML attribute
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Element to whom the attribute belongs.</param>
+            <param name="StartPosition">Start position.</param>
+            <param name="Name">Attribute name.</param>
+            <param name="Value">Attribute value.</param>
+        </member>
+        <member name="M:Waher.Content.Html.HtmlAttribute.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32,System.String)">
+            <summary>
+            HTML attribute
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Element to whom the attribute belongs.</param>
+            <param name="StartPosition">Start position.</param>
+            <param name="Name">Attribute name.</param>
+        </member>
+        <member name="P:Waher.Content.Html.HtmlAttribute.FullName">
+            <summary>
+            Attribute full name (including prefix).
+            </summary>
+        </member>
+        <member name="P:Waher.Content.Html.HtmlAttribute.LocalName">
+            <summary>
+            Attribute local name.
+            </summary>
+        </member>
+        <member name="P:Waher.Content.Html.HtmlAttribute.Prefix">
+            <summary>
+            Attribute prefix.
+            </summary>
+        </member>
+        <member name="P:Waher.Content.Html.HtmlAttribute.HasPrefix">
+            <summary>
+            If the attribute has a prefix.
+            </summary>
+        </member>
+        <member name="P:Waher.Content.Html.HtmlAttribute.Value">
+            <summary>
+            Attribute value.
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.HtmlAttribute.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="M:Waher.Content.Html.HtmlAttribute.Export(System.Xml.XmlWriter,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Exports the HTML document to XML.
+            </summary>
+            <param name="Output">XML Output</param>
+            <param name="Namespaces">Namespaces defined, by prefix.</param>
+        </member>
+        <member name="M:Waher.Content.Html.HtmlAttribute.Export(System.Text.StringBuilder)">
+            <summary>
+            Exports the HTML document to XML.
+            </summary>
+            <param name="Output">XML Output</param>
+        </member>
+        <member name="T:Waher.Content.Html.HtmlCodec">
+            <summary>
+            HTML encoder/decoder.
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.HtmlCodec.#ctor">
+            <summary>
+            HTML encoder/decoder.
+            </summary>
+        </member>
+        <member name="F:Waher.Content.Html.HtmlCodec.DefaultContentType">
+            <summary>
+            Default Content-Type for HTML: text/html
+            </summary>
+        </member>
+        <member name="F:Waher.Content.Html.HtmlCodec.HtmlContentTypes">
+            <summary>
+            HTML content types.
+            </summary>
+        </member>
+        <member name="F:Waher.Content.Html.HtmlCodec.HtmlFileExtensions">
+            <summary>
+            HTML file extensions.
+            </summary>
+        </member>
+        <member name="P:Waher.Content.Html.HtmlCodec.ContentTypes">
+            <summary>
+            Supported content types.
+            </summary>
+        </member>
+        <member name="P:Waher.Content.Html.HtmlCodec.FileExtensions">
+            <summary>
+            Supported file extensions.
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.HtmlCodec.Decodes(System.String,Waher.Runtime.Inventory.Grade@)">
+            <summary>
+            If the decoder decodes an object with a given content type.
+            </summary>
+            <param name="ContentType">Content type to decode.</param>
+            <param name="Grade">How well the decoder decodes the object.</param>
+            <returns>If the decoder can decode an object with the given type.</returns>
+        </member>
+        <member name="M:Waher.Content.Html.HtmlCodec.DecodeAsync(System.String,System.Byte[],System.Text.Encoding,System.Collections.Generic.KeyValuePair{System.String,System.String}[],System.Uri,Waher.Content.ICodecProgress)">
+            <summary>
+            Decodes an object.
+            </summary>
+            <param name="ContentType">Internet Content Type.</param>
+            <param name="Data">Encoded object.</param>
+            <param name="Encoding">Any encoding specified. Can be null if no encoding specified.</param>
+            <param name="Fields">Any content-type related fields and their corresponding values.</param>
+            <param name="BaseUri">Base URI, if any. If not available, value is null.</param>
+            <param name="Progress">Optional progress reporting of encoding/decoding. Can be null.</param>
+            <returns>Decoded object.</returns>
+        </member>
+        <member name="M:Waher.Content.Html.HtmlCodec.TryGetContentType(System.String,System.String@)">
+            <summary>
+            Tries to get the content type of an item, given its file extension.
+            </summary>
+            <param name="FileExtension">File extension.</param>
+            <param name="ContentType">Content type.</param>
+            <returns>If the extension was recognized.</returns>
+        </member>
+        <member name="M:Waher.Content.Html.HtmlCodec.TryGetFileExtension(System.String,System.String@)">
+            <summary>
+            Tries to get the file extension of an item, given its Content-Type.
+            </summary>
+            <param name="ContentType">Content type.</param>
+            <param name="FileExtension">File extension.</param>
+            <returns>If the Content-Type was recognized.</returns>
+        </member>
+        <member name="M:Waher.Content.Html.HtmlCodec.Encodes(System.Object,Waher.Runtime.Inventory.Grade@,System.String[])">
+            <summary>
+            If the encoder encodes a given object.
+            </summary>
+            <param name="Object">Object to encode.</param>
+            <param name="Grade">How well the encoder encodes the object.</param>
+            <param name="AcceptedContentTypes">Optional array of accepted content types. If array is empty, all content types are accepted.</param>
+            <returns>If the encoder can encode the given object.</returns>
+        </member>
+        <member name="M:Waher.Content.Html.HtmlCodec.EncodeAsync(System.Object,System.Text.Encoding,Waher.Content.ICodecProgress,System.String[])">
+            <summary>
+            Encodes an object.
+            </summary>
+            <param name="Object">Object to encode.</param>
+            <param name="Encoding">Desired encoding of text. Can be null if no desired encoding is speified.</param>
+            <param name="Progress">Optional progress reporting of encoding/decoding. Can be null.</param>
+            <param name="AcceptedContentTypes">Optional array of accepted content types. If array is empty, all content types are accepted.</param>
+            <returns>Encoded object, as well as Content Type of encoding. Includes information about any text encodings used.</returns>
+        </member>
+        <member name="M:Waher.Content.Html.HtmlCodec.Supports(System.Type)">
+            <summary>
+            How well the JSON encoder encodes objects of type <paramref name="ObjectType"/>.
+            </summary>
+            <param name="ObjectType">Type of object to encode.</param>
+            <returns>How well objects of the given type are encoded.</returns>
+        </member>
+        <member name="M:Waher.Content.Html.HtmlCodec.Encode(System.Object,System.Nullable{System.Int32},System.Text.StringBuilder)">
+            <summary>
+            Encodes the <paramref name="Object"/> to JSON.
+            </summary>
+            <param name="Object">Object to encode.</param>
+            <param name="Indent">Any indentation to apply.</param>
+            <param name="Json">JSON output.</param>
+        </member>
+        <member name="T:Waher.Content.Html.HtmlDocument">
+            <summary>
+            HTML document.
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.HtmlDocument.#ctor(System.String)">
+            <summary>
+            HTML document.
+            </summary>
+            <param name="Html">HTML text.</param>
+        </member>
+        <member name="P:Waher.Content.Html.HtmlDocument.HtmlText">
+            <summary>
+            HTML text.
+            </summary>
+        </member>
+        <member name="P:Waher.Content.Html.HtmlDocument.Root">
+            <summary>
+            Root element.
+            </summary>
+        </member>
+        <member name="P:Waher.Content.Html.HtmlDocument.Html">
+            <summary>
+            First HTML element of document, if found, null otherwise.
+            </summary>
+        </member>
+        <member name="P:Waher.Content.Html.HtmlDocument.Title">
+            <summary>
+            First TITLE element of document, if found, null otherwise.
+            </summary>
+        </member>
+        <member name="P:Waher.Content.Html.HtmlDocument.Head">
+            <summary>
+            First HEAD element of document, if found, null otherwise.
+            </summary>
+        </member>
+        <member name="P:Waher.Content.Html.HtmlDocument.Body">
+            <summary>
+            First BODY element of document, if found, null otherwise.
+            </summary>
+        </member>
+        <member name="P:Waher.Content.Html.HtmlDocument.Main">
+            <summary>
+            HEADER elements found in document, or null if none found.
+            </summary>
+        </member>
+        <member name="P:Waher.Content.Html.HtmlDocument.Header">
+            <summary>
+            HEADER elements found in document, or null if none found.
+            </summary>
+        </member>
+        <member name="P:Waher.Content.Html.HtmlDocument.Footer">
+            <summary>
+            FOOTER elements found in document, or null if none found.
+            </summary>
+        </member>
+        <member name="P:Waher.Content.Html.HtmlDocument.Details">
+            <summary>
+            DETAILS elements found in document, or null if none found.
+            </summary>
+        </member>
+        <member name="P:Waher.Content.Html.HtmlDocument.Summary">
+            <summary>
+            SUMMARY elements found in document, or null if none found.
+            </summary>
+        </member>
+        <member name="P:Waher.Content.Html.HtmlDocument.Article">
+            <summary>
+            ARTICLE elements found in document, or null if none found.
+            </summary>
+        </member>
+        <member name="P:Waher.Content.Html.HtmlDocument.Link">
+            <summary>
+            LINK elements found in document, or null if none found.
+            </summary>
+        </member>
+        <member name="P:Waher.Content.Html.HtmlDocument.Meta">
+            <summary>
+            META elements found in document, or null if none found.
+            </summary>
+        </member>
+        <member name="P:Waher.Content.Html.HtmlDocument.Style">
+            <summary>
+            STYLE elements found in document, or null if none found.
+            </summary>
+        </member>
+        <member name="P:Waher.Content.Html.HtmlDocument.Address">
+            <summary>
+            ADDRESS elements found in document, or null if none found.
+            </summary>
+        </member>
+        <member name="P:Waher.Content.Html.HtmlDocument.Aside">
+            <summary>
+            ASIDE elements found in document, or null if none found.
+            </summary>
+        </member>
+        <member name="P:Waher.Content.Html.HtmlDocument.Nav">
+            <summary>
+            NAV elements found in document, or null if none found.
+            </summary>
+        </member>
+        <member name="P:Waher.Content.Html.HtmlDocument.Section">
+            <summary>
+            SECTION elements found in document, or null if none found.
+            </summary>
+        </member>
+        <member name="P:Waher.Content.Html.HtmlDocument.Dialog">
+            <summary>
+            DIALOG elements found in document, or null if none found.
+            </summary>
+        </member>
+        <member name="P:Waher.Content.Html.HtmlDocument.Figure">
+            <summary>
+            FIGURE elements found in document, or null if none found.
+            </summary>
+        </member>
+        <member name="P:Waher.Content.Html.HtmlDocument.Audio">
+            <summary>
+            AUDIO elements found in document, or null if none found.
+            </summary>
+        </member>
+        <member name="P:Waher.Content.Html.HtmlDocument.Video">
+            <summary>
+            VIDEO elements found in document, or null if none found.
+            </summary>
+        </member>
+        <member name="P:Waher.Content.Html.HtmlDocument.Img">
+            <summary>
+            IMG elements found in document, or null if none found.
+            </summary>
+        </member>
+        <member name="P:Waher.Content.Html.HtmlDocument.Picture">
+            <summary>
+            PICTURE elements found in document, or null if none found.
+            </summary>
+        </member>
+        <member name="P:Waher.Content.Html.HtmlDocument.Cite">
+            <summary>
+            CITE elements found in document, or null if none found.
+            </summary>
+        </member>
+        <member name="P:Waher.Content.Html.HtmlDocument.Data">
+            <summary>
+            DATA elements found in document, or null if none found.
+            </summary>
+        </member>
+        <member name="P:Waher.Content.Html.HtmlDocument.Time">
+            <summary>
+            TIME elements found in document, or null if none found.
+            </summary>
+        </member>
+        <member name="P:Waher.Content.Html.HtmlDocument.Script">
+            <summary>
+            SCRIPT elements found in document, or null if none found.
+            </summary>
+        </member>
+        <member name="P:Waher.Content.Html.HtmlDocument.Form">
+            <summary>
+            FORM elements found in document, or null if none found.
+            </summary>
+        </member>
+        <member name="P:Waher.Content.Html.HtmlDocument.Dtd">
+            <summary>
+            DTD instructions found in document, or null if none found.
+            </summary>
+        </member>
+        <member name="P:Waher.Content.Html.HtmlDocument.ProcessingInstructions">
+            <summary>
+            Processing instructions found in document, or null if none found.
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.HtmlDocument.Export(System.Xml.XmlWriter)">
+            <summary>
+            Exports the HTML document to XML.
+            </summary>
+            <param name="Output">XML Output</param>
+        </member>
+        <member name="M:Waher.Content.Html.HtmlDocument.Export(System.Text.StringBuilder)">
+            <summary>
+            Exports the HTML document to XML.
+            </summary>
+            <param name="Output">XML Output</param>
+        </member>
+        <member name="M:Waher.Content.Html.HtmlDocument.GetMetaData">
+            <summary>
+            Gets meta-data about the page.
+            </summary>
+            <returns>Meta-data</returns>
+        </member>
+        <member name="M:Waher.Content.Html.HtmlDocument.GetBody(System.String)">
+            <summary>
+            Extracts the contents of the BODY element in a HTML string.
+            </summary>
+            <param name="Html">HTML string</param>
+            <returns>BODY contents.</returns>
+        </member>
+        <member name="M:Waher.Content.Html.HtmlDocument.GetHead(System.String)">
+            <summary>
+            Extracts the contents of the HEAD element in a HTML string.
+            </summary>
+            <param name="Html">HTML string</param>
+            <returns>HEAD contents.</returns>
+        </member>
+        <member name="T:Waher.Content.Html.HtmlElement">
+            <summary>
+            Base class for all HTML elements.
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.HtmlElement.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32,System.String)">
+            <summary>
+            Base class for all HTML elements.
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+            <param name="Name">Tag name.</param>
+        </member>
+        <member name="P:Waher.Content.Html.HtmlElement.FullName">
+            <summary>
+            Element full name (including prefix).
+            </summary>
+        </member>
+        <member name="P:Waher.Content.Html.HtmlElement.LocalName">
+            <summary>
+            Element local name.
+            </summary>
+        </member>
+        <member name="P:Waher.Content.Html.HtmlElement.Prefix">
+            <summary>
+            Element prefix.
+            </summary>
+        </member>
+        <member name="P:Waher.Content.Html.HtmlElement.HasPrefix">
+            <summary>
+            If the element has a prefix.
+            </summary>
+        </member>
+        <member name="P:Waher.Content.Html.HtmlElement.Namespace">
+            <summary>
+            Namespace, if provided, null if not.
+            </summary>
+        </member>
+        <member name="P:Waher.Content.Html.HtmlElement.HasChildren">
+            <summary>
+            If the element has children.
+            </summary>
+        </member>
+        <member name="P:Waher.Content.Html.HtmlElement.HasAttributes">
+            <summary>
+            If the element has attributes.
+            </summary>
+        </member>
+        <member name="P:Waher.Content.Html.HtmlElement.Children">
+            <summary>
+            Child nodes, or null if none.
+            </summary>
+        </member>
+        <member name="P:Waher.Content.Html.HtmlElement.Attributes">
+            <summary>
+            Attributes, or null if none.
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.HtmlElement.TryGetAttribute(System.String,Waher.Content.Html.HtmlAttribute@)">
+            <summary>
+            Tries to get an attribute from the element, by its name.
+            </summary>
+            <param name="Name">Attribute name.</param>
+            <param name="Attribute">Attribute object, if found, null otherwise.</param>
+            <returns>If attribute was found.</returns>
+        </member>
+        <member name="P:Waher.Content.Html.HtmlElement.InnerHtml">
+            <summary>
+            Inner HTML
+            </summary>
+        </member>
+        <member name="P:Waher.Content.Html.HtmlElement.InnerText">
+            <summary>
+            Inner Text
+            </summary>
+        </member>
+        <member name="P:Waher.Content.Html.HtmlElement.StartTag">
+            <summary>
+            Start tag.
+            </summary>
+        </member>
+        <member name="P:Waher.Content.Html.HtmlElement.EndPositionOfStartTag">
+            <summary>
+            End position of start tag.
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.HtmlElement.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="M:Waher.Content.Html.HtmlElement.Export(System.Xml.XmlWriter,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Exports the HTML document to XML.
+            </summary>
+            <param name="Output">XML Output</param>
+            <param name="Namespaces">Namespaces defined, by prefix.</param>
+        </member>
+        <member name="M:Waher.Content.Html.HtmlElement.Export(System.Text.StringBuilder)">
+            <summary>
+            Exports the HTML document to XML.
+            </summary>
+            <param name="Output">XML Output</param>
+        </member>
+        <member name="P:Waher.Content.Html.HtmlElement.IsEmptyElement">
+            <summary>
+            If the element is an empty element.
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.HtmlElement.HasAttribute(System.String)">
+            <summary>
+            If the element has an attribute with a given (case-insensitive) name.
+            </summary>
+            <param name="Name">Case-insensitive attribute name.</param>
+            <returns>If such an attribute exists.</returns>
+        </member>
+        <member name="M:Waher.Content.Html.HtmlElement.GetAttribute(System.String)">
+            <summary>
+            Gets a given attribute value, if available. The empty string is returned if the attribute does not exist.
+            </summary>
+            <param name="Name">Case-insensitive attribute name.</param>
+            <returns>Attribute value.</returns>
+        </member>
+        <member name="P:Waher.Content.Html.HtmlElement.Item(System.String)">
+            <summary>
+            Gets a given attribute value, if available. The empty string is returned if the attribute does not exist.
+            </summary>
+            <param name="Name">Name of attribute.</param>
+            <returns>Attribute value, if exists, empty string otherwise.</returns>
+        </member>
+        <member name="T:Waher.Content.Html.HtmlEmptyElement">
+            <summary>
+            Base class for all empty HTML elements.
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.HtmlEmptyElement.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32,System.String)">
+            <summary>
+            Base class for all empty HTML elements.
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+            <param name="Name">Tag name.</param>
+        </member>
+        <member name="P:Waher.Content.Html.HtmlEmptyElement.IsEmptyElement">
+            <summary>
+            If the element is an empty element.
+            </summary>
+        </member>
+        <member name="T:Waher.Content.Html.HtmlEntity">
+            <summary>
+            HTML Entity
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.HtmlEntity.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlNode,System.Int32,System.Int32,System.String)">
+            <summary>
+            HTML Entity
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+            <param name="EndPosition">End position.</param>
+            <param name="EntityName">Entity name.</param>
+        </member>
+        <member name="P:Waher.Content.Html.HtmlEntity.EntityName">
+            <summary>
+            Entity Name
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.HtmlEntity.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="M:Waher.Content.Html.HtmlEntity.Export(System.Xml.XmlWriter,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Exports the HTML document to XML.
+            </summary>
+            <param name="Namespaces">Namespaces defined, by prefix.</param>
+            <param name="Output">XML Output</param>
+        </member>
+        <member name="M:Waher.Content.Html.HtmlEntity.Export(System.Text.StringBuilder)">
+            <summary>
+            Exports the HTML document to XML.
+            </summary>
+            <param name="Output">XML Output</param>
+        </member>
+        <member name="M:Waher.Content.Html.HtmlEntity.EntityToCharacter(System.String)">
+            <summary>
+            Converts an HTML entity into a character.
+            
+            Reference:
+            http://dev.w3.org/html5/html-author/charref
+            </summary>
+            <param name="Entity">HTML entity (without the &amp; and the ;)</param>
+            <returns>Character, if entity recognized, or null if not.</returns>
+        </member>
+        <member name="T:Waher.Content.Html.HtmlEntityUnicode">
+            <summary>
+            HTML Entity, as a unicode number string.
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.HtmlEntityUnicode.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlNode,System.Int32,System.Int32,System.String,System.Int32)">
+            <summary>
+            HTML Entity, as a unicode number string.
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent element. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+            <param name="EndPosition">End position.</param>
+            <param name="EntityName">Entity name.</param>
+            <param name="Code">Unicode number</param>
+        </member>
+        <member name="P:Waher.Content.Html.HtmlEntityUnicode.Code">
+            <summary>
+            Unicode number
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.HtmlEntityUnicode.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="T:Waher.Content.Html.HtmlNode">
+            <summary>
+            Base class for all HTML nodes.
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.HtmlNode.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlNode,System.Int32)">
+            <summary>
+            Base class for all HTML nodes.
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent node. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+        </member>
+        <member name="M:Waher.Content.Html.HtmlNode.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlNode,System.Int32,System.Int32)">
+            <summary>
+            Base class for all HTML nodes.
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent node. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+            <param name="EndPosition">End position.</param>
+        </member>
+        <member name="P:Waher.Content.Html.HtmlNode.Document">
+            <summary>
+            HTML Document
+            </summary>
+        </member>
+        <member name="P:Waher.Content.Html.HtmlNode.Parent">
+            <summary>
+            Parent node, if available.
+            </summary>
+        </member>
+        <member name="P:Waher.Content.Html.HtmlNode.StartPosition">
+            <summary>
+            Start position of element.
+            </summary>
+        </member>
+        <member name="P:Waher.Content.Html.HtmlNode.EndPosition">
+            <summary>
+            End position of element.
+            </summary>
+        </member>
+        <member name="P:Waher.Content.Html.HtmlNode.OuterHtml">
+            <summary>
+            Outer HTML
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.HtmlNode.SplitName(System.String,System.String@,System.String@,System.Boolean@)">
+            <summary>
+            Splits a full name into a prefix (if available) and a local name.
+            </summary>
+            <param name="FullName">Full Name</param>
+            <param name="Prefix">Prefix part</param>
+            <param name="LocalName">Local name</param>
+            <param name="HasPrefix">If a prefix was found.</param>
+        </member>
+        <member name="M:Waher.Content.Html.HtmlNode.Export(System.Xml.XmlWriter,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Exports the HTML document to XML.
+            </summary>
+            <param name="Output">XML Output</param>
+            <param name="Namespaces">Namespaces defined, by prefix.</param>
+        </member>
+        <member name="M:Waher.Content.Html.HtmlNode.Export(System.Text.StringBuilder)">
+            <summary>
+            Exports the HTML document to XML.
+            </summary>
+            <param name="Output">XML Output</param>
+        </member>
+        <member name="T:Waher.Content.Html.HtmlText">
+            <summary>
+            In-line text.
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.HtmlText.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlNode,System.Int32,System.Int32,System.String)">
+            <summary>
+            In-line text.
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent node.</param>
+            <param name="StartPosition">Start position.</param>
+            <param name="EndPosition">End position.</param>
+            <param name="Text">Text.</param>
+        </member>
+        <member name="P:Waher.Content.Html.HtmlText.InlineText">
+            <summary>
+            Inline text.
+            </summary>
+        </member>
+        <member name="P:Waher.Content.Html.HtmlText.IsWhiteSpace">
+            <summary>
+            If the text consists only of white-space.
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.HtmlText.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="M:Waher.Content.Html.HtmlText.Export(System.Xml.XmlWriter,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Exports the HTML document to XML.
+            </summary>
+            <param name="Namespaces">Namespaces defined, by prefix.</param>
+            <param name="Output">XML Output</param>
+        </member>
+        <member name="M:Waher.Content.Html.HtmlText.Export(System.Text.StringBuilder)">
+            <summary>
+            Exports the HTML document to XML.
+            </summary>
+            <param name="Output">XML Output</param>
+        </member>
+        <member name="T:Waher.Content.Html.JavaScript.JavaScriptCodec">
+            <summary>
+            JavaScript encoder/decoder.
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.JavaScript.JavaScriptCodec.#ctor">
+            <summary>
+            JavaScript encoder/decoder.
+            </summary>
+        </member>
+        <member name="F:Waher.Content.Html.JavaScript.JavaScriptCodec.DefaultContentType">
+            <summary>
+            application/javascript
+            </summary>
+        </member>
+        <member name="F:Waher.Content.Html.JavaScript.JavaScriptCodec.JavaScriptContentTypes">
+            <summary>
+            JavaScript content types.
+            </summary>
+        </member>
+        <member name="F:Waher.Content.Html.JavaScript.JavaScriptCodec.JavaScriptFileExtensions">
+            <summary>
+            Plain text file extensions.
+            </summary>
+        </member>
+        <member name="P:Waher.Content.Html.JavaScript.JavaScriptCodec.ContentTypes">
+            <summary>
+            Supported content types.
+            </summary>
+        </member>
+        <member name="P:Waher.Content.Html.JavaScript.JavaScriptCodec.FileExtensions">
+            <summary>
+            Supported file extensions.
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.JavaScript.JavaScriptCodec.Decodes(System.String,Waher.Runtime.Inventory.Grade@)">
+            <summary>
+            If the decoder decodes an object with a given content type.
+            </summary>
+            <param name="ContentType">Content type to decode.</param>
+            <param name="Grade">How well the decoder decodes the object.</param>
+            <returns>If the decoder can decode an object with the given type.</returns>
+        </member>
+        <member name="M:Waher.Content.Html.JavaScript.JavaScriptCodec.DecodeAsync(System.String,System.Byte[],System.Text.Encoding,System.Collections.Generic.KeyValuePair{System.String,System.String}[],System.Uri,Waher.Content.ICodecProgress)">
+            <summary>
+            Decodes an object.
+            </summary>
+            <param name="ContentType">Internet Content Type.</param>
+            <param name="Data">Encoded object.</param>
+            <param name="Encoding">Any encoding specified. Can be null if no encoding specified.</param>
+            <param name="Fields">Any content-type related fields and their corresponding values.</param>
+            <param name="BaseUri">Base URI, if any. If not available, value is null.</param>
+            <param name="Progress">Optional progress reporting of encoding/decoding. Can be null.</param>
+            <returns>Decoded object.</returns>
+        </member>
+        <member name="M:Waher.Content.Html.JavaScript.JavaScriptCodec.TryGetContentType(System.String,System.String@)">
+            <summary>
+            Tries to get the content type of an item, given its file extension.
+            </summary>
+            <param name="FileExtension">File extension.</param>
+            <param name="ContentType">Content type.</param>
+            <returns>If the extension was recognized.</returns>
+        </member>
+        <member name="M:Waher.Content.Html.JavaScript.JavaScriptCodec.TryGetFileExtension(System.String,System.String@)">
+            <summary>
+            Tries to get the file extension of an item, given its Content-Type.
+            </summary>
+            <param name="ContentType">Content type.</param>
+            <param name="FileExtension">File extension.</param>
+            <returns>If the Content-Type was recognized.</returns>
+        </member>
+        <member name="M:Waher.Content.Html.JavaScript.JavaScriptCodec.Encodes(System.Object,Waher.Runtime.Inventory.Grade@,System.String[])">
+            <summary>
+            If the encoder encodes a given object.
+            </summary>
+            <param name="Object">Object to encode.</param>
+            <param name="Grade">How well the encoder encodes the object.</param>
+            <param name="AcceptedContentTypes">Optional array of accepted content types. If array is empty, all content types are accepted.</param>
+            <returns>If the encoder can encode the given object.</returns>
+        </member>
+        <member name="M:Waher.Content.Html.JavaScript.JavaScriptCodec.EncodeAsync(System.Object,System.Text.Encoding,Waher.Content.ICodecProgress,System.String[])">
+            <summary>
+            Encodes an object.
+            </summary>
+            <param name="Object">Object to encode.</param>
+            <param name="Encoding">Desired encoding of text. Can be null if no desired encoding is speified.</param>
+            <param name="Progress">Optional progress reporting of encoding/decoding. Can be null.</param>
+            <param name="AcceptedContentTypes">Optional array of accepted content types. If array is empty, all content types are accepted.</param>
+            <returns>Encoded object, as well as Content Type of encoding. Includes information about any text encodings used.</returns>
+        </member>
+        <member name="T:Waher.Content.Html.JavaScript.JavaScriptDocument">
+            <summary>
+            Encapsulates a JavaScript Document
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.JavaScript.JavaScriptDocument.#ctor(System.String)">
+            <summary>
+            Encapsulates a JavaScript Document
+            </summary>
+            <param name="JavaScript">JavaScript Text</param>
+        </member>
+        <member name="P:Waher.Content.Html.JavaScript.JavaScriptDocument.JavaScript">
+            <summary>
+            JavaScript Text
+            </summary>
+        </member>
+        <member name="T:Waher.Content.Html.OpenGraph.AudioInformation">
+            <summary>
+            Audio information, as defined by the Open Graph protocol.
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.OpenGraph.AudioInformation.#ctor">
+            <summary>
+            Audio information, as defined by the Open Graph protocol.
+            </summary>
+        </member>
+        <member name="P:Waher.Content.Html.OpenGraph.AudioInformation.Url">
+            <summary>
+            An image URL which should represent your object within the graph.
+            If not defined, null is returned.
+            </summary>
+        </member>
+        <member name="P:Waher.Content.Html.OpenGraph.AudioInformation.SecureUrl">
+            <summary>
+            An alternate url to use if the webpage requires HTTPS.
+            If not defined, null is returned.
+            </summary>
+        </member>
+        <member name="P:Waher.Content.Html.OpenGraph.AudioInformation.ContentType">
+            <summary>
+            A MIME type for this image.
+            If not defined, null is returned.
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.OpenGraph.AudioInformation.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Waher.Content.Html.OpenGraph.AudioInformation.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="T:Waher.Content.Html.OpenGraph.ImageInformation">
+            <summary>
+            Image information, as defined by the Open Graph protocol.
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.OpenGraph.ImageInformation.#ctor">
+            <summary>
+            Image information, as defined by the Open Graph protocol.
+            </summary>
+        </member>
+        <member name="P:Waher.Content.Html.OpenGraph.ImageInformation.Description">
+            <summary>
+            A description of what is in the image (not a caption).
+            If not defined, null is returned.
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.OpenGraph.ImageInformation.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Waher.Content.Html.OpenGraph.ImageInformation.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="T:Waher.Content.Html.OpenGraph.VideoInformation">
+            <summary>
+            Video information, as defined by the Open Graph protocol.
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.OpenGraph.VideoInformation.#ctor">
+            <summary>
+            Video information, as defined by the Open Graph protocol.
+            </summary>
+        </member>
+        <member name="P:Waher.Content.Html.OpenGraph.VideoInformation.Width">
+            <summary>
+            The number of pixels wide.
+            If not defined, null is returned.
+            </summary>
+        </member>
+        <member name="P:Waher.Content.Html.OpenGraph.VideoInformation.Height">
+            <summary>
+            The number of pixels high.
+            If not defined, null is returned.
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.OpenGraph.VideoInformation.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Waher.Content.Html.OpenGraph.VideoInformation.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="T:Waher.Content.Html.PageMetaData">
+            <summary>
+            Contains meta-data about a page.
+            
+            Protocols supported:
+            The Open Graph protocol: http://ogp.me/
+            Twitter Cards: https://developer.twitter.com/en/docs/tweets/optimize-with-cards/overview/markup
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.PageMetaData.#ctor">
+            <summary>
+            Contains meta-data about a page.
+            
+            Protocols supported:
+            The Open Graph protocol: http://ogp.me/
+            Twitter Cards: https://developer.twitter.com/en/docs/tweets/optimize-with-cards/overview/markup
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.PageMetaData.#ctor(Waher.Content.Html.HtmlDocument)">
+            <summary>
+            Contains meta-data about a page.
+            
+            Protocols supported:
+            The Open Graph protocol: http://ogp.me/
+            </summary>
+            <param name="Doc">HTML Document</param>
+        </member>
+        <member name="P:Waher.Content.Html.PageMetaData.Images">
+            <summary>
+            Image representing page.
+            </summary>
+        </member>
+        <member name="P:Waher.Content.Html.PageMetaData.Audio">
+            <summary>
+            Audio content
+            </summary>
+        </member>
+        <member name="P:Waher.Content.Html.PageMetaData.Video">
+            <summary>
+            Video content
+            </summary>
+        </member>
+        <member name="P:Waher.Content.Html.PageMetaData.LocaleAlternate">
+            <summary>
+            Alternate locales
+            </summary>
+        </member>
+        <member name="P:Waher.Content.Html.PageMetaData.Title">
+            <summary>
+            Title of page.
+            </summary>
+        </member>
+        <member name="P:Waher.Content.Html.PageMetaData.Type">
+            <summary>
+            Type of page.
+            </summary>
+        </member>
+        <member name="P:Waher.Content.Html.PageMetaData.Url">
+            <summary>
+            Canonical URL of page.
+            </summary>
+        </member>
+        <member name="P:Waher.Content.Html.PageMetaData.Description">
+            <summary>
+            A description of the page.
+            </summary>
+        </member>
+        <member name="P:Waher.Content.Html.PageMetaData.Determiner">
+            <summary>
+            A word that appears before the title.
+            </summary>
+        </member>
+        <member name="P:Waher.Content.Html.PageMetaData.Locale">
+            <summary>
+            Locale of information.
+            </summary>
+        </member>
+        <member name="P:Waher.Content.Html.PageMetaData.SiteName">
+            <summary>
+            Name of web site publishing page
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.PageMetaData.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Waher.Content.Html.PageMetaData.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="T:Waher.Content.Html.ProcessingInstruction">
+            <summary>
+            Represents a Processing instruction inside the document.
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.ProcessingInstruction.#ctor(Waher.Content.Html.HtmlDocument,Waher.Content.Html.HtmlElement,System.Int32,System.Int32,System.String)">
+            <summary>
+            Represents a Processing instruction inside the document.
+            </summary>
+            <param name="Document">HTML Document.</param>
+            <param name="Parent">Parent node. Can be null for root elements.</param>
+            <param name="StartPosition">Start position.</param>
+            <param name="EndPosition">End position.</param>
+            <param name="Instruction">Instruction</param>
+        </member>
+        <member name="P:Waher.Content.Html.ProcessingInstruction.Instruction">
+            <summary>
+            Unparsed Processing instruction.
+            </summary>
+        </member>
+        <member name="M:Waher.Content.Html.ProcessingInstruction.Export(System.Xml.XmlWriter,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Exports the HTML document to XML.
+            </summary>
+            <param name="Namespaces">Namespaces defined, by prefix.</param>
+            <param name="Output">XML Output</param>
+        </member>
+        <member name="M:Waher.Content.Html.ProcessingInstruction.Export(System.Text.StringBuilder)">
+            <summary>
+            Exports the HTML document to XML.
+            </summary>
+            <param name="Output">XML Output</param>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>r2rml4net</id>
+    <version>0.8.0</version>
+    <authors>tpluscode</authors>
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <projectUrl>https://github.com/r2rml4net/r2rml4net</projectUrl>
+    <description>A C# implementation of R2RML, which allows creating R2RML and converting relational data to RDF using the .NET Framework</description>
+    <copyright>2012-2020 Tomasz Pluskiewicz</copyright>
+    <tags>rdf r2rml semantic web</tags>
+    <dependencies>
+      <group targetFramework="net6.0">
+        <dependency id="DatabaseSchemaReader" version="2.7.16" exclude="Build,Analyzers" />
+        <dependency id="NLog" version="5.0.4" exclude="Build,Analyzers" />
+        <dependency id="dotNetRDF" version="2.7.5" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

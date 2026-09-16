@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>NLanguageTag</id>
+    <version>4.1.2</version>
+    <authors>Anatoliy Koperin &lt;a.koperin@gmail.com&gt;</authors>
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <readme>README.md</readme>
+    <projectUrl>https://github.com/ExM/NLanguageTag</projectUrl>
+    <description>Language tags are used to help identify languages, whether spoken, written, signed, or otherwise signaled, for the purpose of communication.
+      Language tag syntax is defined by the IETF's BCP 47 (https://tools.ietf.org/html/bcp47) or RFC 5646 (https://datatracker.ietf.org/doc/html/rfc5646)</description>
+    <copyright>MIT Copyright © 2026 Anatoliy Koperin &lt;a.koperin@gmail.com&gt;</copyright>
+    <tags>bcp47 languagetag iso639 language rfc5646 bcp 47 languagetags iso 639 rfc 5646</tags>
+    <repository type="Github" url="https://github.com/ExM/NLanguageTag" commit="0e90223028ef7269883f9ab2befe7976e7d4a6a9" />
+    <dependencies>
+      <group targetFramework="net8.0" />
+      <group targetFramework="net10.0" />
+      <group targetFramework=".NETStandard2.0" />
+    </dependencies>
+  </metadata>
+</package>

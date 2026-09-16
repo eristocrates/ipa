@@ -1,0 +1,100 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v9.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v9.0": {
+      "WGSettings.NET9/1.0.0": {
+        "dependencies": {
+          "WordGlue4.NET9": "1.0.0",
+          "WordGlue4.NET9.Reference": "4.1.0.1"
+        },
+        "runtime": {
+          "WGSettings.NET9.dll": {}
+        }
+      },
+      "Microsoft.Win32.SystemEvents/9.0.19": {
+        "runtime": {
+          "lib/net9.0/Microsoft.Win32.SystemEvents.dll": {
+            "assemblyVersion": "9.0.0.0",
+            "fileVersion": "9.0.1926.36724"
+          }
+        },
+        "runtimeTargets": {
+          "runtimes/win/lib/net9.0/Microsoft.Win32.SystemEvents.dll": {
+            "rid": "win",
+            "assetType": "runtime",
+            "assemblyVersion": "9.0.0.0",
+            "fileVersion": "9.0.1926.36724"
+          }
+        }
+      },
+      "System.Drawing.Common/9.0.19": {
+        "dependencies": {
+          "Microsoft.Win32.SystemEvents": "9.0.19"
+        },
+        "runtime": {
+          "lib/net9.0/System.Drawing.Common.dll": {
+            "assemblyVersion": "9.0.0.0",
+            "fileVersion": "9.0.1926.37001"
+          },
+          "lib/net9.0/System.Private.Windows.Core.dll": {
+            "assemblyVersion": "9.0.0.0",
+            "fileVersion": "9.0.1926.37001"
+          }
+        }
+      },
+      "WordGlue4.NET9/1.0.0": {
+        "dependencies": {
+          "System.Drawing.Common": "9.0.19"
+        },
+        "runtime": {
+          "WordGlue4.NET9.dll": {
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "WordGlue4.NET9.Reference/4.1.0.1": {
+        "runtime": {
+          "WordGlue4.NET9.dll": {
+            "assemblyVersion": "4.1.0.1",
+            "fileVersion": "4.1.0.1"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "WGSettings.NET9/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Microsoft.Win32.SystemEvents/9.0.19": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-VP2edB6mVEMG3WtnW2tFjPPiFyQG2ROuZ863mFUjF9ZTsr75lHsWoi9uy+hbtBEcVyPrS2fFq6xewoJydePIiw==",
+      "path": "microsoft.win32.systemevents/9.0.19",
+      "hashPath": "microsoft.win32.systemevents.9.0.19.nupkg.sha512"
+    },
+    "System.Drawing.Common/9.0.19": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ON699pZK06eVeT6G1267S9zpsRcA5N74NNHh6aWzwZiP0e6VD39Z7EJ4iv5Lq+kS+OpkFJXPk6DIIDq0/nXH0g==",
+      "path": "system.drawing.common/9.0.19",
+      "hashPath": "system.drawing.common.9.0.19.nupkg.sha512"
+    },
+    "WordGlue4.NET9/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "WordGlue4.NET9.Reference/4.1.0.1": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

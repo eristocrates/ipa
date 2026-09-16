@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?><coreProperties xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.openxmlformats.org/package/2006/metadata/core-properties"><dc:creator>rubicon IT GmbH</dc:creator><dc:description>re-linq Frontend: A foundation for parsing LINQ expression trees and generating queries in SQL or other languages.
+Key features:
+- Transforms expression trees into abstract syntax trees resemblying LINQ query expressions (from ... select syntax)
+- Simplifies many aspects of this tree (sub queries, transparent identifieres, pre-evaluation ...)
+- Provides basic infrastructure for backend development (e.g. SQL generation) 
+- Provides a framework for user-defined query extensions and transformations</dc:description><dc:identifier>Remotion.Linq</dc:identifier><version>2.2.0</version><keywords>re-motion LINQ ExpressionTrees</keywords><dc:title>Remotion.Linq</dc:title><lastModifiedBy>NuGet, Version=2.8.60717.93, Culture=neutral, PublicKeyToken=null;Microsoft Windows NT 6.2.9200.0;.NET Framework 4.5</lastModifiedBy></coreProperties>

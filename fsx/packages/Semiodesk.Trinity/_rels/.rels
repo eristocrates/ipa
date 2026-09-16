@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
+  <Relationship Type="http://schemas.microsoft.com/packaging/2010/07/manifest" Target="/Semiodesk.Trinity.nuspec" Id="R6381C6486552DCF7" />
+  <Relationship Type="http://schemas.openxmlformats.org/package/2006/relationships/metadata/core-properties" Target="/package/services/metadata/core-properties/e84e4b3cd0014bfb93666eb56c9a0914.psmdcp" Id="R4DAD44B8A9EE6086" />
+</Relationships>

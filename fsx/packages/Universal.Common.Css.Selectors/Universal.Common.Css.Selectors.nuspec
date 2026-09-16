@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>Universal.Common.Css.Selectors</id>
+    <version>1.0.1</version>
+    <title>Universal.Common.Css.Selectors</title>
+    <authors>Andrew Ong</authors>
+    <license type="expression">CC0-1.0</license>
+    <licenseUrl>https://licenses.nuget.org/CC0-1.0</licenseUrl>
+    <readme>Package.md</readme>
+    <description>Class library implementing the CSS selectors specification with broad CSS 4 support.</description>
+    <releaseNotes>Fixed an issue with unquoted attribute selectors and multiple attribute selectors.</releaseNotes>
+    <tags>Universal CSS 4 Selectors</tags>
+    <repository type="git" commit="d421c5d16af1e48765e7dd8e6c5cb3b241ba28c7" />
+    <dependencies>
+      <group targetFramework=".NETStandard2.0" />
+    </dependencies>
+  </metadata>
+</package>

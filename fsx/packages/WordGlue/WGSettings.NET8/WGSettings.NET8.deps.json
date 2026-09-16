@@ -1,0 +1,70 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "WGSettings.NET8/1.0.0": {
+        "dependencies": {
+          "WordGlue4.NET8": "1.0.0",
+          "WordGlue4.NET8.Reference": "4.1.0.1"
+        },
+        "runtime": {
+          "WGSettings.NET8.dll": {}
+        }
+      },
+      "System.Drawing.Common/8.0.30": {
+        "runtime": {
+          "lib/net8.0/System.Drawing.Common.dll": {
+            "assemblyVersion": "8.0.0.0",
+            "fileVersion": "8.0.3026.37301"
+          }
+        }
+      },
+      "WordGlue4.NET8/1.0.0": {
+        "dependencies": {
+          "System.Drawing.Common": "8.0.30"
+        },
+        "runtime": {
+          "WordGlue4.NET8.dll": {
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "WordGlue4.NET8.Reference/4.1.0.1": {
+        "runtime": {
+          "WordGlue4.NET8.dll": {
+            "assemblyVersion": "4.1.0.1",
+            "fileVersion": "4.1.0.1"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "WGSettings.NET8/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "System.Drawing.Common/8.0.30": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-0XmCxBax3vO/h4xT51UlB8JMe0+IzFrxpHETX8/KpSiwtCITygcrXTzlQMVFn8dSe0C7fsdux6M3FIkQsJiV+g==",
+      "path": "system.drawing.common/8.0.30",
+      "hashPath": "system.drawing.common.8.0.30.nupkg.sha512"
+    },
+    "WordGlue4.NET8/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "WordGlue4.NET8.Reference/4.1.0.1": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

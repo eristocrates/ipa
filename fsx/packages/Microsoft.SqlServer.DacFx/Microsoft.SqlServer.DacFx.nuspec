@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>Microsoft.SqlServer.DacFx</id>
+    <version>162.5.57</version>
+    <title>Microsoft SQL Server Data-Tier Application Framework</title>
+    <authors>Microsoft</authors>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="file">license.txt</license>
+    <licenseUrl>https://aka.ms/deprecateLicenseUrl</licenseUrl>
+    <icon>nuspecicon.png</icon>
+    <projectUrl>https://github.com/microsoft/DacFx</projectUrl>
+    <iconUrl>http://s.gravatar.com/avatar/6f39d8562df0a3509a8240fb281bc5bd?s=80</iconUrl>
+    <description>The Microsoft SQL Server Data-Tier Application Framework (DacFx) is a component which provides application lifecycle services for database development and management for Microsoft SQL Server and Microsoft Azure SQL Databases.
+      DacFx supports various database deployment and management scenarios for SQL Server and Microsoft Azure SQL Databases including extracting / exporting a live database to a DAC package, deploying a DAC package to a new or existing database, 
+      and migrating from on-premises to Microsoft Azure. 
+	  
+      This functionality is exposed via the DacFx API. DacFx can target SQL Server 2008 and newer, as well as Microsoft Azure SQL.
+      
+      This nuget package is a lightweight version of DacFx. If you would like to use the command-line utility SqlPackage.exe for creating and deploying .dacpac and .bacpac packages, please download SqlPackage.exe for Windows, macOS, or Linux from http://aka.ms/sqlpackage.</description>
+    <releaseNotes>https://go.microsoft.com/fwlink/?linkid=2037848</releaseNotes>
+    <copyright>© Microsoft Corporation. All rights reserved.</copyright>
+    <tags>SQL Dac DacFx Dacpac Bacpac</tags>
+    <repository type="git" url="https://github.com/microsoft/DacFx" commit="0eca7958110faa1aa4230f336902db87ac18e3cb" />
+    <dependencies>
+      <group targetFramework=".NETFramework4.6.2">
+        <dependency id="Azure.Core" version="1.41.0" />
+        <dependency id="Azure.Identity" version="1.11.4" />
+        <dependency id="Azure.Storage.Blobs" version="12.18.0" />
+        <dependency id="Microsoft.Data.SqlClient" version="5.1.6" />
+        <dependency id="Microsoft.Identity.Client" version="4.61.3" />
+        <dependency id="System.Security.Permissions" version="7.0.0" />
+        <dependency id="System.Resources.Extensions" version="4.6.0" />
+        <dependency id="Microsoft.SqlServer.Types" version="160.1000.6" />
+        <dependency id="Microsoft.ApplicationInsights" version="2.21.0" />
+        <dependency id="Microsoft.SqlServer.TransactSql.ScriptDom" version="161.9142.1" />
+      </group>
+      <group targetFramework="net6.0">
+        <dependency id="Azure.Core" version="1.41.0" exclude="Build,Analyzers" />
+        <dependency id="Azure.Identity" version="1.11.4" exclude="Build,Analyzers" />
+        <dependency id="Azure.Storage.Blobs" version="12.18.0" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.ApplicationInsights" version="2.21.0" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Build" version="15.9.20" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Build.Framework" version="15.9.20" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Build.Utilities.Core" version="15.9.20" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Data.SqlClient" version="5.1.6" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Identity.Client" version="4.61.3" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.SqlServer.TransactSql.ScriptDom" version="161.9142.1" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.SqlServer.Types" version="160.1000.6" exclude="Build,Analyzers" />
+        <dependency id="System.ComponentModel.Annotations" version="5.0.0" exclude="Build,Analyzers" />
+        <dependency id="System.ComponentModel.Composition" version="6.0.0" exclude="Build,Analyzers" />
+        <dependency id="System.IO.FileSystem" version="4.3.0" exclude="Build,Analyzers" />
+        <dependency id="System.IO.FileSystem.Primitives" version="4.3.0" exclude="Build,Analyzers" />
+        <dependency id="System.IO.Packaging" version="8.0.1" exclude="Build,Analyzers" />
+        <dependency id="System.Net.Primitives" version="4.3.0" exclude="Build,Analyzers" />
+        <dependency id="System.Resources.Extensions" version="4.7.1" exclude="Build,Analyzers" />
+        <dependency id="System.Runtime.Caching" version="8.0.1" exclude="Build,Analyzers" />
+        <dependency id="System.Security.Cryptography.Algorithms" version="4.3.1" exclude="Build,Analyzers" />
+        <dependency id="System.Security.Permissions" version="7.0.0" exclude="Build,Analyzers" />
+        <dependency id="System.Security.Principal" version="4.3.0" exclude="Build,Analyzers" />
+        <dependency id="System.Text.Encoding.Extensions" version="4.3.0" exclude="Build,Analyzers" />
+        <dependency id="System.Threading.ThreadPool" version="4.3.0" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework="net8.0">
+        <dependency id="Azure.Core" version="1.41.0" exclude="Build,Analyzers" />
+        <dependency id="Azure.Identity" version="1.11.4" exclude="Build,Analyzers" />
+        <dependency id="Azure.Storage.Blobs" version="12.18.0" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.ApplicationInsights" version="2.21.0" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Build" version="15.9.20" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Build.Framework" version="15.9.20" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Build.Utilities.Core" version="15.9.20" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Data.SqlClient" version="5.1.6" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Identity.Client" version="4.61.3" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.SqlServer.TransactSql.ScriptDom" version="161.9142.1" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.SqlServer.Types" version="160.1000.6" exclude="Build,Analyzers" />
+        <dependency id="System.ComponentModel.Annotations" version="5.0.0" exclude="Build,Analyzers" />
+        <dependency id="System.ComponentModel.Composition" version="8.0.0" exclude="Build,Analyzers" />
+        <dependency id="System.IO.FileSystem" version="4.3.0" exclude="Build,Analyzers" />
+        <dependency id="System.IO.FileSystem.Primitives" version="4.3.0" exclude="Build,Analyzers" />
+        <dependency id="System.IO.Packaging" version="8.0.1" exclude="Build,Analyzers" />
+        <dependency id="System.Net.Primitives" version="4.3.0" exclude="Build,Analyzers" />
+        <dependency id="System.Resources.Extensions" version="4.7.1" exclude="Build,Analyzers" />
+        <dependency id="System.Runtime.Caching" version="8.0.1" exclude="Build,Analyzers" />
+        <dependency id="System.Security.Cryptography.Algorithms" version="4.3.1" exclude="Build,Analyzers" />
+        <dependency id="System.Security.Permissions" version="8.0.0" exclude="Build,Analyzers" />
+        <dependency id="System.Security.Principal" version="4.3.0" exclude="Build,Analyzers" />
+        <dependency id="System.Text.Encoding.Extensions" version="4.3.0" exclude="Build,Analyzers" />
+        <dependency id="System.Threading.ThreadPool" version="4.3.0" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework=".NETStandard2.1">
+        <dependency id="Azure.Core" version="1.41.0" exclude="Build,Analyzers" />
+        <dependency id="Azure.Identity" version="1.11.4" exclude="Build,Analyzers" />
+        <dependency id="Azure.Storage.Blobs" version="12.18.0" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.ApplicationInsights" version="2.21.0" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Build" version="15.9.20" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Build.Framework" version="15.9.20" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Build.Utilities.Core" version="15.9.20" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Data.SqlClient" version="5.1.6" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Identity.Client" version="4.61.3" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.SqlServer.TransactSql.ScriptDom" version="161.9142.1" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.SqlServer.Types" version="160.1000.6" exclude="Build,Analyzers" />
+        <dependency id="System.ComponentModel.Annotations" version="5.0.0" exclude="Build,Analyzers" />
+        <dependency id="System.ComponentModel.Composition" version="6.0.0" exclude="Build,Analyzers" />
+        <dependency id="System.IO.FileSystem" version="4.3.0" exclude="Build,Analyzers" />
+        <dependency id="System.IO.FileSystem.Primitives" version="4.3.0" exclude="Build,Analyzers" />
+        <dependency id="System.IO.Packaging" version="8.0.1" exclude="Build,Analyzers" />
+        <dependency id="System.Net.Primitives" version="4.3.0" exclude="Build,Analyzers" />
+        <dependency id="System.Resources.Extensions" version="4.7.1" exclude="Build,Analyzers" />
+        <dependency id="System.Runtime.Caching" version="8.0.1" exclude="Build,Analyzers" />
+        <dependency id="System.Security.Cryptography.Algorithms" version="4.3.1" exclude="Build,Analyzers" />
+        <dependency id="System.Security.Permissions" version="7.0.0" exclude="Build,Analyzers" />
+        <dependency id="System.Security.Principal" version="4.3.0" exclude="Build,Analyzers" />
+        <dependency id="System.Text.Encoding.Extensions" version="4.3.0" exclude="Build,Analyzers" />
+        <dependency id="System.Threading.ThreadPool" version="4.3.0" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

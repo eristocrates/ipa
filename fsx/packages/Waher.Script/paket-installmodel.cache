@@ -1,0 +1,17 @@
+D: /lib
+D: /lib/netstandard2.0
+F: /lib/netstandard2.0/Waher.Script.dll
+F: /lib/netstandard2.0/Waher.Script.xml
+D: /package
+D: /package/services
+D: /package/services/metadata
+D: /package/services/metadata/core-properties
+F: /package/services/metadata/core-properties/be8ffbc80ba6409c8151657c8bbe3c4f.psmdcp
+D: /_rels
+F: /_rels/.rels
+F: /.signature.p7s
+F: /Icon_64x64.png
+F: /LICENSE.txt
+F: /waher.script.2.15.2.nupkg
+F: /Waher.Script.nuspec
+F: /[Content_Types].xml

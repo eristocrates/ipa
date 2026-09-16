@@ -1,0 +1,407 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MorseCode.ITask</name>
+    </assembly>
+    <members>
+        <member name="T:MorseCode.ITask.AwaiterInterfaceWrapper">
+            <summary>
+            A wrapper for the <see cref="T:MorseCode.ITask.IAwaiter"/> interface.
+            </summary>
+            <remarks>This class is necessary because awaiters must be concrete classes.</remarks>
+        </member>
+        <member name="M:MorseCode.ITask.AwaiterInterfaceWrapper.#ctor(MorseCode.ITask.IAwaiter)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MorseCode.ITask.AwaiterInterfaceWrapper"/> class.
+            </summary>
+            <param name="awaiter">
+            The awaiter to wrap.
+            </param>
+        </member>
+        <member name="P:MorseCode.ITask.AwaiterInterfaceWrapper.IsCompleted">
+            <summary>Gets a value indicating whether the task being awaited is completed.</summary>
+            <remarks>This property is intended for compiler user rather than use directly in code.</remarks>
+            <exception cref="T:System.NullReferenceException">The awaiter was not properly initialized.</exception>
+        </member>
+        <member name="M:MorseCode.ITask.AwaiterInterfaceWrapper.OnCompleted(System.Action)">
+            <summary>Schedules the continuation onto the <see cref="T:System.Threading.Tasks.Task"/> associated with this <see cref="T:System.Runtime.CompilerServices.TaskAwaiter"/>.</summary>
+            <param name="continuation">The action to invoke when the await operation completes.</param>
+            <exception cref="T:System.ArgumentNullException">The <paramref name="continuation"/> argument is null (Nothing in Visual Basic).</exception>
+            <exception cref="T:System.InvalidOperationException">The awaiter was not properly initialized.</exception>
+            <remarks>This method is intended for compiler user rather than use directly in code.</remarks>
+        </member>
+        <member name="M:MorseCode.ITask.AwaiterInterfaceWrapper.UnsafeOnCompleted(System.Action)">
+            <summary>Schedules the continuation onto the <see cref="T:System.Threading.Tasks.Task"/> associated with this <see cref="T:System.Runtime.CompilerServices.TaskAwaiter"/>.</summary>
+            <param name="continuation">The action to invoke when the await operation completes.</param>
+            <exception cref="T:System.ArgumentNullException">The <paramref name="continuation"/> argument is null (Nothing in Visual Basic).</exception>
+            <exception cref="T:System.InvalidOperationException">The awaiter was not properly initialized.</exception>
+            <remarks>This method is intended for compiler user rather than use directly in code.</remarks>
+        </member>
+        <member name="M:MorseCode.ITask.AwaiterInterfaceWrapper.GetResult">
+            <summary>Ends the await on the completed <see cref="T:MorseCode.ITask.IAwaiter"/>.</summary>
+            <exception cref="T:System.NullReferenceException">The awaiter was not properly initialized.</exception>
+            <exception cref="T:System.Threading.Tasks.TaskCanceledException">The task was canceled.</exception>
+            <exception cref="T:System.Exception">The task completed in a Faulted state.</exception>
+        </member>
+        <member name="T:MorseCode.ITask.AwaiterInterfaceWrapper`1">
+            <summary>
+            A wrapper for the <see cref="T:MorseCode.ITask.IAwaiter`1"/> interface.
+            </summary>
+            <typeparam name="TResult">
+            The type of the result of the task.
+            </typeparam>
+            <remarks>This class is necessary because awaiters must be concrete classes.</remarks>
+        </member>
+        <member name="M:MorseCode.ITask.AwaiterInterfaceWrapper`1.#ctor(MorseCode.ITask.IAwaiter{`0})">
+            <summary>
+            Initializes a new instance of the <see cref="T:MorseCode.ITask.AwaiterInterfaceWrapper`1"/> class.
+            </summary>
+            <param name="awaiter">
+            The awaiter to wrap.
+            </param>
+        </member>
+        <member name="P:MorseCode.ITask.AwaiterInterfaceWrapper`1.IsCompleted">
+            <summary>Gets a value indicating whether the task being awaited is completed.</summary>
+            <remarks>This property is intended for compiler user rather than use directly in code.</remarks>
+            <exception cref="T:System.NullReferenceException">The awaiter was not properly initialized.</exception>
+        </member>
+        <member name="M:MorseCode.ITask.AwaiterInterfaceWrapper`1.OnCompleted(System.Action)">
+            <summary>Schedules the continuation onto the <see cref="T:System.Threading.Tasks.Task"/> associated with this <see cref="T:System.Runtime.CompilerServices.TaskAwaiter"/>.</summary>
+            <param name="continuation">The action to invoke when the await operation completes.</param>
+            <exception cref="T:System.ArgumentNullException">The <paramref name="continuation"/> argument is null (Nothing in Visual Basic).</exception>
+            <exception cref="T:System.InvalidOperationException">The awaiter was not properly initialized.</exception>
+            <remarks>This method is intended for compiler user rather than use directly in code.</remarks>
+        </member>
+        <member name="M:MorseCode.ITask.AwaiterInterfaceWrapper`1.UnsafeOnCompleted(System.Action)">
+            <summary>Schedules the continuation onto the <see cref="T:System.Threading.Tasks.Task"/> associated with this <see cref="T:System.Runtime.CompilerServices.TaskAwaiter"/>.</summary>
+            <param name="continuation">The action to invoke when the await operation completes.</param>
+            <exception cref="T:System.ArgumentNullException">The <paramref name="continuation"/> argument is null (Nothing in Visual Basic).</exception>
+            <exception cref="T:System.InvalidOperationException">The awaiter was not properly initialized.</exception>
+            <remarks>This method is intended for compiler user rather than use directly in code.</remarks>
+        </member>
+        <member name="M:MorseCode.ITask.AwaiterInterfaceWrapper`1.GetResult">
+            <summary>Ends the await on the completed <see cref="T:MorseCode.ITask.IAwaiter`1"/>.</summary>
+            <returns>The result of the completed <see cref="T:MorseCode.ITask.IAwaiter`1"/>.</returns>
+            <exception cref="T:System.NullReferenceException">The awaiter was not properly initialized.</exception>
+            <exception cref="T:System.Threading.Tasks.TaskCanceledException">The task was canceled.</exception>
+            <exception cref="T:System.Exception">The task completed in a Faulted state.</exception>
+        </member>
+        <member name="T:MorseCode.ITask.IAwaiter">
+            <summary>Awaiter interface for awaiting an <see cref="T:MorseCode.ITask.ITask"/>.</summary>
+            <remarks>This type is intended for compiler use only.</remarks>
+        </member>
+        <member name="P:MorseCode.ITask.IAwaiter.IsCompleted">
+            <summary>Gets a value indicating whether the task being awaited is completed.</summary>
+            <remarks>This property is intended for compiler user rather than use directly in code.</remarks>
+            <exception cref="T:System.NullReferenceException">The awaiter was not properly initialized.</exception>
+        </member>
+        <member name="M:MorseCode.ITask.IAwaiter.GetResult">
+            <summary>Ends the await on the completed <see cref="T:MorseCode.ITask.ITask`1"/>.</summary>
+            <exception cref="T:System.NullReferenceException">The awaiter was not properly initialized.</exception>
+            <exception cref="T:System.Threading.Tasks.TaskCanceledException">The task was canceled.</exception>
+            <exception cref="T:System.Exception">The task completed in a Faulted state.</exception>
+        </member>
+        <member name="T:MorseCode.ITask.IAwaiter`1">
+            <summary>Awaiter interface for awaiting an <see cref="T:MorseCode.ITask.ITask`1"/>.</summary>
+            <typeparam name="TResult">
+            The type of the result of the task.
+            </typeparam>
+            <remarks>This type is intended for compiler use only.</remarks>
+        </member>
+        <member name="P:MorseCode.ITask.IAwaiter`1.IsCompleted">
+            <summary>Gets a value indicating whether the task being awaited is completed.</summary>
+            <remarks>This property is intended for compiler user rather than use directly in code.</remarks>
+            <exception cref="T:System.NullReferenceException">The awaiter was not properly initialized.</exception>
+        </member>
+        <member name="M:MorseCode.ITask.IAwaiter`1.GetResult">
+            <summary>Ends the await on the completed <see cref="T:MorseCode.ITask.ITask`1"/>.</summary>
+            <returns>The result of the completed <see cref="T:MorseCode.ITask.ITask`1"/>.</returns>
+            <exception cref="T:System.NullReferenceException">The awaiter was not properly initialized.</exception>
+            <exception cref="T:System.Threading.Tasks.TaskCanceledException">The task was canceled.</exception>
+            <exception cref="T:System.Exception">The task completed in a Faulted state.</exception>
+        </member>
+        <member name="T:MorseCode.ITask.IConfiguredTask">
+            <summary>Provides an awaitable object that allows for configured awaits on <see cref="T:MorseCode.ITask.ITask"/>.</summary>
+            <remarks>This type is intended for compiler use only.</remarks>
+        </member>
+        <member name="M:MorseCode.ITask.IConfiguredTask.GetAwaiter">
+            <summary>Creates an awaiter used to await this <see cref="T:MorseCode.ITask.IConfiguredTask"/>.</summary>
+            <returns>An awaiter instance.</returns>
+            <remarks>This method is intended for compiler user rather than use directly in code.</remarks>
+        </member>
+        <member name="T:MorseCode.ITask.IConfiguredTask`1">
+            <summary>Provides an awaitable object that allows for configured awaits on <see cref="T:MorseCode.ITask.ITask`1"/>.</summary>
+            <typeparam name="TResult">
+            The type of the result of the task.
+            </typeparam>
+            <remarks>This type is intended for compiler use only.</remarks>
+        </member>
+        <member name="M:MorseCode.ITask.IConfiguredTask`1.GetAwaiter">
+            <summary>Creates an awaiter used to await this <see cref="T:MorseCode.ITask.IConfiguredTask`1"/>.</summary>
+            <returns>An awaiter instance.</returns>
+            <remarks>This method is intended for compiler user rather than use directly in code.</remarks>
+        </member>
+        <member name="T:MorseCode.ITask.ITask">
+            <summary>
+            An interface representing a Task which does not return a value.
+            </summary>
+        </member>
+        <member name="M:MorseCode.ITask.ITask.GetAwaiter">
+            <summary>Creates an awaiter used to await this <see cref="T:MorseCode.ITask.ITask"/>.</summary>
+            <returns>An awaiter instance.</returns>
+            <remarks>This method is intended for compiler user rather than use directly in code.</remarks>
+        </member>
+        <member name="M:MorseCode.ITask.ITask.ConfigureAwait(System.Boolean)">
+            <summary>Configures an awaiter used to await this <see cref="T:MorseCode.ITask.ITask"/>.</summary>
+            <param name="continueOnCapturedContext">
+            true to attempt to marshal the continuation back to the original context captured; otherwise, false.
+            </param>
+            <returns>An object used to await this task.</returns>
+        </member>
+        <member name="T:MorseCode.ITask.ITask`1">
+            <summary>
+            An interface representing a Task which returns a value of type <typeparamref name="TResult"/>.
+            </summary>
+            <typeparam name="TResult">
+            The type of the result of the task.
+            </typeparam>
+        </member>
+        <member name="P:MorseCode.ITask.ITask`1.Result">
+            <summary>
+            Gets the result value of this <see cref="T:MorseCode.ITask.ITask`1"/>.
+            </summary>
+            <remarks>
+            The get accessor for this property ensures that the asynchronous operation is complete before
+            returning. Once the result of the computation is available, it is stored and will be returned
+            immediately on later calls to <see cref="P:MorseCode.ITask.ITask`1.Result"/>.
+            </remarks>
+        </member>
+        <member name="M:MorseCode.ITask.ITask`1.GetAwaiter">
+            <summary>Creates an awaiter used to await this <see cref="T:MorseCode.ITask.ITask`1"/>.</summary>
+            <returns>An awaiter instance.</returns>
+            <remarks>This method is intended for compiler user rather than use directly in code.</remarks>
+        </member>
+        <member name="M:MorseCode.ITask.ITask`1.ConfigureAwait(System.Boolean)">
+            <summary>Configures an awaiter used to await this <see cref="T:MorseCode.ITask.ITask"/>.</summary>
+            <param name="continueOnCapturedContext">
+            true to attempt to marshal the continuation back to the original context captured; otherwise, false.
+            </param>
+            <returns>An object used to await this task.</returns>
+        </member>
+        <member name="T:MorseCode.ITask.TaskExtensionMethods">
+            <summary>
+            Class providing task extension methods.
+            </summary>
+        </member>
+        <member name="M:MorseCode.ITask.TaskExtensionMethods.AsITask(System.Threading.Tasks.Task)">
+            <summary>
+            Converts the <see cref="T:System.Threading.Tasks.Task"/> instance into an <see cref="T:MorseCode.ITask.ITask"/>.
+            </summary>
+            <param name="task">
+            The task to convert.
+            </param>
+            <returns>
+            The <see cref="T:MorseCode.ITask.ITask"/>.
+            </returns>
+        </member>
+        <member name="M:MorseCode.ITask.TaskExtensionMethods.AsITask``1(System.Threading.Tasks.Task{``0})">
+            <summary>
+            Converts the <see cref="T:System.Threading.Tasks.Task`1"/> instance into an <see cref="T:MorseCode.ITask.ITask`1"/>.
+            </summary>
+            <param name="task">
+            The task to convert.
+            </param>
+            <typeparam name="TResult">
+            The type of the result of the task.
+            </typeparam>
+            <returns>
+            The <see cref="T:MorseCode.ITask.ITask`1"/>.
+            </returns>
+        </member>
+        <member name="M:MorseCode.ITask.TaskExtensionMethods.AsTask(MorseCode.ITask.ITask)">
+            <summary>
+            Converts the <see cref="T:MorseCode.ITask.ITask"/> instance into a <see cref="T:System.Threading.Tasks.Task"/>.
+            </summary>
+            <param name="task">
+            The task to convert.
+            </param>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task"/>.
+            </returns>
+        </member>
+        <member name="M:MorseCode.ITask.TaskExtensionMethods.AsTask``1(MorseCode.ITask.ITask{``0})">
+            <summary>
+            Converts the <see cref="T:MorseCode.ITask.ITask`1"/> instance into a <see cref="T:System.Threading.Tasks.Task`1"/>.
+            </summary>
+            <param name="task">
+            The task to convert.
+            </param>
+            <typeparam name="TResult">
+            The type of the result of the task.
+            </typeparam>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task`1"/>.
+            </returns>
+        </member>
+        <member name="T:MorseCode.ITask.CompilerServices.TaskInterfaceAsyncMethodBuilder">
+            <summary>
+              Runtime helper for async methods returning <see cref="T:MorseCode.ITask.ITask"/>.
+            </summary>
+        </member>
+        <member name="F:MorseCode.ITask.CompilerServices.TaskInterfaceAsyncMethodBuilder.builder">
+            <summary>
+              Delegate everything to the official <see cref="P:MorseCode.ITask.CompilerServices.TaskInterfaceAsyncMethodBuilder.Task"/> method builder
+              since we just use <see cref="M:MorseCode.ITask.TaskExtensionMethods.AsITask(System.Threading.Tasks.Task)"/>
+              in the end.
+            </summary>
+            <remarks>
+              <para>
+                This must not be marked <c>readonly</c> because it is mutable. If marked
+                <c>readonly</c>, first <c>await</c> silently freezes everything.
+              </para>
+            </remarks>
+        </member>
+        <member name="P:MorseCode.ITask.CompilerServices.TaskInterfaceAsyncMethodBuilder.Task">
+            <summary>
+              Used by the compiler to generate the return value for the async method.
+            </summary>
+        </member>
+        <member name="M:MorseCode.ITask.CompilerServices.TaskInterfaceAsyncMethodBuilder.Create">
+            <summary>
+              Part of async method builder contract: create a builder.
+            </summary>
+        </member>
+        <member name="M:MorseCode.ITask.CompilerServices.TaskInterfaceAsyncMethodBuilder.SetException(System.Exception)">
+            <summary>
+              Part of async method builder contract: set exception.
+            </summary>
+        </member>
+        <member name="M:MorseCode.ITask.CompilerServices.TaskInterfaceAsyncMethodBuilder.SetResult">
+            <summary>
+              Part of async method builder contract: set RanToCompletion.
+            </summary>
+        </member>
+        <member name="M:MorseCode.ITask.CompilerServices.TaskInterfaceAsyncMethodBuilder.SetStateMachine(System.Runtime.CompilerServices.IAsyncStateMachine)">
+            <summary>
+              Part of async method builder contract: set the state machine to use
+              if the method ends up running asynchronously.
+            </summary>
+        </member>
+        <member name="M:MorseCode.ITask.CompilerServices.TaskInterfaceAsyncMethodBuilder.Start``1(``0@)">
+            <summary>
+              Part of async method builder contract: initialize and start running
+              the state machine.
+            </summary>
+        </member>
+        <member name="M:MorseCode.ITask.CompilerServices.TaskInterfaceAsyncMethodBuilder.AwaitOnCompleted``2(``0@,``1@)">
+            <summary>
+              Part of async method builder contract: called when an awaited operation
+              is pending completion to schedule a continuation.
+            </summary>
+        </member>
+        <member name="M:MorseCode.ITask.CompilerServices.TaskInterfaceAsyncMethodBuilder.AwaitUnsafeOnCompleted``2(``0@,``1@)">
+            <summary>
+              Part of async method builder contract: called when an awaited operation
+              is pending completion to schedule a continuation.
+            </summary>
+        </member>
+        <member name="T:MorseCode.ITask.CompilerServices.TaskInterfaceAsyncMethodBuilder`1">
+            <summary>
+              Runtime helper for async methods returning <see cref="T:MorseCode.ITask.ITask"/>.
+            </summary>
+        </member>
+        <member name="F:MorseCode.ITask.CompilerServices.TaskInterfaceAsyncMethodBuilder`1.builder">
+            <summary>
+              Delegate everything to the official <see cref="P:MorseCode.ITask.CompilerServices.TaskInterfaceAsyncMethodBuilder`1.Task"/> method builder
+              since we just use <see cref="M:MorseCode.ITask.TaskExtensionMethods.AsITask(System.Threading.Tasks.Task)"/>
+              in the end.
+            </summary>
+            <remarks>
+              <para>
+                This must not be marked <c>readonly</c> because it is mutable. If marked
+                <c>readonly</c>, first <c>await</c> silently freezes everything.
+              </para>
+            </remarks>
+        </member>
+        <member name="P:MorseCode.ITask.CompilerServices.TaskInterfaceAsyncMethodBuilder`1.Task">
+            <summary>
+              Used by the compiler to generate the return value for the async method.
+            </summary>
+        </member>
+        <member name="M:MorseCode.ITask.CompilerServices.TaskInterfaceAsyncMethodBuilder`1.Create">
+            <summary>
+              Part of async method builder contract: create a builder.
+            </summary>
+        </member>
+        <member name="M:MorseCode.ITask.CompilerServices.TaskInterfaceAsyncMethodBuilder`1.SetException(System.Exception)">
+            <summary>
+              Part of async method builder contract: set exception.
+            </summary>
+        </member>
+        <member name="M:MorseCode.ITask.CompilerServices.TaskInterfaceAsyncMethodBuilder`1.SetResult(`0)">
+            <summary>
+              Part of async method builder contract: set RanToCompletion.
+            </summary>
+        </member>
+        <member name="M:MorseCode.ITask.CompilerServices.TaskInterfaceAsyncMethodBuilder`1.SetStateMachine(System.Runtime.CompilerServices.IAsyncStateMachine)">
+            <summary>
+              Part of async method builder contract: set the state machine to use
+              if the method ends up running asynchronously.
+            </summary>
+        </member>
+        <member name="M:MorseCode.ITask.CompilerServices.TaskInterfaceAsyncMethodBuilder`1.Start``1(``0@)">
+            <summary>
+              Part of async method builder contract: initialize and start running
+              the state machine.
+            </summary>
+        </member>
+        <member name="M:MorseCode.ITask.CompilerServices.TaskInterfaceAsyncMethodBuilder`1.AwaitOnCompleted``2(``0@,``1@)">
+            <summary>
+              Part of async method builder contract: called when an awaited operation
+              is pending completion to schedule a continuation.
+            </summary>
+        </member>
+        <member name="M:MorseCode.ITask.CompilerServices.TaskInterfaceAsyncMethodBuilder`1.AwaitUnsafeOnCompleted``2(``0@,``1@)">
+            <summary>
+              Part of async method builder contract: called when an awaited operation
+              is pending completion to schedule a continuation.
+            </summary>
+        </member>
+        <member name="T:MorseCode.ITask.TaskInterfaceFactory">
+            <summary>
+            Factory for creating <see cref="T:MorseCode.ITask.ITask"/> instances.
+            </summary>
+        </member>
+        <member name="M:MorseCode.ITask.TaskInterfaceFactory.CreateTask(System.Func{System.Threading.Tasks.Task})">
+            <summary>
+            Creates an <see cref="T:MorseCode.ITask.ITask"/> from a method returning a <see cref="T:System.Threading.Tasks.Task"/>.
+            </summary>
+            <param name="func">
+            The method which returns a <see cref="T:System.Threading.Tasks.Task"/>.
+            </param>
+            <returns>
+            The <see cref="T:MorseCode.ITask.ITask"/>.
+            </returns>
+            <remarks>
+            This method allows for creating an <see cref="T:MorseCode.ITask.ITask"/> from an async method (which must return either <see cref="T:System.Threading.Tasks.Task"/> or <see cref="T:System.Threading.Tasks.Task`1"/>).
+            </remarks>
+        </member>
+        <member name="M:MorseCode.ITask.TaskInterfaceFactory.CreateTask``1(System.Func{System.Threading.Tasks.Task{``0}})">
+            <summary>
+            Creates an <see cref="T:MorseCode.ITask.ITask`1"/> from a method returning a <see cref="T:System.Threading.Tasks.Task`1"/>.
+            </summary>
+            <typeparam name="TResult">
+            The type of the result of the task.
+            </typeparam>
+            <param name="func">
+            The method which returns a <see cref="T:System.Threading.Tasks.Task`1"/>.
+            </param>
+            <returns>
+            The <see cref="T:MorseCode.ITask.ITask`1"/>.
+            </returns>
+            <remarks>
+            This method allows for creating an <see cref="T:MorseCode.ITask.ITask`1"/> from an async method (which must return either <see cref="T:System.Threading.Tasks.Task"/> or <see cref="T:System.Threading.Tasks.Task`1"/>).
+            </remarks>
+        </member>
+    </members>
+</doc>

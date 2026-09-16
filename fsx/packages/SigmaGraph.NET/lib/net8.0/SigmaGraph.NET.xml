@@ -1,0 +1,943 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doc>
+<assembly><name>SigmaGraph.NET</name></assembly>
+<members>
+<member name="M:SigmaGraph.NET.Layout.serialize(SigmaGraph.NET.Layout)">
+ <summary>
+ Serializes the selected layout into a JavaScript command string.
+ </summary>
+ <param name="layout">The Layout instance to serialize.</param>
+ <returns>A string representing the JavaScript command to apply the layout.</returns>
+</member>
+<member name="T:SigmaGraph.NET.Layout">
+ <summary>
+ Layout defines different layout algorithms for a graph and serializes them into JavaScript commands.
+ </summary>
+</member>
+<member name="M:SigmaGraph.NET.RotationOptions.Style(Microsoft.FSharp.Core.FSharpOption{System.String},Microsoft.FSharp.Core.FSharpOption{System.Boolean},Microsoft.FSharp.Core.FSharpOption{System.Boolean})">
+ <summary>
+ Applies updates to the RotationOptions instance based on the optional parameters.
+ </summary>
+ <param name="Dimensions">Optional string array specifying the dimensions for rotation.</param>
+ <param name="Degrees">Optional boolean to indicate if the angle is in degrees.</param>
+ <param name="CenteredOnZero">Optional boolean to rotate the graph around 0 instead of the graph’s center.</param>
+</member>
+<member name="M:SigmaGraph.NET.RotationOptions.Init(Microsoft.FSharp.Core.FSharpOption{System.String},Microsoft.FSharp.Core.FSharpOption{System.Boolean},Microsoft.FSharp.Core.FSharpOption{System.Boolean})">
+ <summary>
+ Initializes a new instance of RotationOptions with optional parameters.
+ </summary>
+ <param name="Dimensions">Optional string array specifying the dimensions for rotation.</param>
+ <param name="Degrees">Optional boolean to indicate if the angle is in degrees.</param>
+ <param name="CenteredOnZero">Optional boolean to rotate the graph around 0 instead of the graph’s center.</param>
+</member>
+<member name="T:SigmaGraph.NET.RotationOptions">
+ <summary>
+ RotationOptions contains options for configuring a Rotation layout algorithm.
+</summary>
+</member>
+<member name="M:SigmaGraph.NET.RandomOptions.Style(Microsoft.FSharp.Core.FSharpOption{System.String},Microsoft.FSharp.Core.FSharpOption{System.Double},Microsoft.FSharp.Core.FSharpOption{System.Int32})">
+ <summary>    
+ Applies updates to the RandomOptions instance based on the optional parameters.
+ </summary>
+ <param name="Dimensions">Optional string array specifying the dimensions of the layout.</param>
+ <param name="Center">Optional float to set the center of the layout.</param>
+ <param name="Scale">Optional integer to set the scale of the layout.</param>
+</member>
+<member name="M:SigmaGraph.NET.RandomOptions.Init(Microsoft.FSharp.Core.FSharpOption{System.String},Microsoft.FSharp.Core.FSharpOption{System.Double},Microsoft.FSharp.Core.FSharpOption{System.Int32})">
+ <summary>
+ Initializes a new instance of RandomOptions with optional parameters.
+ </summary>
+ <param name="Dimensions">Optional string array specifying the dimensions of the layout.</param>
+ <param name="Center">Optional float to set the center of the layout.</param>
+ <param name="Scale">Optional integer to set the scale of the layout.</param>
+</member>
+<member name="T:SigmaGraph.NET.RandomOptions">
+ <summary>
+ RandomOptions type for configuring the Random layout options
+ </summary>
+</member>
+<member name="M:SigmaGraph.NET.CircularOptions.Style(Microsoft.FSharp.Core.FSharpOption{System.String},Microsoft.FSharp.Core.FSharpOption{System.Double},Microsoft.FSharp.Core.FSharpOption{System.Double})">
+<summary>    
+ Applies updates to the CircularOptions instance based on the optional parameters.
+ </summary>
+ <param name="Dimensions">Optional string array specifying the dimensions of the layout.</param>
+ <param name="Center">Optional float to set the center of the layout.</param>
+ <param name="Scale">Optional float to set the scale of the layout.</param>
+</member>
+<member name="M:SigmaGraph.NET.CircularOptions.Init(Microsoft.FSharp.Core.FSharpOption{System.String},Microsoft.FSharp.Core.FSharpOption{System.Double},Microsoft.FSharp.Core.FSharpOption{System.Double})">
+ <summary>
+ Initializes a new instance of CircularOptions with optional parameters.
+ </summary>
+ <param name="Dimensions">Optional string array specifying the dimensions of the layout.</param>
+ <param name="Center">Optional float to set the center of the layout.</param>
+ <param name="Scale">Optional float to set the scale of the layout.</param>
+</member>
+<member name="T:SigmaGraph.NET.CircularOptions">
+ <summary>
+ CircularOptions type for configuring the Circular layout options
+ </summary>
+</member>
+<member name="M:SigmaGraph.NET.NoverlapOptions.Style(Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.String},Microsoft.FSharp.Core.FSharpOption{System.String},Microsoft.FSharp.Core.FSharpOption{SigmaGraph.NET.NoverlapSettings})">
+ <summary>  
+ Applies updates to the NoverlapOptions instance based on the optional parameters.
+ </summary>
+ <param name="MaxIterations">Optional integer to specify the maximum number of iterations before stopping.</param>
+ <param name="InputReducer">Optional string specifying the function to reduce each node’s attributes.</param>
+ <param name="OutputReducer">Optional string specifying the function to reduce node positions as computed by the layout algorithm.</param>
+ <param name="Settings">Optional NoverlapSettings to configure the Noverlap algorithm settings.</param>
+</member>
+<member name="M:SigmaGraph.NET.NoverlapOptions.Init(Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.String},Microsoft.FSharp.Core.FSharpOption{System.String},Microsoft.FSharp.Core.FSharpOption{SigmaGraph.NET.NoverlapSettings})">
+ <summary>
+ Initializes a new instance of NoverlapOptions with optional parameters.
+ </summary>
+ <param name="MaxIterations">Optional integer to specify the maximum number of iterations before stopping.</param>
+ <param name="InputReducer">Optional string specifying the function to reduce each node’s attributes.</param>
+ <param name="OutputReducer">Optional string specifying the function to reduce node positions as computed by the layout algorithm.</param>
+ <param name="Settings">Optional NoverlapSettings to configure the Noverlap algorithm settings.</param>
+</member>
+<member name="T:SigmaGraph.NET.NoverlapOptions">
+ <summary>
+ NoverlapOptions type for configuring the Noverlap layout options.
+ </summary>
+</member>
+<member name="M:SigmaGraph.NET.FA2Options.Style(Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.String},Microsoft.FSharp.Core.FSharpOption{SigmaGraph.NET.FA2Settings})">
+ <summary>
+ Applies updates to the FA2Options instance based on the optional parameters.
+ </summary>
+ <param name="Iterations">Optional integer to specify the number of iterations to perform.</param>
+ <param name="GetEdgeWeight">Optional string specifying the edge weight attribute or a getter function.</param>
+ <param name="Settings">Optional FA2Settings to configure the Force Atlas 2 algorithm settings.</param>
+</member>
+<member name="M:SigmaGraph.NET.FA2Options.Init(Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.String},Microsoft.FSharp.Core.FSharpOption{SigmaGraph.NET.FA2Settings})">
+ <summary>
+ Initializes a new instance of FA2Options with optional parameters.
+ </summary>
+ <param name="Iterations">Optional integer to specify the number of iterations to perform.</param>
+ <param name="GetEdgeWeight">Optional string specifying the edge weight attribute or a getter function.</param>
+ <param name="Settings">Optional FA2Settings to configure the Force Atlas 2 algorithm settings.</param>
+</member>
+<member name="T:SigmaGraph.NET.FA2Options">
+ <summary>
+ FA2Options type for configuring the Force Atlas 2 layout options.
+ </summary>
+</member>
+<member name="M:SigmaGraph.NET.NoverlapSettings.Style(Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.Double},Microsoft.FSharp.Core.FSharpOption{System.Double},Microsoft.FSharp.Core.FSharpOption{System.Int32})">
+ <summary>
+ Applies updates to the NoverlapSettings instance based on the optional parameters.
+ </summary>
+ <param name="GridSize">Optional integer specifying the number of grid cells horizontally and vertically.</param>
+ <param name="Margin">Optional integer to set the margin between nodes.</param>
+ <param name="Expansion">Optional float to specify the percentage of space nodes could move outside of.</param>
+ <param name="Ratio">Optional float to set the scaling ratio for node sizes.</param>
+ <param name="Speed">Optional integer to set the dampening factor for slowing down node movements.</param>
+</member>
+<member name="M:SigmaGraph.NET.NoverlapSettings.Init(Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.Double},Microsoft.FSharp.Core.FSharpOption{System.Double},Microsoft.FSharp.Core.FSharpOption{System.Int32})">
+ <summary>
+ Initializes a new instance of NoverlapSettings with optional parameters.
+ </summary>
+ <param name="GridSize">Optional integer specifying the number of grid cells horizontally and vertically.</param>
+ <param name="Margin">Optional integer to set the margin between nodes.</param>
+ <param name="Expansion">Optional float to specify the percentage of space nodes could move outside of.</param>
+ <param name="Ratio">Optional float to set the scaling ratio for node sizes.</param>
+ <param name="Speed">Optional integer to set the dampening factor for slowing down node movements.</param>
+</member>
+<member name="T:SigmaGraph.NET.NoverlapSettings">
+ <summary>
+ NoverlapSettings type for configuring the Noverlap algorithm settings.
+ </summary>
+</member>
+<member name="M:SigmaGraph.NET.FA2Settings.Style(Microsoft.FSharp.Core.FSharpOption{System.Boolean},Microsoft.FSharp.Core.FSharpOption{System.Boolean},Microsoft.FSharp.Core.FSharpOption{System.Double},Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.Boolean},Microsoft.FSharp.Core.FSharpOption{System.Boolean},Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.Boolean})">
+ <summary>
+ Applies updates to the FA2Settings instance based on the optional parameters.
+ </summary>
+ <param name="AdjustSizes">Optional boolean to indicate if node sizes should be considered.</param>
+ <param name="BarnesHutOptimize">Optional boolean to use Barnes-Hut approximation for repulsion calculation.</param>
+ <param name="BarnesHutTheta">Optional float to set the Barnes-Hut approximation theta parameter.</param>
+ <param name="EdgeWeightInfluence">Optional integer to specify the influence of edge weights on the layout.</param>
+ <param name="Gravity">Optional integer to set the strength of the layout’s gravity.</param>
+ <param name="LinLogMode">Optional boolean to use Noack’s LinLog model.</param>
+ <param name="OutboundAttractionDistribution">Optional boolean to control outbound attraction distribution.</param>
+ <param name="ScalingRatio">Optional integer to set the scaling ratio.</param>
+ <param name="SlowDown">Optional integer to set the dampening factor for slowing down node movements.</param>
+ <param name="StrongGravityMode">Optional boolean to enable strong gravity mode.</param>
+</member>
+<member name="M:SigmaGraph.NET.FA2Settings.Init(Microsoft.FSharp.Core.FSharpOption{System.Boolean},Microsoft.FSharp.Core.FSharpOption{System.Boolean},Microsoft.FSharp.Core.FSharpOption{System.Double},Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.Boolean},Microsoft.FSharp.Core.FSharpOption{System.Boolean},Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.Boolean})">
+ <summary>
+ Initializes a new instance of FA2Settings with optional parameters.
+ </summary>
+ <param name="AdjustSizes">Optional boolean to indicate if node sizes should be considered.</param>
+ <param name="BarnesHutOptimize">Optional boolean to use Barnes-Hut approximation for repulsion calculation.</param>
+ <param name="BarnesHutTheta">Optional float to set the Barnes-Hut approximation theta parameter.</param>
+ <param name="EdgeWeightInfluence">Optional integer to specify the influence of edge weights on the layout.</param>
+ <param name="Gravity">Optional integer to set the strength of the layout’s gravity.</param>
+ <param name="LinLogMode">Optional boolean to use Noack’s LinLog model.</param>
+ <param name="OutboundAttractionDistribution">Optional boolean to control outbound attraction distribution.</param>
+ <param name="ScalingRatio">Optional integer to set the scaling ratio.</param>
+ <param name="SlowDown">Optional integer to set the dampening factor for slowing down node movements.</param>
+ <param name="StrongGravityMode">Optional boolean to enable strong gravity mode.</param>
+</member>
+<member name="T:SigmaGraph.NET.FA2Settings">
+ <summary>
+ FA2Settings type for configuring the Force Atlas 2 algorithm settings.
+ </summary>
+</member>
+<member name="T:SigmaGraph.NET.CssLength.Percent">
+ <summary>Represents a length as a percentage of the containing element.</summary>
+</member>
+<member name="T:SigmaGraph.NET.CssLength.PX">
+ <summary>Represents a length in pixels.</summary>
+</member>
+<member name="M:SigmaGraph.NET.CssLength.serialize(SigmaGraph.NET.CssLength)">
+ <summary>Serializes a CssLength value to its string representation.</summary>
+ <param name= "v">The CssLength value to serialize.</param>
+ <returns>A string representing the CssLength value in pixels or percentage.</returns>
+</member>
+<member name="T:SigmaGraph.NET.CssLength">
+ <summary>
+ Represents CSS length units, either in pixels (PX) or percentage (Percent)
+</summary>
+</member>
+<member name="F:SigmaGraph.NET.GraphData.edges">
+ <summary>
+ Internal storage for edges.
+ A collection of edges in the graph.
+ Edges are stored in a `ResizeArray` to allow dynamic resizing and efficient access.  
+ </summary>
+</member>
+<member name="F:SigmaGraph.NET.GraphData.nodes">
+ <summary>
+ Internal storage for nodes.
+ A collection of nodes in the graph.
+ Nodes are stored in a `ResizeArray` to allow dynamic resizing and efficient access.
+ </summary>
+</member>
+<member name="P:SigmaGraph.NET.GraphData.Nodes">
+ <summary>
+ Internal storage for nodes.
+ A collection of nodes in the graph.
+ Nodes are stored in a `ResizeArray` to allow dynamic resizing and efficient access.
+ </summary>
+</member>
+<member name="P:SigmaGraph.NET.GraphData.Edges">
+ <summary>
+ Internal storage for edges.
+ A collection of edges in the graph.
+ Edges are stored in a `ResizeArray` to allow dynamic resizing and efficient access.
+ </summary>
+</member>
+<member name="M:SigmaGraph.NET.GraphData.addNode(SigmaGraph.NET.Node)">
+ <summary>
+ Adds a node to the graph.
+ </summary>
+ <param name="node">Node to be added.</param>
+</member>
+<member name="M:SigmaGraph.NET.GraphData.addEdge(SigmaGraph.NET.Edge)">
+ <summary>
+ Adds an edge to the graph.
+ </summary>
+ <param name="edge">Edge to be added.</param>
+</member>
+<member name="T:SigmaGraph.NET.GraphData">
+ <summary>
+ Represents the data structure for a graph, including nodes and edges.
+ </summary>
+ <remarks>
+ The GraphData type is used to manage and manipulate the graph's nodes and edges. 
+ Nodes and edges are stored in internal `ResizeArray` collections for efficient access and modification.
+ </remarks>
+</member>
+<member name="M:SigmaGraph.NET.Node.Style(System.String,Microsoft.FSharp.Core.FSharpOption{SigmaGraph.NET.DisplayData})">
+ <summary>
+ Applies style updates to a Node object.
+ </summary>
+ <param name="key">Identifier for the node.</param>
+ <param name="DisplayData">Optional display data to update.</param>
+</member>
+<member name="M:SigmaGraph.NET.Node.Init(System.String,Microsoft.FSharp.Core.FSharpOption{SigmaGraph.NET.DisplayData})">
+ <summary>
+ Initializes a new instance of Node with a mandatory key parameter.
+ </summary>
+ <param name="key">Identifier for the node.</param>
+ <param name="DisplayData">Optional display data associated with the node.</param>
+</member>
+<member name="T:SigmaGraph.NET.Node">
+ <summary>
+ Represents a node in the graph.
+ </summary>
+</member>
+<member name="M:SigmaGraph.NET.Edge.Style(System.String,System.String,Microsoft.FSharp.Core.FSharpOption{System.String},Microsoft.FSharp.Core.FSharpOption{SigmaGraph.NET.DisplayData})">
+ <summary>
+ Applies style updates to an Edge object.
+ </summary>
+ <param name="source">Source node identifier.</param>
+ <param name="target">Target node identifier.</param>
+ <param name="Key">Optional key to update.</param>
+ <param name="DisplayData">Optional display data to update.</param>
+</member>
+<member name="M:SigmaGraph.NET.Edge.Init(System.String,System.String,Microsoft.FSharp.Core.FSharpOption{System.String},Microsoft.FSharp.Core.FSharpOption{SigmaGraph.NET.DisplayData})">
+ <summary>
+ Initializes a new instance of Edge with mandatory source and target parameters.
+ </summary>
+ <param name="source">Source node identifier.</param>
+ <param name="target">Target node identifier.</param>
+ <param name="Key">Optional key for the edge.</param>
+ <param name="DisplayData">Optional display data associated with the edge.</param>
+</member>
+<member name="T:SigmaGraph.NET.Edge">
+ <summary>
+ Represents an edge in the graph with source and target nodes.
+ </summary>
+</member>
+<member name="M:SigmaGraph.NET.DisplayData.Style``3(Microsoft.FSharp.Core.FSharpOption{System.String},Microsoft.FSharp.Core.FSharpOption{``0},Microsoft.FSharp.Core.FSharpOption{System.String},Microsoft.FSharp.Core.FSharpOption{System.Boolean},Microsoft.FSharp.Core.FSharpOption{System.Boolean},Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.String},Microsoft.FSharp.Core.FSharpOption{``1},Microsoft.FSharp.Core.FSharpOption{``2})">
+ <summary>
+ Applies style updates to a DisplayData object.
+ </summary>
+ <param name="Label">Optional label to update.</param>
+ <param name="Size">Optional size to update.</param>
+ <param name="Color">Optional color to update.</param>
+ <param name="Hidden">Optional flag to update hidden status.</param>
+ <param name="ForceLabel">Optional flag to update force label status.</param>
+ <param name="ZIndex">Optional z-index value to update.</param>
+ <param name="StyleType">Optional style type to update.</param>
+ <param name="X">Optional X coordinate to update.</param>
+ <param name="Y">Optional Y coordinate to update.</param>
+</member>
+<member name="M:SigmaGraph.NET.DisplayData.Init``3(Microsoft.FSharp.Core.FSharpOption{System.String},Microsoft.FSharp.Core.FSharpOption{``0},Microsoft.FSharp.Core.FSharpOption{System.String},Microsoft.FSharp.Core.FSharpOption{System.Boolean},Microsoft.FSharp.Core.FSharpOption{System.Boolean},Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.String},Microsoft.FSharp.Core.FSharpOption{``1},Microsoft.FSharp.Core.FSharpOption{``2})">
+ <summary>
+ Initializes a new instance of DisplayData with optional parameters.
+ </summary>
+ <param name="Label">Optional label for the display data.</param>
+ <param name="Size">Optional size of the display data.</param>
+ <param name="Color">Optional color for the display data.</param>
+ <param name="Hidden">Optional flag indicating if the display data is hidden.</param>
+ <param name="ForceLabel">Optional flag to force display the label.</param>
+ <param name="ZIndex">Optional z-index value for the display data.</param>
+ <param name="StyleType">Optional style type for the display data.</param>
+ <param name="X">Optional X coordinate for the display data.</param>
+ <param name="Y">Optional Y coordinate for the display data.</param>
+</member>
+<member name="T:SigmaGraph.NET.DisplayData">
+ <summary>
+ Represents data for display elements such as nodes and edges.
+ </summary>
+</member>
+<member name="M:SigmaGraph.NET.PlainJsonStringConverter.WriteJson(Newtonsoft.Json.JsonWriter,System.Object,Newtonsoft.Json.JsonSerializer)">
+ <summary>
+ Writes the <see cref="PlainJsonString"/> instance as JSON.
+ </summary>
+ <param name="writer">The JSON writer to write to.</param>
+ <param name="value">The <see cref="PlainJsonString"/> instance to serialize.</param>
+ <param name="serializer">The JSON serializer.</param>
+</member>
+<member name="M:SigmaGraph.NET.PlainJsonStringConverter.ReadJson(Newtonsoft.Json.JsonReader,System.Type,System.Object,Newtonsoft.Json.JsonSerializer)">
+ <summary>
+ Reads JSON and deserializes it into a <see cref="PlainJsonString"/> instance.
+ </summary>
+ <param name="reader">The JSON reader to read from.</param>
+ <param name="objectType">The type of object being deserialized.</param>
+ <param name="existingValue">Existing value of the object (not used).</param>
+ <param name="serializer">The JSON serializer.</param>
+ <returns>A <see cref="PlainJsonString"/> instance populated with the JSON string value.</returns>
+</member>
+<member name="M:SigmaGraph.NET.PlainJsonStringConverter.CanConvert(System.Type)">
+ <summary>
+ Determines if this converter can handle the given object type.
+ </summary>
+ <param name="objectType">The type of the object to check.</param>
+ <returns>True if this converter can convert the object type; otherwise, false.</returns>
+</member>
+<member name="T:SigmaGraph.NET.PlainJsonStringConverter">
+ <summary>
+ JSON converter for serializing and deserializing <see cref="PlainJsonString"/> instances.
+ </summary>
+</member>
+<member name="T:SigmaGraph.NET.PlainJsonString">
+ <summary>
+ Represents a plain JSON string value.
+ </summary>
+ <param name="str">The JSON string value to be represented.</param>
+</member>
+<member name="M:SigmaGraph.NET.DisplayOptions.tryGetSigmaReference(SigmaGraph.NET.DisplayOptions)">
+ <summary>
+ Tries to get the Sigma.js reference from the display options.
+ </summary>
+ <param name="displayOpts">The display options object.</param>
+ <returns>An option containing the JavaScript library reference for Sigma.js, or None.</returns>
+</member>
+<member name="M:SigmaGraph.NET.DisplayOptions.tryGetDescription(SigmaGraph.NET.DisplayOptions)">
+ <summary>
+ Tries to get the description from the display options.
+ </summary>
+ <param name="displayOpts">The display options object.</param>
+ <returns>An option containing a list of XML nodes if the description exists, or None.</returns>
+</member>
+<member name="M:SigmaGraph.NET.DisplayOptions.tryGetAdditionalHeadTags(SigmaGraph.NET.DisplayOptions)">
+ <summary>
+ Tries to get the additional head tags from the display options.
+ </summary>
+ <param name="displayOpts">The display options object.</param>
+ <returns>An option containing a list of XML nodes if the additional head tags exist, or None.</returns>
+</member>
+<member name="M:SigmaGraph.NET.DisplayOptions.style(Microsoft.FSharp.Core.FSharpOption{Microsoft.FSharp.Collections.FSharpList{Giraffe.ViewEngine.HtmlElements.XmlNode}},Microsoft.FSharp.Core.FSharpOption{Microsoft.FSharp.Collections.FSharpList{Giraffe.ViewEngine.HtmlElements.XmlNode}},Microsoft.FSharp.Core.FSharpOption{SigmaGraph.NET.JSlibReference})">
+ <summary>
+ Returns a function sthat applies the given styles to a DisplayOptions object
+ </summary>
+ <param name="AdditionalHeadTags">Additional tags that will be included in the document's head </param>
+ <param name="Description">HTML tags that appear below the chart in HTML docs</param>
+ <param name="CytoscapeJSReference">Sets how cytoscape.js is referenced in the head of html docs. When CDN, a script tag that references a CDN is included in the output. When Full, a script tag containing the cytoscape.js source code (~400KB) is included in the output. HTML files generated with this option are fully self-contained and can be used offline</param>
+</member>
+<member name="M:SigmaGraph.NET.DisplayOptions.setSigmaReference(SigmaGraph.NET.JSlibReference)">
+ <summary>
+ Sets the Sigma.js reference for the display options.
+ </summary>
+ <param name="sigmaJSReference">The JavaScript library reference to set for Sigma.js.</param>
+ <returns>A function that sets the Sigma.js reference in the display options.</returns>
+</member>
+<member name="M:SigmaGraph.NET.DisplayOptions.setDescription(Microsoft.FSharp.Collections.FSharpList{Giraffe.ViewEngine.HtmlElements.XmlNode})">
+ <summary>
+ Sets a description for the display options.
+ </summary>
+ <param name="description">A list of XML nodes representing the description to set.</param>
+ <returns>A function that sets the description in the display options.</returns>
+</member>
+<member name="M:SigmaGraph.NET.DisplayOptions.setAdditionalHeadTags(Microsoft.FSharp.Collections.FSharpList{Giraffe.ViewEngine.HtmlElements.XmlNode})">
+ <summary>
+ Sets additional head tags for the display options.
+ </summary>
+ <param name="additionalHeadTags">A list of XML nodes representing the additional head tags to set.</param>
+ <returns>A function that sets the additional head tags in the display options.</returns>
+</member>
+<member name="M:SigmaGraph.NET.DisplayOptions.initDefault">
+ <summary>
+ Returns a DisplayOptions Object with the cdn set to Globals.SIGMAJS_VERSION and additional head tags 
+ </summary>
+</member>
+<member name="M:SigmaGraph.NET.DisplayOptions.initCDNOnly">
+ <summary>
+ Returns a DisplayOptions Object with the cdn set to Globals.SIGMAJS_VERSION and Globals.GRAPHOLOGY_VERSION
+ </summary>
+</member>
+<member name="M:SigmaGraph.NET.DisplayOptions.init(Microsoft.FSharp.Core.FSharpOption{Microsoft.FSharp.Collections.FSharpList{Giraffe.ViewEngine.HtmlElements.XmlNode}},Microsoft.FSharp.Core.FSharpOption{Microsoft.FSharp.Collections.FSharpList{Giraffe.ViewEngine.HtmlElements.XmlNode}},Microsoft.FSharp.Core.FSharpOption{SigmaGraph.NET.JSlibReference})">
+ <summary>
+ Returns a new DisplayOptions object with the given styles
+ </summary>
+ <param name="AdditionalHeadTags">Additional tags that will be included in the document's head </param>
+ <param name="Description">HTML tags that appear below the chart in HTML docs</param>
+ <param name="SigmaJSReference">Sets how sigma.js is referenced in the head of html docs. When CDN, a script tag that references a CDN is included in the output. When Full, a script tag containing the cytoscape.js source code (~400KB) is included in the output. HTML files generated with this option are fully self-contained and can be used offline</param>
+ <param name="GraphologyJSReference">Sets how graphology.js is referenced in the head of html docs. When CDN, a script tag that references a CDN is included in the output. When Full, a script tag containing the cytoscape.js source code (~400KB) is included in the output. HTML files generated with this option are fully self-contained and can be used offline</param>
+</member>
+<member name="M:SigmaGraph.NET.DisplayOptions.getSigmaReference(SigmaGraph.NET.DisplayOptions)">
+ <summary>
+ Gets the Sigma.js reference from the display options.
+ </summary>
+ <param name="displayOpts">The display options object.</param>
+ <returns>The JavaScript library reference for Sigma.js, or NoReference if not found.</returns>
+</member>
+<member name="M:SigmaGraph.NET.DisplayOptions.getDescription(SigmaGraph.NET.DisplayOptions)">
+ <summary>
+ Gets the description from the display options.
+ </summary>
+ <param name="displayOpts">The display options object.</param>
+ <returns>A list of XML nodes representing the description, or an empty list if not found.</returns>
+</member>
+<member name="M:SigmaGraph.NET.DisplayOptions.getAdditionalHeadTags(SigmaGraph.NET.DisplayOptions)">
+ <summary>
+ Gets the additional head tags from the display options.
+ </summary>
+ <param name="displayOpts">The display options object.</param>
+ <returns>A list of XML nodes representing the additional head tags, or an empty list if not found.</returns>
+</member>
+<member name="M:SigmaGraph.NET.DisplayOptions.addDescription(Microsoft.FSharp.Collections.FSharpList{Giraffe.ViewEngine.HtmlElements.XmlNode})">
+ <summary>
+ Adds a description to the display options.
+ </summary>
+ <param name="description">A list of XML nodes representing the description to add.</param>
+ <returns>A function that adds the description to the existing one in the display options.</returns>
+</member>
+<member name="M:SigmaGraph.NET.DisplayOptions.addAdditionalHeadTags(Microsoft.FSharp.Collections.FSharpList{Giraffe.ViewEngine.HtmlElements.XmlNode})">
+ <summary>
+ Adds additional head tags to the display options.
+ </summary>
+ <param name="additionalHeadTags">A list of XML nodes representing the additional head tags to add.</param>
+ <returns>A function that adds the additional head tags to the existing ones in the display options.</returns>
+</member>
+<member name="T:SigmaGraph.NET.DisplayOptions">
+ <summary>
+ I am displayotion.
+ </summary>
+</member>
+<member name="T:SigmaGraph.NET.JSlibReference.NoReference">
+ <summary>
+ Includes no JavaScript library script at all. 
+ This can be helpful when embedding the output into a document that already references the JavaScript library.
+ </summary>
+</member>
+<member name="T:SigmaGraph.NET.JSlibReference.Require">
+ <summary>
+ Uses RequireJS to reference the JavaScript library from a URL.
+ </summary>
+ <param name="InternalUtils.JSRefGroup">The internal group of JavaScript references.</param>
+</member>
+<member name="T:SigmaGraph.NET.JSlibReference.Full">
+ <summary>
+ The full JavaScript library source code (~100KB) is included in the output. 
+ HTML files generated with this option are fully self-contained and can be used offline.
+ </summary>
+ <param name="InternalUtils.JSRefGroup">The internal group of JavaScript references.</param>
+</member>
+<member name="T:SigmaGraph.NET.JSlibReference.CDN">
+ <summary>
+ The URL for a script tag that references the JavaScript library CDN.
+ </summary>
+ <param name="InternalUtils.JSRefGroup">The internal group of JavaScript references.</param>
+</member>
+<member name="T:SigmaGraph.NET.JSlibReference.Local">
+ <summary>
+ A local reference to the JavaScript library.
+ </summary>
+ <param name="InternalUtils.JSRefGroup">The internal group of JavaScript references.</param>
+</member>
+<member name="T:SigmaGraph.NET.JSlibReference">
+ <summary>
+ Represents how the JavaScript library is included in the HTML document's head section.
+ </summary>
+</member>
+<member name="F:SigmaGraph.NET.SigmaGraph.Height@">
+ <summary>Gets or sets the height of the graph visualization.</summary>
+</member>
+<member name="F:SigmaGraph.NET.SigmaGraph.Width@">
+ <summary>Gets or sets the width of the graph visualization.</summary>
+</member>
+<member name="F:SigmaGraph.NET.SigmaGraph.Widgets@">
+ <summary>Gets or sets the collection of widgets associated with this SigmaGraph instance.</summary>
+</member>
+<member name="F:SigmaGraph.NET.SigmaGraph.Settings@">
+ <summary>Gets or sets the rendering settings for this SigmaGraph instance.</summary>
+</member>
+<member name="F:SigmaGraph.NET.SigmaGraph.Layout@">
+ <summary>Gets or sets the layout configuration for this SigmaGraph instance.</summary>
+</member>
+<member name="F:SigmaGraph.NET.SigmaGraph.GraphData@">
+ <summary>Gets or sets the graph data for this SigmaGraph instance.</summary>
+</member>
+<member name="P:SigmaGraph.NET.SigmaGraph.Width(SigmaGraph.NET.CssLength)">
+ <summary>Gets or sets the width of the graph visualization.</summary>
+</member>
+<member name="P:SigmaGraph.NET.SigmaGraph.Widgets(System.Collections.Generic.List{System.String})">
+ <summary>Gets or sets the collection of widgets associated with this SigmaGraph instance.</summary>
+</member>
+<member name="P:SigmaGraph.NET.SigmaGraph.Settings(SigmaGraph.NET.Render.Settings)">
+ <summary>Gets or sets the rendering settings for this SigmaGraph instance.</summary>
+</member>
+<member name="P:SigmaGraph.NET.SigmaGraph.Layout(SigmaGraph.NET.Layout)">
+ <summary>Gets or sets the layout configuration for this SigmaGraph instance.</summary>
+</member>
+<member name="P:SigmaGraph.NET.SigmaGraph.Height(SigmaGraph.NET.CssLength)">
+ <summary>Gets or sets the height of the graph visualization.</summary>
+</member>
+<member name="P:SigmaGraph.NET.SigmaGraph.GraphData(SigmaGraph.NET.GraphData)">
+ <summary>Gets or sets the graph data for this SigmaGraph instance.</summary>
+</member>
+<member name="P:SigmaGraph.NET.SigmaGraph.Width">
+ <summary>Gets or sets the width of the graph visualization.</summary>
+</member>
+<member name="P:SigmaGraph.NET.SigmaGraph.Widgets">
+ <summary>Gets or sets the collection of widgets associated with this SigmaGraph instance.</summary>
+</member>
+<member name="P:SigmaGraph.NET.SigmaGraph.Settings">
+ <summary>Gets or sets the rendering settings for this SigmaGraph instance.</summary>
+</member>
+<member name="P:SigmaGraph.NET.SigmaGraph.Layout">
+ <summary>Gets or sets the layout configuration for this SigmaGraph instance.</summary>
+</member>
+<member name="P:SigmaGraph.NET.SigmaGraph.Height">
+ <summary>Gets or sets the height of the graph visualization.</summary>
+</member>
+<member name="P:SigmaGraph.NET.SigmaGraph.GraphData">
+ <summary>Gets or sets the graph data for this SigmaGraph instance.</summary>
+</member>
+<member name="M:SigmaGraph.NET.SigmaGraph.GetWidgetsAsString">
+ <summary>Returns a string representation of the widgets in the graph.</summary>
+</member>
+<member name="M:SigmaGraph.NET.SigmaGraph.AddNode(SigmaGraph.NET.Node)">
+ <summary>Adds a node to the graph.</summary>
+</member>
+<member name="M:SigmaGraph.NET.SigmaGraph.AddEdge(SigmaGraph.NET.Edge)">
+ <summary>Adds an edge to the graph.</summary>
+</member>
+<member name="T:SigmaGraph.NET.SigmaGraph">
+ <summary>Represents a graph within the SigmaGraph.NET framework.</summary>    
+</member>
+<member name="M:SigmaGraph.NET.HTML.toGraphHTMLNodes(Microsoft.FSharp.Core.FSharpOption{SigmaGraph.NET.DisplayOptions})">
+ <summary>
+ Converts a CyGraph to its HTML representation, with optional display options.
+ </summary>
+ <param name="DisplayOpts">Optional display options for the graph.</param>
+ <returns>A function that takes a SigmaGraph and returns HTML nodes.</returns>
+</member>
+<member name="M:SigmaGraph.NET.HTML.toGraphHTML(Microsoft.FSharp.Core.FSharpOption{SigmaGraph.NET.DisplayOptions})">
+ <summary>
+ Converts a SigmaGraph to its HTML representation as a string.
+ </summary>
+ <param name="DisplayOpts">Optional display options for the graph.</param>
+ <returns>A function that takes a SigmaGraph and returns HTML as a string.</returns>
+</member>
+<member name="M:SigmaGraph.NET.HTML.toEmbeddedHTML(Microsoft.FSharp.Core.FSharpOption{SigmaGraph.NET.DisplayOptions})">
+ <summary>
+ Converts a SigmaGraph to its HTML representation and embeds it into a full HTML page.
+ </summary>
+ <param name="DisplayOpts">Optional display options for the graph.</param>
+ <returns>A function that takes a SigmaGraph and returns a complete HTML document as a string.</returns>
+</member>
+<member name="M:SigmaGraph.NET.HTML.show(SigmaGraph.NET.SigmaGraph,Microsoft.FSharp.Core.FSharpOption{SigmaGraph.NET.DisplayOptions})">
+ <summary>
+ Shows a SigmaGraph in the default web browser by creating an HTML file and opening it.
+ </summary>
+ <param name="graph">The SigmaGraph to display.</param>
+ <param name="DisplayOpts">Optional display options for the graph.</param>
+ <returns>The path to the temporary HTML file.</returns>
+</member>
+<member name="M:SigmaGraph.NET.HTML.openOsSpecificFile(System.String)">
+ <summary>
+ Chooses the process to open plots with depending on the OS. Thanks to @zyzhu for hinting at a solution (https://github.com/plotly/Plotly.NET/issues/31)
+ </summary>
+ <param name="path">Path to the file to be opened.</param>
+</member>
+<member name="M:SigmaGraph.NET.HTML.Doc(Microsoft.FSharp.Collections.FSharpList{Giraffe.ViewEngine.HtmlElements.XmlNode},SigmaGraph.NET.JSlibReference,Microsoft.FSharp.Core.FSharpOption{Microsoft.FSharp.Collections.FSharpList{Giraffe.ViewEngine.HtmlElements.XmlNode}})">
+ <summary>
+ Generates a complete HTML document including the graph and Sigma.js references.
+ </summary>
+ <param name="graphHTML">List of XML nodes representing the graph HTML.</param>
+ <param name="sigmaJSRef">Reference to Sigma.js libraries.</param>
+ <param name="AdditionalHeadTags">Optional additional tags to include in the &lt;head&gt; section.</param>
+ <returns>An HTML document with the embedded graph.</returns>
+</member>
+<member name="M:SigmaGraph.NET.HTML.CreateGraphScript(System.String,System.String,System.String,System.String,System.String,SigmaGraph.NET.JSlibReference)">
+ <summary>
+ Creates a script to render a graph with Sigma.js.
+ </summary>
+ <param name="graphData">JSON representation of the graph.</param>
+ <param name="layout">Layout configuration for the graph.</param>
+ <param name="settings">Settings configuration for the graph.</param>
+ <param name="containerId">ID of the HTML container for the graph.</param>
+ <param name="widgets">Widgets to include in the graph.</param>
+ <param name="sigmaJSRef">Reference to Sigma.js libraries.</param>
+ <returns>An HTML script element for embedding Sigma.js graph.</returns>
+</member>
+<member name="M:SigmaGraph.NET.HTML.CreateGraphHTML(System.String,System.String,System.String,System.String,System.String,SigmaGraph.NET.JSlibReference,Microsoft.FSharp.Core.FSharpOption{SigmaGraph.NET.CssLength},Microsoft.FSharp.Core.FSharpOption{SigmaGraph.NET.CssLength})">
+ <summary>
+ Creates HTML content for a graph with Sigma.js embedded in a specified container.
+ </summary>
+ <param name="graphData">JSON representation of the graph.</param>
+ <param name="layout">Layout configuration for the graph.</param>
+ <param name="settings">Settings configuration for the graph.</param>
+ <param name="divId">ID of the HTML container for the graph.</param>
+ <param name="widgets">Widgets to include in the graph.</param>
+ <param name="sigmaJSRef">Reference to Sigma.js libraries.</param>
+ <param name="Width">Optional width of the graph container.</param>
+ <param name="Height">Optional height of the graph container.</param>
+ <returns>A list of HTML nodes for rendering the graph.</returns>
+</member>
+<member name="T:SigmaGraph.NET.HTML">
+ <summary>
+ Provides methods to generate HTML content for visualizing graphs with Sigma.
+ </summary>
+</member>
+<member name="M:SigmaGraph.NET.VisGraph.WithSize(Microsoft.FSharp.Core.FSharpOption{SigmaGraph.NET.CssLength},Microsoft.FSharp.Core.FSharpOption{SigmaGraph.NET.CssLength})">
+ <summary>
+ Sets the size of the SigmaGraph canvas.
+ </summary>
+ <param name="Width">Optional width of the canvas.</param>
+ <param name="Height">Optional height of the canvas.</param>
+ <returns>The updated SigmaGraph with the specified canvas size.</returns>
+</member>
+<member name="M:SigmaGraph.NET.VisGraph.WithRenderer(SigmaGraph.NET.Render.Settings)">
+ <summary>
+ Sets the renderer settings for the SigmaGraph.
+ </summary>
+ <param name="settings">The renderer settings to apply.</param>
+ <returns>The updated SigmaGraph with the specified renderer settings.</returns>.
+</member>
+<member name="M:SigmaGraph.NET.VisGraph.WithRandomLayout(Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.Double},Microsoft.FSharp.Core.FSharpOption{System.String})">
+ <summary>
+ Assigns a random layout to a SigmaGraph.
+ </summary>
+ <param name="Scale">Optional scale for the random layout.</param>
+ <param name="Center">Optional center for the random layout.</param>
+ <param name="Dimensions">Optional dimensions for the random layout.</param>
+ <returns>The updated SigmaGraph with the random layout.</returns>
+</member>
+<member name="M:SigmaGraph.NET.VisGraph.WithNoverlap(Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{SigmaGraph.NET.NoverlapSettings})">
+ <summary>
+ Assigns a no-overlap layout to a SigmaGraph.
+ </summary>
+ <param name="MaxIterations">Optional maximum number of iterations for the layout algorithm.</param>
+ <param name="Settings">Optional settings for the layout algorithm.</param>
+ <returns>The updated SigmaGraph with the no-overlap layout.</returns>
+</member>
+<member name="M:SigmaGraph.NET.VisGraph.WithNodes(System.Collections.Generic.IEnumerable{SigmaGraph.NET.Node},SigmaGraph.NET.SigmaGraph)">
+ <summary>
+ Adds a sequence of nodes to a SigmaGraph.
+ </summary>
+ <param name="nodes">The sequence of nodes to add.</param>
+ <param name="graph">The SigmaGraph to which the nodes will be added.</param>
+ <returns>The updated SigmaGraph with the added nodes.</returns>
+</member>
+<member name="M:SigmaGraph.NET.VisGraph.WithNode(SigmaGraph.NET.Node,SigmaGraph.NET.SigmaGraph)">
+ <summary>
+ Adds a single node to a SigmaGraph.
+ </summary>
+ <param name="node">The node to add.</param>
+ <param name="graph">The SigmaGraph to which the node will be added.</param>
+ <returns>The updated SigmaGraph with the added node.</returns>
+</member>
+<member name="M:SigmaGraph.NET.VisGraph.WithHoverSelector(Microsoft.FSharp.Core.FSharpOption{System.Boolean})">
+ <summary>
+ Adds a hover selector widget to the SigmaGraph.
+ </summary>
+ <param name="enable">Optional flag to enable or disable the hover selector (default is true).</param>
+ <returns>The updated SigmaGraph with the hover selector widget.</returns>
+</member>
+<member name="M:SigmaGraph.NET.VisGraph.WithForceAtlas2(Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{SigmaGraph.NET.FA2Settings},Microsoft.FSharp.Core.FSharpOption{System.String})">
+ <summary>
+ Assigns a ForceAtlas2 layout to a SigmaGraph.
+ </summary>
+ <param name="Iterations">Optional number of iterations for the layout algorithm.</param>
+ <param name="Settings">Optional settings for the layout algorithm.</param>
+ <param name="GetEdgeWeight">Optional function to get edge weight.</param>
+ <returns>The updated SigmaGraph with the ForceAtlas2 layout.</returns>
+</member>
+<member name="M:SigmaGraph.NET.VisGraph.WithEdges(System.Collections.Generic.IEnumerable{SigmaGraph.NET.Edge},SigmaGraph.NET.SigmaGraph)">
+ <summary>
+ Adds a sequence of edges to a SigmaGraph.
+ </summary>
+ <param name="edges">The sequence of edges to add.</param>
+ <param name="graph">The SigmaGraph to which the edges will be added.</param>
+ <returns>The updated SigmaGraph with the added edges.</returns>
+</member>
+<member name="M:SigmaGraph.NET.VisGraph.WithEdge(SigmaGraph.NET.Edge,SigmaGraph.NET.SigmaGraph)">
+ <summary>
+ Adds a single edge to a SigmaGraph.
+ </summary>
+ <param name="edge">The edge to add.</param>
+ <param name="graph">The SigmaGraph to which the edge will be added.</param>
+ <returns>The updated SigmaGraph with the added edge.</returns>
+</member>
+<member name="M:SigmaGraph.NET.VisGraph.WithCircularLayout(Microsoft.FSharp.Core.FSharpOption{System.Double},Microsoft.FSharp.Core.FSharpOption{System.Double})">
+ <summary>
+ Assigns a circular layout to a SigmaGraph.
+ </summary>
+ <param name="Scale">Optional scale for the circular layout.</param>
+ <param name="Center">Optional center for the circular layout.</param>
+ <returns>The updated SigmaGraph with the circular layout.</returns>
+</member>
+<member name="M:SigmaGraph.NET.VisGraph.Show(Microsoft.FSharp.Core.Unit,SigmaGraph.NET.SigmaGraph)">
+ <summary>
+ Shows the SigmaGraph as an HTML document.
+ </summary>
+ <param name="graph">The SigmaGraph to display.</param>
+ <returns>The path to the temporary HTML file created and opened.</returns>
+</member>
+<member name="M:SigmaGraph.NET.VisGraph.Empty">
+ <summary>
+ Creates an empty SigmaGraph instance
+ </summary>
+ <returns>A new empty SigmaGraph</returns>
+</member>
+<member name="T:SigmaGraph.NET.VisGraph">
+<summary>
+ Module to manipulate and style a graph
+ </summary>
+</member>
+<member name="M:SigmaGraph.NET.VisGraphElement.withNodeData``3(Microsoft.FSharp.Core.FSharpOption{System.String},Microsoft.FSharp.Core.FSharpOption{``0},Microsoft.FSharp.Core.FSharpOption{System.String},Microsoft.FSharp.Core.FSharpOption{System.Boolean},Microsoft.FSharp.Core.FSharpOption{System.Boolean},Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{SigmaGraph.NET.StyleParam.NodeType},Microsoft.FSharp.Core.FSharpOption{``1},Microsoft.FSharp.Core.FSharpOption{``2})">
+ <summary>
+ Sets additional data for a node.
+ </summary>
+ <param name="Label">Optional label for the node.</param>
+ <param name="Size">Optional size of the node.</param>
+ <param name="Color">Optional color of the node.Needs HTML color codes</param>
+ <param name="Hidden">Optional flag to hide the node.</param>
+ <param name="ForceLabel">Optional flag to force the label visibility.</param>
+ <param name="ZIndex">Optional z-index of the node(controles the stacking order of overlapping HTML elements, higher index appears in front of lower index).</param>
+ <param name="StyleType">Optional style type of the node.</param>
+ <param name="X">Optional X coordinate for the node.</param>
+ <param name="Y">Optional Y coordinate for the node.</param>
+ <returns>A function that updates the node with the specified data.</returns>
+</member>
+<member name="M:SigmaGraph.NET.VisGraphElement.withEdgeData``3(Microsoft.FSharp.Core.FSharpOption{System.String},Microsoft.FSharp.Core.FSharpOption{``0},Microsoft.FSharp.Core.FSharpOption{System.String},Microsoft.FSharp.Core.FSharpOption{System.Boolean},Microsoft.FSharp.Core.FSharpOption{System.Boolean},Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{SigmaGraph.NET.StyleParam.EdgeType},Microsoft.FSharp.Core.FSharpOption{``1},Microsoft.FSharp.Core.FSharpOption{``2})">
+ <summary>
+ Sets additional data for an edge.
+ </summary>
+ <param name="Label">Optional label for the edge.</param>
+ <param name="Size">Optional size of the edge.</param>
+ <param name="Color">Optional color of the edge. Needs HTML color codes.</param>
+ <param name="Hidden">Optional flag to hide the edge.</param>
+ <param name="ForceLabel">Optional flag to force the label visibility.</param>
+ <param name="ZIndex">Optional z-index of the edge(controles the stacking order of overlapping HTML elements, higher index appears in front of lower index).</param>
+ <param name="StyleType">Optional style type of the edge.</param>
+ <param name="X">Optional X coordinate for the edge.</param>
+ <param name="Y">Optional Y coordinate for the edge.</param>
+ <returns>A function that updates the edge with the specified data.</returns>
+</member>
+<member name="M:SigmaGraph.NET.VisGraphElement.node(System.String)">
+ <summary>
+ Initializes a new node with the given key.
+ </summary>
+ <param name="key">The unique identifier for the node.</param>
+ <returns>A new Node instance with the specified key.</returns>
+</member>
+<member name="M:SigmaGraph.NET.VisGraphElement.edge(System.String,System.String)">
+ <summary>
+ Initializes a new edge with the given source and target nodes.
+ </summary>
+ <param name="source">The key of the source node of the edge.</param>
+ <param name="target">The key of the target node of the edge.</param>
+ <returns>A new Edge instance connecting the source and target nodes.</returns>
+</member>
+<member name="P:SigmaGraph.NET.Globals.JSON_CONFIG">
+<summary>
+ Configuration settings for JSON serialization with specific handling for reference loops.
+</summary>
+</member>
+<member name="P:SigmaGraph.NET.Globals.LOGO_BASE64">
+ <summary>
+ Base64 encoded favicon logo for generated HTML files.
+ </summary>
+</member>
+<member name="P:SigmaGraph.NET.Globals.REQUIREJS_SCRIPT_TEMPLATE">
+ <summary>
+ JavaScript template for rendering the graph using RequireJS. 
+ It includes placeholders for JavaScript file URLs, container ID, graph data, layout, settings, and widgets.
+ </summary>
+</member>
+<member name="P:SigmaGraph.NET.Globals.SCRIPT_TEMPLATE">
+ <summary>
+ JavaScript template for rendering the graph. 
+ It includes placeholders for container ID, graph data, layout, settings, and widgets.
+ </summary>
+</member>
+<member name="P:SigmaGraph.NET.Globals.GRAPHOLOGY_VERSION">
+ <summary>
+ The graphology.js version loaded from the CDN in rendered HTML docs.
+ </summary>
+</member>
+<member name="P:SigmaGraph.NET.Globals.SIGMAJS_VERSION">
+ <summary>
+ The sigma.js version loaded from the CDN in rendered HTML docs.
+ </summary>
+</member>
+<member name="P:SigmaGraph.NET.Globals.GRAPHOLOGY_LIB_VERSION">
+ <summary>
+ The version of the Graphology library used in the project.
+ </summary>
+</member>
+<member name="P:SigmaGraph.NET.Globals.NUGET_VERSION">
+ <summary>
+ The NuGet package version for SigmaGraph.NET.
+ </summary>
+</member>
+<member name="P:SigmaGraph.NET.InternalUtils.JSRefGroup.GraphologyLib">
+ <summary>URL or path to the Graphology library (additional version).</summary>
+</member>
+<member name="P:SigmaGraph.NET.InternalUtils.JSRefGroup.Graphology">
+ <summary>URL or path to the Graphology library.</summary>
+</member>
+<member name="P:SigmaGraph.NET.InternalUtils.JSRefGroup.Sigma">
+ <summary>URL or path to the Sigma.js library.</summary>
+</member>
+<member name="T:SigmaGraph.NET.InternalUtils.JSRefGroup">
+ <summary>
+ Defines a record type to hold paths or URLs for JavaScript libraries.
+ </summary>
+</member>
+<member name="M:SigmaGraph.NET.InternalUtils.getNugetPathJS">
+ <summary>
+ Returns the paths for JavaScript libraries based on NuGet package location in the user's profile directory.
+ </summary>
+ <returns>A record containing the file paths for the JavaScript libraries.</returns>
+</member>
+<member name="M:SigmaGraph.NET.InternalUtils.getUriJS">
+ <summary>
+ Returns the URLs for JavaScript libraries from a CDN, using versions specified in Globals.
+ </summary>
+ <returns>A record containing the CDN URLs for the JavaScript libraries.</returns>
+</member>
+<member name="M:SigmaGraph.NET.InternalUtils.getSourceCodeJS">
+ <summary>
+ Retrieves the source code for JavaScript libraries from embedded resources.
+ </summary>
+ <returns>A record containing the paths to the JavaScript libraries.</returns>
+</member>
+<member name="M:SigmaGraph.NET.InternalUtils.readFromManifestResource(System.String)">
+ <summary>
+ Reads the content of an embedded resource from the assembly.
+ </summary>
+ <param name="resourceName">The name of the embedded resource.</param>
+ <returns>The content of the embedded resource as a string.</returns>
+</member>
+<member name="T:SigmaGraph.NET.InternalUtils">
+ <summary>
+ Internal utility functions and types for handling JavaScript references.
+ </summary>
+</member>
+<member name="P:SigmaGraph.NET.StyleParam.NodeType.toString">
+ <summary>Converts the node type to a corresponding string representation.</summary>
+</member>
+<member name="T:SigmaGraph.NET.StyleParam.NodeType">
+ <summary>Defines different types of node shapes for graph visualization.</summary>
+</member>
+<member name="P:SigmaGraph.NET.StyleParam.EdgeType.toString">
+ <summary>Converts the edge type to a corresponding string representation.</summary>
+</member>
+<member name="T:SigmaGraph.NET.StyleParam.EdgeType">
+ <summary>Defines different types of edge styles for graph visualization.</summary>
+</member>
+<member name="M:SigmaGraph.NET.Render.Settings.Style(Microsoft.FSharp.Core.FSharpOption{System.Boolean},Microsoft.FSharp.Core.FSharpOption{System.Boolean},Microsoft.FSharp.Core.FSharpOption{System.Boolean},Microsoft.FSharp.Core.FSharpOption{System.Boolean},Microsoft.FSharp.Core.FSharpOption{System.Boolean},Microsoft.FSharp.Core.FSharpOption{System.Boolean},Microsoft.FSharp.Core.FSharpOption{System.Boolean},Microsoft.FSharp.Core.FSharpOption{System.String},Microsoft.FSharp.Core.FSharpOption{SigmaGraph.NET.StyleParam.NodeType},Microsoft.FSharp.Core.FSharpOption{System.String},Microsoft.FSharp.Core.FSharpOption{SigmaGraph.NET.StyleParam.EdgeType},Microsoft.FSharp.Core.FSharpOption{System.String},Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.String},Microsoft.FSharp.Core.FSharpOption{SigmaGraph.NET.Render.ColorOrReference},Microsoft.FSharp.Core.FSharpOption{System.String},Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.String},Microsoft.FSharp.Core.FSharpOption{SigmaGraph.NET.Render.ColorOrReference},Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.String},Microsoft.FSharp.Core.FSharpOption{System.String},Microsoft.FSharp.Core.FSharpOption{System.Boolean},Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.String},Microsoft.FSharp.Core.FSharpOption{System.String},Microsoft.FSharp.Core.FSharpOption{System.String})">
+ <summary>Applies the provided styling options to the Settings object</summary>
+</member>
+<member name="M:SigmaGraph.NET.Render.Settings.Init(Microsoft.FSharp.Core.FSharpOption{System.Boolean},Microsoft.FSharp.Core.FSharpOption{System.Boolean},Microsoft.FSharp.Core.FSharpOption{System.Boolean},Microsoft.FSharp.Core.FSharpOption{System.Boolean},Microsoft.FSharp.Core.FSharpOption{System.Boolean},Microsoft.FSharp.Core.FSharpOption{System.Boolean},Microsoft.FSharp.Core.FSharpOption{System.Boolean},Microsoft.FSharp.Core.FSharpOption{System.String},Microsoft.FSharp.Core.FSharpOption{SigmaGraph.NET.StyleParam.NodeType},Microsoft.FSharp.Core.FSharpOption{System.String},Microsoft.FSharp.Core.FSharpOption{SigmaGraph.NET.StyleParam.EdgeType},Microsoft.FSharp.Core.FSharpOption{System.String},Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.String},Microsoft.FSharp.Core.FSharpOption{SigmaGraph.NET.Render.ColorOrReference},Microsoft.FSharp.Core.FSharpOption{System.String},Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.String},Microsoft.FSharp.Core.FSharpOption{SigmaGraph.NET.Render.ColorOrReference},Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.String},Microsoft.FSharp.Core.FSharpOption{System.String},Microsoft.FSharp.Core.FSharpOption{System.Boolean},Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.String},Microsoft.FSharp.Core.FSharpOption{System.String},Microsoft.FSharp.Core.FSharpOption{System.String})">
+ <summary>Initializes a new instance of Settings with optional rendering settings</summary>
+</member>
+<member name="T:SigmaGraph.NET.Render.Settings">
+ <summary>A type representing various settings for rendering</summary>
+</member>
+<member name="M:SigmaGraph.NET.Render.ColorOrReference.Style(Microsoft.FSharp.Core.FSharpOption{System.String},Microsoft.FSharp.Core.FSharpOption{System.String})">
+ <summary>Applies the provided color and reference to the ColorOrReference object</summary>            
+</member>
+<member name="M:SigmaGraph.NET.Render.ColorOrReference.Init(Microsoft.FSharp.Core.FSharpOption{System.String},Microsoft.FSharp.Core.FSharpOption{System.String})">
+ <summary>Initializes a new instance of ColorOrReference with optional color and reference</summary>
+</member>
+<member name="T:SigmaGraph.NET.Render.ColorOrReference">
+ <summary>A type representing either a color or a reference to a color</summary>
+</member>
+<member name="T:SigmaGraph.NET.Render">
+ <summary>Module for rendering-related types and methods</summary>
+</member>
+<member name="M:SigmaGraph.NET.Defaults.reset">
+ <summary>
+ Resets global defaults to the initial values.
+ </summary>
+</member>
+<member name="P:SigmaGraph.NET.Defaults.DefaultDisplayOptions">
+ <summary>
+ The default display options for the graph.
+ </summary>
+</member>
+<member name="P:SigmaGraph.NET.Defaults.DefaultHeight">
+ <summary>
+ The default height of the graph container in generated HTML files. Default: 900 pixels.
+ </summary>
+</member>
+<member name="P:SigmaGraph.NET.Defaults.DefaultWidth">
+ <summary>
+ The default width of the graph container in generated HTML files. Default: 100%.
+ </summary>
+</member>
+<member name="T:SigmaGraph.NET.Defaults">
+ <summary>
+ Contains mutable global default values.
+ Changing these values will apply the default values to all consecutive Graph generations.
+ </summary>
+</member>
+</members>
+</doc>

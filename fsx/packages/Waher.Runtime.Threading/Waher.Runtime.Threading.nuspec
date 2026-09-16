@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>Waher.Runtime.Threading</id>
+    <version>2.2.0</version>
+    <authors>Peter Waher</authors>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <license type="file">LICENSE.txt</license>
+    <licenseUrl>https://aka.ms/deprecateLicenseUrl</licenseUrl>
+    <icon>Icon_64x64.png</icon>
+    <projectUrl>https://github.com/PeterWaher/IoTGateway/tree/master/Runtime/Waher.Runtime.Threading</projectUrl>
+    <description>Class library that provides classes for usage in multi-threaded asynchronous environments providing multiple-read/single-write capabilities. Support for async entry into read and/or write states, allowing for complex lock management in asynchronous methods, where different sections of the code are executed by different working threads.</description>
+    <copyright>Copyright © Waher Data AB 2018-2025. All rights reserved.</copyright>
+    <tags>threading runtime multiple read single write access</tags>
+    <repository type="GitHub" url="https://github.com/PeterWaher/IoTGateway" commit="60cf1163d559ac0cccade7f6a9a76e76744f8d64" />
+    <dependencies>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="Waher.Events" version="1.4.6" exclude="Build,Analyzers" />
+        <dependency id="Waher.Runtime.Cache" version="2.1.2" exclude="Build,Analyzers" />
+        <dependency id="System.Net.Http" version="4.3.4" exclude="Build,Analyzers" />
+        <dependency id="System.Text.RegularExpressions" version="4.3.1" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

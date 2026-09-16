@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>PuppeteerSharp.Contrib.Extensions</id>
+    <version>7.0.0</version>
+    <authors>Henrik Lau Eriksson</authors>
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <icon>icon.png</icon>
+    <readme>PuppeteerSharp.Contrib.Extensions.md</readme>
+    <projectUrl>https://github.com/hlaueriksson/puppeteer-sharp-contrib</projectUrl>
+    <description>Contributions to the Headless Chrome .NET API 🌐🧪
+
+✔️ PuppeteerSharp.Contrib.Extensions is a library with extension methods for writing tests with the Puppeteer Sharp API.
+✔️ It provides a convenient way to write readable and robust browser tests in .NET
+📄 https://hlaueriksson.me/PuppeteerSharp.Contrib.Extensions/</description>
+    <releaseNotes>🎯 Change TargetFramework to net8.0
+⬆️ Bump PuppeteerSharp to 20.0.0
+
+Remove extensions for IElementHandle:
+◼️ IsHiddenAsync
+◼️ IsVisibleAsync</releaseNotes>
+    <tags>headless chrome puppeteer test testing automation</tags>
+    <repository type="git" url="https://github.com/hlaueriksson/puppeteer-sharp-contrib.git" commit="1eca84c9db93fc24835e28f51d9732b72d32d3fa" />
+    <dependencies>
+      <group targetFramework="net8.0">
+        <dependency id="PuppeteerSharp" version="20.0.0" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

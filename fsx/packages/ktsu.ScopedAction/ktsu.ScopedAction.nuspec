@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>ktsu.ScopedAction</id>
+    <version>1.1.38</version>
+    <title>ktsu.ScopedAction</title>
+    <authors>ktsu.dev contributors</authors>
+    <license type="file">LICENSE.md</license>
+    <licenseUrl>https://aka.ms/deprecateLicenseUrl</licenseUrl>
+    <icon>icon.png</icon>
+    <readme>README.md</readme>
+    <projectUrl>https://github.com/ktsu-dev/ScopedAction</projectUrl>
+    <description>A lightweight utility for executing paired actions at the start and end of code blocks using the IDisposable pattern.</description>
+    <releaseNotes>## v1.1.38 (patch)
+
+Changes since v1.1.37:
+
+- ci: adopt the consolidated .NET workflow [patch] ([@Claude](https://github.com/Claude))</releaseNotes>
+    <copyright>Copyright (c) 2023-2026 ktsu-dev contributors</copyright>
+    <tags>scoped action;raii;disposable;using statement;paired actions;resource management;dotnet;csharp</tags>
+    <repository type="git" commit="f6337c3c330e0451852d3f94b42c2edd76f67171" />
+    <dependencies>
+      <group targetFramework="net10.0" />
+      <group targetFramework="net8.0" />
+      <group targetFramework="net9.0" />
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="System.Memory" version="4.6.3" exclude="Build,Analyzers" />
+        <dependency id="System.Threading.Tasks.Extensions" version="4.6.3" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework=".NETStandard2.1" />
+    </dependencies>
+  </metadata>
+</package>

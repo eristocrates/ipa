@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>SharpVG</id>
+    <version>1.0.0</version>
+    <title>SharpVG</title>
+    <authors>Chris Nikkel</authors>
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <readme>README.md</readme>
+    <projectUrl>http://www.sharpvg.com/</projectUrl>
+    <description>Create SVG vector graphics in F#</description>
+    <releaseNotes>See CHANGELOG.md at https://github.com/ChrisNikkel/SharpVG/blob/master/CHANGELOG.md</releaseNotes>
+    <copyright>Copyright © Chris Nikkel 2024-2026</copyright>
+    <tags>Graphics, F#, SVG, vector graphics</tags>
+    <repository type="git" url="https://github.com/ChrisNikkel/SharpVG.git" branch="refs/heads/master" commit="4ac7bb28c7178211ab736bf65500692ca949c19a" />
+    <dependencies>
+      <group targetFramework="net8.0">
+        <dependency id="FSharp.Core" version="9.0.303" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework="net9.0">
+        <dependency id="FSharp.Core" version="9.0.303" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework=".NETStandard2.1">
+        <dependency id="FSharp.Core" version="9.0.303" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>Waher.Runtime.Temporary</id>
+    <version>1.1.0</version>
+    <authors>Peter Waher</authors>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <license type="file">LICENSE.txt</license>
+    <licenseUrl>https://aka.ms/deprecateLicenseUrl</licenseUrl>
+    <icon>Icon_64x64.png</icon>
+    <projectUrl>https://github.com/PeterWaher/IoTGateway/tree/master/Runtime/Waher.Runtime.Temporary</projectUrl>
+    <description>Contains classes simplifying working with temporary in-memory and file streams. TemporaryFile encapsulates a temporary file, manages filename and makes sure to delete the file when done. A TemporaryStream maintains content in-memory if below a threshold size limit, and switches to a TemporaryFile when content crosses threshold.</description>
+    <copyright>Copyright © Waher Data AB 2020-2025. All rights reserved.</copyright>
+    <tags>Temporary Files In-memory Streams</tags>
+    <repository type="GitHub" url="https://github.com/PeterWaher/IoTGateway" commit="1e39cf55fcbc9d5d8b5bbac4ac3af805c7453bb8" />
+    <dependencies>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="Waher.Events" version="1.4.1" exclude="Build,Analyzers" />
+        <dependency id="System.Net.Http" version="4.3.4" exclude="Build,Analyzers" />
+        <dependency id="System.Text.RegularExpressions" version="4.3.1" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

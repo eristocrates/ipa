@@ -1,0 +1,16 @@
+D: /lib
+D: /lib/net9.0
+F: /lib/net9.0/ModelingEvolution.NetworkManager.dll
+F: /lib/net9.0/ModelingEvolution.NetworkManager.xml
+D: /package
+D: /package/services
+D: /package/services/metadata
+D: /package/services/metadata/core-properties
+F: /package/services/metadata/core-properties/7e6049d2cdc74a80ab7b9c72dc12a0b7.psmdcp
+D: /_rels
+F: /_rels/.rels
+F: /.signature.p7s
+F: /modelingevolution.networkmanager.1.0.1.nupkg
+F: /ModelingEvolution.NetworkManager.nuspec
+F: /README.md
+F: /[Content_Types].xml
