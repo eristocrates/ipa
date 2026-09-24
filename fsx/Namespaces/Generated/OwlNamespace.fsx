@@ -1,462 +1,3951 @@
-#I @"D:\https\com\github\eristocrates\ipa\fsx"
+#I @"D:\https\com\github\eristocrates\ipa\dll\"
+#r @"ResourceDescription.dll"
+#I @"D:\https\com\github\eristocrates\ipa\fsx\"
+open ResourceDescription
 #load @".paket/load/main.group.fsx"
-#r @"RdfAsm.dll"
-open RdfAsm
-#r @"RdfIO.dll"
-open RdfIO
+open System
 
 module owl =
-    let _prefixId = PrefixId.fromNamespaceLabel "http://www.w3.org/2002/07/owl#" "owl"
-    let _namespaceIri = _prefixId.prefix ""
-    /// <summary>
-    ///   <para>rdfs:label : AllDifferent^^xsd:string</para>
-    ///   <para>rdfs:comment : The class of collections of pairwise different individuals.^^xsd:string</para>
-    ///   <a href="http://www.w3.org/2002/07/owl#AllDifferent">owl:AllDifferent</a>
-    /// </summary>
-    let AllDifferent = _prefixId.prefix "AllDifferent"
-    /// <summary>
-    ///   <para>rdfs:label : AllDisjointClasses^^xsd:string</para>
-    ///   <para>rdfs:comment : The class of collections of pairwise disjoint classes.^^xsd:string</para>
-    ///   <a href="http://www.w3.org/2002/07/owl#AllDisjointClasses">owl:AllDisjointClasses</a>
-    /// </summary>
-    let AllDisjointClasses = _prefixId.prefix "AllDisjointClasses"
-    /// <summary>
-    ///   <para>rdfs:label : AllDisjointProperties^^xsd:string</para>
-    ///   <para>rdfs:comment : The class of collections of pairwise disjoint properties.^^xsd:string</para>
-    ///   <a href="http://www.w3.org/2002/07/owl#AllDisjointProperties">owl:AllDisjointProperties</a>
-    /// </summary>
-    let AllDisjointProperties = _prefixId.prefix "AllDisjointProperties"
-    /// <summary>
-    ///   <para>rdfs:label : Annotation^^xsd:string</para>
-    ///   <para>rdfs:comment : The class of annotated annotations for which the RDF serialization consists of an annotated subject, predicate and object.^^xsd:string</para>
-    ///   <a href="http://www.w3.org/2002/07/owl#Annotation">owl:Annotation</a>
-    /// </summary>
-    let Annotation = _prefixId.prefix "Annotation"
-    /// <summary>
-    ///   <para>rdfs:label : AnnotationProperty^^xsd:string</para>
-    ///   <para>rdfs:comment : The class of annotation properties.^^xsd:string</para>
-    ///   <a href="http://www.w3.org/2002/07/owl#AnnotationProperty">owl:AnnotationProperty</a>
-    /// </summary>
-    let AnnotationProperty = _prefixId.prefix "AnnotationProperty"
-    /// <summary>
-    ///   <para>rdfs:label : AsymmetricProperty^^xsd:string</para>
-    ///   <para>rdfs:comment : The class of asymmetric properties.^^xsd:string</para>
-    ///   <a href="http://www.w3.org/2002/07/owl#AsymmetricProperty">owl:AsymmetricProperty</a>
-    /// </summary>
-    let AsymmetricProperty = _prefixId.prefix "AsymmetricProperty"
-    /// <summary>
-    ///   <para>rdfs:label : Axiom^^xsd:string</para>
-    ///   <para>rdfs:comment : The class of annotated axioms for which the RDF serialization consists of an annotated subject, predicate and object.^^xsd:string</para>
-    ///   <a href="http://www.w3.org/2002/07/owl#Axiom">owl:Axiom</a>
-    /// </summary>
-    let Axiom = _prefixId.prefix "Axiom"
-    /// <summary>
-    ///   <para>rdfs:label : Class^^xsd:string</para>
-    ///   <para>rdfs:comment : The class of OWL classes.^^xsd:string</para>
-    ///   <a href="http://www.w3.org/2002/07/owl#Class">owl:Class</a>
-    /// </summary>
-    let Class = _prefixId.prefix "Class"
-    /// <summary>
-    ///   <para>rdfs:label : DataRange^^xsd:string</para>
-    ///   <para>rdfs:comment : The class of OWL data ranges, which are special kinds of datatypes. Note: The use of the IRI owl:DataRange has been deprecated as of OWL 2. The IRI rdfs:Datatype SHOULD be used instead.^^xsd:string</para>
-    ///   <a href="http://www.w3.org/2002/07/owl#DataRange">owl:DataRange</a>
-    /// </summary>
-    let DataRange = _prefixId.prefix "DataRange"
-    /// <summary>
-    ///   <para>rdfs:label : DatatypeProperty^^xsd:string</para>
-    ///   <para>rdfs:comment : The class of data properties.^^xsd:string</para>
-    ///   <a href="http://www.w3.org/2002/07/owl#DatatypeProperty">owl:DatatypeProperty</a>
-    /// </summary>
-    let DatatypeProperty = _prefixId.prefix "DatatypeProperty"
-    /// <summary>
-    ///   <para>rdfs:label : DeprecatedClass^^xsd:string</para>
-    ///   <para>rdfs:comment : The class of deprecated classes.^^xsd:string</para>
-    ///   <a href="http://www.w3.org/2002/07/owl#DeprecatedClass">owl:DeprecatedClass</a>
-    /// </summary>
-    let DeprecatedClass = _prefixId.prefix "DeprecatedClass"
-    /// <summary>
-    ///   <para>rdfs:label : DeprecatedProperty^^xsd:string</para>
-    ///   <para>rdfs:comment : The class of deprecated properties.^^xsd:string</para>
-    ///   <a href="http://www.w3.org/2002/07/owl#DeprecatedProperty">owl:DeprecatedProperty</a>
-    /// </summary>
-    let DeprecatedProperty = _prefixId.prefix "DeprecatedProperty"
-    /// <summary>
-    ///   <para>rdfs:label : FunctionalProperty^^xsd:string</para>
-    ///   <para>rdfs:comment : The class of functional properties.^^xsd:string</para>
-    ///   <a href="http://www.w3.org/2002/07/owl#FunctionalProperty">owl:FunctionalProperty</a>
-    /// </summary>
-    let FunctionalProperty = _prefixId.prefix "FunctionalProperty"
-    /// <summary>
-    ///   <para>rdfs:label : InverseFunctionalProperty^^xsd:string</para>
-    ///   <para>rdfs:comment : The class of inverse-functional properties.^^xsd:string</para>
-    ///   <a href="http://www.w3.org/2002/07/owl#InverseFunctionalProperty">owl:InverseFunctionalProperty</a>
-    /// </summary>
-    let InverseFunctionalProperty = _prefixId.prefix "InverseFunctionalProperty"
-    /// <summary>
-    ///   <para>rdfs:label : IrreflexiveProperty^^xsd:string</para>
-    ///   <para>rdfs:comment : The class of irreflexive properties.^^xsd:string</para>
-    ///   <a href="http://www.w3.org/2002/07/owl#IrreflexiveProperty">owl:IrreflexiveProperty</a>
-    /// </summary>
-    let IrreflexiveProperty = _prefixId.prefix "IrreflexiveProperty"
-    /// <summary>
-    ///   <para>rdfs:label : NamedIndividual^^xsd:string</para>
-    ///   <para>rdfs:comment : The class of named individuals.^^xsd:string</para>
-    ///   <a href="http://www.w3.org/2002/07/owl#NamedIndividual">owl:NamedIndividual</a>
-    /// </summary>
-    let NamedIndividual = _prefixId.prefix "NamedIndividual"
-    /// <summary>
-    ///   <para>rdfs:label : NegativePropertyAssertion^^xsd:string</para>
-    ///   <para>rdfs:comment : The class of negative property assertions.^^xsd:string</para>
-    ///   <a href="http://www.w3.org/2002/07/owl#NegativePropertyAssertion">owl:NegativePropertyAssertion</a>
-    /// </summary>
-    let NegativePropertyAssertion = _prefixId.prefix "NegativePropertyAssertion"
-    /// <summary>
-    ///   <para>rdfs:label : Nothing^^xsd:string</para>
-    ///   <para>rdfs:comment : This is the empty class.^^xsd:string</para>
-    ///   <a href="http://www.w3.org/2002/07/owl#Nothing">owl:Nothing</a>
-    /// </summary>
-    let Nothing = _prefixId.prefix "Nothing"
-    /// <summary>
-    ///   <para>rdfs:label : ObjectProperty^^xsd:string</para>
-    ///   <para>rdfs:comment : The class of object properties.^^xsd:string</para>
-    ///   <a href="http://www.w3.org/2002/07/owl#ObjectProperty">owl:ObjectProperty</a>
-    /// </summary>
-    let ObjectProperty = _prefixId.prefix "ObjectProperty"
-    /// <summary>
-    ///   <para>rdfs:label : Ontology^^xsd:string</para>
-    ///   <para>rdfs:comment : The class of ontologies.^^xsd:string</para>
-    ///   <a href="http://www.w3.org/2002/07/owl#Ontology">owl:Ontology</a>
-    /// </summary>
-    let Ontology = _prefixId.prefix "Ontology"
-    /// <summary>
-    ///   <para>rdfs:label : OntologyProperty^^xsd:string</para>
-    ///   <para>rdfs:comment : The class of ontology properties.^^xsd:string</para>
-    ///   <a href="http://www.w3.org/2002/07/owl#OntologyProperty">owl:OntologyProperty</a>
-    /// </summary>
-    let OntologyProperty = _prefixId.prefix "OntologyProperty"
-    /// <summary>
-    ///   <para>rdfs:label : ReflexiveProperty^^xsd:string</para>
-    ///   <para>rdfs:comment : The class of reflexive properties.^^xsd:string</para>
-    ///   <a href="http://www.w3.org/2002/07/owl#ReflexiveProperty">owl:ReflexiveProperty</a>
-    /// </summary>
-    let ReflexiveProperty = _prefixId.prefix "ReflexiveProperty"
-    /// <summary>
-    ///   <para>rdfs:label : Restriction^^xsd:string</para>
-    ///   <para>rdfs:comment : The class of property restrictions.^^xsd:string</para>
-    ///   <a href="http://www.w3.org/2002/07/owl#Restriction">owl:Restriction</a>
-    /// </summary>
-    let Restriction = _prefixId.prefix "Restriction"
-    /// <summary>
-    ///   <para>rdfs:label : SymmetricProperty^^xsd:string</para>
-    ///   <para>rdfs:comment : The class of symmetric properties.^^xsd:string</para>
-    ///   <a href="http://www.w3.org/2002/07/owl#SymmetricProperty">owl:SymmetricProperty</a>
-    /// </summary>
-    let SymmetricProperty = _prefixId.prefix "SymmetricProperty"
-    /// <summary>
-    ///   <para>rdfs:label : Thing^^xsd:string</para>
-    ///   <para>rdfs:comment : The class of OWL individuals.^^xsd:string</para>
-    ///   <a href="http://www.w3.org/2002/07/owl#Thing">owl:Thing</a>
-    /// </summary>
-    let Thing = _prefixId.prefix "Thing"
-    /// <summary>
-    ///   <para>rdfs:label : TransitiveProperty^^xsd:string</para>
-    ///   <para>rdfs:comment : The class of transitive properties.^^xsd:string</para>
-    ///   <a href="http://www.w3.org/2002/07/owl#TransitiveProperty">owl:TransitiveProperty</a>
-    /// </summary>
-    let TransitiveProperty = _prefixId.prefix "TransitiveProperty"
-    /// <summary>
-    ///   <para>rdfs:label : allValuesFrom^^xsd:string</para>
-    ///   <para>rdfs:comment : The property that determines the class that a universal property restriction refers to.^^xsd:string</para>
-    ///   <a href="http://www.w3.org/2002/07/owl#allValuesFrom">owl:allValuesFrom</a>
-    /// </summary>
-    let allValuesFrom = _prefixId.prefix "allValuesFrom"
-    /// <summary>
-    ///   <para>rdfs:label : annotatedProperty^^xsd:string</para>
-    ///   <para>rdfs:comment : The property that determines the predicate of an annotated axiom or annotated annotation.^^xsd:string</para>
-    ///   <a href="http://www.w3.org/2002/07/owl#annotatedProperty">owl:annotatedProperty</a>
-    /// </summary>
-    let annotatedProperty = _prefixId.prefix "annotatedProperty"
-    /// <summary>
-    ///   <para>rdfs:label : annotatedSource^^xsd:string</para>
-    ///   <para>rdfs:comment : The property that determines the subject of an annotated axiom or annotated annotation.^^xsd:string</para>
-    ///   <a href="http://www.w3.org/2002/07/owl#annotatedSource">owl:annotatedSource</a>
-    /// </summary>
-    let annotatedSource = _prefixId.prefix "annotatedSource"
-    /// <summary>
-    ///   <para>rdfs:label : annotatedTarget^^xsd:string</para>
-    ///   <para>rdfs:comment : The property that determines the object of an annotated axiom or annotated annotation.^^xsd:string</para>
-    ///   <a href="http://www.w3.org/2002/07/owl#annotatedTarget">owl:annotatedTarget</a>
-    /// </summary>
-    let annotatedTarget = _prefixId.prefix "annotatedTarget"
-    /// <summary>
-    ///   <para>rdfs:label : assertionProperty^^xsd:string</para>
-    ///   <para>rdfs:comment : The property that determines the predicate of a negative property assertion.^^xsd:string</para>
-    ///   <a href="http://www.w3.org/2002/07/owl#assertionProperty">owl:assertionProperty</a>
-    /// </summary>
-    let assertionProperty = _prefixId.prefix "assertionProperty"
-    /// <summary>
-    ///   <para>rdfs:label : backwardCompatibleWith^^xsd:string</para>
-    ///   <para>rdfs:comment : The annotation property that indicates that a given ontology is backward compatible with another ontology.^^xsd:string</para>
-    ///   <a href="http://www.w3.org/2002/07/owl#backwardCompatibleWith">owl:backwardCompatibleWith</a>
-    /// </summary>
-    let backwardCompatibleWith = _prefixId.prefix "backwardCompatibleWith"
-    /// <summary>
-    ///   <para>rdfs:label : bottomDataProperty^^xsd:string</para>
-    ///   <para>rdfs:comment : The data property that does not relate any individual to any data value.^^xsd:string</para>
-    ///   <a href="http://www.w3.org/2002/07/owl#bottomDataProperty">owl:bottomDataProperty</a>
-    /// </summary>
-    let bottomDataProperty = _prefixId.prefix "bottomDataProperty"
-    /// <summary>
-    ///   <para>rdfs:label : bottomObjectProperty^^xsd:string</para>
-    ///   <para>rdfs:comment : The object property that does not relate any two individuals.^^xsd:string</para>
-    ///   <a href="http://www.w3.org/2002/07/owl#bottomObjectProperty">owl:bottomObjectProperty</a>
-    /// </summary>
-    let bottomObjectProperty = _prefixId.prefix "bottomObjectProperty"
-    /// <summary>
-    ///   <para>rdfs:label : cardinality^^xsd:string</para>
-    ///   <para>rdfs:comment : The property that determines the cardinality of an exact cardinality restriction.^^xsd:string</para>
-    ///   <a href="http://www.w3.org/2002/07/owl#cardinality">owl:cardinality</a>
-    /// </summary>
-    let cardinality = _prefixId.prefix "cardinality"
-    /// <summary>
-    ///   <para>rdfs:label : complementOf^^xsd:string</para>
-    ///   <para>rdfs:comment : The property that determines that a given class is the complement of another class.^^xsd:string</para>
-    ///   <a href="http://www.w3.org/2002/07/owl#complementOf">owl:complementOf</a>
-    /// </summary>
-    let complementOf = _prefixId.prefix "complementOf"
-    /// <summary>
-    ///   <para>rdfs:label : datatypeComplementOf^^xsd:string</para>
-    ///   <para>rdfs:comment : The property that determines that a given data range is the complement of another data range with respect to the data domain.^^xsd:string</para>
-    ///   <a href="http://www.w3.org/2002/07/owl#datatypeComplementOf">owl:datatypeComplementOf</a>
-    /// </summary>
-    let datatypeComplementOf = _prefixId.prefix "datatypeComplementOf"
-    /// <summary>
-    ///   <para>rdfs:label : deprecated^^xsd:string</para>
-    ///   <para>rdfs:comment : The annotation property that indicates that a given entity has been deprecated.^^xsd:string</para>
-    ///   <a href="http://www.w3.org/2002/07/owl#deprecated">owl:deprecated</a>
-    /// </summary>
-    let deprecated = _prefixId.prefix "deprecated"
-    /// <summary>
-    ///   <para>rdfs:label : differentFrom^^xsd:string</para>
-    ///   <para>rdfs:comment : The property that determines that two given individuals are different.^^xsd:string</para>
-    ///   <a href="http://www.w3.org/2002/07/owl#differentFrom">owl:differentFrom</a>
-    /// </summary>
-    let differentFrom = _prefixId.prefix "differentFrom"
-    /// <summary>
-    ///   <para>rdfs:label : disjointUnionOf^^xsd:string</para>
-    ///   <para>rdfs:comment : The property that determines that a given class is equivalent to the disjoint union of a collection of other classes.^^xsd:string</para>
-    ///   <a href="http://www.w3.org/2002/07/owl#disjointUnionOf">owl:disjointUnionOf</a>
-    /// </summary>
-    let disjointUnionOf = _prefixId.prefix "disjointUnionOf"
-    /// <summary>
-    ///   <para>rdfs:label : disjointWith^^xsd:string</para>
-    ///   <para>rdfs:comment : The property that determines that two given classes are disjoint.^^xsd:string</para>
-    ///   <a href="http://www.w3.org/2002/07/owl#disjointWith">owl:disjointWith</a>
-    /// </summary>
-    let disjointWith = _prefixId.prefix "disjointWith"
-    /// <summary>
-    ///   <para>rdfs:label : distinctMembers^^xsd:string</para>
-    ///   <para>rdfs:comment : The property that determines the collection of pairwise different individuals in a owl:AllDifferent axiom.^^xsd:string</para>
-    ///   <a href="http://www.w3.org/2002/07/owl#distinctMembers">owl:distinctMembers</a>
-    /// </summary>
-    let distinctMembers = _prefixId.prefix "distinctMembers"
-    /// <summary>
-    ///   <para>rdfs:label : equivalentClass^^xsd:string</para>
-    ///   <para>rdfs:comment : The property that determines that two given classes are equivalent, and that is used to specify datatype definitions.^^xsd:string</para>
-    ///   <a href="http://www.w3.org/2002/07/owl#equivalentClass">owl:equivalentClass</a>
-    /// </summary>
-    let equivalentClass = _prefixId.prefix "equivalentClass"
-    /// <summary>
-    ///   <para>rdfs:label : equivalentProperty^^xsd:string</para>
-    ///   <para>rdfs:comment : The property that determines that two given properties are equivalent.^^xsd:string</para>
-    ///   <a href="http://www.w3.org/2002/07/owl#equivalentProperty">owl:equivalentProperty</a>
-    /// </summary>
-    let equivalentProperty = _prefixId.prefix "equivalentProperty"
-    /// <summary>
-    ///   <para>rdfs:label : hasKey^^xsd:string</para>
-    ///   <para>rdfs:comment : The property that determines the collection of properties that jointly build a key.^^xsd:string</para>
-    ///   <a href="http://www.w3.org/2002/07/owl#hasKey">owl:hasKey</a>
-    /// </summary>
-    let hasKey = _prefixId.prefix "hasKey"
-    /// <summary>
-    ///   <para>rdfs:label : hasSelf^^xsd:string</para>
-    ///   <para>rdfs:comment : The property that determines the property that a self restriction refers to.^^xsd:string</para>
-    ///   <a href="http://www.w3.org/2002/07/owl#hasSelf">owl:hasSelf</a>
-    /// </summary>
-    let hasSelf = _prefixId.prefix "hasSelf"
-    /// <summary>
-    ///   <para>rdfs:label : hasValue^^xsd:string</para>
-    ///   <para>rdfs:comment : The property that determines the individual that a has-value restriction refers to.^^xsd:string</para>
-    ///   <a href="http://www.w3.org/2002/07/owl#hasValue">owl:hasValue</a>
-    /// </summary>
-    let hasValue = _prefixId.prefix "hasValue"
-    let imports = _prefixId.prefix "imports"
-    /// <summary>
-    ///   <para>rdfs:label : incompatibleWith^^xsd:string</para>
-    ///   <para>rdfs:comment : The annotation property that indicates that a given ontology is incompatible with another ontology.^^xsd:string</para>
-    ///   <a href="http://www.w3.org/2002/07/owl#incompatibleWith">owl:incompatibleWith</a>
-    /// </summary>
-    let incompatibleWith = _prefixId.prefix "incompatibleWith"
-    /// <summary>
-    ///   <para>rdfs:label : intersectionOf^^xsd:string</para>
-    ///   <para>rdfs:comment : The property that determines the collection of classes or data ranges that build an intersection.^^xsd:string</para>
-    ///   <a href="http://www.w3.org/2002/07/owl#intersectionOf">owl:intersectionOf</a>
-    /// </summary>
-    let intersectionOf = _prefixId.prefix "intersectionOf"
-    /// <summary>
-    ///   <para>rdfs:label : inverseOf^^xsd:string</para>
-    ///   <para>rdfs:comment : The property that determines that two given properties are inverse.^^xsd:string</para>
-    ///   <a href="http://www.w3.org/2002/07/owl#inverseOf">owl:inverseOf</a>
-    /// </summary>
-    let inverseOf = _prefixId.prefix "inverseOf"
-    /// <summary>
-    ///   <para>rdfs:label : maxCardinality^^xsd:string</para>
-    ///   <para>rdfs:comment : The property that determines the cardinality of a maximum cardinality restriction.^^xsd:string</para>
-    ///   <a href="http://www.w3.org/2002/07/owl#maxCardinality">owl:maxCardinality</a>
-    /// </summary>
-    let maxCardinality = _prefixId.prefix "maxCardinality"
-    /// <summary>
-    ///   <para>rdfs:label : maxQualifiedCardinality^^xsd:string</para>
-    ///   <para>rdfs:comment : The property that determines the cardinality of a maximum qualified cardinality restriction.^^xsd:string</para>
-    ///   <a href="http://www.w3.org/2002/07/owl#maxQualifiedCardinality">owl:maxQualifiedCardinality</a>
-    /// </summary>
-    let maxQualifiedCardinality = _prefixId.prefix "maxQualifiedCardinality"
-    /// <summary>
-    ///   <para>rdfs:label : members^^xsd:string</para>
-    ///   <para>rdfs:comment : The property that determines the collection of members in either a owl:AllDifferent, owl:AllDisjointClasses or owl:AllDisjointProperties axiom.^^xsd:string</para>
-    ///   <a href="http://www.w3.org/2002/07/owl#members">owl:members</a>
-    /// </summary>
-    let members = _prefixId.prefix "members"
-    /// <summary>
-    ///   <para>rdfs:label : minCardinality^^xsd:string</para>
-    ///   <para>rdfs:comment : The property that determines the cardinality of a minimum cardinality restriction.^^xsd:string</para>
-    ///   <a href="http://www.w3.org/2002/07/owl#minCardinality">owl:minCardinality</a>
-    /// </summary>
-    let minCardinality = _prefixId.prefix "minCardinality"
-    /// <summary>
-    ///   <para>rdfs:label : minQualifiedCardinality^^xsd:string</para>
-    ///   <para>rdfs:comment : The property that determines the cardinality of a minimum qualified cardinality restriction.^^xsd:string</para>
-    ///   <a href="http://www.w3.org/2002/07/owl#minQualifiedCardinality">owl:minQualifiedCardinality</a>
-    /// </summary>
-    let minQualifiedCardinality = _prefixId.prefix "minQualifiedCardinality"
-    /// <summary>
-    ///   <para>rdfs:label : onClass^^xsd:string</para>
-    ///   <para>rdfs:comment : The property that determines the class that a qualified object cardinality restriction refers to.^^xsd:string</para>
-    ///   <a href="http://www.w3.org/2002/07/owl#onClass">owl:onClass</a>
-    /// </summary>
-    let onClass = _prefixId.prefix "onClass"
-    /// <summary>
-    ///   <para>rdfs:label : onDataRange^^xsd:string</para>
-    ///   <para>rdfs:comment : The property that determines the data range that a qualified data cardinality restriction refers to.^^xsd:string</para>
-    ///   <a href="http://www.w3.org/2002/07/owl#onDataRange">owl:onDataRange</a>
-    /// </summary>
-    let onDataRange = _prefixId.prefix "onDataRange"
-    /// <summary>
-    ///   <para>rdfs:label : onDatatype^^xsd:string</para>
-    ///   <para>rdfs:comment : The property that determines the datatype that a datatype restriction refers to.^^xsd:string</para>
-    ///   <a href="http://www.w3.org/2002/07/owl#onDatatype">owl:onDatatype</a>
-    /// </summary>
-    let onDatatype = _prefixId.prefix "onDatatype"
-    /// <summary>
-    ///   <para>rdfs:label : onProperties^^xsd:string</para>
-    ///   <para>rdfs:comment : The property that determines the n-tuple of properties that a property restriction on an n-ary data range refers to.^^xsd:string</para>
-    ///   <a href="http://www.w3.org/2002/07/owl#onProperties">owl:onProperties</a>
-    /// </summary>
-    let onProperties = _prefixId.prefix "onProperties"
-    /// <summary>
-    ///   <para>rdfs:label : onProperty^^xsd:string</para>
-    ///   <para>rdfs:comment : The property that determines the property that a property restriction refers to.^^xsd:string</para>
-    ///   <a href="http://www.w3.org/2002/07/owl#onProperty">owl:onProperty</a>
-    /// </summary>
-    let onProperty = _prefixId.prefix "onProperty"
-    /// <summary>
-    ///   <para>rdfs:label : oneOf^^xsd:string</para>
-    ///   <para>rdfs:comment : The property that determines the collection of individuals or data values that build an enumeration.^^xsd:string</para>
-    ///   <a href="http://www.w3.org/2002/07/owl#oneOf">owl:oneOf</a>
-    /// </summary>
-    let oneOf = _prefixId.prefix "oneOf"
-    /// <summary>
-    ///   <para>rdfs:label : priorVersion^^xsd:string</para>
-    ///   <para>rdfs:comment : The annotation property that indicates the predecessor ontology of a given ontology.^^xsd:string</para>
-    ///   <a href="http://www.w3.org/2002/07/owl#priorVersion">owl:priorVersion</a>
-    /// </summary>
-    let priorVersion = _prefixId.prefix "priorVersion"
-    /// <summary>
-    ///   <para>rdfs:label : propertyChainAxiom^^xsd:string</para>
-    ///   <para>rdfs:comment : The property that determines the n-tuple of properties that build a sub property chain of a given property.^^xsd:string</para>
-    ///   <a href="http://www.w3.org/2002/07/owl#propertyChainAxiom">owl:propertyChainAxiom</a>
-    /// </summary>
-    let propertyChainAxiom = _prefixId.prefix "propertyChainAxiom"
-    /// <summary>
-    ///   <para>rdfs:label : propertyDisjointWith^^xsd:string</para>
-    ///   <para>rdfs:comment : The property that determines that two given properties are disjoint.^^xsd:string</para>
-    ///   <a href="http://www.w3.org/2002/07/owl#propertyDisjointWith">owl:propertyDisjointWith</a>
-    /// </summary>
-    let propertyDisjointWith = _prefixId.prefix "propertyDisjointWith"
-    /// <summary>
-    ///   <para>rdfs:label : qualifiedCardinality^^xsd:string</para>
-    ///   <para>rdfs:comment : The property that determines the cardinality of an exact qualified cardinality restriction.^^xsd:string</para>
-    ///   <a href="http://www.w3.org/2002/07/owl#qualifiedCardinality">owl:qualifiedCardinality</a>
-    /// </summary>
-    let qualifiedCardinality = _prefixId.prefix "qualifiedCardinality"
-    /// <summary>
-    ///   <para>rdfs:label : sameAs^^xsd:string</para>
-    ///   <para>rdfs:comment : The property that determines that two given individuals are equal.^^xsd:string</para>
-    ///   <a href="http://www.w3.org/2002/07/owl#sameAs">owl:sameAs</a>
-    /// </summary>
-    let sameAs = _prefixId.prefix "sameAs"
-    /// <summary>
-    ///   <para>rdfs:label : someValuesFrom^^xsd:string</para>
-    ///   <para>rdfs:comment : The property that determines the class that an existential property restriction refers to.^^xsd:string</para>
-    ///   <a href="http://www.w3.org/2002/07/owl#someValuesFrom">owl:someValuesFrom</a>
-    /// </summary>
-    let someValuesFrom = _prefixId.prefix "someValuesFrom"
-    /// <summary>
-    ///   <para>rdfs:label : sourceIndividual^^xsd:string</para>
-    ///   <para>rdfs:comment : The property that determines the subject of a negative property assertion.^^xsd:string</para>
-    ///   <a href="http://www.w3.org/2002/07/owl#sourceIndividual">owl:sourceIndividual</a>
-    /// </summary>
-    let sourceIndividual = _prefixId.prefix "sourceIndividual"
-    /// <summary>
-    ///   <para>rdfs:label : targetIndividual^^xsd:string</para>
-    ///   <para>rdfs:comment : The property that determines the object of a negative object property assertion.^^xsd:string</para>
-    ///   <a href="http://www.w3.org/2002/07/owl#targetIndividual">owl:targetIndividual</a>
-    /// </summary>
-    let targetIndividual = _prefixId.prefix "targetIndividual"
-    /// <summary>
-    ///   <para>rdfs:label : targetValue^^xsd:string</para>
-    ///   <para>rdfs:comment : The property that determines the value of a negative data property assertion.^^xsd:string</para>
-    ///   <a href="http://www.w3.org/2002/07/owl#targetValue">owl:targetValue</a>
-    /// </summary>
-    let targetValue = _prefixId.prefix "targetValue"
-    /// <summary>
-    ///   <para>rdfs:label : topDataProperty^^xsd:string</para>
-    ///   <para>rdfs:comment : The data property that relates every individual to every data value.^^xsd:string</para>
-    ///   <a href="http://www.w3.org/2002/07/owl#topDataProperty">owl:topDataProperty</a>
-    /// </summary>
-    let topDataProperty = _prefixId.prefix "topDataProperty"
-    /// <summary>
-    ///   <para>rdfs:label : topObjectProperty^^xsd:string</para>
-    ///   <para>rdfs:comment : The object property that relates every two individuals.^^xsd:string</para>
-    ///   <a href="http://www.w3.org/2002/07/owl#topObjectProperty">owl:topObjectProperty</a>
-    /// </summary>
-    let topObjectProperty = _prefixId.prefix "topObjectProperty"
-    /// <summary>
-    ///   <para>rdfs:label : unionOf^^xsd:string</para>
-    ///   <para>rdfs:comment : The property that determines the collection of classes or data ranges that build a union.^^xsd:string</para>
-    ///   <a href="http://www.w3.org/2002/07/owl#unionOf">owl:unionOf</a>
-    /// </summary>
-    let unionOf = _prefixId.prefix "unionOf"
-    let versionIRI = _prefixId.prefix "versionIRI"
-    /// <summary>
-    ///   <para>rdfs:label : versionInfo^^xsd:string</para>
-    ///   <para>rdfs:comment : The annotation property that provides version information for an ontology or another OWL construct.^^xsd:string</para>
-    ///   <a href="http://www.w3.org/2002/07/owl#versionInfo">owl:versionInfo</a>
-    /// </summary>
-    let versionInfo = _prefixId.prefix "versionInfo"
-    /// <summary>
-    ///   <para>rdfs:label : withRestrictions^^xsd:string</para>
-    ///   <para>rdfs:comment : The property that determines the collection of facet-value pairs that define a datatype restriction.^^xsd:string</para>
-    ///   <a href="http://www.w3.org/2002/07/owl#withRestrictions">owl:withRestrictions</a>
-    /// </summary>
-    let withRestrictions = _prefixId.prefix "withRestrictions"
+    let _namespace = NamedReference "http://www.w3.org/2002/07/owl#" |> NamespaceName
+    let _rdfType = NamedReference "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+
+    let _owlNamedIndividual =
+        NamedReference "http://www.w3.org/2002/07/owl#NamedIndividual"
+
+    module DatatypeProperty =
+        let Class = _namespace.prefixedName "DatatypeProperty"
+
+        type Interface =
+            abstract iri: NamedReference
+            abstract formula: Formula
+            abstract asSubject: RdfSubject
+            abstract asPredicate: RdfPredicate
+            abstract asObject: RdfObject
+            abstract equivalentProperty: Formula
+            abstract propertyDisjointWith: Formula
+
+        type Instance(iri: NamedReference) =
+            let _formula =
+                Formula.fromRdfSubject iri.asSubject
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject Class.asObject)
+                |> Formula.materializeFormula
+
+            member this.iri = iri
+            member this.formula = _formula
+            member this.asSubject = iri.asSubject
+            member this.asPredicate = iri.asPredicate
+            member this.asObject = iri.asObject
+
+            member this.equivalentProperty =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "equivalentProperty").asPredicate)
+
+            member this.propertyDisjointWith =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "propertyDisjointWith").asPredicate)
+
+            interface Interface with
+                member this.iri = iri
+                member this.formula = _formula
+                member this.asSubject = iri.asSubject
+                member this.asPredicate = iri.asPredicate
+                member this.asObject = iri.asObject
+
+                member this.equivalentProperty =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "equivalentProperty").asPredicate)
+
+                member this.propertyDisjointWith =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "propertyDisjointWith").asPredicate)
+
+        type NamedIndividual(iri: NamedReference) =
+            let _formula =
+                Formula.fromRdfSubject iri.asSubject
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject Class.asObject)
+                |> Formula.materializeFormula
+                |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject _owlNamedIndividual.asObject)
+                |> Formula.materializeFormula
+
+            member this.iri = iri
+            member this.formula = _formula
+            member this.asSubject = iri.asSubject
+            member this.asPredicate = iri.asPredicate
+            member this.asObject = iri.asObject
+
+            member this.equivalentProperty =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "equivalentProperty").asPredicate)
+
+            member this.propertyDisjointWith =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "propertyDisjointWith").asPredicate)
+
+            interface Interface with
+                member this.iri = iri
+                member this.formula = _formula
+                member this.asSubject = iri.asSubject
+                member this.asPredicate = iri.asPredicate
+                member this.asObject = iri.asObject
+
+                member this.equivalentProperty =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "equivalentProperty").asPredicate)
+
+                member this.propertyDisjointWith =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "propertyDisjointWith").asPredicate)
+
+    module DeprecatedProperty =
+        let Class = _namespace.prefixedName "DeprecatedProperty"
+
+        type Interface =
+            abstract iri: NamedReference
+            abstract formula: Formula
+            abstract asSubject: RdfSubject
+            abstract asPredicate: RdfPredicate
+            abstract asObject: RdfObject
+            abstract equivalentProperty: Formula
+            abstract propertyDisjointWith: Formula
+
+        type Instance(iri: NamedReference) =
+            let _formula =
+                Formula.fromRdfSubject iri.asSubject
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject Class.asObject)
+                |> Formula.materializeFormula
+
+            member this.iri = iri
+            member this.formula = _formula
+            member this.asSubject = iri.asSubject
+            member this.asPredicate = iri.asPredicate
+            member this.asObject = iri.asObject
+
+            member this.equivalentProperty =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "equivalentProperty").asPredicate)
+
+            member this.propertyDisjointWith =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "propertyDisjointWith").asPredicate)
+
+            interface Interface with
+                member this.iri = iri
+                member this.formula = _formula
+                member this.asSubject = iri.asSubject
+                member this.asPredicate = iri.asPredicate
+                member this.asObject = iri.asObject
+
+                member this.equivalentProperty =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "equivalentProperty").asPredicate)
+
+                member this.propertyDisjointWith =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "propertyDisjointWith").asPredicate)
+
+        type NamedIndividual(iri: NamedReference) =
+            let _formula =
+                Formula.fromRdfSubject iri.asSubject
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject Class.asObject)
+                |> Formula.materializeFormula
+                |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject _owlNamedIndividual.asObject)
+                |> Formula.materializeFormula
+
+            member this.iri = iri
+            member this.formula = _formula
+            member this.asSubject = iri.asSubject
+            member this.asPredicate = iri.asPredicate
+            member this.asObject = iri.asObject
+
+            member this.equivalentProperty =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "equivalentProperty").asPredicate)
+
+            member this.propertyDisjointWith =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "propertyDisjointWith").asPredicate)
+
+            interface Interface with
+                member this.iri = iri
+                member this.formula = _formula
+                member this.asSubject = iri.asSubject
+                member this.asPredicate = iri.asPredicate
+                member this.asObject = iri.asObject
+
+                member this.equivalentProperty =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "equivalentProperty").asPredicate)
+
+                member this.propertyDisjointWith =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "propertyDisjointWith").asPredicate)
+
+    module AnnotationProperty =
+        let Class = _namespace.prefixedName "AnnotationProperty"
+
+        type Interface =
+            abstract iri: NamedReference
+            abstract formula: Formula
+            abstract asSubject: RdfSubject
+            abstract asPredicate: RdfPredicate
+            abstract asObject: RdfObject
+            abstract equivalentProperty: Formula
+            abstract propertyDisjointWith: Formula
+
+        type Instance(iri: NamedReference) =
+            let _formula =
+                Formula.fromRdfSubject iri.asSubject
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject Class.asObject)
+                |> Formula.materializeFormula
+
+            member this.iri = iri
+            member this.formula = _formula
+            member this.asSubject = iri.asSubject
+            member this.asPredicate = iri.asPredicate
+            member this.asObject = iri.asObject
+
+            member this.equivalentProperty =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "equivalentProperty").asPredicate)
+
+            member this.propertyDisjointWith =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "propertyDisjointWith").asPredicate)
+
+            interface Interface with
+                member this.iri = iri
+                member this.formula = _formula
+                member this.asSubject = iri.asSubject
+                member this.asPredicate = iri.asPredicate
+                member this.asObject = iri.asObject
+
+                member this.equivalentProperty =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "equivalentProperty").asPredicate)
+
+                member this.propertyDisjointWith =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "propertyDisjointWith").asPredicate)
+
+        type NamedIndividual(iri: NamedReference) =
+            let _formula =
+                Formula.fromRdfSubject iri.asSubject
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject Class.asObject)
+                |> Formula.materializeFormula
+                |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject _owlNamedIndividual.asObject)
+                |> Formula.materializeFormula
+
+            member this.iri = iri
+            member this.formula = _formula
+            member this.asSubject = iri.asSubject
+            member this.asPredicate = iri.asPredicate
+            member this.asObject = iri.asObject
+
+            member this.equivalentProperty =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "equivalentProperty").asPredicate)
+
+            member this.propertyDisjointWith =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "propertyDisjointWith").asPredicate)
+
+            interface Interface with
+                member this.iri = iri
+                member this.formula = _formula
+                member this.asSubject = iri.asSubject
+                member this.asPredicate = iri.asPredicate
+                member this.asObject = iri.asObject
+
+                member this.equivalentProperty =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "equivalentProperty").asPredicate)
+
+                member this.propertyDisjointWith =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "propertyDisjointWith").asPredicate)
+
+    let imports = _namespace.prefixedName "imports"
+
+    module Ontology =
+        let Class = _namespace.prefixedName "Ontology"
+
+        type Interface =
+            abstract iri: NamedReference
+            abstract formula: Formula
+            abstract asSubject: RdfSubject
+            abstract asPredicate: RdfPredicate
+            abstract asObject: RdfObject
+            abstract annotatedProperty: Formula
+            abstract annotatedSource: Formula
+            abstract annotatedTarget: Formula
+            abstract backwardCompatibleWith: Formula
+            abstract deprecated: Formula
+            abstract imports: Formula
+            abstract incompatibleWith: Formula
+            abstract members: Formula
+            abstract priorVersion: Formula
+            abstract versionIRI: Formula
+            abstract versionInfo: Formula
+
+        type Instance(iri: NamedReference) =
+            let _formula =
+                Formula.fromRdfSubject iri.asSubject
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject Class.asObject)
+                |> Formula.materializeFormula
+
+            member this.iri = iri
+            member this.formula = _formula
+            member this.asSubject = iri.asSubject
+            member this.asPredicate = iri.asPredicate
+            member this.asObject = iri.asObject
+
+            member this.annotatedProperty =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "annotatedProperty").asPredicate)
+
+            member this.annotatedSource =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "annotatedSource").asPredicate)
+
+            member this.annotatedTarget =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "annotatedTarget").asPredicate)
+
+            member this.backwardCompatibleWith =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "backwardCompatibleWith").asPredicate)
+
+            member this.deprecated =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "deprecated").asPredicate)
+
+            member this.imports =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "imports").asPredicate)
+
+            member this.incompatibleWith =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "incompatibleWith").asPredicate)
+
+            member this.members =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "members").asPredicate)
+
+            member this.priorVersion =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "priorVersion").asPredicate)
+
+            member this.versionIRI =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "versionIRI").asPredicate)
+
+            member this.versionInfo =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "versionInfo").asPredicate)
+
+            interface Interface with
+                member this.iri = iri
+                member this.formula = _formula
+                member this.asSubject = iri.asSubject
+                member this.asPredicate = iri.asPredicate
+                member this.asObject = iri.asObject
+
+                member this.annotatedProperty =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "annotatedProperty").asPredicate)
+
+                member this.annotatedSource =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "annotatedSource").asPredicate)
+
+                member this.annotatedTarget =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "annotatedTarget").asPredicate)
+
+                member this.backwardCompatibleWith =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft ->
+                        draft.addRdfPredicate (_namespace.prefixedName "backwardCompatibleWith").asPredicate)
+
+                member this.deprecated =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "deprecated").asPredicate)
+
+                member this.imports =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "imports").asPredicate)
+
+                member this.incompatibleWith =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "incompatibleWith").asPredicate)
+
+                member this.members =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "members").asPredicate)
+
+                member this.priorVersion =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "priorVersion").asPredicate)
+
+                member this.versionIRI =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "versionIRI").asPredicate)
+
+                member this.versionInfo =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "versionInfo").asPredicate)
+
+        type NamedIndividual(iri: NamedReference) =
+            let _formula =
+                Formula.fromRdfSubject iri.asSubject
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject Class.asObject)
+                |> Formula.materializeFormula
+                |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject _owlNamedIndividual.asObject)
+                |> Formula.materializeFormula
+
+            member this.iri = iri
+            member this.formula = _formula
+            member this.asSubject = iri.asSubject
+            member this.asPredicate = iri.asPredicate
+            member this.asObject = iri.asObject
+
+            member this.annotatedProperty =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "annotatedProperty").asPredicate)
+
+            member this.annotatedSource =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "annotatedSource").asPredicate)
+
+            member this.annotatedTarget =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "annotatedTarget").asPredicate)
+
+            member this.backwardCompatibleWith =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "backwardCompatibleWith").asPredicate)
+
+            member this.deprecated =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "deprecated").asPredicate)
+
+            member this.imports =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "imports").asPredicate)
+
+            member this.incompatibleWith =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "incompatibleWith").asPredicate)
+
+            member this.members =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "members").asPredicate)
+
+            member this.priorVersion =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "priorVersion").asPredicate)
+
+            member this.versionIRI =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "versionIRI").asPredicate)
+
+            member this.versionInfo =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "versionInfo").asPredicate)
+
+            interface Interface with
+                member this.iri = iri
+                member this.formula = _formula
+                member this.asSubject = iri.asSubject
+                member this.asPredicate = iri.asPredicate
+                member this.asObject = iri.asObject
+
+                member this.annotatedProperty =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "annotatedProperty").asPredicate)
+
+                member this.annotatedSource =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "annotatedSource").asPredicate)
+
+                member this.annotatedTarget =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "annotatedTarget").asPredicate)
+
+                member this.backwardCompatibleWith =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft ->
+                        draft.addRdfPredicate (_namespace.prefixedName "backwardCompatibleWith").asPredicate)
+
+                member this.deprecated =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "deprecated").asPredicate)
+
+                member this.imports =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "imports").asPredicate)
+
+                member this.incompatibleWith =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "incompatibleWith").asPredicate)
+
+                member this.members =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "members").asPredicate)
+
+                member this.priorVersion =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "priorVersion").asPredicate)
+
+                member this.versionIRI =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "versionIRI").asPredicate)
+
+                member this.versionInfo =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "versionInfo").asPredicate)
+
+    module OntologyProperty =
+        let Class = _namespace.prefixedName "OntologyProperty"
+
+        type Interface =
+            abstract iri: NamedReference
+            abstract formula: Formula
+            abstract asSubject: RdfSubject
+            abstract asPredicate: RdfPredicate
+            abstract asObject: RdfObject
+            abstract equivalentProperty: Formula
+            abstract propertyDisjointWith: Formula
+
+        type Instance(iri: NamedReference) =
+            let _formula =
+                Formula.fromRdfSubject iri.asSubject
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject Class.asObject)
+                |> Formula.materializeFormula
+
+            member this.iri = iri
+            member this.formula = _formula
+            member this.asSubject = iri.asSubject
+            member this.asPredicate = iri.asPredicate
+            member this.asObject = iri.asObject
+
+            member this.equivalentProperty =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "equivalentProperty").asPredicate)
+
+            member this.propertyDisjointWith =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "propertyDisjointWith").asPredicate)
+
+            interface Interface with
+                member this.iri = iri
+                member this.formula = _formula
+                member this.asSubject = iri.asSubject
+                member this.asPredicate = iri.asPredicate
+                member this.asObject = iri.asObject
+
+                member this.equivalentProperty =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "equivalentProperty").asPredicate)
+
+                member this.propertyDisjointWith =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "propertyDisjointWith").asPredicate)
+
+        type NamedIndividual(iri: NamedReference) =
+            let _formula =
+                Formula.fromRdfSubject iri.asSubject
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject Class.asObject)
+                |> Formula.materializeFormula
+                |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject _owlNamedIndividual.asObject)
+                |> Formula.materializeFormula
+
+            member this.iri = iri
+            member this.formula = _formula
+            member this.asSubject = iri.asSubject
+            member this.asPredicate = iri.asPredicate
+            member this.asObject = iri.asObject
+
+            member this.equivalentProperty =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "equivalentProperty").asPredicate)
+
+            member this.propertyDisjointWith =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "propertyDisjointWith").asPredicate)
+
+            interface Interface with
+                member this.iri = iri
+                member this.formula = _formula
+                member this.asSubject = iri.asSubject
+                member this.asPredicate = iri.asPredicate
+                member this.asObject = iri.asObject
+
+                member this.equivalentProperty =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "equivalentProperty").asPredicate)
+
+                member this.propertyDisjointWith =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "propertyDisjointWith").asPredicate)
+
+    module ObjectProperty =
+        let Class = _namespace.prefixedName "ObjectProperty"
+
+        type Interface =
+            abstract iri: NamedReference
+            abstract formula: Formula
+            abstract asSubject: RdfSubject
+            abstract asPredicate: RdfPredicate
+            abstract asObject: RdfObject
+            abstract equivalentProperty: Formula
+            abstract inverseOf: Formula
+            abstract propertyChainAxiom: Formula
+            abstract propertyDisjointWith: Formula
+
+        type Instance(iri: NamedReference) =
+            let _formula =
+                Formula.fromRdfSubject iri.asSubject
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject Class.asObject)
+                |> Formula.materializeFormula
+
+            member this.iri = iri
+            member this.formula = _formula
+            member this.asSubject = iri.asSubject
+            member this.asPredicate = iri.asPredicate
+            member this.asObject = iri.asObject
+
+            member this.equivalentProperty =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "equivalentProperty").asPredicate)
+
+            member this.inverseOf =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "inverseOf").asPredicate)
+
+            member this.propertyChainAxiom =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "propertyChainAxiom").asPredicate)
+
+            member this.propertyDisjointWith =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "propertyDisjointWith").asPredicate)
+
+            interface Interface with
+                member this.iri = iri
+                member this.formula = _formula
+                member this.asSubject = iri.asSubject
+                member this.asPredicate = iri.asPredicate
+                member this.asObject = iri.asObject
+
+                member this.equivalentProperty =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "equivalentProperty").asPredicate)
+
+                member this.inverseOf =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "inverseOf").asPredicate)
+
+                member this.propertyChainAxiom =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "propertyChainAxiom").asPredicate)
+
+                member this.propertyDisjointWith =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "propertyDisjointWith").asPredicate)
+
+        type NamedIndividual(iri: NamedReference) =
+            let _formula =
+                Formula.fromRdfSubject iri.asSubject
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject Class.asObject)
+                |> Formula.materializeFormula
+                |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject _owlNamedIndividual.asObject)
+                |> Formula.materializeFormula
+
+            member this.iri = iri
+            member this.formula = _formula
+            member this.asSubject = iri.asSubject
+            member this.asPredicate = iri.asPredicate
+            member this.asObject = iri.asObject
+
+            member this.equivalentProperty =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "equivalentProperty").asPredicate)
+
+            member this.inverseOf =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "inverseOf").asPredicate)
+
+            member this.propertyChainAxiom =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "propertyChainAxiom").asPredicate)
+
+            member this.propertyDisjointWith =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "propertyDisjointWith").asPredicate)
+
+            interface Interface with
+                member this.iri = iri
+                member this.formula = _formula
+                member this.asSubject = iri.asSubject
+                member this.asPredicate = iri.asPredicate
+                member this.asObject = iri.asObject
+
+                member this.equivalentProperty =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "equivalentProperty").asPredicate)
+
+                member this.inverseOf =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "inverseOf").asPredicate)
+
+                member this.propertyChainAxiom =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "propertyChainAxiom").asPredicate)
+
+                member this.propertyDisjointWith =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "propertyDisjointWith").asPredicate)
+
+    let intersectionOf = _namespace.prefixedName "intersectionOf"
+    let annotatedSource = _namespace.prefixedName "annotatedSource"
+    let backwardCompatibleWith = _namespace.prefixedName "backwardCompatibleWith"
+    let annotatedTarget = _namespace.prefixedName "annotatedTarget"
+    let onProperty = _namespace.prefixedName "onProperty"
+
+    module Restriction =
+        let Class = _namespace.prefixedName "Restriction"
+
+        type Interface =
+            abstract iri: NamedReference
+            abstract formula: Formula
+            abstract asSubject: RdfSubject
+            abstract asPredicate: RdfPredicate
+            abstract asObject: RdfObject
+            abstract allValuesFrom: Formula
+            abstract cardinality: Formula
+            abstract complementOf: Formula
+            abstract disjointUnionOf: Formula
+            abstract disjointWith: Formula
+            abstract equivalentClass: Formula
+            abstract hasKey: Formula
+            abstract hasSelf: Formula
+            abstract hasValue: Formula
+            abstract intersectionOf: Formula
+            abstract maxCardinality: Formula
+            abstract maxQualifiedCardinality: Formula
+            abstract minCardinality: Formula
+            abstract minQualifiedCardinality: Formula
+            abstract onClass: Formula
+            abstract onDataRange: Formula
+            abstract onProperties: Formula
+            abstract onProperty: Formula
+            abstract oneOf: Formula
+            abstract qualifiedCardinality: Formula
+            abstract someValuesFrom: Formula
+            abstract unionOf: Formula
+
+        type Instance(iri: NamedReference) =
+            let _formula =
+                Formula.fromRdfSubject iri.asSubject
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject Class.asObject)
+                |> Formula.materializeFormula
+
+            member this.iri = iri
+            member this.formula = _formula
+            member this.asSubject = iri.asSubject
+            member this.asPredicate = iri.asPredicate
+            member this.asObject = iri.asObject
+
+            member this.allValuesFrom =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "allValuesFrom").asPredicate)
+
+            member this.cardinality =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "cardinality").asPredicate)
+
+            member this.complementOf =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "complementOf").asPredicate)
+
+            member this.disjointUnionOf =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "disjointUnionOf").asPredicate)
+
+            member this.disjointWith =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "disjointWith").asPredicate)
+
+            member this.equivalentClass =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "equivalentClass").asPredicate)
+
+            member this.hasKey =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "hasKey").asPredicate)
+
+            member this.hasSelf =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "hasSelf").asPredicate)
+
+            member this.hasValue =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "hasValue").asPredicate)
+
+            member this.intersectionOf =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "intersectionOf").asPredicate)
+
+            member this.maxCardinality =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "maxCardinality").asPredicate)
+
+            member this.maxQualifiedCardinality =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "maxQualifiedCardinality").asPredicate)
+
+            member this.minCardinality =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "minCardinality").asPredicate)
+
+            member this.minQualifiedCardinality =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "minQualifiedCardinality").asPredicate)
+
+            member this.onClass =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "onClass").asPredicate)
+
+            member this.onDataRange =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "onDataRange").asPredicate)
+
+            member this.onProperties =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "onProperties").asPredicate)
+
+            member this.onProperty =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "onProperty").asPredicate)
+
+            member this.oneOf =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "oneOf").asPredicate)
+
+            member this.qualifiedCardinality =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "qualifiedCardinality").asPredicate)
+
+            member this.someValuesFrom =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "someValuesFrom").asPredicate)
+
+            member this.unionOf =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "unionOf").asPredicate)
+
+            interface Interface with
+                member this.iri = iri
+                member this.formula = _formula
+                member this.asSubject = iri.asSubject
+                member this.asPredicate = iri.asPredicate
+                member this.asObject = iri.asObject
+
+                member this.allValuesFrom =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "allValuesFrom").asPredicate)
+
+                member this.cardinality =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "cardinality").asPredicate)
+
+                member this.complementOf =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "complementOf").asPredicate)
+
+                member this.disjointUnionOf =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "disjointUnionOf").asPredicate)
+
+                member this.disjointWith =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "disjointWith").asPredicate)
+
+                member this.equivalentClass =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "equivalentClass").asPredicate)
+
+                member this.hasKey =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "hasKey").asPredicate)
+
+                member this.hasSelf =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "hasSelf").asPredicate)
+
+                member this.hasValue =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "hasValue").asPredicate)
+
+                member this.intersectionOf =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "intersectionOf").asPredicate)
+
+                member this.maxCardinality =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "maxCardinality").asPredicate)
+
+                member this.maxQualifiedCardinality =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft ->
+                        draft.addRdfPredicate (_namespace.prefixedName "maxQualifiedCardinality").asPredicate)
+
+                member this.minCardinality =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "minCardinality").asPredicate)
+
+                member this.minQualifiedCardinality =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft ->
+                        draft.addRdfPredicate (_namespace.prefixedName "minQualifiedCardinality").asPredicate)
+
+                member this.onClass =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "onClass").asPredicate)
+
+                member this.onDataRange =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "onDataRange").asPredicate)
+
+                member this.onProperties =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "onProperties").asPredicate)
+
+                member this.onProperty =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "onProperty").asPredicate)
+
+                member this.oneOf =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "oneOf").asPredicate)
+
+                member this.qualifiedCardinality =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "qualifiedCardinality").asPredicate)
+
+                member this.someValuesFrom =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "someValuesFrom").asPredicate)
+
+                member this.unionOf =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "unionOf").asPredicate)
+
+        type NamedIndividual(iri: NamedReference) =
+            let _formula =
+                Formula.fromRdfSubject iri.asSubject
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject Class.asObject)
+                |> Formula.materializeFormula
+                |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject _owlNamedIndividual.asObject)
+                |> Formula.materializeFormula
+
+            member this.iri = iri
+            member this.formula = _formula
+            member this.asSubject = iri.asSubject
+            member this.asPredicate = iri.asPredicate
+            member this.asObject = iri.asObject
+
+            member this.allValuesFrom =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "allValuesFrom").asPredicate)
+
+            member this.cardinality =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "cardinality").asPredicate)
+
+            member this.complementOf =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "complementOf").asPredicate)
+
+            member this.disjointUnionOf =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "disjointUnionOf").asPredicate)
+
+            member this.disjointWith =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "disjointWith").asPredicate)
+
+            member this.equivalentClass =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "equivalentClass").asPredicate)
+
+            member this.hasKey =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "hasKey").asPredicate)
+
+            member this.hasSelf =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "hasSelf").asPredicate)
+
+            member this.hasValue =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "hasValue").asPredicate)
+
+            member this.intersectionOf =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "intersectionOf").asPredicate)
+
+            member this.maxCardinality =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "maxCardinality").asPredicate)
+
+            member this.maxQualifiedCardinality =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "maxQualifiedCardinality").asPredicate)
+
+            member this.minCardinality =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "minCardinality").asPredicate)
+
+            member this.minQualifiedCardinality =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "minQualifiedCardinality").asPredicate)
+
+            member this.onClass =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "onClass").asPredicate)
+
+            member this.onDataRange =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "onDataRange").asPredicate)
+
+            member this.onProperties =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "onProperties").asPredicate)
+
+            member this.onProperty =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "onProperty").asPredicate)
+
+            member this.oneOf =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "oneOf").asPredicate)
+
+            member this.qualifiedCardinality =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "qualifiedCardinality").asPredicate)
+
+            member this.someValuesFrom =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "someValuesFrom").asPredicate)
+
+            member this.unionOf =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "unionOf").asPredicate)
+
+            interface Interface with
+                member this.iri = iri
+                member this.formula = _formula
+                member this.asSubject = iri.asSubject
+                member this.asPredicate = iri.asPredicate
+                member this.asObject = iri.asObject
+
+                member this.allValuesFrom =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "allValuesFrom").asPredicate)
+
+                member this.cardinality =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "cardinality").asPredicate)
+
+                member this.complementOf =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "complementOf").asPredicate)
+
+                member this.disjointUnionOf =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "disjointUnionOf").asPredicate)
+
+                member this.disjointWith =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "disjointWith").asPredicate)
+
+                member this.equivalentClass =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "equivalentClass").asPredicate)
+
+                member this.hasKey =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "hasKey").asPredicate)
+
+                member this.hasSelf =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "hasSelf").asPredicate)
+
+                member this.hasValue =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "hasValue").asPredicate)
+
+                member this.intersectionOf =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "intersectionOf").asPredicate)
+
+                member this.maxCardinality =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "maxCardinality").asPredicate)
+
+                member this.maxQualifiedCardinality =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft ->
+                        draft.addRdfPredicate (_namespace.prefixedName "maxQualifiedCardinality").asPredicate)
+
+                member this.minCardinality =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "minCardinality").asPredicate)
+
+                member this.minQualifiedCardinality =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft ->
+                        draft.addRdfPredicate (_namespace.prefixedName "minQualifiedCardinality").asPredicate)
+
+                member this.onClass =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "onClass").asPredicate)
+
+                member this.onDataRange =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "onDataRange").asPredicate)
+
+                member this.onProperties =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "onProperties").asPredicate)
+
+                member this.onProperty =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "onProperty").asPredicate)
+
+                member this.oneOf =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "oneOf").asPredicate)
+
+                member this.qualifiedCardinality =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "qualifiedCardinality").asPredicate)
+
+                member this.someValuesFrom =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "someValuesFrom").asPredicate)
+
+                member this.unionOf =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "unionOf").asPredicate)
+
+    let differentFrom = _namespace.prefixedName "differentFrom"
+
+    module Thing =
+        let Class = _namespace.prefixedName "Thing"
+
+        type Interface =
+            abstract iri: NamedReference
+            abstract formula: Formula
+            abstract asSubject: RdfSubject
+            abstract asPredicate: RdfPredicate
+            abstract asObject: RdfObject
+            abstract bottomDataProperty: Formula
+            abstract bottomObjectProperty: Formula
+            abstract differentFrom: Formula
+            abstract sameAs: Formula
+            abstract topDataProperty: Formula
+            abstract topObjectProperty: Formula
+
+        type Instance(iri: NamedReference) =
+            let _formula =
+                Formula.fromRdfSubject iri.asSubject
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject Class.asObject)
+                |> Formula.materializeFormula
+
+            member this.iri = iri
+            member this.formula = _formula
+            member this.asSubject = iri.asSubject
+            member this.asPredicate = iri.asPredicate
+            member this.asObject = iri.asObject
+
+            member this.bottomDataProperty =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "bottomDataProperty").asPredicate)
+
+            member this.bottomObjectProperty =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "bottomObjectProperty").asPredicate)
+
+            member this.differentFrom =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "differentFrom").asPredicate)
+
+            member this.sameAs =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "sameAs").asPredicate)
+
+            member this.topDataProperty =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "topDataProperty").asPredicate)
+
+            member this.topObjectProperty =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "topObjectProperty").asPredicate)
+
+            interface Interface with
+                member this.iri = iri
+                member this.formula = _formula
+                member this.asSubject = iri.asSubject
+                member this.asPredicate = iri.asPredicate
+                member this.asObject = iri.asObject
+
+                member this.bottomDataProperty =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "bottomDataProperty").asPredicate)
+
+                member this.bottomObjectProperty =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "bottomObjectProperty").asPredicate)
+
+                member this.differentFrom =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "differentFrom").asPredicate)
+
+                member this.sameAs =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "sameAs").asPredicate)
+
+                member this.topDataProperty =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "topDataProperty").asPredicate)
+
+                member this.topObjectProperty =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "topObjectProperty").asPredicate)
+
+        type NamedIndividual(iri: NamedReference) =
+            let _formula =
+                Formula.fromRdfSubject iri.asSubject
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject Class.asObject)
+                |> Formula.materializeFormula
+                |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject _owlNamedIndividual.asObject)
+                |> Formula.materializeFormula
+
+            member this.iri = iri
+            member this.formula = _formula
+            member this.asSubject = iri.asSubject
+            member this.asPredicate = iri.asPredicate
+            member this.asObject = iri.asObject
+
+            member this.bottomDataProperty =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "bottomDataProperty").asPredicate)
+
+            member this.bottomObjectProperty =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "bottomObjectProperty").asPredicate)
+
+            member this.differentFrom =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "differentFrom").asPredicate)
+
+            member this.sameAs =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "sameAs").asPredicate)
+
+            member this.topDataProperty =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "topDataProperty").asPredicate)
+
+            member this.topObjectProperty =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "topObjectProperty").asPredicate)
+
+            interface Interface with
+                member this.iri = iri
+                member this.formula = _formula
+                member this.asSubject = iri.asSubject
+                member this.asPredicate = iri.asPredicate
+                member this.asObject = iri.asObject
+
+                member this.bottomDataProperty =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "bottomDataProperty").asPredicate)
+
+                member this.bottomObjectProperty =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "bottomObjectProperty").asPredicate)
+
+                member this.differentFrom =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "differentFrom").asPredicate)
+
+                member this.sameAs =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "sameAs").asPredicate)
+
+                member this.topDataProperty =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "topDataProperty").asPredicate)
+
+                member this.topObjectProperty =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "topObjectProperty").asPredicate)
+
+    let disjointWith = _namespace.prefixedName "disjointWith"
+
+    module Class =
+        let Class = _namespace.prefixedName "Class"
+
+        type Interface =
+            abstract iri: NamedReference
+            abstract formula: Formula
+            abstract asSubject: RdfSubject
+            abstract asPredicate: RdfPredicate
+            abstract asObject: RdfObject
+            abstract complementOf: Formula
+            abstract disjointUnionOf: Formula
+            abstract disjointWith: Formula
+            abstract equivalentClass: Formula
+            abstract hasKey: Formula
+            abstract intersectionOf: Formula
+            abstract oneOf: Formula
+            abstract unionOf: Formula
+
+        type Instance(iri: NamedReference) =
+            let _formula =
+                Formula.fromRdfSubject iri.asSubject
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject Class.asObject)
+                |> Formula.materializeFormula
+
+            member this.iri = iri
+            member this.formula = _formula
+            member this.asSubject = iri.asSubject
+            member this.asPredicate = iri.asPredicate
+            member this.asObject = iri.asObject
+
+            member this.complementOf =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "complementOf").asPredicate)
+
+            member this.disjointUnionOf =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "disjointUnionOf").asPredicate)
+
+            member this.disjointWith =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "disjointWith").asPredicate)
+
+            member this.equivalentClass =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "equivalentClass").asPredicate)
+
+            member this.hasKey =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "hasKey").asPredicate)
+
+            member this.intersectionOf =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "intersectionOf").asPredicate)
+
+            member this.oneOf =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "oneOf").asPredicate)
+
+            member this.unionOf =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "unionOf").asPredicate)
+
+            interface Interface with
+                member this.iri = iri
+                member this.formula = _formula
+                member this.asSubject = iri.asSubject
+                member this.asPredicate = iri.asPredicate
+                member this.asObject = iri.asObject
+
+                member this.complementOf =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "complementOf").asPredicate)
+
+                member this.disjointUnionOf =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "disjointUnionOf").asPredicate)
+
+                member this.disjointWith =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "disjointWith").asPredicate)
+
+                member this.equivalentClass =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "equivalentClass").asPredicate)
+
+                member this.hasKey =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "hasKey").asPredicate)
+
+                member this.intersectionOf =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "intersectionOf").asPredicate)
+
+                member this.oneOf =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "oneOf").asPredicate)
+
+                member this.unionOf =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "unionOf").asPredicate)
+
+        type NamedIndividual(iri: NamedReference) =
+            let _formula =
+                Formula.fromRdfSubject iri.asSubject
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject Class.asObject)
+                |> Formula.materializeFormula
+                |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject _owlNamedIndividual.asObject)
+                |> Formula.materializeFormula
+
+            member this.iri = iri
+            member this.formula = _formula
+            member this.asSubject = iri.asSubject
+            member this.asPredicate = iri.asPredicate
+            member this.asObject = iri.asObject
+
+            member this.complementOf =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "complementOf").asPredicate)
+
+            member this.disjointUnionOf =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "disjointUnionOf").asPredicate)
+
+            member this.disjointWith =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "disjointWith").asPredicate)
+
+            member this.equivalentClass =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "equivalentClass").asPredicate)
+
+            member this.hasKey =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "hasKey").asPredicate)
+
+            member this.intersectionOf =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "intersectionOf").asPredicate)
+
+            member this.oneOf =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "oneOf").asPredicate)
+
+            member this.unionOf =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "unionOf").asPredicate)
+
+            interface Interface with
+                member this.iri = iri
+                member this.formula = _formula
+                member this.asSubject = iri.asSubject
+                member this.asPredicate = iri.asPredicate
+                member this.asObject = iri.asObject
+
+                member this.complementOf =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "complementOf").asPredicate)
+
+                member this.disjointUnionOf =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "disjointUnionOf").asPredicate)
+
+                member this.disjointWith =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "disjointWith").asPredicate)
+
+                member this.equivalentClass =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "equivalentClass").asPredicate)
+
+                member this.hasKey =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "hasKey").asPredicate)
+
+                member this.intersectionOf =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "intersectionOf").asPredicate)
+
+                member this.oneOf =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "oneOf").asPredicate)
+
+                member this.unionOf =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "unionOf").asPredicate)
+
+    module AllDisjointProperties =
+        let Class = _namespace.prefixedName "AllDisjointProperties"
+
+        type Interface =
+            abstract iri: NamedReference
+            abstract formula: Formula
+            abstract asSubject: RdfSubject
+            abstract asPredicate: RdfPredicate
+            abstract asObject: RdfObject
+            abstract annotatedProperty: Formula
+            abstract annotatedSource: Formula
+            abstract annotatedTarget: Formula
+            abstract deprecated: Formula
+            abstract members: Formula
+            abstract versionInfo: Formula
+
+        type Instance(iri: NamedReference) =
+            let _formula =
+                Formula.fromRdfSubject iri.asSubject
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject Class.asObject)
+                |> Formula.materializeFormula
+
+            member this.iri = iri
+            member this.formula = _formula
+            member this.asSubject = iri.asSubject
+            member this.asPredicate = iri.asPredicate
+            member this.asObject = iri.asObject
+
+            member this.annotatedProperty =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "annotatedProperty").asPredicate)
+
+            member this.annotatedSource =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "annotatedSource").asPredicate)
+
+            member this.annotatedTarget =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "annotatedTarget").asPredicate)
+
+            member this.deprecated =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "deprecated").asPredicate)
+
+            member this.members =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "members").asPredicate)
+
+            member this.versionInfo =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "versionInfo").asPredicate)
+
+            interface Interface with
+                member this.iri = iri
+                member this.formula = _formula
+                member this.asSubject = iri.asSubject
+                member this.asPredicate = iri.asPredicate
+                member this.asObject = iri.asObject
+
+                member this.annotatedProperty =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "annotatedProperty").asPredicate)
+
+                member this.annotatedSource =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "annotatedSource").asPredicate)
+
+                member this.annotatedTarget =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "annotatedTarget").asPredicate)
+
+                member this.deprecated =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "deprecated").asPredicate)
+
+                member this.members =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "members").asPredicate)
+
+                member this.versionInfo =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "versionInfo").asPredicate)
+
+        type NamedIndividual(iri: NamedReference) =
+            let _formula =
+                Formula.fromRdfSubject iri.asSubject
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject Class.asObject)
+                |> Formula.materializeFormula
+                |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject _owlNamedIndividual.asObject)
+                |> Formula.materializeFormula
+
+            member this.iri = iri
+            member this.formula = _formula
+            member this.asSubject = iri.asSubject
+            member this.asPredicate = iri.asPredicate
+            member this.asObject = iri.asObject
+
+            member this.annotatedProperty =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "annotatedProperty").asPredicate)
+
+            member this.annotatedSource =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "annotatedSource").asPredicate)
+
+            member this.annotatedTarget =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "annotatedTarget").asPredicate)
+
+            member this.deprecated =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "deprecated").asPredicate)
+
+            member this.members =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "members").asPredicate)
+
+            member this.versionInfo =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "versionInfo").asPredicate)
+
+            interface Interface with
+                member this.iri = iri
+                member this.formula = _formula
+                member this.asSubject = iri.asSubject
+                member this.asPredicate = iri.asPredicate
+                member this.asObject = iri.asObject
+
+                member this.annotatedProperty =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "annotatedProperty").asPredicate)
+
+                member this.annotatedSource =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "annotatedSource").asPredicate)
+
+                member this.annotatedTarget =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "annotatedTarget").asPredicate)
+
+                member this.deprecated =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "deprecated").asPredicate)
+
+                member this.members =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "members").asPredicate)
+
+                member this.versionInfo =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "versionInfo").asPredicate)
+
+    let onProperties = _namespace.prefixedName "onProperties"
+
+    module DeprecatedClass =
+        let Class = _namespace.prefixedName "DeprecatedClass"
+
+        type Interface =
+            abstract iri: NamedReference
+            abstract formula: Formula
+            abstract asSubject: RdfSubject
+            abstract asPredicate: RdfPredicate
+            abstract asObject: RdfObject
+            abstract equivalentClass: Formula
+            abstract intersectionOf: Formula
+            abstract oneOf: Formula
+            abstract unionOf: Formula
+
+        type Instance(iri: NamedReference) =
+            let _formula =
+                Formula.fromRdfSubject iri.asSubject
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject Class.asObject)
+                |> Formula.materializeFormula
+
+            member this.iri = iri
+            member this.formula = _formula
+            member this.asSubject = iri.asSubject
+            member this.asPredicate = iri.asPredicate
+            member this.asObject = iri.asObject
+
+            member this.equivalentClass =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "equivalentClass").asPredicate)
+
+            member this.intersectionOf =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "intersectionOf").asPredicate)
+
+            member this.oneOf =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "oneOf").asPredicate)
+
+            member this.unionOf =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "unionOf").asPredicate)
+
+            interface Interface with
+                member this.iri = iri
+                member this.formula = _formula
+                member this.asSubject = iri.asSubject
+                member this.asPredicate = iri.asPredicate
+                member this.asObject = iri.asObject
+
+                member this.equivalentClass =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "equivalentClass").asPredicate)
+
+                member this.intersectionOf =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "intersectionOf").asPredicate)
+
+                member this.oneOf =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "oneOf").asPredicate)
+
+                member this.unionOf =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "unionOf").asPredicate)
+
+        type NamedIndividual(iri: NamedReference) =
+            let _formula =
+                Formula.fromRdfSubject iri.asSubject
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject Class.asObject)
+                |> Formula.materializeFormula
+                |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject _owlNamedIndividual.asObject)
+                |> Formula.materializeFormula
+
+            member this.iri = iri
+            member this.formula = _formula
+            member this.asSubject = iri.asSubject
+            member this.asPredicate = iri.asPredicate
+            member this.asObject = iri.asObject
+
+            member this.equivalentClass =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "equivalentClass").asPredicate)
+
+            member this.intersectionOf =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "intersectionOf").asPredicate)
+
+            member this.oneOf =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "oneOf").asPredicate)
+
+            member this.unionOf =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "unionOf").asPredicate)
+
+            interface Interface with
+                member this.iri = iri
+                member this.formula = _formula
+                member this.asSubject = iri.asSubject
+                member this.asPredicate = iri.asPredicate
+                member this.asObject = iri.asObject
+
+                member this.equivalentClass =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "equivalentClass").asPredicate)
+
+                member this.intersectionOf =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "intersectionOf").asPredicate)
+
+                member this.oneOf =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "oneOf").asPredicate)
+
+                member this.unionOf =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "unionOf").asPredicate)
+
+    module FunctionalProperty =
+        let Class = _namespace.prefixedName "FunctionalProperty"
+
+        type Interface =
+            abstract iri: NamedReference
+            abstract formula: Formula
+            abstract asSubject: RdfSubject
+            abstract asPredicate: RdfPredicate
+            abstract asObject: RdfObject
+            abstract equivalentProperty: Formula
+            abstract propertyDisjointWith: Formula
+
+        type Instance(iri: NamedReference) =
+            let _formula =
+                Formula.fromRdfSubject iri.asSubject
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject Class.asObject)
+                |> Formula.materializeFormula
+
+            member this.iri = iri
+            member this.formula = _formula
+            member this.asSubject = iri.asSubject
+            member this.asPredicate = iri.asPredicate
+            member this.asObject = iri.asObject
+
+            member this.equivalentProperty =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "equivalentProperty").asPredicate)
+
+            member this.propertyDisjointWith =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "propertyDisjointWith").asPredicate)
+
+            interface Interface with
+                member this.iri = iri
+                member this.formula = _formula
+                member this.asSubject = iri.asSubject
+                member this.asPredicate = iri.asPredicate
+                member this.asObject = iri.asObject
+
+                member this.equivalentProperty =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "equivalentProperty").asPredicate)
+
+                member this.propertyDisjointWith =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "propertyDisjointWith").asPredicate)
+
+        type NamedIndividual(iri: NamedReference) =
+            let _formula =
+                Formula.fromRdfSubject iri.asSubject
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject Class.asObject)
+                |> Formula.materializeFormula
+                |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject _owlNamedIndividual.asObject)
+                |> Formula.materializeFormula
+
+            member this.iri = iri
+            member this.formula = _formula
+            member this.asSubject = iri.asSubject
+            member this.asPredicate = iri.asPredicate
+            member this.asObject = iri.asObject
+
+            member this.equivalentProperty =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "equivalentProperty").asPredicate)
+
+            member this.propertyDisjointWith =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "propertyDisjointWith").asPredicate)
+
+            interface Interface with
+                member this.iri = iri
+                member this.formula = _formula
+                member this.asSubject = iri.asSubject
+                member this.asPredicate = iri.asPredicate
+                member this.asObject = iri.asObject
+
+                member this.equivalentProperty =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "equivalentProperty").asPredicate)
+
+                member this.propertyDisjointWith =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "propertyDisjointWith").asPredicate)
+
+    let propertyChainAxiom = _namespace.prefixedName "propertyChainAxiom"
+
+    module SymmetricProperty =
+        let Class = _namespace.prefixedName "SymmetricProperty"
+
+        type Interface =
+            abstract iri: NamedReference
+            abstract formula: Formula
+            abstract asSubject: RdfSubject
+            abstract asPredicate: RdfPredicate
+            abstract asObject: RdfObject
+            abstract equivalentProperty: Formula
+            abstract inverseOf: Formula
+            abstract propertyChainAxiom: Formula
+            abstract propertyDisjointWith: Formula
+
+        type Instance(iri: NamedReference) =
+            let _formula =
+                Formula.fromRdfSubject iri.asSubject
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject Class.asObject)
+                |> Formula.materializeFormula
+
+            member this.iri = iri
+            member this.formula = _formula
+            member this.asSubject = iri.asSubject
+            member this.asPredicate = iri.asPredicate
+            member this.asObject = iri.asObject
+
+            member this.equivalentProperty =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "equivalentProperty").asPredicate)
+
+            member this.inverseOf =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "inverseOf").asPredicate)
+
+            member this.propertyChainAxiom =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "propertyChainAxiom").asPredicate)
+
+            member this.propertyDisjointWith =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "propertyDisjointWith").asPredicate)
+
+            interface Interface with
+                member this.iri = iri
+                member this.formula = _formula
+                member this.asSubject = iri.asSubject
+                member this.asPredicate = iri.asPredicate
+                member this.asObject = iri.asObject
+
+                member this.equivalentProperty =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "equivalentProperty").asPredicate)
+
+                member this.inverseOf =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "inverseOf").asPredicate)
+
+                member this.propertyChainAxiom =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "propertyChainAxiom").asPredicate)
+
+                member this.propertyDisjointWith =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "propertyDisjointWith").asPredicate)
+
+        type NamedIndividual(iri: NamedReference) =
+            let _formula =
+                Formula.fromRdfSubject iri.asSubject
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject Class.asObject)
+                |> Formula.materializeFormula
+                |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject _owlNamedIndividual.asObject)
+                |> Formula.materializeFormula
+
+            member this.iri = iri
+            member this.formula = _formula
+            member this.asSubject = iri.asSubject
+            member this.asPredicate = iri.asPredicate
+            member this.asObject = iri.asObject
+
+            member this.equivalentProperty =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "equivalentProperty").asPredicate)
+
+            member this.inverseOf =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "inverseOf").asPredicate)
+
+            member this.propertyChainAxiom =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "propertyChainAxiom").asPredicate)
+
+            member this.propertyDisjointWith =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "propertyDisjointWith").asPredicate)
+
+            interface Interface with
+                member this.iri = iri
+                member this.formula = _formula
+                member this.asSubject = iri.asSubject
+                member this.asPredicate = iri.asPredicate
+                member this.asObject = iri.asObject
+
+                member this.equivalentProperty =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "equivalentProperty").asPredicate)
+
+                member this.inverseOf =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "inverseOf").asPredicate)
+
+                member this.propertyChainAxiom =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "propertyChainAxiom").asPredicate)
+
+                member this.propertyDisjointWith =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "propertyDisjointWith").asPredicate)
+
+    module NamedIndividual =
+        let Class = _namespace.prefixedName "NamedIndividual"
+
+        type Interface =
+            abstract iri: NamedReference
+            abstract formula: Formula
+            abstract asSubject: RdfSubject
+            abstract asPredicate: RdfPredicate
+            abstract asObject: RdfObject
+            abstract bottomDataProperty: Formula
+            abstract bottomObjectProperty: Formula
+            abstract differentFrom: Formula
+            abstract sameAs: Formula
+            abstract topDataProperty: Formula
+            abstract topObjectProperty: Formula
+
+        type Instance(iri: NamedReference) =
+            let _formula =
+                Formula.fromRdfSubject iri.asSubject
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject Class.asObject)
+                |> Formula.materializeFormula
+
+            member this.iri = iri
+            member this.formula = _formula
+            member this.asSubject = iri.asSubject
+            member this.asPredicate = iri.asPredicate
+            member this.asObject = iri.asObject
+
+            member this.bottomDataProperty =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "bottomDataProperty").asPredicate)
+
+            member this.bottomObjectProperty =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "bottomObjectProperty").asPredicate)
+
+            member this.differentFrom =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "differentFrom").asPredicate)
+
+            member this.sameAs =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "sameAs").asPredicate)
+
+            member this.topDataProperty =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "topDataProperty").asPredicate)
+
+            member this.topObjectProperty =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "topObjectProperty").asPredicate)
+
+            interface Interface with
+                member this.iri = iri
+                member this.formula = _formula
+                member this.asSubject = iri.asSubject
+                member this.asPredicate = iri.asPredicate
+                member this.asObject = iri.asObject
+
+                member this.bottomDataProperty =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "bottomDataProperty").asPredicate)
+
+                member this.bottomObjectProperty =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "bottomObjectProperty").asPredicate)
+
+                member this.differentFrom =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "differentFrom").asPredicate)
+
+                member this.sameAs =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "sameAs").asPredicate)
+
+                member this.topDataProperty =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "topDataProperty").asPredicate)
+
+                member this.topObjectProperty =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "topObjectProperty").asPredicate)
+
+        type NamedIndividual(iri: NamedReference) =
+            let _formula =
+                Formula.fromRdfSubject iri.asSubject
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject Class.asObject)
+                |> Formula.materializeFormula
+                |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject _owlNamedIndividual.asObject)
+                |> Formula.materializeFormula
+
+            member this.iri = iri
+            member this.formula = _formula
+            member this.asSubject = iri.asSubject
+            member this.asPredicate = iri.asPredicate
+            member this.asObject = iri.asObject
+
+            member this.bottomDataProperty =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "bottomDataProperty").asPredicate)
+
+            member this.bottomObjectProperty =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "bottomObjectProperty").asPredicate)
+
+            member this.differentFrom =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "differentFrom").asPredicate)
+
+            member this.sameAs =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "sameAs").asPredicate)
+
+            member this.topDataProperty =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "topDataProperty").asPredicate)
+
+            member this.topObjectProperty =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "topObjectProperty").asPredicate)
+
+            interface Interface with
+                member this.iri = iri
+                member this.formula = _formula
+                member this.asSubject = iri.asSubject
+                member this.asPredicate = iri.asPredicate
+                member this.asObject = iri.asObject
+
+                member this.bottomDataProperty =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "bottomDataProperty").asPredicate)
+
+                member this.bottomObjectProperty =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "bottomObjectProperty").asPredicate)
+
+                member this.differentFrom =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "differentFrom").asPredicate)
+
+                member this.sameAs =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "sameAs").asPredicate)
+
+                member this.topDataProperty =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "topDataProperty").asPredicate)
+
+                member this.topObjectProperty =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "topObjectProperty").asPredicate)
+
+    let maxCardinality = _namespace.prefixedName "maxCardinality"
+    let inverseOf = _namespace.prefixedName "inverseOf"
+    let sameAs = _namespace.prefixedName "sameAs"
+    let allValuesFrom = _namespace.prefixedName "allValuesFrom"
+    let complementOf = _namespace.prefixedName "complementOf"
+    let propertyDisjointWith = _namespace.prefixedName "propertyDisjointWith"
+
+    module DataRange =
+        let Class = _namespace.prefixedName "DataRange"
+
+        type Interface =
+            abstract iri: NamedReference
+            abstract formula: Formula
+            abstract asSubject: RdfSubject
+            abstract asPredicate: RdfPredicate
+            abstract asObject: RdfObject
+            abstract datatypeComplementOf: Formula
+            abstract onDatatype: Formula
+            abstract withRestrictions: Formula
+
+        type Instance(iri: NamedReference) =
+            let _formula =
+                Formula.fromRdfSubject iri.asSubject
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject Class.asObject)
+                |> Formula.materializeFormula
+
+            member this.iri = iri
+            member this.formula = _formula
+            member this.asSubject = iri.asSubject
+            member this.asPredicate = iri.asPredicate
+            member this.asObject = iri.asObject
+
+            member this.datatypeComplementOf =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "datatypeComplementOf").asPredicate)
+
+            member this.onDatatype =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "onDatatype").asPredicate)
+
+            member this.withRestrictions =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "withRestrictions").asPredicate)
+
+            interface Interface with
+                member this.iri = iri
+                member this.formula = _formula
+                member this.asSubject = iri.asSubject
+                member this.asPredicate = iri.asPredicate
+                member this.asObject = iri.asObject
+
+                member this.datatypeComplementOf =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "datatypeComplementOf").asPredicate)
+
+                member this.onDatatype =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "onDatatype").asPredicate)
+
+                member this.withRestrictions =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "withRestrictions").asPredicate)
+
+        type NamedIndividual(iri: NamedReference) =
+            let _formula =
+                Formula.fromRdfSubject iri.asSubject
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject Class.asObject)
+                |> Formula.materializeFormula
+                |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject _owlNamedIndividual.asObject)
+                |> Formula.materializeFormula
+
+            member this.iri = iri
+            member this.formula = _formula
+            member this.asSubject = iri.asSubject
+            member this.asPredicate = iri.asPredicate
+            member this.asObject = iri.asObject
+
+            member this.datatypeComplementOf =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "datatypeComplementOf").asPredicate)
+
+            member this.onDatatype =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "onDatatype").asPredicate)
+
+            member this.withRestrictions =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "withRestrictions").asPredicate)
+
+            interface Interface with
+                member this.iri = iri
+                member this.formula = _formula
+                member this.asSubject = iri.asSubject
+                member this.asPredicate = iri.asPredicate
+                member this.asObject = iri.asObject
+
+                member this.datatypeComplementOf =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "datatypeComplementOf").asPredicate)
+
+                member this.onDatatype =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "onDatatype").asPredicate)
+
+                member this.withRestrictions =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "withRestrictions").asPredicate)
+
+    module Nothing =
+        let Class = _namespace.prefixedName "Nothing"
+
+        type Interface =
+            abstract iri: NamedReference
+            abstract formula: Formula
+            abstract asSubject: RdfSubject
+            abstract asPredicate: RdfPredicate
+            abstract asObject: RdfObject
+            abstract bottomDataProperty: Formula
+            abstract bottomObjectProperty: Formula
+            abstract differentFrom: Formula
+            abstract sameAs: Formula
+            abstract topDataProperty: Formula
+            abstract topObjectProperty: Formula
+
+        type Instance(iri: NamedReference) =
+            let _formula =
+                Formula.fromRdfSubject iri.asSubject
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject Class.asObject)
+                |> Formula.materializeFormula
+
+            member this.iri = iri
+            member this.formula = _formula
+            member this.asSubject = iri.asSubject
+            member this.asPredicate = iri.asPredicate
+            member this.asObject = iri.asObject
+
+            member this.bottomDataProperty =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "bottomDataProperty").asPredicate)
+
+            member this.bottomObjectProperty =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "bottomObjectProperty").asPredicate)
+
+            member this.differentFrom =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "differentFrom").asPredicate)
+
+            member this.sameAs =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "sameAs").asPredicate)
+
+            member this.topDataProperty =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "topDataProperty").asPredicate)
+
+            member this.topObjectProperty =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "topObjectProperty").asPredicate)
+
+            interface Interface with
+                member this.iri = iri
+                member this.formula = _formula
+                member this.asSubject = iri.asSubject
+                member this.asPredicate = iri.asPredicate
+                member this.asObject = iri.asObject
+
+                member this.bottomDataProperty =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "bottomDataProperty").asPredicate)
+
+                member this.bottomObjectProperty =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "bottomObjectProperty").asPredicate)
+
+                member this.differentFrom =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "differentFrom").asPredicate)
+
+                member this.sameAs =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "sameAs").asPredicate)
+
+                member this.topDataProperty =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "topDataProperty").asPredicate)
+
+                member this.topObjectProperty =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "topObjectProperty").asPredicate)
+
+        type NamedIndividual(iri: NamedReference) =
+            let _formula =
+                Formula.fromRdfSubject iri.asSubject
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject Class.asObject)
+                |> Formula.materializeFormula
+                |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject _owlNamedIndividual.asObject)
+                |> Formula.materializeFormula
+
+            member this.iri = iri
+            member this.formula = _formula
+            member this.asSubject = iri.asSubject
+            member this.asPredicate = iri.asPredicate
+            member this.asObject = iri.asObject
+
+            member this.bottomDataProperty =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "bottomDataProperty").asPredicate)
+
+            member this.bottomObjectProperty =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "bottomObjectProperty").asPredicate)
+
+            member this.differentFrom =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "differentFrom").asPredicate)
+
+            member this.sameAs =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "sameAs").asPredicate)
+
+            member this.topDataProperty =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "topDataProperty").asPredicate)
+
+            member this.topObjectProperty =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "topObjectProperty").asPredicate)
+
+            interface Interface with
+                member this.iri = iri
+                member this.formula = _formula
+                member this.asSubject = iri.asSubject
+                member this.asPredicate = iri.asPredicate
+                member this.asObject = iri.asObject
+
+                member this.bottomDataProperty =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "bottomDataProperty").asPredicate)
+
+                member this.bottomObjectProperty =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "bottomObjectProperty").asPredicate)
+
+                member this.differentFrom =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "differentFrom").asPredicate)
+
+                member this.sameAs =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "sameAs").asPredicate)
+
+                member this.topDataProperty =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "topDataProperty").asPredicate)
+
+                member this.topObjectProperty =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "topObjectProperty").asPredicate)
+
+    module InverseFunctionalProperty =
+        let Class = _namespace.prefixedName "InverseFunctionalProperty"
+
+        type Interface =
+            abstract iri: NamedReference
+            abstract formula: Formula
+            abstract asSubject: RdfSubject
+            abstract asPredicate: RdfPredicate
+            abstract asObject: RdfObject
+            abstract equivalentProperty: Formula
+            abstract inverseOf: Formula
+            abstract propertyChainAxiom: Formula
+            abstract propertyDisjointWith: Formula
+
+        type Instance(iri: NamedReference) =
+            let _formula =
+                Formula.fromRdfSubject iri.asSubject
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject Class.asObject)
+                |> Formula.materializeFormula
+
+            member this.iri = iri
+            member this.formula = _formula
+            member this.asSubject = iri.asSubject
+            member this.asPredicate = iri.asPredicate
+            member this.asObject = iri.asObject
+
+            member this.equivalentProperty =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "equivalentProperty").asPredicate)
+
+            member this.inverseOf =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "inverseOf").asPredicate)
+
+            member this.propertyChainAxiom =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "propertyChainAxiom").asPredicate)
+
+            member this.propertyDisjointWith =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "propertyDisjointWith").asPredicate)
+
+            interface Interface with
+                member this.iri = iri
+                member this.formula = _formula
+                member this.asSubject = iri.asSubject
+                member this.asPredicate = iri.asPredicate
+                member this.asObject = iri.asObject
+
+                member this.equivalentProperty =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "equivalentProperty").asPredicate)
+
+                member this.inverseOf =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "inverseOf").asPredicate)
+
+                member this.propertyChainAxiom =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "propertyChainAxiom").asPredicate)
+
+                member this.propertyDisjointWith =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "propertyDisjointWith").asPredicate)
+
+        type NamedIndividual(iri: NamedReference) =
+            let _formula =
+                Formula.fromRdfSubject iri.asSubject
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject Class.asObject)
+                |> Formula.materializeFormula
+                |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject _owlNamedIndividual.asObject)
+                |> Formula.materializeFormula
+
+            member this.iri = iri
+            member this.formula = _formula
+            member this.asSubject = iri.asSubject
+            member this.asPredicate = iri.asPredicate
+            member this.asObject = iri.asObject
+
+            member this.equivalentProperty =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "equivalentProperty").asPredicate)
+
+            member this.inverseOf =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "inverseOf").asPredicate)
+
+            member this.propertyChainAxiom =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "propertyChainAxiom").asPredicate)
+
+            member this.propertyDisjointWith =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "propertyDisjointWith").asPredicate)
+
+            interface Interface with
+                member this.iri = iri
+                member this.formula = _formula
+                member this.asSubject = iri.asSubject
+                member this.asPredicate = iri.asPredicate
+                member this.asObject = iri.asObject
+
+                member this.equivalentProperty =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "equivalentProperty").asPredicate)
+
+                member this.inverseOf =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "inverseOf").asPredicate)
+
+                member this.propertyChainAxiom =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "propertyChainAxiom").asPredicate)
+
+                member this.propertyDisjointWith =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "propertyDisjointWith").asPredicate)
+
+    let minQualifiedCardinality = _namespace.prefixedName "minQualifiedCardinality"
+    let bottomDataProperty = _namespace.prefixedName "bottomDataProperty"
+    let oneOf = _namespace.prefixedName "oneOf"
+
+    module NegativePropertyAssertion =
+        let Class = _namespace.prefixedName "NegativePropertyAssertion"
+
+        type Interface =
+            abstract iri: NamedReference
+            abstract formula: Formula
+            abstract asSubject: RdfSubject
+            abstract asPredicate: RdfPredicate
+            abstract asObject: RdfObject
+            abstract annotatedProperty: Formula
+            abstract annotatedSource: Formula
+            abstract annotatedTarget: Formula
+            abstract assertionProperty: Formula
+            abstract deprecated: Formula
+            abstract members: Formula
+            abstract sourceIndividual: Formula
+            abstract targetIndividual: Formula
+            abstract targetValue: Formula
+            abstract versionInfo: Formula
+
+        type Instance(iri: NamedReference) =
+            let _formula =
+                Formula.fromRdfSubject iri.asSubject
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject Class.asObject)
+                |> Formula.materializeFormula
+
+            member this.iri = iri
+            member this.formula = _formula
+            member this.asSubject = iri.asSubject
+            member this.asPredicate = iri.asPredicate
+            member this.asObject = iri.asObject
+
+            member this.annotatedProperty =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "annotatedProperty").asPredicate)
+
+            member this.annotatedSource =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "annotatedSource").asPredicate)
+
+            member this.annotatedTarget =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "annotatedTarget").asPredicate)
+
+            member this.assertionProperty =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "assertionProperty").asPredicate)
+
+            member this.deprecated =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "deprecated").asPredicate)
+
+            member this.members =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "members").asPredicate)
+
+            member this.sourceIndividual =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "sourceIndividual").asPredicate)
+
+            member this.targetIndividual =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "targetIndividual").asPredicate)
+
+            member this.targetValue =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "targetValue").asPredicate)
+
+            member this.versionInfo =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "versionInfo").asPredicate)
+
+            interface Interface with
+                member this.iri = iri
+                member this.formula = _formula
+                member this.asSubject = iri.asSubject
+                member this.asPredicate = iri.asPredicate
+                member this.asObject = iri.asObject
+
+                member this.annotatedProperty =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "annotatedProperty").asPredicate)
+
+                member this.annotatedSource =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "annotatedSource").asPredicate)
+
+                member this.annotatedTarget =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "annotatedTarget").asPredicate)
+
+                member this.assertionProperty =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "assertionProperty").asPredicate)
+
+                member this.deprecated =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "deprecated").asPredicate)
+
+                member this.members =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "members").asPredicate)
+
+                member this.sourceIndividual =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "sourceIndividual").asPredicate)
+
+                member this.targetIndividual =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "targetIndividual").asPredicate)
+
+                member this.targetValue =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "targetValue").asPredicate)
+
+                member this.versionInfo =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "versionInfo").asPredicate)
+
+        type NamedIndividual(iri: NamedReference) =
+            let _formula =
+                Formula.fromRdfSubject iri.asSubject
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject Class.asObject)
+                |> Formula.materializeFormula
+                |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject _owlNamedIndividual.asObject)
+                |> Formula.materializeFormula
+
+            member this.iri = iri
+            member this.formula = _formula
+            member this.asSubject = iri.asSubject
+            member this.asPredicate = iri.asPredicate
+            member this.asObject = iri.asObject
+
+            member this.annotatedProperty =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "annotatedProperty").asPredicate)
+
+            member this.annotatedSource =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "annotatedSource").asPredicate)
+
+            member this.annotatedTarget =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "annotatedTarget").asPredicate)
+
+            member this.assertionProperty =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "assertionProperty").asPredicate)
+
+            member this.deprecated =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "deprecated").asPredicate)
+
+            member this.members =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "members").asPredicate)
+
+            member this.sourceIndividual =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "sourceIndividual").asPredicate)
+
+            member this.targetIndividual =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "targetIndividual").asPredicate)
+
+            member this.targetValue =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "targetValue").asPredicate)
+
+            member this.versionInfo =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "versionInfo").asPredicate)
+
+            interface Interface with
+                member this.iri = iri
+                member this.formula = _formula
+                member this.asSubject = iri.asSubject
+                member this.asPredicate = iri.asPredicate
+                member this.asObject = iri.asObject
+
+                member this.annotatedProperty =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "annotatedProperty").asPredicate)
+
+                member this.annotatedSource =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "annotatedSource").asPredicate)
+
+                member this.annotatedTarget =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "annotatedTarget").asPredicate)
+
+                member this.assertionProperty =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "assertionProperty").asPredicate)
+
+                member this.deprecated =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "deprecated").asPredicate)
+
+                member this.members =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "members").asPredicate)
+
+                member this.sourceIndividual =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "sourceIndividual").asPredicate)
+
+                member this.targetIndividual =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "targetIndividual").asPredicate)
+
+                member this.targetValue =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "targetValue").asPredicate)
+
+                member this.versionInfo =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "versionInfo").asPredicate)
+
+    module AllDifferent =
+        let Class = _namespace.prefixedName "AllDifferent"
+
+        type Interface =
+            abstract iri: NamedReference
+            abstract formula: Formula
+            abstract asSubject: RdfSubject
+            abstract asPredicate: RdfPredicate
+            abstract asObject: RdfObject
+            abstract annotatedProperty: Formula
+            abstract annotatedSource: Formula
+            abstract annotatedTarget: Formula
+            abstract deprecated: Formula
+            abstract distinctMembers: Formula
+            abstract members: Formula
+            abstract versionInfo: Formula
+
+        type Instance(iri: NamedReference) =
+            let _formula =
+                Formula.fromRdfSubject iri.asSubject
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject Class.asObject)
+                |> Formula.materializeFormula
+
+            member this.iri = iri
+            member this.formula = _formula
+            member this.asSubject = iri.asSubject
+            member this.asPredicate = iri.asPredicate
+            member this.asObject = iri.asObject
+
+            member this.annotatedProperty =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "annotatedProperty").asPredicate)
+
+            member this.annotatedSource =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "annotatedSource").asPredicate)
+
+            member this.annotatedTarget =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "annotatedTarget").asPredicate)
+
+            member this.deprecated =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "deprecated").asPredicate)
+
+            member this.distinctMembers =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "distinctMembers").asPredicate)
+
+            member this.members =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "members").asPredicate)
+
+            member this.versionInfo =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "versionInfo").asPredicate)
+
+            interface Interface with
+                member this.iri = iri
+                member this.formula = _formula
+                member this.asSubject = iri.asSubject
+                member this.asPredicate = iri.asPredicate
+                member this.asObject = iri.asObject
+
+                member this.annotatedProperty =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "annotatedProperty").asPredicate)
+
+                member this.annotatedSource =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "annotatedSource").asPredicate)
+
+                member this.annotatedTarget =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "annotatedTarget").asPredicate)
+
+                member this.deprecated =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "deprecated").asPredicate)
+
+                member this.distinctMembers =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "distinctMembers").asPredicate)
+
+                member this.members =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "members").asPredicate)
+
+                member this.versionInfo =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "versionInfo").asPredicate)
+
+        type NamedIndividual(iri: NamedReference) =
+            let _formula =
+                Formula.fromRdfSubject iri.asSubject
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject Class.asObject)
+                |> Formula.materializeFormula
+                |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject _owlNamedIndividual.asObject)
+                |> Formula.materializeFormula
+
+            member this.iri = iri
+            member this.formula = _formula
+            member this.asSubject = iri.asSubject
+            member this.asPredicate = iri.asPredicate
+            member this.asObject = iri.asObject
+
+            member this.annotatedProperty =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "annotatedProperty").asPredicate)
+
+            member this.annotatedSource =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "annotatedSource").asPredicate)
+
+            member this.annotatedTarget =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "annotatedTarget").asPredicate)
+
+            member this.deprecated =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "deprecated").asPredicate)
+
+            member this.distinctMembers =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "distinctMembers").asPredicate)
+
+            member this.members =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "members").asPredicate)
+
+            member this.versionInfo =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "versionInfo").asPredicate)
+
+            interface Interface with
+                member this.iri = iri
+                member this.formula = _formula
+                member this.asSubject = iri.asSubject
+                member this.asPredicate = iri.asPredicate
+                member this.asObject = iri.asObject
+
+                member this.annotatedProperty =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "annotatedProperty").asPredicate)
+
+                member this.annotatedSource =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "annotatedSource").asPredicate)
+
+                member this.annotatedTarget =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "annotatedTarget").asPredicate)
+
+                member this.deprecated =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "deprecated").asPredicate)
+
+                member this.distinctMembers =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "distinctMembers").asPredicate)
+
+                member this.members =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "members").asPredicate)
+
+                member this.versionInfo =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "versionInfo").asPredicate)
+
+    module IrreflexiveProperty =
+        let Class = _namespace.prefixedName "IrreflexiveProperty"
+
+        type Interface =
+            abstract iri: NamedReference
+            abstract formula: Formula
+            abstract asSubject: RdfSubject
+            abstract asPredicate: RdfPredicate
+            abstract asObject: RdfObject
+            abstract equivalentProperty: Formula
+            abstract inverseOf: Formula
+            abstract propertyChainAxiom: Formula
+            abstract propertyDisjointWith: Formula
+
+        type Instance(iri: NamedReference) =
+            let _formula =
+                Formula.fromRdfSubject iri.asSubject
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject Class.asObject)
+                |> Formula.materializeFormula
+
+            member this.iri = iri
+            member this.formula = _formula
+            member this.asSubject = iri.asSubject
+            member this.asPredicate = iri.asPredicate
+            member this.asObject = iri.asObject
+
+            member this.equivalentProperty =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "equivalentProperty").asPredicate)
+
+            member this.inverseOf =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "inverseOf").asPredicate)
+
+            member this.propertyChainAxiom =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "propertyChainAxiom").asPredicate)
+
+            member this.propertyDisjointWith =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "propertyDisjointWith").asPredicate)
+
+            interface Interface with
+                member this.iri = iri
+                member this.formula = _formula
+                member this.asSubject = iri.asSubject
+                member this.asPredicate = iri.asPredicate
+                member this.asObject = iri.asObject
+
+                member this.equivalentProperty =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "equivalentProperty").asPredicate)
+
+                member this.inverseOf =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "inverseOf").asPredicate)
+
+                member this.propertyChainAxiom =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "propertyChainAxiom").asPredicate)
+
+                member this.propertyDisjointWith =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "propertyDisjointWith").asPredicate)
+
+        type NamedIndividual(iri: NamedReference) =
+            let _formula =
+                Formula.fromRdfSubject iri.asSubject
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject Class.asObject)
+                |> Formula.materializeFormula
+                |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject _owlNamedIndividual.asObject)
+                |> Formula.materializeFormula
+
+            member this.iri = iri
+            member this.formula = _formula
+            member this.asSubject = iri.asSubject
+            member this.asPredicate = iri.asPredicate
+            member this.asObject = iri.asObject
+
+            member this.equivalentProperty =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "equivalentProperty").asPredicate)
+
+            member this.inverseOf =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "inverseOf").asPredicate)
+
+            member this.propertyChainAxiom =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "propertyChainAxiom").asPredicate)
+
+            member this.propertyDisjointWith =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "propertyDisjointWith").asPredicate)
+
+            interface Interface with
+                member this.iri = iri
+                member this.formula = _formula
+                member this.asSubject = iri.asSubject
+                member this.asPredicate = iri.asPredicate
+                member this.asObject = iri.asObject
+
+                member this.equivalentProperty =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "equivalentProperty").asPredicate)
+
+                member this.inverseOf =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "inverseOf").asPredicate)
+
+                member this.propertyChainAxiom =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "propertyChainAxiom").asPredicate)
+
+                member this.propertyDisjointWith =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "propertyDisjointWith").asPredicate)
+
+    let targetValue = _namespace.prefixedName "targetValue"
+    let qualifiedCardinality = _namespace.prefixedName "qualifiedCardinality"
+    let datatypeComplementOf = _namespace.prefixedName "datatypeComplementOf"
+    let hasKey = _namespace.prefixedName "hasKey"
+
+    module AsymmetricProperty =
+        let Class = _namespace.prefixedName "AsymmetricProperty"
+
+        type Interface =
+            abstract iri: NamedReference
+            abstract formula: Formula
+            abstract asSubject: RdfSubject
+            abstract asPredicate: RdfPredicate
+            abstract asObject: RdfObject
+            abstract equivalentProperty: Formula
+            abstract inverseOf: Formula
+            abstract propertyChainAxiom: Formula
+            abstract propertyDisjointWith: Formula
+
+        type Instance(iri: NamedReference) =
+            let _formula =
+                Formula.fromRdfSubject iri.asSubject
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject Class.asObject)
+                |> Formula.materializeFormula
+
+            member this.iri = iri
+            member this.formula = _formula
+            member this.asSubject = iri.asSubject
+            member this.asPredicate = iri.asPredicate
+            member this.asObject = iri.asObject
+
+            member this.equivalentProperty =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "equivalentProperty").asPredicate)
+
+            member this.inverseOf =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "inverseOf").asPredicate)
+
+            member this.propertyChainAxiom =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "propertyChainAxiom").asPredicate)
+
+            member this.propertyDisjointWith =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "propertyDisjointWith").asPredicate)
+
+            interface Interface with
+                member this.iri = iri
+                member this.formula = _formula
+                member this.asSubject = iri.asSubject
+                member this.asPredicate = iri.asPredicate
+                member this.asObject = iri.asObject
+
+                member this.equivalentProperty =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "equivalentProperty").asPredicate)
+
+                member this.inverseOf =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "inverseOf").asPredicate)
+
+                member this.propertyChainAxiom =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "propertyChainAxiom").asPredicate)
+
+                member this.propertyDisjointWith =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "propertyDisjointWith").asPredicate)
+
+        type NamedIndividual(iri: NamedReference) =
+            let _formula =
+                Formula.fromRdfSubject iri.asSubject
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject Class.asObject)
+                |> Formula.materializeFormula
+                |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject _owlNamedIndividual.asObject)
+                |> Formula.materializeFormula
+
+            member this.iri = iri
+            member this.formula = _formula
+            member this.asSubject = iri.asSubject
+            member this.asPredicate = iri.asPredicate
+            member this.asObject = iri.asObject
+
+            member this.equivalentProperty =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "equivalentProperty").asPredicate)
+
+            member this.inverseOf =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "inverseOf").asPredicate)
+
+            member this.propertyChainAxiom =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "propertyChainAxiom").asPredicate)
+
+            member this.propertyDisjointWith =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "propertyDisjointWith").asPredicate)
+
+            interface Interface with
+                member this.iri = iri
+                member this.formula = _formula
+                member this.asSubject = iri.asSubject
+                member this.asPredicate = iri.asPredicate
+                member this.asObject = iri.asObject
+
+                member this.equivalentProperty =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "equivalentProperty").asPredicate)
+
+                member this.inverseOf =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "inverseOf").asPredicate)
+
+                member this.propertyChainAxiom =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "propertyChainAxiom").asPredicate)
+
+                member this.propertyDisjointWith =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "propertyDisjointWith").asPredicate)
+
+    module Annotation =
+        let Class = _namespace.prefixedName "Annotation"
+
+        type Interface =
+            abstract iri: NamedReference
+            abstract formula: Formula
+            abstract asSubject: RdfSubject
+            abstract asPredicate: RdfPredicate
+            abstract asObject: RdfObject
+            abstract annotatedProperty: Formula
+            abstract annotatedSource: Formula
+            abstract annotatedTarget: Formula
+            abstract deprecated: Formula
+            abstract members: Formula
+            abstract versionInfo: Formula
+
+        type Instance(iri: NamedReference) =
+            let _formula =
+                Formula.fromRdfSubject iri.asSubject
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject Class.asObject)
+                |> Formula.materializeFormula
+
+            member this.iri = iri
+            member this.formula = _formula
+            member this.asSubject = iri.asSubject
+            member this.asPredicate = iri.asPredicate
+            member this.asObject = iri.asObject
+
+            member this.annotatedProperty =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "annotatedProperty").asPredicate)
+
+            member this.annotatedSource =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "annotatedSource").asPredicate)
+
+            member this.annotatedTarget =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "annotatedTarget").asPredicate)
+
+            member this.deprecated =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "deprecated").asPredicate)
+
+            member this.members =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "members").asPredicate)
+
+            member this.versionInfo =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "versionInfo").asPredicate)
+
+            interface Interface with
+                member this.iri = iri
+                member this.formula = _formula
+                member this.asSubject = iri.asSubject
+                member this.asPredicate = iri.asPredicate
+                member this.asObject = iri.asObject
+
+                member this.annotatedProperty =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "annotatedProperty").asPredicate)
+
+                member this.annotatedSource =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "annotatedSource").asPredicate)
+
+                member this.annotatedTarget =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "annotatedTarget").asPredicate)
+
+                member this.deprecated =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "deprecated").asPredicate)
+
+                member this.members =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "members").asPredicate)
+
+                member this.versionInfo =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "versionInfo").asPredicate)
+
+        type NamedIndividual(iri: NamedReference) =
+            let _formula =
+                Formula.fromRdfSubject iri.asSubject
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject Class.asObject)
+                |> Formula.materializeFormula
+                |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject _owlNamedIndividual.asObject)
+                |> Formula.materializeFormula
+
+            member this.iri = iri
+            member this.formula = _formula
+            member this.asSubject = iri.asSubject
+            member this.asPredicate = iri.asPredicate
+            member this.asObject = iri.asObject
+
+            member this.annotatedProperty =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "annotatedProperty").asPredicate)
+
+            member this.annotatedSource =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "annotatedSource").asPredicate)
+
+            member this.annotatedTarget =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "annotatedTarget").asPredicate)
+
+            member this.deprecated =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "deprecated").asPredicate)
+
+            member this.members =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "members").asPredicate)
+
+            member this.versionInfo =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "versionInfo").asPredicate)
+
+            interface Interface with
+                member this.iri = iri
+                member this.formula = _formula
+                member this.asSubject = iri.asSubject
+                member this.asPredicate = iri.asPredicate
+                member this.asObject = iri.asObject
+
+                member this.annotatedProperty =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "annotatedProperty").asPredicate)
+
+                member this.annotatedSource =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "annotatedSource").asPredicate)
+
+                member this.annotatedTarget =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "annotatedTarget").asPredicate)
+
+                member this.deprecated =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "deprecated").asPredicate)
+
+                member this.members =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "members").asPredicate)
+
+                member this.versionInfo =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "versionInfo").asPredicate)
+
+    module Axiom =
+        let Class = _namespace.prefixedName "Axiom"
+
+        type Interface =
+            abstract iri: NamedReference
+            abstract formula: Formula
+            abstract asSubject: RdfSubject
+            abstract asPredicate: RdfPredicate
+            abstract asObject: RdfObject
+            abstract annotatedProperty: Formula
+            abstract annotatedSource: Formula
+            abstract annotatedTarget: Formula
+            abstract deprecated: Formula
+            abstract members: Formula
+            abstract versionInfo: Formula
+
+        type Instance(iri: NamedReference) =
+            let _formula =
+                Formula.fromRdfSubject iri.asSubject
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject Class.asObject)
+                |> Formula.materializeFormula
+
+            member this.iri = iri
+            member this.formula = _formula
+            member this.asSubject = iri.asSubject
+            member this.asPredicate = iri.asPredicate
+            member this.asObject = iri.asObject
+
+            member this.annotatedProperty =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "annotatedProperty").asPredicate)
+
+            member this.annotatedSource =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "annotatedSource").asPredicate)
+
+            member this.annotatedTarget =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "annotatedTarget").asPredicate)
+
+            member this.deprecated =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "deprecated").asPredicate)
+
+            member this.members =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "members").asPredicate)
+
+            member this.versionInfo =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "versionInfo").asPredicate)
+
+            interface Interface with
+                member this.iri = iri
+                member this.formula = _formula
+                member this.asSubject = iri.asSubject
+                member this.asPredicate = iri.asPredicate
+                member this.asObject = iri.asObject
+
+                member this.annotatedProperty =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "annotatedProperty").asPredicate)
+
+                member this.annotatedSource =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "annotatedSource").asPredicate)
+
+                member this.annotatedTarget =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "annotatedTarget").asPredicate)
+
+                member this.deprecated =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "deprecated").asPredicate)
+
+                member this.members =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "members").asPredicate)
+
+                member this.versionInfo =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "versionInfo").asPredicate)
+
+        type NamedIndividual(iri: NamedReference) =
+            let _formula =
+                Formula.fromRdfSubject iri.asSubject
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject Class.asObject)
+                |> Formula.materializeFormula
+                |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject _owlNamedIndividual.asObject)
+                |> Formula.materializeFormula
+
+            member this.iri = iri
+            member this.formula = _formula
+            member this.asSubject = iri.asSubject
+            member this.asPredicate = iri.asPredicate
+            member this.asObject = iri.asObject
+
+            member this.annotatedProperty =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "annotatedProperty").asPredicate)
+
+            member this.annotatedSource =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "annotatedSource").asPredicate)
+
+            member this.annotatedTarget =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "annotatedTarget").asPredicate)
+
+            member this.deprecated =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "deprecated").asPredicate)
+
+            member this.members =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "members").asPredicate)
+
+            member this.versionInfo =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "versionInfo").asPredicate)
+
+            interface Interface with
+                member this.iri = iri
+                member this.formula = _formula
+                member this.asSubject = iri.asSubject
+                member this.asPredicate = iri.asPredicate
+                member this.asObject = iri.asObject
+
+                member this.annotatedProperty =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "annotatedProperty").asPredicate)
+
+                member this.annotatedSource =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "annotatedSource").asPredicate)
+
+                member this.annotatedTarget =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "annotatedTarget").asPredicate)
+
+                member this.deprecated =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "deprecated").asPredicate)
+
+                member this.members =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "members").asPredicate)
+
+                member this.versionInfo =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "versionInfo").asPredicate)
+
+    let disjointUnionOf = _namespace.prefixedName "disjointUnionOf"
+    let incompatibleWith = _namespace.prefixedName "incompatibleWith"
+    let someValuesFrom = _namespace.prefixedName "someValuesFrom"
+
+    module ReflexiveProperty =
+        let Class = _namespace.prefixedName "ReflexiveProperty"
+
+        type Interface =
+            abstract iri: NamedReference
+            abstract formula: Formula
+            abstract asSubject: RdfSubject
+            abstract asPredicate: RdfPredicate
+            abstract asObject: RdfObject
+            abstract equivalentProperty: Formula
+            abstract inverseOf: Formula
+            abstract propertyChainAxiom: Formula
+            abstract propertyDisjointWith: Formula
+
+        type Instance(iri: NamedReference) =
+            let _formula =
+                Formula.fromRdfSubject iri.asSubject
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject Class.asObject)
+                |> Formula.materializeFormula
+
+            member this.iri = iri
+            member this.formula = _formula
+            member this.asSubject = iri.asSubject
+            member this.asPredicate = iri.asPredicate
+            member this.asObject = iri.asObject
+
+            member this.equivalentProperty =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "equivalentProperty").asPredicate)
+
+            member this.inverseOf =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "inverseOf").asPredicate)
+
+            member this.propertyChainAxiom =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "propertyChainAxiom").asPredicate)
+
+            member this.propertyDisjointWith =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "propertyDisjointWith").asPredicate)
+
+            interface Interface with
+                member this.iri = iri
+                member this.formula = _formula
+                member this.asSubject = iri.asSubject
+                member this.asPredicate = iri.asPredicate
+                member this.asObject = iri.asObject
+
+                member this.equivalentProperty =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "equivalentProperty").asPredicate)
+
+                member this.inverseOf =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "inverseOf").asPredicate)
+
+                member this.propertyChainAxiom =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "propertyChainAxiom").asPredicate)
+
+                member this.propertyDisjointWith =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "propertyDisjointWith").asPredicate)
+
+        type NamedIndividual(iri: NamedReference) =
+            let _formula =
+                Formula.fromRdfSubject iri.asSubject
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject Class.asObject)
+                |> Formula.materializeFormula
+                |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject _owlNamedIndividual.asObject)
+                |> Formula.materializeFormula
+
+            member this.iri = iri
+            member this.formula = _formula
+            member this.asSubject = iri.asSubject
+            member this.asPredicate = iri.asPredicate
+            member this.asObject = iri.asObject
+
+            member this.equivalentProperty =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "equivalentProperty").asPredicate)
+
+            member this.inverseOf =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "inverseOf").asPredicate)
+
+            member this.propertyChainAxiom =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "propertyChainAxiom").asPredicate)
+
+            member this.propertyDisjointWith =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "propertyDisjointWith").asPredicate)
+
+            interface Interface with
+                member this.iri = iri
+                member this.formula = _formula
+                member this.asSubject = iri.asSubject
+                member this.asPredicate = iri.asPredicate
+                member this.asObject = iri.asObject
+
+                member this.equivalentProperty =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "equivalentProperty").asPredicate)
+
+                member this.inverseOf =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "inverseOf").asPredicate)
+
+                member this.propertyChainAxiom =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "propertyChainAxiom").asPredicate)
+
+                member this.propertyDisjointWith =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "propertyDisjointWith").asPredicate)
+
+    module AllDisjointClasses =
+        let Class = _namespace.prefixedName "AllDisjointClasses"
+
+        type Interface =
+            abstract iri: NamedReference
+            abstract formula: Formula
+            abstract asSubject: RdfSubject
+            abstract asPredicate: RdfPredicate
+            abstract asObject: RdfObject
+            abstract annotatedProperty: Formula
+            abstract annotatedSource: Formula
+            abstract annotatedTarget: Formula
+            abstract deprecated: Formula
+            abstract members: Formula
+            abstract versionInfo: Formula
+
+        type Instance(iri: NamedReference) =
+            let _formula =
+                Formula.fromRdfSubject iri.asSubject
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject Class.asObject)
+                |> Formula.materializeFormula
+
+            member this.iri = iri
+            member this.formula = _formula
+            member this.asSubject = iri.asSubject
+            member this.asPredicate = iri.asPredicate
+            member this.asObject = iri.asObject
+
+            member this.annotatedProperty =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "annotatedProperty").asPredicate)
+
+            member this.annotatedSource =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "annotatedSource").asPredicate)
+
+            member this.annotatedTarget =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "annotatedTarget").asPredicate)
+
+            member this.deprecated =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "deprecated").asPredicate)
+
+            member this.members =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "members").asPredicate)
+
+            member this.versionInfo =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "versionInfo").asPredicate)
+
+            interface Interface with
+                member this.iri = iri
+                member this.formula = _formula
+                member this.asSubject = iri.asSubject
+                member this.asPredicate = iri.asPredicate
+                member this.asObject = iri.asObject
+
+                member this.annotatedProperty =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "annotatedProperty").asPredicate)
+
+                member this.annotatedSource =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "annotatedSource").asPredicate)
+
+                member this.annotatedTarget =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "annotatedTarget").asPredicate)
+
+                member this.deprecated =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "deprecated").asPredicate)
+
+                member this.members =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "members").asPredicate)
+
+                member this.versionInfo =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "versionInfo").asPredicate)
+
+        type NamedIndividual(iri: NamedReference) =
+            let _formula =
+                Formula.fromRdfSubject iri.asSubject
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject Class.asObject)
+                |> Formula.materializeFormula
+                |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject _owlNamedIndividual.asObject)
+                |> Formula.materializeFormula
+
+            member this.iri = iri
+            member this.formula = _formula
+            member this.asSubject = iri.asSubject
+            member this.asPredicate = iri.asPredicate
+            member this.asObject = iri.asObject
+
+            member this.annotatedProperty =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "annotatedProperty").asPredicate)
+
+            member this.annotatedSource =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "annotatedSource").asPredicate)
+
+            member this.annotatedTarget =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "annotatedTarget").asPredicate)
+
+            member this.deprecated =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "deprecated").asPredicate)
+
+            member this.members =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "members").asPredicate)
+
+            member this.versionInfo =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "versionInfo").asPredicate)
+
+            interface Interface with
+                member this.iri = iri
+                member this.formula = _formula
+                member this.asSubject = iri.asSubject
+                member this.asPredicate = iri.asPredicate
+                member this.asObject = iri.asObject
+
+                member this.annotatedProperty =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "annotatedProperty").asPredicate)
+
+                member this.annotatedSource =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "annotatedSource").asPredicate)
+
+                member this.annotatedTarget =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "annotatedTarget").asPredicate)
+
+                member this.deprecated =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "deprecated").asPredicate)
+
+                member this.members =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "members").asPredicate)
+
+                member this.versionInfo =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "versionInfo").asPredicate)
+
+    let cardinality = _namespace.prefixedName "cardinality"
+    let minCardinality = _namespace.prefixedName "minCardinality"
+    let priorVersion = _namespace.prefixedName "priorVersion"
+    let members = _namespace.prefixedName "members"
+    let hasValue = _namespace.prefixedName "hasValue"
+    let versionInfo = _namespace.prefixedName "versionInfo"
+    let versionIRI = _namespace.prefixedName "versionIRI"
+
+    module TransitiveProperty =
+        let Class = _namespace.prefixedName "TransitiveProperty"
+
+        type Interface =
+            abstract iri: NamedReference
+            abstract formula: Formula
+            abstract asSubject: RdfSubject
+            abstract asPredicate: RdfPredicate
+            abstract asObject: RdfObject
+            abstract equivalentProperty: Formula
+            abstract inverseOf: Formula
+            abstract propertyChainAxiom: Formula
+            abstract propertyDisjointWith: Formula
+
+        type Instance(iri: NamedReference) =
+            let _formula =
+                Formula.fromRdfSubject iri.asSubject
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject Class.asObject)
+                |> Formula.materializeFormula
+
+            member this.iri = iri
+            member this.formula = _formula
+            member this.asSubject = iri.asSubject
+            member this.asPredicate = iri.asPredicate
+            member this.asObject = iri.asObject
+
+            member this.equivalentProperty =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "equivalentProperty").asPredicate)
+
+            member this.inverseOf =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "inverseOf").asPredicate)
+
+            member this.propertyChainAxiom =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "propertyChainAxiom").asPredicate)
+
+            member this.propertyDisjointWith =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "propertyDisjointWith").asPredicate)
+
+            interface Interface with
+                member this.iri = iri
+                member this.formula = _formula
+                member this.asSubject = iri.asSubject
+                member this.asPredicate = iri.asPredicate
+                member this.asObject = iri.asObject
+
+                member this.equivalentProperty =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "equivalentProperty").asPredicate)
+
+                member this.inverseOf =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "inverseOf").asPredicate)
+
+                member this.propertyChainAxiom =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "propertyChainAxiom").asPredicate)
+
+                member this.propertyDisjointWith =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "propertyDisjointWith").asPredicate)
+
+        type NamedIndividual(iri: NamedReference) =
+            let _formula =
+                Formula.fromRdfSubject iri.asSubject
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject Class.asObject)
+                |> Formula.materializeFormula
+                |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject _owlNamedIndividual.asObject)
+                |> Formula.materializeFormula
+
+            member this.iri = iri
+            member this.formula = _formula
+            member this.asSubject = iri.asSubject
+            member this.asPredicate = iri.asPredicate
+            member this.asObject = iri.asObject
+
+            member this.equivalentProperty =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "equivalentProperty").asPredicate)
+
+            member this.inverseOf =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "inverseOf").asPredicate)
+
+            member this.propertyChainAxiom =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "propertyChainAxiom").asPredicate)
+
+            member this.propertyDisjointWith =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "propertyDisjointWith").asPredicate)
+
+            interface Interface with
+                member this.iri = iri
+                member this.formula = _formula
+                member this.asSubject = iri.asSubject
+                member this.asPredicate = iri.asPredicate
+                member this.asObject = iri.asObject
+
+                member this.equivalentProperty =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "equivalentProperty").asPredicate)
+
+                member this.inverseOf =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "inverseOf").asPredicate)
+
+                member this.propertyChainAxiom =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "propertyChainAxiom").asPredicate)
+
+                member this.propertyDisjointWith =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "propertyDisjointWith").asPredicate)
+
+    let onClass = _namespace.prefixedName "onClass"
+    let onDataRange = _namespace.prefixedName "onDataRange"
+    let equivalentClass = _namespace.prefixedName "equivalentClass"
+    let topObjectProperty = _namespace.prefixedName "topObjectProperty"
+    let topDataProperty = _namespace.prefixedName "topDataProperty"
+    let withRestrictions = _namespace.prefixedName "withRestrictions"
+    let annotatedProperty = _namespace.prefixedName "annotatedProperty"
+    let sourceIndividual = _namespace.prefixedName "sourceIndividual"
+    let equivalentProperty = _namespace.prefixedName "equivalentProperty"
+    let bottomObjectProperty = _namespace.prefixedName "bottomObjectProperty"
+    let unionOf = _namespace.prefixedName "unionOf"
+    let deprecated = _namespace.prefixedName "deprecated"
+    let maxQualifiedCardinality = _namespace.prefixedName "maxQualifiedCardinality"
+    let distinctMembers = _namespace.prefixedName "distinctMembers"
+    let onDatatype = _namespace.prefixedName "onDatatype"
+    let assertionProperty = _namespace.prefixedName "assertionProperty"
+    let targetIndividual = _namespace.prefixedName "targetIndividual"
+    let hasSelf = _namespace.prefixedName "hasSelf"

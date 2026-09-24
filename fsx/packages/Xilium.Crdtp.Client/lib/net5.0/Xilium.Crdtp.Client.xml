@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Xilium.Crdtp.Client</name>
+    </assembly>
+    <members>
+        <member name="M:Xilium.Crdtp.Client.CrdtpClient.Dispose(System.Boolean)">
+            <summary>
+            Disposes the <see cref="T:Xilium.Crdtp.Client.CrdtpClient"/>.
+            </summary>
+            <param name="disposing">If true, the <see cref="T:Xilium.Crdtp.Client.CrdtpClient"/> is being disposed. If false, the <see cref="T:Xilium.Crdtp.Client.CrdtpClient"/> is being finalized.</param>
+        </member>
+        <member name="M:Xilium.Crdtp.Client.CrdtpConnection.Dispose">
+            <summary>
+            Disposes the <see cref="T:Xilium.Crdtp.Client.CrdtpConnection"/>.
+            </summary>
+        </member>
+        <member name="M:Xilium.Crdtp.Client.CrdtpConnection.Dispose(System.Boolean)">
+            <summary>
+            Disposes the <see cref="T:Xilium.Crdtp.Client.CrdtpConnection"/>.
+            </summary>
+            <param name="disposing">If true, the <see cref="T:Xilium.Crdtp.Client.CrdtpConnection"/> is being disposed. If false, the <see cref="T:Xilium.Crdtp.Client.CrdtpConnection"/> is being finalized.</param>
+        </member>
+        <member name="M:Xilium.Crdtp.Client.CrdtpConnection.SendAsyncCore(System.ReadOnlyMemory{System.Byte})">
+            <remarks>
+            Note, this method intentionally does not accept cancellation token, because there is no
+            way to truly cancel sending without breaking communication pipe at the same time.
+            </remarks>
+        </member>
+        <member name="M:Xilium.Crdtp.Client.CrdtpConnectionDelegate.OnMessage(System.ReadOnlyMemory{System.Byte})">
+            <remarks>
+            This method should never throw exception. In order if unexpection
+            exception occur implementation of this method, must log exception or
+            abort CrdtpClient.
+            </remarks>
+        </member>
+        <member name="M:Xilium.Crdtp.Client.CrdtpSessionHandler.OnBeforeSend(System.Text.Json.JsonEncodedText)">
+            <summary>
+            This method called for each request before sending request, and can
+            be used to validate client state to disallow call if needed (most
+            useful is for handling target's crash state, because server might
+            queue command instead of reject it immediately). This method should
+            return <see cref="!:null"/> for continuing request,
+            return <see cref="T:Xilium.Crdtp.Client.CrdtpErrorResponse"/> object to reject request
+            or throw exception.
+            </summary>
+        </member>
+        <member name="T:Xilium.Crdtp.Client.CrdtpErrorResponseException">
+            <summary>
+            Exception thrown for an error response with <see cref="T:Xilium.Crdtp.Client.CrdtpErrorResponse"/> information.
+            </summary>
+            <remarks>
+            This exception intentionally derived from <see cref="T:System.Exception"/> to easily distinct
+            error respose from other infrastructure exceptions.
+            </remarks>
+        </member>
+        <member name="M:Xilium.Crdtp.Client.CborHelper.IsCborMessage(System.ReadOnlySpan{System.Byte})">
+            <summary>
+            Checks whether |message| is a cbor message.
+            </summary>
+            <remarks>
+            See: https://source.chromium.org/chromium/chromium/src/+/master:third_party/inspector_protocol/crdtp/cbor.cc
+            IsCBORMessage
+            </remarks>
+        </member>
+        <member name="T:Xilium.Crdtp.Buffers.CrdtpArrayBufferWriter`1">
+            <summary>
+            Alternative implementation of <see cref="T:System.Buffers.ArrayBufferWriter`1" />.
+            There is two main differences: this implementation uses <c>GC.AllocateUninitializedArray</c>
+            when this appropriate, and <see cref="M:Xilium.Crdtp.Buffers.CrdtpArrayBufferWriter`1.Clear"/>
+            method doesn't zeroing array.
+            </summary>
+        </member>
+        <member name="T:Xilium.Crdtp.Core.Unit">
+            <summary>
+            Unit-like type with single possible value of null.
+            This type used to represent empty parameters or empty response.
+            </summary>
+        </member>
+    </members>
+</doc>

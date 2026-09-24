@@ -1,0 +1,191 @@
+#time on
+
+fsi.PrintLength <- 10
+fsi.ShowDeclarationValues <- false
+open System
+open System.Xml.Linq
+
+#load @".paket/load/main.group.fsx"
+#I @"D:\https\com\github\eristocrates\ipa\fsx"
+#r "Ipa.dll"
+open Ipa
+#r "Iana.dll"
+open Iana
+#r "IanaScheme.dll"
+#r "IanaMediaType.dll"
+
+open FSharp.Data
+open Nager.PublicSuffix
+open Nager.PublicSuffix.Models
+open Nager.PublicSuffix.Models
+
+module https =
+    let scheme = IanaScheme.https
+    module gov =
+        let topLevelDomain = TldRule "gov"
+        module leoncountyfl =
+            module bannerprodssb =
+                let site = IanaScheme.https ..// "bannerprodssb.leoncountyfl.gov" + 8449
+                module EmployeeSelfService =
+                    let resource = site ./ "EmployeeSelfService"
+    module dev =
+        let topLevelDomain = TldRule "dev"
+        let eristocrates = IanaScheme.https ..// "eristocrates.dev"
+    module org =
+        let topLevelDomain = TldRule "org"
+        module iana =
+            module www =
+                module assignments =
+                    module uri_schemes =
+                        type UriSchemesXmlProvider = XmlProvider<UseOriginalNames=true, Sample="https://www.iana.org/assignments/uri-schemes/uri-schemes.xml">
+                        let xml = UriSchemesXmlProvider.Load "https://www.iana.org/assignments/uri-schemes/uri-schemes.xml"
+                    module media_types =
+                        type MediaTypesXmlProvider = XmlProvider<UseOriginalNames=true, Sample="https://www.iana.org/assignments/media-types/media-types.xml">
+                        let xml = MediaTypesXmlProvider.Load("https://www.iana.org/assignments/media-types/media-types.xml")
+        module edmcouncil =
+            module spec =
+                let site = IanaScheme.https ..// "spec.edmcouncil.org"
+    module com =
+        let topLevelDomain = TldRule "com"
+        module github =
+            let site = IanaScheme.https ..// "github.com"
+        module googlesource =
+            module chromium =
+                module chromium =
+                    let site = IanaScheme.http ..// "chromium.googlesource.com"
+                    module v8 =
+                        module v8 =
+                            module _'_plus_' =
+                                module HEAD =
+                                    module include_ =
+                                        let resource = site ./ "v8/v8/+/HEAD/include"
+                                        module js_protocol =
+                                            let pdl = resource ./ "js_protocol.pdl"
+                                            module _1 =
+                                                module _2 =
+                                                    let json = resource ./ "js_protocol-1.2.json"
+                                                module _3 =
+                                                    let json = resource ./ "js_protocol-1.3.json"
+
+                    module src =
+                        module _'_plus_' =
+                            module HEAD =
+                                module third_party =
+                                    module blink =
+                                        module public_ =
+                                            module devtools_protocol =
+
+                                                let resource = site ./ "chromium/src/+/HEAD/third_party/blink/public/devtools_protocol"
+                                                module browser_protocol =
+                                                    let pdl = resource ./ "browser_protocol.pdl"
+                                                    module _1 =
+                                                        module _2 =
+                                                            let json = resource ./ "browser_protocol-1.2.json"
+                                                        module _3 =
+                                                            let json = resource ./ "browser_protocol-1.3.json"
+                                                    module domains =
+                                                        let resource = resource ./ "domains"
+                                                    module Accessibility =
+                                                        let pdl = resource ./ "Accessibility.pdl"
+                                                    module Ads =
+                                                        let pdl = resource ./ "Ads.pdl"
+                                                    module Animation =
+                                                        let pdl = resource ./ "Animation.pdl"
+                                                    module Audits =
+                                                        let pdl = resource ./ "Audits.pdl"
+                                                    module Autofill =
+                                                        let pdl = resource ./ "Autofill.pdl"
+                                                    module BackgroundService =
+                                                        let pdl = resource ./ "BackgroundService.pdl"
+                                                    module BluetoothEmulation =
+                                                        let pdl = resource ./ "BluetoothEmulation.pdl"
+                                                    module Browser =
+                                                        let pdl = resource ./ "Browser.pdl"
+                                                    module CacheStorage =
+                                                        let pdl = resource ./ "CacheStorage.pdl"
+                                                    module Cast =
+                                                        let pdl = resource ./ "Cast.pdl"
+                                                    module CrashReportContext =
+                                                        let pdl = resource ./ "CrashReportContext.pdl"
+                                                    module CSS =
+                                                        let pdl = resource ./ "CSS.pdl"
+                                                    module DeviceAccess =
+                                                        let pdl = resource ./ "DeviceAccess.pdl"
+                                                    module DeviceOrientation =
+                                                        let pdl = resource ./ "DeviceOrientation.pdl"
+                                                    module DigitalCredentials =
+                                                        let pdl = resource ./ "DigitalCredentials.pdl"
+                                                    module DOM =
+                                                        let pdl = resource ./ "DOM.pdl"
+                                                    module DOMDebugger =
+                                                        let pdl = resource ./ "DOMDebugger.pdl"
+                                                    module DOMSnapshot =
+                                                        let pdl = resource ./ "DOMSnapshot.pdl"
+                                                    module DOMStorage =
+                                                        let pdl = resource ./ "DOMStorage.pdl"
+                                                    module Emulation =
+                                                        let pdl = resource ./ "Emulation.pdl"
+                                                    module EventBreakpoints =
+                                                        let pdl = resource ./ "EventBreakpoints.pdl"
+                                                    module Extensions =
+                                                        let pdl = resource ./ "Extensions.pdl"
+                                                    module FedCm =
+                                                        let pdl = resource ./ "FedCm.pdl"
+                                                    module Fetch =
+                                                        let pdl = resource ./ "Fetch.pdl"
+                                                    module FileSystem =
+                                                        let pdl = resource ./ "FileSystem.pdl"
+                                                    module HeadlessExperimental =
+                                                        let pdl = resource ./ "HeadlessExperimental.pdl"
+                                                    module IndexedDB =
+                                                        let pdl = resource ./ "IndexedDB.pdl"
+                                                    module Input =
+                                                        let pdl = resource ./ "Input.pdl"
+                                                    module Inspector =
+                                                        let pdl = resource ./ "Inspector.pdl"
+                                                    module IO =
+                                                        let pdl = resource ./ "IO.pdl"
+                                                    module LayerTree =
+                                                        let pdl = resource ./ "LayerTree.pdl"
+                                                    module Log =
+                                                        let pdl = resource ./ "Log.pdl"
+                                                    module Media =
+                                                        let pdl = resource ./ "Media.pdl"
+                                                    module Memory =
+                                                        let pdl = resource ./ "Memory.pdl"
+                                                    module Network =
+                                                        let pdl = resource ./ "Network.pdl"
+                                                    module Overlay =
+                                                        let pdl = resource ./ "Overlay.pdl"
+                                                    module Page =
+                                                        let pdl = resource ./ "Page.pdl"
+                                                    module Performance =
+                                                        let pdl = resource ./ "Performance.pdl"
+                                                    module PerformanceTimeline =
+                                                        let pdl = resource ./ "PerformanceTimeline.pdl"
+                                                    module Preload =
+                                                        let pdl = resource ./ "Preload.pdl"
+                                                    module PWA =
+                                                        let pdl = resource ./ "PWA.pdl"
+                                                    module Security =
+                                                        let pdl = resource ./ "Security.pdl"
+                                                    module ServiceWorker =
+                                                        let pdl = resource ./ "ServiceWorker.pdl"
+                                                    module SmartCardEmulation =
+                                                        let pdl = resource ./ "SmartCardEmulation.pdl"
+                                                    module Storage =
+                                                        let pdl = resource ./ "Storage.pdl"
+                                                    module SystemInfo =
+                                                        let pdl = resource ./ "SystemInfo.pdl"
+                                                    module Target =
+                                                        let pdl = resource ./ "Target.pdl"
+                                                    module Tethering =
+                                                        let pdl = resource ./ "Tethering.pdl"
+                                                    module Tracing =
+                                                        let pdl = resource ./ "Tracing.pdl"
+                                                    module WebAudio =
+                                                        let pdl = resource ./ "WebAudio.pdl"
+                                                    module WebAuthn =
+                                                        let pdl = resource ./ "WebAuthn.pdl"
+                                                    module WebMCP =
+                                                        let pdl = resource ./ "WebMCP.pdl"

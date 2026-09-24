@@ -1,113 +1,669 @@
-#I @"D:\https\com\github\eristocrates\ipa\fsx"
+#I @"D:\https\com\github\eristocrates\ipa\dll\"
+#r @"ResourceDescription.dll"
+#I @"D:\https\com\github\eristocrates\ipa\fsx\"
+open ResourceDescription
 #load @".paket/load/main.group.fsx"
-#r @"RdfAsm.dll"
-open RdfAsm
-#r @"RdfIO.dll"
-open RdfIO
+open System
 
 module rdf =
-    let _prefixId = PrefixId.fromNamespaceLabel "http://www.w3.org/1999/02/22-rdf-syntax-ns#" "rdf"
+    let _namespace =
+        NamedReference "http://www.w3.org/1999/02/22-rdf-syntax-ns#" |> NamespaceName
 
-    let _namespaceIri = _prefixId.prefix ""
-    /// <summary>
-    ///   <para>rdfs:comment : The class of containers of alternatives.^^xsd:string</para>
-    ///   <para>rdfs:label : Alt^^xsd:string</para>
-    ///   <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#Alt">rdf:Alt</a>
-    /// </summary>
-    let Alt = _prefixId.prefix "Alt"
-    /// <summary>
-    ///   <para>rdfs:comment : The class of unordered containers.^^xsd:string</para>
-    ///   <para>rdfs:label : Bag^^xsd:string</para>
-    ///   <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#Bag">rdf:Bag</a>
-    /// </summary>
-    let Bag = _prefixId.prefix "Bag"
-    /// <summary>
-    ///   <para>rdfs:comment : A class representing a compound literal.^^xsd:string</para>
-    ///   <para>rdfs:label : CompoundLiteral^^xsd:string</para>
-    ///   <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#CompoundLiteral">rdf:CompoundLiteral</a>
-    /// </summary>
-    let CompoundLiteral = _prefixId.prefix "CompoundLiteral"
-    let HTML = _prefixId.prefix "HTML"
-    let JSON = _prefixId.prefix "JSON"
-    /// <summary>
-    ///   <para>rdfs:comment : The class of RDF Lists.^^xsd:string</para>
-    ///   <para>rdfs:label : List^^xsd:string</para>
-    ///   <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#List">rdf:List</a>
-    /// </summary>
-    let List = _prefixId.prefix "List"
-    let PlainLiteral = _prefixId.prefix "PlainLiteral"
-    /// <summary>
-    ///   <para>rdfs:comment : The class of RDF properties.^^xsd:string</para>
-    ///   <para>rdfs:label : Property^^xsd:string</para>
-    ///   <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property">rdf:Property</a>
-    /// </summary>
-    let Property = _prefixId.prefix "Property"
-    /// <summary>
-    ///   <para>rdfs:comment : The class of ordered containers.^^xsd:string</para>
-    ///   <para>rdfs:label : Seq^^xsd:string</para>
-    ///   <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#Seq">rdf:Seq</a>
-    /// </summary>
-    let Seq = _prefixId.prefix "Seq"
-    /// <summary>
-    ///   <para>rdfs:comment : The class of RDF statements.^^xsd:string</para>
-    ///   <para>rdfs:label : Statement^^xsd:string</para>
-    ///   <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement">rdf:Statement</a>
-    /// </summary>
-    let Statement = _prefixId.prefix "Statement"
-    let XMLLiteral = _prefixId.prefix "XMLLiteral"
-    /// <summary>
-    ///   <para>rdfs:comment : The base direction component of a CompoundLiteral.^^xsd:string</para>
-    ///   <para>rdfs:label : direction^^xsd:string</para>
-    ///   <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#direction">rdf:direction</a>
-    /// </summary>
-    let direction = _prefixId.prefix "direction"
-    /// <summary>
-    ///   <para>rdfs:comment : The first item in the subject RDF list.^^xsd:string</para>
-    ///   <para>rdfs:label : first^^xsd:string</para>
-    ///   <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#first">rdf:first</a>
-    /// </summary>
-    let first = _prefixId.prefix "first"
-    let langString = _prefixId.prefix "langString"
-    /// <summary>
-    ///   <para>rdfs:comment : The language component of a CompoundLiteral.^^xsd:string</para>
-    ///   <para>rdfs:label : language^^xsd:string</para>
-    ///   <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#language">rdf:language</a>
-    /// </summary>
-    let language = _prefixId.prefix "language"
-    let nil = _prefixId.prefix "nil"
-    /// <summary>
-    ///   <para>rdfs:comment : The object of the subject RDF statement.^^xsd:string</para>
-    ///   <para>rdfs:label : object^^xsd:string</para>
-    ///   <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#object">rdf:object</a>
-    /// </summary>
-    let object = _prefixId.prefix "object"
-    /// <summary>
-    ///   <para>rdfs:comment : The predicate of the subject RDF statement.^^xsd:string</para>
-    ///   <para>rdfs:label : predicate^^xsd:string</para>
-    ///   <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate">rdf:predicate</a>
-    /// </summary>
-    let predicate = _prefixId.prefix "predicate"
-    /// <summary>
-    ///   <para>rdfs:comment : The rest of the subject RDF list after the first item.^^xsd:string</para>
-    ///   <para>rdfs:label : rest^^xsd:string</para>
-    ///   <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#rest">rdf:rest</a>
-    /// </summary>
-    let rest = _prefixId.prefix "rest"
-    /// <summary>
-    ///   <para>rdfs:comment : The subject of the subject RDF statement.^^xsd:string</para>
-    ///   <para>rdfs:label : subject^^xsd:string</para>
-    ///   <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#subject">rdf:subject</a>
-    /// </summary>
-    let subject = _prefixId.prefix "subject"
-    /// <summary>
-    ///   <para>rdfs:comment : The subject is an instance of a class.^^xsd:string</para>
-    ///   <para>rdfs:label : type^^xsd:string</para>
-    ///   <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#type">rdf:type</a>
-    /// </summary>
-    let type_ = _prefixId.prefix "type"
-    /// <summary>
-    ///   <para>rdfs:comment : Idiomatic property used for structured values.^^xsd:string</para>
-    ///   <para>rdfs:label : value^^xsd:string</para>
-    ///   <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#value">rdf:value</a>
-    /// </summary>
-    let value = _prefixId.prefix "value"
+    let _rdfType = NamedReference "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+
+    let _owlNamedIndividual =
+        NamedReference "http://www.w3.org/2002/07/owl#NamedIndividual"
+
+    let rest = _namespace.prefixedName "rest"
+
+    module List =
+        let Class = _namespace.prefixedName "List"
+
+        type Interface =
+            abstract iri: NamedReference
+            abstract formula: Formula
+            abstract asSubject: RdfSubject
+            abstract asPredicate: RdfPredicate
+            abstract asObject: RdfObject
+            abstract first: Formula
+            abstract rest: Formula
+            abstract type_: Formula
+            abstract value: Formula
+
+        type Instance(iri: NamedReference) =
+            let _formula =
+                Formula.fromRdfSubject iri.asSubject
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject Class.asObject)
+                |> Formula.materializeFormula
+
+            member this.iri = iri
+            member this.formula = _formula
+            member this.asSubject = iri.asSubject
+            member this.asPredicate = iri.asPredicate
+            member this.asObject = iri.asObject
+
+            member this.first =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "first").asPredicate)
+
+            member this.rest =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "rest").asPredicate)
+
+            member this.type_ =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "type").asPredicate)
+
+            member this.value =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "value").asPredicate)
+
+            interface Interface with
+                member this.iri = iri
+                member this.formula = _formula
+                member this.asSubject = iri.asSubject
+                member this.asPredicate = iri.asPredicate
+                member this.asObject = iri.asObject
+
+                member this.first =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "first").asPredicate)
+
+                member this.rest =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "rest").asPredicate)
+
+                member this.type_ =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "type").asPredicate)
+
+                member this.value =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "value").asPredicate)
+
+        type NamedIndividual(iri: NamedReference) =
+            let _formula =
+                Formula.fromRdfSubject iri.asSubject
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject Class.asObject)
+                |> Formula.materializeFormula
+                |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject _owlNamedIndividual.asObject)
+                |> Formula.materializeFormula
+
+            member this.iri = iri
+            member this.formula = _formula
+            member this.asSubject = iri.asSubject
+            member this.asPredicate = iri.asPredicate
+            member this.asObject = iri.asObject
+
+            member this.first =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "first").asPredicate)
+
+            member this.rest =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "rest").asPredicate)
+
+            member this.type_ =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "type").asPredicate)
+
+            member this.value =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "value").asPredicate)
+
+            interface Interface with
+                member this.iri = iri
+                member this.formula = _formula
+                member this.asSubject = iri.asSubject
+                member this.asPredicate = iri.asPredicate
+                member this.asObject = iri.asObject
+
+                member this.first =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "first").asPredicate)
+
+                member this.rest =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "rest").asPredicate)
+
+                member this.type_ =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "type").asPredicate)
+
+                member this.value =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "value").asPredicate)
+
+    let type_ = _namespace.prefixedName "type"
+
+    module Property =
+        let Class = _namespace.prefixedName "Property"
+
+        type Interface =
+            abstract iri: NamedReference
+            abstract formula: Formula
+            abstract asSubject: RdfSubject
+            abstract asPredicate: RdfPredicate
+            abstract asObject: RdfObject
+            abstract type_: Formula
+            abstract value: Formula
+
+        type Instance(iri: NamedReference) =
+            let _formula =
+                Formula.fromRdfSubject iri.asSubject
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject Class.asObject)
+                |> Formula.materializeFormula
+
+            member this.iri = iri
+            member this.formula = _formula
+            member this.asSubject = iri.asSubject
+            member this.asPredicate = iri.asPredicate
+            member this.asObject = iri.asObject
+
+            member this.type_ =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "type").asPredicate)
+
+            member this.value =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "value").asPredicate)
+
+            interface Interface with
+                member this.iri = iri
+                member this.formula = _formula
+                member this.asSubject = iri.asSubject
+                member this.asPredicate = iri.asPredicate
+                member this.asObject = iri.asObject
+
+                member this.type_ =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "type").asPredicate)
+
+                member this.value =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "value").asPredicate)
+
+        type NamedIndividual(iri: NamedReference) =
+            let _formula =
+                Formula.fromRdfSubject iri.asSubject
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject Class.asObject)
+                |> Formula.materializeFormula
+                |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject _owlNamedIndividual.asObject)
+                |> Formula.materializeFormula
+
+            member this.iri = iri
+            member this.formula = _formula
+            member this.asSubject = iri.asSubject
+            member this.asPredicate = iri.asPredicate
+            member this.asObject = iri.asObject
+
+            member this.type_ =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "type").asPredicate)
+
+            member this.value =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "value").asPredicate)
+
+            interface Interface with
+                member this.iri = iri
+                member this.formula = _formula
+                member this.asSubject = iri.asSubject
+                member this.asPredicate = iri.asPredicate
+                member this.asObject = iri.asObject
+
+                member this.type_ =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "type").asPredicate)
+
+                member this.value =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "value").asPredicate)
+
+    let JSON = _namespace.prefixedName "JSON"
+    let HTML = _namespace.prefixedName "HTML"
+    let PlainLiteral = _namespace.prefixedName "PlainLiteral"
+    let value = _namespace.prefixedName "value"
+    let predicate = _namespace.prefixedName "predicate"
+
+    module Statement =
+        let Class = _namespace.prefixedName "Statement"
+
+        type Interface =
+            abstract iri: NamedReference
+            abstract formula: Formula
+            abstract asSubject: RdfSubject
+            abstract asPredicate: RdfPredicate
+            abstract asObject: RdfObject
+            abstract object: Formula
+            abstract predicate: Formula
+            abstract subject: Formula
+            abstract type_: Formula
+            abstract value: Formula
+
+        type Instance(iri: NamedReference) =
+            let _formula =
+                Formula.fromRdfSubject iri.asSubject
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject Class.asObject)
+                |> Formula.materializeFormula
+
+            member this.iri = iri
+            member this.formula = _formula
+            member this.asSubject = iri.asSubject
+            member this.asPredicate = iri.asPredicate
+            member this.asObject = iri.asObject
+
+            member this.object =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "object").asPredicate)
+
+            member this.predicate =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "predicate").asPredicate)
+
+            member this.subject =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "subject").asPredicate)
+
+            member this.type_ =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "type").asPredicate)
+
+            member this.value =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "value").asPredicate)
+
+            interface Interface with
+                member this.iri = iri
+                member this.formula = _formula
+                member this.asSubject = iri.asSubject
+                member this.asPredicate = iri.asPredicate
+                member this.asObject = iri.asObject
+
+                member this.object =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "object").asPredicate)
+
+                member this.predicate =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "predicate").asPredicate)
+
+                member this.subject =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "subject").asPredicate)
+
+                member this.type_ =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "type").asPredicate)
+
+                member this.value =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "value").asPredicate)
+
+        type NamedIndividual(iri: NamedReference) =
+            let _formula =
+                Formula.fromRdfSubject iri.asSubject
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject Class.asObject)
+                |> Formula.materializeFormula
+                |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject _owlNamedIndividual.asObject)
+                |> Formula.materializeFormula
+
+            member this.iri = iri
+            member this.formula = _formula
+            member this.asSubject = iri.asSubject
+            member this.asPredicate = iri.asPredicate
+            member this.asObject = iri.asObject
+
+            member this.object =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "object").asPredicate)
+
+            member this.predicate =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "predicate").asPredicate)
+
+            member this.subject =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "subject").asPredicate)
+
+            member this.type_ =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "type").asPredicate)
+
+            member this.value =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "value").asPredicate)
+
+            interface Interface with
+                member this.iri = iri
+                member this.formula = _formula
+                member this.asSubject = iri.asSubject
+                member this.asPredicate = iri.asPredicate
+                member this.asObject = iri.asObject
+
+                member this.object =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "object").asPredicate)
+
+                member this.predicate =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "predicate").asPredicate)
+
+                member this.subject =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "subject").asPredicate)
+
+                member this.type_ =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "type").asPredicate)
+
+                member this.value =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "value").asPredicate)
+
+    let langString = _namespace.prefixedName "langString"
+
+    module Alt =
+        let Class = _namespace.prefixedName "Alt"
+
+        type Interface =
+            abstract iri: NamedReference
+            abstract formula: Formula
+            abstract asSubject: RdfSubject
+            abstract asPredicate: RdfPredicate
+            abstract asObject: RdfObject
+
+        type Instance(iri: NamedReference) =
+            let _formula =
+                Formula.fromRdfSubject iri.asSubject
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject Class.asObject)
+                |> Formula.materializeFormula
+
+            member this.iri = iri
+            member this.formula = _formula
+            member this.asSubject = iri.asSubject
+            member this.asPredicate = iri.asPredicate
+            member this.asObject = iri.asObject
+
+            interface Interface with
+                member this.iri = iri
+                member this.formula = _formula
+                member this.asSubject = iri.asSubject
+                member this.asPredicate = iri.asPredicate
+                member this.asObject = iri.asObject
+
+        type NamedIndividual(iri: NamedReference) =
+            let _formula =
+                Formula.fromRdfSubject iri.asSubject
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject Class.asObject)
+                |> Formula.materializeFormula
+                |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject _owlNamedIndividual.asObject)
+                |> Formula.materializeFormula
+
+            member this.iri = iri
+            member this.formula = _formula
+            member this.asSubject = iri.asSubject
+            member this.asPredicate = iri.asPredicate
+            member this.asObject = iri.asObject
+
+            interface Interface with
+                member this.iri = iri
+                member this.formula = _formula
+                member this.asSubject = iri.asSubject
+                member this.asPredicate = iri.asPredicate
+                member this.asObject = iri.asObject
+
+    module CompoundLiteral =
+        let Class = _namespace.prefixedName "CompoundLiteral"
+
+        type Interface =
+            abstract iri: NamedReference
+            abstract formula: Formula
+            abstract asSubject: RdfSubject
+            abstract asPredicate: RdfPredicate
+            abstract asObject: RdfObject
+            abstract direction: Formula
+            abstract language: Formula
+            abstract type_: Formula
+            abstract value: Formula
+
+        type Instance(iri: NamedReference) =
+            let _formula =
+                Formula.fromRdfSubject iri.asSubject
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject Class.asObject)
+                |> Formula.materializeFormula
+
+            member this.iri = iri
+            member this.formula = _formula
+            member this.asSubject = iri.asSubject
+            member this.asPredicate = iri.asPredicate
+            member this.asObject = iri.asObject
+
+            member this.direction =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "direction").asPredicate)
+
+            member this.language =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "language").asPredicate)
+
+            member this.type_ =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "type").asPredicate)
+
+            member this.value =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "value").asPredicate)
+
+            interface Interface with
+                member this.iri = iri
+                member this.formula = _formula
+                member this.asSubject = iri.asSubject
+                member this.asPredicate = iri.asPredicate
+                member this.asObject = iri.asObject
+
+                member this.direction =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "direction").asPredicate)
+
+                member this.language =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "language").asPredicate)
+
+                member this.type_ =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "type").asPredicate)
+
+                member this.value =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "value").asPredicate)
+
+        type NamedIndividual(iri: NamedReference) =
+            let _formula =
+                Formula.fromRdfSubject iri.asSubject
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject Class.asObject)
+                |> Formula.materializeFormula
+                |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject _owlNamedIndividual.asObject)
+                |> Formula.materializeFormula
+
+            member this.iri = iri
+            member this.formula = _formula
+            member this.asSubject = iri.asSubject
+            member this.asPredicate = iri.asPredicate
+            member this.asObject = iri.asObject
+
+            member this.direction =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "direction").asPredicate)
+
+            member this.language =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "language").asPredicate)
+
+            member this.type_ =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "type").asPredicate)
+
+            member this.value =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "value").asPredicate)
+
+            interface Interface with
+                member this.iri = iri
+                member this.formula = _formula
+                member this.asSubject = iri.asSubject
+                member this.asPredicate = iri.asPredicate
+                member this.asObject = iri.asObject
+
+                member this.direction =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "direction").asPredicate)
+
+                member this.language =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "language").asPredicate)
+
+                member this.type_ =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "type").asPredicate)
+
+                member this.value =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "value").asPredicate)
+
+    let subject = _namespace.prefixedName "subject"
+
+    module Bag =
+        let Class = _namespace.prefixedName "Bag"
+
+        type Interface =
+            abstract iri: NamedReference
+            abstract formula: Formula
+            abstract asSubject: RdfSubject
+            abstract asPredicate: RdfPredicate
+            abstract asObject: RdfObject
+
+        type Instance(iri: NamedReference) =
+            let _formula =
+                Formula.fromRdfSubject iri.asSubject
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject Class.asObject)
+                |> Formula.materializeFormula
+
+            member this.iri = iri
+            member this.formula = _formula
+            member this.asSubject = iri.asSubject
+            member this.asPredicate = iri.asPredicate
+            member this.asObject = iri.asObject
+
+            interface Interface with
+                member this.iri = iri
+                member this.formula = _formula
+                member this.asSubject = iri.asSubject
+                member this.asPredicate = iri.asPredicate
+                member this.asObject = iri.asObject
+
+        type NamedIndividual(iri: NamedReference) =
+            let _formula =
+                Formula.fromRdfSubject iri.asSubject
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject Class.asObject)
+                |> Formula.materializeFormula
+                |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject _owlNamedIndividual.asObject)
+                |> Formula.materializeFormula
+
+            member this.iri = iri
+            member this.formula = _formula
+            member this.asSubject = iri.asSubject
+            member this.asPredicate = iri.asPredicate
+            member this.asObject = iri.asObject
+
+            interface Interface with
+                member this.iri = iri
+                member this.formula = _formula
+                member this.asSubject = iri.asSubject
+                member this.asPredicate = iri.asPredicate
+                member this.asObject = iri.asObject
+
+    let XMLLiteral = _namespace.prefixedName "XMLLiteral"
+    let object = _namespace.prefixedName "object"
+    let direction = _namespace.prefixedName "direction"
+    let nil = _namespace.prefixedName "nil"
+    let language = _namespace.prefixedName "language"
+    let first = _namespace.prefixedName "first"
+
+    module Seq =
+        let Class = _namespace.prefixedName "Seq"
+
+        type Interface =
+            abstract iri: NamedReference
+            abstract formula: Formula
+            abstract asSubject: RdfSubject
+            abstract asPredicate: RdfPredicate
+            abstract asObject: RdfObject
+
+        type Instance(iri: NamedReference) =
+            let _formula =
+                Formula.fromRdfSubject iri.asSubject
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject Class.asObject)
+                |> Formula.materializeFormula
+
+            member this.iri = iri
+            member this.formula = _formula
+            member this.asSubject = iri.asSubject
+            member this.asPredicate = iri.asPredicate
+            member this.asObject = iri.asObject
+
+            interface Interface with
+                member this.iri = iri
+                member this.formula = _formula
+                member this.asSubject = iri.asSubject
+                member this.asPredicate = iri.asPredicate
+                member this.asObject = iri.asObject
+
+        type NamedIndividual(iri: NamedReference) =
+            let _formula =
+                Formula.fromRdfSubject iri.asSubject
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject Class.asObject)
+                |> Formula.materializeFormula
+                |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject _owlNamedIndividual.asObject)
+                |> Formula.materializeFormula
+
+            member this.iri = iri
+            member this.formula = _formula
+            member this.asSubject = iri.asSubject
+            member this.asPredicate = iri.asPredicate
+            member this.asObject = iri.asObject
+
+            interface Interface with
+                member this.iri = iri
+                member this.formula = _formula
+                member this.asSubject = iri.asSubject
+                member this.asPredicate = iri.asPredicate
+                member this.asObject = iri.asObject

@@ -1,0 +1,141 @@
+The  RDF-­‐3X  engine  for  scalable  
+management  of  RDF  data    
+  
+Authored  by:  Thomas  Neumann  and  
+Gerhard  Weikum    
+Presented  by:  Kyle  Robinson  
+
+Overview  
+ Motivation  
+ Challenges  
+ Previous  Work  
+ RDF-­‐3X  
+ Storage  
+ Querying  
+ Query  Optimizer  
+ Cost  estimation  
+ Updates  
+ Results  
+ Conclusion  
+
+Motivation  
+ Create  a  way  for  machines  to  understand  the  
+semantics  of  information  
+ The  goal  of  RDF  is  to  provide  a  way  to  describe  
+resources  
+ RDF  model  is  very  important  to  the  semantic  
+web  
+ Previous  RDF  databases  performed  poorly    
+ Managing  large  scale  RDF  data  is  necessary  
+and  challenging  
+
+Challenges  
+ Absence  of  a  global  schema  causes  issue  for  
+physical  database  design  
+ Optimizations  require  statistics  gathering  
+without  schema  
+ Lots  of  joins  but  attributes  are  less  predictable  
+than  in  relational  setting  
+ Does  not  benefit  from  the  XML  research  done  
+for  trees  
+
+Previous  Work  
+ Triples  are  stored  in  a  single  triples  table  
+ Map  triples  onto  relational  tables  (Sesame,  
+SW-­‐Store)  
+ All  triples  with  the  same  predicate  stored  in  
+same  property  table  
+ An  extension  where  triples  are  clustered  by  
+predicate  names  
+
+RDF-­‐3X  
+ Creates  giant  triples  table  
+ Indexes  all  of  it  using  6  permutations  of  S,  P,  O  
+ Indexes  over  all  two-­‐  and  one-­‐dimensional  
+projections  
+ Easy  compression,  smaller  than  original  data  
+ Allows  for  batch  updates  
+
+Storage  
+ Triples  stored  in  a  B+  tree  
+ Literals  all  replaced  by  IDs  in  
+a  mapping  dictionary  
+ IDs  act  as  compression  and  
+simplification  for  the  query  
+processor  
+ Compress  indexes  by  storing  
+the  change  between  triples  
+ If  there  is  only  a  small  
+change  in  value  3  then  the  
+delta  can  be  stored  in  the  
+header  
+  
+
+Querying  
+ Queries  translated  into  triple  patterns    
+ Single  triple  pattern  solved  by  range  scan     
+ Multiple  triple  patterns  need  multiple  joins  
+ Construct  an  execution  plan  from  query  graph  
+± Create  index  scan  for  each  triple  pattern  
+± Join  each  edge  in  the  graph  
+± Add  cross-­‐products  to  obtain  single  join  tree  
+± Selection  for  FILTER  
+± Eliminate  duplicates,  DISTINCT  
+± Convert  IDs  to  literals  
+ First  steps  taken  care  of  by  query  optimizer  
+
+Example  of  Querying  
+
+Query  Optimizer  
+ Uses  a  bottom-­‐up  dynamic  programming  
+framework  
+ Solve  subgraphs  of  query  graph  
+ Projects  away  unused  variables  and  generates  
+plans  for  all  indexes  
+ Prunes  plans  by  estimating  execution  costs  
+ Optimal  solutions  to  smaller  problems  are  
+joined  with  each  other  
+
+Execution  Plan  Examples  
+
+Cost  Estimation  
+ Use  histograms  to  generate  
+statistics  on  groups  of  
+triples  
+ General  but  assumes  
+predicates  are  independent  
+ Augment  histograms  with  
+precomputed  frequent  join  
+paths    
+ Rank  paths  by  number  of  
+distinct  nodes  
+ Can  generate  1000  paths  in  
+a  few  minutes  and  takes  a  
+16KB  page  
+  
+
+Estimation  Error  
+
+Updates  
+ Updates  collected  in  private  workspaces  
+ Differential  indexing  for  single  and  batch  updates  
+ Merge  into  main  index  when  size  meets  threshold  
+ Indexed  separate  and  lazily  from  the  main  index  
+ Differential  indexes  invalidated  upon  new  update  
+ Deletes  are  just  updates  with  a  delete  flag  
+
+Results  
+
+
+
+
+
+Conclusion  
+ RDF-­‐3X  allows  for  executing  SPARQL  queries  
+over  large  amounts  of  RDF  triples  
+ Outperforms  the  best  previous  systems  by  a  
+large  margin  
+ Uses  exhaustive  sextuple  indexing  
+ Query  optimizer  takes  advantage  of  fast  merge  
+joins  
+ Allows  for  batch  updates  and  deletions  

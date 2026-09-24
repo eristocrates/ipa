@@ -3,23 +3,31 @@ source https://api.nuget.org/v3/index.json
 generate_load_scripts: true
 framework: net10.0
 
-
 nuget AngleSharp = 1.7.2
 nuget Argolis.Nancy
 nuget AssetCloudPublicAPI 
+nuget AW.Identifiers
 nuget Blake3 
 nuget BrightstarDB
 nuget BrowserApi = 0.1.0-preview.9
+nuget ByteDev.ResourceIdentifier
 nuget Cambia.UriExtensions
 nuget CaseConverter
 nuget ChromeProtocol.Domains 2.1.1.1367902
+nuget ClosedXML
 nuget CsvHelper
 nuget Cytoscape.NET
+nuget Databasic.MsSql
+nuget Deedle
+nuget DependentTypes
 nuget dotNetRdf
 nuget Dubzer.WhatwgUrl
+nuget EnvironmentVariableProvider 
 nuget Fabulous.AST
 nuget Fantomas.FCS
+nuget Fare 
 nuget Fli
+nuget Flora.CssProvider
 nuget Flurl
 nuget Flurl.Http
 nuget Flurl.Http.Net40
@@ -30,12 +38,14 @@ nuget Flurl.Serialization.TextJson
 nuget FolkerKinzel.MimeTypes
 nuget FPrimitive
 nuget FRange
+nuget FsCheck
 nuget FsExcel
 nuget FSharp.Collections.ParallelSeq
 nuget FSharp.Compiler.Service = 43.10.103
-nuget FSharp.Configuration 3.0.0
+nuget FSharp.Configuration
 nuget FSharp.Data
 nuget FSharp.Data.Adaptive
+nuget FSharp.Data.DbPedia
 nuget FSharp.Data.JsonPath
 nuget FSharp.Data.JsonSchema.Core
 nuget FSharp.Data.JsonSchema.NJsonSchema
@@ -43,19 +53,32 @@ nuget FSharp.Data.JsonSchema.OpenApi
 nuget FSharp.Data.LiteralProviders
 nuget FSharp.Data.Mutator
 nuget FSharp.Data.WsdlProvider
+nuget FSharp.DependentTypesProvider
 nuget FSharp.FGL
 nuget FSharp.FGL.ArrayAdjacencyGraph
 nuget FSharp.FGL.IO
+nuget FSharp.Formatting
+nuget FSharp.Formatting.Literate
 nuget FSharp.HashCollections
 nuget FSharp.Json
 nuget FSharp.Literals
+nuget FSharp.Literate
+nuget FSharp.Management
+nuget FSharp.Text.Experimental.Transform
+nuget FSharp.Text.RegexProvider
+nuget FSharp.UMX
 nuget FSharp.ViewEngine
 nuget FSharp.XExtensions
+nuget FSharpPlus
 nuget FsHttp
 nuget FsPdf
+nuget FsUnit
+nuget Gherkin.TypeProvider 
 nuget Going.Plaid >= 6.66.0
+nuget Google.DataTable.Net.Wrapper
 nuget GoogleApi >= 5.8.15
 nuget Grafeo 
+nuget GraphProvider 
 nuget GraphQL
 nuget GraphQL-Parser
 nuget GraphQL.Analyzers
@@ -75,11 +98,18 @@ nuget GraphQL.Server.Ui.Playground
 nuget GraphQL.SystemTextJson
 nuget GraphVG
 nuget Gremlin.Net
+nuget GremlinQueryPackage
+nuget HdrHistogram
+nuget Hedgehog
+nuget Hl7.Fhir.R4
 nuget HtmlAgilityPack 
+nuget HtmlTypeProvider
 nuget Humanizer.Core
 nuget Iride
 nuget IriTools
 nuget IS4.SFI.Formats.WARC
+nuget Jev.Net
+nuget JevGen.Providers.TypeSafe
 nuget JmesPath.Net >= 1.1.0
 nuget json-ld.net
 nuget Json.More.Net
@@ -87,6 +117,7 @@ nuget JsonPath.Net
 nuget JsonPointer.Net
 nuget JsonStructure
 nuget JWT 
+nuget KTrie
 nuget ktsu.Coder.Core
 nuget ktsu.CredentialCache 
 nuget ktsu.Extensions
@@ -106,9 +137,20 @@ nuget ktsu.TextFilter
 nuget ktsu.ThemeProvider
 nuget Kumo 
 nuget Lambda2Js = 3.1.4
+nuget LevelUp.Strategos
+nuget LevelUp.Strategos.Ontology
+nuget LevelUp.Strategos.Ontology.Generators
 nuget libphonenumber-csharp
+nuget LicenseToCIL
 nuget LightningDB 
+nuget LITEQ.RDF
 nuget LitXml
+nuget LSL.DataUri
+nuget MathNet.Numerics 
+nuget MathNet.Numerics.FSharp
+nuget MessagePack
+nuget MessagePack.FSharpExtensions
+nuget MetaTp 
 nuget Meziantou.Framework
 nuget Meziantou.Framework.AtlassianDataFormat
 nuget Meziantou.Framework.Avatar
@@ -178,12 +220,17 @@ nuget Nager.PublicSuffix
 nuget NeatIntervals
 nuget Neo4j.Driver
 nuget Neo4j.Driver.Reactive
+nuget Neo4jClient
+nuget Nerdbank.MessagePack
 nuget NetworkingPrimitivesCore
 nuget NetworkInspector.Values
 nuget Newtonsoft.Json
 nuget NLanguageTag
+nuget NUnit.Framework
+nuget ObjectLayoutInspector
 nuget OBO.NET
 nuget OBO.NET.CodeGeneration
+nuget OpenAPITypeProvider 
 nuget OWLSharp
 nuget OWLSharp.Extensions
 nuget PdfPig
@@ -192,6 +239,7 @@ nuget PhoenixmlDb.Core 1.6.7
 nuget PhoenixmlDb.Schema.Inference 0.1.0
 nuget PhoenixmlDb.Xslt 1.6.13
 nuget PosInformatique.Foundations.EmailAddresses
+nuget PuppeteerExtraSharp
 nuget PuppeteerSharp
 nuget PuppeteerSharp.Contrib.Extensions
 nuget PuppeteerSharp.Dom = 5.0.43
@@ -209,24 +257,44 @@ nuget Selenium.WebDriver = 4.47.0
 nuget SemanticVersioning 
 nuget Semiodesk.Trinity
 nuget Semver
+nuget Serilog 
+nuget SerilogMetrics 
+nuget SerilogTimings 
+nuget SerilogTracing
+nuget SerilogTracing.Expressions 
+nuget FSharp.Quotations.Evaluator
 nuget SigmaGraph.NET
 nuget SimpleCrawler.Puppeteer 
+nuget SimpleTemplateTypeProvider
+nuget Soenneker.Extensions.Char
+nuget Soenneker.Extensions.String
+nuget Soenneker.Utils.RegexCollection 
 nuget SolarWinds.Api
+nuget Spectre.Console
 nuget SQLProvider.MsSql = 1.5.18
+nuget SqlSharp 
+nuget Stardust.Paradox.Data.Linq 
+nuget Suave
 nuget System.DirectoryServices.AccountManagement >= 10.0.11
 nuget System.DirectoryServices.Protocols >= 10.0.11
 nuget Tavis.UriTemplates
 nuget Taynftmf.FglExtnsn
 nuget TextCopy
+nuget TokensRegexProvider 
 nuget TruePath >= 1.12.0
 nuget TruePath.SystemIo >= 1.12.0
+nuget Universal.Common
 nuget Universal.Common.Css.Selectors
+nuget Unquote
 nuget UUIDNext
+nuget VDS.Common
 nuget Waher.Content.Semantic
 nuget WebFlux 
 nuget WebSharper
 nuget WordGlue 
+nuget Xilium.Crdtp.Client
 nuget XParsec
+nuget XPlot.GoogleCharts
+nuget XPlot.GoogleCharts.Deedle
+nuget XPlot.Plotly
 nuget Yog.FSharp
-nuget PuppeteerExtraSharp
-nuget Universal.Common

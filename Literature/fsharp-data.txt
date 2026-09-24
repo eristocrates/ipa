@@ -1,0 +1,1344 @@
+Types from data: Making structured data ﬁrst-class citizens in F#
+Tomas Petricek
+University of Cambridge
+tomas@tomasp.net
+Gustavo Guerra
+Microsoft Corporation, London
+gustavo@codebeside.org
+Don Syme
+Microsoft Research, Cambridge
+dsyme@microsoft.com
+Abstract
+Mostmodernapplicationsinteractwithexternalservicesand
+access data in structured formats such as XML, JSON and
+CSV. Static type systems do not understand such formats,
+oftenmakingdataaccessmorecumbersome.Shouldwegive
+up and leave the messy world of external data to dynamic
+typing and runtime checks? Of course, not!
+We present F# Data, a library that integrates external
+structured data into F#. As most real-world data does not
+come with an explicit schema, we develop a shape inference
+algorithm that infers a shape from representative sample
+documents. We then integrate the inferred shape into the F#
+type system using type providers. We formalize the process
+and prove a relative type soundness theorem.
+Our library signiﬁcantly reduces the amount of data ac-
+cess code and it provides additional safety guarantees when
+contrasted with the widely used weakly typed techniques.
+Categories and Subject Descriptors D.3.3 [Programming
+Languages]: Language Constructs and Features
+Keywords F#, Type Providers, Inference, JSON, XML
+1. Introduction
+Applicationsforsocialnetworks,ﬁndingtomorrow’sweather
+or searching train schedules all communicate with external
+services. Increasingly, these services provide end-points that
+return data as CSV, XML or JSON. Most such services do
+not come with an explicit schema. At best, the documenta-
+tion provides sample responses for typical requests.
+For example, http://openweathermap.org/current con-
+tains one example to document an end-point to get the cur-
+rent weather. Using standard libraries, we might call it as1:
+Permission to make digital or hard copies of part or all of this work for personal or
+classroom use is granted without fee provided that copies are not made or distributed
+for proﬁt or commercial advantage and that copies bear this notice and the full citation
+on the ﬁrst page. Copyrights for components of this work owned by others than
+ACM must be honored. Abstracting with credit is permitted. To copy otherwise, to
+republish, to post on servers, or to redistribute to lists, contact the Owner/Author.
+Request permissions from permissions@acm.org or Publications Dept., ACM, Inc.,
+fax +1 (212) 869-0481. Copyright 2016 held by Owner/Author. Publication Rights
+Licensed to ACM.
+PLDI ’16 June 13–17, 2016, Santa Barbara, CA, United States
+Copyright c© 2016 ACM 978-1-nnnn-nnnn-n/yy/mm...$15.00
+DOI: http://dx.doi.org/10.1145/(to come)
+let doc = Http.Request("http://api.owm.org/?q=NYC")
+match JsonValue.Parse(doc) with
+| Record(root) →
+match Map.nd "main" root with
+| Record(main) →
+match Map.nd "temp" main with
+| Number(num) → printfn "Lovely %f!" num
+| _ → failwith "Incorrect format"
+| _ → failwith "Incorrect format"
+| _ → failwith "Incorrect format"
+The code assumes that the response has a particular shape
+described in the documentation. The root node must be a
+record with a main ﬁeld, which has to be another record
+containing a numerical temp ﬁeld representing the current
+temperature. When the shape is different, the code fails.
+While not immediately unsound, the code is prone to errors
+if strings are misspelled or incorrect shape assumed.
+UsingtheJSONtypeproviderfromF#Data,wecanwrite
+code with exactly the same functionality in two lines:
+type W = JsonProvider "http://api.owm.org/?q=NYC"
+printfn "Lovely %f!" (W.GetSample().Main.Temp)
+JsonProvider "..." invokesatypeprovider[23]atcompile-
+time with the URL as a sample. The type provider infers the
+structureoftheresponseandprovidesatypewithaGetSam-
+plemethodthatreturnsaparsedJSONwithnestedproperties
+Main.Temp, returning the temperature as a number.
+In short, the types come from the sample data. In our
+experience, this technique is both practical and surprisingly
+effective in achieving more sound information interchange
+in heterogeneous systems. Our contributions are as follows:
+• We present F# Data type providers for XML, CSV and
+JSON (§2) and practical aspects of their implementation
+that contributed to their industrial adoption (§6).
+• We describe a predictable shape inference algorithm for
+structured data formats, based on a preferred shape rela-
+tion, that underlies the type providers (§3).
+• We give a formal model (§4) and use it to prove relative
+type safety for the type providers (§5).
+1 We abbreviate the full URL and omit application key (available after
+registration). The returned JSON is shown in Appendix A and can be
+used to run the code against a local ﬁle.
+
+2. Type providers for structured data
+We start with an informal overview that shows how F# Data
+type providers simplify working with JSON and XML. We
+introduce the necessary aspects of F# type providers along
+the way. The examples in this section also illustrate the key
+design principles of the shape inference algorithm:
+• The mechanism is predictable (§6.5). The user directly
+works with the provided types and should understand
+why a speciﬁc type was produced from a given sample.
+• ThetypeproviderspreferF#objecttypeswithproperties.
+This allows extensible (open-world) data formats (§2.2)
+and it interacts well with developer tooling (§2.1).
+• The above makes our techniques applicable to any lan-
+guage with nominal object types (e.g. variations of Java
+or C# with a type provider mechanism added).
+• Finally, we handle practical concerns including support
+for different numerical types, null and missing data.
+The supplementary screencast provides further illustration
+of the practical developer experience using F# Data.2
+2.1 Working with JSON documents
+The JSON format is a popular data exchange format based
+on JavaScript data structures. The following is the deﬁnition
+of JsonValue used earlier (§1) to represent JSON data:
+type JsonValue =
+| Number of oat
+| Boolean of bool
+| String of string
+| Record of Map string,JsonValue
+| Array of JsonValue[]
+| Null
+The earlier example used only a nested record containing
+a number. To demonstrate other aspects of the JSON type
+provider, we look at an example that also involves an array:
+[ { "name":"Jan", "age":25 },
+{ "name":"Tomas" },
+{ "name":"Alexander", "age":3.5 } ]
+The standard way to print the names and ages would be to
+pattern match on the parsed JsonValue, check that the top-
+level node is a Array and iterate over the elements checking
+that each element is a Record with certain properties. We
+would throw an exception for values of an incorrect shape.
+As before, the code would specify ﬁeld names as strings,
+which is error prone and can not be statically checked.
+Assuming people.json is the above example and data is a
+string containing JSON of the same shape, we can write:
+type People = JsonProvider "people.json"
+for item in People.Parse(data) do
+printf "%s " item.Name
+Option.iter (printf "(%f)") item.Age
+Wenowusealocalﬁleasasampleforthetypeinference,but
+then processes data from another source. The code achieves
+a similar simplicity as when using dynamically typed lan-
+guages, but it is statically type-checked.
+Typeproviders. ThenotationJsonProvider "people.json"
+passes a static parameter to the type provider. Static pa-
+rameters are resolved at compile-time and have to be con-
+stant. The provider analyzes the sample and provides a
+type People. F# editors also execute the type provider at
+development-time and use the provided types for auto-
+completion on “.” and for background type-checking.
+The JsonProvider uses a shape inference algorithm and
+provides the following F# types for the sample:
+type Entity =
+member Name : string
+member Age : option oat
+type People =
+member GetSample : unit → Entity[]
+member Parse : string → Entity[]
+The type Entity represents the person. The ﬁeld Name is
+available for all sample values and is inferred as string.
+The ﬁeld Age is marked as optional, because the value is
+missing in one sample. In F#, we use Option.iter to call the
+speciﬁed function (printing) only when an optional value is
+available. The two age values are an integer 25 and a ﬂoat
+3.5 and so the common inferred type is oat. The names of
+the properties are normalized to follow standard F# naming
+conventions as discussed later (§6.3).
+The type People has two methods for reading data. Get-
+Sample parses the sample used for the inference and Parse
+parses a JSON string. This lets us read data at runtime, pro-
+vided that it has the same shape as the static sample.
+Error handling. In addition to the structure of the types,
+the type provider also speciﬁes the code of operations such
+as item.Name. The runtime behaviour is the same as in the
+earlier hand-written sample (§1) – a member access throws
+an exception if data does not have the expected shape.
+Informally, the safety property (§5) states that if the in-
+puts are compatible with one of the static samples (i.e. the
+samplesarerepresentative),thennoexceptionswilloccur.In
+other words, we cannot avoid all failures, but we can prevent
+some. Moreover, if http://openweathermap.org changes
+the shape of the response, the code in §1 will not re-compile
+and the developer knows that the code needs to be corrected.
+Objects with properties. The sample code is easy to write
+thankstothefactthatmostF#editorsprovideauto-completion
+when “.” is typed (see the supplementary screencast). The
+developer does not need to examine the sample JSON ﬁle to
+see what ﬁelds are available. To support this scenario, our
+type providers map the inferred shapes to F# objects with
+(possibly optional) properties.
+2 Available at http://tomasp.net/academic/papers/fsharp-data.
+
+This is demonstrated by the fact that Age becomes an
+optional member. An alternative is to provide two different
+record types (one with Name and one with Name and Age),
+but this would complicate the processing code. It is worth
+noting that languages with stronger tooling around pattern
+matchingsuchasIdris[12]mighthavedifferentpreferences.
+2.2 Processing XML documents
+XML documents are formed by nested elements with at-
+tributes. We can view elements as records with a ﬁeld for
+each attribute and an additional special ﬁeld for the nested
+contents (which is a collection of elements).
+Consider a simple extensible document format where a
+root element <doc> can contain a number of document ele-
+ments, one of which is <heading> representing headings:
+<doc>
+<heading>Working with JSON</heading>
+<p>Type providers make this easy.</p>
+<heading>Working with XML</heading>
+<p>Processing XML is as easy as JSON.</p>
+<image source="xml.png" />
+</doc>
+The F# Data library has been designed primarily to simplify
+reading of data. For example, say we want to print all head-
+ings in the document. The sample shows a part of the doc-
+ument structure (in particular the <heading> element), but it
+does not show all possible elements (say, <table>). Assum-
+ing the above document is sample.xml, we can write:
+type Document = XmlProvider "sample.xml"
+let root = Document.Load("pldi/another.xml")
+for elem in root.Doc do
+Option.iter (printf " - %s") elem.Heading
+The example iterates over a collection of elements returned
+by root.Doc. The type of elem provides typed access to
+elements known statically from the sample and so we can
+write elem.Heading, which returns an optional string value.
+Openworld. Byitsnature,XMLisextensibleandthesam-
+plecannotincludeallpossiblenodes.3 Thisisthefundamen-
+tal open world assumption about external data. Actual input
+might be an element about which nothing is known.
+For this reason, we do not infer a closed choice between
+heading, paragraph and image. In the subsequent formaliza-
+tion, we introduce a top shape (§3.1) and extend it with la-
+bels capturing the statically known possibilities (§3.5). The
+labelled top shape is mapped to the following type:
+type Element =
+member Heading : option string
+member Paragraph : option string
+member Image : option Image
+Element is an abstract type with properties. It can represent
+the statically known elements, but it is not limited to them.
+For a table element, all three properties would return None.
+Using a type with optional properties provides access to
+the elements known statically from the sample. However the
+user needs to explicitly handle the case when a value is not a
+statically known element. In object-oriented languages, the
+same could be done by providing a class hierarchy, but this
+loses the easy discoverability when “.” is typed.
+The provided type is also consistent with our design prin-
+ciples, which prefers optional properties. The gain is that the
+provided types support both open-world data and developer
+tooling. It is also worth noting that our shape inference uses
+labelled top shapes only as the last resort (Lemma 1, §6.4).
+2.3 Real-world JSON services
+Throughout the introduction, we used data sets that demon-
+strate the typical problems frequent in the real-world (miss-
+ing data, inconsistent encoding of primitive values and het-
+erogeneous shapes). The government debt information re-
+turned by the World Bank4 includes all three:
+[ { "pages": 5 },
+[ { "indicator": "GC.DOD.TOTL.GD.ZS",
+"date": "2012", "value": null },
+{ "indicator": "GC.DOD.TOTL.GD.ZS",
+"date": "2010", "value": "35.14229" } ] ]
+First, the ﬁeld value is null for some records. Second, num-
+bers in JSON can be represented as numeric literals (without
+quotes), but here, they are returned as string literals instead.5
+Finally, the top-level element is a collection containing two
+valuesofdifferentshape.Therecordcontainsmeta-datawith
+the total number of pages and the array contains the data. F#
+Data supports a concept of heterogeneous collection (out-
+lined in in §6.4) and provides the following type:
+type Record =
+member Pages : int
+type Item =
+member Date : int
+member Indicator : string
+member Value : option oat
+type WorldBank =
+member Record : Record
+member Array : Item[]
+The inference for heterogeneous collections infers the mul-
+tiplicities and shapes of nested elements. As there is exactly
+one record and one array, the provided type WorldBank ex-
+poses them as properties Record and Array.
+InadditiontotypeprovidersforJSONandXML,F#Data
+also implements a type provider for CSV (§6.2). We treat
+CSV ﬁles as lists of records (with ﬁeld for each column) and
+so CSV is handled directly by our inference algorithm.
+3 Even when the document structure is deﬁned using XML Schema,
+documents may contain elements preﬁxed with other namespaces.
+4 Available at http://data.worldbank.org
+5 This is often used to avoid non-standard numerical types of JavaScript.
+
+3. Shape inference for structured data
+The shape inference algorithm for structured data is based
+on a shape preference relation. When inferring the shape,
+it infers the most speciﬁc shapes of individual values (CSV
+rows, JSON or XML nodes) and recursively ﬁnds a common
+shape of all child nodes or all sample documents.
+We ﬁrst deﬁne the shape of structured data σ. We use the
+term shape to distinguish shapes of data from programming
+language types τ (type providers generate the latter from the
+former). Next, we deﬁne the preference relation on shapes σ
+and describe the algorithm for ﬁnding a common shape.
+The shape algebra and inference presented here is inﬂu-
+enced by the design principles we outlined earlier and by the
+type deﬁnitions available in the F# language. The same prin-
+ciples apply to other languages, but details may differ, for
+example with respect to numerical types and missing data.
+3.1 Inferred shapes
+We distinguish between non-nullable shapes that always
+have a valid value (written as ˆσ) and nullable shapes that
+encompass missing and null values (written as σ). We write
+ν for record names and record ﬁeld names.
+ˆσ = ν {ν1 :σ1,...,νn :σn, ρi}
+| oat | int | bool | string
+σ = ˆσ | nullable ˆσ | [σ] | any | null | ⊥
+Non-nullable shapes include records (consisting of a name
+and ﬁelds with their shapes) and primitives. The row vari-
+ables ρi are discussed below. Names of records arising from
+XMLarethenamesoftheXMLelements.ForJSONrecords
+wealwaysuseasinglename •.Weassumethatrecordﬁelds
+can be freely reordered.
+We include two numerical primitives, int for integers and
+oat for ﬂoating-point numbers. The two are related by the
+preference relation and we prefer int.
+Any non-nullable shape ˆσ can be wrapped as nullable ˆσ
+to explicitly permit the null value. Type providers map nul-
+lable shapes to the F# option type. A collection [σ] is also
+nullable and null values are treated as empty collections.
+This is motivated by the fact that a null collection is usu-
+ally handled as an empty collection by client code. However
+there is a range of design alternatives (make collections non-
+nullable or treat null string as an empty string).
+The shape null is inhabited by the null value (using an
+overloaded notation) and ⊥ is the bottom shape. The any
+shape is the top shape, but we later add labels for statically
+known alternative shapes (§3.5) as discussed earlier (§2.2).
+During inference we use row-variables ρi [1] in record
+shapes to represent the ﬂexibility arising from records in
+samples. For example, when a record Point{x 7→ 3} occurs
+inasample,itmaybecombinedwithPoint{x 7→ 3,y 7→ 4}
+that contains more ﬁelds. The overall shape inferred must
+account for the fact that any extra ﬁelds are optional, giving
+an inferred shape Point{x:int, y:nullable int }.
+any
+stringν {ν1:σ1,  , νn:σn}
+float
+bool
+int
+any
+string?ν {ν1:σ1,  , νn:σn}?
+null
+float?
+bool?
+int?
+[σ]
+Non-nullable shapes
+Nullable shapes
+Figure 1. Important aspects of the preferred shape relation
+3.2 Preferred shape relation
+Figure 1 provides an intuition about the preference between
+shapes. The lower part shows non-nullable shapes (with
+records and primitives) and the upper part shows nullable
+shapes with null, collections and nullable shapes. In the dia-
+gram,weabbreviatenullable σ asσ?andweomitlinksbe-
+tween the two parts; a shape ˆσ is preferred over nullable ˆσ .
+Deﬁnition 1. For ground σ1, σ2 (i.e. without ρi variables),
+we write σ1 v σ2 to denote that σ1 is preferred over σ2. The
+shape preference relation is deﬁned as a transitive reﬂexive
+closure of the following rules:
+int v oat (1)
+null v σ (for σ 6= ˆσ) (2)
+ˆσ v nullable ˆσ (for all ˆσ) (3)
+nullable ˆσ1 v nullable ˆσ2 (if ˆσ1 v ˆσ2) (4)
+[σ1] v [σ2] (if σ1 v σ2) (5)
+⊥ v σ (for all σ) (6)
+σ v any (7)
+ν {ν1 :σ1,..,νn :σn} v
+ν {ν1 :σ′1,..,νn :σ′n} (if σi v σ′
+i) (8)
+ν {ν1 :σ1,..,νn :σn} v
+ν {ν1 :σ1,..,..,νm :σm} (when m ≤ n) (9)
+Here is a summary of the key aspects of the deﬁnition:
+• Numericshapewithsmallerrangeispreferred(1)andwe
+choose 32-bit int over oat when possible.
+• The null shape is preferred over all nullable shapes (2),
+i.e. all shapes excluding non-nullable shapes ˆσ. Any non-
+nullable shape is preferred over its nullable version (3)
+• Nullable shapes and collections are covariant (4, 5).
+• There is a bottom shape (6) and any behaves as the top
+shape, because any shape σ is preferred over any (7).
+• The record shapes are covariant (8) and preferred record
+can have additional ﬁelds (9).
+
+csh(σ,σ) = σ (eq)
+csh([σ1],[σ2]) = [csh(σ1,σ2)] (list)
+csh(⊥,σ) = csh(σ,⊥) = σ (bot)
+csh(null,σ) = csh(σ,null) = dσe (null)
+csh(any,σ) = csh(σ,any) = any (top)
+csh(oat,int) = csh(int,oat) = oat (num)
+csh(σ2,nullable ˆσ1 ) = csh(nullable ˆσ1 ,σ2) = dcsh( ˆσ1,σ2)e (opt)
+csh(ν {ν1 :σ1,... ,νn :σn},ν {ν1 :σ′1, ... ,νn :σ′n}) = ν {ν1 :csh(σ1,σ′1), ... ,νn :csh(σn,σ′n)} (recd)
+csh(σ1,σ2) = any (when σ1 6= ν {...} or σ2 6= ν {...}) (any)
+dˆσe = nullable ˆσ (non-nullable shapes)
+dσe = σ (otherwise)
+bnullable ˆσ c = ˆσ (nullable shape)
+bσc = σ (otherwise)
+Figure 2. The rules that deﬁne the common preferred shape function
+3.3 Common preferred shape relation
+Giventwogroundshapes,thecommonpreferredshapeisthe
+least upper bound of the shape with respect to the preferred
+shape relation. The least upper bound prefers records, which
+is important for usability as discussed earlier (§2.2).
+Deﬁnition 2. A common preferred shape of two ground
+shapes σ1 and σ2 is a shape csh(σ1,σ2) obtained according
+to Figure 2. The rules are matched from top to bottom.
+The fact that the rules of csh are matched from top to bottom
+resolves the ambiguity between certain rules. Most impor-
+tantly (any) is used only as the last resort.
+When ﬁnding a common shape of two records (recd)
+we ﬁnd common preferred shapes of their respective ﬁelds.
+We can ﬁnd a common shape of two different numbers
+(num); for two collections, we combine their elements (list).
+When one shape is nullable (opt), we ﬁnd the common non-
+nullable shape and ensure the result is nullable using d−e,
+which is also applied when one of the shapes is null (null).
+When deﬁned, csh ﬁnds the unique least upper bound of
+the partially ordered set of ground shapes (Lemma 1).
+Lemma 1 (Least upper bound). For ground σ1 and σ2, if
+csh(σ1,σ2) ` σ then σ is a least upper bound by w.
+Proof. By induction over the structure of the shapes σ1,σ2.
+Note that csh only infers the top shape any when on of the
+shapes is the top shape (top) or when there is no other option
+(any); a nullable shape is introduced in d−e only when no
+non-nullable shape can be used (null), (opt).
+3.4 Inferring shapes from samples
+We now specify how we obtain the shape from data. As
+clariﬁed later (§6.2), we represent JSON, XML and CSV
+documents using the same ﬁrst-order data value:
+d = i | f | s | true | false | null
+| [d1;...;dn] | ν {ν1 7→ d1,...,νn 7→ dn}
+The deﬁnition includes primitive values (i for integers, f for
+ﬂoats and s for strings) and null. A collection is written as a
+list of values in square brackets. A record starts with a name
+ν, followed by a sequence of ﬁeld assignments νi 7→ di.
+Figure 3 deﬁnes a mapping S(d1,...,dn) which turns a
+collection of sample data d1,...,dn into a shape σ. Before
+applying S, we assume each record in each di is marked
+with a fresh row inference variable ρi. We then choose a
+ground, minimal substitution θ for row variables. Because
+ρi variables represent potentially missing ﬁelds, the d−e
+operator from Figure 2 is applied to all types in the vector.
+This is sufﬁcient to equate the record ﬁeld labels and
+satisfythepre-conditionsinrule(recd)whenmultiplerecord
+shapes are combined. The csh function is not deﬁned for
+two records with mis-matching ﬁelds, however, the ﬁelds
+can always be made to match, through a substitution for row
+variables. In practice, θ is found via row variable uniﬁcation
+[17]. We omit the details here. No ρi variables remain after
+inference as the substitution chosen is ground.
+Primitivevaluesaremappedtotheircorrespondingshapes.
+When inferring a shape from multiple samples, we use the
+common preferred shape relation to ﬁnd a common shape
+for all values (starting with ⊥). This operation is used when
+calling a type provider with multiple samples and also when
+inferring the shape of collection values.
+S(i) = int S(null) = null S(true) = bool
+S(f) = oat S(s) = string S(false) = bool
+S([d1;...;dn]) = [S(d1,...,dn)]
+S(ν {ν1 7→ d1,...,νn 7→ dn}ρi) =
+ν {ν1 : S(d1),...,νn : S(dn),dθ(ρi)e}
+S(d1,...,dn) = σn where
+σ0 = ⊥, ∀i ∈ {1..n}. σi−1OS(di) ` σi
+Choose minimal θ by ordering v lifted over substitutions
+Figure 3. Shape inference from sample data
+
+tag = collection | number
+| nullable | string
+| ν | any | bool
+tagof(string) = string
+tagof(bool) = bool
+tagof(int) = number
+tagof(oat) = number
+tagof(any σ1,...,σn ) = any
+tagof(ν {ν1 : σ1, ... ,νn : σn}) = ν
+tagof(nullable ˆσ ) = nullable
+tagof([σ]) = collection
+csh(any σ1,...,σk,...,σn ,any σ′1,...,σ′
+k,...,σ′m ) =
+any csh(σ1,σ′1),...,csh(σk,σ′
+k),σk+1,...,σn,σ′
+k+1,...,σ′m
+For i,j such that (tagof(σi) = tagof(σ′j)) ⇔ (i = j) ∧ (i ≤ k)
+(top-merge)
+csh(σ,any σ1,...,σn ) = csh(any σ1,...,σn ,σ) =
+any σ1,...,bcsh(σ,σi)c,...,σn
+For i such that tagof(σi) = tagof(bσc)
+(top-incl)
+csh(σ,any σ1,...,σn ) = any σ1,...,σn,bσc (top-add)
+csh(σ1,σ2) = any〈bσ1c,bσ2c〉 (top-any)
+Figure 4. Extending the common preferred shape relation for labelled top shapes
+3.5 Adding labelled top shapes
+When analyzing the structure of shapes, it sufﬁces to con-
+sider a single top shape any. The type providers need more
+information to provide typed access to the possible alterna-
+tive shapes of data, such as XML nodes.
+We extend the core model (sufﬁcient for the discussion of
+relative safety) with labelled top shapes deﬁned as:
+σ = ... | any σ1,...,σn
+The shapes σ1,...,σn represent statically known shapes
+that appear in the sample and that we expose in the provided
+type.Asdiscussedearlier(§2.2)thisisimportantwhenread-
+ing external open world data. The labels do not affect the
+preferred shape relation and any σ1,...,σn should still be
+seen as the top shape, regardless of the labels6.
+The common preferred shape function is extended to ﬁnd
+alabelledtopshapethatbestrepresentsthesample.Thenew
+rules for any appear in Figure 4. We deﬁne shape tags to
+identifyshapesthathaveacommonpreferredshapewhichis
+not the top shape. We use it to limit the number of labels and
+avoid nesting by grouping shapes by the shape tag. Rather
+thaninferringany int,any bool,oat ,ouralgorithmjoins
+int and oat and produces any oat,bool .
+When combining two top shapes (top-merge), we group
+theannotationsbytheirtags.Whencombiningatopwithan-
+othershape,thelabelsmayormaynotalreadycontainacase
+with the tag of the other shape. If they do, the two shapes
+are combined (top-incl), otherwise a new case is added (top-
+add). Finally, (top-all) replaces earlier (any) and combines
+two distinct non-top shapes. As top shapes implicitly permit
+null values, we make the labels non-nullable using b−c.
+Therevisedalgorithmstillﬁndsashapewhichistheleast
+upper bound. This means that labelled top shape is only
+inferred when there is no other alternative.
+Statingpropertiesofthelabelsrequiresreﬁnementstothe
+preferred shape relation. We leave the details to future work,
+but we note that the algorithm infers the best labels in the
+sense that there are labels that enable typed access to every
+possible value in the sample, but not more. The same is the
+case for nullable ﬁelds of records.
+4. Formalizing type providers
+This section presents the formal model of F# Data integra-
+tion. To represent the programming language that hosts the
+type provider, we introduce the Foo calculus, a subset of
+F# with objects and properties, extended with operations for
+workingwithweaklytypedstructureddataalongthelinesof
+theF#Dataruntime.Finally,wedescribehowtypeproviders
+turn inferred shapes into Foo classes (§4.2).
+τ = int | oat | bool | string | C | Data
+| τ1 → τ2 | list τ | option τ
+L = type C(x : τ) = M
+M = member N : τ = e
+v = d | None | Some(v) | new C(v) | v1 :: v2
+e = d | op | e1 e2 | λx.e | e.N | new C(e)
+| None | match e with Some(x) → e1 |None → e2
+| Some(e) | e1 = e2 | if e1 then e2 else e3 | nil
+| e1 :: e2 | match e with x1 :: x2 → e1 |nil → e2
+op = convFloat(σ,e) | convPrim(σ,e)
+| convField(ν1,ν2,e,e) | convNull(e1,e2)
+| convElements(e1,e2) | hasShape(σ,e)
+Figure 5. The syntax of the Foo calculus
+6 An alternative would be to add unions of shapes, but doing so in a way
+that is compatible with the open-world assumption breaks the existence
+of unique lower bound of the preferred shape relation.
+
+Part I. Reduction rules for conversion functions
+hasShape(ν {ν1 :σ1,...,νn :σn},ν′ {ν′1 7→ d1,...,ν′m 7→ dm}) (ν = ν′) ∧
+( ((ν1 = ν′1) ∧ hasShape(σ1,d1)) ∨ ... ∨ ((ν1 = ν′m) ∧ hasShape(σ1,dm)) ∨ ...∨
+((νn = ν′1) ∧ hasShape(σn,d1)) ∨ ... ∨ ((νn = ν′m) ∧ hasShape(σn,dm)) )
+hasShape([σ],[d1;...;dn]) hasShape(σ,d1) ∧ ... ∧ hasShape(σ,dn)
+hasShape([σ],null) true
+convFloat(oat,i) f (f = i)
+convFloat(oat,f) f
+convNull(null,e) None
+convNull(d,e) Some(e d)
+hasShape(string,s) true
+hasShape(int,i) true
+hasShape(bool,d) true (when d ∈ true,false)
+hasShape(oat,d) true (when d = i or d = f)
+hasShape(_,_) false
+convPrim(σ,d) d (σ,d ∈ {(int,i),(string,s),(bool,b)})
+convField(ν,νi,ν {...,νi = di,...},e) e di
+convField(ν,ν′,ν {...,νi = di,...},e) e null (@i.νi = ν′)
+convElements([d1;...;dn],e) e d1 :: ... :: e dn :: nil
+convElements(null) nil
+Part II. Reduction rules for the rest of the Foo calculus
+(member) type C(x : τ) = member Ni : τi = ei ... ∈ L
+L,(new C(v)).Ni ei[x ← v]
+(cond1) if true then e1 else e2 e1
+(cond2) if false then e1 else e2 e2
+(eq1) v = v′ true (when v = v′)
+(eq2) v = v′ false (when v 6= v′)
+(fun) (λx.e) v e[x ← v]
+(match1) match None with
+Some(x) → e1 |None → e2
+e2
+(match2) match Some(v) with
+Some(x) → e1 |None → e2
+e1[x ← v]
+(match3) match nil with
+x1 :: x2 → e1 |nil → e2
+e2
+(match4) match v1 :: v2 with
+x1 :: x2 → e1 |nil → e2
+e1[x ← v]
+(ctx) E[e] E[e′] (when e e′)
+Figure 6. Foo – Reduction rules for the Foo calculus and dynamic data operations
+Type providers for structured data map the “dirty” world
+ofweaklytypedstructureddataintoa“nice”worldofstrong
+types. To model this, the Foo calculus does not have null
+values and data values d are never directly exposed. Further-
+more Foo is simply typed: despite using class types and ob-
+ject notation for notational convenience, it has no subtyping.
+4.1 The Foo calculus
+The syntax of the calculus is shown in Figure 5. The type
+Data is the type of structural data d. A class deﬁnition L
+consists of a single constructor and zero or more parameter-
+less members. The declaration implicitly closes over the
+constructor parameters. Values v include previously deﬁned
+data d; expressions e include class construction, member
+access, usual functional constructs (functions, lists, options)
+and conditionals. The op constructs are discussed next.
+Dynamic data operations. The Foo programs can only
+work with Data values using certain primitive operations.
+Those are modelled by the op primitives. In F# Data, those
+are internal and users never access them directly.
+The behaviour of the dynamic data operations is deﬁned
+by the reduction rules in Figure 6 (Part I). The typing is
+shown in Figure 7 and is discussed later. The hasShape
+function represents a runtime shape test. It checks whether
+a Data value d (Section 3.4) passed as the second argument
+has a shape speciﬁed by the ﬁrst argument. For records, we
+have to check that for each ﬁeld ν1,...,νn in the record,
+the actual record value has a ﬁeld of the same name with a
+matching shape. The last line deﬁnes a “catch all” pattern,
+which returns false for all remaining cases. We treat e1 ∨ e2
+and e1 ∧ e2 as a syntactic sugar for if..then..else so the
+result of the reduction is just a Foo expression.
+The remaining operations convert data values into values
+of less preferred shape. The convPrim and convFloat oper-
+ations take the required shape and a data value. When the
+data does not match the required type, they do not reduce.
+For example, convPrim(bool,42) represents a stuck state,
+but convFloat(oat,42) turns an integer 42 into a ﬂoating-
+point numerical value 42.0.
+The convNull, convElements and convField operations
+take an additional parameter e which represents a function
+to be used in order to convert a contained value (non-null
+optional value, list elements or ﬁeld value); convNull turns
+null data value into None and convElements turns a data
+collection [d1,...,dn] into a Foo list v1 :: ... :: vn :: nil
+and a null value into an empty list.
+
+L;Γ ` d : Data L;Γ ` i : int L;Γ ` f : oat
+L;Γ,x : τ1 ` e : τ2
+L;Γ ` λx.e : τ2
+L;Γ ` e2 : τ1 L;Γ ` e1 : τ1 → τ2
+L;Γ ` e1 e2 : τ2
+L;Γ ` e : Data
+L;Γ ` hasShape(σ,e) : bool
+L;Γ ` e : Data τ ∈ {int,oat}
+L;Γ ` convFloat(σ,e) : oat
+L;Γ ` e1 : Data L;Γ ` e2 : Data → τ
+L;Γ ` convNull(e1,e2) : option〈τ〉
+L;Γ ` e : Data
+prim ∈ {int,string,bool}
+L;Γ ` convPrim(prim,e) : prim
+L;Γ ` e1 : Data
+L;Γ ` e2 : Data → τ
+L;Γ ` convElements(e1,e2) : list〈τ〉
+L;Γ ` e1 : Data
+L;Γ ` e2 : Data → τ
+L;Γ ` convField(ν,ν′,e1,e2) : τ
+L;Γ ` e : C
+type C(x : τ) = .. member Ni : τi = ei .. ∈ L
+L;Γ ` e.Ni : τi
+L;Γ ` ei : τi type C(x1 : τ1,...,xn : τn) = ... ∈ L
+L;Γ ` new C(e1,...,en) : C
+Figure 7. Foo – Fragment of type checking
+Reduction. ThereductionrelationisoftheformL,e e′.
+We omit class declarations L where implied by the context
+and write e ∗ e′ for the reﬂexive, transitive closure of .
+Figure 6 (Part II) shows the reduction rules. The (mem-
+ber) rule reduces a member access using a class deﬁnition
+in the assumption. The (ctx) rule models the eager evalua-
+tion of F# and performs a reduction inside a sub-expression
+speciﬁed by an evaluation context E:
+E = v :: E | v E | E.N | new C(v,E,e)
+| if E then e1 else e2 | E = e | v = E
+| Some(E) | op(v,E,e)
+| match E with Some(x) → e1 |None → e2
+| match E with x1 :: x2 → e1 |nil → e2
+The evaluation proceeds from left to right as denoted by
+v,E,e in constructor and dynamic data operation arguments
+or v :: E in list initialization. We write e[x ← v] for the
+result of replacing variables x by values v in an expression.
+The remaining six rules give standard reductions.
+Type checking. Well-typed Foo programs reduce to a
+value in a ﬁnite number of steps or get stuck due to an error
+condition. The stuck states can only be due to the dynamic
+data operations (e.g. an attempt to convert null value to a
+number convFloat(oat,null)). The relative safety (Theo-
+rem 3) characterizes the additional conditions on input data
+under which Foo programs do not get stuck.
+Typing rules in Figure 7 are written using a judgement
+L;Γ ` e : τ where the context also contains a set of class
+declarations L. The fragment demonstrates the differences
+and similarities with Featherweight Java [10] and typing
+rules for the dynamic data operations op:
+– All data values d have the type Data, but primitive data
+values (Booleans, strings, integers and ﬂoats) can be im-
+plicitly converted to Foo values and so they also have a
+primitive type as illustrated by the rule for i and f.
+– For non-primitive data values (including null, data col-
+lections and records), Data is the only type.
+– Operations op accept Data as one of the arguments and
+produce a non-Data Foo type. Some of them require a
+function specifying the conversion for nested values.
+– Rulesforcheckingclassconstructionandmemberaccess
+are similar to corresponding rules of Featherweight Java.
+An important part of Featherweight Java that is omitted here
+is the checking of type declarations (ensuring the members
+are well-typed). We consider only classes generated by our
+type providers and those are well-typed by construction.
+4.2 Type providers
+So far, we deﬁned the type inference algorithm which pro-
+duces a shape σ from one or more sample documents (§3)
+and we deﬁned a simpliﬁed model of evaluation of F# (§4.1)
+and F# Data runtime (§4.2). In this section, we deﬁne how
+the type providers work, linking the two parts.
+All F# Data type providers take (one or more) sample
+documents, infer a common preferred shape σ and then use
+it to generate F# types that are exposed to the programmer.7
+Type provider mapping. A type provider produces an F#
+type τ together with a Foo expression and a collection of
+classdeﬁnitions.Weexpressitusingthefollowingmapping:
+JσK = (τ,e,L) (where L,∅ ` e : Data → τ)
+The mapping JσK takes an inferred shape σ. It returns an F#
+type τ and a function that turns the input data (value of type
+Data) into a Foo value of type τ. The type provider also
+generates class deﬁnitions that may be used by e.
+Figure 8 deﬁnes J−K. Primitive types are handled by a
+single rule that inserts an appropriate conversion function;
+convPrim just checks that the shape matches and convFloat
+converts numbers to a ﬂoating-point.
+7 The actual implementation provides erased types as described in [23].
+Here, we treat the code as actually generated. This is an acceptable
+simpliﬁcation, because F# Data type providers do not rely on laziness or
+erasure of type provision.
+
+JσpK = τp,λx.op(σp,x),∅ where
+σp,τp,op ∈ { (bool,bool,convPrim)
+(int,int,convPrim),(oat,oat,convFloat),
+(string,string,convPrim) }
+Jν {ν1 : σ1,...,νn : σn}K =
+C,λx.new C(x),L1 ∪ ... ∪ Ln ∪ {L} where
+C is a fresh class name
+L = type C(x1 :Data) = M1 ...Mn
+Mi = member νi : τi = convField(ν,νi,x1,ei),
+τi,ei,Li = JσiK
+J[σ]K = list τ ,λx.convElements(x,e′),L where
+τ,e′,L = JˆσK
+Jany σ1,...,σn K =
+C,λx.new C(x),L1 ∪ ... ∪ Ln ∪ {L} where
+C is a fresh class name
+L = type C(x : Data) = M1 ...Mn
+Mi = member νi : option τi =
+if hasShape(σi,x) then Some(ei x) else None
+τi,ei,Li = JσiKe, νi = tagof(σi)
+Jnullable ˆσ K =
+option τ ,λx.convNull(x,e),L
+where τ,e,L = JˆσK
+J⊥K = JnullK = C,λx.new C(x),{L} where
+C is a fresh class name
+L = type C(v : Data)
+Figure 8. Type provider – generation of Foo types from inferred structural types
+For records, we generate a class C that takes a data value
+as a constructor parameter. For each ﬁeld, we generate a
+member with the same name as the ﬁeld. The body of the
+member calls convField with a function obtained from JσiK.
+This function turns the ﬁeld value (data of shape σi) into a
+Foo value of type τi. The returned expression creates a new
+instance of C and the mapping returns the class C together
+with all recursively generated classes. Note that the class
+name C is not directly accessed by the user and so we can
+useanarbitraryname,althoughtheactualimplementationin
+F# Data attempts to infer a reasonable name.8
+A collection shape becomes a Foo list τ . The returned
+expression calls convElements (which returns the empty list
+for data value null). The last parameter is the recursively ob-
+tained conversion function for the shape of elements σ. The
+handling of the nullable shape is similar, but uses convNull.
+As discussed earlier, labelled top shapes are also gener-
+ated as Foo classes with properties. Given any σ1,...,σn ,
+we get corresponding F# types τi and generate n members
+of type option τi . When the member is accessed, we need
+to perform a runtime shape test using hasShape to ensure
+that the value has the right shape (similarly to runtime type
+conversions from the top type in languages like Java). If the
+shape matches, a Some value is returned. The shape infer-
+ence algorithm also guarantees that there is only one case
+for each shape tag (§3.3) and so we can use the tag for the
+name of the generated member.
+Example 1. To illustrate how the mechanism works, we
+consider two examples. First, assume that the inferred shape
+is a record Person { Age:option int , Name:string }. The
+rules from Figure 8 produce the Person class shown below
+with two members.
+The body of the Age member uses convField as speciﬁed
+by the case for optional record ﬁelds. The ﬁeld shape is nul-
+lable and so convNull is used in the continuation to convert
+the value to None if convField produces a null data value
+and hasShape is used to ensure that the ﬁeld has the cor-
+rect shape. The Name value should be always available and
+should have the right shape so convPrim appears directly in
+the continuation. This is where the evaluation can get stuck
+if the ﬁeld value was missing:
+type Person(x1 : Data) =
+member Age : option int =
+convField(Person,Age,x1,λx2 →
+convNull(x2,λx3 → convPrim(int,x3)) )
+member Name : string =
+convField(Person,Name,x1,λx2 →
+convPrim(string,x2)))
+The function to create the Foo value Person from a data
+value is λx.new Person(x).
+Example2. Thesecondexampleillustratesthehandlingof
+collections and labelled top types. Reusing Person from the
+previous example, consider [any Person {...},string ]:
+type PersonOrString(x : Data) =
+member Person : option Person =
+if hasShape(Person {...},x) then
+Some(new Person(x)) else None
+member String : option string =
+if hasShape(string,x) then
+Some(convPrim(string,x)) else None
+The type provider maps the collection of labelled top shapes
+to a type list PersonOrString and returns a function that
+parses a data value as follows:
+8 For example, in {"person":{"name":"Tomas"}}, the nested record
+will be named Person based on the name of the parent record ﬁeld.
+
+λx1 → convElements(x1λx2 → newPersonOrString(x2))
+The PersonOrString class contains one member for each of
+the labels. In the body, they check that the input data value
+has the correct shape using hasShape. This also implicitly
+handles null by returning false. As discussed earlier, labelled
+top types provide easy access to the known cases (string or
+Person), but they require a runtime shape check.
+5. Relative type safety
+Informally, the safety property for structural type providers
+states that, given representative sample documents, any code
+that can be written using the provided types is guaranteed to
+work. We call this relative safety, because we cannot avoid
+all errors. In particular, one can always provide an input that
+hasadifferentstructurethananyofthesamples.Inthiscase,
+it is expected that the code will throw an exception in the
+implementation (or get stuck in our model).
+More formally, given a set of sample documents, code
+using the provided type is guaranteed to work if the inferred
+shape of the input is preferred with respect to the shape of
+any of the samples. Going back to §3.2, this means that:
+– Input can contain smaller numerical values (e.g., if a
+sample contains ﬂoat, the input can contain an integer).
+– Records in the input can have additional ﬁelds.
+– Records in the input can have fewer ﬁelds than some of
+the records in the sample document, provided that the
+sample also contains records that do not have the ﬁeld.
+– When a labelled top type is inferred from the sample,
+the actual input can also contain any other value, which
+implements the open world assumption.
+The following lemma states that the provided code (gener-
+ated in Figure 8) works correctly on an input d′ that is a
+subshape of d. More formally, the provided expression (with
+input d′) can be reduced to a value and, if it is a class, all its
+members can also be reduced to values.
+Lemma 2 (Correctness of provided types). Given sample
+data d and an input data value d′ such that S(d′) v S(d)
+and provided type, expression and classes τ,e,L = JS(d)K,
+then L,e d′ ∗ v and if τ is a class (τ = C) then for all
+members Ni of the class C, it holds that L,(e d′).Ni ∗ v.
+Proof. By induction over the structure of J−K. For prim-
+itives, the conversion functions accept all subshapes. For
+othercases,analyzetheprovidedcodetoseethatitcanwork
+on all subshapes (for example convElements works on null
+values, convFloat accepts an integer). Finally, for labelled
+top types, the hasShape operation is used to guaranteed the
+correct shape at runtime.
+This shows that provided types are correct with respect to
+the preferred shape relation. Our key theorem states that, for
+any input which is a subshape the inferred shape and any
+expression e, a well-typed program that uses the provided
+types does not “go wrong”. Using standard syntactic type
+safety [26], we prove type preservation (reduction does not
+change type) and progress (an expression can be reduced).
+Theorem 3 (Relative safety). Assume d1,...,dn are sam-
+ples, σ = S(d1,...,dn) is an inferred shape and τ,e,L =
+JσK are a type, expression and class deﬁnitions generated by
+a type provider.
+For all inputs d′ such that S(d′) v σ and all expressions
+e′ (representing the user code) such that e′ does not contain
+any of the dynamic data operations op and any Data values
+as sub-expressions and L;y : τ ` e′ : τ′, it is the case that
+L,e[y ← e′ d′] ∗ v for some value v and also ∅;` v : τ′.
+Proof. We discuss the two parts of the proof separately as
+type preservation (Lemma 4) and progress (Lemma 5).
+Lemma 4 (Preservation). Given the τ,e,L generated by a
+type provider as speciﬁed in the assumptions of Theorem 3,
+then if L,Γ ` e : τ and L,e ∗ e′ then Γ ` e′ : τ.
+Proof. By induction over . The cases for the ML subset
+of Foo are standard. For (member), we check that code
+generated by type providers in Figure 8 is well-typed.
+The progress lemma states that evaluation of a well-typed
+program does not reach an undeﬁned state. This is not a
+problemfortheStandardML[15]subsetandobject-oriented
+subset [10] of the calculus. The problematic part are the
+dynamic data operations (Figure 6, Part I). Given a data
+value (of type Data), the reduction can get stuck if the value
+does not have a structure required by a speciﬁc operation.
+The Lemma 2 guarantees that this does not happen inside
+the provided type. We carefully state that we only consider
+expressions e′ which “[do] not contain primitive operations
+op as sub-expressions”. This ensure that only the code gen-
+erated by a type provider works directly with data values.
+Lemma5(Progress). Giventheassumptionsanddeﬁnitions
+fromTheorem3,thereexistse′′ suchthate′[y ← ed′] e′′.
+Proof. Proceed by induction over the typing derivation of
+L;∅ ` e[y ← e′ d′] : τ′. The cases for the ML subset are
+standard. For member access, we rely on Lemma 2.
+6. Practical experience
+The F# Data library has been widely adopted by users and
+is one of the most downloaded F# libraries.9 A practical
+demonstration of development using the library can be seen
+in an attached screencast and additional documentation can
+be found at http://fsharp.github.io/FSharp.Data.
+In this section, we discuss our experience with the safety
+guarantees provided by the F# Data type providers and other
+notable aspects of the implementation.
+9 At the time of writing, the library has over 125,000 downloads on NuGet
+(package repository), 1,844 commits and 44 contributors on GitHub.
+
+6.1 Relative safety in practice
+The relative safety property does not guarantee safety in
+the same way as traditional closed-world type safety, but
+it reﬂects the reality of programming with external data
+thatisbecomingincreasinglyimportant[16].Typeproviders
+increase the safety of this kind of programming.
+Representative samples. When choosing a representative
+sample document, the user does not need to provide a sam-
+ple that represents all possible inputs. They merely need to
+provide a sample that is representative with respect to data
+they intend to access. This makes the task of choosing a rep-
+resentative sample easier.
+Schema change. Type providers are invoked at compile-
+time. If the schema changes (so that inputs are no longer
+related to the shape of the sample used at compile-time),
+the program can fail at runtime and developers have to han-
+dle the exception. The same problem happens when using
+weakly-typed code with explicit failure cases.
+F# Data can help discover such errors earlier. Our ﬁrst
+example (§1) points the JSON type provider at a sample us-
+ing a live URL. This has the advantage that a re-compilation
+fails when the sample changes, which is an indication that
+the program needs to be updated to reﬂect the change.
+Richer data sources. In general, XML, CSV and JSON
+data sources without an explicit schema will necessarily re-
+quire techniques akin to those we have shown. However,
+some data sources provide an explicit schema with version-
+ing support. For those, a type provider that adapts automati-
+cally could be written, but we leave this for future work.
+6.2 Parsing structured data
+In our formalization, we treat XML, JSON and CSV uni-
+formlyasdatavalues.Withtheadditionofnamesforrecords
+(for XML nodes), the deﬁnition of structural values is rich
+enoughtocaptureallthreeformats.10 However,parsingreal-
+world data poses a number of practical issues.
+ReadingCSVdata. WhenreadingCSVdata,wereadeach
+row as an unnamed record and return a collection of rows.
+One difference between JSON and CSV is that in CSV, the
+literals have no data types and so we also need to infer the
+shape of primitive values. For example:
+Ozone, Temp, Date, Autofilled
+41, 67, 2012-05-01, 0
+36.3, 72, 2012-05-02, 1
+12.1, 74, 3 kveten, 0
+17.5, #N/A, 2012-05-04, 0
+The value #N/A is commonly used to represent missing val-
+ues in CSV and is treated as null. The Date column uses
+mixed formats and is inferred as string (we support many
+date formats and “May 3” would be parsed as date). More
+interestingly, we also infer Autoled as Boolean, because
+the sample contains only 0 and 1. This is handled by adding
+a bit shape which is preferred of both int and bool.
+Reading XML documents. Mapping XML documents to
+structural values is more interesting. For each node, we cre-
+ate a record. Attributes become record ﬁelds and the body
+becomes a ﬁeld with a special name. For example:
+<root id="1">
+<item>Hello!</item>
+</root>
+This XML becomes a record root with ﬁelds id and • for the
+body. The nested element contains only the • ﬁeld with the
+inner text. As with CSV, we infer shape of primitive values:
+root {id 7→ 1,• 7→ [item {• 7→ "Hello!"}]}
+TheXMLtypeprovideralsoincludesanoptiontouseglobal
+inference. In that case, the inference from values (§3.4) uni-
+ﬁestheshapesofallrecordswiththesamename.Thisisuse-
+ful because, for example, in XHTML all <table> elements
+will be treated as values of the same type.
+6.3 Providing idiomatic F# types
+In order to provide types that are easy to use and follow the
+F# coding guidelines, we perform a number of transforma-
+tions on the provided types that simplify their structure and
+use more idiomatic naming of ﬁelds. For example, the type
+provided for the XML document in §6.2 is:
+type Root =
+member Id : int
+member Item : string
+To obtain the type signature, we used the type provider as
+deﬁned in Figure 8 and applied three additional transforma-
+tions and simpliﬁcations:
+• When a class C contains a member •, which is a class
+with further members, the nested members are lifted into
+the class C. For example, the above type Root directly
+contains Item rather than containing a member • return-
+ing a class with a member Item.
+• Remaining members named • in the provided classes
+(typically of primitive types) are renamed to Value.
+• Class members are renamed to follow PascalCase nam-
+ing convention, when a collision occurs, a number is ap-
+pendedtotheendasinPascalCase2.Theprovidedimple-
+mentation preforms the lookup using the original name.
+Ourcurrentimplementationalsoaddsanadditionalmem-
+ber to each class that returns the underlying JSON node
+(called JsonValue) or XML element (called XElement).
+Those return the standard .NET or F# representation of the
+value and can be used to dynamically access data not ex-
+posed by the type providers, such as textual values inside
+mixed-content XML elements.
+10 The same mechanism has later been used by the HTML type provider
+(http://fsharp.github.io/FSharp.Data/HtmlProvider.html), which
+provides similarly easy access to data in HTML tables and lists.
+
+6.4 Heterogeneous collections
+When introducing type providers (§2.3), we mentioned how
+F# Data handles heterogeneous collections. This allows us
+to avoid inferring labelled top shapes in many common sce-
+narios. In the earlier example, a sample collection contains a
+record(withpagesﬁeld)andanestedcollectionwithvalues.
+Rather than storing a single shape for the collection el-
+ements as in [σ], heterogeneous collections store multiple
+possible element shapes together with their inferred multi-
+plicity (exactly one, zero or one, zero or more):
+ψ = 1? | 1 | ∗
+σ = ... | [σ1,ψ1|...|σn,ψn]
+Weomitthedetails,butﬁndingapreferredcommonshapeof
+two heterogeneous collections is analogous to the handling
+of labelled top types. We merge cases with the same tag (by
+ﬁnding their common shape) and calculate their new shared
+multiplicity (for example, by turning 1 and 1? into 1?).
+6.5 Predictability and stability
+Asdiscussedin§2,ourinferencealgorithmisdesignedtobe
+predictable and stable. When a user writes a program using
+the provided type and then adds another sample (e.g. with
+more missing values), they should not need to restructure
+theirprogram.Forthisreason,wekeepthealgorithmsimple.
+For example, we do not use probabilistic methods to assess
+the similarity of record types, because a small change in the
+sample could cause a large change in the provided types.
+We leave a general theory of stability and predictability
+of type providers to future work, but we formalize a brief
+observation in this section. Say we write a program using a
+provided type that is based on a collection of samples. When
+a new sample is added, the program can be modiﬁed to run
+as before with only small local changes.
+For the purpose of this section, assume that the Foo cal-
+culus also contains an exn value representing a runtime ex-
+ception that propagates in the usual way, i.e. C[exn] exn,
+and also a conversion function int that turns ﬂoating-point
+number into an integer.
+Remark 1 (Stability of inference). Assume we have a set of
+samples d1,...,dn, a provided type based on the samples
+τ1,e1,L1 = JS(d1,...,dn)K and some user code e written
+using the provided type, such that L1;x : τ1 ` e : τ.
+Next, we add a new sample dn+1 and consider a new
+provided type τ2,e2,L2 = JS(d1,...,dn,dn+1)K.
+Now there exists e′ such that L2;x : τ2 ` e′ : τ and if
+for some d it is the case that e[x ← e1 d] v then also
+e′[x ← e2 d] v.
+Such e′ is obtained by transforming sub-expressions of e
+using one of the following translation rules:
+(i) C[e] to C[match e with Some(v) → v | None → exn]
+(ii) C[e] to C[e.M] where M = tagof(σ) for some σ
+(iii) C[e] to C[int(e)]
+Proof. For each case in the type provision (Figure 8) an
+original shape σ may be replaced by a less preferred shape
+σ′. The user code can always be transformed to use the
+newly provided shape:
+– Primitive shapes can become nullable (i), int can become
+oat (iii) or become a part of a labelled top type (ii).
+– Record shape ﬁelds can change shape (recursively) and
+record may become a part of a labelled top type (ii).
+– For list and nullable shapes, the shape of the value may
+change (we apply the transformations recursively).
+– Fortheanyshape,theoriginalcodewillcontinuetowork
+(none of the labels is ever removed).
+Intuitively, the ﬁrst transformation is needed when the new
+samplemakesatypeoptional.Thishappenswhenitcontains
+a null value or a record that does not contain a ﬁeld that all
+previous sampleshave. Thesecond transformationis needed
+when a shape σ becomes any〈σ,...〉 and the third one is
+needed when int becomes oat.
+This property also underlines a common way of handling
+errors when using F# Data type providers. When a program
+fails on some input, the input can be added as another sam-
+ple. This makes some ﬁelds optional and the code can be
+updated accordingly, using a variation of (i) that uses an ap-
+propriate default value rather than throwing an exception.
+7. Related and future work
+The F# Data library connects two lines of research that
+havebeenpreviouslydisconnected.Theﬁrstisextendingthe
+type systems of programming languages to accommodate
+external data sources and the second is inferring types for
+real-world data sources.
+The type provider mechanism has been introduced in
+F# [23, 24], added to Idris [3] and used in areas such as
+semantic web [18]. The F# Data library has been developed
+as part of the early F# type provider research, but previous
+publications focused on the general mechanisms. This paper
+is novel in that it shows the programming language theory
+behind a concrete type providers.
+Extending the type systems. Several systems integrate ex-
+ternal data into a programming language. Those include
+XML [9, 21] and databases [5]. In both of these, the system
+requires the user to explicitly deﬁne the schema (using the
+host language) or it has an ad-hoc extension that reads the
+schema (e.g. from a database). LINQ [14] is more general,
+but relies on code generation when importing the schema.
+TheworkthatisthemostsimilartoF#Dataisthedatain-
+tegration in Cω [13]. It extends C# language with types sim-
+ilar to our structural types (including nullable types, choices
+with subtyping and heterogeneous collections with multi-
+plicities). However, Cω does not infer the types from sam-
+plesandextendsthetypesystemofthehostlanguage(rather
+than using a general purpose embedding mechanism).
+
+In contrast, F# Data type providers do not require any
+F# language extensions. The simplicity of the Foo calcu-
+lus shows we have avoided placing strong requirements on
+the host language. We provide nominal types based on the
+shapes, rather than adding an advanced system of structural
+types into the host language.
+Advanced type systems and meta-programming. A num-
+ber of other advanced type system features could be used
+to tackle the problem discussed in this paper. The Ur [2]
+language has a rich system for working with records; meta-
+programming [6, 19] and multi-stage programming [25]
+could be used to generate code for the provided types; and
+gradual typing [20, 22] can add typing to existing dynamic
+languages. As far as we are aware, none of these systems
+have been used to provide the same level of integration with
+XML, CSV and JSON.
+Typing real-world data. Recent work [4] infers a succinct
+typeoflargeJSONdatasetsusingMapReduce.Itfusessimi-
+lar types based on similarity. This is more sophisticated than
+our technique, but it makes formal speciﬁcation of safety
+(Theorem 3) difﬁcult. Extending our relative safety to prob-
+abilistic safety is an interesting future direction.
+The PADS project [7, 11] tackles a more general prob-
+lem of handling any data format. The schema deﬁnitions
+in PADS are similar to our shapes. The structure inference
+for LearnPADS [8] infers the data format from a ﬂat input
+stream.APADStypeprovidercouldfollowmanyofthepat-
+terns we explore in this paper, but formally specifying the
+safety property would be more challenging.
+8. Conclusions
+We explored the F# Data type providers for XML, CSV and
+JSON. As most real-world data does not come with an ex-
+plicit schema, the library uses shape inference that deduces
+a shape from a set of samples. Our inference algorithm is
+based on a preferred shape relation. It prefers records to en-
+compass the open world assumption and support developer
+tooling. The inference algorithm is predictable, which is im-
+portant as developers need to understand how changing the
+samples affects the resulting types.
+We explored the theory behind type providers. F# Data
+is a prime example of type providers, but our work demon-
+strates a more general point. The types generated by type
+providers can depend on external input and so we can only
+guarantee relative safety, which says that a program is safe
+only if the actual inputs satisfy additional conditions.
+Type providers have been described before, but this paper
+is novel in that it explores the properties of type providers
+that represent the “types from data” approach. Our experi-
+ence suggests that this signiﬁcantly broadens the applicabil-
+ity of statically typed languages to real-world problems that
+are often solved by error-prone weakly-typed techniques.
+Acknowledgments
+We thank to the F# Data contributors on GitHub and other
+colleaguesworkingontypeproviders,includingJomoFisher,
+Keith Battocchi and Kenji Takeda. We are grateful to anony-
+mous reviewers of the paper for their valuable feedback and
+to David Walker for shepherding of the paper.
+References
+[1] L. Cardelli and J. C. Mitchell. Operations on Records. In
+Mathematical Foundations of Programming Semantics, pages
+22–52. Springer, 1990.
+[2] A. Chlipala. Ur: Statically-typed Metaprogramming with
+Type-level Record Computation. In ACM SIGPLAN Notices,
+volume 45, pages 122–133. ACM, 2010.
+[3] D. R. Christiansen. Dependent Type Providers. In Proceed-
+ings of Workshop on Generic Programming, WGP ’13, pages
+25–34, 2013. ISBN 978-1-4503-2389-5.
+[4] D. Colazzo, G. Ghelli, and C. Sartiani. Typing Massive JSON
+Datasets. In International Workshop on Cross-model Lan-
+guage Design and Implementation, XLDI ’12, 2012.
+[5] E. Cooper, S. Lindley, P. Wadler, and J. Yallop. Links: Web
+Programming without Tiers. In Formal Methods for Compo-
+nents and Objects, pages 266–296. Springer, 2007.
+[6] J. Donham and N. Pouillard. Camlp4 and Template Haskell.
+In Commercial Users of Functional Programming, 2010.
+[7] K.FisherandR.Gruber. PADS:ADomain-speciﬁcLanguage
+for Processing Ad Hoc Data. ACM SIGPLAN Notices, 40(6):
+295–304, 2005.
+[8] K. Fisher, D. Walker, K. Q. Zhu, and P. White. From Dirt
+to Shovels: Fully Automatic Tool Generation from Ad Hoc
+Data. In Proceedings of ACM Symposium on Principles of
+Programming Languages, POPL ’08, pages 421–434, 2008.
+ISBN 978-1-59593-689-9.
+[9] H.HosoyaandB.C.Pierce. XDuce:AStaticallyTypedXML
+Processing Language. Transactions on Internet Technology, 3
+(2):117–148, 2003.
+[10] A. Igarashi, B. Pierce, and P. Wadler. Featherweight Java: A
+Minimal Core Calculus for Java and GJ. In ACM SIGPLAN
+Notices, volume 34, pages 132–146. ACM, 1999.
+[11] Y. Mandelbaum, K. Fisher, D. Walker, M. Fernandez, and
+A. Gleyzer. PADS/ML: A Functional Data Description Lan-
+guage. In ACM SIGPLAN Notices, volume 42, pages 77–83.
+ACM, 2007.
+[12] H. Mehnert and D. Christiansen. Tool Demonstration: An
+IDE for Programming and Proving in Idris. In Proceedings
+of Vienna Summer of Logic, VSL’14, 2014.
+[13] E. Meijer, W. Schulte, and G. Bierman. Unifying Tables, Ob-
+jects, and Documents. In Workshop on Declarative Program-
+ming in the Context of Object-Oriented Languages, pages
+145–166, 2003.
+[14] E. Meijer, B. Beckman, and G. Bierman. LINQ: Reconciling
+Object, Relations and XML in the .NET Framework. In
+Proceedings of the International Conference on Management
+of Data, SIGMOD ’06, pages 706–706, 2006.
+
+[15] R. Milner. The Deﬁnition of Standard ML: Revised. MIT
+press, 1997.
+[16] T. Petricek and D. Syme. In the Age of Web: Typed
+Functional-ﬁrst Programming Revisited. Post-Proceedings of
+ML Workshop, 2015.
+[17] D.Rémy. TypeInferenceforRecordsinaNaturalExtensionof
+ML. Theoretical Aspects Of Object-Oriented Programming.
+Types, Semantics and Language Design. MIT Press, 1993.
+[18] S. Scheglmann, R. Lämmel, M. Leinberger, S. Staab,
+M. Thimm, and E. Viegas. IDE Integrated RDF Exploration,
+Access and RDF–Based Code Typing with LITEQ. In The
+Semantic Web: ESWC 2014 Satellite Events, pages 505–510.
+Springer, 2014.
+[19] T. Sheard and S. P. Jones. Template Meta-programming for
+Haskell. In Proceedings of the ACM Workshop on Haskell,
+pages 1–16. ACM, 2002.
+[20] J. G. Siek and W. Taha. Gradual Typing for Functional Lan-
+guages. In Scheme and Functional Programming Workshop,
+pages 81–92, 2006.
+[21] M. Sulzmann and K. Z. M. Lu. A Type-safe Embedding of
+XDuce into ML. Electr. Notes in Theoretical Comp. Sci., 148
+(2):239–264, 2006.
+[22] N. Swamy, C. Fournet, A. Rastogi, K. Bhargavan, J. Chen,
+P.-Y. Strub, and G. Bierman. Gradual Typing Embedded
+SecurelyinJavaScript. InACMSIGPLANNotices,volume49,
+pages 425–437. ACM, 2014.
+[23] D. Syme, K. Battocchi, K. Takeda, D. Malayeri, J. Fisher,
+J. Hu, T. Liu, B. McNamara, D. Quirk, M. Taveggia, W. Chae,
+U. Matsveyeu, and T. Petricek. Strongly-typed Language
+Support for Internet-scale Information Sources. Technical
+Report MSR-TR-2012-101, Microsoft Research, September
+2012.
+[24] D. Syme, K. Battocchi, K. Takeda, D. Malayeri, and T. Pet-
+ricek. Themes in Information-rich Functional Programming
+for Internet-scale Data Sources. In Proceedings of the Work-
+shop on Data Driven Functional Programming, DDFP’13,
+pages 1–4, 2013.
+[25] W. Taha and T. Sheard. Multi-stage Programming with Ex-
+plicit Annotations. ACM SIGPLAN Notices, 32(12):203–217,
+1997. ISSN 0362-1340.
+[26] A. K. Wright and M. Felleisen. A Syntactic Approach to
+Type Soundness. Information and computation, 115(1):38–
+94, 1994.
+A. OpenWeatherMap service response
+The introduction uses the JsonProvider to access weather
+information using the OpenWeatherMap service. After reg-
+istering, you can access the service using a URL http://api.
+openweathermap.org/data/2.5/weather with query string
+parameters q and APPID representing the city name and ap-
+plication key. A sample response looks as follows:
+{
+"coord": {
+"lon": 14.42,
+"lat": 50.09
+},
+"weather": [
+{
+"id": 802,
+"main": "Clouds",
+"description": "scattered clouds",
+"icon": "03d"
+}
+],
+"base": "cmc stations",
+"main": {
+"temp": 5,
+"pressure": 1010,
+"humidity": 100,
+"temp_min": 5,
+"temp_max": 5
+},
+"wind": { "speed": 1.5, "deg": 150 },
+"clouds": { "all": 32 },
+"dt": 1460700000,
+"sys": {
+"type": 1,
+"id": 5889,
+"message": 0.0033,
+"country": "CZ",
+"sunrise": 1460693287,
+"sunset": 1460743037
+},
+"id": 3067696,
+"name": "Prague",
+"cod": 200
+}

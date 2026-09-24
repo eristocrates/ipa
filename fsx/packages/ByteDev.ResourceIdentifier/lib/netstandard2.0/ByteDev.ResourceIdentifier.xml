@@ -1,0 +1,338 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ByteDev.ResourceIdentifier</name>
+    </assembly>
+    <members>
+        <member name="T:ByteDev.ResourceIdentifier.UriExtensions">
+            <summary>
+            Extension methods for <see cref="T:System.Uri" />.
+            </summary>
+        </member>
+        <member name="M:ByteDev.ResourceIdentifier.UriExtensions.AddOrUpdateQueryParam(System.Uri,System.String,System.String)">
+            <summary>
+            Add or update a query string parameter. If the value is null the param is removed.
+            </summary>
+            <param name="source">Uri to perform the operation on.</param>
+            <param name="name">Query string parameter name.</param>
+            <param name="value">Query string parameter value.</param>
+            <returns>A Uri with the added or modified query string parameter.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="source" /> is null.</exception>
+            <exception cref="T:System.ArgumentException"><paramref name="name" /> was null or empty.</exception>
+        </member>
+        <member name="M:ByteDev.ResourceIdentifier.UriExtensions.AddOrUpdateQueryParams(System.Uri,System.Collections.Specialized.NameValueCollection)">
+            <summary>
+            Add or update a set of query string parameters using the supplied
+            name value collection. If a value is null the param is removed.
+            </summary>
+            <param name="source">Uri to perform the operation on.</param>
+            <param name="nameValues">Collection of name value pairs.</param>
+            <returns>A new Uri instance with the added or modified query string parameters.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="source" /> is null.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="nameValues" /> is null.</exception>
+        </member>
+        <member name="M:ByteDev.ResourceIdentifier.UriExtensions.AddOrUpdateQueryParams(System.Uri,System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Add or update a set of query string parameters using the supplied
+            name value dictionary. If a value is null the param is removed.
+            </summary>
+            <param name="source">Uri to perform the operation on.</param>
+            <param name="nameValues">Dictionary of name value pairs.</param>
+            <returns>A new Uri instance with the added or modified query string parameters.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="source" /> is null.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="nameValues" /> is null.</exception>
+        </member>
+        <member name="M:ByteDev.ResourceIdentifier.UriExtensions.AppendPath(System.Uri,System.String)">
+            <summary>
+            Appends the given path to any existing path in the Uri.
+            </summary>
+            <param name="source">Uri to perform the operation on.</param>
+            <param name="path">Path to append.</param>
+            <returns>A Uri with the appended path.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="source" /> is null.</exception>
+        </member>
+        <member name="M:ByteDev.ResourceIdentifier.UriExtensions.AppendPath(System.Uri,System.Object[])">
+            <summary>
+            Appends the given path segments to any existing path in the Uri.
+            </summary>
+            <param name="source">Uri to perform the operation on.</param>
+            <param name="segments">Path segments to append.</param>
+            <returns>A Uri with the appended path segments.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="source" /> is null.</exception>
+        </member>
+        <member name="M:ByteDev.ResourceIdentifier.UriExtensions.GetPathSegments(System.Uri)">
+            <summary>
+            Returns each path segment as an element in a sequence.
+            </summary>
+            <param name="source">Uri to perform the operation on.</param>
+            <returns>Path segments as a sequence.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="source" /> is null.</exception>
+        </member>
+        <member name="M:ByteDev.ResourceIdentifier.UriExtensions.GetRoot(System.Uri)">
+            <summary>
+            Returns the root of the URI. URI root is defined as: "{scheme}://{host}:{port}"
+            (if the port is the default value for the scheme then it is omitted).
+            </summary>
+            <param name="source">Uri to perform the operation on.</param>
+            <returns>URI root.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="source" /> is null.</exception>
+        </member>
+        <member name="T:ByteDev.ResourceIdentifier.UriHasExtensions">
+            <summary>
+            Extension methods for <see cref="T:System.Uri" />.
+            </summary>
+        </member>
+        <member name="M:ByteDev.ResourceIdentifier.UriHasExtensions.HasPath(System.Uri)">
+            <summary>
+            Indicates whether the Uri has any path.
+            </summary>
+            <param name="source">The Uri to perform the operation on.</param>
+            <returns>True if <paramref name="source" /> has a path; otherwise returns false.</returns>
+        </member>
+        <member name="M:ByteDev.ResourceIdentifier.UriHasExtensions.HasQuery(System.Uri)">
+            <summary>
+            Indicates whether the Uri has any query string.
+            </summary>
+            <param name="source">The Uri to perform the operation on.</param>
+            <returns>True if <paramref name="source" /> has a query string; otherwise returns false.</returns>
+        </member>
+        <member name="M:ByteDev.ResourceIdentifier.UriHasExtensions.HasFragment(System.Uri)">
+            <summary>
+            Indicates whether the Uri has any fragment.
+            </summary>
+            <param name="source">The Uri to perform the operation on.</param>
+            <returns>True if <paramref name="source" /> has a fragment; otherwise returns false.</returns>
+        </member>
+        <member name="T:ByteDev.ResourceIdentifier.UriQueryConverter">
+            <summary>
+            Represents a converter for to converting Uri queries in different formats. Url encoding/decoding
+            will be used for all parameter names and values.
+            </summary>
+        </member>
+        <member name="M:ByteDev.ResourceIdentifier.UriQueryConverter.ToString(System.Collections.Specialized.NameValueCollection)">
+            <summary>
+            Converts <paramref name="nameValues" /> to a valid Uri path string.
+            </summary>
+            <param name="nameValues">Query NameValueCollection to convert.</param>
+            <returns>String representing a Uri query.</returns>
+        </member>
+        <member name="M:ByteDev.ResourceIdentifier.UriQueryConverter.ToString(System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Converts <paramref name="dictionary" /> to a valid Uri path string.
+            </summary>
+            <param name="dictionary">Query dictionary to convert.</param>
+            <returns>String representing a Uri query.</returns>
+        </member>
+        <member name="M:ByteDev.ResourceIdentifier.UriQueryConverter.ToString(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Converts <paramref name="names" /> to a valid Uri path string.
+            </summary>
+            <param name="names">Collection of strings to convert.</param>
+            <returns>String representing a Uri query.</returns>
+        </member>
+        <member name="M:ByteDev.ResourceIdentifier.UriQueryConverter.ToNameValueCollection(System.String)">
+            <summary>
+            Converts <paramref name="query" /> to a NameValueCollection.
+            </summary>
+            <param name="query">Query string to convert.</param>
+            <returns>NameValueCollection representing a Uri query.</returns>
+        </member>
+        <member name="M:ByteDev.ResourceIdentifier.UriQueryConverter.ToDictionary(System.String)">
+            <summary>
+            Converts <paramref name="query" /> to a Dictionary.
+            </summary>
+            <param name="query">Query string to convert.</param>
+            <returns>Dictionary representing a Uri query.</returns>
+        </member>
+        <member name="T:ByteDev.ResourceIdentifier.UriQueryToExtensions">
+            <summary>
+            Extension methods for <see cref="T:System.Uri" />.
+            </summary>
+        </member>
+        <member name="M:ByteDev.ResourceIdentifier.UriQueryToExtensions.QueryToDictionary(System.Uri)">
+            <summary>
+            Returns the Uri query string as a Dictionary.
+            </summary>
+            <param name="source">Uri to perform the operation on.</param>
+            <returns>Dictionary of query string name value pairs.</returns>
+        </member>
+        <member name="M:ByteDev.ResourceIdentifier.UriQueryToExtensions.QueryToNameValueCollection(System.Uri)">
+            <summary>
+            Returns the Uri query string as a NameValueCollection.
+            </summary>
+            <param name="source">Uri to perform the operation on.</param>
+            <returns>NameValueCollection of query string name value pairs.</returns>
+        </member>
+        <member name="T:ByteDev.ResourceIdentifier.UriRemoveExtensions">
+            <summary>
+            Extension methods for <see cref="T:System.Uri" />.
+            </summary>
+        </member>
+        <member name="M:ByteDev.ResourceIdentifier.UriRemoveExtensions.RemovePath(System.Uri)">
+            <summary>
+            Removes any path from the Uri.
+            </summary>
+            <param name="source">Uri to perform the operation on.</param>
+            <returns>Uri with no path.</returns>
+        </member>
+        <member name="M:ByteDev.ResourceIdentifier.UriRemoveExtensions.RemoveQuery(System.Uri)">
+            <summary>
+            Removes any query from the Uri.
+            </summary>
+            <param name="source">Uri to perform the operation on.</param>
+            <returns>Uri with no query string.</returns>
+        </member>
+        <member name="M:ByteDev.ResourceIdentifier.UriRemoveExtensions.RemoveQueryParam(System.Uri,System.String)">
+            <summary>
+            Remove query string parameter.
+            </summary>
+            <param name="source">Uri to perform the operation on.</param>
+            <param name="name">The name of the parameter to remove.</param>
+            <returns>Uri with any matching parameters removed.</returns>
+        </member>
+        <member name="M:ByteDev.ResourceIdentifier.UriRemoveExtensions.RemoveQueryParams(System.Uri,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Remove query string parameters.
+            </summary>
+            <param name="source">Uri to perform the operation on.</param>
+            <param name="names">The names of the parameters to remove.</param>
+            <returns>Uri with any matching parameters removed.</returns>
+        </member>
+        <member name="M:ByteDev.ResourceIdentifier.UriRemoveExtensions.RemoveFragment(System.Uri)">
+            <summary>
+            Removes any fragment from the Uri.
+            </summary>
+            <param name="source">Uri to perform the operation on.</param>
+            <returns>Uri with no fragment.</returns>
+        </member>
+        <member name="T:ByteDev.ResourceIdentifier.UriSetExtensions">
+            <summary>
+            Extension methods for <see cref="T:System.Uri" />.
+            </summary>
+        </member>
+        <member name="M:ByteDev.ResourceIdentifier.UriSetExtensions.SetScheme(System.Uri,System.String)">
+            <summary>
+            Returns a new Uri instance with the scheme set.
+            </summary>
+            <param name="source">Uri to perform the operation on.</param>
+            <param name="scheme">Scheme value to set.</param>
+            <returns>New Uri instance with scheme set.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="source" /> is null.</exception>
+            <exception cref="T:System.ArgumentException"><paramref name="scheme" /> is null or empty.</exception>
+        </member>
+        <member name="M:ByteDev.ResourceIdentifier.UriSetExtensions.SetPort(System.Uri,System.Int32)">
+            <summary>
+            Returns a new Uri instance with port set.
+            </summary>
+            <param name="source">Uri  to perform the operation on.</param>
+            <param name="port">Port number to set.</param>
+            <returns>New Uri instance with the port set.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="source" /> is null.</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="port" /> must be between 0 and 65535.</exception>
+        </member>
+        <member name="M:ByteDev.ResourceIdentifier.UriSetExtensions.SetPortDefault(System.Uri)">
+            <summary>
+            Returns a new Uri instance with the port set to the scheme's default.
+            For example for HTTP the port would be set to 80.
+            </summary>
+            <param name="source">Uri to perform the operation on.</param>
+            <returns>New Uri instance with the port set.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="source" /> is null.</exception>
+        </member>
+        <member name="M:ByteDev.ResourceIdentifier.UriSetExtensions.SetPath(System.Uri,System.String)">
+            <summary>
+            Returns a new Uri with the path set.
+            </summary>
+            <param name="source">Uri to perform the operation on.</param>
+            <param name="path">Path value to set.</param>
+            <returns>New Uri instance with the path set.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="source" /> is null.</exception>
+        </member>
+        <member name="M:ByteDev.ResourceIdentifier.UriSetExtensions.SetQuery(System.Uri,System.String)">
+            <summary>
+            Returns a new Uri with the query set.
+            </summary>
+            <param name="source">Uri to perform the operation on.</param>
+            <param name="query">Query value to set.</param>
+            <returns>New Uri instance with the query set.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="source" /> is null.</exception>
+        </member>
+        <member name="M:ByteDev.ResourceIdentifier.UriSetExtensions.SetQuery(System.Uri,System.Collections.Specialized.NameValueCollection)">
+            <summary>
+            Returns a new Uri with the query set.
+            </summary>
+            <param name="source">Uri to perform the operation on.</param>
+            <param name="queryNameValues">Query name values to set.</param>
+            <returns>New Uri instance with the query set.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="source" /> is null.</exception>
+        </member>
+        <member name="M:ByteDev.ResourceIdentifier.UriSetExtensions.SetQuery(System.Uri,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Returns a new Uri with the query set.
+            </summary>
+            <param name="source">Uri to perform the operation on.</param>
+            <param name="queryNames">Query names to set.</param>
+            <returns>New Uri instance with the query set.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="source" /> is null.</exception>
+        </member>
+        <member name="M:ByteDev.ResourceIdentifier.UriSetExtensions.SetFragment(System.Uri,System.String)">
+            <summary>
+            Returns a new Uri with the fragment set.
+            </summary>
+            <param name="source">Uri to perform the operation on.</param>
+            <param name="fragment">Fragment value to set.</param>
+            <returns>New Uri instance with the fragment set.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="source" /> is null.</exception>
+        </member>
+        <member name="T:ByteDev.ResourceIdentifier.UriSlugBuilder">
+            <summary>
+            Represents a builder of URI slugs. A slug is usually used as the last part of a URI path
+            and if often a readable identifier.
+            </summary>
+        </member>
+        <member name="M:ByteDev.ResourceIdentifier.UriSlugBuilder.WithText(System.String)">
+            <summary>
+            Text to use in the slug.
+            </summary>
+            <param name="text">Slug text.</param>
+            <returns>Current builder instance.</returns>
+        </member>
+        <member name="M:ByteDev.ResourceIdentifier.UriSlugBuilder.WithText(System.String,System.Int32)">
+            <summary>
+            Text to use in the slug.
+            </summary>
+            <param name="text">Slug text.</param>
+            <param name="maxLength">Max length of the text within the slug.</param>
+            <returns>Current builder instance.</returns>
+        </member>
+        <member name="M:ByteDev.ResourceIdentifier.UriSlugBuilder.WithSpaceChar(System.Char)">
+            <summary>
+            Character to use in place of space characters within the slug text.
+            Default is the hyphen character ('-').
+            </summary>
+            <param name="spaceChar">Character to replace space characters.</param>
+            <returns>Current builder instance.</returns>
+        </member>
+        <member name="M:ByteDev.ResourceIdentifier.UriSlugBuilder.WithRandomSuffix(System.Int32)">
+            <summary>
+            Appends a random string of characters as base 64 to the slug.
+            </summary>
+            <param name="length">Length of random characters before they are encoded as base 64.</param>
+            <returns>Current builder instance.</returns>
+        </member>
+        <member name="M:ByteDev.ResourceIdentifier.UriSlugBuilder.WithDateTimeSuffix(System.DateTime,System.String)">
+            <summary>
+            Appends a date time encoded as base 64 to the slug.
+            </summary>
+            <param name="dateTime">Date time.</param>
+            <param name="format">Format to use when converting the date time to string (before encoding as base 64).</param>
+            <returns>Current builder instance.</returns>
+        </member>
+        <member name="M:ByteDev.ResourceIdentifier.UriSlugBuilder.Build">
+            <summary>
+            Create a new slug string instance.
+            </summary>
+            <returns>New slug string instance.</returns>
+        </member>
+    </members>
+</doc>

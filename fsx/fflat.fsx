@@ -8,14 +8,13 @@ open FSharp.Compiler.CodeAnalysis
 open FSharp.Compiler.Diagnostics
 open FSharp.Compiler.Text
 
-
 let compileScriptToDll (sourceFilePath: string) =
 
     async {
 
         let sourceFilePath = Path.GetFullPath sourceFilePath
 
-        let outputFilePath = Path.ChangeExtension(sourceFilePath, ".dll")
+        let outputFilePath = sourceFilePath.Replace("fsx", "dll")
 
         let outputDirectory = Path.GetDirectoryName outputFilePath
 
@@ -87,11 +86,11 @@ let targetFileNames =
     |> Set.ofArray
 
 module Folder =
+    let dll = Directory.CreateDirectory @"D:\https\com\github\eristocrates\ipa\dll"
     let REPL = Directory.CreateDirectory @"D:\https\com\github\eristocrates\ipa\fsx"
 
     let Generated =
         Directory.CreateDirectory @"D:\https\com\github\eristocrates\ipa\fsx\Namespace\Generated"
-
 
 let compilationTargets =
     Array.concat [|
@@ -111,8 +110,6 @@ let compilationTargets =
 
     |> Array.sortBy (fun fsxFile -> fsxFile.Length)
 
-
-
 compilationTargets
 |> Array.mapi (fun index fsxFile ->
     printfn "%d of %d %s" index compilationTargets.Length fsxFile.Name
@@ -121,14 +118,7 @@ compilationTargets
 
 *)
 
-let result =
-    compileScriptToDll @"D:\https\com\github\eristocrates\ipa\fsx\Ipa.fsx"
-    |> Async.RunSynchronously
-
-
-
-
-
+let result = Async.RunSynchronously(compileScriptToDll @"D:\https\com\github\eristocrates\ipa\fsx\NetworkMonitor.fsx")
 
 (*
 

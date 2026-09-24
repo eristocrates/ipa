@@ -1,0 +1,3211 @@
+Living Systems® Process Suite
+Experimental Todo and Document Forms
+Living Systems Process Suite Documentation
+3.2
+Tue Jan 12 2021
+Whitestein Technologies AG | Hinterbergstrasse 20 | CH-6330 Cham
+Tel +41 44-256-5000 | Fax +41 44-256-5001 | http://www.whitestein.com
+Copyright © 2007-2021 Whitestein Technologies AG
+All rights reserved.
+
+Copyright © 2007-2021 Whitestein Technologies AG.
+This document is part of the Living Systems® Process Suite product, and its use is governed by the corresponding
+license agreement. All rights reserved.
+Whitestein Technologies, Living Systems, and the corresponding logos are registered trademarks of Whitestein
+Technologies AG. Java and all Java-based trademarks are trademarks of Oracle and/or its afﬁliates. Other company,
+product, or service names may be trademarks or service marks of their respective holders.
+
+Contents
+1 Main Page 1
+2 Quickstart 3
+2.1 Prerequisites . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3
+2.2 Form . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4
+2.3 Using the Form in a Document . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 9
+2.4 Using the Form in a User Task . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 11
+3 Form Deﬁnition 15
+3.1 Creating a Form Deﬁnition . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 15
+3.2 Renaming a Form Deﬁnition . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 17
+3.3 Previewing a Form . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 18
+4 Form Design 21
+4.1 Deﬁning a Parametric Constructor . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 22
+4.2 Deﬁning a Local Form Variable . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 23
+4.3 Creating a Form Hierarchy . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 24
+4.4 Inserting a Parent Component . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 25
+4.5 Deleting a Parent Component . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 26
+4.6 Searching for Form Components . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 26
+4.7 Displaying Form Source Code . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 26
+4.8 Enabling Error Reporting on Components . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 27
+4.9 Troubleshooting a Form . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 28
+
+iv CONTENTS
+5 Actions on Forms 29
+5.1 Executing Logic Before and After Form Initialization . . . . . . . . . . . . . . . . . . . . . . . . . 30
+5.2 Detecting Location . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 31
+5.3 Checking the Size of the Browser Window . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 31
+5.4 Creating Transient Data in Forms . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 31
+5.5 Saving a Document or Todo . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 32
+5.6 Submitting a To-Do or Document . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 32
+5.7 Navigating from a To-Do or Document . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 32
+6 Mobile Forms 33
+7 Form Components 35
+7.1 Binding of Components . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 36
+7.1.1 Setting Component Binding . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 36
+7.1.2 Getting Component Binding . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 37
+7.1.3 Clearing Component Binding . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 37
+7.1.4 Implementing Custom Binding . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 37
+7.1.5 Deﬁning an Initial Value of a Component . . . . . . . . . . . . . . . . . . . . . . . . . . . 38
+7.2 Validation of Components . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 39
+7.2.1 Adding a Validator . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 39
+7.2.2 Validating Record Constraints in Forms . . . . . . . . . . . . . . . . . . . . . . . . . . . 40
+7.2.3 Checking Component Validity . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 40
+7.2.4 Setting a Custom Error Message . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 41
+7.2.5 Getting All Error Messages . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 41
+7.3 Actions on Components . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 41
+7.3.1 Refreshing a Component . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 41
+7.3.2 Setting the Visibility of a Form Component . . . . . . . . . . . . . . . . . . . . . . . . . . 41
+7.3.3 Setting the Caption of a Form Component . . . . . . . . . . . . . . . . . . . . . . . . . . 42
+7.3.4 Adding an Icon to Form Component . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 42
+7.3.5 Setting a Component as Read-Only . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 42
+7.3.6 Setting Component Size . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 43
+7.3.6.1 Default Component Sizes . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 43
+7.3.6.2 Setting Absolute Size . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 43
+7.3.6.3 Wrapping Content . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 43
+7.3.6.4 Filling Parent . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 44
+7.3.6.5 Setting Expand Ratio . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 44
+7.3.6.6 Setting Alignment . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 45
+7.3.7 Add Style Name to a Form Component . . . . . . . . . . . . . . . . . . . . . . . . . . . . 45
+7.3.8 Disabling a Component . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 46
+7.3.9 Setting a Tooltip . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 46
+7.3.10 Displaying a Notiﬁcation Dialog . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 46
+7.3.11 Deﬁning a Context Menu . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 47
+7.3.12 Handling a Right-Click Event . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 48
+7.3.13 Deﬁning a Value Provider . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 48
+
+CONTENTS v
+8 Reference 51
+8.1 Container Components . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 51
+8.1.1 Common Properties and Functionalities . . . . . . . . . . . . . . . . . . . . . . . . . . . 51
+8.1.1.1 Setting Spacing and Margin . . . . . . . . . . . . . . . . . . . . . . . . . . . . 52
+8.1.1.2 Populating Container Components . . . . . . . . . . . . . . . . . . . . . . . . 52
+8.1.2 Container Component Reference . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 52
+8.1.2.1 Layout Components . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 52
+8.1.2.2 Other . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 61
+8.2 Input Components . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 75
+8.2.1 Common Properties and Functionalities . . . . . . . . . . . . . . . . . . . . . . . . . . . 75
+8.2.2 Input Components Reference . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 75
+8.2.2.1 Text Components . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 75
+8.2.2.2 Decimal Field (forms::DecimalField) . . . . . . . . . . . . . . . . . . . . . . . . 80
+8.2.2.3 Date Field (forms::DateField) . . . . . . . . . . . . . . . . . . . . . . . . . . . 82
+8.2.2.4 Check Box (forms::CheckBox) . . . . . . . . . . . . . . . . . . . . . . . . . . . 83
+8.2.2.5 Select Components . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 85
+8.2.2.6 Tree (forms::Tree) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 92
+8.2.2.7 Upload (forms::Upload) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 93
+8.2.2.8 Slider (forms::Slider) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 93
+8.3 Output Components . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 94
+8.3.1 Label . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 94
+8.3.2 Tabular Components . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 96
+8.3.2.1 Table . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 96
+8.3.2.2 Grid . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 102
+8.3.2.3 Tree Table . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 111
+8.3.3 Charts . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 117
+8.3.3.1 Generic Chart Features . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 117
+8.3.3.2 Pie Chart . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 118
+8.3.3.3 Cartesian Chart . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 122
+8.3.3.4 Gauge Chart . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 124
+
+vi CONTENTS
+8.3.3.5 Axes . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 125
+8.3.4 Other Output Components . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 126
+8.3.4.1 Repeater . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 126
+8.3.4.2 Browser Frame . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 127
+8.3.4.3 Image . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 128
+8.3.4.4 Download . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 129
+8.3.4.5 Calendar . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 130
+8.3.4.6 Map Display . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 131
+8.3.4.7 PDF Viewer . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 132
+8.4 Action Components . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 133
+8.4.1 Button . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 133
+8.4.2 Action Link . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 135
+8.4.3 Link . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 136
+8.4.3.1 Opening a Link Resource in a New Window or Tab . . . . . . . . . . . . . . . . 136
+8.5 Special Components . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 137
+8.5.1 Expression Component . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 137
+8.5.1.1 Creating a Form Component Programmatically . . . . . . . . . . . . . . . . . . 137
+8.5.1.2 Inserting Form into a Form Component Dynamically . . . . . . . . . . . . . . . 137
+8.5.2 Reusable Form Component . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 138
+9 Form Migration 139
+9.1 Changes in Forms . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 139
+
+Chapter 1
+Main Page
+A form deﬁnes the content that is displayed in the front-end application, the Application User Interface, when the
+user opens either a to-do or a document
+It serves to obtain and process information, which is used by the application or model instances: The user opens
+a to-do or document, ﬁlls out the form, submits it, and the execution of the underlying entity, that is, user task or
+document model instance, continues.
+This guide documents the Forms::forms implementation of forms.
+Important: The forms implementation is considered experimental and its API might change in future
+releases. To create fully supported forms, design forms implemented by the ui module
+of the Standard Library: Make sure to check the differences between forms and ui before-
+hand.
+
+2 Main Page
+
+Chapter 2
+Quickstart
+We will create a Document, and a Process that will display your form. From the form, we will create a new shared
+Record instance.
+2.1 Prerequisites
+Before you can start working with form deﬁnitions, you will need to:
+1. Run PDS.
+2. Open the Modeling perspective.
+3. Create a GO-BPMN project with a GO-BPMN module.
+4. Create the data module with a Data Type deﬁnition: insert a shared Record with at least one Field into the
+deﬁnition.
+
+4 Quickstart
+Figure 2.1 Shared Record
+5. Create the quickstart module and import the data module into it.
+6. Remove the ui module from module imports.
+2.2 Form
+Important: Before you create your form, make sure you have removed the ui module import from
+your module. Having both, the ui module and the forms module, imported in a module could cause
+exceptions on forms in runtime.
+To create the form, do the following:
+1. Import the forms Module into your Module:
+(a) In the GO-BOMN Explorer, expand the Module and double-click its Module Imports node.
+(b) On the Imports tab of the Properties dialog, click Add.
+(c) In the Add New Import dialog, double-click the Standard Library > forms Module.
+2. Create a Form Deﬁnition:
+(a) Right-click your Module > New > Form Deﬁnition
+
+2.2 Form 5
+(b) Enter the Form name and select Use FormComponent-based UI
+Figure 2.2 Creating a form deﬁnition
+(c) Click Finish.
+3. In the Form editor, create a Grid that will display a list of users in a tabular manner:
+(a) Right-click the canvas, go to Insert Component > Container Components > Vertical Layout.
+(b) Right-click the Vertical Layout, go to Insert Component > Output Components > Grid.
+(c) Open the Properties view of the Grid and deﬁne the following:
+• ID unique within the Form
+• data source as Type and insert the name of the shared Record so the table will use as its data
+source a list of all shared Records of the type.
+(d) Create a Grid Column with the user name:
+i. In the palette, click Grid Column and then click into the Grid.
+ii. In the Column's Property view, under Value Provider select Property path and enter the property
+path to the name below.
+
+6 Quickstart
+Figure 2.3 Column with record ﬁeld
+(e) Create another Grid Column with the date of birth:
+i. Insert another Grid Column into the Grid.
+ii. Set Value Provider to Property path with the value User.dob.
+iii. Set Renderer to Date.
+4. Create a popup for entering new user data:
+(a) Insert the Popup component from the Container Components palette section below the Grid.
+(b) Deﬁne its ID and Method signature for its factory call.
+We will call the method as a button action to create and display the popup.
+
+2.2 Form 7
+Figure 2.4 Popup
+(c) Create a local variable that will hold the data of the new user on the popup from the Outline view and
+set its initial value to a proxy of the User record: the proxy is a copy of a record instance with a link to
+its record. In this case, the user record does not exist yet. The aim of our proxy is to allow us to discard
+the user data without having to clean up any transient data.
+(d) Insert a Vertical Layout into the Popup: select the Margin and Spacing options in its properties.
+(e) Insert a Form Layout into the Vertical Layout.
+(f) Insert a Text Field into the Form Layout with its binding set to Reference and its value to the name
+property of the user variable.
+
+8 Quickstart
+Figure 2.5 Text ﬁeld with user name Binding
+(g) Insert a Date Field into the Form Layout with its binding set to Reference and its value to the Date
+property of the User object.
+(h) Insert the Create button and deﬁne the create logic as its click action:
+• The Proxy newUser object merges: a "proper" User object is created.
+• The table refreshes so that the new user appears in the table.
+• The Popup closes.
+{ click ->
+mergeProxies(false, newUser);
+userGrid.refresh();
+userDetailsPopup.hide();
+}
+5. Create a button that will open the popup:
+(a) Insert a Button component under the Grid.
+(b) Deﬁne its Click Listener expression to open a popup: openUserDetails().show()
+6. Finally, we want to add the option to submit the form on button click: add a Button to the form and call the
+static Forms.submit() method as its click listener.
+
+2.3 Using the Form in a Document 9
+As we will demonstrate next, a Form can be created by a User Task or a Document:
+• When created by a User Task, on submit the execution of the User Task ﬁnishes and the process execution
+continues.
+• When created by a Documents, the system navigates away: under the hood, the server creates a model
+instance whenever you open a document and ﬁnishes the instance when you submit the form.
+2.3 Using the Form in a Document
+To create a Document with your Form, do the following:
+1. Create a document deﬁnition:
+(a) Right-click your Module > New > Document Deﬁnition; enter name and click Finish
+(b) In the document deﬁnition, click Add.
+(c) Deﬁne the document properties and its UI deﬁnition.
+
+10 Quickstart
+Figure 2.6 Document deﬁnition that will display our Form as its content
+2. Open the document:
+(a) Make sure you are connected to an LSPS server or run the LSPS Embedded Server: go to Server
+Connections > LSPS Embedded Server > Start.
+(b) In GO-BPMN Explorer, right-click your Module, go to Upload As > Model.
+(c) Open a browser and go to your application URL (for the Embedded Server by default http←↩
+://localhost:8080/lsps-application/ui)
+(d) After you log in, go to Documents and click the document.
+Figure 2.7 Opening Document
+(e) Create new users in the document.
+(f) When ﬁnished, click Submit.
+
+2.4 Using the Form in a User Task 11
+Figure 2.8 Submitting a ﬁlled-in document
+2.4 Using the Form in a User Task
+Create a Process with a User Task with your Form:
+1. Create a process deﬁnition: right-click your Module > New > Process Deﬁnition; enter name and click
+Finish
+2. In the process editor, right-click the canvas and go to New > Task.
+3. In the Select Task Type dialog, select User from the human module.
+4. On the Parameters tab in its Properties view, deﬁne the Task properties with its UI deﬁnition set to create an
+instance of the form.
+
+12 Quickstart
+Figure 2.9 User task that will display your Form
+To check the document and process and display the form, do the following:
+5. Make sure you are connected to an LSPS server or run the LSPS Embedded Server (go to Server Connec-
+tions > LSPS Embedded Server > Start).
+6. In GO-BPMN Explorer, right-click your Module, go to Run As > Model.
+7. Open a browser and go to your application URL (for the Embedded Server by default http←↩
+://localhost:8080/lsps-application/ui)
+8. After you log in, go to the To-Do List and open the to-do.
+Figure 2.10 Opening To-Do
+9. Create new users in the document.
+
+2.4 Using the Form in a User Task 13
+10. When ﬁnished, click Submit.
+
+14 Quickstart
+
+Chapter 3
+Form Deﬁnition
+A form deﬁnition holds one form with its constructors, members (local variables and methods), and the component
+tree. The component tree is a tree of form components, such as, layout components, input components, output
+components, etc.
+Important: Chart components are based on Vaadin Charts developed by a third party. Make
+sure to obtain the Vaadin Chart licenses before you use them. The users of your application and
+Management Console, do not require any additional licenses.
+3.1 Creating a Form Deﬁnition
+To create a form deﬁnition ﬁle, do the following:
+1. Make sure you have created a project and module.
+2. Remove the ui module from module imports of your module and import the forms module.
+Important: Having both, the ui module and the forms module, imported in your module could
+cause exceptions on your forms in runtime.
+3. In the GO-BPMN Explorer view, right-click the module.
+4. In the displayed context menu, go to New Form Deﬁnition.
+
+16 Form Deﬁnition
+Figure 3.1 Creating a form deﬁnition
+5. In the New Form Deﬁnition dialog, enter the form name and make sure the Use FormComponent-based UI.
+
+3.2 Renaming a Form Deﬁnition 17
+Figure 3.2 Flagging a form deﬁnition to create a form based on the forms module
+3.2 Renaming a Form Deﬁnition
+To rename a form deﬁnition and its form, right-click the Form root node in the Outline view or the ﬁle in the GO-BPMN
+Explorer and click Rename in the context menu.
+Note that this will rename all the references to the Form root, the form deﬁnition ﬁle, the methods ﬁle.
+
+18 Form Deﬁnition
+Figure 3.3 Renaming Form
+Alternative, rename the form deﬁnition ﬁle.
+3.3 Previewing a Form
+To display preview of your form in your web browser, do the following:
+1. In the GO-BPMN Explorer, right-click the form.
+2. Select Run As -> Form Preview.
+A form-preview conﬁguration is created for the preview if it doesn't exist yet. Modify the preview conﬁguration if you
+need to send input parameters to the form.
+
+3.3 Previewing a Form 19
+Figure 3.4 The form preview called with the argument Hello
+When you request a form preview, the LSPS Server to which your PDS is connected, runs a persisted instance of
+the module with the form: it initializes global variables and form parameters, and creates the form context. Then
+your system browser with the form preview opens.
+To delete the model instances created by form preview, open the Model Instances view of the Management per-
+spective, right-click anywhere into the view and click Remove All Form Preview Model Instances.
+Important: Make sure to disable this feature in production environments.
+
+20 Form Deﬁnition
+
+Chapter 4
+Form Design
+A form is designed in the forms deﬁnition using the Forms editor. It comprises constructors, methods, local variable
+and a tree of form components, such as, input ﬁelds, radio lists, etc. To design the component tree, you insert the
+required form components into a canvas and deﬁne the properties of components in the Properties view.
+Figure 4.1 A forms::form deﬁnition with a Form
+The form is instantiated by a User Task or a Document based on its UI Deﬁnition property. The property holds the
+constructor call that the task or document use to create their form. The constructor calls the createWidget()
+method, which does the following:
+
+22 Form Design
+1. It calls the preCreateWidget() method as deﬁned by the user is executed.
+2. It creates the root component of the form tree, FormWidget.
+3. It constructs the tree of form components as deﬁned in the form deﬁnition.
+4. It calls the Init expressions deﬁned on the components of the tree.
+5. It calls the postCreateWidget() method as deﬁned by the user is executed.
+Then form is then rendered.
+The constructor call can be parametric so you can send input to your form when it is instantiated.
+The FormWidget component cannot be changed; however, you can access it with the getWidget() method.
+When the user interacts with the form, components of the tree produce event objects. These events trigger listener
+expressions: When an event occurs, its listener expression is performed; for example, when the user clicks a button,
+a ClickEvent is produced, and the Click Listener expression of the button is executed; when the user inserts a value,
+a ValueChangeEvent is produced, and the expression deﬁned as the OnChangeEventListener of the component is
+executed.
+The component tree can grow as the user works with the form since components can be added to the tree dy-
+namically; for example, a new popup can be created every time the user clicks a button. To prevent storing of
+unnecessarily large trees, the server calls the garbage collector over the form: The collector prunes the component
+tree branches that are not referenced. The collector is called when the form is submitted or saved.
+Important: The example forms in this guide often work with data stored in variables. In production,
+such solutions are not intended for storage of extensive data amount and might result in out-of-memory
+errors. When acquiring data for forms use queries whenever the data is persisted in a database.
+4.1 Deﬁning a Parametric Constructor
+To deﬁne a constructor for your Form, open the methods ﬁle of your Form and deﬁne the constructor as a new
+constructor method.
+An example parametric constructor: The initialDate variable is deﬁned as the form's local variable.
+DateField {
+public DateField(Date date) {
+initialDate := date;
+}
+}
+
+4.2 Deﬁning a Local Form Variable 23
+Figure 4.2 Calling a parametric form constructor from a document
+4.2 Deﬁning a Local Form Variable
+To deﬁne a local form variable, do the following:
+1. Make sure you have the form resource opened in the Form editor.
+2. In the Outline view, right-click the form and go to New > Variable.
+3. In the displayed Properties view, deﬁne the variable properties.
+4. In the methods ﬁle of your Form, deﬁne the constructor that will initialize the value of the variables if applicable.
+
+24 Form Design
+Figure 4.3 Parameterized form constructor that sets a local variable value
+4.3 Creating a Form Hierarchy
+Important: Note that since both, the ui and forms implementations, can be used to return a UIDeﬁnition
+toa DocumentorTo-do; sometimesitcan beunclearon runtimewhichimplementation isused; typically
+if you use an expression that returns human::UIDefinition. The LSPS Server might not be
+able to detect which implementation you are using and return an exception. Therefore make sure to
+remove either the ui or the forms module form your module imports so the used implementation can be
+recognized correctly based on the imported module.
+To create the component hierarchy in your form deﬁnition, do the following:
+1. Open the form deﬁnition ﬁle (double-click it in the GO-BPMN Explorer).
+2. Click the required component in the palette and then click to the respective position on the canvas. Alterna-
+tively right-click the position in the canvas, go to Insert Component and select the component from the context
+menu.
+Figure 4.4 Inserting a component into the form from the context menu
+
+4.4 Inserting a Parent Component 25
+3. Deﬁne the component properties in the Properties view on the Details tab; if you require other properties,
+such as, style properties and additional size properties, call the respective methods on your component on
+the Init tab as an expression.
+Figure 4.5 Init expression on a poopup component
+This method can be used to reuse a Form.
+4.4 Inserting a Parent Component
+You can select one or multiple form Components and wrap them with another components in the Form graphical
+editor.
+To insert such a parent form component over another component, do the following:
+1. In the Form editor, right-click the component.
+2. In the context menu, go to Insert Parent and select the component to use as the wrapper component.
+
+26 Form Design
+Figure 4.6 Wrapping component in a layout component
+4.5 Deleting a Parent Component
+To delete only the parent component and preserve its child components, right-click the parent component and click
+Shift Children Up.
+Note that the option is only available if the children can be accommodated in the form after the deletion; for example,
+it is not possible to delete a Vertical Layout with multiple child components if it has a Panel component as its parent.
+4.6 Searching for Form Components
+If an error on a form component occurs during runtime, the server returns an error message with the modeling ID
+of the form component. To search for the form component that caused the error in the current workspace, do the
+following:
+1. Go to Search > Find Form Component.
+2. In the displayed search dialog, enter the ID.
+4.7 Displaying Form Source Code
+Since forms as well as their components are deﬁned as Records with methods, you can display the entire Form
+source in the Expression editor:
+1. In the Form editor, right-click any form component.
+2. On the context menu, select Display Form Expression.
+
+4.8 Enabling Error Reporting on Components 27
+4.8 Enabling Error Reporting on Components
+To enable reporting of runtime errors so that they contain modeling IDs of involved components, run your server
+with the -Dcom.whitestein.lsps.vaadin.ui.debug=true system property:
+• If you are running PDS Embedded Server, go to Server Connection ->Server Connection Settings, select
+the connection and click Edit.
+Figure 4.7 Enabling modeling IDs on form components
+• If you are connecting to another PDS server or you are using SDK Embedded Server, switch to Java perspec-
+tive; go to Run > Run Conﬁgurations; select the conﬁguration under Java Application or Remote Java
+Application and add the property on the Arguments tab to VM arguments.
+
+28 Form Design
+4.9 Troubleshooting a Form
+When troubleshooting a form, consider the following:
+• Examine the form expression: right-click the form in the form editor and select Display Widget Expression.
+• Add breakpoints to expressions in the form and run it in LSPS Debugger.
+
+Chapter 5
+Actions on Forms
+All forms allow you to perform the following actions:
+• execute some logic before and after the form is initialized
+• acquire device location
+• acquire browser window size
+• create transient versions of persisted data
+• save the form
+• submit the form
+• navigate to another page
+
+30 Actions on Forms
+Figure 5.1 Submit call attached to button click listener
+5.1 Executing Logic Before and After Form Initialization
+To execute some logic, before or after the component tree of your form is initialized (to create a pre-init or post-init
+hook), add the required code to the preCreateWidget()or postCreateWidget()method in the methods
+ﬁle of the form.
+Example content of the MyTable.methods ﬁle with methods for MyTable.form
+MyTable {
+~
+private void preCreateWidget() {
+//running an asynchronous model instance that will notify
+//the respective users about that somebody opened the document and
+//is about to edit it:
+createModelInstance(false, getModel("notifications"), null);
+}
+~
+private void postCreateWidget() {
+//get a list of form components of the hl layout component:
+componentList := hl.getComponents();
+//sets the value of a label to display the list of components:
+compListLabel.setValue(toString(componentList));
+//display a popup on form load:
+createMyPopup().show();
+}
+}
+
+5.2 Detecting Location 31
+5.2 Detecting Location
+To detect geoposition of the device in your form, use the Forms.detectLocation() method.
+The instructions for the client browser on how to provide the geographical position data is deﬁned by the Position←↩
+Options object that can be passed as parameter:
+• enablehighaccuracy: position accuracy (if true, the GPS position is requested; the default value is false)
+• timeout: time in milliseconds that can pass before the call fails
+On such failure, the call returns GeolocatorError.Timeout. The countdown starts when the user
+permits the detection. By default, no timeout is applied.
+• maximumAge: maximum accepted age of a cached position
+The default value is 0, so that cached positions are not accepted.
+If no PositionOptions is passed the default values are applied.
+Example detectLocation() call
+Forms.detectLocation(
+new forms::PositionOptions(
+enableHighAccuracy -> true,
+timeout -> 10000,
+maximumAge -> 1000), { ge ->
+forms::notify( caption-> "This is the position: "+ ge.position + " error: " + ge.failure)
+}
+);
+5.3 Checking the Size of the Browser Window
+To get the current size of the browser window in DIPs, run the Forms.getBrowserWindowSize() method.
+5.4 Creating Transient Data in Forms
+When editing a shared record in forms, the changes are applied instantly: when you change the value in a text
+ﬁeld that is bound to a record property, the change is persisted when the ﬁeld loses focus. Generally this is not the
+required behavior: you want to apply changes only on submit or when some other conﬁrming action takes place.
+To implement such a behavior, use proxies of your record in forms.
+Important: Proxy objects are not supported by forms created with the ui Module: these forms use
+execution levels created with the (../ui-vaadin/uispecialcomponents.html::viewmodel) compo-
+nent to isolate any changes instead.
+When designing forms that make use of change proxies, consider creating and merging objects out of your form
+deﬁnition: This will keep your form deﬁnition easier to maintain and reuse since it will hold only presentation logic.
+You can do so by deﬁning a parametric constructor that will take the logic-related arguments, such as, change
+proxies, and action handlers.
+For examples, refer to Creating a Modal Popup and Creating a Public Popup.
+
+32 Actions on Forms
+5.5 Saving a Document or Todo
+To save the Document or To-Do with your Form, call Forms.save(): the state of the Document or To-do will
+be saved as the internal state of the Document or To-do as part of its model instance. The method returns the
+shared record instances human::SavedDocument or human::Todo depending on whether it was created in
+a document or in a todo respectively. As part of the save action the form component tree is garbage collected by
+the LSPS garbage collector to prevent too big a component trees from being saved.
+Note that while Saved To-dos remain accessible to the user even after they navigate away from the To-do page,
+you will probably need to provide a way how to access saved Documents: for example, you could create another
+document with a form that will contain a list of available saved Documents. Saved Documents can be accessed via
+the SavedDocuments shared record.
+Important: The save action fails if the user attempts to save a Popup state.
+5.6 Submitting a To-Do or Document
+To submit a to-do or document, call the static Forms.submit() method. Typically you will do so on button click:
+insert a Button component into the form and in its Details in the Properties view deﬁne the call in the Click Listener
+property:
+{e -> Forms.submit()}
+The method can deﬁne a Navigation parameter: on submit the form will navigate to this location:
+{e -> if myForm.isValid() then Forms.submit(new UrlNavigation(url -> "www.lezecka-akademia.sk")) end }
+Important: If the underlying User Task or Document deﬁnes a Navigation parameter, the submit()
+Navigation is ignored. If neither the User Task or Document or the submit() call deﬁne a Navigation,
+the system navigates to the To-do List or your home page.
+5.7 Navigating from a To-Do or Document
+To navigate from a form, use one of the navigate methods of the Forms record:
+def Button navigateButton := new Button("Navigate", {e -> Forms.navigateTo(new UrlNavigation(url -> "http://sme.sk"))});
+//button that navigates to a new document that has a Navigation Factory function:
+def Button navigateToDocumentButton := new Button("Navigate", {e -> Forms.submit(); Forms.navigateTo(getMyForm(12))});
+On navigation, the current transaction is committed: if you are performing any action after the call, these will
+take place in a new transaction.
+Note that navigation on submit for Documents can be deﬁned directly on the Document deﬁnition as well.
+
+Chapter 6
+Mobile Forms
+LSPS provides support for creating mobile forms so that you can display the forms of LSPS applications in a speciﬁc
+way on a mobile device or display a mobile-friendly version of the form.
+Note: If you are creating a mobile LSPS application, do not aspire to substitute the desktop
+application: the mobile application should be an extension of the desktop application.
+Also make sure to follow the common guidelines for mobile applications: keep the forms simple and
+intuitive.
+To create mobile versions of your forms, do the following:
+• In your form, add the Resize Listener to detect the screen size on runtime: from the listener expression, call
+the getBrowserWindowSize() function to get the width and height of the device screen in DIP (density
+independent pixel) of the device.
+• Deﬁne in the listener how the form components should behave:
+– For adaptive design you can simply hide components, or change their properties.
+– For mobile-dedicated version, consider embedding the form versions for different devices in a layout
+component and hide and display or hide the layouts from the Resize Listener expression based on the
+window size.
+Consider using the same binding for the input components in individual Form version to keep any data that the
+user provides in all form versions. This will allow the system to preserve the input in case a form component
+is hidden on device resize (the user rotates the device).
+Important: If the user provides invalid values in the form and the Form component will be hidden, the
+invalid values cannot transferred to the displayed form. Consider handling such situations in your form.
+
+34 Mobile Forms
+
+Chapter 7
+Form Components
+Form components constitute your form hierarchy: They are implemented as Records with Fields and methods and
+have the forms::Form Record as its super type with the form widget.
+Every component allows a set of common component actions and can deﬁne the following of properties:
+• ID: identiﬁer of the component on design time
+ID allows you to reference the component from another component in the form while designing it.
+• Modeling id: identiﬁer of the component on runtime
+Modeling id is generated automatically and serves to identify form components on runtime.
+• Caption: a String expression rendered as label
+If the caption references localization identiﬁers, these are resolved automatically to the target locale. Note that
+the caption is rendered by the parent layout component. Hence if you create a form with a sole component
+with a caption, the caption will not be rendered in the form. This is due to limits of the Vaadin framework.
+• Description: tooltip displayed on hover
+Component-speciﬁc properties can be set on the Detail tab in the Properties view or on the Init tab. Both become
+part of the form tree.
+You will work with the following types of components:
+• group components that can hold other components and generally deﬁne the form layout
+• input and action components so the user can interact with the forms
+• Expression component, so you can deﬁne your component in the Expression Language
+• Reusable Form component so you can reuse an existing form
+Note that you can implement a custom form component if required.
+
+36 Form Components
+7.1 Binding of Components
+Some form components hold a value: For example, a Text Area component holds a String value with its text. You
+can get the value with the getValue() call and set it with the setValue() call.
+However, if you want to work with the value, you can bind the component to a variable or a variable ﬁeld if the
+variable is of a Record type:
+• When the value of the component changes, the value in the variable to the new value;
+• When the component is loaded or refreshed, its value uses the value in its Binding.
+The variable must be of the same type as the value in the component, in the case of the Text Area, it must be of
+type String.
+Note: If the user enters a value into a component, which cannot be stored in the target object, the
+component validation fails: In such a case, the value is not stored in the target object and an error
+message is displayed on the component.
+7.1.1 Setting Component Binding
+To set the target object of binding, either call the setBinding() method or set the Binding property in the
+Properties view. I
+Note: By default, the binding is set to a default object which takes any value so you don't have to set
+the binding if not needed.
+Depending on whether and when the binding value should be reloaded, you can use one of the following types:
+• Reference: reloaded when the component is initialized or refreshed
+• Value: loaded when the component is initialized (This is convenient if you want to set a ﬁxed value to a
+component.)
+• Closure: loaded when the component is initialized or refreshed
+• Custom: custom implementation of the Binding interface (This allows you to apply custom logic to the binding
+before it is loaded.)
+Example: Let us consider a Form with three Label Fields (Label Fields are components that simply
+display the value of the Binding as a read-only value):
+• LabelA uses Reference Binding to the Date variable &varTime with its initial value set to the
+time returned by now()
+• LabelB uses Value Binding now()
+• LabelC uses Closure Binding now()
+All Labels will show the current date and time when the Form is loaded. If we add a Button component
+that will refresh the Label components on click, then on click:
+• LabelA will display the value stored in the varTime variable.
+• LabelB will keep the same time value.
+• LabelC will always update the time to the current time.
+
+7.1 Binding of Components 37
+7.1.2 Getting Component Binding
+To get the value set in the component target object, call getValue() on the component.
+Note: A component value is stored in the target object, only if it meets the formatting requirements, for
+example, if you enter a character into a Decimal Field, the value is ignored and the component displays
+an error.
+7.1.3 Clearing Component Binding
+To clear the component binding, bind the component to a reference with the value null.
+def ContentMode cleanBinding := null;
+componentWithValue.setBinding(&cleanBinding);
+7.1.4 Implementing Custom Binding
+If you want to process binding data before they are used by a component, implement your custom Binding data
+type. This allows you, for example, to convert input values to other units.
+1. Create the Binding data type that implements the forms::Binding interface.
+(a) Create data type deﬁnition
+(b) Import the forms::Interface type and extend it.
+Figure 7.1 Custom binding record
+
+38 Form Components
+2. Implement the interface methods:
+(a) Right-click your binding record and select New Methods Deﬁnition.
+(b) Open the newly created methods deﬁnition ﬁle and implement the following methods:
+• get() returns the component value
+• set() sets the component value
+• getBinding() returns the property of a RecordAndProperty object; the validations applicable
+for the property are used to validate the value (refer to the documentation on constraints);
+usually you want to return null;
+FileReader {
+public Object get(){
+def File myfile := getResource("custom_binding", filename);
+fromBinaryToString(myfile.content);
+}
+public void set(Object value) {
+error("Cannot set target file! Readonly!")
+}
+public RecordAndProperty getBinding() {
+null
+}
+}
+Now you can use your binding implementation as Custom Binding in your form. Consider using and distributing your
+implementation as part of a custom Library.
+Figure 7.2 Custom binding on a Label component
+7.1.5 Deﬁning an Initial Value of a Component
+To deﬁne the initial value for a component where the data comes in later, deﬁne a form variable with the initial values;
+and deﬁne the binding as a closure that provides the appropriate data:
+For example myFormVariable != null ? myFormVariable : null
+
+7.2 Validation of Components 39
+7.2 Validation of Components
+When you insert a value into a form component, the form automatically checks if the value meets the basic format
+requirements, such as, whether you entered a decimal value in a Decimal Field
+If you want to introduce further validation rules to a forms::form, you have the following options:
+• Add validators to input components to validate input automatically.
+• Set custom error messages on any form component: Handling of the message is fully under your control.
+• If your components are bound to records, you can validate the input against the rules deﬁned for the records.
+7.2.1 Adding a Validator
+To add validation rules and validate the values in an input form component when the value might have changed,
+add validators to the components.
+The value is validated against its validators on every validation run:
+• when the validator is added;
+• when the value might have changed, for example, the component lost focus, its setValue() method is
+called, isValid() is called, the component is rendered, etc.
+To set a validator, call the addValidator() method on the component. The method takes a closure as its input
+argument:
+• The input of the closure is the value in the input component: on a Text Box, the input is its text; On a Decimal
+Field, the input is the decimal value. Mind that this value must be in the correct format.
+• The closure returns the error message that is displayed on the component. If the closure returns null, the
+component is valid.
+If you want to validate only after some action takes place, name your input component and add the validator in the
+appropriate listener expression.
+Example expression that adds a validator to a Date Field
+MyDateField.addValidator (
+{ dateValue:Date ->
+if
+dateValue > date(2018, 3, 3)
+then
+null
+else
+"The date must occur later than March 3, 2018."
+end
+}
+);
+You can get your validation messages and messages caused by incorrect input format with the get←↩
+ValidatorsMessages() or getValidatorsMessagesRecursive() methods.
+
+40 Form Components
+7.2.2 Validating Record Constraints in Forms
+When acquiring data for a record from a form, generally the input components in your form are bound to a record
+or record ﬁeld: the binding is set to type Reference and its value to patient.ssn. For such form components,
+you can check whether the input values meet the record constraints and display the constraint messages, called
+data-error messages.
+To validate the value and display data-error messages in a form, do one of the following:
+• To validate the value automatically, call inferValidator(): The method adds a validator to a compo-
+nent, whichkeepscheckingtheconstraintsoftheboundRecordPropertyanddisplaysanyreturnedconstraint
+messages on the component.
+c.inferValidator(null)
+Note: The inferValidator() creates a validator object for the component: The input value
+is assigned to the validator object only if it is in the correct format: If the users enters a string into
+a Date Field, the string does not make it into the validator object. Therefore, if you call infer←↩
+Validator() after the form component has been assigned a value, then any subsequent in-
+valid values are ignored and the ﬁrst value is always restored.
+• To validate at a particular moment, call validate()and showDataErrorMessages(): The validate()
+call returns a list of data-error messages and showDataErrorMessages() erases the currently displayed data-
+error messages and then displays the received data-error messages on the subtree of the second argument.
+{ e -> showDataErrorMessages(validate(currentPersonVariable, null, null, null), null)}
+Example on-click validation of the newUnit record instance in a Listener expression:
+{ click ->
+def List<ConstraintViolation> cv := validate(newUnit, null, null, null);
+if cv.isEmpty()
+then
+mergeProxies(false, newUnit);
+Forms.submit()
+else
+def List<String> messages := collect(cv, {cvi:ConstraintViolation -> cvi.message});
+//The showDataErrorMessages() function displays violation messages
+//on the subtree of the component defined by the second argument.
+//The validation messages are displayed on the components that have the Binding
+//to the data that produced the constraint violation:
+showDataErrorMessages(cv, MyButtonComponent);
+end
+}
+To get the data error messages of a form component, use the getDataErrorMessages() or getData←↩
+ErrorMessagesRecursive() methods.
+To clear the data error messages, use the clearConstraintViolations() function.
+More information on constraints is available in the Modeling Guide.
+7.2.3 Checking Component Validity
+To check if a component and all its children are valid, use call the isValid() method. The method searches for
+any validators, including inferred validators, that return a error message. If at least one error message is found, the
+method returns false.
+Custom error messages are ignored by the isValid() method.
+
+7.3 Actions on Components 41
+7.2.4 Setting a Custom Error Message
+To have full control over when an value in an is validated, use the custom error message of components: With the
+setCustomErrorMessage()method, you can set and display one arbitrary error message on any component.
+To get the error messages of a form component, call the getCustomErrorMessage() method and to clear
+the error messages, call setCustomErrorMessage(null) on your component.
+Since error messages are not produced by validators or constraint mechanism, they do not represent a validation
+breach: consequently, the isValid() call IGNORES error messages. They are simply messages attached to
+components.
+{ e ->
+def String val := text.getValue() as String;
+if val.isBlank() or val.length() < 3 then
+//setting error message on a component:
+text.setCustomErrorMessage("Must be at least 3 characters.");
+else
+Forms.submit()
+end
+}
+7.2.5 Getting All Error Messages
+To collect the custom error, data error, and validator messages on a form component, use the getAllError←↩
+Messages() or getAllErrorMessagesRecursive() methods.
+7.3 Actions on Components
+7.3.1 Refreshing a Component
+When you change a value not related to the underlying data source in your form, such as a caption, table and
+column width, etc. the component in the client browser is refreshed instantly.
+However, if you change the related data, such as the data source, you need to call the refresh() method on the
+component to have the component rendered with the modiﬁed data. The refresh() call causes refresh of all
+child components as well: the binding is reloaded, the data source is refreshed, and component validation triggered.
+You do not need to call refresh() if you use the setValue() calls to modify the component data since it is
+called automatically.
+7.3.2 Setting the Visibility of a Form Component
+A visible component is included in the form: by default, all components apart form the Popup are visible. If you set
+a component as not visible, it is excluded from the form hierarchy.
+• setVisible(Boolean visible∗): set the component visibility
+• isVisible(): returns the component visibility
+
+42 Form Components
+7.3.3 Setting the Caption of a Form Component
+• getCaption() returns the component caption
+• setCaption() sets the component caption The setCaption() call localizes any localization identiﬁers au-
+tomatically; hence there is no need to include the localize call.
+Important: The caption of the Text Field is rendered by the parent layout component. Hence if you
+create a form with a sole Text Field component, the form will be rendered without its caption text. This
+is due to limits of the Vaadin framework.
+7.3.4 Adding an Icon to Form Component
+All form component can deﬁne their icon:
+• getIcon() returns the component icon
+• setIcon(Resource) sets the component icon
+c.setIcon(FileResource.fromModule("form_components", "action/img/person.png"));
+Note that the font Awesome has its Resource record, hence you can use its icon directly from the setIcon() call:
+c.setIcon(new FontAwesome("minus-square"))
+Currently it is not possible to set the icon size: use bitmap ﬁles with the correct size or adjust the style with your
+CSS ﬁles.
+Important: The icon of any component is rendered by the parent layout component. Hence if you set
+icon on the root component, the form will be rendered without the icon. This is due to limits of the
+Vaadin framework.
+7.3.5 Setting a Component as Read-Only
+When a component is in read-only mode, the user cannot change the value of the component. The mode does not
+inﬂuence other functionalities of components.
+• setReadOnly(Boolean readOnly∗): sets a component as read-only or editable
+• isReadOnly(): returns the current read-only status
+
+7.3 Actions on Components 43
+7.3.6 Setting Component Size
+Every component deﬁnes its default size settings (height and width) which you can change with the size-related
+methods setWidth(), setHeight(), and setSize().
+Size can be deﬁned as follows:
+• in percent of the size of the component slot: a component slot is space allocated to the component;
+Note: This space is restricted restricted by the parent layout component and can be adjusted with
+the Expand Ratio methods.
+Consider two special values:
+– 100% referred to as full since it sets the component to fully ﬁll its slot
+– null referred to as wrap since it sets the component to take the minimum size required to accommo-
+date its content.
+• absolute size:
+– in pixels (px), picas (pc), points (pt), mm, cm, or inches (in)
+– font-relative units:
+* em: size in factors of the letter m size
+* ex: size in factors of the letter x size When you deﬁne absolute size of your component, make
+sure it does not overﬂow its component slot if this is not required. SUch situations can lead to
+overlapping content.
+7.3.6.1 Default Component Sizes
+All components have their default sizes used if you do not specify their size explicitly:
+• Width is set to 100% or full: the width is set to the width of the parent component (identical to 100%)
+The exception are all Input Components, Horizontal Layout, and Popup which wrap their content by default.
+• Height is set to null or wrap.
+The only exception is the Map component that has a ﬁxed height of 400px.
+7.3.6.2 Setting Absolute Size
+When setting component size, use the setter methods setWidth() and setHeight(): the methods take
+parameters in the format [number][units], such as 100%, 10em, 25px.
+You can get the current size with the getWidth() and getHeight() methods.
+7.3.6.3 Wrapping Content
+To make a component wrap its content, call the respective setter method with the null parameter, for example,
+c.setWidth(null) or one of the wrap methods:
+• setWidthWrap() or setWidth(null)
+• setHeightWrap() or setHeight(null)
+Note that if the size is set to wrap, it is considered null.
+
+44 Form Components
+7.3.6.4 Filling Parent
+To set the size of a component to ﬁll its component slot, call a full method on the component.
+• setWidthFull() or setWidth("100%")
+• setHeightFull() or setHeight("100%")
+• setSizeFull() combines both calls above
+7.3.6.5 Setting Expand Ratio
+Expand ratio sets the size of the component slot in proportion to the parent component size. Mind it does not set
+the size of the component itself.
+Layout components allocate to their children component slots of equal sizes; the child components ﬁll the slot as
+deﬁned by their properties:
+• They can ﬁll the slot or a percentage of the slot.
+• They wrap their content and the slot adapts to this minimal size.
+• They use their absolute size.
+Important: When you set absolute size on a component, note that this does not inﬂuence the size
+of the component slot and might result in content overlap.
+The ratio expand applies only to child elements of Horizontal, Vertical, and Grid layouts since only these compo-
+nents allow you to change the slot size:
+When the Layout component is calculating the component slot sizes, ﬁrst it gives the required space to components
+that wrap their content (the slot adopts the size of the component); then it calculates the size of the remaining
+available space and distributes this space either equally or according to the deﬁned expand ratio numbers.
+• setExpandRatio(Decimal ratio)
+• getExpandRatio()
+
+7.3 Actions on Components 45
+7.3.6.6 Setting Alignment
+You can align the component with its slot: the alignment impact depends on the size of the component: if the
+Component is as wide as its slot, bottom and top alignment will have no effect.
+• setComponentAlignment(Alignment alignment∗)
+• getComponentAlignment()
+7.3.7 Add Style Name to a Form Component
+Note: You can only add style names to form components from a GO-BPMN model: To create custom
+SCSS style rules, implement them in the style sheets of the Application
+User Interface.
+To add a style name, that is the style name to the class attribute, of a component, use one of the following methods:
+• addStyleName(selector1, selector2) adds the selectors to the class attribute to the compo-
+nent. This call does not modify the classes the component already has. The call triggers the Repaint←↩
+RequestEvent on the component which you can handle if necessary.
+By default the following selectors are available: l-border-none, l-border-left, l-border-top,
+l-border-right, l-border-bottom, l-highlighted, l-emphasized, l-grayed,
+l-border.
+Note: For all your classes, under the hood, the system creates their copy with the name
+v-<component_type>-<class_name> so you can style the component either in the
+class <class_name> or v-<component_type>-<class_name> in your SCSS ﬁle.
+• setStyleName(selector1, selector2) replaces the class attributes of a component with the val-
+ues passed in the parameters.
+You can work with style name using the following methods:
+
+46 Form Components
+• getStyleName() returns the class attributes of the component.
+The method returns only the attributes that you added with the setStyleName() method: classes set by
+the system are ignored.
+• removeStyleName() removes the class values passed in the parameters.
+You can remove only the class attributes that you created with the setStyleName() and remove←↩
+StyleName() calls: classes set by the system cannot be removed.
+For information on how to add your style and style rules, refer to Add Style Name to a Form Component.
+7.3.8 Disabling a Component
+A disabled component has the disabled style. Disabled components cannot be modiﬁed or updated in any way.
+• isEnabled(): retuns the current enabled status
+• setEnabled(Boolean enabled∗): sets the component to disabled or enabled
+7.3.9 Setting a Tooltip
+To display a tooltip, when the user hovers over a component, set the description of your component with the set←↩
+Description() method.
+Important: The description is handled as HTML; hence make sure no injection and XSS vulnerabilities
+can be exploited.
+myLabel.setDescription({ r:MyRecord ->
+"Status of row object: " + m.status + #10 + m.id});
+7.3.10 Displaying a Notiﬁcation Dialog
+To display a notiﬁcation, use the notify() function.
+The displayed notiﬁcation can be of the type:
+• Info: immediately fades out with no delay
+• Warning: disappears after 1.5 second
+• Error: requires user click to disappear
+• Tray: immediately fades out and is displayed in the bottom-right corner
+MyTextField.setOnChangeListener(
+{e->
+notify(
+caption -> "Notification on Value Change", "" + MyTextField.getValue(),
+ntype -> NotificationType.Info)
+}
+);
+
+7.3 Actions on Components 47
+7.3.11 Deﬁning a Context Menu
+Each form component can deﬁne its context menu which is displayed when the user right-clicks the component.
+The menu contains a list of menu items, which trigger an action when clicked: the action is deﬁned by their on←↩
+Click parameter.
+To deﬁne a context menu on a component, use its setContextMenuItems() method.
+Example context menu with one item
+c.setContextMenuItems(
+[
+new forms::MenuItem(
+caption -> "Show Details",
+onClick -> { ->
+showPatDetail(somePatient).setVisible(true);
+}
+)
+]
+)
+Menu items in the context menu can have child menu items. Note that the onClick closure on a menu item with a
+submenu is ignored (only clicks on leaf menu items can be handled).
+Example context menu
+c.setContextMenuItems(
+[
+new forms::MenuItem(
+//This onClick closure is ignored
+//since the item has a submenu:
+onClick -> { ->
+c.setValue("You just clicked the Menu Item option");
+c.refresh();},
+subMenu -> [
+new forms::MenuItem(
+onClick -> { ->
+MyText.setValue("You just clicked the Submenu Item option");
+MyText.refresh()},
+caption -> "Submenu Item")],
+caption -> "Menu Item"),
+new forms::MenuItem(
+onClick -> { ->
+MyText.setValue("You just clicked the Menu Item option");
+MyText.refresh()},
+caption -> "Another Menu Item"
+)
+]
+)
+
+48 Form Components
+7.3.12 Handling a Right-Click Event
+To handle a right-click on a component and possibly build a context menu dynamically, use the setContext←↩
+ClickHandler() method.
+c.setContextClickHandler(
+{ x:ContextClickEvent ->
+eventText.setValue("You just right-clicked component " + x.source.modelingId);
+}
+)
+7.3.13 Deﬁning a Value Provider
+Value provider deﬁnes the content of the cell in the row. Its value is based on individual object return gradually from
+the Data Source; it is used to deﬁne what value a column of a Table, Tree Table, Grid or Combo components should
+display.
+Important: Value Provider must return values of a simple data type: If it returned Objects of another
+type, it would not be possible to ﬁlter and sort them.
+You can deﬁne the following Value Provider types:
+• Property path: path to a Property of the data source Record
+Person.name
+• Closure: a closure that returns the value for the cell with the Value Provider object as its input
+The Closure Value Provider is typically used for calculated ﬁelds (note that when calculating ﬁelds, you will
+need to refresh the entire Grid when one of the relevant values changes).
+{ person -> person.firstname + person.surname}
+• Constant: a constant value (for example, caption for an Edit Button; the on-click action is then deﬁned in the
+Renderer)
+• Identity: the row object type
+Integer
+• Custom: implementation of your custom value provider
+
+7.3 Actions on Components 49
+Figure 7.3 Form with a Grid Column: the Value Provider casts the Row object to a String; the String is then
+used as the label of the Button; On click, the Closure in the Renderer property is executed.
+
+50 Form Components
+
+Chapter 8
+Reference
+• Container Components
+• Input Components
+• Output Components
+• Action Components
+• Special Components
+8.1 Container Components
+Container components can deﬁne one or multiple child components serve to organize the content.
+8.1.1 Common Properties and Functionalities
+On all container components, you can get do the following:
+• get information about its child components:
+– the number of child components with the getComponentCount() method
+myLayout.getComponentCount();
+– the list of child components with the getComponents() method The method returns a list of
+components: the list items are returned as deﬁned in their toString() method;
+myLayout.getComponents();
+When calling the getComponents() method, you will need to do so after the form was initialized: to
+do so, call the method in the postCreateWidget() method of the form. The call is pre-generated
+in the methods ﬁle of your form.
+
+52 Reference
+8.1.1.1 Setting Spacing and Margin
+All container components can deﬁne their style with the following methods:
+• setMargin(Boolean margin_enabled): sets a default margin of the container component
+If you want to change the margin size, do so in the Theme Sampler and use the generated style sources
+(refer to the section Customizing Application Style in the Software Development Kit guide).
+• setSpacing(Boolean spacing_enabled): sets a default spacing between the child components
+It is not recommended to customize spacing since it might result in a inconsistent UI presentation; consider
+changing font size to meet your requirements.
+8.1.1.2 Populating Container Components
+You can populate your container component as follows:
+• using a parametric constructor with the components as parameters, for example, new Form←↩
+Layout(textField, submitButton, navigateButton)
+• usingtheaddComponentmethodofthecomponentrecord, forexample, layout.addComponent(text←↩
+Field)
+8.1.2 Container Component Reference
+8.1.2.1 Layout Components
+Layout components can have multiple child components: by default the child components are allocated equal space
+within the layout, so if you have 3 child components in a layout, each will be allocated 33% of the available space.
+This space is referred to as the component slot. To change the size of component slots, use Expand Ratio on the
+child components. You can then call methods on the child elements to deﬁne their size in their slot.
+8.1.2.1.1 Horizontal Layout
+The Horizontal Layout component ( ) arranges its children horizontally.
+Mind that by default the layout wraps its components, so if the components overﬂow the layout and they are set to ﬁll
+the parent, the overﬂowing content will not be visible. To remedy this situation, call setWidthFull on the layout
+component.
+Figure 8.1 Form with multiple Horizontal Layouts
+Expression that returns a Horizontal Layout with child components
+def forms::HorizontalLayout hl := new forms::HorizontalLayout();
+hl.addComponents(
+{
+new forms::Button("Confirm", {e -> Forms.submit()}),
+new forms::Button("Cancel", {e -> Forms.navigateTo(new AppNavigation(code -> "todoList"))})
+}
+);
+hl
+
+8.1 Container Components 53
+8.1.2.1.2 Vertical Layout
+The Vertical Layout component ( ) arranges its child components vertically.
+Figure 8.2 Form with Vertical Layouts
+
+54 Reference
+Figure 8.3 Rendered form with Vertical Layouts
+def forms::VerticalLayout vl := new forms::VerticalLayout();
+def forms::Table t := new forms::Table();
+t.setDataSource(new TypeDataSource(User));
+~
+t.addColumn(new forms::TableColumn
+(valueProvider -> new PropertyPathValueProvider(User.name),
+sortable -> true, filtrable -> true,
+generator -> { username:String -> new Label(username)},
+modelingId -> "87jlkjh",
+data -> null));
+t.addColumn(new forms::TableColumn
+(valueProvider -> new PropertyPathValueProvider(User.note),
+sortable -> true, filtrable -> true,
+generator -> { note:Object -> new Label(note)},
+modelingId -> "87j98098jh",
+data -> null));
+~
+vl.addComponents([t, new forms::HorizontalLayout(new forms::Button("Create", { click -> openMyPopup()}))]);
+vl;
+8.1.2.1.3 Grid Layout
+The Grid Layout component ( ) is a container component that can hold multiple form component elements, which
+are arranged in a grid manner, that is, in a table-like way. You can add rows and columns to the grid using the Add
+( ) and Delete ( ) buttons on the Grid Layout component.
+
+8.1 Container Components 55
+Important: We recommend to use Grid Layout only if it is not possible to solve the layouting of your
+form with the Horizontal and Vertical Layouts easily. Also, make sure not to use nested Grid Layouts
+since this may cause performance issues.
+Figure 8.4 Form with Grid Layout: Note that the Popup has the width set to a value and the Text Area has
+its width set to full. The Text Area will always adapt to ﬁll the Grid Layout while the input ﬁelds are
+implicitly set to wrap their content and will retain the size regardless of the Popup size.
+Expression that returns a Grid Layout component
+def GridLayout gl := new GridLayout();
+gl.addComponentToGrid(new Label("row1,column1"), 1, 1);
+gl.addComponentToGrid(new Label("row2,column1"), 2, 1);
+gl.addComponentToGrid(new Label("row1,column2"), 1, 2);
+gl.addComponentToGrid(new Label("row2,column2"), 2, 2);
+gl.setRowExpandRatio(0,7);
+gl.setColumnExpandRatio(2,2);
+gl
+
+56 Reference
+Figure 8.5 Form with Grid Layout
+8.1.2.1.4 CSS Layout
+The CSS Layout component ( ) is rendered as a <div> element that wraps the inserted child components.
+To set its style, use the setStyleName() method.
+def CssLayout cl := new CssLayout();
+cl.addComponent(new TextField("Name:", &name))
+8.1.2.1.5 Form Layout
+The Form Layout component ( ) arranges child components horizontally with their captions displayed on the left.
+
+8.1 Container Components 57
+Figure 8.6 Form with Form Layouts
+Figure 8.7 Form with Form Layouts
+Expression that returns a Form Layout with child components
+def forms::FormLayout fl :=
+new forms::FormLayout(
+new TextField("Name:", &name),
+new Label("Please confirm:"),
+new forms::CheckBox("Do you agree with the conditions as stated in the consumer agreement?", &agreed))
+8.1.2.1.6 Panel
+The Panel component ( ) adds a label and scroll to its child component automatically if applicable.
+Note that to have the scrollbar displayed, the following must be true:
+
+58 Reference
+• The child component must not deﬁne its size as 100% or full (There is no sense in scrolling a child that ﬁlls
+its parent fully since there is nothing to scroll).
+• The Panel must not be set to wrap its content: this is the default size setting of the Panel component.
+Figure 8.8 Vertical Layout has the size of the page and Panels ﬁll the layout. The Labels wrap their content
+by default; hence the Label has its size that depends on its content; its Panel has the size determined by
+the Panel and Vertical Layout
+
+8.1 Container Components 59
+Figure 8.9 Form with Panels with scrollbars
+Expression that returns a Panel component
+def forms::Panel p := new forms::Panel("Lorem Ipsum", new Label(lorem));
+p.setSizeFull();
+p
+8.1.2.1.6.1 Setting Scrollbar Position
+To set the scrollbar position on a Panel component, call the scrollToTop() or scrollToBottom() method.
+8.1.2.1.7 Collapsible
+The Collapsible component ( ) allows the user to collapse and expand its content.
+
+60 Reference
+Figure 8.10 Form with a Collapsible component
+Figure 8.11 Form with a Collapsible rendered
+Expression that returns a Collapsible component
+def forms::Collapsible p := new forms::Collapsible("Lorem Ipsum", new Label(lorem));
+p.setSizeFull();
+p
+
+8.1 Container Components 61
+8.1.2.2 Other
+8.1.2.2.1 Tab Sheet
+The Tab Sheet component ( ) holds only Tab components, which can then contain further content.
+Figure 8.12 Form with Tab Sheet and Tab components
+Figure 8.13 Tab Sheet component with Tabs
+Related methods:
+
+62 Reference
+• getTabs(): returns the list of tabs of the Tab Sheet
+• addTab(TabContent, TabName): adds a tab with the TabName and TabContent
+• getSelectedTab(): returns the currently selected tab
+• getTab(TabId): returns the Tab with the ID
+• removeTab(Tab): removes the Tab
+Expression that returns a tab sheet with one tab
+def TabSheet ts := new TabSheet();
+ts.addTab(new Label("Label in a tab"), "tab name");
+//get the content of the first tab(Label):
+def Component tabRoot := ts.getTabs()[0].getContents();
+...
+ts
+8.1.2.2.1.1 Adding a Tab
+To add a new tab to a tab sheet, call the addTab() method of the tab sheet: the arguments represent the content of
+the tab, and that its caption and its component).
+{ e -> MyTabSheet.addTab(new Label("Here is your new tab!"), "New Tab")}
+8.1.2.2.1.2 Enabling Tab Closing
+Tabs cannot be closed by default: to add the Close button to a Tab, call setClosable(true) on the Tab
+component.
+8.1.2.2.1.3 Selecting a Tab
+To select a particular Tab in a Tab Sheet, use the setSelectedTab(<TAB_INDEX>) call on the sheet: To
+get the index of a tab, call getIndex() on the Tab.
+When you select a Tab in the client, the system throws a TabChangeEvent. You can listen for the event on the
+parent Tab Sheet: call the setTabChangedListener() method with the appropriate handling on the component.
+Note that if you want to get the Tab component selected when the Form is loaded, you need to do so in the post←↩
+CreateWidget() method:
+MyForm {
+~
+private void postCreateWidget() {
+setResultContent();
+}
+~
+private forms::Tab getCurrentTab(){
+myTabbedSheet.getSelectedTab();
+}
+~
+private void setResultContent(){
+resultTextField.setValue("You have selected the " + getCurrentTab() + " tab.");
+}
+}
+
+8.1 Container Components 63
+8.1.2.2.2 Accordion
+The Accordion component is just like Tab Sheet but with Tabs arranged vertically.
+Figure 8.14 Inserting a Tab into an Accordion
+Expression that returns an Accordion with one Tab
+def Accordion ac := new Accordion();
+def VerticalLayout t1 := new VerticalLayout(new Label(now()));
+ac.addTab(t1, "Reports");
+ac
+Figure 8.15 Rendered Accordion
+
+64 Reference
+8.1.2.2.3 Dashboard
+The Dashboard component ( ) is rendered as the space for Dashboard Widget components (the Widgets can be
+dragged-and-dropped, minimized, and maximized within the Dashboard). Whenever the user performs an action on
+a Widget, the system throws a DashboardUpdateEvent with information on the change. The event can be processed
+by the Dashboard as deﬁned in the onWidgetUpdate property.
+Figure 8.16 Form with a Dashboard component with Dashboard Widgets
+Figure 8.17 Form with a Dashboard component with Dashboard Widgets rendered in the Application User
+Interface (Widget being moved)
+Note: By default, the Dashboard width is set to ﬁll its parent, while the height adapts to the space
+required by its widgets (the dashboard height wraps the content dynamically).
+8.1.2.2.4 Dashboard Widget
+The Dashboard Widget component ( ) is a draggable, resizable component of a Dashboard: In the Form, it must
+be the child of a Dashboard component.
+The position of a widget in its Dashboard is deﬁned as the x and y coordinates . However, you can allow the system
+to position widgets automatically using the Autoposition property: when Autoposition is set to true, any x and y
+coordinates on the Widget are ignored. Note that Autoposition is set to true be default.
+The Widget size is deﬁned as a relative portion of the Dashboard: the Dashboard full width represents 12 units.
+Hence Widget size is deﬁned as an integer 1-12 which represents the number of units it should occupy in the
+Dashboard.
+Apart from its content and generic component properties, a Widget can deﬁne the content of its toolbar (next to its
+caption) using the setToolbar() method in addition to the Minimize, Maximize, and Close buttons.
+
+8.1 Container Components 65
+8.1.2.2.4.1 Adding a Dashboard Widget
+To add a widget into your Dashboard, you can insert it into your Form from the palette in the Form Editor: this widget
+will be displayed in the Dashboard on Dashboard load.
+If you want to insert a Dashboard Widget dynamically, use the addWidget method of the Dashboard.
+Adding a Dashboard Widget to a Dashboard on an event reception
+{ e -> MyDashboard.addWidget(
+new Label("This is the content of my widget"),
+new Rect(x -> null, y -> null, width -> 3, height -> 4),
+true).setCaption("Caption")
+}
+8.1.2.2.4.2 Removing a Dashboard Widget
+To remove a widget from your Dashboard, call the removeWidget() method of the Dashboard.
+8.1.2.2.4.3 Handling Changes on Dashboard Widgets
+When the user changes the position of a Widget, resizes it, or closes it, the system throws a DashboardUpdate←↩
+Event: The event holds information on the Widget that caused the event, the new position of the widget, and the
+new state of the widget (Minimized, Restored in its widget size, Maximized, or Closed).
+You can deﬁne how the Dashboard processes such events in its onWidgetUpdate() property: The property is of the
+Closure type with the event as its input. Deﬁne handling of the event in its body.
+Example of handling a change of widget state
+c.onWidgetUpdate := {
+e:DashboardUpdateEvent->
+if e.widget == myWidget then
+switch e.newState
+case WidgetState.Minimized -> myWidget.setCaption("Minimized");
+case WidgetState.Restored -> myWidget.setCaption("Restored");
+end;
+end;
+}
+8.1.2.2.4.4 Restoring Closed Dashboard Widgets
+When you close a widget, the widget is discarded: if you want to re-display it, you need re-create it. Since when a
+widget is closed, the system throws a DashboardUpdateEvent with the relevant information (the Widget that caused
+the event, the new position of the widget, and the new state of the widget), you can handle such an event on your
+Dashboard.
+Example of handling a closed widget by displaying a button that recreates the widget when clicked
+c.onWidgetUpdate := {
+e:DashboardUpdateEvent->
+//checking if the event comes from the correct widget and whether it was caused by close:
+if (e.widget == myWidget && e.newState == WidgetState.Closed)
+then
+//adding a Button that will recreate the widget:
+myVerticalLayout.addComponents(
+[new forms::Button("Add My Widget", { e ->
+MyDashboard.addWidget(
+new forms::CheckBox("Check Box", &myBooleanVar), new forms::Rect(width -> 6, height -> 2), true);
+})]
+);
+end
+}
+
+66 Reference
+8.1.2.2.5 Popup
+Popup is rendered as a ﬂoating dialog box with all the usual features and actions, such as drag, close, resize, etc.
+You can design a popup in two ways:
+• as a private Popup: these are deﬁned as part of the particular form and cannot be reused.
+• as a public Popup: these are deﬁned in their own form deﬁnition. While complete forms have their supertype
+set to forms:Forms, public popup forms have their supertype set to the type forms::Popup so they
+can be inserted into another Form tree.
+Popups can be modal; each popup can deﬁne its popup variables.
+Figure 8.18 Modal popup
+8.1.2.2.5.1 Designing a Private Popup
+Private Popups can be instantiated only within their parent form and are also designed as its part; They cannot be
+reused in other forms.
+To create a private Popup, do the following:
+1. Insert the Popup component into your Form outside of your Form tree.
+
+8.1 Container Components 67
+2. In its Properties view, enter the signature of the method that will return the popup, for example, edit←↩
+PatientInPopup(Patient p). Do not implement the method: it is automatically added to the popup
+factory.
+Figure 8.19 Popup method signature with an input parameter
+3. Insert the child components into the popup and deﬁne their behavior: if you are passing an input argument to
+the popup method, you can access the input from any child component. Also note that you can deﬁne local
+variables on a popup: right-click the popup in the Outline view to do so.
+4. Call the popup method with the method you deﬁned in the Method signature ﬁeld from the form to create
+the Popup object.
+
+68 Reference
+Figure 8.20 Displaying a popup on Grid-row click
+Note that a Popup is invisible by default: set the Popup visibility to true to display it; you can use the
+show() or setVisible(true) call to do so.
+5. Close a Popup: from a popup component, set its visibility to false or call its hide() method. the Popup
+is queued for garbage collection unless referenced somewhere in the form.
+
+8.1 Container Components 69
+Figure 8.21 Hiding a popup on button click
+You can ﬁnd a complete example of a private Popup with component refresh in the section Quickstart.
+8.1.2.2.5.2 Reusing a Popup: Designing a Public Popup
+Public popups, unlike private popups, can be used by multiple forms: public popups are snippets with the Popup
+component that you can insert into another form.
+To create a public popup, do the following:
+1. Create a form deﬁnition.
+2. In the Outline view of the form, double-click the root form component and in the Properties view, set forms←↩
+::Popup as the Supertype.
+
+70 Reference
+Figure 8.22 Public Popup deﬁnition
+3. Consider deﬁning a dedicated constructor to set the popup properties and to deﬁne parameters of the public
+popup from the form.
+//Constructor that takes a parameter and assigns it to a form variable of the public popup
+//The popup variable is then used as the binding of its components
+public PublicPopup (Unit u) {
+editedUnit := proxy(u);
+}
+4. To create the public popup in a form, call the popup constructor, for example, on a button click:
+{ click -> new PublicPopup(new Unit())}
+5. To display and hide the public popup:
+(a) From within the popup, call show() in the constructor and hide() when required; for example on a
+close button.
+(b) From the calling form, create a form variable with the popup and call show() and hide() on the
+variable when required.
+6. To update the underlying form when the Popup is closed, set the close listener on the popup, for example:
+{ e ->
+def PublicPopup popup := new PublicPopup(u);
+popup.show();
+popup.setPopupCloseListener(
+{ e -> MyFormWithPublicPopup.refresh()};
+);
+}
+When creating a public popup, carefully consider:
+• which logic to encapsulate in the popup;
+For example, if you are creating a popup with user details, the popup might be used by forms to create a new
+user as well as to edit an existing user: in such a case, you could deﬁne a popup parameter that passes the
+edited user. If no user is passed, the popup constructor creates a new proxy user object; otherwise, it creates
+a proxy over the passed user object.
+
+8.1 Container Components 71
+• ∗whether to display and hide the popup from within the popup or from the outside form;
+In the example with the user edit and create popup described above, keep the displaying and hiding of the
+popup inside the popup since it is governed by events within it: display the popup from its constructor; hide it
+from a button in the popup.
+Refer to the tutorial on editing Grid Data in a popup for an example of a public popup.
+8.1.2.2.5.3 Creating a Popup Variable
+To create a variable on a public Popup, do the following:
+1. Open the form deﬁnition of your Popup.
+2. Right-click the root Popup component in the Outline view.
+3. Go to New > Variable
+4. In the Properties of the variable, deﬁne its name, type, and initial value.
+To create a variable on a private Popup, do the following:
+1. Right-click the Popup component in the Outline view.
+2. Go to New > Variable
+3. In the Properties of the variable, deﬁne its name, type, and initial value.
+Figure 8.23 Creating instance variable of a popup
+
+72 Reference
+8.1.2.2.5.4 Creating a Modal Popup
+To make a popup modal, set its modality with the showModal() method; for example, {e -> create←↩
+Popup(proxy(Unit), true).showModal()}
+8.1.2.2.5.5 Closing a Popup
+To close a Popup, set its visibility to false; you can do so with the hide() or setVisible(false) calls.
+To perform an action when a Popup is closed, use the setPopupCloseListener() method, for example:
+c.setPopupCloseListener({ onCloseEvent -> debugLog({ -> "Popup closed"}, 200)})
+8.1.2.2.6 Drop Zone
+The Drop Zone component allows you to drag-and-drop one or multiple ﬁles into the browser to upload it.
+It renders as an area where ﬁles from desktop can be dropped where the wait it is actually rendered is deﬁned by
+its child component.
+The Drop Zone component deﬁnes the action on ﬁle upload in its upload-result listener closure. The closure has
+two input parameters: the ﬁrst one with the list of uploaded ﬁles and the second one with a list of error messages:
+• When the upload succeeds, the List<File> parameter holds the uploaded ﬁles and the List<String> param-
+eter message is null. Note that if you dropped into the zone multiple ﬁles, you will receive all the ﬁles.
+• When the upload fails, the ﬁle parameter is null and the message is an error string.
+You can restrict the number of ﬁles the user can insert into a drop zone in a single drag-and-Drop action with
+setMinFiles() and setMaxFiles() method calls.
+If you insert a Drop Zone component into another Drop Zone component, the "highest parent" Drop Zone overrides
+its children.
+While the ﬁles are being uploaded, the spinner is displayed and the application ignores user input.
+Note: If the user drags-and-drops a ﬁle into the form in a browser but misses the drop zone the browser
+takes over and handles the drop, that is, opens the ﬁle. To prevent this behavior, consider using the
+Drop Zone component as the root component or at least as hight up in the component hierarchy as
+possible.
+Expression that returns a Drop Zone
+def DropZone dz := new DropZone();
+dz.setUploadResultListener(
+{
+uf:List<File>, errorMessage:List<String> ->
+uploadedFiles := addAll(uploadedFiles, uf);
+//uploadedFile is initalized to []
+}
+);
+dz.setMaxFiles(2);
+//enabling the dropzone:
+dz.setDropEnabled(true);
+dz
+
+8.1 Container Components 73
+8.1.2.2.6.1 Displaying Dropped Files
+To visualize the dropped ﬁles, for example, display a preview of image ﬁles, when they are dropped and uploaded,
+set the uploaded ﬁles as the content of the Drop Zone or of its child component.
+Upload result listener that displays thumbnails of uploaded ﬁles in the given drop
+The current batch is added to a new vertical layout, called imagesUplodedInThisBatch in the drop zone.
+{
+uploadedFiles:List<File>, errorMessage:List<String> ->
+allUploadedFiles := allUploadedFiles.addAll(uploadedFiles);
+//allUploadedFiles is form variable and initialized in the form constructor.
+if(!allUploadedFiles.isEmpty()) then
+def List<forms::Image> thumbnails := collect(allUploadedFiles, { f:File ->
+def forms::Image image := new forms::Image(new FileResource(f));
+image.setWidth("100px");
+image.setHeight("100px");
+image}
+);
+def VerticalLayout thumbnailRoot := new VerticalLayout();
+thumbnailRoot.addComponents(thumbnails);
+mydropzone.setContent(thumbnailRoot);
+else
+notify("Failed upload", "Upload of the file failed.", NotificationType.Warning, null, 1000, null, null)
+end;
+}
+Upload result listener that displays thumbnails all uploaded ﬁles: The batch is added to a vertical layout, called
+allImagesUploaded, that is out of the drop zone.
+{
+uploadedFiles:List<File>, errorMessage:List<String> ->
+if(!uploadedFiles.isEmpty()) then
+~
+def List<forms::Image> fileImagesForAllUploadedImages := collect(uploadedFiles, { f:File ->
+def forms::Image image := new forms::Image(new FileResource(f));
+image.setWidth("100px");
+image.setHeight("100px");
+image}
+);
+allImagesUploaded.addComponents(fileImagesForAllUploadedImages);
+~
+else
+notify("Failed upload", "Upload of the file failed.", NotificationType.Warning, null, 1000, null, null)
+end;
+}
+8.1.2.2.7 Split Panels
+Split panels hold 2 child components and render a draggable split bar between them so that the space is divided
+into 2 areas.
+You can use the Vertical Split Panel or Horizontal Split Panel: insert the component into your form and then insert
+the ﬁrst and the second component: the split will be rendered between the two automatically.
+
+74 Reference
+Expression that returns a Horizontal Split Panel
+def HorizontalSplitPanel hsp := new HorizontalSplitPanel();
+hsp.setFirstComponent(new Label("First Label"));
+hsp.setSecondComponent(new Label("Second Label"));
+hsp
+Expression that returns a Vertical Split Panel
+def VerticalSplitPanel vsp := new VerticalSplitPanel();
+vsp.setFirstComponent(new Label("First Label"));
+vsp.setSecondComponent(new Label("Second Label"));
+vsp
+You can set the position of the split with the setSplitPosition() method: mySplitPanel.setSplit←↩
+Position(75, SizeUnit.Percentage) results in the split at 3/4 of the Split Panel area relative to the
+ﬁrst component. If you want to use the second component instead, call the method with the additional true
+parameter: mySplitPanel.setSplitPosition(75, SizeUnit.Percentage, true). To the po-
+sition of the split, call its isLocked() method.
+To set the range within which the user can drag the split, use the setMinSplitPosition() method and
+setMaxSplitPosition() moethods.
+//Split Panel with restricted split range:
+c.setMinSplitPosition(10, SizeUnit.Percentage);
+c.setMaxSplitPosition(40, SizeUnit.Percentage);
+To perform an action when the position of the split is changed, call the setSplitPositionChanged←↩
+Listener({SplitPositionChanged:void}) method.
+
+8.2 Input Components 75
+8.2 Input Components
+Input components serve to acquire input from the user. When the user enters an input, the component automatically
+validates the value: if it is not valid, for example, a Decimal Field does not contain a valid number, the ﬁeld is marked
+as invalid and no further processing takes place. If the value is valid, the system updates the binding value.
+8.2.1 Common Properties and Functionalities
+• Binding: the relevant value and target slot; for a Text Field, binding represents the displayed and stored value;
+for Tree Table this is the currently selected node, etc.
+• Required: if checked, the component is marked with the ∗ symbol to indicate that the user must enter a value
+into the component; no validation logic is provided.
+• Immediate: if the changes on the components are to be produced immediately or on focus change
+• Validation: you can add validation rules for the input values with the addValidator() call
+8.2.2 Input Components Reference
+Input components hold a value and allow the user to enter a value: when this happens, the components executes
+the action deﬁned by its value change listener. The input values are stored in the target object deﬁned by their
+binding.
+8.2.2.1 Text Components
+Text components, that is, Text Field, Text Area and Password Field, allow the user to enter free-text input with the
+following additional options:
+• restriction of the number of characters using the setMaxLength() methods The user will not be able to enter
+an input longer than the set limit.
+c.setMaxLength(20)
+• display a hint in the component before the user enters their input using the setHint() method
+c.setHint("Enter your notes here.");
+• automatically expand the area vertically to wrap the input text with the setExpandable(true) method
+call
+
+76 Reference
+8.2.2.1.1 Text Field (forms::TextField)
+The Text Field component ( ) is rendered as a single-line text ﬁeld that allows entering text input.
+Important: The caption of the Text Field is rendered by the parent layout component. Hence if you
+create a form with a sole Text Field component, the form will be rendered without its caption text. This
+is due to limits of the Vaadin framework.
+Figure 8.24 Form with a Text Field
+Expression that returns a TextField:
+textField := new forms::TextField("Text Field Caption", new forms::ReferenceBinding(&varString));
+textField.setValue("Binding value in the reference string object");
+textField.setMaxLength(10);
+textField
+
+8.2 Input Components 77
+Figure 8.25 Text Field rendered in the default theme
+8.2.2.1.2 Text Area (forms::TextArea)
+The Text Area component ( ) is rendered as a multi-line free-text ﬁeld.
+If you want to set the height, that is, the number of lines in the text area:
+• If the Text Area is expandable (by default), use setMaxRows() and setMinRows().
+• If the Text Area is not expandable, use the setRows(Integer rows) method.
+Figure 8.26 Form with a Text Area
+Important: The caption of the Text Field is rendered by the parent layout component. Hence if you
+create a form with a sole Text Area component, the form will be rendered without its caption text. This
+is due to limits of the Vaadin framework.
+Expression that returns a Text Area
+
+78 Reference
+myTextArea.setHeight("4")
+Figure 8.27 Text area rendered
+8.2.2.1.3 Rich Text Area (forms::RichTextArea)
+The Rich Text Area component ( ) enables the user to enter formatted text. You can also set the area to hold a
+formatted text from your form: use HTML formatting:
+MyRichText.setValue("i <b> am <font color=""blue""> <i>rich </i> </font> </b> <font color=""blue""> <u>text</u> </font>")
+
+8.2 Input Components 79
+8.2.2.1.4 Password Field (forms::PasswordField)
+The Password Field component ( ) is a single-line text ﬁeld that hides the input.
+When implementing password ﬁelds the component only prevents the displaying of the input. To secure the provided
+data, make sure the form uses the HTTPS protocol.
+Figure 8.28 Form with a Password Field
+Important: The caption of the Password Field is rendered by the parent layout component. Hence if
+you create a form with a sole Password Field component, the form will be rendered without its caption
+text. This is due to limits of the Vaadin framework.
+
+80 Reference
+Expression that returns a Password Field
+def PasswordField p := new PasswordField("Password:", &password);
+p.focus();
+p.isRequired();
+p
+Figure 8.29 Password Fields rendered
+8.2.2.2 Decimal Field (forms::DecimalField)
+The Decimal Field component ( ) is rendered as a single-line ﬁeld that allows the user to enter a decimal
+value. The format of the decimal value is by default set to user's locale: You can reﬁne the allowed format with the
+setNumberFormat method.
+Important: The caption of the ﬁeld is rendered by the parent layout component. Hence if you create a
+form with a sole Text Field component, the form will be rendered without its caption text. This is due to
+limits of the Vaadin framework.
+
+8.2 Input Components 81
+Figure 8.30 Form with a Decimal Field
+Expression that returns a DecimalField
+new forms::DecimalField("Value", &varValue);
+Figure 8.31 Decimal Field rendered in the default theme
+Figure 8.32 Decimal Field with an invalid value
+
+82 Reference
+8.2.2.2.1 Deﬁning Decimal Format
+To deﬁne the format of the decimal value in a Decimal Field, use setNumberFormat():
+def forms::DecimalField df := new forms::DecimalField("Value", &value);
+df.setNumberFormat("#,##0.00;(#,##0.00)");
+df.setOnChangeListener({
+changeevent ->
+def Integer rounded := roundUp((df.getValue() as Decimal));
+value := rounded;
+df.setValue(rounded)
+}
+);
+8.2.2.3 Date Field (forms::DateField)
+The Date Field component ( ) is rendered as a single-line text ﬁeld that allows entering a Date input either
+using the calendar picker or entering a date in one of the allowed date formats.
+Figure 8.33 Form with a Text Field
+Expression deﬁning the properties of a text ﬁeld:
+def Date meetingTime := now();
+def DateField myDateField := new DateField("Meeting", &meetingTime);
+myDateField.setDateFormat("yyyy.MM.dd’ at ’HH:mm:ss z");
+myDateField.addValidator ({dateValue ->
+if
+(dateValue as Date) > date(2016, 3, 3)
+
+8.2 Input Components 83
+then
+null
+else
+"The meeting must occur later than March 3, 2016."
+end
+});
+myDateField
+Figure 8.34 Date ﬁeld with the default date format and with the date picker expanded
+8.2.2.3.1 Deﬁning Allowed Date Format on a Date Field
+To deﬁne the format of the date in the Date Field, use the setDateFormat() to set a single supported
+date format or setDateFormats methods to support multiple date formats: the format parameter is de-
+ﬁned as a String with the possible values of the java SimpleDateFormat (refer to http://docs.oracle.←↩
+com/javase/6/docs/api/java/text/SimpleDateFormat.html).
+To use the default application format for a date, set the format to date to use the application's dateFormat or to
+dateTimeFormat to use the default date-and-time format via the LspsAppConnector.getApplicationMessage().
+8.2.2.4 Check Box (forms::CheckBox)
+The Check Box component ( ) is a simple check box with Boolean Binding: its caption renders next to the check
+box.
+
+84 Reference
+Figure 8.35 Form with a Check Box
+Expression that returns a CheckBox
+new forms::CheckBox("I agree", &varAgree)
+Figure 8.36 Check Box rendered in the default theme
+The Check Box component produces the ValueChangeEvent when its check box is selected or unselected: to
+handle such a change, add a Change Listener to the component.
+Example Change Listener on a Check Box component
+
+8.2 Input Components 85
+confirmationCheck.setOnChangeListener(
+{ e ->
+if confirmationCheck.getValue() = true
+then c.setEnabled(true)
+end
+}
+)
+8.2.2.5 Select Components
+The Select components provide the user options which they can select and include such component as combo box,
+radio button list, etc.
+8.2.2.5.1 Removing the No-Value Option in Select Components
+By default, the select components contain an option with no value the user can select: to disable this no-value
+option, call setNullSelectionAllowed(false) on the component.
+8.2.2.5.2 Setting the Select Options
+You can deﬁne the options available in a select component either in the Properties view or with the component
+methods:
+• The options deﬁned in the Options property of the component are loaded when the form is loaded.
+– Map: map of values and labels; for example, map(findAll(Region), { region:Region
+-> region.name })
+– Objects: collection of objects
+The labels are calculated by calling the toString() function over the objects, for
+example,ﬁndAll(Region)‘.
+– Select items: collection of options deﬁned as SelectItem objects; for example,
+collect(findAll(Region),
+{ r:Region -> new SelectItem(value -> r, label -> r.name)}
+)
+• The options set with the setOptionsDataSouce() or setOptions() method load the options from
+anywhere in the form and you are hence not restricted to the moment when the component is created. The
+options are then lazy-loaded: they are being loaded as you display them.
+Setting options on a Select component with method calls
+//various calls that set the options in a combo box:
+myCombo.setOptionsDataSource(new TypeDataSource(User), new PropertyPathValueProvider(User.name));
+myCombo.setOptions(allValues, new IdentityValueProvider(String));
+myCombo.setOptions({ 1, 2, 3 })
+Important: If you set options of a component in both ways, that is, using the Options property and the
+setOptionsDataSouce() or setOptions() call, the latter takes precedence: when troubleshooting
+an incorrect option set, right-click the form, select Display Widget Expression, and examine the code
+for loaded options.
+
+86 Reference
+8.2.2.5.3 Combo Components
+8.2.2.5.3.1 Combo Box (forms::ComboBox)
+The Combo Box component ( ) renders as a single-line text ﬁeld with a drop-down list of options: The user can
+select one option in the drop-down menu.
+Options can be deﬁned as a Map or a Collection, or an OptionsDataSource. To deﬁne an action when the user
+selects or unselects an option, use the setOnChangeListener() method.
+8.2.2.5.3.2 Search Combo Box (forms::SearchComboBox)
+The Search Combo Box component ( ) renders as a single-line text ﬁeld with a drop-down list of options: The
+user can select one option in the drop-down menu and the options are ﬁltered out as the user enters a value.
+The value of the ﬁlter is passed as a SubstringFilter to the data source: if you are using your custom data source,
+make sure that the data source processes the ﬁlter value correctly.
+//Example getData() method of a custom data source (record implements forms::DataSource):
+public List<Object> getData(Integer startIndex*, Integer count*, Collection<forms::Filter> filters, Set<Sort> sortSpecs){
+if filters.isEmpty() then
+getAll(startIndex, count)
+else
+//value in the filter:
+def String currentFilter := cast(filters[0], SubstringFilter).value;
+getMyDataFromMyDS(currentFilter)
+end
+}
+Options can be deﬁned as a Map or a Collection, or an OptionsDataSource. To deﬁne an action when the user
+selects an option, use the setOnChangeListener() method.
+In addition, you can set the following:
+• the minimum number of characters for the search ﬁlter to apply with the setMinimalFilterLength()
+method
+• the number of options displayed in the drop-down with the setPageLength() method
+• the time to wait after user input before searching for applicable options with the setFilterTimeout()
+method
+
+8.2 Input Components 87
+8.2.2.5.3.3 Support for Entering a Custom Value
+To allow the user to enter a value that is not available in the options in a combo box component, use the setNew←↩
+ItemHandler() method.
+c.setNewItemHandler(
+{
+newValue:String ->
+newValue
+}
+)
+Note that the closure has void as return value, the user will not be able to enter a custom value:
+c.setNewItemHandler(
+{
+newValue:String ->
+//The closure returns void so the user will be able to enter only one the option values:
+debugLog({ -> "User entered a new value: " + newValue}, INFO_LEVEL);
+}
+)
+If you enable this feature on a combo component, typically you will need to add the new option to the options of
+the combo component: use the setOptions() method to implement this behavior. Also, if you working with
+options that are persisted while new options are not persisted, consider deﬁning the ValueProvider parameter←↩
+: ValueProvider deﬁnes how to display the options and that possibly including your new option. For example, you
+could handle a new option as follows:
+
+88 Reference
+c.setNewItemHandler(
+{
+newValue:String ->
+options := add(options, new SelectItem(label -> newValue, value -> newValue));
+c.setOptions(options);
+//the value returned when you request value of the combo component:
+newValue
+}
+);
+To modify the added options, you can preprocess the options in the setOptions() method with a value provider:
+c.setNewItemHandler(
+{
+newValue:String ->
+options := add(options, new SelectItem(label -> newValue, value -> newValue));
+c.setOptions(options, new ClosureValueProvider({ newOption:String -> newOption}));
+//the value returned when you request value of the combo component:
+newValue
+}
+);
+8.2.2.5.4 Multi-Select Combo Box (forms::MultiSelectComboBox)
+The Multi-Select Combo Box component ( ) renders as a single-line text ﬁeld with a drop-down list of options.
+The user can select multiple options in the drop-down menu.
+Options can be deﬁned as a Map or a Collection, or an OptionsDataSource. To deﬁne an action when the user
+selects or unselects a combo box option, use the setOnChangeListener() method.
+
+8.2 Input Components 89
+8.2.2.5.5 Single-Select List (forms::SingleSelectList)
+The Single-Select List component ( ) displays a list of options from which the user can select one option. You
+can set a limit to the number of displayed options using setRowCount(Integer): if more options are available that the
+set limit, the list of options becomes scrollable.
+To deﬁne the action performed when select or unselect of an item, use the setOnChangeListener() method.
+Figure 8.37 Single Select List with an option selected
+Example expression that returns a single select list
+def String selectedValue;
+def SingleSelectList singleSelect := new SingleSelectList("My Single Select", &selectedValue);
+singleSelect.setOptions([ "value" -> "displayed key", "another value" -> "another displayed value" ]);
+singleSelect.setOnChangeListener( {_ -> myText.setValue(singleSelect.getValue())});
+singleSelect.setRowsCount(2);
+singleSelect.setNullSelectionAllowed(false);
+singleSelect;
+8.2.2.5.6 Multi-Select List (forms::MultiSelectList)
+The Multi-Select List component ( ) displays a list of options from which the user can select multiple options.
+It can deﬁne the number of displayed Options using setRow(Integer): if more options are available that the set limit,
+the list of options becomes scrollable.
+To deﬁne an action when the user selects or unselects an item, use the setOnChangeListener() method.
+Example expression that returns a multi select list
+def MultiSelectList msl:= new MultiSelectList("", &selectedItems);
+msl.setOptions([ "value1" -> "displayed option 1", "value2" -> "displayed option 2"]);
+msl.setOnChangeListener( { _-> selection.refresh() });
+msl.setNullSelectionAllowed(false);
+msl.setRows(2);
+msl;
+
+90 Reference
+8.2.2.5.7 Check Box List (forms::CheckBoxList)
+The Check Box List ( ) component is a form component that displays a list of options with check boxes and allows
+the user to select multiple options using the check boxes. To deﬁne an action when the user selects or unselects an
+option in the list, use the setOnChangeListener() method.
+Example expression that returns a check box list
+def CheckBoxList cbl:= new CheckBoxList("", &selectedItems);
+cbl.setOptions([ "value1" -> "displayed option 1", "value2" -> "displayed option 2"]);
+cbl.setOnChangeListener( { _-> selection.refresh() });
+cbl.setNullSelectionAllowed(true);
+cbl;
+8.2.2.5.8 Radio Button List (forms::RadioButtonList)
+The Radio Button List component ( ) is a form component that displays a list of options and allows the user to
+select exactly one option by clicking a radio button. To deﬁne an action when the user selects or unselects an option
+in the list, use the setOnChangeListener() method.
+Example expression that returns a radio button list
+def RadioButtonList rbl:= new RadioButtonList("");
+rbl.setOptions([ "value1" -> "displayed option 1", "value2" -> "displayed option 2"]);
+rbl.setBinding(&selectedItem);
+rbl.setOnChangeListener( { _-> select.refresh() });
+rbl.setNullSelectionAllowed(true);
+rbl;
+
+8.2 Input Components 91
+8.2.2.5.9 Token Field (forms::TokenField)
+The Token Field component ( ) serves for selection of multiple options. It is rendered as a combo box by default
+with the options displayed based on users input in its drop-down box: the component searches for the options
+with labels that contain the entered characters. The user then selects the option by clicking the proposed option
+or entering the entire values and hitting Enter. They can remove the selected option by clicking the X icon in the
+option. Whenever the user selects or removes an option, the component ﬁres a ValueChangeEvent.
+The component is rendered by default as a combo box, so the user can click the arrow on the combo box
+to display the options. However, you can render the Token Field as a Text Field by calling its addStyle←↩
+Name("tokentextfield") method.
+By default, selected Tokens are no longer proposed in the drop-down menu. You can deactivate and activate this
+behavior with the setExcludeSelectedTokens(Boolean excludeSelectedTokens) method and
+check the current setting with the isExcludeSelectedTokens() method.
+Example expression that returns a token ﬁeld
+def TokenField tf:= new TokenField("");
+tf.setOptions([ "value1" -> "displayed option 1", "value2" -> "displayed option 2"]);
+tf.setBinding(&selectedItems);
+tf.setOnChangeListener( { _-> select.refresh() });
+tf;
+
+92 Reference
+8.2.2.6 Tree (forms::Tree)
+The Tree ( ) component serves as a picker of one item from an expandable tree hierarchy.
+The tree hierarchy is deﬁned by the data source and what is displayed as node labels for the tree objects is deﬁned
+by the caption provider.
+• Data source can be of the following types:
+– ClosureTreeDataSource: the input object of the closure is the clicked node and it returns a list of objects
+that represent the data source;
+Example ClosureTreeDataSource:
+new ClosureTreeDataSource(
+{ node:Object ->
+def List<Object> result;
+if node == null then
+result := getAllApplicants();
+else
+if (node.getType() == Applicant and (node as Applicant).address != null) then
+result := [(node as Applicant).address];
+else
+result := [];
+end;
+end;
+result;
+}
+)
+– SimpleTwoLevelTreeDS: two-level tree
+Example SimpleTwoLevelTreeDS data source:
+def SimpleTwoLevelTreeDS tree := new SimpleTwoLevelTreeDS(
+[ "eva" -> ["climbing", "painting"], "juraj" -> ["reposing", "windsurfing"] ]
+)
+The tree identiﬁes the node based on designated IDs. Therefore an object can appear multiple times in
+a tree. The select(<VALUE>) call on the tree, selects the ﬁrst occurrence of the object.
+• Caption provider can be of the following types:
+– IdentityValueProvider: the current row
+– ConstantValueProvider: node labels are constant values
+new ConstantValueProvider("Constant node label")
+– ClosureValueProvider: closure that returns the labels for every node type including null value
+new ClosureValueProvider(
+{ x:Object ->
+if typeOf(x) == type(Applicant) then
+(x as Applicant).name + (x as Applicant).surname;
+else
+if x != null then
+(x as Address).country;
+else
+null
+end
+end
+}
+)
+
+8.2 Input Components 93
+Where the selected value is stored is deﬁned by the Binding property. To set and get the selected value programat-
+ically, use the setValue() and getValue() methods.
+Setting a selected node in a Tree component
+//Data source:
+//def SimpleTwoLevelTreeDS tree := new SimpleTwoLevelTreeDS(
+// [ "eva" -> [climbVar, "painting"], "juraj" -> [ "windsurfing"] ]
+// )
+//setting climbVar as the selected value in the tree:
+c.setValue(climbVar);
+8.2.2.7 Upload (forms::Upload)
+The Upload component allows the user to upload a ﬁle to the server. It renders as an input ﬁeld for a ﬁle path
+and a Browse and upload button.
+Since ﬁle upload is an asynchronous process, on runtime, the component produces an ActionEvent when the upload
+button is clicked and a FileUploadEvent when the uploading ﬁnishes.
+Example expression that returns an Upload component
+def Upload up := new Upload();
+//only presets the file type in the Browse popup:
+up.setAcceptedMimeTypes("text/plain");
+up.setUploadResultListener(
+{ f:File, m:String ->
+if f==null then
+uploadOutcomeMessage.setValue("upload failed")
+else
+uploadedFile := f;
+uploadOutcomeMessage.setValue("upload success");
+end
+}
+);
+up
+8.2.2.8 Slider (forms::Slider)
+The Slider component serves to take a single input value of type Decimal from a value range. It is rendered as
+a bar with movable handle, with the bar representing the range and the handle the input value.
+The bar range is set with the setMin() and setMax() methods. If unset, minimum is set to 0 and maximum to
+100. Use getMin() and getMax() to get the set values.
+The number of decimal places that the value is set to is set with the setDecimalPlaces() method.
+The slider can be rendered horizontally or vertically: set the orientation with the setOrientation() method;
+for example, c.setOrientation(Orientation.Vertical)
+Example expression that returns a Slider component
+def Slider sl := new Slider("Value Select");
+sl.setBinding(&decVar);
+sl.setMin(0);
+sl.setMax(10);
+sl.setDecimalPlaces(2);
+sl.setOrientation(Orientation.Vertical);
+sl.setOnChangeListener( { _->select.refresh()});
+sl
+
+94 Reference
+8.3 Output Components
+Output components serve to display data deﬁned by their binding properties:
+• Label
+• Tabular Components
+• Charts
+• Other Output Components
+8.3.1 Label
+The Label component ( ) displays read-only text of arbitrary length.
+To deﬁne how the label content is rendered, call the setContentMode() method with the ContentMode enumeration
+literal. The literal can be set to:
+• HTML renders HTML code
+• preformatted preserves newlines
+• or plain text.
+Important: When using the HTML content mode make sure no injection and XSS vulnerabilities can
+be exploited.
+Figure 8.38 Form with a Label
+
+8.3 Output Components 95
+Figure 8.39 Form with Labels above rendered
+Expression that returns a Label
+def Label l := new Label();
+l.setBinding(new ClosureBinding({->"The current <b>time</b> is " + now()}));
+l.setContentMode(ContentMode.Html);
+l.setCaption("Clock");
+l;
+Note: When deﬁning closure binding in the Properties view, deﬁne only the body of the closure as the
+property value.
+
+96 Reference
+8.3.2 Tabular Components
+Tabular components, that is, Table, Grid, Tree Table, display sets of data in a repeated regular pattern: the data is
+provided a data source object, an object with data items. The data items are used by component items of the data
+source component, for example, rows, as their sources of data.
+Data items are loaded lazily to allow reasonable performance when working with large data sets.
+8.3.2.1 Table
+The Table ( ) component displays the data of the data source in a Table with every data item in a single row.
+Note that Table columns can contain other components: while this option provides a high level of ﬂexibility, Tables
+with many components in their columns might perform poorly. If you are displaying a lot of data in a Table, consider
+using Grid.
+Tables support sorting and ﬁltering out-of-the-box.
+
+8.3 Output Components 97
+8.3.2.1.1 Designing a Table
+To design a Table, do the following:
+1. Insert Table into your Form.
+2. Deﬁne the data-source type and the expression that returns it below:
+• Type: shared Record
+• Query: query call
+• Collection: items of the Collection
+The Collection is calculated only when the form is initialized: the data source remains unchanged on
+refresh: To reload the data, use the setDataSource() method on the component.
+Note: When applying ﬁltering and sorting on large collections, sorting and ﬁltering actions
+might cause performance issues: consider using other data sources such as shared Type
+data sources or queries.
+• Custom: custom data source which realizes the forms::DataSource interface.
+When creating a custom data source that realizes the DataSource interface, you will need to imple-
+ment the following methods:
+– getCount returns the number of displayed entries; note that you need to take the ﬁlters applied
+on the data into account. The ﬁlters are passed as input arguments.
+– getData returns the data for the table; note that you will need to ﬁlter, sort, and page data;
+The ID of the ﬁlters in individual columns is set in the FilterConﬁg: new FilterConfig(filterId
+-> "nameColumnFilter")
+– supportFilter called when the user enter the ﬁlter value;
+– supportsSort called when the user sorts the sort value;
+3. Insert the Table Column component ( ) into Table and deﬁne its properties:
+(a) Select the type of the value provider and its value: it returns the content of the cell based on the object
+of the row (Identity will serve the unchanged data object).
+(b) Set the iterator type to the type of the value provider:
+The iterator type must be always identical with the type of the Value Provider object: the user needs to
+set the iterator type explicitly since it is not always possible to infer the type of Value Provider object (for
+example, if the Value Provider is deﬁned by a closure).
+(c) Insert the form components into Table Column and deﬁne their properties.
+(d) Insert components into the column: they will use the table iterator (it by default) to work with the iterated
+object).
+4. Insert further columns and deﬁne their properties.
+8.3.2.1.2 Creating a Table Column
+To create a column in your Table, do the following:
+1. Insert the Table Column component ( ) into Table.
+2. Select the type of the value provider, which will prepare the data item (Identity will serve the unchanged data
+object).
+
+98 Reference
+3. Set the iterator type to the type of the value provider:
+The iterator type must be always identical with the type of the Value Provider object: the user needs to set the
+iterator type explicitly since it is not always possible to infer the type of Value Provider object (for example, if
+the Value Provider is deﬁned by a closure).
+4. Insert the form components into Table Column and deﬁne their properties.
+5. Insert components into the column: they will use the table iterator (it by default) to work with the iterated
+object).
+Alternatively, you can add a column programatically with the addColumn() method of Table. This allows you to
+add columns dynamically on runtime, for example, on button click.
+{e -> Vocab.addColumn(
+new forms::TableColumn(
+data -> null,
+modelingId -> null,
+filtrable -> false,
+generator -> null,
+sortable -> false,
+valueProvider -> new PropertyPathValueProvider(Unit.svk))
+)
+}
+8.3.2.1.2.1 Collapsing a Table Column
+Columns of tabular components can be collapsed from the front-end by the user as well as programatically. You can
+also enable or disable the feature.
+By default, Columns can be collapsed:
+• To disable collapsibility of a Column, call the setCollapsible(false) method on the Column.
+• To collapse or uncollapse a collapsible Column, call the setCollapsed(Boolean) method on the Col-
+umn.
+8.3.2.1.2.2 Reordering Table Columns
+To allow drag-and-drop of table columns, use the setColumnReorderingAllowed(true) table call.
+8.3.2.1.3 Sorting a Table
+Sorting is deﬁned per Table Column: the data is sorted depending on which column the user calls the sorting. To
+enable it, do the following:
+1. Open the column properties and select the Sorting tab.
+2. Select the sortable ﬂag on the Sorting tab.
+3. If you do not want to use the column provider for sorting, deﬁne the sorting value provider below.
+Important: When applying sorting on large collections (the Data Source is set to Collection), sorting
+actions might cause performance issues: consider using other data sources such as shared Type data
+sources.
+
+8.3 Output Components 99
+8.3.2.1.4 Filtering a Table
+Table ﬁltering is deﬁned per Table Column: the data is ﬁltered depending on which column the user enters the ﬁlter.
+Note that only ﬁltering of Boolean, String, Integer, Decimal, Date, or Enumeration values is supported by the table
+ﬁlter.
+Important: Filters on Columns of Tables support only the Boolean, String, Integer, Decimal, Date, and
+Enumeration data types.
+To enable ﬁltering on a Table Column, do the following in the Properties view of Table Column:
+1. On the Detail tab, deﬁne the iterator data type at the bottom of the Properties view to the type returned by the
+value provider.
+2. On the Filtering tab, deﬁne the following:
+(a) Select the Filterable option.
+(b) Deﬁne Filter value provider so it returns the data for the ﬁlter:
+• None: the column value provider is used
+Make sure that the provider expression on the Detail tab is set to return the same data type as the
+iterator data type.
+Figure 8.40 Setting of column value provider for None Filter value provider
+• Property path: the property path to the property of the table object, for example, Patient.←↩
+diagnosis.code.
+• Closure: a closure that returns the value the ﬁlter receives, for example, { p:Patient ->
+p.reports.size()} will add an integer ﬁlter for the number of reports of the Patients in the
+table.
+• Identity: the identity passed from the row
+Make sure to enter the type of the identity below, such as, String, Integer, Decimal, Date, etc.
+Figure 8.41 Identity ﬁlter setting
+
+100 Reference
+• Custom: custom implementation of ValueProvider
+(c) Optionally deﬁne the ﬁlter conﬁguration: The conﬁguration allows you to further specify the ﬁlter
+properties: You can set it also with the setFilterConfig() method. Also if you are designing
+a table with a custom Data Source, it will allow you to identify the ﬁlters with set values
+using the ﬁlter id.
+• OptionsFilterConﬁg: the user will be able to select one or multiple OptionsFilterConﬁg from an
+option set, which will be interpreted as the values and applied by the ﬁlter.
+new OptionsFilterConfig(multiselect -> true, options -> [
+new SelectItem(label -> "label of 1", value -> 1),
+new SelectItem(label -> "label of 2", value -> 2)
+])
+• NumericFilterConﬁg: the user will deﬁne a number range
+// numeric filter with default values:
+new NumericFilterConfig(equal ->50, moreThan -> 10, lessThan -> 90)
+• DateFilterConﬁg so the user can deﬁne a date range to use for ﬁltering and the format of selected
+dates
+new DateFilterConfig(
+resolution -> uicommon::DateTimeResolution.Month, formatPattern -> "YYYY MMMM"
+)
+• RexExpFilterConﬁg to deﬁne the default regex pattern for ﬁltering
+• SubStringFilterConﬁg to deﬁne the default substring pattern for ﬁltering
+• BooleanFilterConﬁg to deﬁne properties of ﬁlter for Boolean values
+3. Make sure the table is ﬁlterable: the ﬂag is set with the setFilteringEnabled(true) method and is
+enabled by default.
+Important: When applying ﬁltering on large Collections (the Data Source is set to Collection), sort-
+ing and ﬁltering actions might cause performance issues: consider using other data sources such as
+shared Type data sources.
+
+8.3 Output Components 101
+8.3.2.1.4.1 Enabling and Disabling Filtering on Tables
+To enable or disable ﬁltering on Tables dynamically, use the setFilteringEnabled(Boolean) call on the
+component: The method hides or displays the ﬁltering row.
+8.3.2.1.5 Selecting Table Rows
+To enable row selection on a Table, Grid, or Tree Table, set the table as selectable: MyTable.isSelectable()
+or MyTable.setSelectable(true). You can then use the setSelectionChangeListener() to
+listen for user Selection and acquire the selected row with use the getSelection() method.
+c.setSelectable(true);
+c.setSelectionChangeListener({ e -> selected := c.getSelection().toString(); SelectedLabel.refresh()})
+You can use the select() method to select a row programatically.
+Example table-row select that selects the user who was created ﬁrst in the table
+myUserTable.select(
+myUserTable.getDataSource().getData(
+startIndex -> 0,
+count -> 0,
+filters -> null,
+sortSpecs -> {new Sort(User.created, false)}).getFirst()
+);
+8.3.2.1.6 Setting Batch Load Size of Table Data
+To deﬁne the size of the data batch of a table, use the setPageLength() method: the data is loaded in these
+batches as you scroll down the table.
+c.setPageLength(3)
+If Table height is not set or is set to wrap, it adopt the page length height.
+If you want to always adapt the height of Table to its content, you can query the data source of Table for its size, for
+example:
+c.setPageLength(c.getDataSource().getCount([]))
+Figure 8.42 Grid with a scroll (the height is set to 3 rows and the data source returns 15 row objects
+
+102 Reference
+8.3.2.1.7 Setting No-Data Message
+To set the message that is displayed in Table when it is empty, call the setNoDataMessage(<String>)
+method.
+8.3.2.1.8 Setting CSS Style on Table Rows
+To add a style to table rows, call the setRowStyleGenerator() method on your table: the method had a
+closure input parameter with the row object as its input and the CSS class that is added to the row /
+element as its return value.
+Note that the css class is automatically preﬁxed with v-table-row- unlike in grid where the class name is
+passed as is.
+//"label" will become "v-table-row-":
+c.setRowStyleGenerator({a:Applicant -> "label"});
+To remove the previously added styles, set the closure to return null, for example, table.setRowStyle←↩
+Generator({a:Applicant -> null});.
+8.3.2.1.9 Deﬁning Content Align on a Table Column
+To deﬁne horizontal alignment in Table Columns, call the setAlignment() method on the column.
+8.3.2.2 Grid
+The Grid component displays single-line text data in a tabular layout and enables editing of the persistent data and
+row selection.
+The data is lazy-loaded, which prevents potential performance issues when the grid is loaded.
+Unlike in Tables, the content of cells does not result in any further components, so if you plan on using complex
+content, such as images, charts, multiple items per cell etc. consider using Table.
+8.3.2.2.1 Designing a Grid
+To create a Grid with your content, do the following:
+1. Insert the Grid component into your Form.
+2. Deﬁne the data-source type and the expression that returns the data source object below:
+• Type: shared Record
+• Query: query call
+• Collection: items of the Collection
+The Collection is calculated only when the form is initialized: the data source remains unchanged on
+refresh: To reload the data, use the setDataSource() method on the component.
+Note: When applying ﬁltering and sorting on large collections, sorting and ﬁltering actions
+might cause performance issues: consider using other data sources such as shared Type
+data sources or queries.
+
+8.3 Output Components 103
+• Custom: custom data source which realizes the forms::DataSource interface.
+When creating a custom data source that realizes the DataSource interface, you will need to imple-
+ment the following methods:
+– getCount returns the number of displayed entries; note that you need to take the ﬁlters applied
+on the data into account. The ﬁlters are passed as input arguments.
+– getData returns the data for the grid;
+Note that you will need to ﬁlter, sort, and page data. The ID of the ﬁlters in individual columns
+is set in the FilterConﬁg: c.setFilterConfig(new FilterConfig(filterId ->
+"nameColumnFilter"))
+– supportFilter called when the user enter the ﬁlter value;
+– supportsSort called when the user sorts the sort value;
+3. Insert Grid Column components and deﬁne their properties ( ) into the Grid. You can insert grid columns
+dynamically with the addColumn() method.
+8.3.2.2.2 Creating a Grid Column
+To create a column in your Grid, do the following:
+1. Insert the Grid Column component ( ) into the Grid.
+2. Select the type of the value provider, which will prepare the data item (Identity will serve the unchanged data
+object).
+3. Deﬁne the renderer (determines how the value from the value provider is rendered):
+• None renders the value as returned by the toString() call.
+
+104 Reference
+• HTML renders a String value as HTML.
+• Number renders the value in the format deﬁned below.
+Deﬁne the format as a String following the DecimalFormat Java formatting rules, for
+example, "0000.00000"
+• Date renders the value in the format deﬁned below.
+Deﬁne the format as a String following the SimpleDateFormat Java formatting rules in
+the text area below, for example, "EEE, d MMM yyyy HH:mm:ss" results in formatting Wed, 7
+Sep 2016 14:33:00
+• Enumeration renders an Enumeration value as a String.
+• Button renders the value as a Button.
+The click action is deﬁned as a closure with the value-provider object as its input parameter below.
+{ clickRowObject:String ->
+varString := "The user clicked: " + clickRowObject.toString();
+MyEditableGrid.refresh()}
+• Link renders the value as a Link
+The click action is deﬁned as a closure with the Value Provider object as its input parameter below.
+{ clickRowObject:String ->
+varString := "The user clicked: " + clickRowObject.toString();
+MyEditableGrid.refresh()}
+• Theme image considers the value to be the path to a Vaadin ThemeResource image and renders the
+image. The value provider must return a String with the path to the image. The path is relative to current
+Vaadin theme directory, for example, myapp-war/VAADIN/themes/lsps-blue", so the String path could
+be "favicon.png". The on-click action is deﬁned as a closure with the Value Provider object as its input
+parameter below.
+• External image considers the value to be the URL to an image and renders the image. The Value
+Provider must return a String with the URL to the image. For example, external image renderer could
+be used if for a Closure Value Provider set to {a:Applicant -> "www.acme.com/images/"
++ a.pictureName}.
+• Custom uses a custom renderer that implements the forms::Renderer interface (For further instructions,
+refer to the developer documentation.
+Figure 8.43 Theme image renderer
+
+8.3 Output Components 105
+8.3.2.2.2.1 Creating a Grid Column Dynamically
+To add a column dynamically on runtime, for example, when the user clicks a button, call the addColumn()
+method on the parent component.
+{e -> Vocab.addColumn(
+new forms::TableColumn(
+data -> null,
+modelingId -> null,
+filtrable -> false,
+generator -> null,
+sortable -> false,
+valueProvider -> new PropertyPathValueProvider(Unit.svk))
+)
+}
+8.3.2.2.2.2 Hiding a Grid Column
+You can hide columns of tabular components can be collapsed from the front-end by the user as well as programat-
+ically. You can also enable or disable the feature.
+By default, Columns can be displayed:
+• To disable hiding of a Column, call the setHiddable(false) method on the Column.
+• To hide and show a Grid Column, call the setHidden() method on the Column.
+8.3.2.2.3 Sorting a Grid
+Sorting is deﬁned per Grid Column. To enable it, do the following:
+1. Open the column properties and select the Detail tab.
+2. Select the sortable ﬂag.
+Important: When applying sorting on large collections (the Data Source is set to Collection), sorting
+actions might cause performance issues: consider using other data sources such as shared Type data
+sources.
+Figure 8.44 Filterable and sortable Grid Column
+
+106 Reference
+8.3.2.2.4 Filtering a Grid
+Important: Filters on Columns of Grids support only the Boolean, String, Integer, Decimal, Date, and
+Enumeration data types.
+To enable ﬁltering on a Grid column, do the following:
+1. Make sure the Grid is ﬁlterable: the ﬂag is set with the setFilteringEnabled(true) method and is
+enabled by default.
+2. On the respective column, set the ﬁltering properties:
+(a) On the Detail tab, select the Filterable ﬂag.
+(b) Optionally specify the ﬁlter properties with the setFilterConfig() method.
+• OptionsFilterConﬁg: the user will be able to select one or multiple OptionsFilterConﬁg from an
+option set, which will be interpreted as the values and applied by the ﬁlter.
+def SelectItem adv := new SelectItem(label -> "Advanced", value -> Level.ADVANCED);
+def SelectItem int := new SelectItem(label -> "Intermediate", value -> Level.INTERMEDIATE);
+def SelectItem beg := new SelectItem(label -> "Beginner", value -> Level.BEGINNER);
+~
+c.setFilterConfig(
+new OptionsFilterConfig(
+multiselect -> true,
+options -> [
+adv, int, beg
+],
+selected -> [adv, int]
+)
+)
+• NumericFilterConﬁg: the user will deﬁne a number range
+// numeric filter with default values:
+new NumericFilterConfig(equal ->50, moreThan -> 10, lessThan -> 90)
+• DateFilterConﬁg so the user can deﬁne a date range to use for ﬁltering and the format of selected
+dates
+new DateFilterConfig(
+resolution -> uicommon::DateTimeResolution.Month, formatPattern -> "YYYY MMMM"
+)
+• RexExpFilterConﬁg to deﬁne the default regex pattern for ﬁltering
+• SubStringFilterConﬁg to deﬁne the default substring pattern for ﬁltering
+• BooleanFilterConﬁg to deﬁne properties of ﬁlter for Boolean values
+Also if you are designing a filterable grid with a custom data source, the ﬁlter properties (its
+id) will allow you to identify the ﬁlters with set values using the ﬁlter id.
+
+8.3 Output Components 107
+Important: When applying ﬁltering on large Collections (the Data Source is set to Collection), sort-
+ing and ﬁltering actions might cause performance issues: consider using other data sources such as
+shared Type data sources.
+Figure 8.45 Filterable and sortable Grid Column
+
+108 Reference
+8.3.2.2.4.1 Enabling and Disabling Filtering on a Grid
+To enable or disable ﬁltering on Grid, use the setFilterable(Boolean) call on the component: The method
+hides or displays the ﬁltering row.
+8.3.2.2.5 Editing a Grid Column
+Important: When enabling editing of Grid data, make sure to consider the following:
+• Since Collections are immutable, you can enable editing only on a Grid with shared Records and
+Grid Columns with the Value Provider set to Property path.
+• If the underlying associated shared Record Property returns null, the cell will remain empty and
+read-only.
+To enable editing of shared Record Properties in a Grid, do the following:
+1. Open the Properties view of the Grid component:
+(a) Select the Editor enabled ﬂag.
+(b) To save the changes only when the user clicks the Save button in the edited row, select the Editor
+buffered ﬂag. If the Editor buffered is not selected, the changes are applied to the underlying Record
+instantly (on every change).
+2. Enable editing on the Grid Column:
+(a) Open the properties of your Grid Column.
+(b) Select the Editable ﬂag.
+(c) In the Editor ﬁeld, deﬁne which editor should be used on the Value Provider object:
+• leave empty for Strings
+• NumberEditor: the user will be able only to provide a number (Decimal or Integer)
+• DateEditor: the user will be able to insert only a date with the option to use a date picker
+• EnumerationEditor: the user will be able to select one of the Enumeration value from a drop-down
+box
+
+8.3 Output Components 109
+Figure 8.46 Editable Column with a date value
+8.3.2.2.6 Enabling Row Selection in a Grid
+To allow the user to select grid row and perform an action on row selection, do the following:
+1. Make the Grid selectable using the setSelectable(true) call.
+2. Set the selection mode with the setSelectionMode(SelectionMode) call:
+• SelectionMode.NONE: selection disabled
+• SelectionMode.SINGLE: single-row selection on click
+• SelectionMode.MULTI: selection of multiple items using checkboxes in individual rows
+In the MULTI mode, the user can select multiple rows directly under each other by clicking the selection
+checkbox of the ﬁrst row, holding the click, and dragging the mouse across the rows below.
+3. To handle a selection, call the setSelectionChangeListener() method on the Grid component: its
+closure parameter deﬁnes how to handle the selection.
+4. To select a Grid row, call the select() method.
+//on the Init tab of Properties view:
+//enable selection:
+c.setSelectable(true);
+//set selection mode:
+c.setSelectionMode(SelectionMode.MULTI);
+//select rows with first two items from the datasource:
+
+110 Reference
+c.select(c.getDataSource().getData(0, 2, null, null));
+~
+//you can also select a particular item in a Collection
+//datasource (in SINGLE selection mode):
+//c.select(mycollection[0]);
+~
+//display selected items in an output component:
+c.setSelectionChangeListener(
+{
+v:forms::ValueChangeEvent ->
+//set the content of an output component to the selected row:
+labelComponent.setValue(
+c.getSelection().toString());
+}
+);
+8.3.2.2.6.1 Enabling Selection of Multiple Rows in a Grid
+To enable the Select All option on a Grid, set the Grid as selectable in MULTI selection mode and display the Select
+All checkbox:
+c.setSelectable(true);
+c.setSelectionMode(SelectionMode.MULTI);
+c.setSelectAllCheckBoxVisible(true);
+8.3.2.2.7 Setting Grid Height
+By default, the Grid deﬁnes a ﬁxed minimum height. You can change the height using the setHeightByRows(),
+setHeightFull(), or setHeightWrap() method.
+c.setHeightByRows(3)
+If the grid displays more row objects, the Grid height follows the height setting and a scrollbar is added:
+Figure 8.47 Grid with a scroll (the height is set to 3 rows and the data source returns 15 row objects
+If you want to always adapt the height of the Grid to its content, query the data source its size and adapt the height
+accordingly, for example:
+c.setHeightByRows(c.getDataSource().getCount([]))
+
+8.3 Output Components 111
+8.3.2.2.8 Setting CSS Style on Grid Rows
+To add a style to grid rows, call the setRowStyleGenerator()method on your grid: the method has a closure
+parameter with the row object as its input and the CSS class that is added to the row /
+element.
+c.setRowStyleGenerator({a:Applicant -> "v-label"});
+To remove the previously added styles, set the closure to return null, for example, grid.setRowStyle←↩
+Generator({a:Applicant -> null});.
+8.3.2.2.9 Deﬁning Content Align on a Grid Column
+To deﬁne horizontal alignment in Grid Columns, call the setAlignment() method on the column.
+8.3.2.3 Tree Table
+The Tree Table component allows you to display data in an expandable tree hierarchy. The nodes in the tree are
+identiﬁed by a special ID; Hence, one item can appear in multiple nodes of a tree.
+8.3.2.3.1 Designing a Tree Table
+To design a Tree Table in your form, do the following:
+1. Insert the Tree Table component into the form.
+2. In the Tree Table properties, deﬁne the data source of one of the following type:
+• ClosureTreeDataSource: the input object of the closure is the clicked node and it returns a list of
+objects that represent the data source;
+Example ClosureTreeDataSource
+
+112 Reference
+new ClosureTreeDataSource(
+{
+node ->
+//returns the list of root nodes on load (object stored in the home variable):
+if node == null then
+[home]
+else
+//what to return when the user clicks a node:
+//if the user clicked a Folder, return the list of its files and folders:
+if node.getType() == Folder then
+(node as Folder).items;
+//if the user clicked a file, do not return anything:
+else
+[];
+end;
+end;
+}
+)
+• SimpleTwoLevelTreeDS: two-level tree
+Example SimpleTwoLevelTreeDS data source:
+def SimpleTwoLevelTreeDS tree := new SimpleTwoLevelTreeDS(
+[ "eva" -> ["climbing", "painting"], "juraj" -> ["reposing", "windsurfing"] ]
+)
+3. Insert Table Column components ( ) into the Table.
+The column operates over the Data Source objects, so that on every column you can deﬁne what of the object
+is displayed.
+4. Deﬁne the properties of each column:
+(a) Deﬁne the Value Provider that returns the content of the cell based on the row object.
+(b) Deﬁne the iterator type: the type is the type of the Value Provider
+The iterator type is always the same as the type of the Value Provider object: since it is not possible to
+infer the type of Value Provider object without possible inaccuracies (for example, if the Value Provider
+is deﬁned by a closure), the user always needs to set the iterator type explicitly.
+
+8.3 Output Components 113
+5. Insert the form components into the Table Column and deﬁne their properties. Use the Table iterator (it by
+default) to work with the iterated object).
+8.3.2.3.1.1 Enabling and Disabling Filtering on a Tree Table
+To enable or disable ﬁltering on Tree Tables, use the setFilteringEnabled(Boolean) call on the
+component: The method hides or displays the ﬁltering row.
+8.3.2.3.2 Deﬁning a Tree Table with Different Node Types
+To create a Tree Table with nodes that are of different data types, do the following:
+1. Insert a Tree Table component into your Form deﬁnition.
+2. Deﬁne the data source as a SimpleTwoLevelTreeDS or ClosureTreeDataSource.
+Check the type of the clicked node: typically you will cast the node to its type to be able to return the list of its
+child nodes. Note that on load, no node has been clicked yet, so the input object is null: make sure to handle
+this situation in the closure.
+3. Insert the Table Column into the Tree Table and deﬁne the Value Provider type and the value provider expres-
+sion below.
+Make sure that the Value Provider returns values of simple data types: Objects of another type cause a
+runtime exception since it is not possible to produce their ﬁlter and sort feature.
+• Closure Value Provider expression:
+{
+clickedNode:FSItem ->
+clickedNode.name;
+}
+• Property Path Value Provider expression:
+FSItem.name
+8.3.2.3.3 Getting the Selected Item in a Tree Table
+To allow the user to select an item in a tree table and obtain the selection, do the following:
+1. Enable row selection on the tree table with the setSelectable() method:
+MyTreeTable.setSelectable(true)
+2. Deﬁne the action when the user selects a row with the setSelectionChangeListener() method.
+MyTreeTable.setSelectionChangeListener( {e:forms::ValueChangeEvent ->
+//set the value in the selected row as caption of a Label:
+Selection.setCaption(
+toString(
+//e.source returns the TreeTable; getSelection the selected object:
+(e.source as forms::TreeTable).getSelection())
+)
+}
+)
+
+114 Reference
+8.3.2.3.4 Sorting a Tree Table
+To enable sorting on a Grid or Table, select the sortable ﬂag in the Sorting properties of the respective column: the
+user will be able to sort the displayed values by clicking the column header.
+On a Table, if you do not want to use the column provider for sorting, deﬁne the sorting value provider below.
+Important: When applying sorting on large collections (the Data Source of the Grid or Table is set to
+Collection), sorting and ﬁltering actions might cause performance issues: consider using other data
+sources such as shared Type data sources.
+Figure 8.48 Filterable and sortable Grid Column
+8.3.2.3.5 Filtering a Tree Table
+Important: Filters on Columns of Tables and Tree Tables support only the Boolean, String, Integer,
+Decimal, Date, and Enumeration data types.
+To enable ﬁltering on a column of a Table, Tree Table, and Grid, do the following:
+1. Make sure the table, tree table, or grid is ﬁlterable: the ﬂag is set with the setFilteringEnabledmethod
+and is enabled by default.
+2. On the column, set the properties:
+(a) Select the ﬁlterable ﬂag.
+(b) Deﬁne the iterator data type at the bottom of the Properties view so the system can infer the ﬁlter it
+should use (Boolean, String, Integer, Decimal, Date, or Enumeration.
+(c) Make sure the Value Provider expression is set to return the same data type as the iterator data type.
+(d) Optionally deﬁne the ﬁlter conﬁguration: The conﬁguration allows you to further specify the ﬁlter
+properties: You can set it with the setFilterConfig() method.
+
+8.3 Output Components 115
+• OptionsFilterConﬁg: the user will be able to select one or multiple OptionsFilterConﬁg from an
+option set, which will be interpreted as the values and applied by the ﬁlter.
+new OptionsFilterConfig(multiselect -> true, options -> [
+new SelectItem(label -> "label of 1", value -> 1),
+new SelectItem(label -> "label of 2", value -> 2)
+])
+• NumericFilterConﬁg: the user will deﬁne a number range
+// numeric filter with default values:
+new NumericFilterConfig(equal ->50, moreThan -> 10, lessThan -> 90)
+• DateFilterConﬁg so the user can deﬁne a date range to use for ﬁltering and the format of selected
+dates
+new DateFilterConfig(
+resolution -> uicommon::DateTimeResolution.Month, formatPattern -> "YYYY MMMM"
+)
+• RexExpFilterConﬁg to deﬁne the default regex pattern for ﬁltering
+• SubStringFilterConﬁg to deﬁne the default substring pattern for ﬁltering
+• BooleanFilterConﬁg to deﬁne properties of ﬁlter for Boolean values
+Important: When applying ﬁltering on large Collections (the Data Source is set to Collection), sort-
+ing and ﬁltering actions might cause performance issues: consider using other data sources such as
+shared Type data sources.
+
+116 Reference
+Figure 8.49 Filterable and sortable Grid Column
+8.3.2.3.6 Enabling and Disabling Filtering
+To enable or disable ﬁltering on Tables and Tree Tables dynamically, use the setFilteringEnabled(←↩
+Boolean) call on the component: The method hides or displays the ﬁltering row.
+8.3.2.3.7 Selecting Tree Table Row
+To enable row selection on a Tree Table, set the tree table as selectable: MyTable.isSelectable() or My←↩
+Table.setSelectable(true). You can then use the setSelectionChangeListener() to listen for
+user Selection and acquire the selected row with use the getSelection() method.
+You can use the select() method to select a row from the Form.
+c.setSelectable(true);
+c.setSelectionChangeListener({ e -> selected := c.getSelection().toString(); SelectedLabel.refresh()})
+8.3.2.3.8 Adding Column Dynamically
+To add a Grid Column, Table Column, or a Tree Table Column to the parent component Dynamically, for example,
+on button click, call the addColumn() method on the parent component.
+Adding a column on button click (Click Listener):
+{e -> Vocab.addColumn(
+new forms::TableColumn(
+data -> null,
+modelingId -> null,
+filtrable -> false,
+generator -> null,
+sortable -> false,
+valueProvider -> new PropertyPathValueProvider(Unit.svk))
+)
+}
+
+8.3 Output Components 117
+8.3.2.3.9 Selecting Tree Table Rows
+To enable row selection on a Tree Table set it as selectable: MyTreeTable.isSelectable() or MyTree←↩
+Table.setSelectable(true). You can then use the setSelectionChangeListener() to listen for
+user Selection and acquire the selected row with use the getSelection() method.
+You can use the select() method to select a row from the Form.
+c.setSelectable(true);
+c.setSelectionChangeListener({ e -> selected := c.getSelection().toString(); SelectedLabel.refresh()})
+8.3.2.3.10 Collapsing Columns
+Columns of tabular components can be collapsed from the front-end by the user as well as programatically. You can
+also enable or disable the feature.
+By default, Columns can be collapsed:
+• To disable collapsibility of a Column, call the following method:
+– The setCollapsible(false) method on the Column of a Tree Table or Table.
+• To collapse or uncollapse a collapsible Column, call the following method:
+– The setCollapsed(Boolean) method on the Column of a Tree Table or Table.
+8.3.3 Charts
+Important: Chart components are based on Vaadin Charts, which are developed by a third party.
+Before designing your charts, make sure to obtain the respective licenses for Vaadin Charts.
+Chart components render data as deﬁned by their plotting options; hence you need to deﬁne these:
+• The data is deﬁned as data series or data values depending on the chart.
+• Plotting is deﬁned in the plotting options of each the chart or data series.
+8.3.3.1 Generic Chart Features
+All charts can be redrawn on request and trigger an action, when the user clicks a data point in the chart.
+8.3.3.1.1 Redrawing Charts
+To redraw a chart, call the refresh() method on the chart.
+
+118 Reference
+8.3.3.1.2 Performing Actions on Chart Click
+To handle a click on a chart item, deﬁne the onPointClick property of the chart with its setter method set←↩
+OnPointClick(). The property is a closure with the ChartPointClickEvent produced by the click as its input
+parameter.
+Typically, you will deﬁne the action on the Init tab of the component so the clicks are processed from the moment
+the chart is displayed.
+myChart.setOnPointClick(
+{
+click:ChartPointClickEvent ->
+clickedSeries.setCaption(click.series)
+}
+);
+If you need to pass further data about the data item, deﬁne payload on the data series items: The payload is
+passed as the payload property of the ChartPointClickEvent.
+[
+new ListDataSeries(
+[
+new ListDataSeriesItem( 1 , "This is some payload."),
+new ListDataSeriesItem( 5 , "This is also some payload.")
+]
+)
+]
+Figure 8.50 Item payload sent to a popup and displayed on click
+8.3.3.2 Pie Chart
+The Pie Chart component is plotted as a pie chart; its data is deﬁned in a list of PieSliceSeries. Each
+PieSliceSeries is plotted as its own pie with a set of PieSlices with the data. The pies are stack on each other in the
+order they are arranged in the data set. Mind that in such cases you will like need to adjust the plotting of the data
+series in order to make the pies visible.
+
+8.3 Output Components 119
+8.3.3.2.1 Creating a Pie Chart
+To create a pie chart, do the following:
+1. Insert the pie chart component into your form.
+2. Deﬁne the pie data series:
+• either in the Pie slice series ﬁeld of the Properties view
+• or using the addPieSliceSeries() method on a pie chart
+Data for a pie chart with a single series
+def PieSliceSeries mySeries := new PieSliceSeries("My only series", [
+new forms::PieSlice("Big slice", 50, "Business data", new Color("#162955")),
+new forms::PieSlice("Middle slice", 30, "Business data", new Color("#4F628E")),
+new forms::PieSlice("Small slice", 20, "Business data", new Color("#7887ab"))
+]);
+[ mySeries ]
+8.3.3.2.2 Adding a Pie Data Series on Action
+To add a data series when the user or the system performs some action, run the addPieSliceSeries()
+method on the chart from the appropriate location, such as, Click Listener of a button.
+{ e -> myAlreadyRenderedPeiChart.addPieSliceSeries(myPieSliceSeries)}
+
+120 Reference
+8.3.3.2.3 Plotting Pie Slice Series
+To deﬁne how individual pie slice series are presented, deﬁne their plotting options as a PlotOptionsPie object and
+assign it to the series.
+In the PlotOptionsPie object, you can deﬁne the following properties:
+• innerSize: distance of the inner border from the center (size of the "hole" in the donut chart)
+You can deﬁne it either in percent relative to the pie size or in pixels as Integer value.
+• dataLabels: formatting of slice labels
+• startAngle: rotation of the chart series (angle where the ﬁrst slice starts)
+0 is the top; 90 is right;
+• size: perimeter of the chart series
+You can deﬁne it either in percent relative to the plot area or in pixels as Integer value.
+• shadow: shadow behind the chart series
+• center: position of the chart center relative to left-upper corner of the component slot
+• endAngle: degree that marks the end of the chart
+0 is the top; 90 is right; null and the default value result in startAngle + 360.
+• showInLegend: whether the slices are included in the chart legend
+def PlotOptionsPie mySeriesPlotting := new PlotOptionsPie(
+//inner border is at 40% of the perimeter size:
+innerSize -> new AttributeSize("40%"),
+//rotation:
+startAngle -> 90,
+//chart series size:
+size -> new AttributeSize(350),
+shadow -> true,
+borderWidth -> 5,
+//position of the series:
+center -> new AttributeCenter(0, 0),
+endAngle -> 180,
+showInLegend -> true);
+mySeries.plotOptions := mySeriesPlotting;
+
+8.3 Output Components 121
+8.3.3.2.4 Formatting Pie Slice Labels
+To deﬁne formatting of data labels on data series of Pie Charts, deﬁne the dataLabels property on the pie data
+series as a PieDataLabels object.
+Formatting expression can access the following variables:
+• percentage: percentage the slice takes
+• point: pie slice object
+• series: pie series object
+• total: total of the series
+• formatter: label template
+• format: label template that overrides formatter
+From format, the variables are available on point object, for example {point.percentage}.
+dataLabels -> new PieDataLabels(
+//javascript code used as label:
+formatter -> "’Percentage: ’ + this.percentage +
+’<br>Point name: ’+ this.point.name +
+’<br>Series: ’ + this.series.name +
+’<br>Total: ’ + this.total +
+’<br>x: ’ + this.x ",
+//formatter -> "’this.x’",
+
+122 Reference
+//rotation in degrees counterclockwise:
+rotation -> 45,
+format -> "Name: {point.name} Percentage: {point.percentage} Y: {point.y}",
+enabled -> true,
+color -> new Color(8, 8, 8),
+//Distance of the data label from the slice edge; can be also negative:
+distance -> 150)
+8.3.3.3 Cartesian Chart
+Cartesian Charts serve to plot data as line, bar, area, or bubble charts.
+The charts can plot multiple data sets, called data series, with different plotting. Data series are groups of related
+data that represent one graph.
+When creating a data series, pick the data series type depending on the data values:
+• ListDataSeries: a sole decimal value
+• DecimalDataSeries: a decimal and, a range or another decimal values
+• CategoryDataSeries: a category, and ranges or sole decimal values
+• TimeDataSeries: a point in time, and a sole decimal value or range
+The data in a series is deﬁned as a list of data-series items. Each type of data series can work only with data items
+of the respective type: CategoryDataSeries can contain only CategoryDataSeriesItems; DecimalDataSeries can
+contain only DecimalDataSeriesItems; ListDataSeries can contain only ListDataSeriesItems.
+The data series items can hold ranges or values where applicable:
+• ListDataSeriesItems: a sole decimal value, for example, new ListDataSeriesItem(0.21); the
+value is the y value and x is the index of the item in the list.
+• CategoryDataSeriesItems:
+– a decimal value with an optional name; for example, new CategoryDataSeriesItem("←↩
+Greenland", 56196)
+– or a range of values with an optional name; for example, new CategoryDataSeriesItem("←↩
+Greenland", 56196, 56239).
+• DecimalDataSeriesItems :
+– decimals with the x and y coordinates, for example, new DecimalDataSeriesItem(2, 5)
+– or a range of decimal values; for example,new DecimalDataSeriesItem(7, 3, 8)
+• TimeDataSeriesItems:
+– date with a value, for example, new TimeDataSeriesItem(now() + seconds(1), 7)
+– or a range and a date; for example,new TimeDataSeriesItem(now(), 1, 3)
+Each data series deﬁnes its plotting options; hence, each data series can be plotted differently from the others:
+override the plot options if you want to change the plotting.
+Example data series
+new CategoryDataSeries (
+[
+new CategoryDataSeriesItem("Greenland", 56196, 56239),
+new CategoryDataSeriesItem("China", 1388232693, 194202093),
+new CategoryDataSeriesItem("India", 1342512706, 1358354355),
+new CategoryDataSeriesItem("USA", 326474013, 328857273)
+]
+);
+
+8.3 Output Components 123
+8.3.3.3.1 Adding a Cartesian Data Series on Action
+To add a data series when the user or the system performs some action, run the addDataSeries() method on
+the chart from the appropriate location, such as, Click Listener of a button.
+{ e -> myRenderedChart.addDataSeries(myCatesianSeries)}
+8.3.3.3.2 Adding a Data Series Item on Action
+To add a data series item to a data series when the user or the system performs some action, run the addItem()
+method on the data series from the appropriate location, such as, Click Listener of a button.
+{ e -> myAlreadyRenderedDataSeries.addItem(new ListDataSeriesItem(5, "This is new item with value 5."))}
+8.3.3.3.3 Changing the Current Data Series
+To use another data series in a Cartesian chart, call the setDataSeries() method on the chart.
+8.3.3.3.4 Changing Plotting of a Cartesian Chart Series
+Each type of data series has default plotting which depends on the data in their items. Note that data series items
+can deﬁne their default plot options:
+• ListDataSeriesItem: PlotOptionsLine
+• CategoryDataSeriesItem: PlotOptionsColumn
+• DecimalDataSeriesItem and TimeDataSeries: with range (low and high) PlotOptionsLineArea; with values
+PlotOptionsLine
+If you are not happy with the default plotting, you can adjust plotting of individual series, by setting the plot←↩
+Options property of the data series.
+Note that some plotting options apply only to some types of data series item: for example, if you are working with
+series items that have decimals values only, it is not possible to use the Bubble plotting since this plotting requires
+a range to deﬁne the size of the Bubble marker.
+You can plot the series items as the following:
+• PlotOptionsColumn: bar chart plotting
+It applies to items with a single value and CategoryDataSeriesItems with a range.
+• PlotOptionsBubble: bubble chart plotting (requires range data series items; items with values are
+ignored)
+It applies to items with ranges.
+• PlotOptionsScatter: scatter chart plotting (requires value data series items; items with ranges are
+ignored)
+It applies to items with values.
+• PlotOptionsLine: line chart plotting
+It applies to items with values.
+• PlotOptionsLineArea: line-area chart plotting (area below the line is ﬁlled)
+It applies to items with values.
+Deﬁning plotOptions property of a data series
+myDataSeries.plotOptions := new PlotOptionsLineArea(spline -> true, range -> true)
+
+124 Reference
+8.3.3.3.4.1 Changing Plotting of Point Markers on Scatter, Line and Line Area Charts
+To change the plotting of point markers on Scatter, Line and Line Area Charts, set the marker property of the plot
+options:
+//changing marker plotting:
+myDataSeries.plotOptions := new PlotOptionsScatter(marker -> Marker.diamond);
+//"smoothing" out the graph line:
+itemListDataSeries.plotOptions := new PlotOptionsLine(spline -> true);
+//setting graph line color:
+itemListDataSeries.plotOptions.color := new Color(0,0,0);
+//to interrupt the flow of the graph, set the item where to interrupt to null:
+def ListDataSeries dataSeries := new ListDataSeries([1, 2, 3, 2, null, 4, 6]);
+//to stack bars of a bar chart on the y axis behind each other,
+//set the plotOptions.stacked to true:
+def forms::PlotOptionsColumn plotOptionsColumn := new forms::PlotOptionsColumn();
+plotOptionsColumn.stacked := true;:
+8.3.3.3.5 Polar Chart
+Since Polar chart is a special case of the Cartesian chart, the uses the same types of data series just like in the
+Cartesian Chart and has the same plotting options.
+8.3.3.3.5.1 Creating a Polar Chart
+To create a polar chart, insert the component to your form and deﬁne its data series. Any other required properties
+will use their default values.
+8.3.3.4 Gauge Chart
+The Gauge Chart component has a single decimal as its value.
+To deﬁne an action to double-clicking the point, set the onPointClick ﬁeld of the Gauge Chart with the setter
+method:
+c.setOnPointClick({ e:ChartPointClickEvent -> doSomething()})
+8.3.3.4.1 Creating a Gauge Chart
+To create a gauge chart, do the following:
+1. Insert the gauge chart component into your form.
+2. Deﬁne the Properties:
+• Value: where the needle should point
+• Value name: value description displayed when hovering over the needle
+• Y Axis: axis
+Note that ticks have by default 0 length and are hence not displayed.
+Example axis deﬁnition
+
+8.3 Output Components 125
+new Axis(
+min -> 0,
+max -> 100,
+~
+tickLength -> 0,
+tickInterval -> 5,
+tickWidth -> 2,
+tickColor -> new Color(0, 100, 100, 1),
+~
+plotBands -> [
+new forms::PlotBand(from -> 180, to -> 240, color -> new Color(255, 51, 102, 0.8)),
+new forms::PlotBand(from -> 130, to -> 180, color -> new Color(255, 255, 102, 1))
+]
+);
+To remove the ticks, set gridLineWidth to 0.
+8.3.3.5 Axes
+Axes are rendered in some default way for each type of data series in your chart
+8.3.3.5.1 Changing Axis Range
+To change the range of the chart axis, set its min and max properties.
+//new axis with its maximum and minimum set:
+new Axis(
+min -> 0,
+max -> 240)
+
+126 Reference
+8.3.3.5.2 Axis Values
+By default, both the axes display decimals as their values: This is intuitive for the y axis: after all, we are visualizing
+numbers, but might not be the required values for your x axis.
+Note that the following values are used on the x axis by default:
+• for ListDataSeriesItem and CategoryDataSeriesItem, the index of the item in the List
+• for DateDataSeriesItem, the date in epoch milliseconds
+• for DecimalDataSeriesItem, the date in epoch milliseconds
+These properties can be overridden in the axis properties or with the addXAxis() or addYAxis() method of
+the chart.
+8.3.3.5.2.1 Changing Axis Values
+If you want to change the values on an axis, deﬁne a new axis in the axis properties or with the addXAxis() or
+addYAxis() method of the chart.
+new Axis(’type’ -> AxisType.category, categories -> ["My first name", null, "My third name"])
+If you want to change only the value types on the axis, it is enough to change the AxisType. For example, if
+you want to display Date object as dates on the axis, deﬁne a new axis of the datetime type: ‘new Axis('type' ->
+AxisType.datetime)‘.
+8.3.3.5.2.2 Creating Multiple Axis
+You can add multiple axes to you chart with the addXAxis() or addYAxis() method: by default such axes are
+rendered next to each other. You might want to render one of the Axis on the opposite side of the chart: to do so,
+set its opposite property to true.
+def forms::Axis yAxisTemperature := new forms::Axis();
+yAxisTemperature.labels := new forms::ChartLabels(format -> "{value} °C");
+yAxisTemperature.title := "Temperature";
+yAxisTemperature.max := 20;
+yAxisTemperature.min := -55;
+chart.addYAxis(yAxisTemperature);
+~
+def forms::Axis yAxisPressure := new forms::Axis();
+yAxisPressure.labels := new forms::ChartLabels(format -> "{value} kPa");
+yAxisPressure.opposite := true;
+yAxisPressure.title := "Pressure";
+yAxisPressure.max := 102;
+yAxisPressure.min := 20;
+chart.addYAxis(yAxisPressure);
+8.3.4 Other Output Components
+8.3.4.1 Repeater
+The Repeater component serves to display the same component repeatedly over a set of data deﬁned by Repeater's
+data source. Note that unlike Tables, TreeTables, and Grids, Repeaters do not load their data source objects lazily.
+
+8.3 Output Components 127
+8.3.4.1.1 Deﬁning a Repeater
+To create a Repeater with your content, do the following:
+1. Insert the Repeater component into your Form.
+2. In the Properties view of the Repeater, deﬁne its properties:
+(a) Select the Vertical option to display the repeated content vertically: leave blank to display the compo-
+nents horizontally.
+(b) Deﬁne the data source:
+• Type: all instances of the shared Record
+• Collection: items of the Collection
+Note: When applying ﬁltering and sorting on large collections, sorting and ﬁltering actions
+might cause performance issues: consider using other data sources such as shared Type
+data sources.
+• Custom: custom data source which realizes the forms::DataSource interface.
+(c) If applicable, change the data type of the iterator in the Type ﬁeld next to the iterator name.
+3. Insert form components into the Repeater form: use the iterator name to work with the current data-source
+object.
+8.3.4.2 Browser Frame
+The Browser Frame renders as a view with the URL content. The target URL is deﬁned in the URL property as a
+String, for example "http://www.whitestein.com".
+To URL is loaded when the frame is initialized; to refresh the Browser Frame, call its setURL() method.
+
+128 Reference
+8.3.4.3 Image
+The Image ( ) component is renders an image, which is deﬁne as a DownloadableResource object,
+that is either ThemeResource which deﬁnes a ﬁle from the current CSS schema; FileResource with a ﬁle
+uploaded with your modules; or ExternalResource with an external URL.
+Note that the component does not check the type of the resource.
+8.3.4.3.1 Displaying an Image
+To display an image in your form, do the following:
+1. Insert the Image ( ) component into your Form.
+2. In the Properties view, deﬁne the icon source in the resource expression or with the setSource() method.
+Note that the component does not check the type of the source. If you serve it a source of an incorrect type, it might
+result in a runtime exception or the content might not be displayed.
+Expression that adds an Image component to a Vertical Layout
+def Image image := new forms::Image();
+image.setSource(new FileResource({ -> getResource("image", "resource/picture.jpg")}));
+~
+myVerticalLayout.addComponent(image);
+
+8.3 Output Components 129
+8.3.4.4 Download
+The Download ( ) component is rendered as a link or button, which downloads a resource when clicked. The
+resource can be a ﬁle uploaded with your modules, an external URL resource, or a ﬁle from the current application
+schema.
+Downloads deﬁne the following type of data sources:
+• ExternalResource: resource accessed via a URL
+• FileResource: resource that holds a File object
+• ThemeResource: resource from the current CSS theme
+8.3.4.4.1 Deﬁning a Download Button or Link
+To create a Button or Link that starts a ﬁle download when clicked, do the following:
+1. Insert the Download ( ) component into your Form.
+2. In the Properties view, deﬁne the resource expression.
+3. In the Style property, deﬁne whether the component should be rendered as a link or as a button.
+Expression that returns a Download component
+new Download(
+"Download",
+new FileResource({ ->
+getResource("form_components", "output/myfile.txt")
+}),
+DownloadStyle.Link)
+
+130 Reference
+Figure 8.51 Form with a Download component
+8.3.4.5 Calendar
+The Calendar component serves to display and manage event data. The calendar API required that the event
+data be wrapped in CalendarItems.
+Calendar can be rendered in the month, week, and day mode.
+Calendar entries are deﬁned as a list of CalendarItems returned by the calendar item provider, that can be either a
+ClosureCalendarItemProvider or a ListCalendarItemProvider.
+new ClosureCalendarItemProvider(
+{ from, to ->
+collect(
+//get data of event that occur within the displayed period:
+select(
+tripEvents,
+{e:TripEvent ->
+e.startDate <= to || e.endDate >= from
+}
+),
+//Create CalendarItems over the data:
+{e:TripEvent ->
+new forms::CalendarItem(
+allDay -> true,
+
+8.3 Output Components 131
+data -> e,
+endDate -> e.endDate,
+caption -> e.description,
+startDate -> e.startDate)
+}
+)
+}
+)
+In the component, you can handle the following events:
+• creating a new calendar item: the CreateEvent is thrown when the user clicks on a day ﬁeld or drags the
+mouse pointer over multiple ﬁelds
+TripCalendar.setCreateListener (
+{ x:forms::CalendarCreateEvent ->
+//display popup for event creating (event is created on button click
+//in the popup and added to the business data):
+createPopup(x.from, x.to).show();
+TripCalendar.refresh()
+}
+);
+• editing a calendar item: the EditEvent is thrown when the user clicks an event text
+TripCalendar.setEditListener({
+x:forms::CalendarEditEvent -> createPopup().show();
+TripCalendar.refresh()
+});
+• rescheduling a calendar item: the RescheduleEvent is thrown when the user drag-and-drops an existing item
+TripCalendar.setRescheduleListener({
+x:forms::CalendarRescheduleEvent ->
+def TripEvent te := x.data as TripEvent;
+te.startDate := x.from;
+te.endDate := x.to;
+TripCalendar.refresh();
+});
+8.3.4.6 Map Display
+The Map Display component renders as an OpenStreetMap with the deﬁned center location, zoom, and one
+or multiple markers. You can work with map markers with the maps methods addMarker(), removeMarker(), on←↩
+MarkerClick(), and onMarkerDrag().
+Note: To work with the client GPS coordinates, use the Forms.detectLocation() method.
+Map Properties
+• Center: coordinates of the center of the rendered map
+• Zoom level: default zoom on initialization and refresh deﬁned as an Integer with value 0-18 (0 being the
+lowest zoom with the entire Earth displayed)
+• On click: closure executed when the map is clicked
+
+132 Reference
+8.3.4.7 PDF Viewer
+The PDF Viewer component, PDFViewer, displays a PDF deﬁned as a FileResource.
+Note: Make sure to set the width and height of the PDF Viewer component: The default width and
+height are 0.
+
+8.4 Action Components 133
+On ﬁrst load, the viewer might need a few seconds to load its resources.
+8.4 Action Components
+Action components are clickable components: on click they trigger an action:
+• Button
+• Action Link
+• Link
+8.4.1 Button
+The Button ( ) component renders as a button and typically deﬁnes an action taken when the button is clicked:
+On click, the ClickListener closure is executed.
+
+134 Reference
+Figure 8.52 Form with a Button
+Expression that returns a Button:
+new forms::Button("Submit",
+{ submitClick -> Forms.submit();
+Forms.navigateTo(new DocumentNavigation(documentType -> MyForm()))})
+
+8.4 Action Components 135
+Figure 8.53 Button rendered in the default theme
+8.4.2 Action Link
+The Action Link component ( ) is a link that performs an action when clicked (it is a Button rendered as a link).
+Action Link deﬁned as an expression
+new ActionLink(
+"caption from constructor",
+{ e -> Forms.navigateTo(new UrlNavigation(openNewTab -> true, url -> "https://www.whitestein.com"))}
+)
+Figure 8.54 Action Links rendered
+
+136 Reference
+8.4.3 Link
+A Link component ( ) serves to navigate away from the page on click: it is rendered as <a> with the href
+attribute.
+The advantage of a Link over an Action Link is that you can open a target location in a new tab or window. Also you
+can calculate the navigation link lazily in the Click Listener expression.
+The component deﬁnes the following:
+• Navigation: an expression that returns the target location as a Navigation object, for example, Document←↩
+Navigation, TodoNavigation, UrlNavigation, etc.
+new UrlNavigation(url -> "www.whitestein.com")
+Note: To create a link that will download a resource, use the Download component.
+8.4.3.1 Opening a Link Resource in a New Window or Tab
+To open the target location in a new tab or window, set the OpensNewWindow on the Link component to true by
+calling the setOpensNewWindow(true) method.
+Figure 8.55 A Link component that opens a new tab or window
+
+8.5 Special Components 137
+8.5 Special Components
+8.5.1 Expression Component
+The Expression component allows the user to deﬁne a form component in the Expression Language: the component
+deﬁnes an expression that returns the required form component.
+Note: If the expression returns a forms::Form, consider using the Reusable Form so you don't have to
+issue getWidget() calls.
+8.5.1.1 Creating a Form Component Programmatically
+To deﬁne a component in the Expression Language, be it an entire form tree or a single particular component,
+use the Expression component: insert the Expression component into the form and deﬁne the expression in the
+Expression property so it returns the content that should be included in the form.
+def TextField textField := new TextField("Text Field Caption", new ReferenceBinding(&varString));
+~
+textField.setImmediate(true);
+textField.setValue("Binding value set in the reference string object.");
+textField.addValidator({value:Object ->
+if length(value as String) != 4 then
+"The value must contain 4 characters";
+end;
+});
+~
+def Button submitButton := new Button("Submit", {e -> Forms.submit()});
+~
+def Button navigateButton := new Button("Navigate", {e -> Forms.navigateTo(new UrlNavigation(url -> "http://sme.sk"))});
+~
+new FormLayout(textField, submitButton, navigateButton);
+Note that the root component of the expression tree adopts the modeling id of the Expression component; if you call
+setModelingId() on the root component in the expression, the setting is ignored.
+8.5.1.2 Inserting Form into a Form Component Dynamically
+To insert a form content into a component, you need to get the top component of the form deﬁnition, called the
+widget. You can obtain the widget with the getWidget() call of a form.
+Changing the content of the documentInputLayout layout component on button click
+myButton.setOnChangeListener({_ ->
+myVerticalLayout.removeAllComponents();
+switch myButton.getValue()
+case common::DocumentType.ACCOUNT -> myVerticalLayout.addComponent(new accountForm().getWidget());
+case common::DocumentType.LOAN -> myVerticalLayout.addComponent(new loanForm().getWidget());
+case common::DocumentType.MORTAGE -> myVerticalLayout.addComponent(new mortageForm().getWidget());
+end
+});
+
+138 Reference
+8.5.2 Reusable Form Component
+The Reusable Form component serves to use an already deﬁned Form in another Form. The Form created by the
+Reusable Form component is then rendered as part of the parent Form. The Form to be reused is deﬁned by the
+Expression property of the Reusable Form component.
+Example of Expression property on a Reusable Form component
+new myCustomForm(currentBussinessData);
+
+Chapter 9
+Form Migration
+When migrating forms of the ui Module to the forms Module, consider the following:
+• In migrated forms, the initialization of local variables is moved to the form constructor.
+• All listeners with their properties are removed (any validation, handle, action properties are lost).
+• If you are using the form in a document or a user task, the usage expressions are not migrated (they will still
+use the original form)
+Migration creates a backup ﬁle of all forms so you can refer to it to identify data that was not migrated.
+To migrate forms from ui to forms, do the following:
+1. Preﬁx all data types from the ui module: This will prevent name clashes with the names in the forms module:
+(a) Go to Project > Migrate LSPS 3.1 Projects.
+(b) In the Migration dialog, select the projects and click Next.
+(c) Select Add ui:: preﬁx (unselect any other irrelevant options) and click Finish.
+2. Import to your Modules the forms Module: In GO-BPMN Explorer, double-click Module Imports, click Add and
+double-click the forms Module in the Standard Library node.
+3. In GO-BPMN Explorer, right-click either the form or the Module with the forms you want to convert and select
+Convert to FormComponent.
+4. When converting all forms in a Module, deﬁne the names of the forms in the displayed dialog box.
+9.1 Changes in Forms
+Main Beneﬁts
+• No ﬁxed event-processing lifecycle: the user speciﬁes the behavior with actions when they see ﬁt. Part
+of the behavior, such as, Submit and Refresh, is now deﬁned in methods of the Forms record. Component
+speciﬁc actions, such as, validation, became methods of the Form components.
+
+140 Form Migration
+Note: In UI forms, form actions are deﬁned as callback expressions: the user must be aware of
+when the callbacks are used. This depends on the event-processing lifecycle and
+related mechanisms, which are relatively complex.
+• Simple changing of the tree component dynamically (changes of the tree on runtime) since Form compo-
+nents are Records with methods (ui forms are functions)
+Improvements on Components
+• Grid and Table support row selection: the form can handle the row-selection event.
+• Popup is now deﬁned out of the form component tree and can be reused.
+• TextField, DecimalField and DateField substitute the ui::TextBox component.
+• Chart design has been improved signiﬁcantly.
+• Pie Chart can now be rendered as a Donut chart.
+• Charts are now more ﬂexible and dynamic: you can add data points on runtime without reloading the charts.
+New Components
+• Various new components, including PasswordField.
+Removed Components
+The approach eliminates the need for the following components:
+• ui::ViewModel: the "undo/cancel" capability can be now achieved with Record Change Proxies in
+more controlled and transparent manner (the proxy mechanism is a generic modeling mechanism; an exam-
+ple is available in Quickstart.
+• ui::Container and public-listener and registration-points mechanism: forms can deﬁne public methods to
+allow access from "outside".
+• ui::Conditional: substituted with the setVisible() method of components.
+• ui::Geolocator: replaced by the Forms.detectLocation() method.
+• ui::Message: the user can now display the messages on failed validation easily in the entire form.
+Missing Features
+• Inserting a new value in the Combo-Box component
+• Saving of documents and to-dos
+• Support of Custom components in PDS (It is still possible to implement your component and create it from
+the Expression Component as a Record instance.)
+
+9.1 Changes in Forms 141
+Feature forms ui
+Feature forms ui
+General modeling approach form behavior deﬁned by expres-
+sions and their methods
+behavior deﬁned in GUI of the
+forms editor (listeners)
+Properties partial support by the GUI of the
+form editor; fully supported as ex-
+pressions
+support by the GUI of the form edi-
+tor
+Actions partial support by the GUI of the
+form editor (if deﬁned directly on
+the form component); fully sup-
+ported as expression anywhere
+else
+Predeﬁned lifecycle with actions;
+user deﬁnes callbacks for the life-
+cycle (they must be aware of the
+lifecycle mechanism, which is rela-
+tively complex)
+Values Given either by binding to variable,
+data source or internal value of the
+component.
+By binding to variable.
+Iterating values (collections in UI) By data providers. By iterators which are usually local
+variables.
+
+142 Form Migration

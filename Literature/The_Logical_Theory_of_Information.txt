@@ -1,0 +1,99 @@
+The Logical Theory
+of Information
+By
+Robert Johannson 
+
+The Technical Definition of Information
+The engineers at Bell Labs developed a simple definition of information: 
+Information is a message selected from a set of possible
+messages.
+Possible messages:
+a b c d e f g h I j k l m n o p q r s t u v w x y z
+Information: the message chosen 
+
+The basic unit of choice is the binary choice: either/or. 
+This choice is the basis of Boolean logic.
+It is symbolized by the Venn diagram where the choice is represented by a
+line separating the x from the not x. It can also be used to diagram the
+syllogisms in traditional Aristotelian categorical logic.
+X not X
+Basic Binary Choice
+The Basic Unit of Choice 
+
+System Environment
+In Physics a system is defined by this basic binary choice. “A boundary is an
+imaginary line that separates the Universe into the system and its
+environment.” In other words systems are a function of information.
+Information and Systems 
+
+The Binary Code
+Since the binary choice is the basic choice, any complex choice can be coded as a
+series of binary choices, usually symbolized by 0 and 1.
+You can calculate the number of binary digits or “bits” needed to code a set of
+possibilities by taking the logarithm to the base 2 of the number of possibilities.
+Thus with 26 letters and a space we have Log227 = 5 bits. Thus using the binary
+either/or as our basic unit of information we can count the amount of
+information by counting the number of bits it takes to code it.
+Thus
+A = 00000
+B = 00001
+C = 00010
+D = 00011
+E = 00100
+F = 00101
+Etc. 
+This is the basis of modern computing where the
+computer is a chip with transistors that can be used
+as a gate either open or closed. Thus the binary code
+becomes a series of transistor positions. Computers
+are programmed with Boolean logic. 
+
+Communication as Translation
+Since information is choice within a set, communication consists of
+translating choices in one set of possibilities into choices in another
+set, in other words coding.
+Choice of
+Letters of
+alphabet 
+Choice of
+Morse
+Code 
+Choice of
+Electrical
+pulses 
+Choice of
+Clicks 
+Choice of
+Words 
+Choice of
+Words 
+Choice of
+Sounds 
+Choice of
+Words 
+Choice of
+IDEAS 
+Choice of
+IDEAS 
+Although information consists of choices in a set and has no meaning as
+such. The meaning is in the reference. Thus the map is not the territory,
+but the territory is the meaning of the map.  Thus the clicks mean
+electrical pulses which mean Morse code which mean letters which mean
+words which mean ideas. 
+
+Possibilities and Probabilities
+Since both information and statistical probabilities are calculated from a
+set of possibilities there is often confusion about the difference. Some
+people even think that information is a probability function. The
+difference is that information is measured in bits and probabilities are
+measured in fractions.
+A coin has two possibilities.
+Heads      or      Tails
+Probabilities
+Heads      or      Tails
+½ = 0.5            ½ = 0.5
+Probabilities are a fraction.
+Information
+Heads      or      Tails         
+1          Or         0          one bit
+Information is measured in bits 

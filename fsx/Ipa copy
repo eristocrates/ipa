@@ -1,0 +1,524 @@
+// Look into Hydra/ Nancy
+// https://github.com/NancyFx/Nancy/wiki/Introduction#the-super-duper-happy-path
+#time on
+
+fsi.PrintLength <- 10
+fsi.ShowDeclarationValues <- false
+
+open System
+open System.IO
+open System.Collections.Concurrent
+open System.Numerics
+open System.Reflection
+open System.Text
+open System.Text.RegularExpressions
+open System.Threading.Tasks
+open System.Collections
+#load @".paket/load/main.group.fsx"
+#I @"D:\https\com\github\eristocrates\ipa\fsx"
+#r "Iana.dll"
+open Iana
+#r "IanaScheme.dll"
+#r "IanaMediaType.dll"
+
+
+open Humanizer
+open CaseConverter
+open AngleSharp.Html
+
+open Nager.PublicSuffix
+open Nager.PublicSuffix.RuleProviders
+open Microsoft.AspNetCore.Http
+open ModelingEvolution.Ipv4
+open ktsu.Semantics.Paths
+open TextCopy
+open System.Net
+open Dubzer.WhatwgUrl
+open IriTools
+open Meziantou.Framework
+open ktsu.Semantics.Strings.Identifiers
+open FolkerKinzel.MimeTypes
+open PuppeteerSharp.Cdp
+open WebDriverBiDi
+open WebDriverBiDi.BrowsingContext
+open WebDriverBiDi.Session
+open PuppeteerSharp
+open PuppeteerSharp.Cdp.Messaging
+open VDS.RDF
+open System.Xml.Linq
+open RDFSharp.Model
+open VDS.RDF.Query.Datasets
+open VDS.RDF.Parsing
+open System.IO.Compression
+open System.Xml
+open System.Globalization
+open PhoneNumbers
+open NLanguageTag
+open FSharp.Data.Adaptive.Transaction
+open FSharp.HashCollections
+open VDS.RDF.Query
+open VDS.RDF.Query.Builder
+open VDS.RDF.Query.Patterns
+open FSharp.Collections.ParallelSeq
+open VDS.RDF.Query.Inference
+open VDS.RDF.Ontology
+open BrowserApi.Common
+open BrowserApi.Css.Authoring
+open VDS.Common.Tries
+open Universal.Common
+
+
+
+
+
+
+
+
+
+
+type TextualSyntax = {
+
+    syntaxName: string
+    fileExtension: string
+
+} with
+
+    member this.mimeType = MimeString.FromFileName this.fileExtension
+    member this.filePath parentDirectory stem =
+        Directory.CreateDirectory(parentDirectory) |> ignore
+
+        Path.Combine(parentDirectory, stem + this.fileExtension)
+
+
+type ResourceIdentifier =
+    | GloballyUniqueIdentifier of Guid
+    | UniversallyUniqueIdentifier of Uuid
+    | UniversallyUniqueLexicographicallySortableIdentifier of Ulid
+    | InternationalStandardBookNumber of Isbn
+
+type ResolvedResource = {
+    absoluteRoot: AbsoluteRoot
+    pathSegments: string array
+    fragmentString: FragmentString option
+    queryString: QueryString option
+}
+
+
+and AbsoluteRoot =
+    | DriveRoot of DriveInfo
+    | SiteRoot of WhatwgSite
+
+and WhatwgSite = {
+    scheme: IanaScheme
+    host: HostName
+    port: int option
+}
+and HostName =
+    | Ipv4Host of Ipv4Address
+    | DomainHost of RegistrableDomain
+and RegistrableDomain = {
+    domainName: Nager.PublicSuffix.DomainInfo
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+type String with
+    member this.asDataUri = DataUriBuilder().SetMediaType(IanaMediaType.text.plain).SetData(this).SetCharset(Encoding.UTF8.WebName).DataUri
+
+
+
+/// https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/MIME_types/Common_types
+let commonContentTypes =
+    set [
+        "audio/aac"
+        "application/x-abiword"
+        "image/apng"
+        "application/x-freearc"
+        "image/avif"
+        "video/x-msvideo"
+        "application/vnd.amazon.ebook"
+        "application/octet-stream"
+        "image/bmp"
+        "application/x-bzip"
+        "application/x-bzip2"
+        "application/x-cdf"
+        "application/x-csh"
+        "text/css"
+        "text/csv"
+        "application/msword"
+        "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+        "application/vnd.ms-fontobject"
+        "application/epub+zip"
+        "application/gzip"
+        "application/x-gzip"
+        "image/gif"
+        "text/html"
+        "image/vnd.microsoft.icon"
+        "text/calendar"
+        "application/java-archive"
+        "image/jpeg"
+        "text/javascript"
+        "application/json"
+        "application/ld+json"
+        "text/markdown"
+        "audio/midi"
+        "audio/x-midi"
+        "text/javascript"
+        "audio/mp4"
+        "audio/mpeg"
+        "video/mp4"
+        "video/mpeg"
+        "application/vnd.apple.installer+xml"
+        "application/vnd.oasis.opendocument.presentation"
+        "application/vnd.oasis.opendocument.spreadsheet"
+        "application/vnd.oasis.opendocument.text"
+        "audio/ogg"
+        "video/ogg"
+        "application/ogg"
+        "audio/ogg"
+        "font/otf"
+        "image/png"
+        "application/pdf"
+        "application/x-httpd-php"
+        "application/vnd.ms-powerpoint"
+        "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        "application/vnd.rar"
+        "application/rtf"
+        "application/x-sh"
+        "image/svg+xml"
+        "application/x-tar"
+        "image/tiff"
+        "video/mp2t"
+        "font/ttf"
+        "text/plain"
+        "application/vnd.visio"
+        "audio/wav"
+        "audio/webm"
+        "video/webm"
+        "application/manifest+json"
+        "image/webp"
+        "font/woff"
+        "font/woff2"
+        "application/xhtml+xml"
+        "application/vnd.ms-excel"
+        "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+        "application/xml"
+        "application/atom+xml"
+        "text/xml"
+        "application/vnd.mozilla.xul+xml"
+        "application/zip"
+        "application/x-zip-compressed"
+        "video/3gpp"
+        "audio/3gpp"
+        "video/3gpp2"
+        "audio/3gpp2"
+        "application/x-7z-compressed"
+    ]
+let commonMediaTypes =
+    IanaMediaTypes
+    |> Array.filter (fun ianaMediaType -> commonContentTypes.Contains(ianaMediaType))
+    |> Array.map (fun ianaMediaType -> MimeType.Parse ianaMediaType)
+
+let commonExtensions =
+    commonMediaTypes
+    |> Array.map (fun ianaMediaType -> ianaMediaType.extension)
+    |> Array.distinct
+    |> Set.ofArray
+
+let rdfExtensions =
+    set [
+
+        // Extension   | Format / use                   | Status                                |
+        // ----------- | ------------------------------ | ------------------------------------- |
+        ".ttl" // | Turtle                         | W3C RDF serialization                 |
+        ".nt" // | N-Triples                      | W3C RDF serialization                 |
+        ".trig" // | TriG                           | W3C RDF dataset serialization         |
+        ".nq" // | N-Quads                        | W3C RDF dataset serialization         |
+        ".rdf" // | RDF/XML                        | W3C RDF serialization                 |
+        ".jsonld" // | JSON-LD                        | W3C RDF/Linked Data serialization     |
+        ".n3" // | Notation3                      | W3C-community RDF superset            |
+        ".rj" // | RDF/JSON                       | historical W3C RDF serialization      |
+        ".trix" // | TriX                           | RDF dataset XML format                |
+        ".hdt" // | HDT                            | compact binary RDF format             |
+        ".jelly" // | Jelly-RDF                      | binary/streaming RDF serialization    |
+        ".brf" // | Binary RDF                     | RDF4J/Sesame binary RDF               |
+        ".rt" // | RDF Thrift                     | binary RDF                            |
+        ".trdf" // | RDF Thrift                     | binary RDF                            |
+        ".rpb" // | RDF Protobuf                   | binary RDF                            |
+        ".pbrdf" // | RDF Protobuf                   | binary RDF                            |
+        ".ndjsonld" // | newline-delimited JSON-LD      | RDF4J/ecosystem format                |
+        ".rdfp" // | RDF Patch                      | RDF dataset changes                   |
+        ".trp" // | binary RDF Patch               | Jena convention                       |
+        ".owl" // | OWL ontology, commonly RDF/XML | widespread convention                 |
+        ".rdfs" // | RDF Schema document            | convention, not a distinct RDF syntax |
+        ".rq" // | SPARQL query                   | W3C                                   |
+        ".ru" // | SPARQL Update request          | W3C                                   |
+        ".srx" // | SPARQL Results XML             | W3C                                   |
+        ".srj" // | SPARQL Results JSON            | W3C                                   |
+        ".srt" // | SPARQL Results Thrift          | RDF Thrift ecosystem                  |
+        ".csv" // | SPARQL SELECT results in CSV   | W3C use of generic CSV                |
+        ".tsv" // | SPARQL SELECT results in TSV   | W3C use of generic TSV                |
+        ".ttls" // | Turtle-star                    | historical/pre-RDF-1.2 convention     |
+        ".trigs" // | TriG-star                      | historical/pre-RDF-1.2 convention     |
+
+    ]
+
+let rdfMediaTypes =
+    [|
+        // Core RDF serializations
+        "application/rdf+xml"
+        "text/turtle"
+        "application/n-triples"
+        "application/n-quads"
+        "application/trig"
+        "application/ld+json"
+
+        // Other RDF serializations
+        "text/n3"
+        "text/rdf+n3"
+        "application/n3"
+        "application/rdf+json"
+        "application/trix"
+        "application/trix+xml"
+        "application/vnd.hdt"
+        "application/x-binary-rdf"
+        "application/x-ld+ndjson"
+        "application/rdf+thrift"
+        "application/rdf+protobuf"
+
+        // RDF Patch
+        "application/rdf-patch"
+        "application/rdf-patch+thrift"
+
+        // SPARQL
+        "application/sparql-query"
+        "application/sparql-update"
+
+        // SPARQL result formats
+        "application/sparql-results+xml"
+        "application/sparql-results+json"
+        "application/sparql-results+thrift"
+        "application/sparql-results+protobuf"
+    |]
+    |> Array.collect (fun contentType ->
+        IanaMediaTypes
+        |> Array.filter (fun ianaMediaType -> ianaMediaType = contentType))
+    |> Array.map (fun ianaMediaType -> MimeType.Parse ianaMediaType)
+
+
+
+let targetExtensions = set [ ".jsonhtml" ] + commonExtensions + rdfExtensions
+let targetMediaTypes = Array.concat [| commonMediaTypes; rdfMediaTypes |]
+
+type MimeType with
+    member this.isCommonMediaType = commonMediaTypes |> Array.exists (fun commonMediaType -> this = commonMediaType)
+    member this.isTargetMediaType = targetMediaTypes |> Array.exists (fun targetMediaType -> this = targetMediaType)
+(*
+let networkMailbox =
+    MailboxProcessor<CdpHttpRequest>.Start(fun inbox ->
+        let rec loop () =
+            async {
+                let! request = inbox.Receive()
+                match request.Response.Status with
+                | HttpStatusCode.OK ->
+                    finishedRequests.Add request
+                    let maybeIanaMediaType =
+                        MimeType.TryParse(request.Response.Headers["content-type"])
+                        |> fun (wasParsed, mimeType) ->
+                            match wasParsed with
+                            | true -> Some mimeType
+                            | false -> None
+                    match request.Response.resource.host, request.Response.resource.pathStem, request.Response.resource.extension, maybeIanaMediaType with
+                    | host, pathstem, None, Some mediaType when mediaType.isTargetMediaType -> request.Response.WriteAllText(mediaType.fileExtension)
+                    | host, pathstem, Some extension, _ when targetExtensions.Contains extension -> request.Response.WriteAllText()
+                    | host, pathstem, maybeExtension, maybeMediaType -> ()
+
+                | _ -> failedRequests.Add request
+                return! loop ()
+            }
+        loop ())
+
+let watchPageNetworkTraffic (page: CdpPage) =
+    page.RequestFinished.Add(fun eventArguments -> networkMailbox.Post eventArguments.Request.asCdp)
+
+*)
+
+
+type CdpBrowser with
+    member this.tabs =
+        let pages = this.pageTargets |> Array.map (fun target -> target.AsPageAsync().await.asCdp)
+
+        pages
+
+type MimeType with
+    static member fromHeaders(headerDictionary: Generic.Dictionary<string, string>) =
+        try
+            MimeType.TryParse(headerDictionary["content-type"])
+            |> fun (wasParsed, mimeType) ->
+                match wasParsed with
+                | true -> Some mimeType
+                | false -> None
+        with _ ->
+            None
+
+type CdpHttpResponse with
+    member this.mimeType = MimeType.fromHeaders this.Headers
+    member this.mediaType = MimeType.fromHeaders this.Headers
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+(*
+
+
+
+
+
+
+
+// TODO work on separating fragment and query strings into resolved resource
+
+
+
+https.gov.leoncountyfl.bannerprodssb.EmployeeSelfService.resource.asAbsoluteDirectoryPath
+https.gov.leoncountyfl.bannerprodssb.EmployeeSelfService.resource.localReference
+https.gov.leoncountyfl.bannerprodssb.EmployeeSelfService.resource.remoteReference
+
+
+
+let myIpv4 = Ipv4Address.Parse "170.85.130.82"
+
+let uriTest = Uri "https://www.cambiaresearch.com"
+
+let cambiaresearch = IanaScheme.https ..//  "www.cambiaresearch.com"
+cambiaresearch
+
+let relativeResourceTest = RelativePath.Create "articles/730004/the-dotnet-uri-class-and-the-cambia.uriextensions-nuget-package#sec-4EIL2NFFDJUQ2XHLG2FPTXKIT"
+
+
+relativeResourceTest.asRelativeDirectoryPath
+relativeResourceTest.asRelativeDirectoryPath.Parent
+relativeResourceTest.asRelativeDirectoryPath.Parent.Parent
+
+
+let xn__6qq79v = IanaScheme.http ..//  "你好.cn"
+let googleSite = IanaScheme.http ..//  "www.google.com"
+
+
+
+let testUri =
+    Uri
+        "https://bannerprodssb.leoncountyfl.gov:8449/EmployeeSelfService/ssb/payStubDetail/getPayStubDetail.json?payDate=20251231&payId=BW&payNumber=27&paySequence=0&payYear=2025#testFragment"
+
+let pathString = PathString.FromUriComponent testUri
+let queryString = QueryString.FromUriComponent testUri
+queryString
+
+
+
+
+
+let baseTest = RegistrableDomain.Parse "https://google.com"
+
+
+
+
+
+
+
+
+
+
+let absoluteResource = AbsoluteResource.fromRawString "https://bannerprodssb.leoncountyfl.gov:8449"
+let relativeResource =
+    RelativeResource.fromString "/EmployeeSelfService/ssb/payStubDetail/getPayStubDetail.json?payDate=20251231&payId=BW&payNumber=27&paySequence=0&payYear=2025#testFragment"
+
+absoluteResource.scheme
+absoluteResource.topLevelDomain
+absoluteResource.secondLevelDomain
+absoluteResource.subdomain
+absoluteResource.port
+absoluteResource.absoluteUri
+absoluteResource.absolutePath
+absoluteResource.localPath
+FileInfo absoluteResource.localPath
+
+
+absoluteResource
+absoluteResource.hierarchicalRelativeFilePath.As<RelativeDirectoryPath>()
+absoluteResource.asUrl.Pathname
+
+
+QueryStringUtilities.ParseQuery absoluteResource.asUri.Query
+
+absoluteResource.asUrl
+absoluteResource.asUri
+
+let testResourceIdentifier = DomUrl "https://www.iana.org/assignments/media-types" |> AbsoluteResourceLocator
+testResourceIdentifier.AppendPathSegment "media-types.xml"
+testResourceIdentifier.tokens
+testResourceIdentifier.asUri.AbsolutePath
+testResourceIdentifier.asUri.LocalPath
+
+let testUri = Uri(@"/api/v1/users", UriKind.Relative) |> AbsoluteResourceIdentifier
+
+
+module org =
+    module iana =
+        module www =
+            module assignments =
+                let media_types = DomUrl "https://www.iana.org/assignments/media-types" |> AbsoluteResourceLocator
+*)

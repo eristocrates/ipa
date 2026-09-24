@@ -1,0 +1,1528 @@
+Undeﬁned 1 (2012) 1–5 1
+IOS Press
+Constrained regular expressions for
+answering RDF-path queries modulo RDFS
+Faisal Alkhateeba,∗, and Jérôme Euzenatb
+a Faculty of IT, Yarmouk University, Irbid, Jordan. E-mail: alkhateebf@yu.edu.jo
+b INRIA and LIG, Montbonnot, France. E-mail: Jerome.Euzenat@inria.fr
+Abstract. The standard SPARQL query language is currently deﬁned for querying RDF graphs without RDFS semantics. Sev-
+eral extensions to SPARQL have been proposed to query RDF graphs considering RDFS semantics. In this paper, we discuss
+extensions of SPARQL that uses regular expressions to navigate RDF graphs and may be used to answer queries considering
+RDFS semantics. In particular, we present and compare nSPARQL and our proposal CPSPARQL. We show that CPSPARQL is
+expressive enough to answer full SPARQL queries modulo RDFS. Finally, we compare the expressiveness and complexity of
+both nSPARQL and the corresponding fragment of CPSPARQL, that we call cpSPARQL. We show that both languages have the
+same complexity through cpSPARQL, being a proper extension of SPARQL graph patterns, is more expressive than nSPARQL.
+Keywords: semantic web, query language, RDF, RDFS, SPARQL, regular expression, constrained regular expression,
+nSPARQL, CPSPARQL, cpSPARQL
+1. Introduction
+RDF (Resource Description Framework [21]) is a
+knowledge representation language dedicated to the
+description of documents and more generally of re-
+sources within the semantic web.
+SPARQListhestandardlanguageforqueryingRDF
+data. It has been well-designed for that purpose, but
+very often, RDF data is expressed in the framework
+of a schema or an ontology in RDF Schema or OWL.
+RDF Schema (or RDFS) [10] together with OWL [22]
+aretwoontologylanguagesrecommendedbytheW3C
+for deﬁning the vocabulary used in RDF graphs. Re-
+cently, [15] presented extensions of the SPARQL 1.1
+entailment regimes to incorporate RDFS and OWL se-
+mantics.ExtendingSPARQLfordealingwiththiskind
+of data is thus a major issue. We consider here the case
+of RDF Schema (RDFS) or rather a large fragment of
+RDF Schema [24].
+Two main approaches can be developed for answer-
+ing a SPARQL query Q modulo a schema S against an
+*Corresponding author.
+RDF graph G: the eager approach transforms the data
+so that the evaluation of the SPARQL query Q against
+the transformed RDF graph τ(G) returns the answer,
+while the lazy approach transforms the query so that
+the transformed query τ(Q) against the RDF graph G
+returns the answers. The approaches are not exclusive,
+as shown by [26], though no hybrid approach has been
+developed so far for SPARQL.
+There already have been proposals along the sec-
+ond approach [28]. It consists of providing a query
+language, called nSPARQL, allowing for navigating
+graphs in the style of XPath. Then queries are rewrit-
+ten so that query evaluation navigates the data graph
+for taking the RDF Schema into account. Other at-
+tempts, such as SPARQ2L [6] and SPARQLeR [20]
+are not known to address queries with respect to RDF
+Schema. SPARQL-DL [31] addresses OWL but is re-
+stricted with respect to SPARQL.
+On our side, we have independently developed an
+extension of SPARQL, called PSPARQL [5], which
+adds path expressions to SPARQL. We have shown
+in [4] that answering SPARQL queries modulo RDF
+Schema could be achieved by transforming them
+into PSPARQL queries. PSPARQL fully preserves
+0000-0000/12/$00.00 c© 2012 – IOS Press and the authors. All rights reserved
+
+2 Faisal Alkhateeb and Jérôme Euzenat / Comparison of constrained regular expressions for answering RDF-path queries modulo RDFS
+SPARQL,i.e.,anySPARQLqueryisavalidPSPARQL
+query.ThecomplexityofPSPARQListhesameasthat
+of SPARQL [2]. Nonetheless, the transformation can-
+notbegenerallyappliedtoPSPARQLandthusitisnot
+generally sufﬁcient for answering PSPARQL queries
+modulo RDFS [4].
+To overcome this limitation, we use an extension
+of PSPARQL, called CPSPARQL [3,4], that uses con-
+strained regular expressions instead of regular expres-
+sions.
+In this paper, we show that cpSPARQL, a restric-
+tion of CPSPARQL, can express all nSPARQL queries
+with the same complexity. The advantage of using
+CPSPARQL is that, contrary to nSPARQL, it is a strict
+extension of SPARQL and cpSPARQL graph patterns
+are a strict extension of SPARQL graph patterns as
+well as they are a strict extension of PSPARQL graph
+patterns. Hence, we think that the use of a proper
+extension of SPARQL like CPSPARQL is preferable
+to strict path based languages. In particular, this al-
+lows for implementing the SPARQL RDFS entailment
+regime.
+InordertoallowthecomparisonbetweencpSPARQL
+and nSPARQL, we adopt in this paper a notation sim-
+ilar to nSPARQL, i.e., adding XPath axes, which is
+slightly different from the original CPSPARQL syntax
+presented in [3,4]. After presenting the syntax and se-
+mantics of both nSPARQL and CPSPARQL, we show
+that:
+– CPSPARQL can answer full SPARQL queries
+modulo RDFS (Section 4.3);
+– We offer an efﬁcient algorithm for answering
+cpSPARQL queries (Section 5);
+– cpSPARQL has the same linear complexity as
+nSPARQL (Section 5);
+– Any nSPARQL triple pattern can be expressed
+as a cpSPARQL triple pattern, but not vice versa
+(Section 6).
+Paper Outline. The remainder of the paper is or-
+ganized as follows. In Section 2, we introduce RDF
+and the SPARQL language. Section 3 is dedicated
+to the presentation of the nSPARQL query language.
+The CPSPARQL and cpSPARQL languages are pre-
+sented in detail with their main results in Section 4
+and we show how to use it for answering SPARQL
+and CPSPARQL queries modulo RDF Schemas. The
+complexity results are presented in Section 5. In Sec-
+tion 6, we compare the expressiveness of cpSPARQL
+and nSPARQL. We discuss more precisely other re-
+lated work in Section 8. Finally, we conclude in Sec-
+tion 9.
+2. Preliminaries
+Inthissection,wepresentRDFaswellasitsrecom-
+mended query language SPARQL.
+2.1. RDF
+TheResourceDescriptionFramework(RDF[21])is
+a W3C recommended language for expressing data on
+the semantic web. We introduce below the syntax and
+the semantics (simple semantics [18]) of the language.
+2.1.1. RDF syntax
+RDF graphs are constructed over the set of URI ref-
+erences (or urirefs), blanks, and literals [12]. To sim-
+plify notations, and without loss of generality, we do
+not distinguish here between simple and typed literals.
+Terminology. An RDF terminology, noted T , is the
+union of 3 pairwise disjoint inﬁnite sets of terms: the
+set U of urirefs, the set L of literals and the set B of
+variables. The vocabulary V denotes the set of names,
+i.e. V = U ∪ L. We use the following notations for
+the elements of these sets: a variable will be preﬁxed
+by ? (like ?x1), a literal will be expressed between
+quotation marks (like "27"), remaining elements will
+be urirefs (like price).
+Deﬁnition 1 (RDF graph, GRDF graph). An RDF
+triple is an element of U × U × U. An RDF graph is
+a set of RDF triples. A GRDF graph (for generalized
+RDF) is a set of triples of (U ∪ B) × (U ∪ B) × T .
+In this deﬁnition we do not consider blank nodes
+in RDF because the ofﬁcial speciﬁcation of SPARQL
+treats blank nodes in RDF graphs simply as constants
+(as if they were URIs) without considering their exis-
+tential semantics. However, if the existential semantics
+of blank nodes is considered when querying RDF, the
+results of this paper may indirectly apply by using the
+graph homomorphism technique [9].
+If G is an RDF graph, we use voc(G) to denote the
+set of terms appearing in at least one triple of G.
+Example 1 (RDF Graph). RDF can be used for repre-
+senting information about cities, transportation means
+between cities, and relationships between the trans-
+portation means. The following triples are part of the
+RDF graph of Figure 1:
+
+Faisal Alkhateeb and Jérôme Euzenat / Comparison of constrained regular expressions for answering RDF-path queries modulo RDFS 3
+Grenoble
+France Paris Madrid Spain
+Italy Roma Amman Jordan
+TGV train
+plane
+transport
+TGVcityIn TGV
+planecityIn cityIn
+cityIncityIn
+planeplane
+plane
+sp
+sp
+sp M
+G
+Fig. 1. An RDF graph (G) with its schema (M) representing infor-
+mation about transportation means between several cities.
+Grenoble TGV Paris .
+Paris plane Amman .
+TGV subPropertyOf transport .
+...
+For instance, a triple 〈Paris, plane, Amman〉 means
+that there exists a transportation mean plane from
+Paris to Amman.
+2.1.2. RDF semantics
+The formal semantics of RDF expresses the condi-
+tions under which an RDF graph describes a particular
+world, i.e., an interpretation is a model for the graph
+[18].
+Deﬁnition 2 (Mapping). Let V1 ⊆ T , and V2 ⊆ T be
+two sets of terms. A map from V1 to V2 is a function
+µ : V1 → V2 such that ∀x ∈ (V1 ∩ V), µ(x) = x.
+In the following deﬁnition, we provide a charac-
+terization of entailment of RDF graphs (respectively,
+GRDFgraphs)intermsofsubsetforthecaseofgraphs
+without variables (respectively, in terms of homomor-
+phism when the graphs have variables).
+Deﬁnition3(RDF,GRDFentailment). AnRDFgraph
+G RDF-entails an RDF graph P (denoted by G |=rdf
+P) if 〈s,p,o〉 ∈ P, then 〈s,p,o〉 ∈ G. An RDF graph
+G RDF-entails a GRDF graph P (denoted by G |=rdf
+P) if there exists a mapping µ : T (P) → T (G) such
+that if 〈s,p,o〉 ∈ P, then 〈µ(s),µ(p),µ(o)〉 ∈ G.
+2.2. SPARQL
+SPARQL is the RDF query language developed by
+the W3C [30]. SPARQL query answering is character-
+ized by deﬁning a mapping from the query to the RDF
+graph to be queried.
+2.2.1. SPARQL syntax
+The basic building blocks of SPARQL queries are
+graphpatternswhichareshared byallSPARQL query
+forms. Informally, a graph pattern can be a triple pat-
+tern,i.e.,aGRDFtriple,abasicgraphpattern,i.e.,aset
+of triple patterns such as a GRDF graph in SPARQL,
+the union of graph patterns, an optional graph pattern,
+or a constraint (cf. [30] for more details).
+Deﬁnition 4 (SPARQL graph pattern). A SPARQL
+graph pattern is deﬁned inductively in the following
+way:
+– every GRDF graph is a SPARQL graph pattern;
+– if P, P′ are SPARQL graph patterns and K
+is a SPARQL constraint, then (P AND P′), (P
+UNION P′), (P OPT P′), and (P FILTER K)
+are SPARQL graph patterns.
+ASPARQLconstraintK isabooleanexpressionin-
+volving terms from (V ∪ B), e.g., a numeric test. We
+do not specify these expressions further.
+A SPARQL SELECT query is of the form SELECT
+~B FROM u WHERE P where u is the URI of an RDF
+graph G, P is a SPARQL graph pattern and ~B is a
+tuple of variables appearing in P. Intuitively, such a
+query asks for the assignments of the variables in ~B
+suchthat,undertheseassignments,P isentailedbythe
+graph identiﬁed by u.
+Example 2 (Query). The following query searches in
+the RDF graph of Figure 1 if there exists a direct plane
+between a city in France and a city in Jordan:
+SELECT ?city1 ?city2
+FROM ...
+WHERE
+?city1 plane ?city2 .
+?city1 cityIn France .
+?city2 cityIn Jordan .
+2.2.2. SPARQL semantics
+In the following, we characterize query answering
+with SPARQL as done in [27]. The approach relies
+upon the correspondence between maps from RDF
+graph of the query graph patterns to the RDF knowl-
+edge base and GRDF entailment.
+Operations on mappings. If µ is a map, then the do-
+main of µ, denoted by dom(µ), is the subset of T on
+whichµisdeﬁned.Therestrictionofµtoasetofterms
+X is deﬁned by µ|X = {〈x,y〉 ∈ µ| x ∈ X} and
+the completion of µ to a set of terms X is deﬁned by
+µ|X = µ ∪ {〈x,null〉| x ∈ X and x /∈ dom(µ)}.
+If P is a graph pattern, then we use B(P) to denote
+the set of variables occurring in P and µ(P) to de-
+
+4 Faisal Alkhateeb and Jérôme Euzenat / Comparison of constrained regular expressions for answering RDF-path queries modulo RDFS
+note the graph pattern obtained by the substitution of
+µ(b) to each variable b ∈ B(P). Two mappings µ1 and
+µ2 are compatible when ∀x ∈ dom(µ1) ∩ dom(µ2),
+µ1(x) = µ2(x). Otherwise, they are said to be in-
+compatible and this is denoted by µ1⊥µ2. If µ1 and
+µ2 are two compatible mappings, then we denote by
+µ = µ1 ⊕ µ2 : T1 ∪ T2 → T the mapping deﬁned by:
+∀x ∈ T1,µ(x) = µ1(x) and ∀x ∈ T2,µ(x) = µ2(x).
+ThejoinanddifferenceoftwosetsofmappingsΩ1 and
+Ω2 are deﬁned as follows [27]:
+– (join) Ω1 on Ω2 = {µ1 ⊕ µ2 | µ1 ∈ Ω1,µ2 ∈ Ω2
+are compatible};
+– (difference) Ω1 \ Ω2 = {µ1 ∈ Ω1 | ∀µ2 ∈ Ω2,µ1
+and µ2 are not compatible}.
+The answers to a basic graph pattern query are those
+mappings which warrant the entailment of the graph
+pattern by the queried graph. In the case of SPARQL,
+this entailment relation is GRDF entailment. Answers
+to compound graph patterns are obtained through the
+operations on mappings.
+Deﬁnition 5 (Answers to compound graph patterns).
+Let |=rdf be the RDF entailment relation on basic
+graph patterns, P, P′ be SPARQL graph patterns, K
+beaSPARQLconstraint,andGbeanRDFgraph.The
+setS(P,G)of answerstoP inGisdeﬁnedinductively
+in the following way:
+S(P,G) = {µ|B(P)| G |=rdf µ(P)}
+if P is a basic graph pattern
+S((P AND P′),G) = S(P,G) on S(P′,G)
+S(P UNION P′,G) = S(P,G) ∪ S(P′,G)
+S(P OPT P′,G) = (S(P,G) on S(P′,G))
+∪ (S(P,G) \ S(P′,G))
+S(P FILTER K,G) = {µ ∈ S(P,G) | µ(K) = >}
+Note that the operator |=rdf is used to denote the
+RDF entailment relation on basic graph patterns and
+we will use simply |= when it is clear from the con-
+text. Moreover, the conditions K are interpreted as
+boolean functions from the terms they involve. Hence,
+µ(K) = >meansthatthisfunctionisevaluatedtotrue
+once the variables in K are substituted by µ. If not all
+variablesofK arebound,thenµ(K) 6= >.Onepartic-
+ular operator that can be used in SPARQL ﬁlter condi-
+tions is "bound(?x)". This operator returns true if the
+variable ?x is bound and in this case µ(K) is not true
+whenever a variable is not bound.
+As usual for this kind of query language, an an-
+swer to a query is an assignment of the distinguished
+variables (those variables in the SELECT part of the
+query). Such an assignment is a mapping from vari-
+ables in the query to nodes of the graph. The deﬁned
+answers may assign only one part of the variables,
+those sufﬁcient to prove entailment. The answers are
+these assignments extended to all distinguished vari-
+ables.
+Deﬁnition 6 (Answers to a SPARQL query). Let
+SELECT ~B FROM u WHERE P beaSPARQLquery,
+G be the RDF graph identiﬁed by the URI u, and
+S(P,G) be the set of answers to P in G, then the an-
+swers A(~B,G,P) to the query are the restriction and
+completion to ~B of answers to P in G, i.e.,
+A(~B,G,P) = {µ|~B
+~B| µ ∈ S(P,G)}.
+3. nSPARQL
+nSPARQL is a query language that uses nested reg-
+ular expressions in predicate position of graph patterns
+for navigating the RDF graph [28].
+3.1. nSPARQL syntax
+Deﬁnition 7 (Regular expression). A regular expres-
+sion is an expression built from the following gram-
+mar:
+exp ::= axis | axis::a | exp | exp/exp | exp|exp | exp∗
+with a ∈ U and axis ∈{self, next, next−1, edge,
+edge−1, node, node−1 }.
+Regardingtheprecedenceamongtheregularexpres-
+sion operators, it is as follows: *, /, then |. Parentheses
+may be used for breaking precedence rules.
+The model underlying nSPARQL is that of XPath
+which navigates within XML structures. Hence, axis
+denotethetypeofnodeobjectwhichisselectedateach
+step, respectively, the current node (self or self−1),
+thenodesreachablethrough anoutboundtriple(next),
+the nodes that can reach the current node through
+an incident triple (next−1), the properties of out-
+bound triples (edge), the properties of incident triples
+(edge−1),theobjectofapredicate(node)andthepred-
+icate of an object (node−1). This is illustrated by Fig-
+ure 2.
+
+Faisal Alkhateeb and Jérôme Euzenat / Comparison of constrained regular expressions for answering RDF-path queries modulo RDFS 5
+subject objet
+predicate
+self
+next
+next−1
+edge
+edge−1
+node
+node−1 self−1
+Fig. 2. nSPARQL axis.
+Deﬁnition 8 (Nested regular expression). A nested
+regular expression is an expression built from the fol-
+lowing grammar:
+exp ::= axis | axis::a | axis::[exp] | exp | exp/exp |
+exp|exp | exp∗
+Contrary to simple regular expressions, nested reg-
+ular expressions may constrain nodes to satisfy addi-
+tional secondary paths.
+Nestedregularexpressionsareusedintriplepatterns
+in predicate position, to deﬁne nSPARQL triple pat-
+terns.
+Deﬁnition 9 (nSPARQL triple pattern). An nSPARQL
+triplepatternisatriple〈s,p,o〉suchthats ∈ T ,o ∈ T
+and p is a nested regular expression.
+Example 3 (nSPARQL triple pattern). Assume that
+one wants to retrieve the pairs of cities such that there
+is a way of traveling by any transportation mean. The
+following nSPARQL pattern expresses this query:
+P = 〈?city1,(next :: [(next :: sp)∗/self ::
+transport])+,?city2〉
+Thispatternexpressesasequenceofpropertiessuch
+that each property is a sub-property of the property
+"transport".
+nSPARQL is rather designed as a navigational lan-
+guage, i.e., its main purpose is to ﬁnd nodes linked by
+a particular path.
+It is also possible to create a query language from
+nSPARQLtriplepatternsbysimplyreplacingSPARQL
+patternsbynSPARQLpatterns.Indeed,fromnSPARQL
+triple patterns it is possible to deﬁne nSPARQL graph
+patterns in the usual way.
+Deﬁnition10(nSPARQLgraphpattern). AnnSPARQL
+graph pattern is deﬁned inductively by:
+– every nSPARQL triple pattern is an nSPARQL
+graph pattern;
+– if P1 and P2 are two nSPARQL graph patterns
+and K is a SPARQL constraint, then (P1 AND
+P2), (P1 UNION P2), (P1 OPT P2), and (P1
+FILTER K) are nSPARQL graph patterns.
+However, for theoretical complexity reasons the de-
+signers of the nSPARQL language choose to deﬁne a
+more restricted language than SPARQL [29]. Contrary
+to SPARQL queries, nSPARQL queries are reduced to
+nSPARQLgraphpatterns,constructedfromnSPARQL
+triplepatterns,plusSPARQLoperatorsAND,UNION,
+FILTER, and OPT. They do not allow for the projec-
+tion operator SELECT. This prevents, when checking
+answers, that uncontrolled variables have to be evalu-
+ated.
+3.2. nSPARQL semantics
+In order to deﬁne the semantics of nSPARQL, we
+need to know the semantics of nested regular expres-
+sions [28].
+Deﬁnition 11 (Nested path interpretation [28]). Given
+a nested path p and an RDF graph G, the interpreta-
+
+6 Faisal Alkhateeb and Jérôme Euzenat / Comparison of constrained regular expressions for answering RDF-path queries modulo RDFS
+tion of p in G (denoted [[p]]G) is deﬁned by:
+[[self]]G = {〈x,x〉|x ∈ voc(G)}
+[[self :: a]]G = {〈a,a〉}
+[[next]]G = {〈x,y〉|∃z;〈x,z,y〉 ∈ G}
+[[next :: a]]G = {〈x,y〉|〈x,a,y〉 ∈ G}
+[[edge]]G = {〈x,y〉|∃z;〈x,y,z〉 ∈ G}
+[[edge :: a]]G = {〈x,y〉|〈x,y,a〉 ∈ G}
+[[node]]G = {〈x,y〉|∃z;〈z,x,y〉 ∈ G}
+[[node :: a]]G = {〈x,y〉|〈a,x,y〉 ∈ G}
+[[axis−1]]
+G = {〈x,y〉|〈y,x〉 ∈ [[axis]]G}
+[[axis−1 :: a]]
+G = {〈y,x〉|〈x,y〉 ∈ [[axis :: a]]G}
+[[exp1|exp1]]G = [[exp1]]G ∪ [[exp2]]G
+[[exp1/exp2]]G = {〈x,y〉|∃z;〈x,z〉 ∈ [[exp1]]G
+∧ 〈z,y〉 ∈ [[exp2]]G}
+[[exp∗]]G = [[self]]G ∪ [[exp]]G ∪ [[exp/exp]]G
+∪ [[exp/exp/exp]]G ∪ ...
+[[self :: [exp]]]G = {〈x,x〉|x ∈ voc(G)
+∧ ∃z;〈x,z〉 ∈ [[exp]]G}
+[[next :: [exp]]]G = {〈x,y〉|∃z,w;〈x,z,y〉 ∈ G
+∧ 〈z,w〉 ∈ [[exp]]G}
+[[edge :: [exp]]]G = {〈x,y〉|∃z,w;〈x,y,z〉 ∈ G
+∧ 〈z,w〉 ∈ [[exp]]G}
+[[node :: [exp]]]G = {〈x,y〉|∃z,w;〈z,x,y〉 ∈ G
+∧ 〈z,w〉 ∈ [[exp]]G}
+[[axis−1 :: [exp]]]
+G = {〈x,y〉|〈y,x〉 ∈ [[axis :: [exp]]]G}
+TheevaluationofanestedregularexpressionRover
+an RDF graph G is deﬁned as a binary relation [[R]]G,
+by a pair of nodes 〈a,b〉 such that a is reachable from
+b in G by following a path that conforms to R. In the
+following,weusethepositiveclosureofapathexpres-
+sion R denoted by R+ and deﬁned as R+ = R/R∗.
+Deﬁnition 12. The evaluation of a nSPARQL triple
+pattern t = 〈X,R,Y〉 over an RDF graph G is:
+[[t]]G = {µ| dom(µ) = {X,Y} ∩ B
+and 〈µ(X),µ(Y)〉 ∈ [[R]]G}
+Answers to nSPARQL queries follow the same def-
+inition as for SPARQL but this time it is constructed
+from mappings satisfying nSPARQL triple patterns.
+Deﬁnition 13 (Answers to an nSPARQL basic graph
+pattern). LetP beabasicnSPARQLgraphpatternand
+G be an RDF graph, then the set of answers to P over
+G is:
+A(G,P) = {µ|〈µ(X),µ(Y)〉 ∈ [[R]]G ,∀〈X,R,Y〉 ∈ P}.
+The evaluation of such basic graph patterns is mea-
+sured with the usual evaluation problem:
+Problem: Evaluation problem for regular expres-
+sions
+Input: An RDF graph G, a regular expression R, and
+a pair 〈a,b〉
+Question: Does 〈a,b〉 ∈ [[R]]G?
+Wewillusethissameproblemwithdifferenttypeof
+regular expressions. This problem is solved efﬁciently
+through an effective procedure provided in [29].
+Theorem 1 (Complexity of nSPARQL evaluation
+[29]). The evaluation problem for a nested regular ex-
+pressionRoveranRDFgraphGcanbesolvedintime
+O(|G|.|R|).
+Clearly, nSPARQL is a good navigational language,
+but there are still useful queries that could not be ex-
+pressed. However, we conjuncture that it cannot be
+usedtoﬁndnodesconnectedbyapropertythatisnotp
+(e.g.withtransportationmeanthatisnotabusortrans-
+portation means belonging to Air France, i.e., contain-
+ing the URI of the company). Although nSPARQL can
+answer such query for a ﬁxed vocabulary by listing all
+properties that are not p (e.g. by listing all properties
+that are not bus), a query that works independent of
+the vocabulary cannot be expressed. This is because
+it is required to know all properties that are used in
+the vocabulary other than p in order to use them in the
+query. Moreover, properties that are sub-properties of
+pshouldbeexcludedfromthequerywhenconsidering
+RDFS (see the Appendix section for a proof outline of
+a similar example).
+3.3. Querying RDFS with nSPARQL
+[24] has introduced the reﬂexive relaxed seman-
+ticsforRDFSinwhichrdfs:subPropertyOfand
+rdfs:subClassOf of do not have to be reﬂexive.
+The reﬂexive relaxed semantics does not change much
+RDFS. Indeed, from the standard (reﬂexive) seman-
+
+Faisal Alkhateeb and Jérôme Euzenat / Comparison of constrained regular expressions for answering RDF-path queries modulo RDFS 7
+Subproperty (sp) Subclass (sc) Typing (dom, range
+〈A,sp,B〉 〈B,sp,C〉
+〈A,sp,C〉
+〈A,sc,B〉 〈B,sc,C〉
+〈A,sc,C〉
+〈A,dom,B〉 〈X,A,Y〉
+〈X,type,B〉
+〈A,sp,B〉 〈X,A,Y〉
+〈X,B,Y〉
+〈A,sc,B〉 〈X,type,A〉
+〈X,type,B〉
+〈A,range,B〉 〈X,A,Y〉
+〈Y,type,B〉
+Table 1
+RDFS inference rules
+tics, we can deduce that any class (respectively, prop-
+erty) is a subclass (respectively, subproperty) of itself.
+The reﬂexivity requirement only entails reﬂectivity as-
+sertions which do not interact with other triples unless
+constraintsareaddedtotherdfs:subPropertyOf
+or rdfs:subClassOf properties. Therefore, it is
+assumed that elements of RDFS vocabulary appear
+only in the predicate position.
+However, when issuing queries involving these re-
+lations, e.g., with a graph pattern like 〈?x sp ?y〉, all
+properties in the graph will be answers. Since this
+would clutter results, we assume, as done in [24], that
+queries use the reﬂexive relaxed semantics. It is easy
+to recover the standard semantics by providing the ad-
+ditional triples when sp or sc are queried.
+Inthefollowing,weusetheclosuregraphofanRDF
+graph G, denoted by closure(G), which is deﬁned by
+the graph obtained by saturating G with all triples that
+can be deduced using rules of Table 1 [24].
+Deﬁnition 14. The evaluation of an nSPARQL triple
+pattern t = 〈X,R,Y〉 over an RDF graph G modulo
+RDFS is deﬁned as the following set of mappings:
+[[t]]rdfs
+G = {µ|dom(µ) = {X,Y} ∩ B
+∧ 〈µ(X),µ(Y)〉 ∈ [[R]]closure(G)}
+Deﬁnition 15 (Answers to an nSPARQL basic graph
+pattern modulo RDFS). Let P be a basic nSPARQL
+graph pattern and G be an RDF graph, then the set of
+answers to P over G modulo RDFS is:
+Ao(G,P) = {µ | µ ∈ [[t]]rdfs
+G ,∀t ∈ P}
+Aspresentedin[28],nSPARQLcanevaluatequeries
+with regard to RDFS by transforming queries with the
+rules [24]:
+φ(sc) = (next::sc)+
+φ(sp) = (next::sp)+
+φ(dom) = next::dom
+φ(range) = next::range
+φ(type) = next::type/next::sc*
+|edge/next::sp*/next::dom/next::sc*
+|node−1/next::sp*/next::range/next::sc*
+φ(p) = next[(next::sp)*/self::p]
+(p 6∈ {sp,sc,type,dom,range})
+Example4(nSPARQLqueryevaluationmoduloRDFS).
+The following nSPARQL graph pattern could be used
+asaquerytoretrievethesetofpairsofcitiesconnected
+by a sequence of transportation means such that one
+city is from France and the other city is from Jordan:
+{〈?city1,(next ::transport)+,?city2〉
+〈?city1,next ::cityIn,France〉
+〈?city2,next ::cityIn,Jordan〉}
+When evaluating this graph pattern against the RDF
+graph of Figure 1 and considering the RDFS seman-
+tics, it returns the empty set since there is no explicit
+property "transport" between the two queried cities.
+However, it should return the following set of pairs:
+{〈?city1 ← Paris,?city2 ← Amman〉,〈?city1 ←
+Grenoble,?city2 ← Amman〉}
+To answer the above graph pattern considering
+RDFSsemantics,itcouldbetransformedtothefollow-
+ing nSPARQL graph pattern:
+{〈?city1,(next ::[(next :: sp)∗/self :: transport])+,?city2〉
+〈?city1,next ::cityIn,France〉
+〈?city2,next ::cityIn,Jordan〉}
+This encoding is correct and complete with regard
+to RDFS entailment.
+
+8 Faisal Alkhateeb and Jérôme Euzenat / Comparison of constrained regular expressions for answering RDF-path queries modulo RDFS
+Theorem 2 (Completeness of φ [28] (Theorem 3)).
+Let 〈X,p,Y〉 be a SPARQL triple pattern with X,Y ∈
+(U∪B)andp ∈ U,then[[〈X,p,Y〉]]rdfs
+G =[[〈X,φ(p),Y〉]]G
+for any RDF graph G.
+4. CPSPARQL and cpSPARQL: syntax and
+semantics
+CPSPARQL has been deﬁned for addressing two
+main issues. The ﬁrst one comes from the need to ex-
+tend PSPARQL and thus to allow for expressing con-
+straints on nodes of traversed paths; while the other
+comes from the need to answer PSPARQL queries
+modulo RDFS so that the transformation rules could
+be applied to PSPARQL queries [2].
+In addition to CPSPARQL, we present cpSPARQL,
+a language using CPSPARQL graph patterns in the
+same way as nSPARQL does.
+4.1. CPSPARQL syntax
+The notation that we use in this paper for the syntax
+of CPSPARQL is slightly different from the one de-
+ﬁnedintheoriginalproposal[2].Theoriginaloneuses
+edge and node constraints to express constraints on
+predicates (or edges) and nodes of RDF graphs, re-
+spectively. In this paper, we adopt the axis borrowed
+fromXPath,withwhichthereadermaybemorefamil-
+iar, as done for nSPARQL. This will also allow us to
+better compare cpSPARQL and nSPARQL. Addition-
+ally, in the original proposal, ALL and EXISTS key-
+words are used to allow expressing constraints on all
+traversed nodes or to check the existence of a node in
+thetraversedpaththatsatisﬁesthegivenconstraint.We
+do not use these keywords in the fragment presented
+below since they do not add expressiveness with re-
+spect to RDFS semantics, i.e. the fragment still cap-
+tures RDFS semantics.
+Constraints act as ﬁlters for paths that must be tra-
+versed by constrained regular expressions and select
+those whose nodes satisfy encountered constraint.
+Deﬁnition 16 (Constrained regular expression). A
+constrained regular expression is an expression built
+from the following grammar:
+exp ::= axis | axis::a | axis::[x : ψ] | axis::]x : ψ[
+| exp | exp/exp | exp|exp | exp∗
+withψ beingasetoftriplesbelongingto(U∪B∪{x}×
+exp×T ∪{x})UNION {FILTER−expressions}
+over B ∪ {x}. ψ is called a CPRDF-constraint and x
+its head variable.
+Constrainedregularexpressionsallowforconstrain-
+ing the item in one axis to satisfy a particular con-
+straint, i.e., to satisfy a particular graph pattern (here
+anRDFgraph)orﬁlter.Weintroducetheclosedsquare
+brackets and open square brackets notation for distin-
+guishing between constraints which export their vari-
+able (it may be assigned by the mapping) and con-
+straints which do not export it (the variable is only no-
+tational). This is equivalent to the initial CPSPARQL
+formulation, in which the variable was always ex-
+ported, since CPSPARQL can ignore such variables
+through projection.
+Constraint nesting is allowed because constrained
+regular expressions may be used in the graph pattern
+of another constrained regular expression as in the fol-
+lowing example.
+Example 5 (Constrained regular expression). The fol-
+lowing constrained regular expression could be used
+to ﬁnd nodes connected by transportation means that
+are not buses:
+(next :: [?p : {〈?p,(next :: sp)∗,transport〉
+Filter(?p! = bus)}])+
+In contrast to nested regular expressions, con-
+strainedregularexpressionscanapplyconstrains(such
+as SPARQL constraints) in addition to simple nested
+path constraints.
+Constrained regular expressions are used in triple
+patterns, in predicate position, to deﬁne CPSPARQL.
+Deﬁnition17(CPSPARQLtriplepattern). ACPSPARQL
+triplepatternisatriple〈s,p,o〉suchthats ∈ T ,o ∈ T
+and p is a constrained regular expression.
+Deﬁnition18(CPSPARQLgraphpattern). ACPSPARQL
+graph pattern is deﬁned inductively by:
+– every CPSPARQL triple pattern is a CPSPARQL
+graph pattern;
+– if P1 and P2 are two CPSPARQL graph pat-
+terns and K is a SPARQL constraint, then (P1
+AND P2), (P1 UNION P2), (P1 OPT P2), and (P1
+FILTER K) are CPSPARQL graph patterns.
+Example 6 (CPSPARQL graph pattern). The follow-
+ingCPSPARQLgraphpatterncouldbeusedtoretrieve
+the set of pairs of cities connected by a sequence of
+transportation means (which are not buses) such that
+
+Faisal Alkhateeb and Jérôme Euzenat / Comparison of constrained regular expressions for answering RDF-path queries modulo RDFS 9
+one city in France and the other one in Jordan:
+{〈?city1,(next :: [?p : {〈?p,(next :: sp)∗,transport〉
+Filter(?p! = bus)}])+,?city2〉
+〈?city1,next :: cityIn,France〉
+〈?city2,next :: cityIn,Jordan〉}
+If open square brackets were used, this graph pat-
+tern would, in addition, bind the ?p variable to a
+matching value, i.e., the transportation means used.
+By restricting CPRDF constraints, it is possible to
+deﬁne a far less expressive language. cpSPARQL is
+such a language: instead of general GRDF graphs as
+constraints, it only allows at most one triple (with a
+cpSPARQL regular expression as predicate)
+Deﬁnition 19 (cpSPARQL regular expression). A
+cpSPARQL regular expression is an expression built
+from the following grammar:
+exp ::= axis | axis::a | axis::]?x : TRUE[
+| axis::[?x : {〈?x,exp,v〉}{FILTER(?x)}]
+| exp | exp/exp | exp|exp | exp∗
+such that v is either a distinct variable ?y or a con-
+stant (an element of U ∪ L) and FILTER(?x) is the
+usual SPARQL ﬁlter condition containing at most the
+variable ?x and v if v is a variable.
+The ﬁrst speciﬁc form, with open square brackets,
+has been preserved so that cpSPARQL triples cover
+SPARQL basic graph patterns, i.e., allow for variables
+in predicate position. In the other speciﬁc forms, a
+cpSPARQL constraint is either a cpSPARQL regular
+expression containing ?x as the only variable and/or
+a SPARQL FILTER constraint. Hence, such a regular
+may have several constraints, but each contraint can
+only expose one variable and it cannot refer to vari-
+ables deﬁned elsewhere.
+Deciding if a CPSPARQL triple is a cpSPARQL
+triple can be performed in linear time in the size of the
+regular expression used.
+Example 7 (cpSPARQL triple patterns). The query
+of Example 3 could be expressed by the following
+cpSPARQL pattern:
+〈?city1,
+(next :: [?p : {〈?p,(next :: sp)∗,transport〉}])+,
+?city2〉
+Theconstraintψ = [?p : {〈?p,(next :: sp)∗,transport〉}]
+is used to restrict the properties (in this pattern the
+constraint is applied to properties since the axis next
+is used) to be only a transportation mean.
+Example 5 provides another cpSPARQL regular ex-
+pression. By contrast, CPSPARQL graph patterns al-
+low for queries like:
+next :: [?p;{〈?p,(next :: sp)∗,?z〉,
+〈?q,(next :: sp)∗,?z〉,
+〈?p,owl : inverseOf,?q〉,
+Filter(regex(?z,iata.org)}]
+which is not a cpSPARQL regular expression since it
+uses more than two variables.
+ItispossibletodeveloplanguagesbasedoncpSPARQL
+regular expressions following what is done with con-
+strained regular expressions.
+4.2. CPSPARQL semantics
+Intuitively,aconstrainedregularexpressionnext::[ψ]
+(where ψ =?p : {〈?p, sp∗, transport.〉}) is equiva-
+lent to next::p if p satisﬁes the constraint ψ. That is,
+p should be a sub-property of transport (when p is
+substituted to the variable ?p).
+Deﬁnition 20 (Satisﬁed constraint in an RDF graph).
+Let G be an RDF graph, s and o be two nodes of G
+and ψ = x : C be a constraint, then s and o satisﬁes
+ψ in G (denoted 〈s,o〉 ∈ [[ψ]]G) if one of the following
+conditions is satisﬁed:
+1. C is a triple pattern C = 〈X,R,Y〉, and
+〈Xxs ,Yyo 〉 ∈ [[Rxs]]G, where Kzr means that r is
+substituted to the variable z if K = z or K con-
+tains the variable z. If z is a constant then z = r.
+2. C is a SPARQL ﬁlter constraint and Cx,ys,o = >,
+where Cx,ys,o = > means that the constraint ob-
+tained by the substitution of s to each occurrence
+of the variable x and o to each occurrence of the
+variable y in C is evaluated to true1.
+3. C = P FILTER K, then 1 and 2 should be
+satisﬁed
+1Except for the case of bound (see Deﬁnition 5 and the discussion
+after it.)
+
+10 Faisal Alkhateeb and Jérôme Euzenat / Comparison of constrained regular expressions for answering RDF-path queries modulo RDFS
+As done for nested regular expressions, the evalua-
+tionofaconstrainedregularexpressionRoveranRDF
+graph G is deﬁned as a binary relation [[R]]G, by a pair
+of nodes 〈a,b〉 such that a is reachable from b in G
+by following a path that conforms to R. The following
+deﬁnition extends Deﬁnition 11 to take into account
+the semantics of terms with constraints.
+Deﬁnition21(Constrainedpathinterpretation). Given
+aconstrainedregularexpressionP andanRDFgraph
+G. If P is unconstrained then the interpretation of P
+in G (denoted [[P]]G) is as in Deﬁnition 11; otherwise
+the interpretation of P in G is deﬁned as:
+[[self :: [ψ]]]G = {〈x,x〉| ∃z;x ∈ voc(G) ∧ 〈x,z〉 ∈ [[ψ]]G}
+[[next :: [ψ]]]G = {〈x,y〉| ∃z,w;〈x,z,y〉 ∈ G ∧ 〈z,w〉 ∈ [[ψ]]G}
+[[edge :: [ψ]]]G = {〈x,y〉| ∃z,w;〈x,y,z〉 ∈ G ∧ 〈z,w〉 ∈ [[ψ]]G}
+[[node :: [ψ]]]G = {〈x,y〉| ∃z,w;〈z,x,y〉 ∈ G ∧ 〈z,w〉 ∈ [[ψ]]G}
+[[axis−1 :: [ψ]]]
+G = {〈x,y〉| 〈y,x〉 ∈ [[axis :: [ψ]]]G}
+Deﬁnition 22 (Answer to a CPSPARQL triple pat-
+tern). The evaluation of a CPSPARQL triple pattern
+t = 〈X,R,Y〉 over an RDF graph G is deﬁned as the
+following set of mappings:
+[[t]]G = {µ | dom(µ) = {X,Y} ∩ B ∪ B(R) and
+〈µ(X),µ(Y)〉 ∈ [[µ(R)]]G} such that µ(R) is the con-
+strained regular expression obtained by substituting
+the variable ?x appearing in a constraint with open
+brackets in R by µ(?x).
+Of course, this semantics applies to cpSPARQL
+graph patterns. Note that B(R) is the set of variables
+occurring as the head variable of an open bracket con-
+straint in R.
+4.3. Querying RDFS with CPSPARQL
+Like for nSPARQL, constraints allows for encoding
+RDF Schemas within queries.
+Deﬁnition 23 (RDFS triple pattern expansion). Given
+an RDF triple t, the RDFS expansion of t, denoted by
+τ(t), is deﬁned as:
+τ(〈s,sc,o〉) =〈s,next::sc+,o〉
+τ(〈s,sp,o〉) =〈s,next::sp+,o〉
+τ(〈s,dom,o〉) =〈s,next::dom,o〉
+τ(〈s,range,o〉) =〈s,next::range,o〉
+τ(〈s,type,o〉) =〈s,next::type/next::sc∗|
+edge/(next::sp)∗/next::dom/(next::sc)∗|
+node−1/(next::sp)∗/next::range/(next::sc)∗,o〉
+τ(〈s,p,o〉) =〈s,(next::[?x : {〈?x,(next::sp)∗,p〉}]),o〉
+p 6∈ {sp,sc,type,dom,range}
+It is clear that the RDFS expansion of an RDF triple
+is a cpSPARQL triple.
+Theextravariable"?x"introducedinthelastitemof
+thetransformation,isonlyusedinsidetheconstraintof
+the constrained regular expression and so it is not con-
+sidered to be in dom(µ), i.e. only variables occurring
+as a subject or an object in a CPSPARQL triple pattern
+are considered in mappings (see Deﬁnition 25).There-
+fore, the SELECT operator (projection) is not needed
+to restrict the results of the transformed triple as in the
+case of PSPARQL [5], as illustrated in the following
+example.
+Example 8 (SPARQL query transformation). Con-
+sider the following SPARQL query that searches pairs
+of nodes connected with a property p
+SELECT ?X ?Y
+WHERE ?X p ?Y .
+It is possible to answer this query modulo RDFS by
+transforming this query into the following PSPARQL
+query:
+SELECT ?X ?Y
+WHERE ?X ?P ?Y . ?P sp* p .
+The evaluation of the above PSPARQL query is the
+mapping{?X ← a,?P ← b,?Y ← c}.So,toactually
+obtain the desired result, a projection (SELECT) oper-
+ator must be performed since the extra variable ?P is
+used in the transformation. It is argued in [29] that in-
+cluding the SELECT (projection) operator to the con-
+junctive fragment of PSPARQL makes the evaluation
+problem NP-hard.
+On the other hand, the query could be answered by
+transformingit,withtheτ functionofDeﬁnition26,to
+the following cpSPARQL query (in which there is no
+need for the projection operator):
+(?X, (next::[?x: ?x, (next::sp)*, p ]), ?Y)
+
+Faisal Alkhateeb and Jérôme Euzenat / Comparison of constrained regular expressions for answering RDF-path queries modulo RDFS 11
+Since the variable ?x is used inside the constraint,
+the answer to this query will be {?X ← a,?Y ← b}
+(see Deﬁnition 24).
+ThishastheimportantconsequencethatanynSPARQL
+graph pattern can be translated in a cpSPARQL graph
+pattern with similar structure and no additional vari-
+able. Hence, no additional projection operation (SE-
+LECT) is required for answering nSPARQL queries in
+cpSPARQL.
+The proof of the following Theorem follows from
+the results in [28] except the last step since all other
+transformationstepsarethesameastheonespresented
+in [28].
+Theorem 3. Let 〈X,p,Y〉 be a SPARQL triple pattern
+with X,Y ∈ (U ∪ B) and p ∈ U, then [[〈X,p,Y〉]]rdfs
+G
+= [[〈X,τ(p),Y〉]]G for any RDF graph G.
+Proof. We need to prove only the last step since all
+other transformation steps are the same as the ones
+in [28]. That is 〈µ(X),µ(Y) ∈ [[〈X,p,Y〉]]rdfs
+G iff
+〈µ(X),µ(Y) ∈ [[〈X,τ(p),Y〉]]G.
+– (⇒)Supposethat〈µ(X),µ(Y)〉 ∈[[〈X,p,Y〉]]rdfs
+G .
+In this case, there exists p1 such that (p1 sp p2
+sp ... sp pn = p) and 〈µ(X),p1,µ(Y)〉 ∈ G
+as well as 〈µ(X), next::p1,µ(Y)〉 ∈ G. Let
+us consider now the transformed triple τ(t) =
+〈X,(next::ψ),Y〉 (where ψ = [?p : {〈?p,
+(next::sp)∗,p〉}]). The mappings for the vari-
+able ?p will be {〈?p,pi〉 | i = 1,...,n} (since
+[[ψ]]G = {〈pi,p〉 | i = 1,...,n}). Now accord-
+ing to Deﬁnitions 25 and 24, 〈µ(X),µ(Y)〉 ∈
+[[〈X,(next::ψ),Y〉]]G iff 〈µ(X),µ(Y)〉 ∈ G and
+p1 ∈ [[ψ]]G, and this condition holds.
+– (⇐) We have to prove that if 〈µ(X),µ(Y)〉 ∈
+[[〈X,(next::ψ),Y〉]]G (with ψ = [?p : {〈?p,
+(next::sp)∗,p〉}]),then〈µ(X),µ(Y)〉 ∈[[〈X,p,Y〉]]rdfs
+G .
+Supposethat〈µ(X),µ(Y)〉 ∈[[〈X,(next::ψ),Y〉]]G.
+In this case, there exists p1 such that 〈µ(X),
+next::p1,µ(Y)〉 ∈ G and p1 ∈ [[ψ]]G, that is,
+〈p1,next::sp,p2〉, ..., 〈pn−1,next::sp,pn =
+p〉 ∈ G.Therefore,〈µ(X),µ(Y)〉 ∈[[〈X,p,Y〉]]rdfs
+G
+since 〈p1,(next::sp)∗,p〉 and 〈µ(X), next::p1,
+µ(Y)〉 ∈ G.
+5. Complexity of evaluating cpSPARQL
+The complexity of cpSPARQL is given with respect
+to the following problem:
+Problem: Evaluation problem for cpSPARQL regular
+expressions
+Input:AnRDFgraphG,acpSPARQLregularexpres-
+sion R, and a pair 〈a,b〉
+Question: Does 〈a,b〉 ∈ [[R]]G?
+We follow [28] to store an RDF graph as an adja-
+cency list. That is, every u ∈ voc(G) is associated
+with a list of pairs α(u). For instance, if 〈s,p,o〉 ∈ G,
+then 〈next::p,o〉 ∈ α(s) and 〈edge−1::o,s〉 ∈ α(p).
+Also, 〈self::u,u〉 ∈ α(u), for u ∈ voc(G). The set of
+terms of a constrained regular expression R, denoted
+by T (R), is constructed as follows:
+T (R) ={R}if R is either axis, axis::a, or axis::ψ
+T (R1/R2) =T (R1|R2) = T (R1) ∪ T (R2)
+T (R∗
+1) =T (R1)
+Let AR = (Q,T (R),s0,F,δ) be the ε − NFA
+of R constructed in the usual way using the terms
+T (R), where δ : Q × (T (R) ∪ {epsilon}) → 2Q
+be its transition function. In the evaluation algorithm,
+we use the product automaton G × AR (in which
+δ′ : 〈voc(G)×Q〉×(T (R)∪{epsilon}) → 2voc(G)×Q
+is its transition function). We construct G×AR as fol-
+lows:
+– 〈u,q〉 ∈ voc(G) × Q, for every u ∈ voc(G) and
+q ∈ Q;
+– 〈v,q〉 ∈ δ′(〈u,p〉,s) iff q ∈ δ(p,s); and one of
+the following conditions satisﬁed:
+∗ s = axis and there exists a s.t. 〈axis::a,v〉 ∈
+α(u)
+∗ s = axis::a and 〈axis::a,v〉 ∈ α(u)
+∗ s =axis::ψ andthereexistsbs.t.〈axis::b,v〉 ∈
+α(u) and b ∈ [[ψ]]G
+Algorithm 2 (Eval) solves the evaluation problem
+for a constrained regular expression R over an RDF
+graph G. This algorithm is almost the same as the one
+in[29],whichsolvestheevaluationproblemfornested
+regular expressions R over an RDF graph G in time
+O(|G|.|R|). The Eval algorithm calls the Algorithm 1
+(LABEL), which is an adaptation of the LABEL algo-
+rithm of [29] in which we modify only the ﬁrst two
+steps.
+Theorem 4 (Complexity of cpSPARQL evaluation).
+Eval solves the evaluation problem for constrained
+regular expression in time O(|G|.|R|).
+
+12 Faisal Alkhateeb and Jérôme Euzenat / Comparison of constrained regular expressions for answering RDF-path queries modulo RDFS
+Algorithm 1 LABEL(G, exp):
+1. for each axis :: [ψ] ∈ D0(exp) do
+2. call Label(G, exp’) //where exp′ =
+exp1/self :: p if ψ =?x :<?x,exp1,p >; exp′ =
+exp1/self :: p if ψ =?x :<?x,exp1,?y >
+3. construct Aexp, and assume that q0 is its initial
+state and F is its set of ﬁnal states
+4. construct G × Aexp
+5. for each state (u,q0) that is connected to a state
+(v,qf) in G × Aexp, with qf ∈ F do
+6. label(u) := label(u) ∪ exp
+Algorithm 2 Eval(G,R,〈a,b〉)
+Data: An RDF graph G, a constrained regular ex-
+pression R, and a pair 〈a,b〉.
+Result: YES if 〈a,b〉 ∈ [[R]]G; otherwise NO.
+for each u ∈ voc(G) do
+label(u) := ∅
+LABEL (G,R)
+construct AR (assume q0 : initial state and F : set
+of ﬁnal states)
+construct the product automaton G × AR
+if a state 〈b,qf〉 with qf ∈ F, is reachable from
+〈a,q0〉 in G × AR then
+return YES;
+else
+return NO;
+end if
+Proof. Let R be the a constrained regular expression,
+G be an RDF graph, 〈a,b〉 be a pair of nodes, AR be
+the automaton recognizing the language of R.
+Constructing the automaton of R can be done in
+NLOGSPACE as in the usual automata [33,23] (with the
+alphabet described in the text above). For simplicity
+and without loss of generality, we use the next axis
+to illustrate the construction of the product automa-
+ton. This is because the axis determines the node to be
+checked(subject,predicateorobject)andthusdoesnot
+affecttheconstruction.Theconstructionoftheproduct
+automaton is done as follows:
+– If R = axis ::]?x : TRUE[ then checking
+whether the pair 〈a,b〉 is in [[R]]G can be done
+in linear time (i.e. O(|G|)) since it is sufﬁcient to
+substitute each node n to ?x and check whether
+〈a,n,b〉 is in G (according to the axis).
+– Otherwise, call the Eval algorithm (where D0 is
+deﬁned as done in [29]). Note that if 〈si,next ::
+[Filter(?x)],sj〉 ∈ AR and 〈ni,next :: p,nj〉 ∈
+G, then add 〈sj,nj〉 to the product automaton if
+p satisﬁes the SPARQL ﬁlter constraint by substi-
+tuting only the node p to the variable ?x. Check-
+ing if a node n satisﬁes a SPARQL ﬁlter con-
+straint can be done in O(1).
+So, constructing the product automaton (G × AR)
+canbedoneintimeO(|G|.|R|).Hence,checkingifthe
+pair 〈a,b〉 ∈ [[R]]G is equivalent to checking if the lan-
+guage accepted by (G × AR) is not empty, which can
+be done in O(|G|.|R|) (as in the case of usual regu-
+larexpressions[33,23])andnestedregularexpressions
+[29].
+6. On the expressiveness of cpSPARQL and
+nSPARQL
+In this section, we compare the expressiveness of
+cpSPARQLwithnSPARQL.Weidentifyseveralasser-
+tions which together show that cpSPARQL is strictly
+more expressive than nSPARQL and that even if
+nSPARQL were added projection, it would remain
+strictly less expressive than CPSPARQL.
+Nested regular expressions (nSPARQL) cannot ex-
+press all (SPARQL) triple patterns
+Although it is shown in [28,29] that SPARQL triple
+patterns can be encoded by nested regular expressions,
+triple patterns with three variables (subject, predicate,
+object) could not be expressed by nested regular ex-
+pressions since variables are not allowed in nested reg-
+ular expressions. The reader may wonder if whether
+this is useful or not. The following query is a useful
+example:
+SELECT *
+WHERE ?s foaf:name "Faisal". ?s ?p ?o .
+That could be used to retrieve all RDF data about
+a person named "Faisal". However, cpSPARQL triple
+patterns are proper extension of SPARQL triple pat-
+terns and thus the above query could be expressed by
+the following query:
+SELECT *
+WHERE ?s next::foaf:name "Faisal".
+?s next::]?p:TRUE[ ?o .
+nSPARQL without SELECT cannot express all
+CPSPARQL
+
+Faisal Alkhateeb and Jérôme Euzenat / Comparison of constrained regular expressions for answering RDF-path queries modulo RDFS 13
+We show in the following that some queries, which
+can be expressed by CPSPARQL, can only be ex-
+pressedinnSPARQLwiththeprojection(theSELECT
+operator):
+Assume that one wants to retrieve pairs of distinct
+nodes having a common ancestor. Then the following
+nSPARQL pattern can express this query:
+{〈?person1,(next::ascendant)+/
+(next−1::ascendant)+,?person2〉,
+Filter(!(?person1 =?person2))}
+The same query with the restriction that the name of
+the common ancestor should contain a given family
+name, for instance "alkhateeb", requires the use of ex-
+tra variable to pose the constraint:
+{〈?person1,(next::ascendant)+,?ancestor〉,
+〈?person2,(next::ascendant)+,?ancestor〉,
+FILTER(!(?person1 =?person2)
+&&(regex(?ancestor,”ˆalkhateeb”))}
+Notice that the evaluation of this graph pattern is
+the mapping {?person1 ← p1, ?ancestor ← p3,
+?person2 ← p2}. Therefore, to obtain the desired re-
+sult, the projection operator must be performed:
+µ?person1,?person2(
+{〈?person1,(next::ascendant)+,?ancestor〉,
+〈?person2,(next::ascendant)+,?ancestor〉,
+FILTER(!(?person1 =?person2)
+&&(regex(?ancestor,”ˆalkhateeb”))})
+So,theabovequerycannotbeexpressedinnSPARQL
+without the use of SELECT, which is not allowed in
+nSPARQL [29]. Besides, any SPARQL query that use
+the SELECT over a set of variables such that there ex-
+ists at least one existential variable, i.e. a variable not
+intheSELECT,usedinaFILTERconstraintcannotbe
+expressed by nSPARQL graph patterns.
+However, the following CPSPARQL graph pattern
+could be used to express the above query:
+{〈?person1,(next::ascendant)+
+/self::[?ancestor :
+FILTER(regex(?ancestor,”ˆalkhateeb”))]
+/(next−1::ascendant)+,?person2〉,
+Filter(!(?person1 =?person2))}
+ThisshowsthatthisremarkappliesevenforSPARQL
+queries which do not require projection!
+nSPARQL cannot express all cpSPARQL, even
+with SELECT
+Inthefollowing,weshowthatthereexistsacpSPARQL
+regular expression that cannot be expressed in a nested
+regular expression as well as some natural and useful
+queries that can be expressed in CPSPARQL patterns
+cannot be expressed in nSPARQL patterns even with
+the SELECT operator.
+If one wants to restrict the query of Example 3 such
+that every stop is a city in the same country (for exam-
+ple, France), then the following nested regular expres-
+sion expresses this query:
+〈?city1,(next :: [(next :: sp)∗ /self :: transport]/self ::
+[next :: cityIn/self :: France])+,?city2〉
+This query also could be expressed in the following
+constrained regular expressions:
+〈?city1,(next :: [ψ1]/self :: [ψ2])+,?city2〉,
+where:
+ψ1 =?x : {〈?x,(next :: sp)∗,transport〉}, and
+ψ2 =?x : {〈?x,next :: cityIn,France〉}
+If one wants that each stop satisﬁes a speciﬁc con-
+straint, e.g., cities with a population size larger than
+20,000 inhabitants, and each transportation mean be-
+longs to Air France, i.e., its URI is in the airfrance do-
+main name. Then this query is expressed by the fol-
+lowing constrained regular expression:
+P = 〈?city1,(next :: [ψ1]/self :: [ψ2])+,?city2〉,
+where:
+ψ1 =?x : {〈?x,(next :: sp)∗,transport〉. FILTER
+(regex(?x,”www.AirFrance.fr/”))}, and
+ψ2 =?x : {〈?x,next :: size,?size〉. FILTER
+(?size > 20,000)}
+However,thisquerycannotbeexpressedbyanested
+regular expression, since it is not possible to apply
+constraints, such as SPARQL constraints, in the nodes
+traversed or expressed by nested regular expressions.
+Only navigational constraints can be expressed. Addi-
+tionally, ψ2 could be rewritten with a FILTER expres-
+sion:
+ψ2 =?x :〈?x,next :: size[?size :FILTER(?size >
+20,000)]/next−1 :: size,?x〉.
+In this case, the ?size variable is not exported.
+Hence,theabovequerycanbeexpressedbyacpSPARQL
+regular expression without requiring the SELECT op-
+eration. This cannot be expressed by a nested regular
+expression.
+
+14 Faisal Alkhateeb and Jérôme Euzenat / Comparison of constrained regular expressions for answering RDF-path queries modulo RDFS
+Theorem5. Thereexistsaconstrainedregularexpres-
+sion R1 such that there is no nested regular expression
+R2 with [[R1]]G = [[R2]]G, for every RDF graph G.
+Proof. We use a simple counter-example that cannot
+be expressed in nSPARQL. Consider the RDF graph
+G of Figure 3 representing transportation means be-
+tween cities and each city has a population size less
+than 20,000:
+If one wants that each stop satisﬁes a speciﬁed con-
+straint,e.g.,citieswithapopulationsizelargerthan20,
+000 inhabitants, this may be expressed by the follow-
+ing constrained regular expression:
+P = 〈?city1,(next :: transport/self :: [ψ1])+,
+?city2〉, where:
+ψ1 =?x : {〈?x,next :: size,?size〉. FILTER
+(?size > 20,000)}
+[[P]]G = ∅ since the population size for all cities is
+less than 20,000.
+As nSPQRAL does not allow to constraint the val-
+uesofthenodestraversedbypaths,thisquerycouldbe
+only expressed in nSPARQL by enumerating the val-
+ues of the population size that are larger than 20,000
+(say v1,...,vn) as in the following nested regular ex-
+pression (of course by assuming the literals are fol-
+lowed to be used in nested regular expressions which
+is not the case in the current deﬁnition of nSPARQL):
+nexp1 = 〈?city1,(next :: transport/self ::
+[next :: size/self :: (v1|...|vn)])+,?city2〉
+However, there are inﬁnite number of values larger
+than 20,000.
+The above query could be partially expressed in
+nSPARQL without constraining the values of the size
+as in the following nested regular expression:
+nexp2 = 〈?city1,(next :: transport)+,?city2〉
+However, [[nexp2]]G 6= ∅ and so the above query
+cannot be expressed by a nested regular expression.
+This owes to the fact that nSPARQL does neither
+allow applying constraints (such as SPARQL FIL-
+TER constraints) in the nodes traversed or expressed
+by nested regular expressions nor the variables (it
+is required to have an extra variable to express the
+SPARQL FILTER constraints for the size inside the
+path expression). So, any nested regular expression
+nexp,wouldhavethe[[nexp]]G 6= ∅.Onlynavigational
+constraints can be expressed.
+The only way to express variables and constraints is
+outside nested regular expressions, i.e., in the subject
+and/or object position of triple patterns. This could be
+expressed by using ﬁxed length nested regular expres-
+sion to catch the size by a variable "?size" and then
+expressing that FILTER constraint on that variable.
+cpSPARQL can express all nSPARQL
+On the other hand, any nested regular expression R
+could be translated to a constrained regular expression
+R1 = trans(R) as follows:
+1. if R is either axis or axis::a, then trans(R) =
+R;
+2. ifR = R1/R2,thentrans(R) = trans(R1)/trans(R2);
+3. ifR = R1|R2,thentrans(R) = trans(R1)|trans(R2);
+4. if R = (R1)∗, then trans(R) = (trans(R1))∗;
+5. if R = exp1 :: [exp2], then trans(R) = exp1 ::
+[ψ], where:
+– ψ =?x : {〈?x,trans(exp3),p〉}, if exp2 =
+exp3/self :: p
+– ψ =?x : {〈?x,trans(exp2),?y〉}, otherwise
+The last clause of this expression is only here be-
+cause cpSPARQL, as nSPARQL, cannot introduce any
+new variable beside ?x. It is thus necessary to express
+asatriplethattheconstraintissatisﬁedandendswhere
+it started. However, authorizing a variable as object of
+the predicate would not change the complexity of the
+languageandwouldallowtogetridoftheextrareverse
+path.
+This transformation process is illustrated by the fol-
+lowing example.
+Example 9 (From nSPARQL to cpSPARQL). Con-
+sider the following nested regular expression:
+R1 = (next :: [(next :: sp)∗/self :: transport])+
+according to the transformation rules above, the con-
+strained regular expression equivalent to this expres-
+sion R2
+= trans(R1)
+= trans((next :: [(next :: sp)∗/self :: transport])+)
+= (trans(next :: [(next :: sp)∗/self :: transport]))+
+= next :: [?x : {〈?x,trans((next :: sp)∗),transport〉}]
+= next :: [?x : {〈?x,(trans(next :: sp))∗,transport〉}]
+= next :: [?x : {〈?x,(next :: sp)∗,transport〉}]
+by successively using rules 4, 5, 4, 1, and 5.
+
+Faisal Alkhateeb and Jérôme Euzenat / Comparison of constrained regular expressions for answering RDF-path queries modulo RDFS 15
+C0 C1 C2 ... Cn
+18,000 15,000 12,000 ... 10,000
+transport transport transport transport
+size size size size
+Fig. 3. An RDF graph representing cities and their population sizes connected by transportation means.
+7. Implementation
+CPSPARQL has been implemented in order to eval-
+uate its feasibility2. cpSPARQL does not formally
+exist as an independent language but is covered by
+CPSPARQL. This implementation has not been partic-
+ularly optimised. It passes the W3C compliance tests
+for SPARQL 1.0 (but 5 tests involving the non imple-
+mented DESCRIBE).
+Experimentshavebeencarriedoutforevaluatingthe
+behaviour of the system and test its ability to correctly
+answerSPARQL,PSPARQL,andCPSPARQLqueries
+in reasonable time (against in memory graphs). In par-
+ticular, it showed the capability at stake here: answer-
+ing SPARQL queries with the RDFS semantics.
+It has not been possible to us to compare the perfor-
+mance of our CPSPARQL implementation with other
+proposals. However, the experimentation has allowed
+to make interesting observations. In particular, the
+CPSPARQL prototype shows that queries with con-
+straintsareansweredfasterthanthesamequerieswith-
+out constraints. Indeed, CPRDF constraints allow for
+selectingwhilematching(ontheﬂyandnotaposterior
+ﬁltering for paths) path expressions with nodes satis-
+fying constraints. The implemented prototype follows
+this natural strategy, thus reducing the search space.
+Thisstrategypromisestobealwaysmoreefﬁcientthan
+a strategy which applies constraints a posteriori. More
+details are available in [2].
+Theimplementationalsohasbeentestedthoroughly
+in [7] and the results show that PSPARQL had better
+performances than other implementations of SPARQL
+with paths3.
+Contrary to CPSPARQL, nSPARQL is not imple-
+mented at the moment, so we must leave the experi-
+mental comparison for future work.
+2The prototype is available at http://exmo.inrialpes.
+fr/software/psparql.
+3The queries and the RDF data that are used for the experimental
+results can be found in
+http://www.dcc.uchile.cl/~jperez/papers/
+www2012/
+8. Related work
+The closest work to ours, nSPARQL, has been pre-
+sented and compared in detail in Section 3 [28]. How-
+ever, there are other work which may be considered
+relevant.
+RQL [19] attempt to combine the relational algebra
+with some special class hierarchies. It supports a form
+of transitive expressions over RDFS transitive proper-
+ties, i.e. subPropertyOf and subClassOf, for navigat-
+ing through class and property hierarchies. Versa [25],
+RxPath [32] are all path-based query languages for
+RDF that are well suited for graph traversal. SPAR-
+QLeR [20] extends SPARQL by allowing query graph
+patterns involving path variables. Each path variable
+is used to capture simple, i.e. acyclic, paths in RDF
+graphs, and is matched against any arbitrary compo-
+sition of RDF triples between given two nodes. This
+extension offers functionalities like testing the length
+of paths and testing if a given node is in the found
+paths. SPARQ2L [6] also allows using path variables
+in graph patterns. However, these languages have not
+been shown to evaluate queries with respect to RDF
+Schema and their evaluation procedure has not been
+provedcompletetoourknowledge.Moreover,answer-
+ing path queries to capture acyclic (simple) paths is
+NP-complete [23] (see also [7]).
+Path queries (queries with regular expressions) can
+be translated into recursive Datalog programs over a
+ternary relation triple 〈node, predicate, node〉, which
+encodes the graph [1]. This could provide a way to
+evaluate path queries with Datalog. However, such
+translations may yield to a Datalog program whose
+evaluation does not terminate. On the other hand, sev-
+eral techniques can be used to optimize path queries
+andprovidegoodresultsincomparisonwithoptimized
+Datalog programs as shown in [14]. Recently [11] ex-
+tended Datalog in order to cope with querying modulo
+ontologies. Ontologies are in DL-Lite and, in partic-
+ular DL-LiteR which contains the fragment of RDFS
+considered here. However, this work only considers
+conjunctive queries which is not sufﬁcient for evaluat-
+ing SPARQL queries which contains constructs such
+
+16 Faisal Alkhateeb and Jérôme Euzenat / Comparison of constrained regular expressions for answering RDF-path queries modulo RDFS
+as UNION, OPT and constraints (FILTER) which are
+notfoundinDatalog.[8]studiedfromacomputational
+complexity the same fragments with queries contain-
+ing UNION in addition. However, given that this frag-
+ment is larger than the simple path queries considered
+in nSPARQL and cpSPARQL, the complexity is far
+higher (coNP).
+Standardization efforts have deﬁned the notion
+of inference regime under deﬁnition by the W3C
+SPARQL working group [16,15]. This notion is rel-
+evant to query evaluation modulo RDFS that is ex-
+hibited by CPSPARQL and is obviously less relevant
+to cpSPARQL and nSPARQL. One main difference
+is that we have departed from the strict deﬁnition of
+“matching graph patterns” with the use of path for ex-
+ploring the graph, and speciﬁcally the graph entailed
+by RDFS. This avoids the use of RDF graph closure
+on which strict matching can applied. CPSPARQL
+and nSPARQL use query rewriting for answering
+queries modulo RDFS, but, unlike DL-Lite rewriting
+strategies, the query are rewritten by preserving their
+structure instead of producing unions of conjunctive
+queries.
+[13] study the static analysis of PSPARQL query
+containment: determining whether, for any graph, the
+answers to a query are contained in those of an-
+other query. This is achieved by encoding RDF graphs
+as transition systems and PSPARQL queries as µ-
+calculus formulas and then reducing the containment
+problem to testing satisﬁability in the logic.
+9. Conclusion
+The SPARQL query language has proved to be
+very successful in offering access to triple stores over
+SPARQL endpoints all over the web. It is a critical ele-
+ment of the semantic web infrastructure. However, by
+limiting it to querying RDF graphs, little consideration
+has been made of the semantic aspect of RDF. In par-
+ticular, querying RDF graphs modulo RDF Schemas
+or OWL ontologies is a most needed feature.
+One possible approach for querying an RDFS graph
+G in a sound and complete way is by computing the
+closure graph of G, i.e., the graph obtained by saturat-
+ing G with all informations that can be deduced using
+a set of predeﬁned rules called RDFS rules, then eval-
+uating the query over the closure graph. However, this
+approach takes time proportional to |H| × |G|2 in the
+worst case [24].
+The query language nSPARQL [28] used nested
+regular expressions for querying RDF graphs con-
+sidering RDFS semantics without the need to com-
+pute the closure graph. In this paper, we have shown
+that CPSPARQL [3,4] can also be used for evaluating
+SPARQL queries modulo RDF Schema [2].
+More precisely, we showed that cpSPARQL, the
+fragment of CPSPARQL which is sufﬁcient for cap-
+turing RDFS semantics, admits an efﬁcient evalu-
+ation algorithm while the whole CPSPARQL lan-
+guage is in theory as efﬁcient as SPARQL is. More-
+over, we compared cpSPARQL with nSPARQL and
+showed that cpSPARQL is strictly more expressive
+than nSPARQL. It should be noticed that PSPARQL
+deﬁned in [5] and its extension CPSPARQL adopts a
+semantics based on checking the existence of paths
+(without counting them). As shown in [7], the seman-
+tics of SPARQL 1.1 speciﬁcation (as of November
+2011) [17] and in particular property paths leads to
+intractability of the speciﬁcation.
+Figure 4 shows the position of the various lan-
+guages. nSPARQL and cpSPARQL are good naviga-
+tional languages for RDF(S). However, cpSPARQL
+is an extension of SPARQL graph patterns, while
+nSPARQL does not contain all SPARQL graph pat-
+terns. Moreover, using such a path language within
+the SPARQL structure allows for properly extending
+SPARQL. It should be notice that some features (such
+as ﬁltering nodes inside expressions) are very simple
+toaddtothesyntaxandsemanticsofnestedregularex-
+pressions. In particular, these expressions are included
+in the language RPL which extends nested regular ex-
+pressions with these tests 4. However, using variables
+innestedregularexpressionsofnSPARQLrequiresex-
+tending its syntax and semantics as well as the results.
+Inordertoeasethecomparison,wedeﬁnedcpSPARQL
+as very close to nSPARQL. However, it is likely that
+more expressive fragments of CPSPARQL graph pat-
+terns keeping the same complexity may be found.
+References
+[1] S. Abiteboul and V. Vianu. Regular path queries with
+constraints. In Proceedings of the 16th ACM SIGACT-
+SIGMOD-SIGART symposium on Principles of database sys-
+tems (PODS), pages 122–133, New York, NY, USA, 1997.
+ACM.
+4urlhttp://www.pms.iﬁ.lmu.de/publikationen/diplomarbeiten/Harald.Zauner/DA_Harald.Zauner.pdf
+
+Faisal Alkhateeb and Jérôme Euzenat / Comparison of constrained regular expressions for answering RDF-path queries modulo RDFS 17
+SPARQL PSPARQL CPSPARQL
+SPARQL gp PSPARQL gp CPSPARQL gpcpSPARQL
+nSPARQL gp =
+nSPARQL
+extends
+uses
+Fig. 4. Query languages and their graph patterns
+[2] F. Alkhateeb. Querying RDF(S) with regular expressions.
+Thèse d’informatique, Université Joseph Fourier, Grenoble
+(FR), 2008.
+[3] F. Alkhateeb, J.-F. Baget, and J. Euzenat. Constrained regu-
+lar expressions in SPARQL. Research Report 6360, INRIA,
+Montbonnot (FR), 2007.
+[4] F. Alkhateeb, J.-F. Baget, and J. Euzenat. Constrained regular
+expressions in SPARQL. In H. Arabnia and A. Solo, editors,
+Proceedings of the international conference on semantic web
+and web services (SWWS), Las Vegas (NV US), pages 91–99,
+2008.
+[5] F. Alkhateeb, J.-F. Baget, and J. Euzenat. Extending SPARQL
+with regular expression patterns (for querying RDF). Journal
+of web semantics, 7(2):57–73, 2009.
+[6] K. Anyanwu, A. Maduko, and A. Sheth. SPARQ2L: towards
+support for subgraph extraction queries in RDF databases.
+In Proc. 16th international conference on World Wide Web
+(WWW), pages 797–806, 2007.
+[7] M. Arenas, S. Conca, and J. Pérez. Counting beyond a yot-
+tabyte, or how sparql 1.1 property paths will prevent adop-
+tion of the standard. In Proceedings of the 21st World Wide
+Web Conference 2012, WWW 2012, Lyon, France, April 16-20,
+2012, pages 629–638, 2012.
+[8] A. Artale, D. Calvanese, R. Kontchakov, and M. Za-
+kharyaschev. The DL-Lite family and relations. Journal of
+artiﬁcial intelligence research, 36:1–69, 2009.
+[9] J.-F. Baget. RDF entailment as a graph homomorphism. In
+Proceedingsofthe4thInternationalSemanticWebConference
+(ISWC’05), Galway (IE), pages 82–96, 2005.
+[10] D. Brickley and R. V. Guha. RDF vocabulary de-
+scription language 1.0: RDF schema. Recommenda-
+tion, W3C, 2004. http://www.w3.org/TR/2004/
+REC-rdf-schema-20040210/.
+[11] A. Calì, G. Gottlob, and T. Lukasiewicz. A general datalog-
+based framework for tractable query answering over ontolo-
+gies. In Proc. 28th ACM Principle of Database Systems con-
+ference (PODS), Providence (RI US), pages 77–86, 2009.
+[12] J. J. Carroll and G. Klyne. RDF concepts and abstract syntax.
+Recommendation, W3C, February 2004.
+[13] M. W. Chekol, J. Euzenat, P. Genevès, and N. Layaïda.
+Psparql query containment. In Proceedings of the 13th In-
+ternational symposium on database programming languages
+(DBPL), Seattle (WA US), 2011.
+[14] M. Fernandez and D. Suciu. Optimizing regular path expres-
+sionsusinggraphschemas. InProceedingsofthe14thInterna-
+tional Conference on Data Engineering (ICDE), pages 14–23,
+1998.
+[15] B. Glimm and M. Kroetzsch. SPARQL beyond subgraph
+matching. In Proc? 9th International Semantic Web Confer-
+ence (ISWC), Shanghai (CN), pages 59–66, 2010.
+[16] B. Glimm and C. Ogbuji. SPARQL 1.1 entailment regimes.
+Working draft, W3C, June 2010. http://www.w3.org/
+TR/sparql11-entailment.
+[17] S. Harris and A. Seaborne. SPARQL 1.1 query language.
+workking draft, W3C, 2010.
+[18] P. Hayes. RDF semantics. Recommendation, W3C, February
+2004.
+[19] G. Karvounarakis, S. Alexaki, V. Christophides, D. Plex-
+ousakis, and M. Scholl. RQL: A declarative query language
+for RDF. In Proc. 11th International Conference on the World
+Wide Web (WWW), Honolulu (HA US), 2002.
+[20] K. Kochut and M. Janik. SPARQLeR: Extended SPARQL
+for semantic association discovery. In Proceedings of 4th Eu-
+ropean Semantic Web Conferenc (ESWC’07), pages 145–159,
+2007.
+[21] F.ManolaandE.Miller. RDFprimer. Recommendation,W3C,
+2004. http://www.w3.org/TR/REC-rdf-syntax/.
+[22] D. L. McGuinness and F. van Harmelen. OWL Web Ontology
+Language Overview. Recommendation, W3C, 2004. http:
+//www.w3.org/TR/owl-features/.
+[23] A. Mendelzon and P. Wood. Finding regular simple paths in
+graph databases. SIAM Journal on Computing, 24(6):1235–
+1258, 1995.
+[24] S. Muñoz, J. Pérez, and C. Gutierrez. Minimal deductive sys-
+tems for RDF. In Proceedings of 4th European Semantic Web
+Conference (ESWC), Innsbruck (AT), pages 53–67, 2007.
+[25] M. Olson and U. Ogbuji. Versa: Path-based RDF query
+language, 2002. http://copia.ogbuji.net/files/
+Versa.html.
+[26] J. Pan, E. Thomas, and Y. Zhao. Completeness guaranteed ap-
+proximation for OWL DL query answering. In Proc. of the
+22nd International Workshop on Description Logics (DL), Ox-
+ford (UK), September 2009.
+[27] J. Pérez, M. Arenas, and C. Gutierrez. Semantics and com-
+plexity of SPARQL. In Proc. 5th International Semantic Web
+Conference (ISWC), Athens (GA US), pages 30–43, 2006.
+[28] J. Pérez, M. Arenas, and C. Gutierrez. nSPARQL: A naviga-
+tional language for RDF. In Proceedings of the 7th Interna-
+tional Semantic Web Conference, Karlsruhe (DE), pages 66–
+81, 2008.
+[29] J. Pérez, M. Arenas, and C. Gutierrez. nSPARQL: A nav-
+igational language for RDF. Journal of Web Semantics,
+8(4):255–270, 2010. http://www.sciencedirect.
+com/science/article/B758F-4Y95V3X-1/2/
+
+18 Faisal Alkhateeb and Jérôme Euzenat / Comparison of constrained regular expressions for answering RDF-path queries modulo RDFS
+9e5098d690fbe4d05a099f4c90a29a10.
+[30] E.Prud’hommeauxandA.Seaborne. SPARQLquerylanguage
+for RDF. Recommendation, W3C, January 2008.
+[31] E. Sirin and B. Parsia. SPARQL-DL: SPARQL query for
+OWL-DL. In Proc. 3rd OWL Experiences and Directions
+Workshop (OWLED), Innsbruck (AT), 2007.
+[32] A. Souzis. RxPath speciﬁcation proposal, 2004. http://
+rx4rdf.liminalzone.org/RxPathSpec.
+[33] M.Yannakakis. Graph-theoreticmethodsindatabasetheory. In
+Proc. 9th ACM Symposium on Principles of Database Systems
+(PODS), pages 230–242, 1990.
+Appendix
+Example 10. Consider the following RDF graph rep-
+resenting ﬂights belonging to different airline compa-
+nies and other transportation means between cities:
+{〈city1,airfrance : flight1,city2〉
+{〈city2,airfrance : flight2,city3〉
+...
+{〈cityi,anothercomapny : flight1,cityj〉
+Supposethatonewantstosearchpairsofcitiescon-
+nected by a sequence of using ﬂights belonging to air-
+france company. Since there is no way to select (con-
+strain) the transportation means in nested regular ex-
+pressions,theonlywaytheusercanexpresssuchquery
+is to list all ﬂights belonging to airfrance company as
+follows:
+(airfrance : flight1|...|airfrance : flightn)+
+However, this requires the user to know in advance
+these ﬂights. Hence, independent of the RDF graph,
+the exact meaning of the above query cannot be ex-
+pressed by nested regular expressions.

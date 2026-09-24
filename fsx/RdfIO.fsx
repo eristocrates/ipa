@@ -8,7 +8,7 @@ open Iana
 #r "Turtle.dll"
 #r "RdfAsm.dll"
 open RdfAsm
-#r "FSLang.dll"
+#r "PrettierNaming.dll"
 #r "ResolvedResource.dll"
 #r "XmlDocumentationComment.dll"
 #r "NamespaceErgonomics.dll"
@@ -546,7 +546,7 @@ module RdfVocabulary =
                             match namespacedName.localName with
                             | "" -> "_namespaceIri"
                             | _ ->
-                                let binder = FSLang.VariableBinder namespacedName.localName
+                                let binder = PrettierNaming.VariableBinder namespacedName.localName
                                 binder.binding
                         let astValue = Ast.Value(binding, $"_prefixId.prefix \"{namespacedName.localName}\"")
                         let triplesWithLiteralObject = vocabulary.termTriplesWithLiteralObject namespacedName
@@ -588,6 +588,13 @@ module RdfVocabulary =
         |> Gen.mkOak
         |> Gen.run
 
+type PrefixId with
+    member this.RdfVocabulary = RdfVocabulary.fromPrefixId this
+    member this.tryRdfVocabulary =
+        try
+            RdfVocabulary.fromPrefixId this |> Some
+        with _ ->
+            None
 
 
 type PrefixedName with

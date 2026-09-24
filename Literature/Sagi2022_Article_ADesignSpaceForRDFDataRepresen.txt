@@ -1,0 +1,2319 @@
+Aalborg Universitet
+A design space for RDF data representations
+Sagi, Tomer; Lissandrini, Matteo; Pedersen, Torben Bach; Hose, Katja
+Published in:
+The VLDB Journal
+DOI (link to publication from Publisher):
+10.1007/s00778-021-00725-x
+Creative Commons License
+CC BY 4.0
+Publication date:
+2022
+Document Version
+Publisher's PDF, also known as Version of record
+Link to publication from Aalborg University
+Citation for published version (APA):
+Sagi, T., Lissandrini, M., Pedersen, T. B., & Hose, K. (2022). A design space for RDF data representations. The
+VLDB Journal, 31(2), 347-373. https://doi.org/10.1007/s00778-021-00725-x
+General rights
+Copyright and moral rights for the publications made accessible in the public portal are retained by the authors and/or other copyright owners
+and it is a condition of accessing publications that users recognise and abide by the legal requirements associated with these rights.
+- Users may download and print one copy of any publication from the public portal for the purpose of private study or research.
+- You may not further distribute the material or use it for any profit-making activity or commercial gain
+- You may freely distribute the URL identifying the publication in the public portal -
+Take down policy
+If you believe that this document breaches copyright please contact us at vbn@aub.aau.dk providing details, and we will remove access to
+the work immediately and investigate your claim.
+Downloaded from vbn.aau.dk on: May 13, 2026
+
+TheVLDBJournal(2022)31:347–373
+https://doi.org/10.1007/s00778-021-00725-x
+SPECIAL ISSUE PAPER
+AdesignspaceforRDFdatarepresentations
+Tomer Sagi1 ·Matteo Lissandrini1 ·Torben Bach Pedersen1 ·Katja Hose1
+Received:31August2020/Revised:8September2021/Accepted:9December2021/Publishedonline:21January2022
+©TheAuthor(s)2022
+Abstract
+RDFtriplestores’abilitytostoreandqueryknowledgebasesaugmentedwithsemanticannotationshasattractedtheattention
+of both research and industry. A multitude of systems offer varying data representation and indexing schemes. However,
+as recently shown for designing data structures, many design choices are biased by outdated considerations and may not
+result in the most efﬁcient data representation for a given query workload. To overcome this limitation, we identify a novel
+three-dimensional design space. Within this design space, we map the trade-offs between different RDF data representations
+employed as part of an RDF triplestore and identify unexplored solutions. We complement the review with an empirical
+evaluation of ten standard SPARQL benchmarks to examine the prevalence of these access patterns in synthetic and real
+query workloads. We ﬁnd some access patterns, to be both prevalent in the workloads and under-supported by existing
+triplestores. This shows the capabilities of our model to be used by RDF store designers to reason about different design
+choices and allow a (possibly artiﬁcially intelligent) designer to evaluate the ﬁt between a given system design and a query
+workload.
+Keywords RDF · Data representation · SPARQL · Database · Query · Knowledge graphs
+1 Introduction
+Theresourcedescriptionframework(RDF)[44]isapopular
+standard for storing and sharing factual information, pre-
+dominantly created from sources on the World Wide Web.
+RDF is represented as subject–predicate–object triples, usu-
+ally modeled as a graph, whose nodes serve as subjects and
+objects and edges as predicates. RDF stores, often called
+triplestores, are designed to support the storage of RDF data
+anditsefﬁcientqueryingbyexposingadeclarativequeryAPI
+standardizedintheSPARQLstandard[63].Interestintriple-
+stores has grown steadily over the past decade. In particular,
+both research and industry are employing these systems to
+store and query knowledge bases augmented with semantic
+B Tomer Sagi
+tsagi@cs.aau.dk
+Matteo Lissandrini
+matteo@cs.aau.dk
+Torben Bach Pedersen
+tbp@cs.aau.dk
+Katja Hose
+khose@cs.aau.dk
+1 Department of Computer Science, Aalborg University,
+Aalborg, Denmark
+annotations [59,85]. Thus, a multitude of triplestore imple-
+mentations are available, ranging from academic prototypes
+(e.g.,RDF-3X[55],Hexastore[81])andcommunityprojects
+(e.g.,JENATDB[58],andRya[64])tocommercialproducts
+(e.g., Virtuoso [24], GraphDB [57], and Neptune [13]).
+RDF data differs from relational data in the complexity
+of its structure. In practice, real-life RDF datasets are highly
+heterogeneousinstructure,especiallycomparedtorelational
+datasets[22].Thisstructuralcomplexitycausesqueryperfor-
+mance to vary substantially [3]. Converting RDF data to the
+relational model, utilizing existing, mature, RDBMS tech-
+nologies (e.g., by Oracle [20] and IBM [17]), introduces
+unique challenges due to the substantial information hetero-
+geneity and the inherent absence of a strict schema [67].
+Together with the need to accommodate increasingly large
+RDF graphs, these unique properties of RDF data have led
+researchers and companies to suggest RDF-speciﬁc designs
+rather than just mappings from RDF to relational formats.
+Reviewing the features of the numerous available systems
+reveals each to employ its own list of design choices each
+of which seem equally compelling to the casual observer.
+Recently, a different set of systems has been proposed to
+handle graph data represented as node and edge labeled
+multigraphs annotated with properties, i.e., property graphs
+123
+
+348 T.Sagietal.
+(PG) [14]. Despite the fact that both the RDF model and the
+PG model handle graph-shaped data, the two models dif-
+fer substantially in terms of the functionalities they offer.
+In particular, while RDF represents data as a set of triples,
+PG DBMS are designed to query labeled objects annotated
+with properties in the form of key-value pairs. Therefore,
+theanalysisofcoreoperationssupportedbytriplestoressub-
+stantially differs from those supported by PG DBMS. (This
+canbeseen,forinstance,bycomparingouranalysiswiththe
+operations studied in a recent PG DBMS microbenchmark
+[47].) For instance, in a PG, we can select nodes having a
+speciﬁc label and a speciﬁc attribute set to a speciﬁc type
+accessing only node objects, while in an RDF triplestore an
+equivalent query will need to query a set of triples instead.
+Although there are several surveys of the many existing
+triplestores [2,52,56,59], they are either limited to providing
+a taxonomy of the features offered by the systems (e.g., API
+and data load facilities) or classify them according to their
+underlying technology (e.g., relational versus native graph).
+Thus, these surveys offer a vast compendium of alternative
+systemsbutonlylittleinformationregardingthedesignspace
+in which their internal architecture reside.
+Instead, in this work, we provide a unifying three-
+dimensional design space across three axes: Subdivision,
+Compression,andRedundancy(SCR,seeFig.4).Thedesign
+spacedeﬁnesthedimensionsalongwhichanystoragesystem
+forRDFdata mustbe designed. We then provide a review of
+the current choices made over these dimensions as well as
+a discussion into unexplored options. To guide the analysis
+of this space and of current solutions within it, we deﬁne a
+corresponding feature space for query access patterns1 and
+acostmodeltotiethedifferentchoicesinthedesignspaceto
+theirimpactontheperformanceofspeciﬁcqueryworkloads.
+Our approach is, in part, inspired by the Data Calcu-
+lator [41]. However, while the Data Calculator focuses on
+optimizing a single low-level data structure for generic (i.e.,
+non-SPARQL-speciﬁc)dataaccessoperations,ourapproach
+works at a higher level and focuses on evaluating the set of
+data representations employed by a triplestore; choosing the
+right design choices to match the RDF access patterns this
+system must support. Thus, a triplestore system developer
+could use our approach to identify access patterns that are
+currently not optimized for by the data representations in
+their triplestore. For example, the Jena (TDB) system [58]
+does not feature any optimized data representation for ﬁl-
+ters selecting triples involving a speciﬁc data type or with a
+speciﬁclanguagetag,eventhoughtheyarequitecommonin
+1 Here,werefertoaccesspatternsaslogicaloperationsinaquerythat,
+given some input values, establish what kind of output values must be
+returned. The difference from the use of the term access patterns in the
+relational model [27] and from the term access paths [72] is described
+in Sect. 3.
+existingworkloads(seeSect.7).Thisisevidentfromanalyz-
+ing Jena’s existing data representations using our proposed
+designspace(seeTables5,6,and7).Oncethedeveloperhas
+identiﬁed this unmet pattern, they can examine which com-
+bination of decisions is available in the three design space
+dimensions they wish to employ to satisfy this new pattern.
+In this example, one possible solution would be to employ
+an additional subdivision of the existing ID space to differ-
+entiate between data types and languages. This can lead to
+a different data organization within an existing index or to a
+newaccess-pattern-speciﬁcindex.(Inthiscasewealsomove
+withintheredundancydimension.)SincetheDataCalculator
+is not aware of the presence of annotations such as language
+tagsandthepossibilitytorepresentthemseparatelybysubdi-
+viding the ID space, it cannot identify this unmet need and it
+cannot provide an optimized solution for this access pattern.
+Similarly, the Data Calculator is not aware of other RDF-
+speciﬁc access patterns, e.g., reachability and path queries.
+Moreover, Jena employs three different main triple data rep-
+resentationsbasedonstandardB+treesandidenticalinallthe
+low-level features considered by the Data Calculator. In the
+proposed access patterns feature space, we provide a way to
+differentiate between the RDF-speciﬁc access patterns each
+of these representations is required to support. Thus, we are
+able to evaluate and assess the compatibility of a set of data
+representationsusedinatriplestorewithRDF-speciﬁcaccess
+patterns.
+Our design space is based on intuitions widely shared
+acrossdifferentdatamodelsandtheirDBMS[10].However,
+these intuitions have not been formalized for RDF systems
+and existing RDF systems have not been analyzed based on
+them. We thereby make the following contributions.
+1. A design space for RDF data representations employed
+in a triplestore that is simple enough to be intuitive, yet,
+as we show, powerful enough to analyze the beneﬁts and
+trade-offs of each design choice.
+2. A review of existing triplestores positioning them in this
+design space and identifying unexplored choices.
+3. AfeaturespaceforSPARQLqueryaccesspatternsallow-
+ing to characterize query execution over RDF.
+4. Asoftwaretooltoparsequeryworkloadsandanalyzethe
+patterns used.
+5. A comprehensive analysis of how design choices impact
+systemperformancewhenansweringaccesspatternswith
+speciﬁc features.
+6. An empirical evaluation of the prevalence of access pat-
+terns in commonly used query workloads.
+The rest of the paper is structured as follows: Section 2
+providespreliminarydeﬁnitionsfollowedbythequeryaccess
+patternfeaturespaceinSect.3.Wethenintroduceourdesign
+space in Sect. 4, followed by the review of existing systems
+123
+
+AdesignspaceforRDFdatarepresentations 349
+Fig.1 Example of RDF data in graph format
+(Sect. 5). Section 6 presents our impact analysis, distilling
+important ﬁndings obtained by the analysis of the systems
+design in our design space. This analysis is followed by the
+empirical evaluation in Sect. 7. Finally, we highlight the dif-
+ferences between this work and previous surveys in Sect. 8
+and conclude by discussing the implications of our analysis
+and ﬁndings in Sect. 9.
+2 Preliminaries
+In this section, we formally deﬁne the basic concepts of
+RDF graphs and RDF graph patterns. Both revolve around
+the concept of RDF triples [44]. An RDF triple is a factual
+statement comprised of a subject (s), a predicate (p), and an
+object(o).Subjectsandobjectscanberesourcesidentiﬁedby
+International Resource Identiﬁers (IRI), anonymous nodes
+identiﬁed by internal IDs (called blank nodes), or literals.
+PredicatesarealwaysIRIs(resources)andneverliterals[62].
+For example, the triple (ex:iri1, rdfs:label, "Human") states
+thattheresourceidentiﬁedbytheIRIex:iri1hasanrdfs:label
+which istheliteralstring"Human". Collectively, nodes (i.e.,
+resources, blank nodes, and literals) can be referred to as
+atoms. RDF allows to explicitly record knowledge codiﬁed
+as a graph where subjects and predicates serve as nodes and
+triples as edges.
+Deﬁnition1 (RDF Triple/Statement & Graph) Given a set
+of IRIs I, blank nodes B, and literals L, a triple (s, p,o) ∈
+(I ∪B)×(I)×(I ∪B ∪L) is called an RDF triple. In the
+(s, p,o)triple,alsocalledanRDFstatement,s isthesubject,
+p is the predicate, and o is the object. An RDF graph G is a
+set of RDF triples.
+Example1 ConsiderthegraphinFig.1,whichisagraphical
+representation of a set of triples. In this case, ex:iri1,
+ex:iri3, rdfs:label, and ex:Sex are examples of
+IRIs in I, the ﬁrst two with the role of nodes and the second
+two with the role of predicates. On the other hand, "11M"
+and 2018 are literals in L. Finally, (ex:iri1, ex:Sex,
+ex:iri3) is an (s, p, o) triple.
+AnRDFgraphisqueriedbyissuingaSPARQL[63]query
+toanevaluationengine,calledatriplestore,whosecorefunc-
+tionalityistocomputeanswersbasedonthegraphstructures
+matching it. SPARQL queries contain one or more basic
+graph patterns, which are sets of triples with zero or more
+of their components replaced by variables, formally deﬁned
+as follows.
+Deﬁnition2 (Basic Graph Pattern [62]) Assume an inﬁnite
+countable set of variables X. A Basic Graph Pattern (BGP)
+P is deﬁned as a conjunction of a ﬁnite set of triple patterns
+P = {t1,...,tn}, with ti ∈ P being a triple pattern deﬁned
+as ti∈(I∪X)×(I ∪ X)×(I∪L∪X).
+Thus,triplepatternsare(s, p,o)tripleswhereanyposition
+may be replaced by a variable. Solutions to the variables are
+foundbymatchingthetriplepatternsintheBGPwithtriples
+in the RDF graph.
+Moreover, there are special types of patterns that match
+sequences of edges satisfying a speciﬁc set of predi-
+cates, e.g., all nodes reachable by an arbitrary sequence of
+ex:childOfpredicates.Thesepatternsarecalledproperty
+paths.Theyaredeﬁnedviaaspecializedformofexpressions
+called path expressions (similar to regular expressions) and
+offer a succinct way to write parts of basic graph patterns
+andalsoextendmatchingoftriplepatternstoarbitrarylength
+paths [35].
+Deﬁnition3 (Property paths [35]) SPARQL 1.1 deﬁnes a
+property path p recursively as follows. A property path is
+(1) any resource a∈I; (2) given property paths p1 and p2,
+a property path is either a sequence of paths denoted by
+p1/p2, a disjunction paths denoted by p1|p2, a negation of
+a path denoted by ˆp1, a sequence of zero or more of the
+same path denoted by p1∗, a sequence of one or more rep-
+etitions of the same path denoted by p1+, or either zero or
+one occurrences of the path denoted by p1?; alternatively
+(3) given resources a1,...,an∈I, then any of the follow-
+ing expressions !a1,!∧a1 !(a1|...|an), !(∧a1|...|∧an
+) and
+!
+(
+a1|...|aj
+∣∣∧ aj+1|...|∧an
+)
+where ! denotes negation, ∧
+denotes inversion and | denotes disjunction.
+Hence, property paths are expressions over vocabulary
+I of all IRIs [86]. The language does not allow to express
+negated property paths, but it is possible to express negation
+on IRIs, inverted IRIs and disjunctions of combinations of
+IRIs and inverted IRIs. A property path triple is a tuple t of
+the form (s,p,o), where s,o∈(I∪X) and p is a property
+123
+
+350 T.Sagietal.
+path. Such a triple is a graph pattern that matches all pairs
+of nodes 〈s,o〉 in an RDF graph that are connected by paths
+that conform to p.
+In its simplest form, a SPARQL query has the form
+“SELECT V WHERE P”, with P = {t1,... ,tn} being a set
+of triple patterns (BGP). Optionally, one or more FILTER
+clauses further constrain the variables in P. Let XP denote
+the ﬁnite set of variables occurring in P, i.e., XP ⊂ X
+[63], then V is the vector of variables returned by the query
+such that V ⊆ XP . Additional operators such as UNION
+or OPTIONAL allow more than one BGP in a query by
+deﬁningthenon-conjunctivesemanticsoftheircombination.
+Finally, SPARQL queries can also make use of GROUP BY
+and aggregate operators.
+SPARQLqueriesaredeclarativeandarethereforedesigned
+tobedecoupledfromthephysicaldataaccessmethods2 used
+to retrieve the data. This decoupling allows speciﬁc triple-
+store implementations to use different data representations
+andqueryprocessingdesignstodynamicallymatchanappro-
+priate execution plan with a given query. Furthermore, when
+answeringaquery,asingleBGPcanbedecomposedintosev-
+eral component BGPs and subsequently recombined before
+or after each BGP is solved.
+SPARQL queries, as traditional queries, can also specify
+howtochangethecontentofthegraph.Inthiscase,thequery
+can either list a set of new RDF triples to be inserted into the
+graph or a set of triples to be deleted from the graph.
+3 Accesspatterns
+TodesignaperformantRDFtriplestore,itisofcrucialimpor-
+tance not only to understand the type of information that it
+will store but also how this information will be queried, i.e.,
+theexpectedqueryworkload.Speciﬁcally,SPARQLqueries,
+decomposed into BGPs and their associated triple patterns,
+access the data representation in different ways. In this sec-
+tion,wedescribehowSPARQLqueriesandtheirconstituent
+BGPs can be analyzed to identify standard access patterns.
+Deﬁnition4 (Access Pattern) An access pattern is the set of
+logical operations that, given a set of variable bindings over
+a graph, determine what data to access (and optionally to
+change) and what output to produce.
+Notethatthetermisuseddifferentlybyrelationalmodel[27]
+analyses, where, given a relation, it only refers to what data
+is required as input and what tuples of the relation to pro-
+duce as output. Moreover, this concept also differs from the
+concept of access paths, which refers instead to alternative
+datastructuresthatcanbenavigatedtoreachthedesireddata
+2 Access methods are low-level algorithms and data structures for
+organizing and accessing data [37].
+[72].Theneedforsatisfyingtherequirementsoftheseaccess
+patterns guides the selection and design of appropriate data
+representationsalongthedesignspacedimensionsdeﬁnedin
+the following section.
+Given a query and a speciﬁc BGP from the query, the
+access pattern is determined by the triple patterns in the
+BGP and any additional operators assigned to it from the
+SPARQLquery,e.g.,ﬁlters,grouping,oraggregations.Here,
+we identify the feature space of access patterns (summa-
+rized in Table 1). This feature space is comprised of six
+dimensions (each dimension containing a set of alternative
+features), namely:
+– Constants the presence of constant values (as opposed
+to variables which have bindings).
+– Filter The presence (or absence) of a ﬁlter on a range of
+values.
+– Traversal The complexity and type of the traversal
+described by different triple patterns of the BGP.
+– Pivot HowdifferenttriplepatternsoftheBGParelinked
+together by some common atom in the BGP (here called
+a pivot).
+– Return The information expected to be returned.
+– Write Whether and how the BGP causes a change in the
+contents of the database.
+Constants A common feature of any BGP is the pres-
+ence of variables in one or more of the subject (s), predicate
+(p), or object (o) positions (see Deﬁnition 2). The presence
+of a variable requires ﬁnding all the triples that match the
+remaining (non-variable, hence constant) positions. There-
+fore,sincethetriplestoremustﬁndalltriplesthatcontainthe
+same constants in those positions, their presence in the BGP
+provides higher selectivity that can be exploited by ﬁlter-
+ing and indexing schemes. In particular, a triple pattern that
+is fully instantiated translates into an existence clause for a
+single speciﬁc triple. Partially instantiated BGPs are those
+where some of the (s, p, o) positions are expressed as vari-
+ables.Finally,whenallthree(s, p,o)positionsarevariables,
+we have an uninstantiated access pattern which matches all
+the triples in the database.
+Filter Filters with conditions limiting the values that can
+be bound to one or more variables within a speciﬁc subset.
+Since ﬁlter operators have proper semantics deﬁned for lit-
+erals, and since literals can only appear as objects in a triple,
+ﬁlter operators retain triples based on the value assumed by
+a variable in the object position. Filter operations usually
+deﬁneopenintervals(e.g.,?o > 10),butwhencombinedthe
+query engine can translate them into closed intervals (e.g.,
+10 >?o > 100). Moreover, for SPARQL, a special type of
+ﬁlters depends on the type of the object. In practice, a query
+could return only values that are all literals or all IRIs, or all
+blank nodes, i.e., a ﬁlter based on their membership to L, I,
+123
+
+AdesignspaceforRDFdatarepresentations 351
+Table1 Feature space of access patterns for a SPARQL query
+or B. For this purpose, SPARQL has special native opera-
+tors isLiteral, isBlank, and isURI. Similarly, RDF
+literal strings can be annotated with language tags allowing
+a query to ﬁlter based on those tags. For instance, to distin-
+guish that the string “Rome” is in French and not in English,
+RDF represents it as "Rome"@fr instead of "Rome"@en.
+Hence, a query could select only strings marked as @fr.
+TraversalTraversaltypesdeterminethenumberoftriples
+thatneedtobetraversedorconsidered,substantiallyimpact-
+ing the query’s complexity. We identify three cases, namely
+(i) 1-hop traversal s→o for a given speciﬁc predicate p; (ii)
+k-hops for a given sequence of predicates p1,..., pk; and
+(iii) a path for an unconstrained number of hops over some
+predicate p.Excludingthesimple1-hop,theothertraversals
+are usually expressed by (and referred to as) property paths
+[62].Inallcases,atraversalcangoineitherdirection(givena
+source,ﬁndtargets,orgivenatarget,ﬁndallsources).More-
+over, in traversals with more than one hop, the intermediate
+nodes are not required to be returned.
+Pivot Related to traversals, an essential feature of a BGP
+istheabilitytoconnectmultipletriplepatternsinotherstruc-
+tural forms than a sequence. When an atom appears in two
+or more different triple patterns of the BGP, we refer to it
+as a pivot. We note that the pivot can appear in the same
+position, e.g., always in the subject position, or in differ-
+ent positions, e.g., subject of one triple pattern and object
+in another. This feature effectively determines the topology
+of the graph structure described by the query and can serve
+as the building block for more complex structures such as
+stars and snow-ﬂakes [16]. We use the term pivot and not
+join to separate between the access pattern required (pivot)
+and its physical instantiation (e.g., a join operation), which
+is dependent on the data representation. Some speciﬁc data
+representationscanspeeduppivotoperations,avoidingrela-
+tional table join-type operations altogether. In particular, we
+distinguishbetweenapivotinvolvingonlytwotriplepatterns
+and a pivot where the same variable is shared between more
+thantwotriplepatterns,e.g.,inastarpattern[77].Inthelatter
+case, recent studies have shown the advantage in employing
+worst-caseoptimaljoinalgorithms[38]wheremultipletriple
+patterns sharing a pivot can be evaluated altogether. More-
+over,whileapivotovertheobjectofonetripleandthesubject
+of another can be seen as a 2-hop traversal, in general, one
+cannotcategoricallysaythatusingtwopivotsisbetterthana
+2-hopreachabilityindex.Thus,inouranalysis,thesefeatures
+are considered separately.
+Return The solution to a SPARQL query is the set (or a
+subset) of the bindings of atoms (from the matching triples)
+tosomevariables.GivenaBGP,mostqueriesreturnallvari-
+ablebindingsthatmatchthetriplepattern.Yet,inothercases
+not all matching triples and variable bindings are directly
+returned in the query result. When only a subset of the vari-
+ables are returned, this may cause duplicate values to be
+returned, representing all of the triples found to match the
+BGP. We name this case Values (all) since the query returns
+values and all duplicates are returned (Table 1). When the
+DISTINCT keyword is used, only the set of distinct bind-
+ings for each variable is required. This case is named Values
+(distinct).Moreover,somequeriescouldrequirethebindings
+for some variable to be returned in some predeﬁned order.
+We refer to this case as Values (sorted). For some queries,
+it is sufﬁcient to identify whether a variable binding exists
+satisfying the pattern, but we are not required to return the
+binding. In some other cases, a query just needs to verify
+whether a speciﬁc path exists or vice versa; when a speciﬁc
+connectiondoesnotexist,thisisalsoaddressedbyanegation
+onanexistencecheck.SPARQL ASKqueriesareanextreme
+example where the entire query returns no variable bindings
+but only the value true (exists) or false (does not exists) for
+a speciﬁc BGP. Finally, a query could be required to return
+aggregated values, i.e., the count of matchings for a BGP or
+max and min values for literals bindings.
+Write SPARQL allows not only to retrieve information
+from the database but also to modify its contents, i.e., write
+operations. Note that update operations are often unsup-
+ported, requiring a deletion and subsequent insertion of new
+123
+
+352 T.Sagietal.
+Fig.2 SPARQL query with annotated access patterns
+triples instead. We consider these access patterns to dis-
+tinguish the case of read-only workloads from read-write
+workloads.
+Example query analysis Consider the example in Fig. 2
+(from a WikiData query log [16]) retrieving location coor-
+dinates of archaeological sites. Property path wdt:P31/
+wdt:P279* wd:Q1190554 is of the form p1 / p2*
+o, meaning that it would match two alternative paths: (1)
+1-hop traversals over p1 = wdt:P31 reaching the target
+node o=wd:Q1190554 directly, and (2) *-hop traversals
+startingwithoneedgefor wdt:P31andreachingtheobject
+throughasequenceofarbitrarilylongpathsmatchingthep2
+= wdt:P279 triple pattern. Hence, the query contains two
+1-hop traversals (marked with stars, one in each direction,
+since wdt:P279* is optional) and a composite property
+path(wdt:P31/wdt:P279*,seeDeﬁnition3).Itcontains
+atriplepatternwithconstantsinboth(p)and(o)(highlighted
+in dashed blue) and two triple patterns with a constant only
+in (p) (in solid blue). Moreover, the query contains both a
+closed range ﬁlter and two different special ﬁlters: one for
+the DATATYPE and one for the LANG property of literals.
+Finally, the ?event variable is a 3-way pivot, which can
+also be executed as a set of binary s ≡ s pivot access pat-
+terns.
+Therefore,thisfeaturespaceallowsustocharacterizeeach
+querywiththerequirementsofthecorrespondingaccesspat-
+ternsneededtoanswerit.Inthefollowing,wedeﬁneadesign
+space for data representations. Decisions for the different
+dimensions within the design space impact how efﬁciently
+thequery’saccesspatternsaresupportedbytheresultingdata
+representations.
+4 AdesignspaceforRDFdata
+representations
+Triplestores implement a set of data representations that
+support the data access patterns needed to solve the BGPs
+as described in the previous section. A data representation
+stores a subset of the graph G⊆G. Given an access pattern
+comprised of a BGP P, a vector of variables to return V,
+and optionally ﬁlter and aggregation operations over these
+variables O,adatarepresentationtoanswerthegivenaccess
+pattern needs to provide a way to retrieve the values of V
+fromtheinformationstoredinG ortomodifyG accordingly
+to V. Therefore, given an access pattern A and a data repre-
+sentation D, if D holds the information necessary to answer
+the access pattern A, we want to evaluate the performance
+of D to provide the correct instantiations of V given P and
+O. Thus, the question is what is the cost, in terms of time,
+neededtocomputetheinstantiationsofVandexecuteAover
+D.Answeringsuchaquestionallows,giventwodistinctdata
+representations, to select the most appropriate one.
+In this section, we begin by deﬁning a basic cost model
+(Sect. 4.1) and the notion of compatibility between access
+patterns and data representations (Sect. 4.2). Then, we pro-
+pose a design space for data representations over which
+design decisions can be made (Sect. 4.3). Together, these
+allow the evaluation of ﬁt between an access pattern and a
+design choice which is later showcased in Sect. 6.
+4.1 Costmodel
+ToansweraBGPusingaparticulardatarepresentationincurs
+a cost usually expressed in terms of the time it takes to
+retrieve all such answers. Estimating this cost for the differ-
+ent access patterns is crucial, both at design time and during
+queryprocessing,andreliesonacostmodelassigningacost
+to each type of basic operation. Several such models have
+beenproposedforRDF[21,29,66],butwerebiasedbyasim-
+pletwo-tieredmemoryhierarchyandunderlyingarelational
+data representation. In an era of shared memory clusters,
+large-RAM machines, SSD, NVRAM, SIMD, and vector-
+ized processing (e.g., [51]), assuming a single cost relation
+paradigm is no longer sensible.
+What still holds true over all novel (existing or future)
+machine architectures and memory types is the fact that ran-
+dom seek operations incur a different cost than sequential
+read operations. As echoed by the authors of the RUM con-
+jecture [9], “.. in the 1970s one of the critical aspects of
+every database algorithm was to minimize the number of
+randomaccessesondisk;fast-forward40yearsandasimilar
+strategy is still used, only now we minimize the number of
+randomaccessestomainmemory”.Theuseofcompression
+to minimize memory requirements and speedup retrieval of
+large result sets incurs additional costs in compression and
+decompressiontimes.Althoughnovelcompressionmethods
+utilizing hardware to speedup these times are increasingly
+available(e.g.,[6]),thereremainsadifferencebetweencom-
+pressed and uncompressed data. We, therefore, follow the
+recentconventionofemployingasetofcostconstants[12,41]
+differentiating between random and sequential and between
+compressed and uncompressed costs. The instantiation of
+theseconstantsforthedifferentrepresentationoptionsonthe
+current hardware can be done at design time by measuring
+123
+
+AdesignspaceforRDFdatarepresentations 353
+operation times on the current conﬁguration. We use these
+constants to induce a ranking over different representations
+in the same design space dimension.
+Deﬁnition5 (BasicOperationCostConstants)Readrandom
+(Rr) represents the average cost of accessing a random sin-
+gle data item (e.g., a key or a value) in a data representation
+given a pointer to the item. Read sequential (Rs), instead,
+measures the cost of reading a data item stored in a position
+succeeding the current one, i.e., stored sequentially within a
+contiguousregionofmemory(e.g.,thenextblockondisk,or
+the next position in an array). For compressed data, we dis-
+tinguishbetweenreadcompressedsequential (Rcs)andread
+uncompressed sequential (Rus). Similarly deﬁned constants
+forwriteoperationsare Wr, Ws , Wcs,and Wus,respectively.
+4.2 Datarepresentationcompatibility
+To assess whether a data representation can efﬁciently sup-
+port a speciﬁc access pattern, we deﬁne the notion of
+compatibility.3 Therefore, given an access pattern A and
+a data representation D able to answer A, we assume that
+there is a sequence of operations speciﬁed by an algorithm
+Γ deﬁned over D that can compute such an answer S, i.e.,
+S = Γ(A,D).Thenumberandcostoftheseoperationsspec-
+iﬁed by Γ directly determine whether D is a representation
+suitable for computing efﬁciently the answers to A. When
+measuring the number of operations required to be executed
+over D, we distinguish between random seek and sequential
+operations.4 Inparticular,anRDFdatarepresentationcanbe
+seek compatible or sequence compatible, deﬁned as follows.
+A data representation is seek compatible with an access
+pattern if one or more of the results required by the access
+pattern can be retrieved in a single random access step. For
+example, if the access pattern requires retrieving the objects
+that are related to the same subject s1 via the same predicate
+p1, i.e., 〈s1, p1, ?o〉, a seek compatible representation is
+one that, given the pair of values 〈s1, p1〉, returns a pointer
+to the ﬁrst element of this set (e.g., a hash table).
+A representation is sequence compatible if all results
+required by the access pattern can be retrieved through
+sequential accesses without requiring (after the initial seek)
+any additional random seek to complete the result set. In the
+case of a hash table for 〈s1, p1, ?o〉, if the pointer returned
+from the ﬁrst seek is to a contiguous area of memory/disk
+3 We deﬁne this notion for read operations only under the assumption
+that a read operation is required before deletion (to locate the data to
+be deleted) and before insertion (to locate where to insert the data and
+to avoid duplicates) and is therefore required for every type of access
+pattern. Following such a read operation, the set of pointers returned
+can be used to perform an update, deletion, or insertion.
+4 In the following, for ease of presentation, we refer to a simpliﬁed
+cost model where we consider the amortized average cost of the data
+structures, e.g., hash maps access methods have average constant cost.
+containing all objects satisfying the access pattern, the rep-
+resentation is sequence compatible. However, if the objects
+are stored in a linked list, requiring additional random seeks
+toread,therepresentationisnotsequencecompatible.More-
+over,wesaythatarepresentationisselectioncompatiblewith
+an access pattern if no unneeded results are retrieved. For
+example, if a variable ?o in our example is restricted to liter-
+als (with isLiteral), then any triple with a IRI as object
+is unneeded.
+Deﬁnition6 (Compatibility) Let A be an access pattern and
+letS bethesetofresultsthataretheanswertoAoveragraph
+G.LetDbeadatarepresentationofG.S isa,possiblyempty,
+set of tuples containing any combination of literals, blank
+nodes, and IRIs. Then, Cr1(A|D) is the number of random
+seek operations required to reach the ﬁrst result of S in D
+or to ascertain that S ≡ ∅. We deﬁne CrΩ(A|D) to be the
+cost in terms of number of random seek operations required
+to retrieve all results in S from D after having reached the
+ﬁrstresultinS.Correspondingly,CsΩ(A|D)isthenumberof
+sequentialreadoperationsrequiredtoretrieveallsubsequent
+results. Hence, the total cost to retrieve the results S of A
+over D is:
+Cr1(A|D)×Rr +CrΩ(A|D)×Rr +CsΩ(A|D)×Rs. (1)
+Hence, we say that a data representation D is:
+– seek compatible with A if Cr1(A|D) = ε, where ε∈R+
+issomesmallsystem-dependentconstantindependentof
+|G| (e.g., if D is a hash-table the ﬁxed cost to search
+elements in D is usually approximated to the constant
+1.2).
+– sequence compatible with A if S can be sequentially
+retrieved after the initial seek, that is CrΩ(A|D) = 0 and
+CsΩ(A|D) ≤ max(|G|,|S|).
+– selection compatible with A if no excess results are
+retrieved, that is CrΩ(A|D) +CsΩ(A|D) ≤ |S|.
+Example2 (Compatibility of different representations) For
+instance, one way to store G is to represent each triple as
+a 3-tuple, and the entire dataset as a list of 3-tuples sorted
+by subject and then by predicate and object (Fig. 3a and d
+below) with a clustered B+ tree index over them. In this rep-
+resentation,thecostofqueryprocessingwouldresemblethat
+of a relational table with three attributes (s, p, o), all part of
+a primary index. This representation is sequence compatible
+with any 1-hop access pattern that binds s, both s and p,
+or all three positions. That is, the algorithm Γ(〈s1, p1, ?o〉,
+sorted(G);B+ tree) would ﬁrst ﬁnd the ﬁrst tuple perform-
+ing log(G) steps traversing the B+ tree looking for s1, p1
+and then perform a linear scan over the ﬁle to retrieve the
+remaining tuples. However, the B+ tree is not seek compat-
+123
+
+354 T.Sagietal.
+(a) (b) (c) (d)
+Fig.3 Examples of data representations: a sorted ﬁle, b hash map, c property table, and d B+ tree
+Fig.4 The SCR system design space for RDF stores
+ible, because the time to ﬁnd the ﬁrst result depends on the
+size of the graph, i.e.,it involveslog(|G|)seek operations to
+reach the ﬁrst result.
+A different data representation is to employ a key-value
+data structure (similar to Fig. 3b) and use the pair subject-
+predicate as the key, and the object as the value. In this data
+structure, triples sharing the same s and p will store the
+list of objects contiguously. This data structure is both seek
+and sequence compatible for a traversal that, given s and p,
+retrieves all corresponding objects. Nevertheless, this repre-
+sentationisneitherseekcompatiblenorsequencecompatible
+if the query requires all edges for predicate p regardless of
+s.
+In the following, we present a design space within which
+each data representation can be embedded. The deﬁnitions
+of cost and compatibility presented above allow to analyze
+theadvantagesanddrawbacksofthedifferentchoicesineach
+dimension of the design space.
+4.3 Thedesignspacedimensions
+When designing data representations for an RDF store, one
+can model thedesign decisions over threeaxes: Subdivision,
+Compression, and Redundancy (SCR, Fig. 4). Each of these
+orthogonalaxes,whosepropertiesaresummarizedinTable2,
+represents a continuum along which a system can be posi-
+tioned.
+Subdivision The subdivision axis determines how frag-
+mented the data is. At one extreme, all data is stored
+contiguously in a single structure; at the other extreme, each
+edgeandnodeisstoredasaseparateobjectwithpointerstoits
+neighborsintheinduced graph.Inbetween therearevarious
+datastructuressuchasB+treesorhashmapsadaptedtothese
+settings. This axis contains design decisions such as sorting,
+grouping, and hashing. Each of these decisions creates an
+additional subdivision in the data. Increasing the extent of
+subdivision allows us to minimize the number of unneeded
+data items accessed to answer an access pattern (yielding
+fewer Rs and Ws operations that return items not in S).
+For example, when using the single ﬁle approach, we would
+potentially need to read the entire ﬁle before ﬁnding a single
+required triple, while with a hash table, we move directly to
+theﬁrstmatchingtuple.Filteraccesspatternsonlargeranges
+of values, however, can be costly when data representations
+utilize extensive subdivision. The use of multi-core paral-
+lelizedprocessingcanamelioratethiscost,tosomeextent,by
+dividingthesequentialretrievaltasksamongcoresthataccess
+the subdivided data in parallel. Subdivided data representa-
+tions provide an additional beneﬁt for multi-core systems,
+as they allow the creation of locking mechanisms with ﬁner
+granularity,reducingwaittimes.ConsiderFig.3.Notethat,in
+asortedﬁle(Fig.3a),thesortingkeysactasthesimplestsub-
+division by collecting all triples of the same value together.
+Ontheotherhand,withahashtable(Fig.3b),giventhetarget
+IRI,thehashfunctionseparatedallrelevanttriplessharingthe
+samekey.Notethateverytimewemoveacrosssubdivisions,
+we move into a different non-contiguous region in either
+diskormemory,increasingthe Rr cost.Therefore,decisions
+across the subdivision axis easily determine whether a data
+structureisselectioncompatible,i.e.,ifitboundsallandonly
+the answers within a speciﬁc subdivision, but it also impact
+random and sequence compatibility.
+Compression The second axis is the compression axis.
+The goal of compression is to minimize the number of bits
+read to reach the ﬁrst tuple in the result set (Rr) and the
+number of bits required to read and potentially store the
+result set for further processing Rcs. The potentially nega-
+tive impact of compression is, of course, the decompression
+required to evaluate a predicate in the access pattern if the
+123
+
+AdesignspaceforRDFdatarepresentations 355
+Table2 Summary of data representation design space axes
+access pattern is incompatible or partially incompatible. For
+example, consider a compressed data representation tuned
+for queries of the form (s, ?p, ?o) and s≡s access patterns
+(e.g., BitMat [11]). Using this representation to answer an s
+p∗/+ o pattern (i.e., is o reachable from s through a edges
+labeled with p) would require a potentially large number
+of row decompression operations to perform the o≡s pivot
+operations required resolve the traversal. Since these may
+be spread around the data structure, this would incur a large
+number of Rr operations. Therefore, decisions across the
+compression axis impact heavily the selection compatibility
+when data that does not contribute to the answer are com-
+pressed together with data relevant for an access pattern.
+Redundancy Thethirdaxisistheredundancyaxiswhich
+causes (redundant) copies of the data to be stored in the sys-
+tem. By adding redundant data representations and indexes,
+it is possible to deﬁne ideal (seek, sequence, and selec-
+tioncompatible)datarepresentationsforeachaccesspattern.
+However, this comes at the cost of having to store the same
+informationmultipletimes.Forexample,byholdingbothan
+SPO clustered index and a PSO clustered index, each triple
+is stored twice. Thus, this hinders the compatibility with
+write access patterns. Moreover, design decisions includ-
+ing full/partial replication need to ﬁnd a trade-off between
+storage space and efﬁcient support of query access patterns.
+Hence, the cost of maintaining multiple representations is
+threefold: (i) Increased latency for delete and insert opera-
+tions(higherWr andWs)withpossiblyreducedperformance
+of read operations (higher Rus) as well, since additional
+(uncompressed)auxiliarydatastructuresarerequiredtostore
+deltasuntilthecostofupdatingcanbeamortizedoveralarge
+enough set of updates (e.g., as in RDF-3X [55]). The use of
+multi-core parallelized processing can avoid this additional
+cost, to some extent, by dividing the redundant update tasks
+among cores in parallel, allowing for more rapid update of
+the compressed structures. (ii) An increase in space require-
+ments, subsequently straining the limited space in main
+memory and causing an increase in all R costs. (iii) An
+increaseinqueryoptimizationtimebecausealternativestruc-
+tures to access the data result in a higher number of query
+execution plans that have to be considered.
+Example3 (SCR Space analysis.) To illustrate the connec-
+tion between the SCR space and the proposed cost model,
+consider again the different data representations in Fig. 3.
+A sorted ﬁle (Fig. 3a) divides the triples (cardinality |G|)
+by the values of the ﬁrst sort ﬁeld (e.g., s) and eventu-
+ally by all remaining sort key ﬁelds. Finding the ﬁrst tuple
+with some speciﬁc value for s requires log2(|G|) random
+seeks.Subsequently,readingalltherelevantrecords(assum-
+ing a cardinality of |S|) is now a sequential read. The
+ﬁnal total cost for the Constant s access pattern is then
+Rr×log2(|G|)+Rs×|S|.Hashtables(Fig.3b)improveupon
+this, i.e., moves further along the Subdivision axis, by sub-
+dividing the space into buckets with the same key value.
+Then, all keys with the same value are divided into a linked
+list of blocks of predeﬁned maximum size (k, with k = 1
+in the ﬁgure). Therefore, this incurs a random seek cost to
+reach the ﬁrst record and then sequentially read the whole
+bucket,and(m=|S|/k)randomseekstomovefrombucket
+to bucket, with a total cost of Rr×(1+m)+Rs×|S|. While
+random seek costs often dominate sequential ones by orders
+of magnitude, in the average case of small answer set S, this
+additional subdivision improves read costs for this access
+pattern. Deploying a B+ tree, instead, would keep the same
+Subdivision, but move across the Redundancy axis.
+WenowidentifytheseoptionsinexistingRDFtriplestores
+and place them within the SCR space.
+5 DatarepresentationsinRDFtriplestores
+We now review a wide range of existing triplestores and
+the data representations they employ within the SCR design
+space. Here, we focus on centralized systems5 that have
+either been published as research prototypes or commer-
+cially available systems. Our inclusion principle is a system,
+which allows the ingestion of RDF data and supports the
+5 We speciﬁcally exclude distributed and cloud-based solutions as the
+needfordistributingandreplicatingdatabetweennodesskewsthesys-
+tem’scostmodelandisamostlyorthogonaldecisiontothatofchoosing
+which core data representations to use. Some distributed systems (e.g.,
+4-store [34] and Partout [30]), directly extend centralized systems.
+123
+
+356 T.Sagietal.
+SPARQL query language (including insertions and dele-
+tions). We exclude systems for which we could not ﬁnd
+sufﬁciently detailed information regarding their data rep-
+resentation. Notable commercial exclusions are, therefore,
+Amazon Neptune [13], AllegroGraph [28], and StarDog
+[74], which do not disclose their internals. Notable non-
+commercial exclusions are HexaStore [81] and RDFBroker
+[73], which do not support SPARQL, and KAON2 [78],
+which is designed for OWL reasoning rather than SPARQL
+answeringoverRDFtriples.Moreover,wealsoexcludeHDT
+[25], which only supports data serialization.
+Tables3and4summarizethefeaturesofthereviewedsys-
+temsoverthedesignspacedimensions.Differenttriplestores
+cannowbecomparedbasedonthechoicestheyhavemadeon
+howtosubdividethedata(Subdivision),whetherandhowto
+compress IDs, literals and triples (Compression), and which
+redundantrepresentationstomaintain(Redundancy).Table3
+listssystemsbasedonanunderlyingrelationaldatabasesys-
+tem (RDBMS), and Table 4 lists systems using a native
+graph storage. The year stated next to the system name rep-
+resents the publication year of the latest paper or technical
+report describing its features. It seems that recent solutions
+favor a native storage mechanism over using an RDBMS.
+Furthermore, the use of B+trees is becoming less preva-
+lent,withrecentsolutionsfavoringhash-basedsolutions.We
+now present a classiﬁcation of the systems into the different
+choices in each dimension.
+5.1 Subdivision
+Table 5 summarizes the design choices over the subdivi-
+sion dimension. Recall that subdivision aims to minimize
+the number of unneeded items read when seeking and read-
+ing. This minimization may come at the cost of increasing
+the number of random seeks required to reach the data items
+needed by the access pattern. Within the subdivision dimen-
+sion, we identiﬁed four choices which system designers can
+make: (1) how to subdivide the main triple data, (2) whether
+and how to divide the ID space assigned to IRI/literals, (3)
+how to subdivide the IRI/Literal→ID data representation,
+and(4)howtosubdividethereverseID→IRIrepresentation.
+Systems in the table are divided into four groups according
+to their approach toward subdividing the main triple data.
+The largest group of systems utilizes an underlying rela-
+tional representation, either a column-based (SW-store [1])
+or a row-based one (the rest). The 2nd-largest group utilizes
+tree-basedrepresentations.WhileMulgara[54]usesanAVL
+tree, the rest use a B+tree. There are four systems utilizing a
+hash-based representation and four that opted for more spe-
+cializedrepresentations.WenowreviewthesystemsinTable
+5 by each of the main design choice categories.
+MaintripledataWhenreusingtheunderlyinginfrastruc-
+tureandtechnologiesofrelationaldatabases,designersmust
+deﬁne how the RDF structure is mapped into a relational
+structure. 3store [33], RDFLib [46], and Virtuoso [24] use
+a large triple table with a ﬁeld for each s,p,o atom together
+with some auxiliary indexes. Other relational-based systems
+use dynamic subdivision to create a set of relational tables.
+Dynamic subdivision restructures the data representa-
+tion according to the speciﬁc contents of the graph, its
+schema/ontology, or the query load.6 SW-Store [1] subdi-
+vides the triples by creating a collection of property tables
+(one for each predicate IRI), thus adding some compression
+as the predicate value is encoded in the name of the sub-
+division rather than in each triple. However, the number of
+distinct predicates may be extremely large, causing a large
+schematic overhead. DB2 Graph [17], RDFBroker [73], and
+FlexTable [80] create tables for groups of predicates. DB2
+Graph uses a ﬁxed number of predicate columns populated
+according to their prevalence. RDFBroker creates a differ-
+ent table for each combination of predicates. FlexTable [80]
+allowsatabletohavedifferentpredicatecolumnsonthedata
+pagelevel,thusdynamicallyopeningnewtablepageswitha
+slightly different schema when such instances appear in the
+data. 3XL [48] use the backing ontology of the triplestore
+tocreatecomplextablescontainingrelatedinformationfrom
+several triples.
+Tree-based representations index triples using B+trees as
+entry point. Jena(TDB) [58] and RDF3X [55] are the most
+notable in this category. Trident [76] follows the relational
+subdivision but then concatenates all such subdivisions and
+exploitsaB+treeonIDsduringsearch.Hash-basedsolutions
+differ on the method in which the hash key is computed and
+on the organization of the buckets to which the key points.
+TripleT [82] and Oracle Spatial and Graph [84] use multiple
+hash-tables for different permutations of s, p, o, such that
+one of the positions serves as the hash key and the other
+two positions are stored in the buckets. gStore [88] hashes
+the IRI and holds its adjacency list in the value as well as
+a secondary tree-based construct (see Sect. 5.3). Chameleon
+[5]utilizesahashtablefromIRItoasubdivisionofthegraph.
+Subdivisions are restructured dynamically according to the
+query workload.
+We also report on four systems that utilize instead special
+representations.TripleBit[87]andBitMat[11]subdividethe
+databypredicatethuscreatingabit-matrixforeachpredicate
+with rows representing subjects and columns representing
+objects. Parliament [45] uses a sorted ﬁle with offset point-
+ers from the triple to the next one with the same subject to
+allow traversal. Effectively, this divides the triples into vari-
+able length blocks of same-value parts. To navigate between
+these blocks, Parliament uses either the offset pointers or
+6 We only mention mechanisms beyond auto-balancing algorithms
+prevalent in B+tree structures that are based on the number of keys in
+each subdivision.
+123
+
+AdesignspaceforRDFdatarepresentations 357
+Table3 RDBMS-based Stores. <Preﬁx>#: representations that provide the number of triples with a given preﬁx
+X → Y represents a hash/dictionary from key X to value(s) Y
+binary search. YARS [36] augments this approach by sub-
+dividing the sorted ﬁle into blocks accessible via a sorted
+sparse index.
+Recently, several data representations have been sug-
+gestedspeciﬁcallyforthesupportofworst-case-optimaljoin
+(WCOJ) algorithms since those have been shown to be par-
+ticularlyefﬁcientforprocessingn-waypivotaccesspatterns.
+Although different implementations of these join algorithm
+exist [8,18], most have been implemented as extensions to
+existingtriplestoresystemsandoftentheyarebothread-only
+and provide limited support of the SPARQL standard. The
+mostextensiveimplementationisprovidedintheJenaframe-
+worktosupporttheLeapfrogTriejoin[38].Here,thisn-way
+pivot access pattern is supported through a fully-redundant
+representation that adds three additional SPO permutation
+indexes to the default indexes in Jena (TDB). Moreover,
+it utilizes the preﬁx-sorted subdivision of a B+tree to pro-
+vide support for an implementation of the WCOJ algorithm
+that exploits the standard single-position pivot access pat-
+terns. On the other hand, an extreme case of non-redundant
+subdivision instead exploits a ring data structure comprised
+of a bidirectional cyclic sufﬁx-strings index that allows the
+retrievalofanypermutationofSPOtriples[8].Thisrepresen-
+tationishighlysubdividedandincursasubstantialnumberof
+seek operations. To minimize the impact of these seeks, the
+authorsproposeanextensivecompressionmechanismallow-
+ing to maintain the structure in memory and thus minimize
+the seek cost. However, as mentioned above, this comes at
+the expense of allowing this structure to support additional
+access patterns, most notably write and delete patterns.
+ID Space Most systems do not to subdivide the ID space.
+Of those that do, most subdivide the space between IRI and
+literals by assigning different ID ranges rather than storing
+them separately as only 3store [33] and Blazegraph [49] do.
+Oracle [84] and BitMat [11] present unique choices
+for separating values with different roles. Oracle separates
+between IDs assigned to IRI of classes and properties from
+those assigned to other resources. BitMat separates between
+resourcesusedasproperties,assubjectsonly,asobjectsonly,
+or either as subjects or objects.
+IRI/Literal→ID & reverse ID→IRI For systems that
+choose to replace IRI/literals with IDs, the mapping mecha-
+123
+
+358 T.Sagietal.
+Table4 Non-RDBMS Stores. <Preﬁx># representations that provide the number of triples with a given preﬁx
+nism is either B+ trees, which support range queries well, or
+hash tables, which are more efﬁcient for single lookup.
+5.2 Compression
+Table6presentsthetriplestores’compressionchoicesgrouped
+by the choice for the main triple store. Most early systems
+(circa 2003–2009) do not compress the main data at all. A
+number of systems (RDF-3X [55], Sparqling kleene [31],
+Virtuoso [24], YARS2 [36]) employ block-level compres-
+sion. This approach entails organizing the triples in memory
+blocksinamannerthatallowscompressionusingtechniques
+such as Huffman encoding [39]. YARS2 [36] also employs
+sparse representations (also used by gStore [88] and Triple-
+T [82]) where the indexes contain only the used values of
+a position, rather than the full domain. SW-store [1] and
+TripleBit [87] both use some form of column-compression,
+where the values are stored by column, rather than by row,
+123
+
+AdesignspaceforRDFdatarepresentations 359
+Table5 Subdivision design choices
+BDR Base data representation, BT B+tree, AVL AVL-tree, RR Relational row store, RC Relational column store, HT Hash table, SF Sorted ﬁle,
+SI Sparse index over sorted ﬁle, MAT Matrix, DS Dynamic subdivision, S-D Schema data, U-L IRI-Literal/Large literal, SPO IRI divide by their
+position (e.g., only as p)
+allowing to skip empty rows, store only the difference from
+the previous value (delta-compression) or other column-
+compression methods. Trident [76] uses a combination of
+different compression mechanisms. In particular, triples are
+sorted in so-called binary tables, since they encode only two
+ofthe3SPOpositions.Thetriplesarealsorepresentedeither
+row-wise or column-wise within different blocks in order to
+exploit run-length encoding and other types of compression
+when some values are repeated. The ﬁnal three solutions are
+derived from the subdivision choices made by the system.
+Using a classic relational row-based representation, DB2
+Graph [17] chose to limit the number of predicate columns
+in its table to a ﬁxed K, this reduces the chances of empty
+columns in record rows and can be considered a form of
+compression. BitMat [11] employs row-based compression
+of its bit-matrix using similar methods as those employed
+for column-based compression, and Chameleon [5] utilizes
+order-preservingcompressionofitsin-linedliterals.Wealso
+note that the ring data structure employed to represent the
+graph via a set of sufﬁx strings [8] is a way to compress
+the triples and to index all their SPO permutations, yet the
+current implementation for RDF is a read-only solution that
+requires further study.
+A second design choice in the compression dimensions is
+whether to avoid storing IRIs and literal values as repeated
+strings and instead use numerical IDs. Of the 20 systems
+reviewed, only eight chose not to do so. 3XL [48] and
+Chameleon[5]replaceonlyIRIwithIDs.3XLleaveallliter-
+alsintheiroriginalformandChameleoncompresstheliterals
+in place using order-preserving string compression. Virtu-
+oso and Jena(TDB) [58] inline small literals and encode the
+larger ones. The rest of the systems replace all strings with
+IDs, regardless of their type.
+ID compression is presented by increasing strength of
+compression. Int denotes the usage of sequential integers
+instead of the original string-based IRI/literal. More com-
+pression can be achieved by compressing the IDs into
+ﬁxed-length integers (e.g., Virtuoso [24]). In an example
+of extreme compression, TripleBit [87] compress IDs into
+an average of 2–3 bytes by using variable-length compres-
+123
+
+360 T.Sagietal.
+Table6 Compression design choices
+B-C: Block-level compression; Sparse: compressed sparse index; C-C: Column-level compression; N-Col: Fixed number of columns; Cube:
+Compressed bit-cube; ISC: Inlined string compression; IRI: Only replace IRI with ID; LS: Replace long strings only; All: replace all strings
+with integers; Int: a sequential integer (uncompressed, usually 8 bytes); Fix: ID compressed into a ﬁxed-size integer (6 bytes); Var: variable-sized
+compressed integers (2–3 Bytes)
+sion instead. Notable missing systems from this analysis are
+Oracle [84] and GraphDB [15] which do not provide details
+regarding this design choice in their publicly available doc-
+umentation.
+5.3 Redundancy
+Table 7 presents a high-level summary of the implementa-
+tions employing multiple redundant representations for the
+main triple data. On average, there are 3 redundant repre-
+sentations per system. Only one system (Sparqling kleene
+[31]) offers reachability indexes to answer triple patterns
+such as s p* o (i.e., property paths with kleene-start pat-
+terns,seeDeﬁnition3).Onlyonesystem(gStore[88])offers
+a data representation tuned to matching an N-way same-
+position pivot (a star-shaped subgraph structure). gStore is
+alsonotableforbeingtheonlysystememployingaBloomier
+ﬁlter construct [19] (the VS*-tree) as a secondary data rep-
+resentation.Bloomﬁltersallowdeterminingtheexistenceof
+a data item using a compact representation with low latency
+at the expense of false positives but never false negatives.
+Bloomier ﬁlters [19] extend this capability to allow several
+functions, in this case returning the vertices matching a set
+of PO/SP patterns. The use of a PO/PS hash map as part of
+the VS*-tree lookup process is an almost singular example
+of using two-position combination hash maps (e.g., sp→o).
+Notably, a recent extension of the Jena (TDB) system to
+support a worst-case-optimal join algorithm [38] has added
+three additional B+-tree indexes to support this pattern. This
+results in a high level of redundancy of the data, which new
+approaches are trying to overcome with more compressed
+(and way less redundant) indexed representations [8]. Also,
+Trident [76] employs the replication of the six permutations
+oftheSPOpositions,butemploysadaptivestoragerepresen-
+tation to reduce the memory footprint.
+5.4 Summary
+Table8summarizesthekeysinsightsobtainedwhilereview-
+ing the surveyed systems as detailed above. In particular, we
+list recent trends in implemented design choices and unex-
+plored data representations.
+Dimensional interdependence As a ﬁnal note, while the
+three SCR dimensions are orthogonal and independent for
+themostpart,thesurveyedspaceshowsafewcases,wherea
+design decision over one dimension impacts the availability
+of design decisions in others. This impact can either limit
+the availability of options or enable options that could not
+be chosen otherwise. For instance, choosing to replace URI
+with numerical IDs as a design choice over the compression
+123
+
+AdesignspaceforRDFdatarepresentations 361
+Table7 Redundancy
+V: Vertices (s/o). X-YZ: A hash table X = x1 will lead to a datastructure sorted by XYZ where X = x1 or with a small number of other xi values.
+TC: Triple counts, a hash table of #-triples per resource (s/p/o). 2VC: 2 Variable counts, for each 2 variable combination (sp, ps, …) maps to the
+count of the number of triples for values of that combination. MM : Min/Max Values for each p/block. SF: spo Sorted File with pointers. BC:
+Compressed bit-cube of |P| concatenated SO matrices. VST: VS* tree, Hash(PO/PS)→B+ tree→V (VS*-tree) RI: |p| s-*-o reachability indexes
+Table8 Summary of the survey of the features of existing systems
+Subdivision Compression Redundancy
+Prevalent approaches The increasing use of
+hash-maps rather than
+B+-trees.
+Encoding of literals as integers.
+Triple store compression
+using bit-based
+representations.
+Multiple (≥ 3) representations
+per system.
+Gaps Limited use of complex and
+hybrid indexes. Limited
+support for representations
+for optimal N-way joins.
+No compression of secondary
+indexes.
+No support for special ﬁlters
+(e.g., language). No use of
+bloom-ﬁlters for existence
+checks. Limited support for
+complex traversals such as
+k-hops and reachability. No
+support for two-position (e.g.,
+sp→o) hash maps.
+123
+
+362 T.Sagietal.
+dimension,bothenablesandrequiresachoiceofsubdivision
+for the ID→IRI and IRI→ID mappings. Similarly, the com-
+pression design choice of using non-sequential integers to
+encode literals limits the ability of B+-tree and other sorted
+structures to support sequence-compatible access patterns
+such as closed ranges making these subdivision choices less
+attractive.
+6 Designspaceanalysis
+In this section, we study the data representations within the
+design space introduced in Sect. 4, which can be employed
+to satisfy the requirements of each access pattern analyzed
+in Sect. 3. Each design decision is motivated by a speciﬁc
+usecasebutcomeswithinherenttrade-offs.OurSCRmodel
+(Sect.4)providesthenecessaryframeworktoexplicitlyana-
+lyzetheimplicationsofdifferentdesigndecisions.Therefore,
+we also provide an analysis of the existing design decisions
+listed in Sect. 5 identifying unexplored design choices.
+6.1 Matchingaccesspatternstothedesignspace
+In the following, we provide an analysis cross-referencing
+theaccesspatternsinTable1totheSCRdimensions(Fig.4)
+and their embodiments in Tables 5, 6, and 7. This links the
+requirementsofaspeciﬁcaccesspatternwithanappropriate
+design choice.
+Constants (Table 9) Our model shows that, for access
+patternsmatchingpartiallyinstantiatedtriples,thecloselink
+between the effects of subdivision, redundancy, and com-
+pression is particularly evident. As mentioned earlier, the
+presenceofconstantsinanaccesspatternincreasesitsselec-
+tivity. A high degree of subdivision for fully and partially
+instantiated search patterns is highly beneﬁcial to reduce the
+search space. Nevertheless, for partially instantiated triple
+patterns we obtain a beneﬁt only if the subdivision is at least
+sequence compatible with the positions of the instantiated
+variables.Otherwise,whentherepresentationisnotsequence
+compatible, the system has to traverse more subsets with a
+larger cost in random reads (e.g., if we search for all triples
+withaspeciﬁcpredicateandweareusingahashtablerepre-
+sentationwithbucketsonsubjectslikeinFig.3).Weconclude
+that,forpartiallyinstantiatedtriplepatterns,highsubdivision
+canbehighlybeneﬁcialiftheyareperfectlycompatiblewith
+the structure of the query, or strongly limit the query perfor-
+mance if not. For very large range scans (or when no range
+conditionapplies),instead,thecommonapproachtostorethe
+entiredatasetwithinaspeciﬁcindexcanbehighlydetrimen-
+tal if the data structure does not have the option to perform
+an efﬁcient sequential scan (e.g., a linked hash table).
+Compression could be beneﬁcial for fully instantiated
+access if it allows searching efﬁciently for the compressed
+values. Yet, employing compression is detrimental if several
+decompression steps are required to check the existence of
+speciﬁc values. On the other hand, for partially instantiated
+triple patterns, given that we expect a larger intermedi-
+ate result, compression could reduce data transfer times.
+Moreover,wecouldimplementsearchthroughbitwisecom-
+parisons [87]. For uninstantiated access patterns, we will
+instead usually gain a substantial beneﬁt from compression
+due to the reduced data transfer cost.
+Finally,ontheredundancydimension,inthefullyinstanti-
+ated case adata representation designed toanswer existence
+queries (e.g., Bloom ﬁlter) is highly beneﬁcial. Instead,
+for partially instantiated queries we should exploit differ-
+ent tree or hash indexes as we search for bindings to the
+variable positions given the instantiated positions. Hence,
+multiple indexes are necessary to cover different combi-
+nations of instantiated and uninstantiated positions (e.g.,
+s, p→o or s,o→p). In both cases, high redundancy pro-
+vides advantages for partially and fully instantiated access
+patterns. Conversely, redundancy is ineffective for uninstan-
+tiatedqueriessinceanentirescanofthedatawillberequired.
+Filter (Table 10) For ﬁlters, when the subdivision is
+sequence compatible with the search range, it has a positive
+effect. When the representation is not sequence compatible,
+i.e., the values span multiple partitions, the subdivision will
+causealargercost.Instead,whentheﬁlterconditionrequires
+membershiptoaparticularlysmallsetofvaluesanditispos-
+sibletoenumeratethosevalues(e.g.,yearsbetween2015and
+2020), we can actually exploit a hash table index translating
+this access pattern into fully or partially instantiated triple
+patterns. Still, this approach requires the system to be aware
+ofthedomainortohaveaprecomputedsetofvalues.Forthe
+case where no ﬁlter condition is speciﬁed, in the worst case
+we require a full scan of the data or to execute a partially
+instantiated BGP (see above). Compression is beneﬁcial in
+termsofdatatransferbutcouldbedetrimentalwhenattribute
+valuesneedtobecomparedinaﬁlteroperation.Intheredun-
+dancy dimension, on the other hand, for ﬁlters involving a
+large range of values or a range of values that cannot be
+enumerated, a tree index is a common effective solution, as
+long as it supports range scans, i.e., the data representation
+issequence compatible afterpayinganinitialseekcost,e.g.,
+a B+ tree.
+Traversals(Table11)Fortraversalaccesspatterns,1-hop
+traversals are a special case of a partially instantiated triple
+pattern (i.e., SP and PO). Therefore, for 1-hop traversals the
+advantages of subdivision and redundancy are the same as
+those of the corresponding partially instantiated access pat-
+tern in Table 9. When the traversal is bound by a speciﬁc
+predicate, subdivision across edges of the same predicate
+is usually highly effective in reducing the search space and
+achievesparticularlygoodperformancewhenthedatarepre-
+sentation is seek-compatible to the access pattern retrieving
+123
+
+AdesignspaceforRDFdatarepresentations 363
+Table9 Effect of different storage solutions for each SCR dimension to address access patterns for Constants in the query
+Fully instantiated Partially instantiated Uninstantiated
+Subdivision ↑ smaller search space ↑ smaller search space if
+compatible with
+query; ↓ more search
+steps if incompatible
+↓ more search steps
+Compression ↓ decompression
+required to search
+exact values; ↓
+intermediate resultset
+is small
+↓ decompression
+required to search
+exact values; ↑
+compressing
+intermediate results
+↑ compressing
+intermediate results
+Redundancy ↑ A Bloom ﬁlter to
+check existence
+↑ different SPO tree or
+hash indexes
+∼ requires full scan of
+data
+↑ points to an advantage, ↓ points to a drawback, ∼ points to a mostly unaffected performance (also in the following tables
+Table10 Effect of different storage solutions for each SCR dimension to address Filter access patterns in the query
+Enumerable range Large range No-range
+Subdivision ↑ faster search of single
+values if compatible; ↓
+more search steps if
+incompatible
+↑ faster search of single
+values if compatible; ↓
+more search steps if
+incompatible
+↓ more search steps
+Compression ↓ decompression to
+access small set; ↑
+compressing
+intermediate results
+↑ faster read; ↑
+compressing
+intermediate results
+↑ compressing
+intermediate results; ↓
+decompression
+required for search
+Redundancy ↑ hash-table search ↑ B+Tree search
+&sorted scan
+∼ requires full scan
+the next edge in the path. On the other hand, for traversals
+thatarenotboundbyaspeciﬁcpredicate,subdivision across
+the same subjects can provide some beneﬁts, but subdivi-
+sion across predicates or other kinds of subdivisions usually
+increase the number of required search steps since they are
+not seek-compatible. In general, compressing intermediate
+results can be highly effective for large intermediate result
+sets. However, using a compressed representation could be
+expensive if the compression does not allow (for instance)
+fast intersections (e.g., intersect objects and subjects lists).
+Finally,exploitingredundancy,whentheaccesspatternstarts
+fromanodeandtraversesaﬁxedsetofk-hopswiththesame
+propertyoranunboundedsetofhops(*/+-hops),specialized
+indexes can be highly effective [31].
+Pivot (Table 12) Access patterns that are joined together
+onthesamesubject,withthepivotjoiningeitherbinaryorN
+differenttriplepatterns(formingso-calledstarshapes [77]),
+are among the most optimized by existing triplestores (see
+Sect. 5). On the subdivision dimension, different schemes
+to partition over subjects are commonly applied to provide
+sequencecompatibilityandarethenveryeffective.Inpartic-
+ular, representing attributes as table columns in a relational
+model (e.g., Fig. 3c) has also proven highly beneﬁcial [17].
+Other similar clustered representations could in theory be
+adapted to answer speciﬁc types of pivots joining N differ-
+ent triple patterns. In the general case, WCOJ [38] requires
+differentrepresentationstoaccesstriplesinsortedorder.For
+pivot patterns on object to subject, the trade-offs are similar
+to a special case of a 2-hop traversal, although in this case,
+the predicates involved are also distinct and the intermedi-
+atevariablebindingisusuallyreturned.Therefore,onecould
+employadhocindexesfordifferent2-hoppaths,deploysub-
+divisions based on predicates, or compressions that enable
+bit-wise intersections. Compression can of course help data
+transfer, but can help search, e.g., with id intersection across
+compressedrepresentations.Finally,employingredundancy,
+most indexes provide fast execution of these patterns, bene-
+ﬁcial for modern join algorithms, e.g., WCOJ [38].
+Return (Table 13) The requirements of access patterns
+are also dependent on the type of information they extract
+fromtheevaluationoftheBGP,i.e.,thereturnedvalues.This
+means that, to return all the variable bindings, Subdivision,
+dependinghowimplemented,caneitherincreasethenumber
+of steps required to obtain the answers or instead provide a
+beneﬁt by allowing to read less data, depending on its com-
+patibility to the access pattern. One important advantage is
+provided by sorted representations when those are compati-
+ble with the sorting order imposed by the query (e.g., by an
+123
+
+364 T.Sagietal.
+Table11 Effect of different storage solutions for each SCR dimension to address Traversal access patterns in the query
+1-hop k-hops over p */+-hops over p
+Subdivision ↑ property-table or
+clustered on S or
+SP, faster
+search/retrieval
+↑ clustered on P or
+PS, faster
+search/retrieval; ↓
+more search steps
+if divided over O
+↑ clustered on P or
+PS, faster
+search/retrieval; ↓
+more search steps
+if cluster is
+incompatible
+Compression ↓ requires
+decompression; ↑
+compressing
+intermediate
+results
+↓ requires
+decompression; ↑
+compressing
+intermediate
+results; ↑ bitwise
+set intersection
+↓ requires
+decompression; ↑
+compressing
+intermediate
+results; ↑↑ bitwise
+set intersection
+Redundancy ↑ hash-index on S or
+SP, faster
+search/retrieval
+↑ execute as set of
+1-hops; ↑
+specialized index
+[31]
+↑ execute as set of
+1-hops; ↑
+specialized index
+[31]
+Table12 Effect of different storage solutions for each SCR dimension to address Pivot access patterns in the query
+Two-way same S/O/P Two-way different S/O/P N-way pivot
+Subdivision ↑ clustered-properties [17]
+less retrieval steps
+↑ restrict search space ↑ clustered-properties [17]
+less retrieval steps for the
+same position; ↑ sorted
+representations provide
+WCOJ [38] guarantees
+Compression ↓ requires decompression; ↑ compressing intermediate results; ↑ bitwise set intersection
+Redundancy ↑ hash-index fast search ↑ Hash-index fast search ↑ B+-tree WCOJ [38]
+guarantees
+ORDER BY clause). On the other hand, when only distinct
+value bindings are needed, a key-value data structure could
+be exploited to just scan the keys, thus allowing even a scan-
+compatible access. Note that this may not be possible for
+arbitraryhashindexes.Also,forgroupbyaggregates,Subdi-
+vision could be beneﬁcial when all the values over which to
+computethedistinctoperatorresidewithinasinglepartition.
+A subdivision that is at least sequence compatible with the
+access via the group-by key would also provide improved
+performance.
+Compression can be advantageous for transmission of
+large intermediate results when returning all answers, but
+when returning results to the user, we will need to decom-
+press all the variable bindings, incurring extra work. Note
+that some compression methods are particularly effective
+for, or even require, sorted data. Moreover, for return-
+ing distinct values, compression of repeated values (e.g.,
+〈key;count〉 pairs) could improve the scan performance and
+avoidgeneratingduplicatesintheﬁrstplace.Whenverifying
+existence, compression could be detrimental if decompres-
+sion is required before checking the predicate. Finally, in
+case of aggregate information, representations in the form
+of pre-aggregated values provide a large advantage, while
+compression increases the cost, except for counts when the
+actual values to be counted are not needed.
+Redundancy does not introduce any further advantage or
+disadvantage when all values are required to be returned,
+unless the values need to be returned in a particular oder. In
+thiscase,havingaredundantrepresentationcompatiblewith
+the required order will save an expensive sorting step. Fur-
+thermore, when a search pattern veriﬁes only existence, e.g.,
+toverifywhethernoden1 isreachablefromn0 withoutactu-
+ally listing the paths that connect the two, Bloom ﬁlters and
+similar types of set-based indexes (i.e., higher redundancy)
+could be exploited effectively and provide perfect compat-
+ibility. Finally, storing aggregate data in distinct redundant
+data structures is highly beneﬁcial to save computations.
+Write(Table14)Writeoperationsusuallyincurtwosteps:
+(i)determiningwhichtuplestoinsertordeleteand(ii)mate-
+rializing their insertion or deletion. The ﬁrst step requires
+the same form of access pattern as read queries. However,
+in the second step different data representations need to be
+updated to have one or more triples added or removed. In
+particular, with higher subdivision usually we only need to
+updatesmalllocalizeddatastructurescontainingthetupleto
+insert or delete. This can also allow smaller localized locks,
+123
+
+AdesignspaceforRDFdatarepresentations 365
+Table13
+EffectofdifferentstoragesolutionsforeachSCR
+dimensiontoaddressReturnaccesspatternsinthequery
+All(unsorted)
+All(sorted)
+Distinct
+Existence
+Aggregate
+Subdivision
+↓
+moresearchstepsifdividedresults;↑
+betterperformanceforsortedretrieval
+↓
+moresearchstepsifdividedresults;↑
+smallsearchspaceifcompatible.
+↑
+favorableto
+group-by
+operations
+Compression
+↑
+compressingintermediateresults;↓
+decompressionﬁnalresults
+↑
+fastskipover
+repeatedvalues
+↓
+decompression
+requiredtocheck
+existence
+↓
+decompression
+requiredto
+computeaggregate
+Redundancy
+∼
+allresultsare
+returned
+unprocessed
+↑
+avoidsortingover
+sorted
+representation
+↑
+inakey-valuedata
+structureaccess
+onlykeys
+↑Bloom
+ﬁltersearch
+↑
+precomputed
+values
+Table14
+EffectofdifferentstoragesolutionsforeachSCR
+dimensiontoaddressW
+riteaccesspatternsinthequery
+Insert
+Delete
+Subdivision
+↑
+localizedupdates;↑
+smallerlocks;↓
+resizingofsinglesubdivision;↓
+re-distributesubdivisions
+↑
+localizedupdates;↑
+smallerlocks;↓
+re-distributesubdivisions
+Compression
+↓
+requiresdecompression;↑
+insertiondoesnotrequireresizing;
+↓
+requiresdecompression;
+Redundancy
+↓
+multipleupdatesarerequired
+123
+
+366 T.Sagietal.
+improving concurrency. Yet, when an insertion takes place,
+we may need to resize the data structure. In some cases, this
+results in a chain effect for the redistribution of elements
+among partitions such as in a B+ tree node that reached the
+maximum capacity, or in a sorted list. In compressed repre-
+sentations,bothinsertanddeletemayrequiredecompression
+andre-compression.Ontheotherhand,structureslikeﬁxed-
+sizebitmapscanbeupdatedmoreeasilywithsimplebitﬂips.
+Other structures, like Bloom-ﬁlters, instead do usually not
+allowdeletesbutonlyinsertions.Finally,higherredundancy
+requires each write operation to be mirrored in every redun-
+dant copy.
+6.2 Acompatibility-basedanalysis
+After exploring how the the design space dimensions inter-
+sectwiththeaccesspatterns,wenowshowhowthenotionof
+compatibility and the cost model presented in Sect. 4 can be
+used to asses the ﬁt between existing solutions (as surveyed
+in Sect. 5) and these access patterns. Furthermore, our clas-
+siﬁcation enables identifying unexplored design options and
+characterization of the optimal design choice for an access
+pattern.
+Analysis methodology Starting with a speciﬁc cell in
+one of Tables 9, 10, 11, 12, or 13, one can investigate
+whether a new data representation could be employed in
+order to improve speciﬁc trade-offs. For example, consider
+rangequeries(i.e.,aﬁlteraccesspattern)andtheredundancy
+dimension. In this case, we did not identify any existing
+solution that adopts skip-list implementation (e.g., S3 [91])
+or succint indexes (e.g., SuRF [90]) optimized for both
+key-value search and range queries in order to support par-
+tiallyinstantiatedqueriesandranges.Similarly,fewsystems
+explicitly employ stored representations (e.g., increasing
+redundancy) for the special type ranges (Filter T in Table 1)
+whichcouldbemappedtoanenumerablerangeofpredeﬁned
+values (e.g., language tags).
+A more advanced analysis can be performed for a spe-
+ciﬁc query. Consider as an example the case of returning
+the count of values over a partially instantiated BGP with
+ﬁxedpredicateandvariablesubjectandobject,e.g.,SELECT
+?s COUNT(?o) WHERE { ?s ex:friendOf ?o }
+GROUP BY ?s. For this case, we did not ﬁnd systems that
+have a compressed representation of 〈key;count〉 and a seek
+compatible subdivision over predicates.
+AnalysisresultsTable15presentsasummaryoftheanal-
+ysis insights. In particular, we show for read-only access
+patterns the best choice found across existing implementa-
+tions as well as design choices that have not been explored
+despite(theoretically)providingbetterperformance.Wealso
+pointoutthosecaseswheresomewidespreaddesignchoices
+have important incompatibility with some access patterns,
+identifying cases where better options could be studied.
+Considering the Subdivision dimension, many systems
+implement separate tables for triples sharing a speciﬁc pred-
+icate. For instance, queries that match triples with the same
+subjectcanusuallyexploittheclusteredrepresentationwhere
+several properties for the same subject are stored together in
+a single row [17]. Similarly, BGPs describing triples sharing
+the same object can exploit an analogous data organization.
+On the other hand, a constant in s or o can be exploited
+by a hash index of the form s →po. Yet, no representation
+exploits subdivision for a pair of constants, e.g., sp→o. For
+ﬁxed N-way pivot on the same variable, subdivisions like a
+property-table, i.e., a table where each column is a property
+for the same subject, can be seen as efﬁcient solutions, but
+are compatible only with a limited set of access patterns.
+Conversely, inalltheirforms,ﬁlteroperatorsare,ingeneral,
+efﬁcientlyexecutedoverclusteredandsortedrepresentations
+forvalues(e.g.,B+trees),orotherindexesthatpreserveorder
+(e.g., skip lists). Yet, overall, we see that there is a strong
+incompatibility between ﬁlters on literals and the fact that
+all representations store literals and special types in mixed
+subdivisions.Also,wenotethatsubdivisionaloneisnotsuf-
+ﬁcient because it can only be compatible with few access
+patterns, so (as also discussed in the paragraphs below) a
+system will always require redundant representations.
+Our survey also reveals the absence of index compres-
+sion solutions (e.g., [89]). For instance, we do not ﬁnd any
+applicationofeffectivecompressionsolutionsforsecondary
+representations, such as counting indexes (e.g., sp→#) and
+structures like bloom-ﬁlters [26] or compact LSM-tries like
+SuRF [90] that can also support existence checks, which are
+prevalent in the existing workloads (as discussed in the next
+section).
+For redundancy, while 1-hop s→o queries are the most
+commonandinvolveasingletriple,specializedindexeshave
+been proposed to speed up reachability and multi-hop path
+expressions (e.g., Sparqling kleene [31]). Apart from Parlia-
+ment[45],onecanrarelyﬁnddatarepresentationssupporting
+traversalpatternsasrequiredbyk-hopand*-hopaccesspat-
+terns.Furthermore,solutionstendtorelyonstandardB+-tree
+and hash map implementations, avoiding the use of hybrid
+structures (e.g., hybrid indexes [65]). An exception is the
+VS*-tree adopted by gStore [88], which, among others, can
+also return all subjects or objects that match a speciﬁc set of
+predicates and values, thus addressing the needs of a sub-
+set of the N-way pivot access pattern where the variable
+has the same position in all triple patterns. Data representa-
+tionsthatcanefﬁcientlyreturnpre-computedmatchcountsor
+other pre-computed aggregate values provide direct beneﬁts
+(e.g.,group-by-queryclusters[4]).Nonetheless,redundancy
+is used to a large extent.
+Recentadvancementinqueryoptimizationhaveledtothe
+introduction of worst-case optimal join algorithms (WCOJ)
+[8,38] that make use of highly redundant representations.
+123
+
+AdesignspaceforRDFdatarepresentations 367
+Table15 Compatibility between Access patterns and design choices
+Access pattern Best found Incompatible Unexplored
+S, P, O 1 Constant Hash table(+sL, +sK, +sQ),
+Separate Table(+sL, +sQ)
+Incompatible Hash table(-sL,-sK,-sQ) Surf(+sL, +sK, +sQ),
+S3(+sL, +sQ)
+SP, SO, PO 2 Constants Hash Table(+sK, +sQ),
+B+Tree(+sL, +sQ)
+SuRF(+sL, +sK, +sQ),
+so→p, sp→o(+sL, +sK,
++sQ), S3(+sL, +sQ)
+SPO 3 Constants Hash Table(+sK, +sQ),
+B+Tree(+sL, +sQ)
+Bloom ﬁlter(+sL, +sK)
+< & > Closed range B+Tree(+sL, +sQ) Mixed Literals/URI(-sL, -sQ) SuRF(+sL, +sK, +sQ), Skip
+list(+sL, +sQ)
+< | > Open range B+Tree(+sL, +sQ) Mixed Literals/URI(-sL, -sQ) SuRF(+sL, +sK, +sQ), Skip
+list(+sL, +sQ)
+T Special type range Partial subdivision of ID
+ranges(+sL, +sQ)
+representations mix these(-sL,-sK,-sQ) Separate Tables/Files(+sL,
++sQ)
+s→o 1-hop over p Hash Table(+sK, +sQ),
+Matrix(+sK, +sQ),
+Separate Table(+sL, +sQ)
+sp→o(+sL, +sK, +sQ)
+s k−→ o k-hop p1,..., pk Separate p matrix(+sL),
+Reachability Index(+sL,
++sQ), VS*-tree(+sL)
+sp→o(+sL, +sK)
+p∗/+ ?-hop over p Separate p matrix(+sL),
+Reachability Index(+sL)
+2-way same position Single Hash table(+sK,
++sQ)
+B+Tree(-sK, +sL) sp→o(+sL, +sK, +sQ)
+2-way different position Pre-joined
+materialization(+sL,
++sQ); Reachability
+Index(+sL, +sQ)
+B+Tree(-sK, -sL, -sQ) 4-position hash-map(+sK,
++sL, +sQ)
+N-way same position VS*-tree (+sK); Indexed
+Property table(+sL,+sQ);
+Multiple B+Tree(-sK, -sL,
+-sQ)
+Incompatible Hash table(-sL,-sK,-sQ) Dyadic tree [43] (+sL)
+N-way arbitrary position Multiple B+Tree(-sK, -sL,
+-sQ)
+Incompatible Hash table(-sL,-sK,-sQ) Dyadic tree [43] (+sL)
+All values Single ﬁle(+sQ)
+Sorted values B+tree(+sL, +sQ); Sorted
+table(+sL, +sQ)
+Hash Table (-sL, -sQ)
+Distinct values Hash table(+sK, +sL) Value counts(+sL, +sK,
++sQ)
+Existence Hash table(+sK) Bloom ﬁlter (+sK, +sL)
+Aggregate Store counts(+sL, +sK,
++sQ), group-by
+clusters(+sL, +sK, +sQ)
+Compressed Value
+counts(+sL, +sK, +sQ)
+Inbracketswehighlightthecompatibilities:selectioncompatible(+sL),seekcompatible(+sK),sequencecompatible(+sQ),andthecorresponding
+incompatibilities (-sL, -sK, -sQ)
+These algorithms limit query complexity to a factor of the
+ﬁnal result size by performing an N-way join with a pivot
+over the same variable in all positions. Current implementa-
+tionsrequiresortedaccesstoasingletriplepatternfortriples
+matching theBGP sharing the samevariable. However, con-
+ceptually, a solution providing all mappings of a variable
+at once could support these algorithms better. The dyadic
+tree proposed to index gap boxes in the geometric resolu-
+tion approach to multi-way joins [43] provides a possible
+avenue for providing such support. A gap box is a multi-
+dimensional representation of the uncovered portions of the
+domainsofvariablesparticipatinginamulti-wayjoin.Inthe
+absence of such a representation for RDF data, one solution
+[38](extendingaJenaTDBsystem)usesatotalof6B+-tree
+indexestocoverallpositionpermutationsandthussettlesfor
+a non-optimal (non seek-compatible) fully redundant solu-
+123
+
+368 T.Sagietal.
+tion.Anotherrecentsolution[8]optsforahighlycompressed
+and extremely subdivided wavelet-tree-based structure that
+isbuiltasabidirectionalsporingwhichrepresentstheentire
+graph as a string and indexes all its sufﬁxes. However, the
+current implementation does not support many other access
+patterns, most notably, from the write dimension.
+Thus, in practical applications one is required to consider
+a full-system design and to analyze the access patterns of an
+entire workload. We provide an example of such analysis in
+the following section.
+7 Workloadcaseanalysis
+Inthissection,weprovideanempiricalanalysisoftheaccess
+patterns present in different workloads from existing bench-
+marksanddatasets.Moreover,weshowhowtheanalysiscan
+be used to guide the choice of which data representations to
+adopt with respect to a query workload.
+7.1 Analyzedworkloads
+Previous analyses (e.g., [70]) focused on speciﬁc features of
+the language and query complexity (i.e., the topology of the
+graphpatterns).Therefore,suchanalysesarecenteredaround
+thosecharacteristicsthatwouldimpactmainlythequeryopti-
+mizer. Instead, here we present an analysis of the access
+patterns speciﬁc to the storage layer (described in Sect. 3)
+whoseperformancehavedirectcorrelationwiththeavailable
+physicaldatarepresentations.Inthissense,thisanalysisalso
+provides a complementary view to existing studies.
+In particular, we employ 10 workloads: 5 from popular
+synthetic SPARQL benchmarks and 5 based on real-world
+query-logs. The synthetic benchmarks are the Lehigh Uni-
+versityBenchmark(LUBM)[32],SP2Bench[71],theLDBC
+Social Network Benchmark (LDBC) [23], the FEASIBLE
+Benchmark [69], and the Waterloo SPARQL Diversity Test
+Suite(WatDiv)[3],comprising14,17,19,50,and50queries,
+respectively.
+The real workloads are based on queries against public
+biological knowledge graphs (BioBench [83]), query logs
+from the DBpedia endpoint [16], user submitted queries to
+the public WikiData endpoint [79], the Semantic Web Dog
+Food query log [53], and a popular benchmark for complex
+natural question answering over Freebase (Complex) [75].
+Theworkloadscontain22,46,3.4k,64k,and169.7kqueries.
+To identify the access patterns, we implemented a static
+analysisparserforSPARQL,availableonline.7 Theanalyzer
+extracts the parse tree from each query with the Jena query
+parser[7]andautomaticallymapsqueryconstructsmatching
+the aforementioned access patterns (see Sect. 3 and Fig. 2).
+7 https://github.com/tomersagi/rdf_access_patterns.
+Hence, the input of the parses is a given query workload,
+and the output is the analysis of the prevalence of each spe-
+ciﬁc access pattern in the given workload. We envision that
+the provided tool can be used by practitioners to evaluate
+their own query logs for the prevalence of speciﬁc access
+patterns. These patterns can then be compared with the sup-
+port provided by their systems of choice. Thus, for example,
+if a workload is characterized by an abundance of k-hops, it
+would be prudent to evaluate the support by the current sys-
+temcomparedtoanalternativesystemthatprovidesasuitable
+representation,suchastheVS*-treeprovidedbygStore[88]
+or the reachability index in Sparqling kleene [31].
+7.2 Limitations
+In general, the existence of an access pattern in a query does
+not mean that a speciﬁc system must utilize it to answer the
+query. For example, k-hop patterns such as {s1 p1/p2 ?o1}
+canbeansweredbyconvertingtheBGPintothe O ≡ S pivot
+pattern{s1p1?v1.?v1p2?o}.Anotherexampleisthesorted
+value return pattern, which can be used by different algo-
+rithmstoanswerotherquerypatternsaswell,e.g.,byWCOJ
+[38] to perform the efﬁcient intersection in an N-way pivot.
+Yet,inouranalysis,wecountedonlyqueriesexplicitlyrequir-
+ing sorted output in the formof an ORDER BYclause. Also,
+we excluded from this analysis those ORDER BY clauses
+that followed an aggregation resulting from a GROUP BY
+clause, since the sorted output could not be directly derived
+from a sorted retrieval operation.
+7.3 Resultsanddiscussion
+The aggregated results over all benchmarks are presented in
+Table 16. Constants are mainly used in predicate (P) and
+subject-predicate (SP) combinations. The abundance of P-
+constant patterns justiﬁes the prevalent use of subdivision
+by predicates in the systems reviewed, which allows rapid
+reduction of the search space. SP combinations are better
+served by point-lookup mechanisms such as hash maps, yet
+this alone does not justify the redundancy of having indexes
+for all permutations of SPO since, for instance, patterns
+selecting objects (O) are quite rare.
+The large number of binary same-position (e.g., S≡S)
+pivots requires systems to supplement the subdivision of
+data representations by predicate with other redundant data
+representations supporting access patterns compatible with
+selection by subject/object. Within the binary different-
+position pivot (BiD in Table 16), the O≡S pivot dominates
+since very few queries involve the pivot in the predicate
+positions. The N-way pivots are highly prevalent in all
+benchmarks.Perhapssurprisingly,arbitrarypositionvariable
+centric pivots (NwA in Table 16), are almost as prevalent as
+starpatterns.TherecentemergenceofWCOJalgorithms[38]
+123
+
+AdesignspaceforRDFdatarepresentations 369
+Table16 Prevalence of access patterns in popular RDF benchmarks
+Color marks prevalence: Yellow/Medium 0.33−0.66, High/Red >0.66; 0.0∗ marks values in 0.0 − 0.01. [ ] represents a closed range, [ ) an open
+range, and Sp* a special range. SkO and OkS represent K-step S→O and O→S traversals, respectively. All: all values, DV: distinct values, ST:
+sorted, EX: existence check, Σ aggregate. Pivot acronyms: BiS: Binary same position, BiD: Binary different position, Star: N-way same position
+is also known as a star pattern, NwA: N-way arbitrary position
+optimizing this access pattern has exposed the limitations of
+existing data representations in supporting this pattern and
+requiredtheintroductionofnovelrepresentationssuchasthe
+recently proposed ring [8], that allows all-position pivots on
+a selected variable in a single representation.
+Notably, a large number of benchmark queries employ
+special range ﬁlters, e.g., ﬁlters for speciﬁc languages (e.g.,
+@en), or speciﬁc types of literals, i.e., numeric values vs.
+strings vs. dates. This is especially prevalent when querying
+multi-language knowledge graphs and when ﬁltering values
+only for literals of a speciﬁc data type. This calls for indexes
+orsubdivisionsoftripleobjectsbylanguagesanddatatypes.
+Yet, none of the data representations in the reviewed storage
+systems explicitly support such access patterns although the
+benchmark queries suggest they could be especially useful.
+Conversely, the relative absence of closed/open range ﬁlters
+from most benchmarks corresponds well with the decreased
+relianceofsystemsonB+-treesobservedinSection5.3asthe
+relativeadvantageofB+treesoverhash-basedlookupmech-
+anisms is greatly diminished in the absence of closed/open
+range queries or other access patterns that require sorted
+access.
+When examining the traversal patterns, it is evident that
+1-hop traversals dominate although k-hop traversals have a
+substantial presence as well. It is interesting to note how
+LDBC queries represent an outlier since almost all queries
+employ k-hop traversals. For those special workloads, a sys-
+tem supporting efﬁcient k-hops (e.g., gStore [88]) could
+outperform systems that are forced to break these k-hops
+up into multiple 1-hop patterns. Moreover, traversals with
+unbounded path queries (marked as P∗) are quite rare. This
+rarity renders reachability indexes not so useful in prac-
+tice when compared to the extra space and update cost they
+require. It is an open question whether the currently lim-
+ited presence of these queries is due to the complexity of
+the query language (i.e., users are not familiar in express-
+ing such queries) or to most systems not being optimized
+for these access patterns and hence known to result in slow
+queries that are avoided by users.
+Another important ﬁnding is that over 80% of all the
+queries can make use of existence access patterns. Recall
+thatinthesepatterns,notriplevaluesarerequired,butonlya
+simpletestofexistence.Thisprevalenceisespeciallystriking
+when considering that almost no existing data representa-
+tionsspeciﬁcallytargetexistencequeries.Inmanyways,the
+success of bit representations such as TripleBit [87] and Bit-
+Mat[11]canbeattributedtothisprevalence.Therefore,data
+representationsthatarecompatiblewithexistenceaccesspat-
+terns, such as Bloom ﬁlters, are an unexplored but highly
+promising addition to existing systems and could very likely
+replaceless-frequentlyusedindexes(e.g.,B+-treeson OSP
+permutations). There is a relatively low number of queries
+requiring an explicit sorted result. This allows for the use
+of unsorted representations and algorithms for much of the
+retrieval,leavingthesortingforpost-processing. Finally,we
+see that distinct values are often required while aggregation
+is present in only a few queries. However, once more, since
+aggregationqueriesarecurrentlycomputationallyexpensive,
+wecouldnotexcludethatbetterperformanceforsuchqueries
+would result in more frequent use.
+One could also use Table 16 to perform retrospective
+analysis of previously published benchmarks. For example,
+upon its introduction, DB2 Graph [17] was compared with
+RDF-3X [55] over both LUBM and DBpedia. Two major
+differences between these two benchmarks are the preva-
+lence of P-position constant queries in DBpedia as well as
+more queries returning distinct values and existence checks
+ratherthanfullresults.Thus,onewouldexpectRDF-3Xwith
+123
+
+370 T.Sagietal.
+its P-centric data representations (which DB2 Graph lacks)
+and usage of IRI replacement to perform comparatively bet-
+ter on DBpedia than on LUBM. Indeed, the more modern
+DB2 Graph was not able to outperform RDF-3X on DBpe-
+dia although doing twice as well on LUBM.
+8 Relatedsurveys
+Sakr and Al-Naymat [68] deﬁned a taxonomy of data repre-
+sentationsforrelational-basedRDFtriplestores.Inthiswork,
+we review all centralized RDF triplestores.
+Modoni et al. [52] review triplestores in the context of
+their usefulness as meta data management systems used by
+other software in an enterprise scenario. Thus, they focus on
+technical and non-functional features such as user manage-
+ment, security, and programming language support, unlike
+our focus on data representation.
+Maet.al.[50]reviewRDFtriplestoresbytheirlogicaldata
+representation, dividing the landscape into relational (tra-
+ditional) and non-relational (NoSQL). They further divide
+relational representations into vertical (single triple table
+with 3 columns s p o), horizontal (s as row p as column o as
+value / s as row, p as table and o as value) and type (multiple
+standard horizontal tables partitioned by the s type). In this
+work, we abstract beyond relational/non-relational, looking
+at three orthogonal design dimensions.
+Özsu[59]focusesonseveralrepresentativesolutionscon-
+trasting the centralized versus the distributed approach, and
+within the centralized approach lists a few architectural
+choices such as whether to rely on a relational mapping
+from RDF to an RDBMS. Pan et al. [60] present a similar
+taxonomy, complementing it with a review of the promi-
+nent benchmarks used in the ﬁeld and a short comparative
+empiricalevaluation.Inthiswork,weinsteadabstractacross
+different architectural choices to identify the underlying
+design space.
+Abdelaziz et al. [2] focus in their review on distributed
+triplestores and on large-scale benchmarks. Kaoudi and
+Manolescu [42] similarly limit their analysis to cloud-native
+solutions. In this work, we focus on centralized stores since
+the distribution of a data structure can be handled as an
+orthogonal aspect.
+Wylot et al. [85] provide a taxonomy whose two main
+branches are centralized and distributed, albeit with a more
+detailed categorization of the centralized branch into six
+architectural approaches. The six types offered are: triple
+tables,propertytables,indexpermutations,verticalpartition-
+ing,graph-based,andbinarystorage.Whilethesecorrespond
+to some of the options in our subdivision and redundancy
+dimensions, the authors do not discuss additional solutions
+weidentify,e.g.,speciﬁcindexesforspeciﬁcaccesspatterns,
+such as hash indexes and reachability indexes. They do not
+explicitly address compression options (as we do in Table 6)
+and they do not discuss the compatibility between access
+patterns and design choices. In this paper, we identify the
+ﬁne-graineddesignspaceoptionsavailabletosystemdesign-
+ers and align them across three orthogonal dimensions to
+allowidentifyingnew,previouslyunexplored,combinations.
+Therefore, our analysis is signiﬁcantly more generalizable,
+asdemonstratedbyourabilitytoanalyze22systemsoverthe
+proposedSCRspace,overcomingthelimitationsofWylotet
+al. [85].
+Pérezetal.[62]performedworst-casecomplexityanalysis
+of SPARQL operators regardless of any indexes or physical
+data representations by counting the number of edges tra-
+versed in a conceptual graph representation for each pattern.
+In our work, we align between design choices for data rep-
+resentation and their effect on the cost of different access
+patterns.
+The Data Calculator is based on the analysis provided
+by the RUM Conjecture [10], which explores the trade-offs
+between read times (R), update cost (U), and memory (or
+storage)overhead(M).TheintuitionbehindtheRUMconjec-
+tures is also shared by our SCR space, although we perform
+a complementary analysis.
+Finally,inthedesignofPeloton[61],Pavloetal.presentan
+overviewofself-drivingactions,i.e.,thetypesofactionsthat
+aself-tuning(alsocalledself-driving)relationalsystemmust
+support. These actions are divided in three classes: runtime
+actions, physical actions, and data actions. Moreover, these
+actions are limited to the relational data model. In practice,
+for the storage level, they only allow either to move from
+columnar layout to row layout, and vice versa, or to add
+and drop indices. Nonetheless, we envision the possibility
+to expand the Peloton framework to the case of triplestores
+and believe that the analysis provide here is a fundamental
+contribution in this direction.
+9 Conclusionsandfuturework
+Inthiswork,weintroducethenewSubdivision-Compression-
+Redundancy (SCR) design space of data representations for
+RDF databases. We also introduce a new feature space for
+analyzing query workload access patterns. Together, they
+allow the analysis of RDF store design decisions, speciﬁ-
+cally, which data representations can effectively support a
+given workload. We performed an analysis of popular RDF
+store benchmarks under these assumptions and showed that
+multi-hoptraversalsandexistencechecksarebroadlyunder-
+served by existing RDF store designs, which are oriented
+toward providing support for 1-hop traversals, pivots, and
+access patterns featuring a constant predicate value. Many
+of these design choices can be made at run-time (e.g., by
+usinganautomatedtuningmechanism)followinganinspec-
+123
+
+AdesignspaceforRDFdatarepresentations 371
+tion of a query load or in advance for a planned workload.
+To map between query loads and design choices, we offer a
+simple cost model, a feature space over which query loads
+can be evaluated, and an analysis of the impact of these
+choices. Thus, we lay the ground for future RDF stores to
+design novel solutions over this space in an informed man-
+ner. Such designs can be achieved either manually or even
+semiautomatically as proposed by the recent effort in self-
+designing data structures [40] and self-organizing relational
+database systems [61]. By cross-referencing the access pat-
+terns in a query workload with SCR design options, future
+RDF stores will be able to add components of the system
+to match expected workload. In future work, we intend to
+explore the architecture and design principles of such sys-
+tems.
+Acknowledgements We wish to thank the anonymous reviewers for
+thedetailedandinsightfulcommentsthatallowedustogreatlyimprove
+the ﬁnal version of this manuscript.
+Funding This work is supported by the Independent Research Fund
+DenmarkunderGrantNo.DFF-8048-00051B(RelWeb)andtheSEMI-
+OTIC project, Aalborg University’s Talent Programme, the European
+Union’s Horizon 2020 research and innovation programme under the
+Marie Skłodowska-Curie Grant agreement No. 838216, and the Poul
+Due Jensen Foundation.
+Data availability The data in this work were collected from public
+datasets (see Sect. 7 for references and a link to our code).
+Declarations
+Conﬂict of interests The authors declare that they have no conﬂict of
+interest.
+Open Access This article is licensed under a Creative Commons
+Attribution4.0InternationalLicense,whichpermitsuse,sharing,adap-
+tation, distribution and reproduction in any medium or format, as
+long as you give appropriate credit to the original author(s) and the
+source, provide a link to the Creative Commons licence, and indi-
+cate if changes were made. The images or other third party material
+in this article are included in the article’s Creative Commons licence,
+unless indicated otherwise in a credit line to the material. If material
+is not included in the article’s Creative Commons licence and your
+intended use is not permitted by statutory regulation or exceeds the
+permitteduse,youwillneedtoobtainpermissiondirectlyfromthecopy-
+right holder. To view a copy of this licence, visit http://creativecomm
+ons.org/licenses/by/4.0/.
+References
+1. Abadi,D.J.,Marcus,A.,Madden,S.R.,Hollenbach,K.:SW-Store:
+averticallypartitionedDBMSforsemanticwebdatamanagement.
+VLDB J. 18(2), 385–406 (2009)
+2. Abdelaziz, I., Harbi, R., Khayyat, Z., Kalnis, P.: A survey and
+experimental comparison of distributed SPARQL engines for very
+large RDF data. Proc. VLDB Endow. 10(13), 2049–2060 (2017)
+3. Aluç, G., Hartig, O., Tamer Özsu, M., Daudjee, K.: Diversiﬁed
+stress testing of RDF data management systems. In: ISWC. pp.
+197–212 (2014)
+4. Aluç, G., Tamer Özsu, M., Daudjee, K., Hartig, O.: Executing
+queriesoverschemalessRDFdatabases.In:ICDE.807–818(2015)
+5. Aluç, G., Tamer Özsu, M., Daudjee, K.: Building self-clustering
+RDF databases using tunable-LSH. VLDB J. 28(2), 173–195
+(2019)
+6. Andrzejewski, W., Wrembel, R.: GPU-WAH: applying GPUs
+to compressing bitmap indexes with word aligned hybrid. In:
+DatabaseandExpertSystemsApplications,pp.315–329.Springer,
+Berlin (2010)
+7. Apache: Apache Jena. Accessed jan. 4, 2020. http://jena.apache.
+org (2020)
+8. Arroyuelo, D., Hogan, A., Navarro, G., Reutter, J.L., Rojas-
+Ledesma, J., Soto, A.: Worst-case optimal graph joins in almost
+no space. In: Proceedings of the 2021 International Conference on
+Management of Data. pp. 102–114 (2021)
+9. Athanassoulis,M.,Idreos,S.:Designtradeoffsofdataaccessmeth-
+ods. In: SIGMOD. pp. 2195–2200 (2016)
+10. Athanassoulis,M.,Kester,M.S.,Maas,L.M.,Stoica,R.,Idreos,S.,
+Ailamaki,A.,Callaghan,M.:Designingaccessmethods:theRUM
+conjecture. In: EDBT. pp. 461–466 (2016)
+11. Atre, M., Srinivasan, J., Hendler, J.A.: BitMat: a main-memory
+bit matrix of RDF triples for conjunctive triple pattern queries. In:
+ISWC (Posters & Demonstrations). pp. 1–2 (2008)
+12. Bausch, D., Petrov, I., Buchmann, A.: Making cost-based query
+optimization asymmetry-aware. In: Proceedings of the Workshop
+on Data Management on New Hardware. pp. 24–32 (2012)
+13. Bebee, B.R., Choi, D., Gupta, A., Gutmans, A., Khandelwal, A.,
+Kiran, Y., Mallidi, S., McGaughy, B., Personick, M., Rajan, K.,
+Rondelli,S.,Ryazanov,A.,Schmidt,M.,Sengupta,K.,Thompson,
+B.B., Vaidya, D., Wang, S.: Amazon neptune: graph data manage-
+ment in the cloud. In: ISWC (Posters & Demonstrations). (2018)
+14. Besta, M., Peter, E., Gerstenberger, R., Fischer, M., Pod-
+stawski, M., Barthels, C., Alonso, G., Hoeﬂer, T.: Demystifying
+graph databases: analysis and taxonomy of data organization,
+system designs, and graph queries. Technical Report. (2019)
+arXiv:1910.09017
+15. Bishop, B., Kiryakov, A., Ognyanoff, D., Peikov, I., Tashev, Z.,
+Velkov, R.: OWLIM: a family of scalable semantic repositories.
+Semantic Web 2(1), 33–42 (2011)
+16. Bonifati, A., Martens, W., Timm, T.: An analytical study of large
+SPARQL query logs. VLDB J. 29(2), 655–679 (2020)
+17. Bornea,M.A.,Dolby,J.,Kementsietsidis,A.,Srinivas,K.,Dantres-
+sangle, P., Udrea, O., Bhattacharjee, B.: Building an efﬁcient RDF
+storeoverarelationaldatabase.In:SIGMOD. pp.121–132 (2013)
+18. Brisaboa,N.R.,Cerdeira-Pena,A.,Fariña,A.,Navarro,G.:Acom-
+pactRDFstoreusingsufﬁxarrays.In:Costas,I.,Simon,P.,Emine,
+Y.(eds.)StringProcessingandInformationRetrieval,pp.103–115.
+Springer, Cham (2015)
+19. Chazelle, B., Kilian, J., Rubinfeld, R., Tal, A.: The bloomier ﬁlter:
+an efﬁcient data structure for static support lookup tables. In: Pro-
+ceedings of the ACM-SIAM Symposium on Discrete Algorithms
+(SODA). pp. 30–39 (2004)
+20. Chong, E.I., Das, S., Eadon, G., Srinivasan, J.: Integrating RDF
+data into a relational database system. US Patent US8719250B2
+(2014)
+21. Cyganiak, R.: A relational algebra for SPARQL query developers
+with a powerful tool to extract information from large A relational
+algebra for SPARQL. Technical Report, HP Laboratories Bristol,
+Bristol, UK (2005)
+22. Duan, S., Kementsietsidis, A., Srinivas, K., Udrea, O.: Apples and
+oranges:acomparisonofRDFbenchmarksandrealRDFdatasets.
+In: SIGMOD. 145–156 (2011)
+123
+
+372 T.Sagietal.
+23. Erling, O., Averbuch, A., Larriba-Pey, J.-L., Chaﬁ, H., Gubichev,
+A., Prat-Pérez, A., Pham, M., Boncz, P.A.: The LDBC Social
+Network Benchmark: Interactive Workload. In: SIGMOD. pp.
+619–630 (2015)
+24. Erling, O., Mikhailov, I.: Virtuoso: RDF support in a native
+RDBMS. In: Semantic Web Information Management - A Model-
+Based Perspective. Springer, pp. 501–519 (2009)
+25. Fernández,J.D.,Martínez-Prieto,M.A.,Gutiérrez,C.,Polleres,A.,
+Arias,M.:BinaryRDFrepresentationforpublicationandexchange
+(HDT).WebSemant.Sci.Serv.AgentsWorldWideWeb19,22–41
+(2013)
+26. Ficara, D., Giordano, S., Procissi, G., Vitucci, F.: Multilayer
+compressed counting bloom ﬁlters. In: Proceedings of the 27th
+Conference on Computer Communications. IEEE, pp. 311–315
+(2008)
+27. Florescu, D., Levy, A., Manolescu, I., Suciu, D.: Query optimiza-
+tion in the presence of limited access patterns. In: SIGMOD. pp.
+311–322 (1999)
+28. Franz Inc. 2020. AllegroGraph. Accessed jan. 14, 2020. https://
+franz.com/agraph/allegrograph
+29. Frasincar,F.,Houben,G.-J.,Vdovjak,R.,Barna,P.:RAL:analge-
+bra for querying RDF. WWW 7(1), 83–109 (2004)
+30. Galárraga,L.,Hose,K.,Schenkel,R.:Partout:adistributedengine
+for efﬁcient RDF processing. WWW 2014, 267–268 (2014)
+31. Gubichev, A., Bedathur, S.J., Seufert, S.: Sparqling kleene: fast
+property paths in RDF-3X. In Workshop on Graph Data Manage-
+ment Experiences and Systems, GRADES (2013)
+32. Guo,Y.,Pan,Z.,Heﬂin,J.:LUBM:AbenchmarkforOWLknowl-
+edge base systems. J. Web Sem. 3(2–3), 158–182 (2005)
+33. Harris,S.,Gibbins,N.:3store:efﬁcientbulkRDFstorage.In:Pro-
+ceedings of the International Workshop on Practical and Scalable
+Semantic Systems (PSSS). 1 (2003)
+34. Harris, S., Lamb, N., Shadbolt, N.: 4store : The design and imple-
+mentation of a clustered RDF store. In: Scalable Semantic Web
+Knowledge Base Systems (SSWS). pp. 81–96 (2009)
+35. Harris, S.: Andy. Seaborne. 2012. SPARQL 1.1 Query Language.
+W3C Recommendation 21 March (2013)
+36. Harth,A.,Umbrich,J.,Hogan,A.,Decker,S.:YARS2:Afederated
+repository for querying graph structured data from the web. In:
+ISWC. pp. 211–224 (2007)
+37. Hellerstein, J.M., Stonebraker, M., Hamilton, J.: Architecture of a
+database system. Found. Trends Databases 2007, 141–259 (2007)
+38. Hogan, A., Riveros, C., Rojas, C., Soto, A.: A worst-case opti-
+maljoinalgorithmforSPARQL.In:ISWC.Springer,pp.258–275
+(2019)
+39. Huffman, D.A.: A method for the construction of minimum-
+redundancy codes. Proc. IRE 40(9), 1098–1101 (1952)
+40. Idreos,S.,Dayan,N.,Qin,W.,Akmanalp,M.,Hilgard,S.,Ross,A.,
+Lennon,J.,Jain,V.,Gupta,H.,Li,D.,Zhu,Z.:Designcontinuums
+and the path toward self-designing key-value stores that know and
+learn. In: CIDR (2019)
+41. Idreos,S.,Zoumpatianos,K.,Hentschel,B.,Kester,M.S.,Guo,D.:
+The data calculator: data structure design and cost synthesis from
+ﬁrstprinciplesandlearnedcostmodels.In:SIGMOD.pp.535–550
+(2018)
+42. Kaoudi, Z., Manolescu, I.: RDF in the clouds: a survey. VLDB J.
+24(1), 67–91 (2015)
+43. Khamis, M.A., Ngo, H.Q., Ré, C., Rudra, A.: Joins via geometric
+resolutions: worst case and beyond. ACM Trans. Database Syst.
+(TODS) 41(4), 1–45 (2016)
+44. Klyne, G., Carrol, J.J., McBride, B.: RDF 1.1 Concepts and
+Abstract Syntax. World-Wide Web Consortium (2014)
+45. Kolas, D., Emmons, I., Dean, M.: Efﬁcient linked-list RDF index-
+ing in Parliament. In: Proceedings of the Workshop on Scalable
+SemanticWebKnowledgeBaseSystems(SSWS).WashingtonDC,
+USA, pp. 17–32 (2009)
+46. Krech, D.: RDFlib: A Python Library for Working with RDF.
+Accessed jan. 14, (2020). https://rdﬂib.readthedocs.io
+47. Lissandrini, M., Brugnara, M., Velegrakis, Y.: Beyond mac-
+robenchmarks: microbenchmark-based graph databaseevaluation.
+Proc. VLDB Endow. 12(4), 390–403 (2018)
+48. Liu, X., Thomsen, C., Pedersen, T.B.: 3XL: supporting efﬁcient
+operations on very large OWL Lite triple-stores. Inform. Syst.
+36(4), 765–781 (2011)
+49. SYSTAP LLC. 2013. The bigdata RDF Database. Techni-
+cal Report. SYSTAP LLC. https://blazegraph.com/docs/bigdata_
+architecture_whitepaper.pdf
+50. Ma, Z., Capretz, M.A.M., Yan, L.: Storing massive resource
+description framework (RDF) data: a survey. Knowl. Eng. Rev.
+31(4), 391–413 (2016)
+51. Menon, P., Mowry, T.C., Pavlo, A.: Relaxed operator fusion
+for in-memory databases: making compilation, vectorization, and
+prefetchingworktogetheratlast.Proc.VLDBEndow.11(1),1–13
+(2017)
+52. Modoni, G.E., Sacco, M., Terkaj, W.: A survey of RDF store
+solutions.In:ProceedingsoftheConferenceonEngineering,Tech-
+nology and Innovation (ICE). pp. 1–7 (2014)
+53. Möller, K., Heath, T., Handschuh, S., Domingue, J.: Recipes for
+semanticwebdogfood—theESWCandISWCmetadataprojects.
+In: ISWC. pp. 802–815 (2007)
+54. Muys, A.: Building an enterprise-scale database for RDF data.
+Technical Report. The Mulgara Project. (2006) https://code.
+mulgara.org/projects/mulgara/wiki/ImperfectIndexes
+55. Neumann, T., Weikum, G.: The RDF-3X engine for scalable man-
+agement of RDF data. VLDB J. 19(1), 91–113 (2010)
+56. Nitta,K.,Savnik,I.:SurveyofRDFstoragemanagers.In:Proceed-
+ings of the International Conference on Advances in Databases,
+Knowledge, and Data Applications. pp. 148–153 (2014)
+57. OntoText: GraphDB, The Best RDF Database for Knowledge
+Graphs. Accessed jan. 14, (2020). https://www.ontotext.com/
+products/graphdb/
+58. Owens,Alisdair,Seaborne,Andy,Gibbins,Nick:ClusteredTDB’:
+AClusteredTripleStoreforJena.Univ.ofSouthampton,Technical
+Report (2009)
+59. Özsu, M.T.: A survey of RDF data management systems. Front.
+Comput. Sci. 10(3), 418–432 (2016)
+60. Pan, Z., Zhu, T., Liu, H., Ning, H.: A survey of RDF manage-
+ment technologies and benchmark datasets. J. Ambient Intell. and
+Humanized Comput. 9(5), 1693–1704 (2018)
+61. Pavlo, A., Angulo, G., Arulraj, J., Lin, H., Lin, J., Ma, L., Menon,
+P., Mowry, T.C., Perron, M., Quah, I., Santurkar, S., Tomasic, A.,
+Toor, S., Van Aken, D., Wang, Z., Wu, Y., Xian, R., Zhang, T.:
+Self-driving database management systems. In: CIDR (2017)
+62. Pérez, J., Arenas, M., Gutierrez, C.: Semantics and complexity of
+SPARQL. ACM Trans. Database Syst. 34(3), 1–45 (2009)
+63. Prud’hommeaux, E., Seaborne, A.: SPARQL Query Language for
+RDF. W3C Recommendation 15 January 2008 (2008)
+64. Punnoose, R., Crainiceanu, A., Rapp, D.: Rya: A scalable RDF
+triple store for the clouds. In: Proceedings of the Workshop on
+Cloud Intelligence (Cloud-I). Article 4 (2012)
+65. Qu,W.,Wang,X.,Li,J.,Li,X.:Hybridindexesbyexploringtradi-
+tionalB-treeandlinearregression.In:InternationalConferenceon
+WebInformationSystemsandApplications.Springer,pp.601–613
+(2019)
+66. Ravindra, P., Kim, H., Anyanwu, K.: An intermediate algebra
+for optimizing RDF graph pattern matching on MapReduce. In:
+ESWC. pp. 46–61 (2011)
+67. Sahoo, S.S., Halb, W., Hellmann, K., Idehen, S., Jr Thibodeau, T.,
+Auer,S.,Sequeda,J.,EzzatA.:Asurveyofcurrentapproachesfor
+mapping of relational databases to RDF. Technical Report. W3C
+RDB2RDF Incubator Group (2009)
+123
+
+AdesignspaceforRDFdatarepresentations 373
+68. Sakr, S., Al-Naymat, G.: Relational processing of RDF queries: a
+survey. SIGMOD Record 38(4), 23–28 (2009)
+69. Saleem, M., Mehmood, Q., Ngonga Ngomo, A.-C.: FEASIBLE:
+a feature-based SPARQL benchmark generation framework. In:
+ISWC. pp. 52–69 (2015)
+70. Saleem, M., Szárnyas, G., Conrads, F., Ahmad Chan Bukhari, S.,
+Mehmood,Q.,Ngomo,A.-C.N.:HowrepresentativeIsaSPARQL
+benchmark? An analysis of RDF Triplestore benchmarks. In:
+WWW. pp. 1623–1633 (2019)
+71. Schmidt, M., Hornung, T., Meier, M., Pinkel, C., Lausen, G.:
+SP2Bench:aSPARQLperformancebenchmark.In:SemanticWeb
+Information Management - A Model-Based Perspective. Springer,
+pp. 371–393 (2009)
+72. Grifﬁths Selinger, P., Astrahan, M.M., Chamberlin, D.D., Lorie,
+R.A., Price, T.G.: Access path selection in a relational database
+management system. In: SIGMOD, pp. 23–34. Association for
+Computing Machinery, New York, NY, USA (1979)
+73. Sintek, M., Kiesel, M.: RDFBroker: a signature-based high-
+performance RDF store. In: ESWC. pp. 363–377 (2006)
+74. Stardog Union. (2020). Stardog. Accessed jan. 14, 2020. https://
+www.stardog.com/
+75. Talmor,A.,Berant,J.:Thewebasaknowledge-baseforanswering
+complex questions. In: NAACL-HLT. pp. 641–651 (2018)
+76. Urbani, J., Jacobs, C.: Adaptive low-level storage of very large
+knowledge graphs. In: Proceedings of The Web Conference 2020
+(Taipei,Taiwan)(WWW’20).AssociationforComputingMachin-
+ery, New York, NY, USA, pp. 1761–1772. (2020) https://doi.org/
+10.1145/3366423.3380246
+77. Vidal, M.-E., Ruckhaus, E., Lampo, T., Martínez, A., Sierra, J.,
+Polleres,A.:EfﬁcientlyjoininggrouppatternsinSPARQLqueries.
+In: Extended Semantic Web Conference. Springer, pp. 228–242
+(2010)
+78. Volz, R., Oberle, D., Staab, S., Motik, B.: KAON SERVER - a
+semantic web management system. In: WWW. online (2003)
+79. Vrandeˇci´c,D.,Krötzsch,M.:Wikidata:afreecollaborativeknowl-
+edgebase. Commun. ACM 57(10), 78–85 (2014)
+80. Wang,Y.,Xiaoyong,D.,Jiaheng,L.,Wang,X.:FlexTable:usinga
+dynamicrelationmodeltostoreRDFdata.In:DatabaseSystemsfor
+Advanced Applications (DASFAA), pp. 580–594. Tsukuba, Japan
+(2010)
+81. Weiss, C., Karras, P., Bernstein, A.: Hexastore: sextuple indexing
+for semantic web data management. Proc. VLDB Endow. 1(1),
+1008–1019 (2008)
+82. Wolff, B.G.J., Fletcher, G.H.L., Lu, J.J.: An extensible framework
+forqueryoptimizationonTripleT-basedRDFstores.In:Workshops
+of EDBT/ICDT. pp. 190–196 (2015)
+83. Wu,H.,Fujiwara,T.,Yamamoto,Y.,Bolleman,J.,Yamaguchi,A.:
+BioBenchmark Toyama 2012: an evaluation of the performance of
+triplestoresonbiologicaldata.J.Biomed.Semant.5(1),32(2014)
+84. Zhe W., Moreno, G.M., Banerjee, J.: Storing and querying graph
+data in a key-value store. US Patent US20140310302A1 (2014)
+85. Wylot, M., Hauswirth, M., Cudré-Mauroux, P., Sakr, S.: RDF data
+storage and query processing schemes: a survey. ACM Comput.
+Surv. 51(4), 36 (2018)
+86. Yakovets,N.,Godfrey,P.,Gryz,J.:EvaluationofSPARQLproperty
+paths via recursive SQL. AMW 1087 (2013)
+87. Yuan, P., Liu, P., Wu, B., Jin, H., Zhang, W., Liu, L.: TripleBit: a
+fast and compact system for large scale RDF data. Proc. VLDB
+Endow. 6(7), 517–528 (2013)
+88. Zeng, L., Zou, L.: Redesign of the gStore system. Front. Comput.
+Sci. 12(4), 623–641 (2018)
+89. Zhang, H., Andersen, D.G., Pavlo, A., Kaminsky, M., Ma, L.,
+Shen, R.: Reducing the storage overhead of main-memory OLTP
+databases with hybrid indexes. In: SIGMOD. pp. 1567–1581
+(2016)
+90. Zhang, H., Lim,H., Leis,V., Andersen, D.G., Kaminsky, M., Kee-
+ton, K., Pavlo, A.: Surf: Practical range query ﬁltering with fast
+succinct tries. In: SIGMOD. pp. 323–336 (2018)
+91. Zhang, J., Wu, S., Tan, Z., Chen, G., Cheng, Z., Cao, W., Gao, Y.,
+Feng, X.: S3: a scalable in-memory skip-list index for key-value
+store. Proc. VLDB Endow. 12(12), 2183–2194 (2019)
+Publisher’sNote Springer Nature remains neutral with regard to juris-
+dictional claims in published maps and institutional afﬁliations.
+123

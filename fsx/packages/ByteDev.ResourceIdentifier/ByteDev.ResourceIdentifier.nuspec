@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>ByteDev.ResourceIdentifier</id>
+    <version>2.3.0</version>
+    <title>ByteDev.ResourceIdentifier</title>
+    <authors>Paul Stanley</authors>
+    <owners>Paul Stanley</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="file">LICENSE</license>
+    <licenseUrl>https://aka.ms/deprecateLicenseUrl</licenseUrl>
+    <icon>images\icon.png</icon>
+    <projectUrl>https://github.com/ByteDev/ByteDev.ResourceIdentifier</projectUrl>
+    <description>.NET Standard library of resource identifier (URI) related functionality.</description>
+    <copyright>Copyright 2020</copyright>
+    <tags>uri url urn resource identifier id uniform query querystring</tags>
+    <dependencies>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="ByteDev.Strings" version="9.5.0" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

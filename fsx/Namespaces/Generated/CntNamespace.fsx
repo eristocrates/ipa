@@ -1,117 +1,573 @@
-#I @"D:\https\com\github\eristocrates\ipa\fsx"
+#I @"D:\https\com\github\eristocrates\ipa\dll\"
+#r @"ResourceDescription.dll"
+#I @"D:\https\com\github\eristocrates\ipa\fsx\"
+open ResourceDescription
 #load @".paket/load/main.group.fsx"
-#r @"RdfAsm.dll"
-open RdfAsm
-#r @"RdfIO.dll"
-open RdfIO
+open System
 
 module cnt =
-    let _prefixId = PrefixId.fromNamespaceLabel "http://www.w3.org/2011/content#" "cnt"
-    /// <summary>
-    ///   <para>rdfs:comment : The content.</para>
-    ///   <para>rdfs:label : Content</para>
-    ///   <a href="http://www.w3.org/2011/content#Content">cnt:Content</a>
-    /// </summary>
-    let Content = _prefixId.prefix "Content"
-    /// <summary>
-    ///   <para>rdfs:comment : The base64 encoded content (can be used for binary content).</para>
-    ///   <para>rdfs:label : Base64 content</para>
-    ///   <a href="http://www.w3.org/2011/content#ContentAsBase64">cnt:ContentAsBase64</a>
-    /// </summary>
-    let ContentAsBase64 = _prefixId.prefix "ContentAsBase64"
-    /// <summary>
-    ///   <para>rdfs:comment : The text content (can be used for text content).</para>
-    ///   <para>rdfs:label : Text content</para>
-    ///   <a href="http://www.w3.org/2011/content#ContentAsText">cnt:ContentAsText</a>
-    /// </summary>
-    let ContentAsText = _prefixId.prefix "ContentAsText"
-    /// <summary>
-    ///   <para>rdfs:comment : The XML content (can only be used for XML-wellformed content).</para>
-    ///   <para>rdfs:label : XML content</para>
-    ///   <a href="http://www.w3.org/2011/content#ContentAsXML">cnt:ContentAsXML</a>
-    /// </summary>
-    let ContentAsXML = _prefixId.prefix "ContentAsXML"
-    /// <summary>
-    ///   <para>rdfs:comment : The document type declaration.</para>
-    ///   <para>rdfs:label : Document type declaration</para>
-    ///   <a href="http://www.w3.org/2011/content#DoctypeDecl">cnt:DoctypeDecl</a>
-    /// </summary>
-    let DoctypeDecl = _prefixId.prefix "DoctypeDecl"
-    /// <summary>
-    ///   <para>rdfs:comment : The Base64 encoded byte sequence of the content.</para>
-    ///   <para>rdfs:label : Base64 encoded byte sequence</para>
-    ///   <a href="http://www.w3.org/2011/content#bytes">cnt:bytes</a>
-    /// </summary>
-    let bytes = _prefixId.prefix "bytes"
-    /// <summary>
-    ///   <para>rdfs:comment : The character encoding used to create a character sequence from a byte sequence or vice versa.</para>
-    ///   <para>rdfs:label : Character encoding</para>
-    ///   <a href="http://www.w3.org/2011/content#characterEncoding">cnt:characterEncoding</a>
-    /// </summary>
-    let characterEncoding = _prefixId.prefix "characterEncoding"
-    /// <summary>
-    ///   <para>rdfs:comment : The character sequence of the text content.</para>
-    ///   <para>rdfs:label : Character sequence</para>
-    ///   <a href="http://www.w3.org/2011/content#chars">cnt:chars</a>
-    /// </summary>
-    let chars = _prefixId.prefix "chars"
-    /// <summary>
-    ///   <para>rdfs:comment : The character encoding declared in the XML declaration.</para>
-    ///   <para>rdfs:label : XML character encoding</para>
-    ///   <a href="http://www.w3.org/2011/content#declaredEncoding">cnt:declaredEncoding</a>
-    /// </summary>
-    let declaredEncoding = _prefixId.prefix "declaredEncoding"
-    /// <summary>
-    ///   <para>rdfs:comment : The document type name.</para>
-    ///   <para>rdfs:label : Document type name</para>
-    ///   <a href="http://www.w3.org/2011/content#doctypeName">cnt:doctypeName</a>
-    /// </summary>
-    let doctypeName = _prefixId.prefix "doctypeName"
-    /// <summary>
-    ///   <para>rdfs:comment : The document type declaration.</para>
-    ///   <para>rdfs:label : Document type declaration</para>
-    ///   <a href="http://www.w3.org/2011/content#dtDecl">cnt:dtDecl</a>
-    /// </summary>
-    let dtDecl = _prefixId.prefix "dtDecl"
-    /// <summary>
-    ///   <para>rdfs:comment : The internal document type definition subset within the document type declarations.</para>
-    ///   <para>rdfs:label : Internal DTD subset</para>
-    ///   <a href="http://www.w3.org/2011/content#internalSubset">cnt:internalSubset</a>
-    /// </summary>
-    let internalSubset = _prefixId.prefix "internalSubset"
-    /// <summary>
-    ///   <para>rdfs:comment : The XML content preceding the document type declaration.</para>
-    ///   <para>rdfs:label : XML leading misc</para>
-    ///   <a href="http://www.w3.org/2011/content#leadingMisc">cnt:leadingMisc</a>
-    /// </summary>
-    let leadingMisc = _prefixId.prefix "leadingMisc"
-    /// <summary>
-    ///   <para>rdfs:comment : The document type declarations's public identifier.</para>
-    ///   <para>rdfs:label : Public ID</para>
-    ///   <a href="http://www.w3.org/2011/content#publicId">cnt:publicId</a>
-    /// </summary>
-    let publicId = _prefixId.prefix "publicId"
-    /// <summary>
-    ///   <para>rdfs:comment : The XML content following the document type declaration.</para>
-    ///   <para>rdfs:label : XML rest</para>
-    ///   <a href="http://www.w3.org/2011/content#rest">cnt:rest</a>
-    /// </summary>
-    let rest = _prefixId.prefix "rest"
-    /// <summary>
-    ///   <para>rdfs:comment : The standalone declaration in the XML declaration.</para>
-    ///   <para>rdfs:label : XML standalone document declaration</para>
-    ///   <a href="http://www.w3.org/2011/content#standalone">cnt:standalone</a>
-    /// </summary>
-    let standalone = _prefixId.prefix "standalone"
-    /// <summary>
-    ///   <para>rdfs:comment : The document type declarations's system identifier (typed: xsd:anyURI)</para>
-    ///   <para>rdfs:label : System ID</para>
-    ///   <a href="http://www.w3.org/2011/content#systemId">cnt:systemId</a>
-    /// </summary>
-    let systemId = _prefixId.prefix "systemId"
-    /// <summary>
-    ///   <para>rdfs:comment : The XML version declared in the XML declaration.</para>
-    ///   <para>rdfs:label : XML version</para>
-    ///   <a href="http://www.w3.org/2011/content#version">cnt:version</a>
-    /// </summary>
-    let version = _prefixId.prefix "version"
+    let _namespace = NamedReference "http://www.w3.org/2011/content#" |> NamespaceName
+    let _rdfType = NamedReference "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+
+    let _owlNamedIndividual =
+        NamedReference "http://www.w3.org/2002/07/owl#NamedIndividual"
+
+    let internalSubset = _namespace.prefixedName "internalSubset"
+
+    module DoctypeDecl =
+        let Class = _namespace.prefixedName "DoctypeDecl"
+
+        type Interface =
+            abstract iri: NamedReference
+            abstract formula: Formula
+            abstract asSubject: RdfSubject
+            abstract asPredicate: RdfPredicate
+            abstract asObject: RdfObject
+            abstract doctypeName: Formula
+            abstract internalSubset: Formula
+            abstract publicId: Formula
+            abstract systemId: Formula
+
+        type Instance(iri: NamedReference) =
+            let _formula =
+                Formula.fromRdfSubject iri.asSubject
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject Class.asObject)
+                |> Formula.materializeFormula
+
+            member this.iri = iri
+            member this.formula = _formula
+            member this.asSubject = iri.asSubject
+            member this.asPredicate = iri.asPredicate
+            member this.asObject = iri.asObject
+
+            member this.doctypeName =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "doctypeName").asPredicate)
+
+            member this.internalSubset =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "internalSubset").asPredicate)
+
+            member this.publicId =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "publicId").asPredicate)
+
+            member this.systemId =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "systemId").asPredicate)
+
+            interface Interface with
+                member this.iri = iri
+                member this.formula = _formula
+                member this.asSubject = iri.asSubject
+                member this.asPredicate = iri.asPredicate
+                member this.asObject = iri.asObject
+
+                member this.doctypeName =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "doctypeName").asPredicate)
+
+                member this.internalSubset =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "internalSubset").asPredicate)
+
+                member this.publicId =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "publicId").asPredicate)
+
+                member this.systemId =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "systemId").asPredicate)
+
+        type NamedIndividual(iri: NamedReference) =
+            let _formula =
+                Formula.fromRdfSubject iri.asSubject
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject Class.asObject)
+                |> Formula.materializeFormula
+                |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject _owlNamedIndividual.asObject)
+                |> Formula.materializeFormula
+
+            member this.iri = iri
+            member this.formula = _formula
+            member this.asSubject = iri.asSubject
+            member this.asPredicate = iri.asPredicate
+            member this.asObject = iri.asObject
+
+            member this.doctypeName =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "doctypeName").asPredicate)
+
+            member this.internalSubset =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "internalSubset").asPredicate)
+
+            member this.publicId =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "publicId").asPredicate)
+
+            member this.systemId =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "systemId").asPredicate)
+
+            interface Interface with
+                member this.iri = iri
+                member this.formula = _formula
+                member this.asSubject = iri.asSubject
+                member this.asPredicate = iri.asPredicate
+                member this.asObject = iri.asObject
+
+                member this.doctypeName =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "doctypeName").asPredicate)
+
+                member this.internalSubset =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "internalSubset").asPredicate)
+
+                member this.publicId =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "publicId").asPredicate)
+
+                member this.systemId =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "systemId").asPredicate)
+
+    let bytes = _namespace.prefixedName "bytes"
+
+    module ContentAsBase64 =
+        let Class = _namespace.prefixedName "ContentAsBase64"
+
+        type Interface =
+            abstract iri: NamedReference
+            abstract formula: Formula
+            abstract asSubject: RdfSubject
+            abstract asPredicate: RdfPredicate
+            abstract asObject: RdfObject
+            abstract bytes: Formula
+            abstract characterEncoding: Formula
+
+        type Instance(iri: NamedReference) =
+            let _formula =
+                Formula.fromRdfSubject iri.asSubject
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject Class.asObject)
+                |> Formula.materializeFormula
+
+            member this.iri = iri
+            member this.formula = _formula
+            member this.asSubject = iri.asSubject
+            member this.asPredicate = iri.asPredicate
+            member this.asObject = iri.asObject
+
+            member this.bytes =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "bytes").asPredicate)
+
+            member this.characterEncoding =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "characterEncoding").asPredicate)
+
+            interface Interface with
+                member this.iri = iri
+                member this.formula = _formula
+                member this.asSubject = iri.asSubject
+                member this.asPredicate = iri.asPredicate
+                member this.asObject = iri.asObject
+
+                member this.bytes =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "bytes").asPredicate)
+
+                member this.characterEncoding =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "characterEncoding").asPredicate)
+
+        type NamedIndividual(iri: NamedReference) =
+            let _formula =
+                Formula.fromRdfSubject iri.asSubject
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject Class.asObject)
+                |> Formula.materializeFormula
+                |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject _owlNamedIndividual.asObject)
+                |> Formula.materializeFormula
+
+            member this.iri = iri
+            member this.formula = _formula
+            member this.asSubject = iri.asSubject
+            member this.asPredicate = iri.asPredicate
+            member this.asObject = iri.asObject
+
+            member this.bytes =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "bytes").asPredicate)
+
+            member this.characterEncoding =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "characterEncoding").asPredicate)
+
+            interface Interface with
+                member this.iri = iri
+                member this.formula = _formula
+                member this.asSubject = iri.asSubject
+                member this.asPredicate = iri.asPredicate
+                member this.asObject = iri.asObject
+
+                member this.bytes =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "bytes").asPredicate)
+
+                member this.characterEncoding =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "characterEncoding").asPredicate)
+
+    module Content =
+        let Class = _namespace.prefixedName "Content"
+
+        type Interface =
+            abstract iri: NamedReference
+            abstract formula: Formula
+            abstract asSubject: RdfSubject
+            abstract asPredicate: RdfPredicate
+            abstract asObject: RdfObject
+            abstract characterEncoding: Formula
+
+        type Instance(iri: NamedReference) =
+            let _formula =
+                Formula.fromRdfSubject iri.asSubject
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject Class.asObject)
+                |> Formula.materializeFormula
+
+            member this.iri = iri
+            member this.formula = _formula
+            member this.asSubject = iri.asSubject
+            member this.asPredicate = iri.asPredicate
+            member this.asObject = iri.asObject
+
+            member this.characterEncoding =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "characterEncoding").asPredicate)
+
+            interface Interface with
+                member this.iri = iri
+                member this.formula = _formula
+                member this.asSubject = iri.asSubject
+                member this.asPredicate = iri.asPredicate
+                member this.asObject = iri.asObject
+
+                member this.characterEncoding =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "characterEncoding").asPredicate)
+
+        type NamedIndividual(iri: NamedReference) =
+            let _formula =
+                Formula.fromRdfSubject iri.asSubject
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject Class.asObject)
+                |> Formula.materializeFormula
+                |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject _owlNamedIndividual.asObject)
+                |> Formula.materializeFormula
+
+            member this.iri = iri
+            member this.formula = _formula
+            member this.asSubject = iri.asSubject
+            member this.asPredicate = iri.asPredicate
+            member this.asObject = iri.asObject
+
+            member this.characterEncoding =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "characterEncoding").asPredicate)
+
+            interface Interface with
+                member this.iri = iri
+                member this.formula = _formula
+                member this.asSubject = iri.asSubject
+                member this.asPredicate = iri.asPredicate
+                member this.asObject = iri.asObject
+
+                member this.characterEncoding =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "characterEncoding").asPredicate)
+
+    let dtDecl = _namespace.prefixedName "dtDecl"
+
+    module ContentAsXML =
+        let Class = _namespace.prefixedName "ContentAsXML"
+
+        type Interface =
+            abstract iri: NamedReference
+            abstract formula: Formula
+            abstract asSubject: RdfSubject
+            abstract asPredicate: RdfPredicate
+            abstract asObject: RdfObject
+            abstract characterEncoding: Formula
+            abstract declaredEncoding: Formula
+            abstract dtDecl: Formula
+            abstract leadingMisc: Formula
+            abstract rest: Formula
+            abstract standalone: Formula
+            abstract version: Formula
+
+        type Instance(iri: NamedReference) =
+            let _formula =
+                Formula.fromRdfSubject iri.asSubject
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject Class.asObject)
+                |> Formula.materializeFormula
+
+            member this.iri = iri
+            member this.formula = _formula
+            member this.asSubject = iri.asSubject
+            member this.asPredicate = iri.asPredicate
+            member this.asObject = iri.asObject
+
+            member this.characterEncoding =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "characterEncoding").asPredicate)
+
+            member this.declaredEncoding =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "declaredEncoding").asPredicate)
+
+            member this.dtDecl =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "dtDecl").asPredicate)
+
+            member this.leadingMisc =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "leadingMisc").asPredicate)
+
+            member this.rest =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "rest").asPredicate)
+
+            member this.standalone =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "standalone").asPredicate)
+
+            member this.version =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "version").asPredicate)
+
+            interface Interface with
+                member this.iri = iri
+                member this.formula = _formula
+                member this.asSubject = iri.asSubject
+                member this.asPredicate = iri.asPredicate
+                member this.asObject = iri.asObject
+
+                member this.characterEncoding =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "characterEncoding").asPredicate)
+
+                member this.declaredEncoding =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "declaredEncoding").asPredicate)
+
+                member this.dtDecl =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "dtDecl").asPredicate)
+
+                member this.leadingMisc =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "leadingMisc").asPredicate)
+
+                member this.rest =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "rest").asPredicate)
+
+                member this.standalone =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "standalone").asPredicate)
+
+                member this.version =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "version").asPredicate)
+
+        type NamedIndividual(iri: NamedReference) =
+            let _formula =
+                Formula.fromRdfSubject iri.asSubject
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject Class.asObject)
+                |> Formula.materializeFormula
+                |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject _owlNamedIndividual.asObject)
+                |> Formula.materializeFormula
+
+            member this.iri = iri
+            member this.formula = _formula
+            member this.asSubject = iri.asSubject
+            member this.asPredicate = iri.asPredicate
+            member this.asObject = iri.asObject
+
+            member this.characterEncoding =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "characterEncoding").asPredicate)
+
+            member this.declaredEncoding =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "declaredEncoding").asPredicate)
+
+            member this.dtDecl =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "dtDecl").asPredicate)
+
+            member this.leadingMisc =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "leadingMisc").asPredicate)
+
+            member this.rest =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "rest").asPredicate)
+
+            member this.standalone =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "standalone").asPredicate)
+
+            member this.version =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "version").asPredicate)
+
+            interface Interface with
+                member this.iri = iri
+                member this.formula = _formula
+                member this.asSubject = iri.asSubject
+                member this.asPredicate = iri.asPredicate
+                member this.asObject = iri.asObject
+
+                member this.characterEncoding =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "characterEncoding").asPredicate)
+
+                member this.declaredEncoding =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "declaredEncoding").asPredicate)
+
+                member this.dtDecl =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "dtDecl").asPredicate)
+
+                member this.leadingMisc =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "leadingMisc").asPredicate)
+
+                member this.rest =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "rest").asPredicate)
+
+                member this.standalone =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "standalone").asPredicate)
+
+                member this.version =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "version").asPredicate)
+
+    let leadingMisc = _namespace.prefixedName "leadingMisc"
+    let version = _namespace.prefixedName "version"
+    let systemId = _namespace.prefixedName "systemId"
+
+    module ContentAsText =
+        let Class = _namespace.prefixedName "ContentAsText"
+
+        type Interface =
+            abstract iri: NamedReference
+            abstract formula: Formula
+            abstract asSubject: RdfSubject
+            abstract asPredicate: RdfPredicate
+            abstract asObject: RdfObject
+            abstract characterEncoding: Formula
+            abstract chars: Formula
+
+        type Instance(iri: NamedReference) =
+            let _formula =
+                Formula.fromRdfSubject iri.asSubject
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject Class.asObject)
+                |> Formula.materializeFormula
+
+            member this.iri = iri
+            member this.formula = _formula
+            member this.asSubject = iri.asSubject
+            member this.asPredicate = iri.asPredicate
+            member this.asObject = iri.asObject
+
+            member this.characterEncoding =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "characterEncoding").asPredicate)
+
+            member this.chars =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "chars").asPredicate)
+
+            interface Interface with
+                member this.iri = iri
+                member this.formula = _formula
+                member this.asSubject = iri.asSubject
+                member this.asPredicate = iri.asPredicate
+                member this.asObject = iri.asObject
+
+                member this.characterEncoding =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "characterEncoding").asPredicate)
+
+                member this.chars =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "chars").asPredicate)
+
+        type NamedIndividual(iri: NamedReference) =
+            let _formula =
+                Formula.fromRdfSubject iri.asSubject
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject Class.asObject)
+                |> Formula.materializeFormula
+                |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate _rdfType.asPredicate)
+                |> (fun draft -> draft.addRdfObject _owlNamedIndividual.asObject)
+                |> Formula.materializeFormula
+
+            member this.iri = iri
+            member this.formula = _formula
+            member this.asSubject = iri.asSubject
+            member this.asPredicate = iri.asPredicate
+            member this.asObject = iri.asObject
+
+            member this.characterEncoding =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "characterEncoding").asPredicate)
+
+            member this.chars =
+                _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "chars").asPredicate)
+
+            interface Interface with
+                member this.iri = iri
+                member this.formula = _formula
+                member this.asSubject = iri.asSubject
+                member this.asPredicate = iri.asPredicate
+                member this.asObject = iri.asObject
+
+                member this.characterEncoding =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "characterEncoding").asPredicate)
+
+                member this.chars =
+                    _formula |> (fun draft -> draft.addRdfSubject iri.asSubject)
+                    |> (fun draft -> draft.addRdfPredicate (_namespace.prefixedName "chars").asPredicate)
+
+    let chars = _namespace.prefixedName "chars"
+    let doctypeName = _namespace.prefixedName "doctypeName"
+    let rest = _namespace.prefixedName "rest"
+    let standalone = _namespace.prefixedName "standalone"
+    let declaredEncoding = _namespace.prefixedName "declaredEncoding"
+    let characterEncoding = _namespace.prefixedName "characterEncoding"
+    let publicId = _namespace.prefixedName "publicId"

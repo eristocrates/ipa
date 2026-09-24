@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>SerilogTimings</id>
+    <version>3.1.0</version>
+    <authors>nblumhardt,SerilogTimings Contributors</authors>
+    <license type="expression">Apache-2.0</license>
+    <licenseUrl>https://licenses.nuget.org/Apache-2.0</licenseUrl>
+    <icon>serilog-timings.png</icon>
+    <projectUrl>https://github.com/nblumhardt/serilog-timings</projectUrl>
+    <description>Extend Serilog with timed operations.</description>
+    <tags>serilog metrics timings operations</tags>
+    <dependencies>
+      <group targetFramework="net6.0">
+        <dependency id="Serilog" version="2.10.0" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="Serilog" version="2.10.0" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

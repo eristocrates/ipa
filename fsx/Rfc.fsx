@@ -12,7 +12,7 @@ open System.Xml.Linq
 #r "Ipa.dll"
 open Ipa
 
-#r "FSLang.dll"
+#r "PrettierNaming.dll"
 #r "Ast.dll"
 
 open FSharp.Data

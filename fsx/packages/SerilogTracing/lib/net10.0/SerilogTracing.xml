@@ -1,0 +1,909 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SerilogTracing</name>
+    </assembly>
+    <members>
+        <member name="T:SerilogTracing.ActivityListenerConfiguration">
+            <summary>
+            Configure integration between SerilogTracing and the .NET tracing infrastructure.
+            </summary>
+            <remarks>
+            <p>
+                There are two main integration points between SerilogTracing and the rest of
+                .NET.
+            </p>
+            <p>
+                The first is the <c>"Serilog"</c> <see cref="T:System.Diagnostics.ActivitySource"/>, which the
+                <see cref="M:SerilogTracing.LoggerTracingExtensions.StartActivity(Serilog.ILogger,System.String)"/> method uses to
+                publish activities created using SerilogTracing to the rest of .NET."/>
+            </p>
+            <p>
+                The second integration point, which this type, <see cref="T:SerilogTracing.ActivityListenerConfiguration"/>
+                configures, is an <see cref="T:System.Diagnostics.ActivityListener"/> through which SerilogTracing
+                receives activities from other .NET components.
+            </p>
+            <p>
+                Configuration options specified using this type always apply to external activities from
+                other .NET components. In cases where these options also apply to SerilogTracing's own
+                activities, the configuration sub-object (for example <see cref="P:SerilogTracing.ActivityListenerConfiguration.Sample"/>) will carry
+                documentation describing this.
+            </p>
+            </remarks>
+        </member>
+        <member name="M:SerilogTracing.ActivityListenerConfiguration.#ctor">
+            <summary>
+            Construct a new <see cref="T:SerilogTracing.ActivityListenerConfiguration" />.
+            </summary>
+        </member>
+        <member name="P:SerilogTracing.ActivityListenerConfiguration.Instrument">
+            <summary>
+            Configures instrumentation applied to externally-created activities.
+            </summary>
+        </member>
+        <member name="P:SerilogTracing.ActivityListenerConfiguration.Sample">
+            <summary>
+            Configures sampling. These options apply to both external activities from other .NET components,
+            and to the `"Serilog"` activity source that produces SerilogTracing's own activities.
+            </summary>
+        </member>
+        <member name="P:SerilogTracing.ActivityListenerConfiguration.InitialLevel">
+            <summary>
+            Configures the initial level assigned to externally-created activities.
+            </summary>
+        </member>
+        <member name="P:SerilogTracing.ActivityListenerConfiguration.ActivityEvents">
+            <summary>
+            Configures handling of events embedded in the <see cref="P:System.Diagnostics.Activity.Events"/> collection.
+            </summary>
+        </member>
+        <member name="M:SerilogTracing.ActivityListenerConfiguration.TraceTo(Serilog.ILogger)">
+            <summary>
+            Completes configuration and returns a handle that can be used to shut tracing down when no longer required.
+            </summary>
+            <param name="logger">
+            The logger instance to emit traces through. Avoid using the shared <see cref="P:Serilog.Log.Logger" /> as
+            the value here. To emit traces through the shared static logger, call <see cref="M:SerilogTracing.ActivityListenerConfiguration.TraceToSharedLogger" /> instead.
+            </param>
+            <returns>A handle that must be kept alive while tracing is required, and disposed afterwards.</returns>
+        </member>
+        <member name="M:SerilogTracing.ActivityListenerConfiguration.TraceToSharedLogger">
+            <summary>
+            Completes configuration and returns a handle that can be used to shut tracing down when no longer required.
+            This method is not equivalent to <code>TraceTo(Log.Logger)</code>. The former will emit traces through whatever the
+            value of <see cref="P:Serilog.Log.Logger" /> happened to be at the time <see cref="M:SerilogTracing.ActivityListenerConfiguration.TraceTo(Serilog.ILogger)" /> was called. This method
+            will always emit traces through the current value of <see cref="P:Serilog.Log.Logger" />.
+            </summary>
+            <returns>A handle that must be kept alive while tracing is required, and disposed afterwards.</returns>
+        </member>
+        <member name="T:SerilogTracing.ActivityListenerInstrumentationConfigurationHttpClientExtensions">
+            <summary>
+            Support ASP.NET Core instrumentation.
+            </summary>
+        </member>
+        <member name="M:SerilogTracing.ActivityListenerInstrumentationConfigurationHttpClientExtensions.HttpClientRequests(SerilogTracing.Configuration.ActivityListenerInstrumentationConfiguration)">
+            <summary>
+            Add instrumentation for <see cref="T:System.Net.Http.HttpClient"/> requests.
+            </summary>
+            <returns>Configuration object allowing method chaining.</returns>
+        </member>
+        <member name="M:SerilogTracing.ActivityListenerInstrumentationConfigurationHttpClientExtensions.HttpClientRequests(SerilogTracing.Configuration.ActivityListenerInstrumentationConfiguration,System.Action{SerilogTracing.Instrumentation.HttpClient.HttpRequestOutActivityInstrumentationOptions})">
+            <summary>
+            Add instrumentation for <see cref="T:System.Net.Http.HttpClient"/> requests.
+            </summary>
+            <param name="configuration"></param>
+            <param name="configure">A callback to configure the instrumentation.</param>
+            <returns>Configuration object allowing method chaining.</returns>
+        </member>
+        <member name="T:SerilogTracing.Configuration.ActivityListenerActivityEventsConfiguration">
+            <summary>
+            Controls configuration of embedded <see cref="T:System.Diagnostics.ActivityEvent"/> handling.
+            </summary>
+        </member>
+        <member name="M:SerilogTracing.Configuration.ActivityListenerActivityEventsConfiguration.AsLogEvents">
+            <summary>
+            Extract <see cref="T:System.Diagnostics.ActivityEvent"/> objects from activities, and record these as regular log events.
+            </summary>
+            <remarks>Log events generated from activity events are emitted when the activity completes; this may cause
+            their timestamps to appear out-of-order with respect to other log events. The first occurrence of any
+            <c>exception</c> event will be mapped to the span's <see cref="P:Serilog.Events.LogEvent.Exception"/> and will not be emitted as
+            a separate log event.</remarks>
+            <returns>The activity listener configuration, to enable method chaining.</returns>
+        </member>
+        <member name="T:SerilogTracing.Configuration.ActivityListenerInitialLevelConfiguration">
+            <summary>
+            Controls initial level configuration.
+            </summary>
+        </member>
+        <member name="M:SerilogTracing.Configuration.ActivityListenerInitialLevelConfiguration.Is(Serilog.Events.LogEventLevel)">
+            <summary>
+            Sets the initial level that will be assigned to externally created activities.
+            </summary>
+            <param name="level">The initial level to set.</param>
+            <returns>The activity listener configuration, to enable method chaining.</returns>
+        </member>
+        <member name="M:SerilogTracing.Configuration.ActivityListenerInitialLevelConfiguration.Verbose">
+            <summary>
+            Sets the initial level that will be assigned to externally created activities to <see cref="F:Serilog.Events.LogEventLevel.Verbose"/>.
+            </summary>
+            <returns>The activity listener configuration, to enable method chaining.</returns>
+        </member>
+        <member name="M:SerilogTracing.Configuration.ActivityListenerInitialLevelConfiguration.Debug">
+            <summary>
+            Sets the initial level that will be assigned to externally created activities to <see cref="F:Serilog.Events.LogEventLevel.Debug"/>.
+            </summary>
+            <returns>The activity listener configuration, to enable method chaining.</returns>
+        </member>
+        <member name="M:SerilogTracing.Configuration.ActivityListenerInitialLevelConfiguration.Information">
+            <summary>
+            Sets the initial level that will be assigned to externally created activities to <see cref="F:Serilog.Events.LogEventLevel.Information"/>.
+            </summary>
+            <returns>The activity listener configuration, to enable method chaining.</returns>
+        </member>
+        <member name="M:SerilogTracing.Configuration.ActivityListenerInitialLevelConfiguration.Warning">
+            <summary>
+            Sets the initial level that will be assigned to externally created activities to <see cref="F:Serilog.Events.LogEventLevel.Warning"/>.
+            </summary>
+            <returns>The activity listener configuration, to enable method chaining.</returns>
+        </member>
+        <member name="M:SerilogTracing.Configuration.ActivityListenerInitialLevelConfiguration.Error">
+            <summary>
+            Sets the initial level that will be assigned to externally created activities to <see cref="F:Serilog.Events.LogEventLevel.Error"/>.
+            </summary>
+            <returns>The activity listener configuration, to enable method chaining.</returns>
+        </member>
+        <member name="M:SerilogTracing.Configuration.ActivityListenerInitialLevelConfiguration.Fatal">
+            <summary>
+            Sets the initial level that will be assigned to externally created activities to <see cref="F:Serilog.Events.LogEventLevel.Fatal"/>.
+            </summary>
+            <returns>The activity listener configuration, to enable method chaining.</returns>
+        </member>
+        <member name="M:SerilogTracing.Configuration.ActivityListenerInitialLevelConfiguration.Override(System.String,Serilog.Core.LoggingLevelSwitch)">
+            <summary>
+            Override the initial level for activities from a specific <see cref="T:System.Diagnostics.ActivitySource"/>.
+            </summary>
+            <param name="activitySourceName">
+            The (partial) name of the <see cref="T:System.Diagnostics.ActivitySource"/> to override for. Prefixes are assumed
+            to be namespace sub-paths, such as <code>Microsoft</code> in <code>Microsoft.AspNetCore</code>.
+            </param>
+            <param name="levelSwitch">The initial level to set.</param>
+            <returns>The activity listener configuration, to enable method chaining.</returns>
+        </member>
+        <member name="M:SerilogTracing.Configuration.ActivityListenerInitialLevelConfiguration.Override(System.String,Serilog.Events.LogEventLevel)">
+            <summary>
+            Override the initial level for activities from a specific <see cref="T:System.Diagnostics.ActivitySource"/>.
+            </summary>
+            <param name="activitySourceName">
+            The (partial) name of the <see cref="T:System.Diagnostics.ActivitySource"/> to override for. Prefixes are assumed
+            to be namespace sub-paths, such as <code>Microsoft</code> in <code>Microsoft.AspNetCore</code>.
+            </param>
+            <param name="level">The initial level to set.</param>
+            <returns>The activity listener configuration, to enable method chaining.</returns>
+        </member>
+        <member name="M:SerilogTracing.Configuration.ActivityListenerInitialLevelConfiguration.IgnoreChanges">
+            <summary>
+            The first time an external activity source is encountered, check whether its initial level is enabled, and
+            cache this decision for the remainder of the listener's lifetime. This can be a significant performance and
+            memory usage optimization for apps that don't modify the target logger's minimum level at runtime.
+            </summary>
+            <remarks>If your application is using dynamic level control, either with <see cref="T:Serilog.Core.LoggingLevelSwitch"/>,
+            reloadable/bootstrap loggers, or by responding to configuration file changes at runtime, don't apply this
+            option.</remarks>
+            <returns>The activity listener configuration, to enable method chaining.</returns>
+        </member>
+        <member name="T:SerilogTracing.Configuration.ActivityListenerInstrumentationConfiguration">
+            <summary>
+            Controls instrumentation configuration.
+            </summary>
+        </member>
+        <member name="M:SerilogTracing.Configuration.ActivityListenerInstrumentationConfiguration.WithDefaultInstrumentation(System.Boolean)">
+            <summary>
+            Whether to use default built-in activity instrumentors.
+            </summary>
+            <param name="withDefaults">If true, default activity instrumentors will be used.</param>
+            <returns>The activity listener configuration, to enable method chaining.</returns>
+        </member>
+        <member name="M:SerilogTracing.Configuration.ActivityListenerInstrumentationConfiguration.With(SerilogTracing.Instrumentation.IActivityInstrumentor[])">
+            <summary>
+            Specifies one or more instrumentors that may add properties dynamically to
+            log events.
+            </summary>
+            <param name="instrumentors">Instrumentors to apply to all events passing through
+            the logger.</param>
+            <returns>The activity listener configuration, to enable method chaining.</returns>
+            <exception cref="T:System.ArgumentNullException">When <paramref name="instrumentors"/> is <code>null</code></exception>
+            <exception cref="T:System.ArgumentException">When any element of <paramref name="instrumentors"/> is <code>null</code></exception>
+        </member>
+        <member name="M:SerilogTracing.Configuration.ActivityListenerInstrumentationConfiguration.With``1">
+            <summary>
+            Specifies an instrumentor that may add properties dynamically to
+            log events.
+            </summary>
+            <typeparam name="TInstrumentor">Instrumentor type to apply to all events passing through
+            the logger.</typeparam>
+            <returns>The activity listener configuration, to enable method chaining.</returns>
+        </member>
+        <member name="T:SerilogTracing.Configuration.ActivityListenerSamplingConfiguration">
+            <summary>
+            Options for <see cref="T:SerilogTracing.ActivityListenerConfiguration"/> configuration.
+            </summary>
+        </member>
+        <member name="M:SerilogTracing.Configuration.ActivityListenerSamplingConfiguration.Using(System.Diagnostics.SampleActivity{System.Diagnostics.ActivityContext},System.Boolean)">
+            <summary>
+            Set the sampling policy for the listener. The <see cref="T:System.Diagnostics.ActivityContext"/> supplied to
+            the callback will contain the current trace id, and if the activity has a known parent
+            a non-default span id identifying the parent.
+            </summary>
+            <param name="sample">A callback providing the sampling level for a particular activity.</param>
+            <param name="ignoreParent">Whether to ignore the sampling decision made on parent spans. Defaults to false.</param>
+            <returns>The activity listener configuration, to enable method chaining.</returns>
+            <remarks>
+            If the method is called multiple times, the last sampling callback to be specified will be used.
+            This sampler will only run on activities that pass the <see cref="M:Serilog.ILogger.IsEnabled(Serilog.Events.LogEventLevel)"/> filter
+            on the destination logger.
+            </remarks>
+            <seealso cref="P:System.Diagnostics.ActivityListener.Sample"/>
+        </member>
+        <member name="M:SerilogTracing.Configuration.ActivityListenerSamplingConfiguration.AllTraces">
+            <summary>
+            Record all traces. This is the SerilogTracing default policy.
+            </summary>
+            <remarks>This policy will respect any sampling decisions already made for parent activities. This will only
+            occur when incoming requests or messages contain propagated tracing information; to control whether
+            external tracing decisions are trusted, see for example <c>IncomingTraceParent</c> in the ASP.NET Core
+            instrumentation.</remarks>
+            <returns>The activity listener configuration, to enable method chaining.</returns>
+        </member>
+        <member name="M:SerilogTracing.Configuration.ActivityListenerSamplingConfiguration.OneTraceIn(System.UInt64)">
+            <summary>
+            Record one trace in every <paramref name="interval"/> possible traces. The sampling algorithm uses a simple local
+            counter, which is not preserved across application restarts.
+            </summary>
+            <param name="interval">The sampling interval. Note that this is per root activity, not per individual activity.</param>
+            <remarks>This policy will respect any sampling decisions already made for parent activities. This will only
+            occur when incoming requests or messages contain propagated tracing information; to control whether
+            external tracing decisions are trusted, see for example <c>IncomingTraceParent</c> in the ASP.NET Core
+            instrumentation.</remarks>
+            <returns>The activity listener configuration, to enable method chaining.</returns>
+        </member>
+        <member name="T:SerilogTracing.Core.Constants">
+            <summary>
+            Constants used by SerilogTracing.
+            </summary>
+        </member>
+        <member name="F:SerilogTracing.Core.Constants.SerilogTracingActivitySourceName">
+            <summary>
+            The name of the <see cref="T:System.Diagnostics.ActivitySource"/> through which SerilogTracing publishes logger activities.
+            </summary>
+        </member>
+        <member name="F:SerilogTracing.Core.Constants.ParentSpanIdPropertyName">
+            <summary>
+            The name of the entry in <see cref="P:Serilog.Events.LogEvent.Properties"/> that carries a
+            span's <see cref="P:System.Diagnostics.Activity.ParentId"/>, if there is one.
+            </summary>
+        </member>
+        <member name="F:SerilogTracing.Core.Constants.SpanStartTimestampPropertyName">
+            <summary>
+            The name of the entry in <see cref="P:Serilog.Events.LogEvent.Properties"/> that carries a
+            span's start timestamp. All spans emitted by SerilogTracing carry this property.
+            </summary>
+        </member>
+        <member name="F:SerilogTracing.Core.Constants.SpanKindPropertyName">
+            <summary>
+            The name of the entry in <see cref="P:Serilog.Events.LogEvent.Properties"/> that carries a
+            span's kind. The value will be an <see cref="T:System.Diagnostics.ActivityKind"/>. The span kind is
+            unset for <see cref="F:System.Diagnostics.ActivityKind.Internal"/> spans: any span without an explicit
+            kind should be assumed to be internal.
+            </summary>
+        </member>
+        <member name="F:SerilogTracing.Core.Constants.ActivityEventPropertyName">
+            <summary>
+            For log events derived from <see cref="T:System.Diagnostics.ActivityEvent"/>, the name of the entry
+            in <see cref="P:Serilog.Events.LogEvent.Properties"/> that carries the activity event's name.
+            </summary>
+            <seealso cref="M:SerilogTracing.Configuration.ActivityListenerActivityEventsConfiguration.AsLogEvents"/>
+        </member>
+        <member name="T:SerilogTracing.Instrumentation.ActivityInstrumentation">
+            <summary>
+            Utilities for <see cref="T:SerilogTracing.Instrumentation.IActivityInstrumentor">activity instrumentors</see> to enrich
+            <see cref="T:System.Diagnostics.Activity">activities</see> for <see cref="T:Serilog.ILogger">loggers</see>.
+            </summary>
+        </member>
+        <member name="M:SerilogTracing.Instrumentation.ActivityInstrumentation.SetMessageTemplateOverride(System.Diagnostics.Activity,Serilog.Events.MessageTemplate)">
+             <summary>
+             Associate a <see cref="T:Serilog.Events.MessageTemplate"/> with the given <see cref="T:System.Diagnostics.Activity"/>, without changing the
+             <see cref="P:System.Diagnostics.Activity.DisplayName"/>.
+            
+             The message template will be assigned to a custom property on the activity, overwriting any previously set value
+             with the same name.
+             </summary>
+             <param name="activity">The activity to instrument.</param>
+             <param name="messageTemplate">The message template to assign.</param>
+        </member>
+        <member name="M:SerilogTracing.Instrumentation.ActivityInstrumentation.TryGetMessageTemplateOverride(System.Diagnostics.Activity,Serilog.Events.MessageTemplate@)">
+            <summary>
+            Get a <see cref="T:Serilog.Events.MessageTemplate"/> previously associated with the given <see cref="T:System.Diagnostics.Activity"/> by
+            <see cref="M:SerilogTracing.Instrumentation.ActivityInstrumentation.SetMessageTemplateOverride(System.Diagnostics.Activity,Serilog.Events.MessageTemplate)"/>.
+            </summary>
+            <param name="activity">The activity containing the message template.</param>
+            <param name="messageTemplate">The assigned message template, if any.</param>
+            <returns>True when the activity contains a message template.</returns>
+        </member>
+        <member name="M:SerilogTracing.Instrumentation.ActivityInstrumentation.SetLogEventProperty(System.Diagnostics.Activity,System.String,Serilog.Events.LogEventPropertyValue)">
+            <summary>
+            Set a property on the given <see cref="T:System.Diagnostics.Activity"/>, overwriting any previously set value
+            with the same name.
+            </summary>
+            <remarks>
+            Properties are added to a collection in a custom property on the activity.
+            If the property value is a <see cref="T:Serilog.Events.ScalarValue"/> then it will also set a tag on the activity, making
+            it visible to outside instrumentation.
+            </remarks>
+            <param name="activity">The activity to instrument.</param>
+            <param name="propertyName">The name of the property to assign.</param>
+            <param name="propertyValue">The value of the property to assign.</param>
+            <remarks>This override requires fewer allocations than those accepting <see cref="T:Serilog.Events.LogEventProperty"/>,</remarks>
+        </member>
+        <member name="M:SerilogTracing.Instrumentation.ActivityInstrumentation.SetLogEventProperty(System.Diagnostics.Activity,Serilog.Events.LogEventProperty)">
+            <summary>
+            Set a <see cref="T:Serilog.Events.LogEventProperty"/> on the given <see cref="T:System.Diagnostics.Activity"/>, overwriting any previously set value
+            with the same name.
+            </summary>
+            <remarks>
+            Properties are added to a collection in a custom property on the activity.
+            If the property value is a <see cref="T:Serilog.Events.ScalarValue"/> then it will also set a tag on the activity, making
+            it visible to outside instrumentation.
+            </remarks>
+            <param name="activity">The activity to instrument.</param>
+            <param name="property">The property to assign.</param>
+        </member>
+        <member name="M:SerilogTracing.Instrumentation.ActivityInstrumentation.SetLogEventProperties(System.Diagnostics.Activity,Serilog.Events.LogEventProperty[])">
+            <summary>
+            Set multiple <see cref="T:Serilog.Events.LogEventProperty">log event properties</see>, overwriting any previously set values
+            with the same names.
+            </summary>
+            <remarks>
+            This method behaves like multiple calls to <see cref="M:SerilogTracing.Instrumentation.ActivityInstrumentation.SetLogEventProperty(System.Diagnostics.Activity,Serilog.Events.LogEventProperty)"/>, but
+            avoids additional dictionary lookups once the first property is added.
+            </remarks>
+            <param name="activity">The activity to instrument.</param>
+            <param name="properties">The properties to assign.</param>
+        </member>
+        <member name="M:SerilogTracing.Instrumentation.ActivityInstrumentation.SetLogEventProperties(System.Diagnostics.Activity,System.Collections.Generic.IEnumerable{Serilog.Events.LogEventProperty})">
+            <summary>
+            Set multiple <see cref="T:Serilog.Events.LogEventProperty">log event properties</see>, overwriting any previously set values
+            with the same names.
+            </summary>
+            <remarks>
+            This method behaves like multiple calls to <see cref="M:SerilogTracing.Instrumentation.ActivityInstrumentation.SetLogEventProperty(System.Diagnostics.Activity,Serilog.Events.LogEventProperty)"/>, but
+            avoids additional dictionary lookups once the first property is added.
+            </remarks>
+            <param name="activity">The activity to instrument.</param>
+            <param name="properties">The properties to assign.</param>
+        </member>
+        <member name="M:SerilogTracing.Instrumentation.ActivityInstrumentation.TrySetException(System.Diagnostics.Activity,System.Exception)">
+             <summary>
+             Try associate an <see cref="T:System.Exception"/> with the activity.
+            
+             The exception will be stored as an event with the current timestamp, using the conventional
+             name "exception".
+            
+             This method won't overwrite any previously set exception.
+             </summary>
+             <param name="activity">The activity to instrument.</param>
+             <param name="exception">True if the exception was set on the event.</param>
+        </member>
+        <member name="M:SerilogTracing.Instrumentation.ActivityInstrumentation.TryGetException(System.Diagnostics.Activity,System.Exception@)">
+            <summary>
+            Try get an exception previously associated with the activity using the conventional event name "exception".
+            </summary>
+            <param name="activity">The activity containing the exception.</param>
+            <param name="exception">True if an exception event is present on the activity. The type of the returned
+            exception is not guaranteed to match the one originally set on the activity.</param>
+            <returns></returns>
+        </member>
+        <member name="T:SerilogTracing.Instrumentation.ActivitySourceInstrumentor">
+            <summary>
+            Instrument <see cref="T:System.Diagnostics.Activity">activities</see> from an <see cref="T:System.Diagnostics.ActivitySource" />.
+            </summary>
+        </member>
+        <member name="M:SerilogTracing.Instrumentation.ActivitySourceInstrumentor.ShouldSubscribeTo(System.String)">
+            <summary>
+            Whether the instrumentor should subscribe to events from the given <see cref="T:System.Diagnostics.ActivitySource"/>.
+            </summary>
+            <param name="activitySourceName">The <see cref="P:System.Diagnostics.ActivitySource.Name"/> of the candidate <see cref="T:System.Diagnostics.ActivitySource"/>.</param>
+            <returns>Whether the instrumentor should instrument activities from the given source.</returns>
+        </member>
+        <member name="M:SerilogTracing.Instrumentation.ActivitySourceInstrumentor.InstrumentOnActivityStarted(System.Diagnostics.Activity)">
+            <summary>
+            Enrich an activity when it's started.
+            </summary>
+            <remarks>This method will only be called by SerilogTracing for activities that are expected to be enriched with data.
+            This is, activities where <see cref="P:System.Diagnostics.Activity.IsAllDataRequested"/> is true.</remarks>
+            <param name="activity">The activity to enrich with instrumentation.</param>
+        </member>
+        <member name="M:SerilogTracing.Instrumentation.ActivitySourceInstrumentor.InstrumentOnActivityStopped(System.Diagnostics.Activity)">
+            <summary>
+            Enrich an activity when it's stopped.
+            </summary>
+            <remarks>This method will only be called by SerilogTracing for activities that are expected to be enriched with data.
+            This is, activities where <see cref="P:System.Diagnostics.Activity.IsAllDataRequested"/> is true.</remarks>
+            <param name="activity">The activity to enrich with instrumentation.</param>
+        </member>
+        <member name="M:SerilogTracing.Instrumentation.ActivitySourceInstrumentor.SerilogTracing#Instrumentation#IActivityInstrumentor#ShouldSubscribeTo(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:SerilogTracing.Instrumentation.ActivitySourceInstrumentor.SerilogTracing#Instrumentation#IActivityInstrumentor#InstrumentActivity(System.Diagnostics.Activity,System.String,System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="T:SerilogTracing.Instrumentation.HttpClient.HttpRequestOutActivityInstrumentationOptions">
+            <summary>
+            Configuration for <see cref="N:SerilogTracing.Instrumentation.HttpClient"/> HTTP request instrumentation.
+            </summary>
+        </member>
+        <member name="P:SerilogTracing.Instrumentation.HttpClient.HttpRequestOutActivityInstrumentationOptions.MessageTemplate">
+            <summary>
+            The message template to associate with request activities.
+            </summary>
+        </member>
+        <member name="P:SerilogTracing.Instrumentation.HttpClient.HttpRequestOutActivityInstrumentationOptions.GetRequestProperties">
+            <summary>
+            A function to populate properties on the activity from an outgoing request.
+            </summary>
+        </member>
+        <member name="P:SerilogTracing.Instrumentation.HttpClient.HttpRequestOutActivityInstrumentationOptions.GetResponseProperties">
+            <summary>
+            A function to populate properties on the activity from an incoming response.
+            </summary>
+        </member>
+        <member name="P:SerilogTracing.Instrumentation.HttpClient.HttpRequestOutActivityInstrumentationOptions.IsErrorResponse">
+            <summary>
+            A callback that determines whether the given <see cref="T:System.Net.Http.HttpResponseMessage"/> is considered to be
+            an error. The default implementation returns <c langword="true" /> when the response status code
+            is greater than or equal to 400.
+            </summary>
+            <remarks>Requests that fail due to unhandled exceptions are always considered to have errored, and this callback
+            is ignored in those cases.</remarks>
+        </member>
+        <member name="T:SerilogTracing.Instrumentation.HttpClient.HttpRequestOutActivityInstrumentor">
+            <summary>
+            An activity instrumentor that populates the current activity with context from outgoing HTTP requests.
+            </summary>
+        </member>
+        <member name="M:SerilogTracing.Instrumentation.HttpClient.HttpRequestOutActivityInstrumentor.#ctor(SerilogTracing.Instrumentation.HttpClient.HttpRequestOutActivityInstrumentationOptions)">
+            <summary>
+            An activity instrumentor that populates the current activity with context from outgoing HTTP requests.
+            </summary>
+        </member>
+        <member name="M:SerilogTracing.Instrumentation.HttpClient.HttpRequestOutActivityInstrumentor.ShouldSubscribeTo(System.String)">
+            <inheritdoc cref="M:SerilogTracing.Instrumentation.IActivityInstrumentor.ShouldSubscribeTo(System.String)"/>
+        </member>
+        <member name="M:SerilogTracing.Instrumentation.HttpClient.HttpRequestOutActivityInstrumentor.InstrumentActivity(System.Diagnostics.Activity,System.String,System.Object)">
+            <inheritdoc cref="M:SerilogTracing.Instrumentation.IActivityInstrumentor.ShouldSubscribeTo(System.String)"/>
+        </member>
+        <member name="T:SerilogTracing.Instrumentation.IActivityInstrumentor">
+            <summary>
+            Instrument <see cref="T:System.Diagnostics.Activity">activities</see> from a <see cref="T:System.Diagnostics.DiagnosticSource" />.
+            </summary>
+            <remarks>
+            Implementors are plugged in via <see cref="M:SerilogTracing.Configuration.ActivityListenerInstrumentationConfiguration.With(SerilogTracing.Instrumentation.IActivityInstrumentor[])">instrumentation configuration</see> to the SerilogTracing pipeline.
+            To instrument activities from sources that use an <see cref="T:System.Diagnostics.ActivitySource" /> instead of a diagnostic source, see <see cref="T:SerilogTracing.Instrumentation.ActivitySourceInstrumentor" />.
+            </remarks>
+        </member>
+        <member name="M:SerilogTracing.Instrumentation.IActivityInstrumentor.ShouldSubscribeTo(System.String)">
+            <summary>
+            Whether the instrumentor should subscribe to events from the given <see cref="T:System.Diagnostics.DiagnosticListener"/>.
+            </summary>
+            <param name="diagnosticListenerName">The <see cref="P:System.Diagnostics.DiagnosticListener.Name"/> of the candidate <see cref="T:System.Diagnostics.DiagnosticListener"/>.</param>
+            <returns>Whether the instrumentor should receive events from the given listener.</returns>
+        </member>
+        <member name="M:SerilogTracing.Instrumentation.IActivityInstrumentor.InstrumentActivity(System.Diagnostics.Activity,System.String,System.Object)">
+            <summary>
+            Enrich an activity with context from a diagnostic event.
+            </summary>
+            <remarks>This method will only be called by SerilogTracing for activities that are expected to be enriched with data.
+            This is, activities where <see cref="P:System.Diagnostics.Activity.IsAllDataRequested"/> is true.</remarks>
+            <param name="activity">The activity to enrich with instrumentation.</param>
+            <param name="eventName">The name of the event.</param>
+            <param name="eventArgs">The value of the event.</param>
+        </member>
+        <member name="T:SerilogTracing.Instrumentation.IInstrumentationEventObserver">
+            <summary>
+            Apply instrumentation directly without regard for the current activity.
+            </summary>
+        </member>
+        <member name="M:SerilogTracing.Instrumentation.IInstrumentationEventObserver.OnNext(System.String,System.Object)">
+            <summary>
+            Apply instrumentation with context from a diagnostic event. This interface enables
+            instrumentors to handle the raw diagnostic event without regard to the state of
+            <see cref="P:System.Diagnostics.Activity.Current"/>.
+            </summary>
+            <param name="eventName">The name of the event.</param>
+            <param name="eventArgs">The value of the event.</param>
+        </member>
+        <member name="T:SerilogTracing.Instrumentation.PropertyAccessor`1">
+            <summary>
+            Helper type for dynamically retrieving properties from anonymously-typed diagnostic event args.
+            </summary>
+            <param name="propertyName">The property name to retrieve.</param>
+            <typeparam name="T">Type type of the property value.</typeparam>
+            <remarks>Not much optimization done here, yet, but some opportunities.</remarks>
+        </member>
+        <member name="M:SerilogTracing.Instrumentation.PropertyAccessor`1.#ctor(System.String)">
+            <summary>
+            Helper type for dynamically retrieving properties from anonymously-typed diagnostic event args.
+            </summary>
+            <param name="propertyName">The property name to retrieve.</param>
+            <typeparam name="T">Type type of the property value.</typeparam>
+            <remarks>Not much optimization done here, yet, but some opportunities.</remarks>
+        </member>
+        <member name="M:SerilogTracing.Instrumentation.PropertyAccessor`1.TryGetValue(System.Object,`0@)">
+            <summary>
+            Get the value of the property.
+            </summary>
+            <param name="receiver">The object to retrieve the property from.</param>
+            <param name="value">The value, if the property could be retrieved.</param>
+            <returns>True if the property exists on the receiver. Note that the property
+            value may still be <c langword="null"/> in that case.</returns>
+        </member>
+        <member name="T:SerilogTracing.LoggerActivity">
+            <summary>
+            An activity associated with a particular Serilog <see cref="T:Serilog.ILogger"/>. When the activity
+            is completed, a span will be written through the logger. The activity also wraps an underlying
+            <see cref="T:System.Diagnostics.Activity"/> object that mirrors the properties of the
+            <see cref="T:SerilogTracing.LoggerActivity"/>, if any <c>System.Diagnostics</c> activity listeners are configured.
+            </summary>
+            <remarks><see cref="T:SerilogTracing.LoggerActivity"/> instances are not thread-safe.</remarks>
+        </member>
+        <member name="P:SerilogTracing.LoggerActivity.None">
+            <summary>
+            A <see cref="T:SerilogTracing.LoggerActivity"/> that represents a suppressed activity. The <see cref="P:SerilogTracing.LoggerActivity.Activity"/> property of
+            this instance, and only this instance, will be <c langword="null"/>.
+            </summary>
+        </member>
+        <member name="P:SerilogTracing.LoggerActivity.Properties">
+            <summary>
+            Serilog only places very limited (not-null-or-whitespace) restrictions on property names; we carefully assert
+            or check this constraint whenever adding a property value here, using either `LogEventProperty.IsValidName()` or
+            relying on property names coming pre-validated via `LogEventProperty.Name`. Because the library uses strict
+            null checking, the null case is low risk. The potential to allow whitespace names through here is higher, but
+            no known safety issues exist for these in practise so the risk is deemed acceptable compared with the higher
+            cost of enumerating and checking each property name before constructing the final `LogEvent`.
+            </summary>
+        </member>
+        <member name="P:SerilogTracing.LoggerActivity.Activity">
+            <summary>
+            The <see cref="P:SerilogTracing.LoggerActivity.Activity"/> that represents the current <see cref="T:SerilogTracing.LoggerActivity"/> for
+            <c>System.Diagnostics</c>. This property is null if and only if the current <see cref="T:SerilogTracing.LoggerActivity"/> is
+            suppressed, either through level checks or sampling.
+            </summary>
+        </member>
+        <member name="M:SerilogTracing.LoggerActivity.AddProperty(System.String,System.Object,System.Boolean)">
+            <summary>
+            Add a property to the activity. This will be recorded in the emitted span.
+            </summary>
+            <remarks>If <see cref="P:SerilogTracing.LoggerActivity.Activity"/> is not null and <see cref="P:System.Diagnostics.Activity.IsAllDataRequested"/>
+            is true, then the property value will be attached to it as a tag. Note that when <paramref name="destructureObjects"/> is specified,
+            the property value will be converted to a tag value using <see cref="M:System.Object.ToString"/>.</remarks>
+            <param name="propertyName">The name of the property to add.</param>
+            <param name="value">The value of the property.</param>
+            <param name="destructureObjects">If <c langword="true"/>, Serilog's capturing
+            logic will be used to serialize the object into a structured value.</param>
+        </member>
+        <member name="M:SerilogTracing.LoggerActivity.Complete(System.Nullable{Serilog.Events.LogEventLevel},System.Exception)">
+            <summary>
+            Complete the activity, emitting a span to the underlying logger.
+            </summary>
+            <param name="level">By default, the level used when starting the activity will be used at completion. Specifying
+            a level here will override the original completion level, but only if <paramref name="level"/> is higher than
+            the original, for example to promote an <see cref="F:Serilog.Events.LogEventLevel.Information"/> event to a <see cref="F:Serilog.Events.LogEventLevel.Warning"/>
+            event. If the level specified here is lower, it will be ignored.</param>
+            <param name="exception">An exception to associate with the span, if any.</param>
+            <remarks>Serilog levels will be reflected on the wrapped activity using
+            corresponding <see cref="T:System.Diagnostics.ActivityStatusCode"/> values. Exceptions are reflected using
+            activity events. Once <see cref="M:SerilogTracing.LoggerActivity.Complete(System.Nullable{Serilog.Events.LogEventLevel},System.Exception)"/> has been called, subsequent calls will be
+            ignored.
+            </remarks>
+        </member>
+        <member name="M:SerilogTracing.LoggerActivity.Dispose">
+            <summary>
+            Dispose the activity. This will call <see cref="M:SerilogTracing.LoggerActivity.Complete(System.Nullable{Serilog.Events.LogEventLevel},System.Exception)"/>, if the activity has not already been
+            completed.
+            </summary>
+        </member>
+        <member name="T:SerilogTracing.LoggerTracingExtensions">
+            <summary>
+            Extends <see cref="T:Serilog.ILogger"/> with methods for creating activities that are emitted to the logger
+            as spans.
+            </summary>
+        </member>
+        <member name="M:SerilogTracing.LoggerTracingExtensions.StartActivity(Serilog.ILogger,System.Diagnostics.ActivityKind,System.Diagnostics.ActivityContext,Serilog.Events.LogEventLevel,System.String,System.Object[])">
+            <summary>
+            Start an activity.
+            </summary>
+            <param name="logger">The logger that the resulting span will be written to, when the activity
+            is completed using <see cref="M:SerilogTracing.LoggerActivity.Complete(System.Nullable{Serilog.Events.LogEventLevel},System.Exception)"/> or <see cref="M:SerilogTracing.LoggerActivity.Dispose"/>.</param>
+            <param name="parentContext">The context to use as the parent on the resulting activity. This parameter is
+            useful for propagation, so <see cref="P:System.Diagnostics.ActivityContext.IsRemote" /> should typically be true.</param>
+            <param name="kind">The <see cref="T:System.Diagnostics.ActivityKind" /> to use on the resulting span.</param>
+            <param name="level">The <see cref="T:Serilog.Events.LogEventLevel"/> of the <see cref="T:Serilog.Events.LogEvent"/> generated when the activity
+            is completed. The <see cref="M:SerilogTracing.LoggerActivity.Complete(System.Nullable{Serilog.Events.LogEventLevel},System.Exception)"/> method can be used to override this with
+            a higher level, but the level cannot be lowered at completion. If the <paramref name="logger"/> is configured
+            to ignore the given level then this method will not start an activity.</param>
+            <param name="messageTemplate">A message template that will be used to format the activity name.</param>
+            <param name="propertyValues">Values to substitute into the <paramref name="messageTemplate"/> placeholders.
+            These properties will also be attached to the resulting span.</param>
+            <returns>A <see cref="T:SerilogTracing.LoggerActivity"/>.</returns>
+        </member>
+        <member name="M:SerilogTracing.LoggerTracingExtensions.StartActivity(Serilog.ILogger,System.Diagnostics.ActivityKind,System.Diagnostics.ActivityContext,System.String,System.Object[])">
+            <summary>
+            Start an activity.
+            </summary>
+            <param name="logger">The logger that the resulting span will be written to, when the activity
+            is completed using <see cref="M:SerilogTracing.LoggerActivity.Complete(System.Nullable{Serilog.Events.LogEventLevel},System.Exception)"/> or <see cref="M:SerilogTracing.LoggerActivity.Dispose"/>.</param>
+            <param name="parentContext">The context to use as the parent on the resulting activity. This parameter is
+            useful for propagation, so <see cref="P:System.Diagnostics.ActivityContext.IsRemote" /> should typically be true.</param>
+            <param name="kind">The <see cref="T:System.Diagnostics.ActivityKind" /> to use on the resulting span.</param>
+            <param name="messageTemplate">A message template that will be used to format the activity name.</param>
+            <param name="propertyValues">Values to substitute into the <paramref name="messageTemplate"/> placeholders.
+            These properties will also be attached to the resulting span.</param>
+            <returns>A <see cref="T:SerilogTracing.LoggerActivity"/>.</returns>
+        </member>
+        <member name="M:SerilogTracing.LoggerTracingExtensions.StartActivity(Serilog.ILogger,System.Diagnostics.ActivityKind,System.Diagnostics.ActivityContext,Serilog.Events.LogEventLevel,System.String)">
+            <summary>
+            Start an activity.
+            </summary>
+            <param name="logger">The logger that the resulting span will be written to, when the activity
+            is completed using <see cref="M:SerilogTracing.LoggerActivity.Complete(System.Nullable{Serilog.Events.LogEventLevel},System.Exception)"/> or <see cref="M:SerilogTracing.LoggerActivity.Dispose"/>.</param>
+            <param name="parentContext">The context to use as the parent on the resulting activity. This parameter is
+            useful for propagation, so <see cref="P:System.Diagnostics.ActivityContext.IsRemote" /> should typically be true.</param>
+            <param name="kind">The <see cref="T:System.Diagnostics.ActivityKind" /> to use on the resulting span.</param>
+            <param name="level">The <see cref="T:Serilog.Events.LogEventLevel"/> of the <see cref="T:Serilog.Events.LogEvent"/> generated when the activity
+            is completed. The <see cref="M:SerilogTracing.LoggerActivity.Complete(System.Nullable{Serilog.Events.LogEventLevel},System.Exception)"/> method can be used to override this with
+            a higher level, but the level cannot be lowered at completion.</param>
+            <param name="messageTemplate">A message template that will be used to format the activity name.</param>
+            <returns>A <see cref="T:SerilogTracing.LoggerActivity"/>.</returns>
+        </member>
+        <member name="M:SerilogTracing.LoggerTracingExtensions.StartActivity(Serilog.ILogger,System.Diagnostics.ActivityKind,System.Diagnostics.ActivityContext,System.String)">
+            <summary>
+            Start an activity.
+            </summary>
+            <param name="logger">The logger that the resulting span will be written to, when the activity
+            is completed using <see cref="M:SerilogTracing.LoggerActivity.Complete(System.Nullable{Serilog.Events.LogEventLevel},System.Exception)"/> or <see cref="M:SerilogTracing.LoggerActivity.Dispose"/>.</param>
+            <param name="parentContext">The context to use as the parent on the resulting activity. This parameter is
+            useful for propagation, so <see cref="P:System.Diagnostics.ActivityContext.IsRemote" /> should typically be true.</param>
+            <param name="kind">The <see cref="T:System.Diagnostics.ActivityKind" /> to use on the resulting span.</param>
+            <param name="messageTemplate">A message template that will be used to format the activity name.</param>
+            <returns>A <see cref="T:SerilogTracing.LoggerActivity"/>.</returns>
+        </member>
+        <member name="M:SerilogTracing.LoggerTracingExtensions.StartActivity(Serilog.ILogger,Serilog.Events.LogEventLevel,System.String,System.Object[])">
+            <summary>
+            Start an activity.
+            </summary>
+            <param name="logger">The logger that the resulting span will be written to, when the activity
+            is completed using <see cref="M:SerilogTracing.LoggerActivity.Complete(System.Nullable{Serilog.Events.LogEventLevel},System.Exception)"/> or <see cref="M:SerilogTracing.LoggerActivity.Dispose"/>.</param>
+            <param name="level">The <see cref="T:Serilog.Events.LogEventLevel"/> of the <see cref="T:Serilog.Events.LogEvent"/> generated when the activity
+            is completed. The <see cref="M:SerilogTracing.LoggerActivity.Complete(System.Nullable{Serilog.Events.LogEventLevel},System.Exception)"/> method can be used to override this with
+            a higher level, but the level cannot be lowered at completion. If the <paramref name="logger"/> is configured
+            to ignore the given level then this method will not start an activity.</param>
+            <param name="messageTemplate">A message template that will be used to format the activity name.</param>
+            <param name="propertyValues">Values to substitute into the <paramref name="messageTemplate"/> placeholders.
+            These properties will also be attached to the resulting span.</param>
+            <returns>A <see cref="T:SerilogTracing.LoggerActivity"/>.</returns>
+        </member>
+        <member name="M:SerilogTracing.LoggerTracingExtensions.StartActivity(Serilog.ILogger,System.String,System.Object[])">
+            <summary>
+            Start an activity.
+            </summary>
+            <param name="logger">The logger that the resulting span will be written to, when the activity
+            is completed using <see cref="M:SerilogTracing.LoggerActivity.Complete(System.Nullable{Serilog.Events.LogEventLevel},System.Exception)"/> or <see cref="M:SerilogTracing.LoggerActivity.Dispose"/>.</param>
+            <param name="messageTemplate">A message template that will be used to format the activity name.</param>
+            <param name="propertyValues">Values to substitute into the <paramref name="messageTemplate"/> placeholders.
+            These properties will also be attached to the resulting span.</param>
+            <returns>A <see cref="T:SerilogTracing.LoggerActivity"/>.</returns>
+        </member>
+        <member name="M:SerilogTracing.LoggerTracingExtensions.StartActivity(Serilog.ILogger,Serilog.Events.LogEventLevel,System.String)">
+            <summary>
+            Start an activity.
+            </summary>
+            <param name="logger">The logger that the resulting span will be written to, when the activity
+            is completed using <see cref="M:SerilogTracing.LoggerActivity.Complete(System.Nullable{Serilog.Events.LogEventLevel},System.Exception)"/> or <see cref="M:SerilogTracing.LoggerActivity.Dispose"/>.</param>
+            <param name="level">The <see cref="T:Serilog.Events.LogEventLevel"/> of the <see cref="T:Serilog.Events.LogEvent"/> generated when the activity
+            is completed. The <see cref="M:SerilogTracing.LoggerActivity.Complete(System.Nullable{Serilog.Events.LogEventLevel},System.Exception)"/> method can be used to override this with
+            a higher level, but the level cannot be lowered at completion.</param>
+            <param name="messageTemplate">A message template that will be used to format the activity name.</param>
+            <returns>A <see cref="T:SerilogTracing.LoggerActivity"/>.</returns>
+        </member>
+        <member name="M:SerilogTracing.LoggerTracingExtensions.StartActivity(Serilog.ILogger,System.String)">
+            <summary>
+            Start an activity.
+            </summary>
+            <param name="logger">The logger that the resulting span will be written to, when the activity
+            is completed using <see cref="M:SerilogTracing.LoggerActivity.Complete(System.Nullable{Serilog.Events.LogEventLevel},System.Exception)"/> or <see cref="M:SerilogTracing.LoggerActivity.Dispose"/>.</param>
+            <param name="messageTemplate">A message template that will be used to format the activity name.</param>
+            <returns>A <see cref="T:SerilogTracing.LoggerActivity"/>.</returns>
+        </member>
+        <member name="M:SerilogTracing.LoggerTracingExtensions.StartActivity``1(Serilog.ILogger,Serilog.Events.LogEventLevel,System.String,``0)">
+            <summary>
+            Start an activity.
+            </summary>
+            <param name="logger">The logger that the resulting span will be written to, when the activity
+            is completed using <see cref="M:SerilogTracing.LoggerActivity.Complete(System.Nullable{Serilog.Events.LogEventLevel},System.Exception)"/> or <see cref="M:SerilogTracing.LoggerActivity.Dispose"/>.</param>
+            <param name="level">The <see cref="T:Serilog.Events.LogEventLevel"/> of the <see cref="T:Serilog.Events.LogEvent"/> generated when the activity
+            is completed. The <see cref="M:SerilogTracing.LoggerActivity.Complete(System.Nullable{Serilog.Events.LogEventLevel},System.Exception)"/> method can be used to override this with
+            a higher level, but the level cannot be lowered at completion.</param>
+            <param name="messageTemplate">A message template that will be used to format the activity name.</param>
+            <param name="propertyValue">Values to substitute into the <paramref name="messageTemplate"/> placeholders.
+            These properties will also be attached to the resulting span.</param>
+            <returns>A <see cref="T:SerilogTracing.LoggerActivity"/>.</returns>
+        </member>
+        <member name="M:SerilogTracing.LoggerTracingExtensions.StartActivity``1(Serilog.ILogger,System.String,``0)">
+            <summary>
+            Start an activity.
+            </summary>
+            <param name="logger">The logger that the resulting span will be written to, when the activity
+            is completed using <see cref="M:SerilogTracing.LoggerActivity.Complete(System.Nullable{Serilog.Events.LogEventLevel},System.Exception)"/> or <see cref="M:SerilogTracing.LoggerActivity.Dispose"/>.</param>
+            <param name="messageTemplate">A message template that will be used to format the activity name.</param>
+            <param name="propertyValue">Values to substitute into the <paramref name="messageTemplate"/> placeholders.
+            These properties will also be attached to the resulting span.</param>
+            <returns>A <see cref="T:SerilogTracing.LoggerActivity"/>.</returns>
+        </member>
+        <member name="M:SerilogTracing.LoggerTracingExtensions.StartActivity``2(Serilog.ILogger,Serilog.Events.LogEventLevel,System.String,``0,``1)">
+            <summary>
+            Start an activity.
+            </summary>
+            <param name="logger">The logger that the resulting span will be written to, when the activity
+            is completed using <see cref="M:SerilogTracing.LoggerActivity.Complete(System.Nullable{Serilog.Events.LogEventLevel},System.Exception)"/> or <see cref="M:SerilogTracing.LoggerActivity.Dispose"/>.</param>
+            <param name="level">The <see cref="T:Serilog.Events.LogEventLevel"/> of the <see cref="T:Serilog.Events.LogEvent"/> generated when the activity
+            is completed. The <see cref="M:SerilogTracing.LoggerActivity.Complete(System.Nullable{Serilog.Events.LogEventLevel},System.Exception)"/> method can be used to override this with
+            a higher level, but the level cannot be lowered at completion.</param>
+            <param name="messageTemplate">A message template that will be used to format the activity name.</param>
+            <param name="propertyValue0">Values to substitute into the <paramref name="messageTemplate"/> placeholders.</param>
+            <param name="propertyValue1">Values to substitute into the <paramref name="messageTemplate"/> placeholders.
+            These properties will also be attached to the resulting span.</param>
+            <returns>A <see cref="T:SerilogTracing.LoggerActivity"/>.</returns>
+        </member>
+        <member name="M:SerilogTracing.LoggerTracingExtensions.StartActivity``2(Serilog.ILogger,System.String,``0,``1)">
+            <summary>
+            Start an activity.
+            </summary>
+            <param name="logger">The logger that the resulting span will be written to, when the activity
+            is completed using <see cref="M:SerilogTracing.LoggerActivity.Complete(System.Nullable{Serilog.Events.LogEventLevel},System.Exception)"/> or <see cref="M:SerilogTracing.LoggerActivity.Dispose"/>.</param>
+            <param name="messageTemplate">A message template that will be used to format the activity name.</param>
+            <param name="propertyValue0">Values to substitute into the <paramref name="messageTemplate"/> placeholders.</param>
+            <param name="propertyValue1">Values to substitute into the <paramref name="messageTemplate"/> placeholders.
+            These properties will also be attached to the resulting span.</param>
+            <returns>A <see cref="T:SerilogTracing.LoggerActivity"/>.</returns>
+        </member>
+        <member name="M:SerilogTracing.LoggerTracingExtensions.StartActivity``3(Serilog.ILogger,Serilog.Events.LogEventLevel,System.String,``0,``1,``2)">
+            <summary>
+            Start an activity.
+            </summary>
+            <param name="logger">The logger that the resulting span will be written to, when the activity
+            is completed using <see cref="M:SerilogTracing.LoggerActivity.Complete(System.Nullable{Serilog.Events.LogEventLevel},System.Exception)"/> or <see cref="M:SerilogTracing.LoggerActivity.Dispose"/>.</param>
+            <param name="level">The <see cref="T:Serilog.Events.LogEventLevel"/> of the <see cref="T:Serilog.Events.LogEvent"/> generated when the activity
+            is completed. The <see cref="M:SerilogTracing.LoggerActivity.Complete(System.Nullable{Serilog.Events.LogEventLevel},System.Exception)"/> method can be used to override this with
+            a higher level, but the level cannot be lowered at completion.</param>
+            <param name="messageTemplate">A message template that will be used to format the activity name.</param>
+            <param name="propertyValue0">Values to substitute into the <paramref name="messageTemplate"/> placeholders.</param>
+            <param name="propertyValue1">Values to substitute into the <paramref name="messageTemplate"/> placeholders.</param>
+            <param name="propertyValue2">Values to substitute into the <paramref name="messageTemplate"/> placeholders.
+            These properties will also be attached to the resulting span.</param>
+            <returns>A <see cref="T:SerilogTracing.LoggerActivity"/>.</returns>
+        </member>
+        <member name="M:SerilogTracing.LoggerTracingExtensions.StartActivity``3(Serilog.ILogger,System.String,``0,``1,``2)">
+            <summary>
+            Start an activity.
+            </summary>
+            <param name="logger">The logger that the resulting span will be written to, when the activity
+            is completed using <see cref="M:SerilogTracing.LoggerActivity.Complete(System.Nullable{Serilog.Events.LogEventLevel},System.Exception)"/> or <see cref="M:SerilogTracing.LoggerActivity.Dispose"/>.</param>
+            <param name="messageTemplate">A message template that will be used to format the activity name.</param>
+            <param name="propertyValue0">Values to substitute into the <paramref name="messageTemplate"/> placeholders.</param>
+            <param name="propertyValue1">Values to substitute into the <paramref name="messageTemplate"/> placeholders.</param>
+            <param name="propertyValue2">Values to substitute into the <paramref name="messageTemplate"/> placeholders.
+            These properties will also be attached to the resulting span.</param>
+            <returns>A <see cref="T:SerilogTracing.LoggerActivity"/>.</returns>
+        </member>
+        <member name="T:SerilogTracing.Samplers.AlwaysRecordedSampler">
+            <summary>
+            Records all traces.
+            </summary>
+        </member>
+        <member name="M:SerilogTracing.Samplers.AlwaysRecordedSampler.Create">
+            <summary>
+            Create a sampling delegate that records all traces.
+            </summary>
+        </member>
+        <member name="T:SerilogTracing.Samplers.IntervalSampler">
+            <summary>
+            Record one trace in every <c>N</c>.
+            </summary>
+        </member>
+        <member name="M:SerilogTracing.Samplers.IntervalSampler.Create(System.UInt64)">
+            <summary>
+            Create a sampling delegate that records one trace in every <paramref name="interval"/> possible traces.
+            </summary>
+            <param name="interval">The sampling interval. Note that this is per root activity, not per individual activity.</param>
+            <returns>A sampling function that can be provided to <see cref="M:SerilogTracing.Configuration.ActivityListenerSamplingConfiguration.Using(System.Diagnostics.SampleActivity{System.Diagnostics.ActivityContext},System.Boolean)"/>.</returns>
+        </member>
+        <member name="T:SerilogTracing.Samplers.ParentPrecedentSampler">
+            <summary>
+            A sampling wrapper that gives precedence to the sampling decision made for the parent activity.
+            </summary>
+        </member>
+        <member name="M:SerilogTracing.Samplers.ParentPrecedentSampler.Create(System.Diagnostics.SampleActivity{System.Diagnostics.ActivityContext})">
+            <summary>
+            Create a sampling delegate that gives precedence to the sampling decision made for the parent activity, if present, but
+            otherwise delegates the sampling decision to <see paramref="sampleRootActivity"/>.
+            </summary>
+            <param name="sampleRootActivity">The sampler that will be used when no parent activity is present.</param>
+            <returns>A sampling function that can be provided to <see cref="M:SerilogTracing.Configuration.ActivityListenerSamplingConfiguration.Using(System.Diagnostics.SampleActivity{System.Diagnostics.ActivityContext},System.Boolean)"/>.</returns>
+        </member>
+        <member name="T:SerilogTracing.TracingConfiguration">
+            <summary>
+            Configure integration between SerilogTracing and the .NET tracing infrastructure.
+            </summary>
+        </member>
+        <member name="P:SerilogTracing.TracingConfiguration.Instrument">
+            <summary>
+            Configures instrumentation of <see cref="T:System.Diagnostics.Activity">activities</see>.
+            </summary>
+        </member>
+        <member name="P:SerilogTracing.TracingConfiguration.Sample">
+            <summary>
+            Configures sampling.
+            </summary>
+        </member>
+        <member name="P:SerilogTracing.TracingConfiguration.InitialLevel">
+            <summary>
+            Configures the initial level assigned to externally-created activities. Setting the level of an external
+            activity source to a lower value, such as <see cref="F:Serilog.Events.LogEventLevel.Debug"/>, causes activities from that
+            source to be suppressed when the level is not enabled.
+            </summary>
+        </member>
+        <member name="M:SerilogTracing.TracingConfiguration.EnableTracing(Serilog.ILogger)">
+            <summary>
+            Completes configuration and returns a handle that can be used to shut tracing down when no longer required.
+            </summary>
+            <returns>A handle that must be kept alive while tracing is required, and disposed afterwards.</returns>
+        </member>
+        <member name="M:SerilogTracing.TracingConfiguration.TraceTo(Serilog.ILogger)">
+            <summary>
+            Completes configuration and returns a handle that can be used to shut tracing down when no longer required.
+            </summary>
+            <param name="logger">
+            The logger instance to emit traces through. Avoid using the shared <see cref="P:Serilog.Log.Logger" /> as
+            the value here. To emit traces through the shared static logger, call <see cref="M:SerilogTracing.TracingConfiguration.TraceToSharedLogger" /> instead.
+            </param>
+            <returns>A handle that must be kept alive while tracing is required, and disposed afterwards.</returns>
+        </member>
+        <member name="M:SerilogTracing.TracingConfiguration.TraceToSharedLogger">
+            <summary>
+            Completes configuration and returns a handle that can be used to shut tracing down when no longer required.
+            This method is not equivalent to <code>TraceTo(Log.Logger)</code>. The former will emit traces through whatever the
+            value of <see cref="P:Serilog.Log.Logger" /> happened to be at the time <see cref="M:SerilogTracing.TracingConfiguration.TraceTo(Serilog.ILogger)" /> was called. This method
+            will always emit traces through the current value of <see cref="P:Serilog.Log.Logger" />.
+            </summary>
+            <returns>A handle that must be kept alive while tracing is required, and disposed afterwards.</returns>
+        </member>
+        <member name="T:SerilogTracing.TracingLoggerEnrichmentConfigurationExtensions">
+            <summary>
+            Enrichment for spans.
+            </summary>
+        </member>
+        <member name="M:SerilogTracing.TracingLoggerEnrichmentConfigurationExtensions.WithSpanTimingMilliseconds(Serilog.Configuration.LoggerEnrichmentConfiguration,System.String)">
+            <summary>
+            Enrich log events with the span duration as milliseconds.
+            </summary>
+            <param name="enrichment">The configuration object.</param>
+            <param name="propertyName">The name of the property to add.</param>
+        </member>
+        <member name="M:SerilogTracing.TracingLoggerEnrichmentConfigurationExtensions.WithSpanTiming(Serilog.Configuration.LoggerEnrichmentConfiguration,System.String)">
+            <summary>
+            Enrich log events with the span duration as a <see cref="T:System.TimeSpan"/>.
+            </summary>
+            <param name="enrichment">The configuration object.</param>
+            <param name="propertyName">The name of the property to add.</param>
+        </member>
+    </members>
+</doc>

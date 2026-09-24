@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SerilogTracing.Expressions</name>
+    </assembly>
+    <members>
+        <member name="T:SerilogTracing.Expressions.Formatters">
+            <summary>
+            Provides some simple default formatters that incorporate properties added by SerilogTracing.
+            </summary>
+        </member>
+        <member name="M:SerilogTracing.Expressions.Formatters.CreateConsoleTextFormatter(Serilog.Templates.Themes.TemplateTheme)">
+            <summary>
+            Produces a text format that includes span timings.
+            </summary>
+            <param name="theme">Optional template theme to apply, useful only for ANSI console output.</param>
+            <returns>The formatter.</returns>
+        </member>
+        <member name="T:SerilogTracing.Expressions.TracingNameResolver">
+            <summary>
+            Adds expression support for <c>TimeSpan Elapsed()</c>, <c>bool IsSpan()</c>, <c>bool IsRootSpan()</c>,
+            <c>TimeSpan FromUnixEpoch(DateTime)</c>, <c>long Milliseconds(TimeSpan)</c>, <c>long Microseconds(TimeSpan)</c>,
+            <c>ulong or long Nanoseconds(TimeSpan)</c>. Note that the <c>Nanoseconds</c> function is undefined on overflow or
+            underflow.
+            </summary>
+        </member>
+        <member name="M:SerilogTracing.Expressions.TracingNameResolver.TryResolveFunctionName(System.String,System.Reflection.MethodInfo@)">
+            <inheritdoc/>
+        </member>
+    </members>
+</doc>

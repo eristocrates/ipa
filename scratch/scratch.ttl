@@ -1,0 +1,5 @@
+@prefix chromedevtools: <https://chromedevtools.github.io/devtools-protocol/#/> .
+@prefix dbug: <https://eristocrates.dev/ontology/dbug/> .
+@prefix http: <http://www.w3.org/2011/http#> .
+
+<https://bannerprodssb.leoncountyfl.gov:8449/EmployeeSelfService/ssb/payStubSummary/getPayStubSummaryList?payYear=2026> dbug:test <urn:chromedevtools:http:response:411136.414> .

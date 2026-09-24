@@ -1,0 +1,389 @@
+Living Systems® Process Suite
+Frequently Asked Questions
+Living Systems Process Suite Documentation
+3.2
+Tue Jan 12 2021
+Whitestein Technologies AG | Hinterbergstrasse 20 | CH-6330 Cham
+Tel +41 44-256-5000 | Fax +41 44-256-5001 | http://www.whitestein.com
+Copyright © 2007-2021 Whitestein Technologies AG
+All rights reserved.
+
+Copyright © 2007-2021 Whitestein Technologies AG.
+This document is part of the Living Systems® Process Suite product, and its use is governed by the corresponding
+license agreement. All rights reserved.
+Whitestein Technologies, Living Systems, and the corresponding logos are registered trademarks of Whitestein
+Technologies AG. Java and all Java-based trademarks are trademarks of Oracle and/or its afﬁliates. Other company,
+product, or service names may be trademarks or service marks of their respective holders.
+
+Contents
+1 Frequently Asked Questions 1
+1.1 General . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1
+1.1.1 What are logs? . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1
+1.2 LSPS Server . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1
+1.2.1 The server returns the ConnectorTracker XA exception. . . . . . . . . . . . . . . . . . . . 1
+1.2.2 Embedded Server starts with an Exception. . . . . . . . . . . . . . . . . . . . . . . . . . 2
+1.2.3 SDK Embedded Server starts with an OpenEJBException . . . . . . . . . . . . . . . . . . 2
+1.2.4 Messages in JMS queue are stuck. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2
+1.2.5 Server returns "ISPN000299: Unable to acquire lock after 15 seconds" . . . . . . . . . . . 2
+1.3 Disabling Update of the Database Schema of a Data Type Model . . . . . . . . . . . . . . . . . . 3
+1.4 Application User Interface . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3
+1.4.1 Browser displays an error when accessing the application. . . . . . . . . . . . . . . . . . 3
+1.4.2 The session of the Application User Interface is expired. . . . . . . . . . . . . . . . . . . . 3
+1.4.3 The user remains logged in even after the session timeout period has lapsed. . . . . . . . 3
+1.5 PDS . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3
+1.5.1 Icons are missing in the top toolbar of PDS on my Linux machine. . . . . . . . . . . . . . 3
+1.6 Modeling . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4
+1.6.1 When should a Module be executable? . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4
+1.6.2 There are validation problems even though the expressions are correct. . . . . . . . . . . 4
+1.6.3 I cannot access a local variable in another local variable. . . . . . . . . . . . . . . . . . . 4
+1.6.4 How do I load and work with a ﬁle from my workspace. . . . . . . . . . . . . . . . . . . . 4
+1.6.5 An expression returns only the last collection item, last list item or last set item. . . . . . . 4
+1.6.6 I want to create a model instance over an entity. . . . . . . . . . . . . . . . . . . . . . . . 5
+
+iv CONTENTS
+1.6.7 I want to get all Todos of a model instance. . . . . . . . . . . . . . . . . . . . . . . . . . . 5
+1.6.8 What is the difference between the Upload As and Run As module command? . . . . . . . 5
+1.6.9 Data Types . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 5
+1.6.9.1 How do I get all shared records of a type without creating a query? . . . . . . . 5
+1.6.9.2 Proxy Writes Directly to Database or Does not Merge. . . . . . . . . . . . . . . 5
+1.6.9.3 Warning "Missing database index on foreign key" on a Data Relationship . . . . 6
+1.6.9.4 Model upload fails with a hibernate exception. . . . . . . . . . . . . . . . . . . 6
+1.6.10 UI Forms . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6
+1.6.10.1 My local form variable has incorrect value. . . . . . . . . . . . . . . . . . . . . 6
+1.6.10.2 I cannot change properties of a listener. . . . . . . . . . . . . . . . . . . . . . . 6
+1.6.11 Forms . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6
+1.6.11.1 Filter on a table column is not displayed. . . . . . . . . . . . . . . . . . . . . . 6
+1.6.11.2 Geolocator in the experimental forms module is missing. . . . . . . . . . . . . . 7
+1.6.11.3 A document UI deﬁnition reports the error "Type mismatch. Cannot convert from
+<> to human::UIDeﬁnition". . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7
+1.6.11.4 Charts ignore plot options. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7
+1.6.11.5 Modeling ID is ignored. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7
+1.6.12 Processes . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7
+1.6.12.1 I get "A parametric process cannot be instantiated automatically." on my process 7
+1.6.12.2 I want to instantiate a process from a document. . . . . . . . . . . . . . . . . . 7
+1.6.13 Roles . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7
+1.6.13.1 How do I check if the current user has a role? . . . . . . . . . . . . . . . . . . . 7
+1.6.14 RESTful Webservices . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 8
+1.6.15 Expressions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 8
+1.6.15.1 I get "The symbol <TYPE> is undeﬁned." validation error. . . . . . . . . . . . . 8
+1.6.15.2 I want to format a Date. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 8
+1.6.15.3 I want to preform action on each item of a Collection or Map. . . . . . . . . . . . 8
+1.7 Database . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 9
+1.7.1 MS SQL server reports deadlocks. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 9
+1.7.2 Migration or initialization of LSPS tables failed on MySQL. . . . . . . . . . . . . . . . . . . 9
+1.8 Miscellaneous . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 9
+1.8.1 How should I structure my project? . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 9
+1.8.2 LSPS launcher icon is displayed incorrectly in the launcher bar in Gnome. . . . . . . . . . 10
+1.8.3 To-dos and Documents is temporarily unavailable. . . . . . . . . . . . . . . . . . . . . . . 10
+
+Chapter 1
+Frequently Asked Questions
+1.1 General
+1.1.1 What are logs?
+In the context of LSPS, the term log can refer to one of the following:
+• A log entry made when a model instances executes the Log task or log() function call.
+Both, the task type and the function, are provided by the Standard Library and the entries are visible in the
+Logs view of the Management perspective and Management Console. These logs are stored in the LSPS←↩
+_LOGS table of the LSPS system database.
+• A process log entry which is automatically created by model instances.
+These are logs about execution progress. They are stored in the LSPS_PROCESS_LOG table and are not
+visible from any client. Further information is available in the Server Installation and Upgrade
+Guide
+• The log message of the debugLog() function which is displayed in standard output.
+1.2 LSPS Server
+1.2.1 The server returns the ConnectorTracker XA exception.
+The JBoss or Wildﬂy server returns the following XA exception:
+WARN [com.arjuna.ats.jta.logging.loggerI18N] [com.arjuna.ats.internal.jta.recovery.xarecovery1] Local XARecoveryModule.xaRecovery got XA exception javax.transaction.xa.XAException, XAException.XAER_RMERR
+To remedy the situation, the database user has all required access rights:
+For Oracle, make sure the Oracle user has access to the appropriate tables so they can accomplish the recovery:
+GRANT SELECT ON sys.dba_pending_transactions TO user;
+GRANT SELECT ON sys.pending_trans$ TO user;
+GRANT SELECT ON sys.dba_2pc_pending TO user;
+GRANT EXECUTE ON sys.dbms_xa TO user;
+Substitute user with the user that connects from JBoss to Oracle. This solution works for Oracle 10g R2 (patched
+for bug 5945463) and 11g.
+In an unpatched version older that 11g change the last GRANT EXECUTE to the following:
+GRANT EXECUTE ON sys.dbms_system TO user;
+
+2 Frequently Asked Questions
+1.2.2 Embedded Server starts with an Exception.
+Details, such as Model Instance details, in the Management perspective which are no longer valid might be open,
+for example, due to a database reset, and the data is no longer present in the database. Close any detail tab in
+the Management perspective.
+1.2.3 SDK Embedded Server starts with an OpenEJBException
+Ifyougetthefollowingexception, ﬁxthejdbcurlofLSPS_DSin<YOUR_APP>-embedded/conf/conf/openejb.←↩
+xml to JdbcUrl jdbc:h2:tcp://localhost/./h2/h2;MVCC=TRUE;LOCK_TIMEOUT=60000.
+WARN JdbcServicesImpl HHH000342: Could not obtain connection to query metadata : A file path that is
+implicitly relative to the current working directory is not allowed in the database URL
+"jdbc:h2:tcp://localhost/h2/h2;MVCC=TRUE;LOCK_TIMEOUT=60000". Use an absolute path, ~/name, ./name, or the baseDir setting instead.
+[90011-197]
+Exception in thread "main" org.apache.openejb.OpenEJBException: Creating application failed:
+/home/eko/testing/3.2.1038/ekassa/ekassa/ekassa-embedded/Launcher.EAR: org.apache.openejb.OpenEJBRuntimeException:
+javax.persistence.PersistenceException: [PersistenceUnit: lsps-pm] Unable to build EntityManagerFactory:
+javax.persistence.PersistenceException: [PersistenceUnit: lsps-pm] Unable to build EntityManagerFactory
+at org.apache.openejb.assembler.classic.Assembler.createApplication(Assembler.java:843)
+at org.apache.openejb.assembler.classic.Assembler.createApplication(Assembler.java:677)
+at org.apache.openejb.assembler.classic.Assembler.createApplication(Assembler.java:673)
+at com.whitestein.lsps.launcher.Launcher.launch(Launcher.java:129)
+at com.whitestein.ekassa.embedded.LSPSLauncher.main(LSPSLauncher.java:27)
+Caused by: org.apache.openejb.OpenEJBException: org.apache.openejb.OpenEJBRuntimeException:
+javax.persistence.PersistenceException: [PersistenceUnit: lsps-pm] Unable to build EntityManagerFactory:
+javax.persistence.PersistenceException: [PersistenceUnit: lsps-pm] Unable to build EntityManagerFactory
+at org.apache.openejb.assembler.classic.Assembler.loadPersistenceUnits(Assembler.java:988)
+at org.apache.openejb.assembler.classic.Assembler.createApplication(Assembler.java:741)
+1.2.4 Messages in JMS queue are stuck.
+In your server logging conﬁguration, activate the debug log level for com.whitestein.lsps.engine.←↩
+CommunicationServiceBean and com.whitestein.lsps.engine.ProcessAgentImpl ser-
+vices and inspect the log.
+1.2.5 Server returns "ISPN000299: Unable to acquire lock after 15 seconds"
+Inﬁnispan on JBoss and Wildﬂy returns the ISPN000299: Unable to acquire lock after 15
+seconds: this occurs when an operation takes too long so the session is locked and fails to acknowledge the
+Vaadin heartbeat from the Application User Interface.
+To remedy the problem, do the following:
+• set the active-timeout parameter of the server to 10m in the proﬁle xml ﬁle, such as, standalone-full.xml:
+<cache-container name="web" default-cache="passivation" module="org.wildfly.clustering.web.infinispan">
+<local-cache name="passivation">
+<!-- CHANGED the acquire-timeout here: -->
+<locking isolation="REPEATABLE_READ" acquire-timeout="600000"/>
+<transaction mode="BATCH"/>
+<file-store passivation="true" purge="false"/>
+</local-cache>
+</cache-container>
+• increase the heartbeat interval in your Application User Interface in the web.xml of the application:
+<param-name>heartbeatInterval</param-name>
+<param-value>300</param-value>
+
+1.3 Disabling Update of the Database Schema of a Data Type Model 3
+1.3 Disabling Update of the Database Schema of a Data Type Model
+To prevent update of database schema when you upload a data-type model, you have the following options:
+• Disable schema update on the LSPS server altogether from PDS or from a database or JMX client.
+• Disable schema update for a particular shared record or relationship on their DB Mapping tab.
+1.4 Application User Interface
+1.4.1 Browser displays an error when accessing the application.
+Clean cache of your browser.
+1.4.2 The session of the Application User Interface is expired.
+Make sure your browser does not use out-of-date cookies and cached data: Clean the cookies and cached data.
+1.4.3 The user remains logged in even after the session timeout period has lapsed.
+Make sure your lspsVaadinApp servlet in the web.xml of the Application User Interface contains the close←↩
+IdleSessions parameter:
+<!-- Vaadin servlet -->
+<servlet>
+<servlet-name>LspsVaadinApp</servlet-name>
+...
+<init-param>
+<param-name>closeIdleSessions</param-name>
+<param-value>true</param-value>
+</init-param>
+</servlet>
+This prevents Vaadin from sending heartbeats to the server after the session-timeout period. The session timeout
+is set in minutes in web.xml.
+1.5 PDS
+1.5.1 Icons are missing in the top toolbar of PDS on my Linux machine.
+This is caused by Eclipse issue 497705. To remedy the situation, create a new PDS launcher:
+#!/bin/bash
+export SWT_GTK3=0
+./lsps-design_64
+
+4 Frequently Asked Questions
+1.6 Modeling
+1.6.1 When should a Module be executable?
+An executable Module can become a model instance, while a non-executable module is intended as a resource and
+cannot be instantiated: If you have a module where you deﬁne the data model only (like in the model in the MVC
+pattern), it is not intended for execution. Hence it does not require the execution ﬂag.
+Note that if you import an executable module to another executable module, and you instantiate the importing
+module (the parent), the imported executable module will be instantiated as part of the model instance.
+1.6.2 There are validation problems even though the expressions are correct.
+• In the GO-BPMN Explorer, right-click the module with the problem and select Validate.
+• Clean the project: on the main menu, go to Project -> Clean
+1.6.3 I cannot access a local variable in another local variable.
+Make sure that the variable is in a context the other variable can access. If working with local variables of the same
+context, make sure the variable is already initialized: variables are initialized in the order they are deﬁned in (make
+sure, the variables are not sorted alphabetically when using the Outline view).
+1.6.4 How do I load and work with a ﬁle from my workspace.
+• To work with a ﬁle, load it to the File record:
+def File file := getResource(module -> "my-module", path -> "file.pdf");
+//to access the content binary: file.content.toString("UTF-8")
+• To work with a ﬁle in a form, load it into a FileResource object with the getResource() function:
+new FileResource({ -> getResource("form_components", "output/myfile.txt")})
+1.6.5 An expression returns only the last collection item, last list item or last set item.
+Check if you are not using a semi-colon (;) instead of a comma (,) as a separator of the collection items: the
+system returns the last expression as the collection content.
+Typical case of a misplaced semi-colon
+new CategoryDataSeries([
+//semi-colon at the end of the following line causes that
+//only the next line is returned as the content
+//of the collection:
+new CategoryDataSeriesItem("Pears", 1, 5);
+new CategoryDataSeriesItem("Apples", 2, 6);
+]);
+
+1.6 Modeling 5
+1.6.6 I want to create a model instance over an entity.
+If you want to create a model instance over an entity, pass the shared Record to the createModelInstance()
+function:
+createModelInstance(true, thisModel(), mySharedRecord := new MyRecord() , null);
+You can then get the Record with a getProcessEntity(MyRecord) function call.
+1.6.7 I want to get all Todos of a model instance.
+To get to-dos of a model instance, create a query with the model instance as its parameter that return the Todo type
+and deﬁne a condition that will exclude to-dos of other model instances, for example, todoIterator.model←↩
+InstanceId == modelInstanceParameter.id;
+1.6.8 What is the difference between the Upload As and Run As module command?
+• UploadAscompilesanduploadstheselectedmoduleanditsmoduleimportstotheLSPSModuleRepository
+of the server your PDS is connected to. In PDS, the modules uploaded to the server are managed in the
+Module Management view of the Management perspective.
+• Run As does the same and in addition creates a model instance of the executable module. Hence this option
+is not available for modules that are no executable since these cannot be instantiated. In PDS, the model
+instance that have been executed by the server can be managed from the Model Instances view of
+the Management perspective.
+1.6.9 Data Types
+1.6.9.1 How do I get all shared records of a type without creating a query?
+Use the findAll() function of the Standard Library to get all the shared records of a particular type. Also note
+you can use the countAll() function to get the number of the shared records.
+1.6.9.2 Proxy Writes Directly to Database or Does not Merge.
+1. Make sure the proxy object really exists:
+• if you are working with a related record instance, you need to explicitly pass it as the properties
+parameter when creating the proxy instance with the proxy() call.
+• if you are working with a record with a relationship (the record instance does not exist), you need to
+explicitly create a proxy for the related record and assign it to your proxy.
+2. In Forms forms, make sure the proxies are created before they are used: use the preCreateWidget()
+method to create the proxies.
+3. Check if your Record name does not collide with a system Record name.
+
+6 Frequently Asked Questions
+1.6.9.3 Warning "Missing database index on foreign key" on a Data Relationship
+Create indexes for foreign keys on the data relationship ends: select the relationship and in the Properties view,
+deﬁne the indexes on the Indexes tab. Alternatively, you can generate them automatically: in the Outline view, on
+the Tree tab,-click the root node Data Types and in its Properties view click the Generate Indexes button.
+How Was Database Schema of My Module Updated?
+You can ﬁnd information on how the schema was changed in the Module Management view of the Management
+Perspective: click the Schema Update Scripts tab.
+1.6.9.4 Model upload fails with a hibernate exception.
+Check whether the data type model meets the following:
+• The hierarchy uses "Each record to own table".
+• The top record has no property, only primary key.
+• There is a record with one-to-set relation to the top record.
+• The relation is one-directional.
+• The relation is sorted according to the primary key of the top record.
+This occurs due to an issue in Hibernate. To work around it, do one of the following:
+• Add a property to the top record.
+• Remove sorting on the relationship.
+• Make the relationship bi-directional (the top record will have a property)
+1.6.10 UI Forms
+1.6.10.1 My local form variable has incorrect value.
+If you are assigning a value to your variable in an InitListener, make sure the component with the InitListener is
+actually displayed. InitEvents are ﬁred only on component display.
+1.6.10.2 I cannot change properties of a listener.
+Make sure the Listener is defined by expression option on the Expression tab is not selected.
+1.6.11 Forms
+1.6.11.1 Filter on a table column is not displayed.
+If you are using the None value in the Filter value provider, make sure the type of the column value provide on
+the Detail tab of the column deﬁnes its value (in the case of Identity, the value should be set to the type, such as
+String).
+
+1.6 Modeling 7
+1.6.11.2 Geolocator in the experimental forms module is missing.
+• The Geolocator component has been substituted with the Forms.detectLocation() method.
+1.6.11.3 A document UI deﬁnition reports the error "Type mismatch. Cannot convert from <>to human::UIDeﬁnition".
+• Import the forms module into your module. Check if your Record name does not collide with a system Record
+name.
+1.6.11.4 Charts ignore plot options.
+If a data series does not plot correctly, consider deﬁning the values for all properties explicitly, for example, if you
+are changing the color of a decimal series, apart from the color parameter, set also the range to true and lineStyle
+to lineStyle.solid:
+c.setPlotOptions(new PlotOptionsLineArea(color -> new Color(0, 0, 0), lineStyle -> LineStyle.solid, fillColor -> new Color(230, 200, 180),range -> true));
+1.6.11.5 Modeling ID is ignored.
+This happens on the root components of the Expression component: the modeling id of the root component returned
+by the expression in the Expression component uses the modeling id as set on the Expression Component in its
+properties. Calls to setModelingId() on the component that is the content of the Expression component are
+ignored.
+1.6.12 Processes
+1.6.12.1 I get "A parametric process cannot be instantiated automatically." on my process
+A process that has parameters cannot run without its parameters; hence, it can be instantiated only by another
+entity which provides the parameters. To solve the situation, display the properties of the process and on the Detail
+tab unselect Instantiate Automatically.
+1.6.12.2 I want to instantiate a process from a document.
+A document is not part of a model instance and process instances can exist only as part of a model instance. Hence
+this is not possible. However, you can create a model instance with the createModelInstance() call.
+1.6.13 Roles
+1.6.13.1 How do I check if the current user has a role?
+Typically when setting access rights for to-dos and documents, you want to check if the user who is working with
+the application at the given moment has the required modeled role. Use the isPersonIn() function.
+//Example setting of access rights:
+isPersonIn( getCurrentPerson(), common::Client() )
+
+8 Frequently Asked Questions
+1.6.14 RESTful Webservices
+I get "The restful Webservice deﬁnition is not valid. See Problems view for details." dialog box.
+Close and reopen the editor.
+1.6.15 Expressions
+1.6.15.1 I get "The symbol <TYPE>is undeﬁned." validation error.
+Validation reports an error of an undeﬁned symbol for an expression that should result in in a Type: This happens if
+the type contains <>. To solve the problem, wrap the type in the type() function.
+type(Reference<String>)
+1.6.15.2 I want to format a Date.
+To format a Date object, call the formatDate() mathod with the date format as it parameter; the formatter uses
+the DateTimeFormat with the pattern and time zone.
+Example call
+now().formatDate("EEEEEEEEEE, MMM d", "Pacific/Auckland")
+1.6.15.3 I want to preform action on each item of a Collection or Map.
+Though you can use the foreachconstruct, consider the collect()function of the Standard Library, especially
+if you create new collections in the cycle: the collect() function runs a closure on each item and returns a list
+with the outputs from the closures.
+Example over List
+//list with lists of values and names for the ListDataSeriesItem:
+def List<List<Object>> itemList1 := [[1, "I am item 1 with value 1"], [3, "I am item 2 with value 3"], [1.3, "I am item 3 with value 1.3"] ];
+~
+def ListDataSeries ls1 :=
+//Collect returns a list of ListDataSeriesItem; it is then passed to the ListDataSeries constructor:
+new ListDataSeries (collect(itemList1, { i -> def ListDataSeriesItem li := new ListDataSeriesItem(i[0] as Decimal); li.name := i[1] as String; li}));
+Example over Map
+//map of values and names for the ListDataSeriesItem:
+def Map<Decimal, String> mapsOfItems := [1 -> "I am item 1.", 3 -> "I am item 2.", 1.3 -> "I am item 3."];
+//Creating a list of data series:
+[
+new ListDataSeries (collect (mapsOfItems,
+{ k,v -> def ListDataSeriesItem li := new ListDataSeriesItem(k, v)}
+)
+)
+]
+
+1.7 Database 9
+1.7 Database
+1.7.1 MS SQL server reports deadlocks.
+If your MS SQL Server reports deadlocks, the problem might by cause by orphaned transaction: make sure to kill
+any hanging orphaned transactions that block database resources if such transactions are present.
+Example of a select that returns orphan transactions
+select request_owner_guid as [UoW ID] from sys.dm_tran_locks where request_session_id = -2
+1.7.2 Migration or initialization of LSPS tables failed on MySQL.
+When running on MySQL 5.6 with multibyte encoding (UTF-8), check if your database uses Barracuda as ﬁle
+format: SHOW VARIABLES LIKE 'innodb_file_format' If it is not the case, set the global innodb←↩
+_file_format=Barracuda;set global innodb_large_prefix=on;ROW_FORMAT DYNAMIC
+If you are not using Barracuda, the initialization of the LSPS database will fail with the exception:
+SEVERE: Migration of schema ‘lsps‘ to version <DB_VERSION> failed! Please restore backups > and roll back
+database and code!
+This occurs because MySQL uses the InnoDB engine which restricts the column length and LSPS requires wider
+columns than allowed by MySQL.
+1.8 Miscellaneous
+1.8.1 How should I structure my project?
+The recommended best practise is to structure your project as follows:
+• java folder with customized Application User Interface resources (LSPS Application);
+• model folder with the following GO-BPMN modules:
+– main: imports all modules and does not contain any resources itself
+– common: resources required by all parts of the process, such as, data type models, general queries
+and functions, constraints, cache regions, etc.
+– init: module with processes that initialize the business data, that is, create your users, assign the users
+respective rights, update or create persisted business data, instantiate models, etc.
+– modules with your processes and other resources;
+
+10 Frequently Asked Questions
+Example project structure
+Figure 1.1 Recommended project structure
+1.8.2 LSPS launcher icon is displayed incorrectly in the launcher bar in Gnome.
+In the lsps-design_64.ini in $PDS_HOME, add the following before vmargs:
+--launcher.GTK_version
+Alternatively, add set the SWT_GTK3 environment variable to 0:
+export SWT_GTK3=0
+1.8.3 To-dos and Documents is temporarily unavailable.
+If a to-do or document returns an error similar to the following, reset the to-dos and delete the relevant
+documents from the database (currently no API for this action is provided).
+Processing failed. The to-do is temporarily unavailable.

@@ -1,0 +1,821 @@
+arXiv:2505.11302v1 
+[cs.DS]  16 May 2025
+Depth first representations of k2-trees
+Gabriel Carmona1 #
+Department of Computer Science, University of Pisa, Italy
+Giovanni Manzini #
+Department of Computer Science, University of Pisa, Italy
+Abstract
+The k2-tree is a compact data structure designed to efficiently store sparse binary matrices by
+leveraging both sparsity and clustering of nonzero elements. This representation supports efficiently
+navigational operations and complex binary operations, such as matrix-matrix multiplication, while
+maintaining space efficiency. The standard k2-tree follows a level-by-level representation, which,
+while effective, prevents further compression of identical subtrees and it si not cache friendly when
+accessing individual subtrees. In this work, we introduce some novel depth-first representations of
+the k2-tree and propose an efficient linear-time algorithm to identify and compress identical subtrees
+within these structures. Our experimental results show that the use of a depth-first representations is
+a strategy worth pursuing: for the adjacency matrix of web graphs exploiting the presence of identical
+subtrees does improve the compression ratio, and for some matrices depth-first representations turns
+out to be faster than the standard k2-tree in computing the matrix-matrix multiplication.
+2012 ACM Subject Classification Theory of computation → Data structures design and analysis
+Keywords and phrases Web graphs, Sparse binary matrices, Succinct tree representations, Compact
+data structures
+Digital Object Identifier 10.4230/LIPIcs.CVIT.2016.23
+Acknowledgements The authors whish to thank Paolo Ferragina and Francesco Tosoni for the many
+fruitful discussions on k2-tree representations.
+1 Introduction
+The need to handle larger and larger datasets has lead to the development of compressed
+data structures [22] where the data is compressed in a such a way that most operations
+do not require decompression. For storing binary matrices, the k2-tree [6] is a compact
+representation designed to save space by leveraging the sparsity of the input and the potential
+clustering of nonzero elements. For a matrix M this representation supports operations such
+as: checking M[p,q], retrieving all j such that M[p,j] = 1 (or M[j,q] = 1), and finding all
+(i,j) pairs satisfying p1 ≤ i ≤ p2, q1 ≤ j ≤ q2, and M[i,j] = 1. More recently [1, 5] described
+efficient algorithms for binary relations and Boolean matrix multiplication. The k2-tree has
+demonstrated excellent performance in various domains, including Web Graphs [7, 8], Graph
+Databases [1, 11], Geographic Information Systems [9, 18], and Social Networks [9].
+An intriguing question is whether the k2-tree can be further compressed: in this paper we
+investigate the possibility of exploiting the presence of identical subtrees. Specifically, if two
+subtrees are identical, compression can be achieved by retaining only one copy and replacing
+the others with pointers to the retained subtree. However, implementing this approach in
+the current level-by-level representation of the k2-tree is challenging. To efficiently identify
+identical subtrees, an alternative depth-first representation appears too be more suitable.
+For this reason, we introduce several novel depth-first representations of the k2-tree and
+we show how to identify and compress identical subtrees in a depth-first representation in
+1 Corresponding author.
+© Gabriel Carmona and Giovanni Manzini;
+licensed under Creative Commons License CC-BY 4.0
+42nd Conference on Very Important Topics (CVIT 2016).
+Editors: John Q. Open and Joan R. Access; Article No.23; pp.23:1–23:14
+Leibniz International Proceedings in Informatics
+Schloss Dagstuhl – Leibniz-Zentrum für Informatik, Dagstuhl Publishing, Germany
+
+23:2 Depth first representations of k2-trees
+linear time. We compare four of our representations with the original k2-tree by evaluating
+their performance on matrices derived from Web Graphs and Random Matrices. For Web
+Graph matrices our experiments show that by pruning identical subtrees we can improve over
+the compression ratio of the original k2-tree, even if at the cost of additional computational
+overhead. In addition, we show that in some cases depth-first representations improve matrix-
+matrix multiplication performance, probably because such representations are more cache
+friendly. Overall, our results show that the use of depth-first representations is a strategy
+worth pursuing and in Section 7 we describe many possible lines of further investigation.
+2 Notation
+Let Σ be a finite ordered alphabet of size σ. A string, (or sequence or array), of length
+n over alphabet Σ is denoted with S[1,n] ∈ Σn. We write S[i..j] to denote the substring
+S[i]S[i+1]···S[j] if 1 ≤ i ≤ j ≤ n or the empty string otherwise. The Suffix Array [19] of S is
+a permutation of the integers {1,...,n} such that for i = 2,...,n, S[SA[i−1],n] ≺ S[SA[i],n],
+where ≺ denotes the lexicographic ordering. The LCP Array [19] LCP[2,n] is an array of
+integers such that i = 2,...,n, LCP[i] is the length of the longest common prefix between
+S[SA[i − 1],n] and S[SA[i],n]. Both SA and the LCP array can be computed in O(n)
+time [14, 15, 17, 16].
+Given a sequence S and a symbol c ∈ Σ, rankc(S,i) returns the number of occurrences
+of c in S[1,i], and selectc(S,i) returns the position of the i-th occurrence of c in S or −1 if
+such occurrence does not exist. Using additional o(n) bits of space we can preprocess S so
+that both rank and select operations can be computed in O(1) time [20].
+If Σ = {(,)}, the sequence S contains the same number of ( and ) symbols and no prefix
+S[1,i] contains more ) than ( then S is called a balanced parenthesis sequence. Given a
+balanced parenthesis sequence S, find_close(S,i) (resp. find_open(S,i)) returns the index
+of the closing (opening) parenthesis that matches a given opening (closing) parenthesis S[i].
+Such operations can be supported O(1) time [21].
+3 The canonical representation of k2-trees
+Given a square binary matrix M, the corresponding k2-tree [6] is built by recursively dividing
+M using an MX-Quadtree strategy [23], splitting it into k2 equal-sized submatrices, each
+containing n2/k2 cells. Each submatrix corresponds to a child of the root node, with its
+value set to 1 if at least one cell in the submatrix is 1; otherwise, its value is 0. The process
+is recursively applied to all submatrices with at least one 1 until all cells have been processed,
+see Figures 1 and 2. This approach works seamlessly when n is a power of k. In cases where
+n is not a power of k, the matrix can be padded with additional rows and columns of zeros
+until its size becomes a power of k, ensuring proper tree construction. In the following we
+will assume k is a constant, so that kh (the size of the padded matrix) is O(n).
+By construction, the k2-tree is structured as a k2-ary tree of height h = ⌈logk n⌉, where
+each node, except the root, stores a single bit of information. For the nodes at level ℓ < h
+internal nodes store a 1 while leaf nodes store a 0 meaning that the corresponding kh−ℓ×kh−ℓ
+submatrix only contains zero elements. At level h all nodes are leaves each one stores an
+actual bit value of the input matrix. In order to represent succinctly the input matrix, it is
+necessary to represent succinctly the above tree. In the same paper, the authors propose a
+representation consisting of two bit arrays:
+
+G. Carmona and G. Manzini 23:3
+0 1 1 1 0 0 0 0 0 0 0 0 1 0 1 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 1 0 0 0 1 0 1 1 0 0 0 0
+0 0 0 0 0 0 1 0 0 1 1 1 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+Figure 1 A 16 × 16 matrix split recursively into 2 × 2 submatrices for the construction of a
+k2-tree with k = 2.
+1
+1
+1
+0100
+1
+1100
+0 1
+0100
+0 0 1
+1
+1000
+0 0 0
+1
+0 1
+1
+1000
+1
+1000
+0 0
+0 0
+1
+0 1
+1
+1000
+1
+0100
+0 0
+0 0
+1
+1
+1
+1010
+1
+1111
+0 1
+1000
+0 0 1
+1
+0100
+0 0 0
+Figure 2 The k2-tree, with k = 2, representing the matrix of Figure 1. The color of each the
+internal nodes is related to the size of the submatrix it represents.
+T (tree): stores all the bits that are not in the last level of the tree. The bits are placed
+following a level-wise traversal.
+L (leaves): stores all the bits of the last level of the tree. Then, it represents some of the
+real original cells of the adjacency matrix.
+For example, for the k2-tree in Figure 2, the corresponding T and L bit arrays are as
+follows (colors are used to represent tree levels following Figure 2):
+T: 1111 1001 0100 0100 1001 1101 1000 1100 1100 1101 1000
+L: 0100 1100 0100 1000 1000 1000 1000 0100 1010 1111 1000 0100
+The reason for which the two bit arrays T and L are considered separately is technical. To
+access specific elements of the input matrix it is necessary to efficiently navigate the k2-tree.
+The authors observed that we can compute the i-th child of a node at position x using
+the formula child(x,i) = rank1(x) · k2 + i [6]. Hence, adding a o(|T|) bits data structure
+supporting the rank1 operation over T in constant time, it is possible to efficiently navigate
+the tree. Later, Brisaboa et al. [7] extended the functionalities of the k2-tree with operations
+still relaying only the rankoperation on T. There is no need to support the rankoperation
+over L, so it can be stored using a different (simpler) representation.
+For an n × n matrix with m nonzeros, it is shown that the number of bits in this
+representation is bounded [6] by
+k2m
+(
+logk2
+n2
+m + O(1)
+)
+(1)
+However, such value is obtained for pathological inputs and the behavior in practice is much
+better. Brisaboa et al. [7] in experiments with web graphs, found that the actual space usage
+CVIT 2016
+
+23:4 Depth first representations of k2-trees
+is significantly lower and competitive with other graph compression schemes.
+4 Depth-First Traversal Representations
+The Canonical representation is extremely space efficient since it essentially uses a single
+bit for each node. Considering that it supports tree navigation in constant time it seems
+hard to improve. However, such representation appears ill suited to exploit the possible
+presence of identical submatrices in the input matrix. Such submatrices corresponds to
+identical subtrees but with the Canonical representation the information on every subtree is
+partitioned into the different tree levels. It is therefore non trivial to detect equal subtrees
+within the Canonical representation. Another issue of the Canonical representation is that
+nodes which are close in the tree can be stored far apart: for some computation this layout
+can generate a large number cache misses.
+As a possible solution to the above shortcomings, in this section we describe alternative
+representations based on a depth first traversal of the k2-tree: such approach stores together
+the information regarding a given subtree thus improving the locality of references and
+simplifying the task of detecting identical subtrees.
+4.1 Plain Depth-First representation
+The simplest Depth-First representation consists in traversing the tree in depth-first order;
+when the visit reaches a non-leaf node u, we write the k2 bits associated to u’s children. The
+resulting bit array P has length mk2, where m is the number of internal nodes of the k2-tree.
+See Figure 3 for an example. It is easy to see that P is a permutation of the bits in T ∪L of
+the canonical representation; more precisely both P and T ∪ L can be partitioned into m
+blocks of k2 bits, and the blocks of P are a permutation of the blocks of T ∪ L.
+We call this representation the Plain Depth First (PDF) representation since we do not
+add any additional information to speed up navigation. Note that given a pair of indices
+i,j we are still able to determine the entry M[i][j] of the matrix represented by the k2-tree,
+but this requires a depth first traversal of the tree up to the node representing the largest
+non-empty submatrix containing position i,j. Although the access to a single entry is
+inefficient, some operations involving the whole matrix (such as computing the vector product
+y = Mx) do require visiting the whole k2-tree and this can be done with a simple left-to-right
+scan of the bit array P. Such visit is much more cache friendly than a visit of the canonical
+representation of the same tree
+4.2 Enriched Depth-First representation
+The main drawback of the PDF representation is that in order to find the starting position
+in P of the subtree corresponding to the, say, third child of the root note, we must execute a
+visit of the first two subtrees. The cost of the visit is proportional to the number of nodes in
+such subtrees so this is a major problem when such subtrees are large: since the visit consists
+of a linear scan of a subarray of P, small subtrees are less of a problem.
+The above observation suggests to “enrich” to plain depth-first representation, with
+additional information that allow us to skip large subtrees without visiting them. The
+simplest approach is to store after each block of k2 bits associated to an internal node, the
+size, in terms of number of blocks, of its subtrees, with the exception of the last one. In
+the example of Figure 3, after the block 1111 we would encode the size of the first three
+subtrees, e.g. 7 (first subtree), 4 (second subtree), and 4 (third subtree). If we need to access
+
+G. Carmona and G. Manzini 23:5
+1
+1
+1
+0100
+1
+1100
+0 1
+0100
+0 0 1
+1
+1000
+0 0 0
+1
+0 1
+1
+1000
+1
+1000
+0 0
+0 0
+1
+0 1
+1
+1000
+1
+0100
+0 0
+0 0
+1
+1
+1
+1010
+1
+1111
+0 1
+1000
+0 0 1
+1
+0100
+0 0 0
+P = 1111
+1001 1101 0100 1100 0100 1000 1000
+0100 1100 1000 1000
+0100 1100 1000 0100
+1001 1101 1010 1111 1000 1000 0100
+Figure 3 The Plain Depth-First representation of the same tree as Figure 2. The representation
+consists of the bit array P containing the concatenation of the 4-tuples of bits shown above: the
+first row represents the children of the root node. Each of the subsequent four rows corresponds to
+the subtrees rooted at each child of the root, listed in depth-first traversal order; different colors
+represent different tree levels.
+the third subtree we skip 7 + 4 = 11 blocks, while if we need to access the fourth subtree we
+skip 7 + 4 + 4 = 15 blocks. Note that we do not store the size of the last subtree (7 in our
+example), since it is not used for skipping any subtree. We store this information only for
+the first ℓ levels of the tree: the rationale is that as we descend in the tree the number of
+nodes per level increases, and therefore also the number of “skip” values, and, as we observed
+above, visiting small trees is a relatively fast operation.
+We can refine the above idea by choosing a threshold τ and storing the “skip” values
+only for subtrees of size larger than τ. For example it we set τ = 6 we use “skip” values
+only for the root and for the first and last children of the root, whose subtrees have size
+7. Since those children have two subtrees, they only need to store a single skip value (4
+in our example). Note that using the threshold strategy we do not waste space for skip
+values for small subtrees which happen to be in the first levels. If N is the total number
+of nodes and we choose τ = f(N) we can estimate the overhead of storing the skip values
+as follows. Consider the subtrees which have more than f(N) nodes and do not contain
+any subtree with more than f(N) nodes. Clearly there are at most N/f(N) such subtrees,
+and each such subtree will have at most logk n ancestors. Not all ancestors are distinct but
+we can state that the number of node containing skip values is at most O(N logn/f(N)).
+Assuming we use O(logN) bits for each skip value, the total overhead for skip values is
+O(Nk2 logN logn/f(N)) bits. In our experiments we set τ = √N and k = 4 so the overhead
+is O(√N logN logn) bits.
+We call the above representation Enriched Depth First (EDF). Note that there are a
+few details of the representation that has to be decided during the implementation. The
+first one is how to encode the skip values: to save space it is preferable to use a variable
+length code, which one among the many existing alternatives (Elias, Rice, Variable-Byte, etc.
+see for example [10, Chapter 11]) depends on the desired time-space tradeoff. The second
+implementation choice is where to store the “skip” values. A first alternative is to store them
+inside the bit array P, immediately after the k2-bit block representing the root of the subtree
+they refer to. This alternative is cache friendly since the whole representation still consists
+of a single bit array which is mostly accessed in sequential scans. However, the size of the
+subtrees, hence the skip values, now depend also on the skip values stored at the lower levels:
+this makes the construction of the representation more complex since now it has to be done,
+bottom up and left to right (details in the full paper).
+CVIT 2016
+
+23:6 Depth first representations of k2-trees
+Another possible approach is to store the skip values in a separate array S. This simplifies
+the construction and navigation algorithms but 1) it is not cache friendly since navigation
+accesses two distinct bit arrays, and 2) it requires the storage of some additional information.
+To see this latter point, observe that in order to skip a subtree Ti we need to skip the portion
+of the P array containing the encoding of Ti nodes and the portion of the S array containing
+the skip values for Ti. Hence the size of such portion of S has to be saved as well; this can
+be done in the array S itself, but requires some additional space.
+4.3 Balanced Parenthesis representation
+In this section we introduce another depth-first based representation of k2-trees based
+on Balanced Parenthesis (BP) encoding, following the ideas introduced by Munro and
+Raman [21]. Our representation follows the classical approach used for general trees; however
+we exploit the spacial structure of the k2-tree introducing an optimization for the last-level
+nodes. Instead of representing these nodes using parenthesis, we store their actual values in
+a separate bit array L′.
+Let h = ⌈logk n⌉ denote the tree height. Formally, the construction of our BP repres-
+entation is done as follows. We visit the k2 tree in depth first order and, as suggested by
+Munro and Raman [21], we write to a vector B a ( every time we start the visit of a node
+and we write a ) every time the visit of a node is complete and we go back to the parent
+node. However, when we reach a level h − 1 node which is not a leaf, instead of visiting
+its children we write a pair () and we write the k2 bits associated to its children to the bit
+array L′. See Figure 4 for an example.
+Note that the subtrees rooted at a level h − 1 node are represented by either (), if the
+have no children, or by (()) if the have children. Since in a k2 tree every node has either 4
+children or none, the sequence (()) cannot represent a subtree rooted at a level < h − 1.
+This implies that there is a one-to-one correspondence between the occurrences of the pattern
+(()) in the parenthesis vector B, the subtrees with children at level h − 1 and the blocks of
+k2 bits in the L′ array. By construction, the correspondence is order preserving in the sense
+that the i-th occurrence of the pattern (()) corresponds to the i-th block in L′. This means
+that to access the bit values stored in a level-h leaf, we need to locate the position p of its
+parent, and count the number x of occurrences of the pattern (()) in B up to position p;
+the desired bit values are stored starting from position xk2 in L′.
+Let t denote the number of nodes in levels 0,...h−1 and ℓ denotes the number of level-h
+leaves. It is immediate to see that the parenthesis vector B and the bit vector L′ have length
+|B| = 2t + 2ℓ
+k2 , |L′| = ℓ. (2)
+The BP representation therefore takes roughly twice the space used by the Canonical and
+(Enriched) Depth-First representations that take t+ℓ bits plus possibly lower order terms to
+support fast navigation. The advantages of the BP representation are the locality of reference
+and the possibility, explored in Section 5 to compress identical subtrees.
+To ensure constant time navigation with the BP representation we need to support the
+find_close operation in constant time that, as recalled in Section 2, can be supported using
+o(|B|) bits of auxiliary space. When we reach an internal node at level h − 1, to reach the
+corresponding bits in the L′ array we need to support the constant time rank operation for
+the pattern (()) on the array B; this can be achieved by a straightforward modification of
+the rank data structures for the rank data structure still using o(|B|) bits of auxiliary space.
+
+G. Carmona and G. Manzini 23:7
+1
+1
+1
+0100
+1
+1100
+0 1
+0100
+0 0 1
+1
+1000
+0 0 0
+1
+0 1
+1
+1000
+1
+1000
+0 0
+0 0
+1
+0 1
+1
+1000
+1
+0100
+0 0
+0 0
+1
+1
+1
+1010
+1
+1111
+0 1
+1000
+0 0 1
+1
+0100
+0 0 0
+B = (
+(((())(())()(()))()()((())()()()))
+(()((())(())()())()())
+(()((())(())()())()())
+(((())(())()(()))()()((())()()()))
+)
+L′ = 0100 1100 0100 1000 1000 1000 1000 0100 1010 1111 1000 0100
+Figure 4 The balanced parenthesis representation of the k2-tree of Figure 2. The resulting
+parenthesis vector B is the concatenation of the six rows of parentheses: the first and last row are
+the open and close parenthesis for the root; and the other four rows represents the subtrees rooted
+at the four children of the root. Also shown is the bit vector L′ containing the values in the bottom
+level stored according to the depth-first order visit.
+4.4 Additional depth-first representations
+Another depth-first representation of k2-trees can be obtained using the Depth First Unary
+Degree Sequence (DFUDS) representation [2]. The DFUDS representation builds a balanced
+parenthesis sequence by traversing the tree in depth-first order and writing the number of
+children of each node in unary using the symbols ( and ), so a node with two children is
+represented by (() (a “super-root” initial ( symbol is needed to make the sequence balanced).
+As described, the above representation takes the same space (2) as the BP representation,
+which is roughly twice the space of the Canonical representation. However, since in a k2 tree
+all internal nodes have exactly four children, we can use the ultra-succinct representation by
+Jansson et al. [13] to achieve the tree degree entropy of the k2-tree, which equals one bit per
+node, as in Canonical representation. However, since the Jansson et al.’s representation is
+rather complex, we leave the study of this approach to the full paper.
+Finally, we point out that it is possible to combine the BP representation with the EDF
+or PDF representations. For example, we can fix a threshold τ and use the BP representation
+for all subtrees of size at least τ. If an internal node is the root of a subtree of size smaller
+than τ we can represent it in B with the special sequence (()), and store its EDF or PDF
+representation in an auxiliary array L′. We leave the investigation of this mixed approach to
+the full paper.
+5 Compressing subtrees in the BP representation
+Identical submatrices in the original input matrix M can lead to identical subtrees in the
+k2-tree representing M. We now show how to detect identical subtrees and replace them
+with a “pointer” to a previous occurrence, and how to perform navigation operations on this
+compressed representation. The algorithm for detecting identical subtrees are based on the
+Suffix Array and LCP array and takes linear time, i.e. time proportional to the size of the
+balanced parenthesis array B. We consider the BP representation since it is the one more
+challenging from the algorithmic point of view. In the full paper we will discuss how to find
+and represent identical subtrees using the PDF and EDF representation.
+When working with the BP representation, instead of considering identical subtrees in the
+CVIT 2016
+
+23:8 Depth first representations of k2-trees
+1
+1
+1
+0100
+1
+1100
+0 1
+0100
+0 0 1
+1
+1000
+0 0 0
+1
+0 1
+1
+1000
+1
+1000
+0 0
+0 0
+1
+0 1
+1
+1000
+1
+0100
+0 0
+0 0
+1
+1
+1
+1010
+1
+1111
+0 1
+1000
+0 0 1
+1
+0100
+0 0 0
+Figure 5 The subtrees surrounded by dashed lines of the same color are interchangeable according
+to Definition 1. Note that the subtrees surrounded in red are interchangeable even if the values
+stored in some of the leaves at the last level are different.
+traditional sense, we will consider the wider concept of interchangeable subtrees according to
+the following definition, that, for our convenience, excludes the pathological case of subtrees
+consisting of a single node.
+▶ Definition 1. Let T1 and T2 be subtrees of height at least 1 of the k2-tree T. We say that
+T1 and T2 are interchangeable if their respective balanced parenthesis sequences generated
+during the visit described in Section 4.3 are identical.
+We point out that the balanced parenthesis sequences generated during the visit in
+Section 4.3 does not include any information regarding the last level leaves since they are
+stored in binary form in the vector L′. Hence, some subtrees are interchangeable even if
+some of the values stored in the last level differ, see for example the subtrees surrounded in
+red in Figure 5.
+▶ Lemma 2. The subtree starting at position i in B is interchangeable with the subtree
+starting in position j, if and only if, setting c = find_close(i), the substring B[i..c] is equal
+to B[j..j + c − i].
+Proof. Note that by construction it is B[i] = B[j] = (. The position c = find_close(i) is
+the position of the closed parenthesis matching B[i]. Hence the visit of the entire subtree
+starting at position i generates the string B[i..c]. If such string is identical to B[j..j + c − i]
+then the two subtrees are interchangeable. ◀
+Because of the above lemma, we can detect all interchangeable subtrees in linear time as
+follows. First we compute the suffix array SA and LCP array of the parenthesis sequence B.
+For i = 1,...|B| − 1, if B[SA[i]] = (, we set c = find_close(SA[i]). Then, if c − SA[i] ≤
+LCP[i] by the above lemma the subtree starting at position SA[i] is interchangeable with the
+subtree starting at SA[i − 1]. During this procedure we ignore positions i when LCP[i] ≤ 4
+(or some other larger threshold) since in that case an interchangeable subtree would be so
+small that replacing it with a pointer would offer no benefit.
+The above algorithm will find all interchangeable subtrees but for our purposes this is too
+much. The problem is that subtrees of interchangeable subtrees are still interchangeable but
+we are only interested in finding maximal interchangeable subtrees, i.e. subtrees which are not
+contained in larger interchangeable subtrees. Therefore, instead of scanning the SA array we
+scan the sequence B: for j = 1,...,|B| , if B[j] = ( we set i = SA−1[j] and we check whether
+LCP[i] > find_close(j)−j. If this is the case and the subtree starting at j is interchangeable
+with a previous subtree, we restart the scanning of B at position find_close(j)+1 therefore
+skipping all non-maximal interchangeable subtrees contained in the subtree starting at
+j. Note that if we have k consecutive suffixes SA[i],...,SA[i + k − 1] each representing
+interchangeable subtrees, then they are all interchangeable among themselves. In this case
+we select the subtree with the leftmost starting position as the reference subtree and the
+other subtrees will point to this reference subtree.
+
+G. Carmona and G. Manzini 23:9
+Having identified which (maximal) subtrees should be replaced by a pointer, in the
+following we call them pruned subtrees, the construction of the Compressed Balanced
+Parenthesis (CBP) representation is done as follows. Let h = ⌈logk n⌉ denote the number of
+tree levels, ℓ denote the number of level h leaves (whose value are stored in L′), and p denote
+the number of pruned subtrees. Given the uncompressed sequence of balanced parenthesis B
+we build the compressed sequence Bc by replacing the subsequence representing each pruned
+subtree with the pattern (()) (note Bc is still balanced). Since this is the same pattern
+used to represent internal nodes at level h − 1, we also introduce a binary vector Sc[1,ℓ + p]
+such that for each occurrence of the pattern (()) in Bc we store a 0 in Sc if it represent an
+internal node level h − 1, and we store a 1 if it represents a pruned subtree.
+We also use an integer array Rc[1,p] such that Rc[v] is the starting position in Bc of the
+reference subtree for the v-th pruned subtree. When the navigation reaches at position i of Bc
+a (()) pattern which is not at level h−1, we compute r = rank(())(Bc,i), v = rank1(Sc,r).
+By construction, the pruned subtree starting at position i is the v-th pruned subtree, hence
+j = Rc[v] is the starting position in Bc of the reference subtree for the one starting at i.
+Finally, since interchangeable subtrees can have different values stored at level h (i.e. in the
+bitarray L′), when jumping from position i to position j we need to compute the length of the
+portion of L′ corresponding to the tree nodes between position j and position i. Such lengths
+can be stored in another integer array Lc[1,p] or computed on the fly using an auxiliary
+binary array containing the unary encoding of the number of level-h for each pruned subtree
+(details in the full paper). Figure 5 shows the k2-tree of Figure 4 with two subtrees pruned
+and the resulting Bc sequence.
+1
+1
+1
+0100
+1
+1100
+0 1
+0100
+0 0 1
+1
+1000
+0 0 0
+1
+0 1
+1
+1000
+1
+1000
+0 0
+0 0
+1 1
+Bc = (
+(((())(())()(()))()()((())()()()))
+(()((())(())()())()())
+(())
+(())
+)
+L′ = 0100 1100 0100 1000 1000 1000 1000 0100 1010 1111 1000 0100
+Sc = 0000 0011 Rc = [2, 36]
+Figure 6 The Compressed Balanced Parenthesis representation for the k2-tree shown in Figure 4
+with two subtrees (in orange) pruned and replaced with pointers to interchangeable subtrees. The
+two pointers are explicitly stored in the array Rc
+6 Experimental Results
+In this section we report some preliminary results on our depth-first based representations
+of k2-trees. To evaluate the effectiveness of a representation we need to assess not only
+its compression performance but also its efficiency in supporting matrix operations. To
+this end we tested our representations on the matrix-matrix multiplication operation for
+which there exists an efficient implementation for the canonical k2 representation provided
+CVIT 2016
+
+23:10 Depth first representations of k2-trees
+by Arroyuelo et al. [1]. Such implementation is based on the classical divide-and-conquer
+recursive procedure: Given two matrices A and B, if we logically partition them into four
+submatrices of equal size
+A =
+(A0 A1
+A2 A3
+)
+, B =
+(B0 B1
+B2 B3
+)
+,
+then the product A × B can be obtained by the recursive formula
+A × B =
+(A0 × B0 + A1 × B2 A0 × B1 + A1 × B3
+A2 × B0 + A3 × B2 A2 × B1 + A3 × B3
+)
+.
+The above algorithm is particularly suitable when the input matrices are represented by
+k2-tree when k = 2, since the submatrices Ai’s and Bi’s correspond to the four children of the
+root node. Another advantage of the k2-tree representation is its ability to efficiently handle
+zero submatrices. If any submatrix is entirely composed of zeros, its product with another
+submatrix will also be a zero matrix, eliminating unnecessary computations. Additionally,
+when summing a product Ai × Bj with a zero matrix, the operation can be optimized by
+directly referencing the nonzero product, avoiding redundant memory operations.
+The recursive structure and the presence of multiple sums and products make this
+computation a good benchmark for the different k2-tree implementations. Note that in all
+implementations the product matrix is returned in compressed form, so the multiplication
+algorithm also measure the efficiency of the construction algorithm.
+We run our experiments on an Ubuntu machine with 394 GiB of internal memory and an
+Intel(R) Xeon(R) Gold 6132 CPU @ 2.60GHz. We compare the following implementations:
+K2-TREE2 this is the canonical level-by-level k2 implementation by Arroyuelo et al. [1].
+K2-PDF and K2-EDF3 implementations based on the Plain Depth First and Enriched
+Depth First representations described in Section 4.1 and 4.2 respectively. For the enriched
+representation we used as threshold the square root of the number of nodes.
+K2-BP and K2-CBP4 implementations based on the Balanced Parenthesis representation
+and the compressed Balanced Parenthesis representation described in Section 4.3 and 5.
+Both representations are implemented using the sdsl-lite library [12].
+We tested all implementations using two different datasets:
+WebGraph [3, 4]: The compression of the adjacency matrix of web graphs was one
+of the motivations for introducing k2-trees. We tested four large web graphs: IN-2004,
+INDOCHINA-2004 (ID-2004), ARABIC-2005 (AR-2005), and UK-2005. Information
+about each matrix is provided in Table 1. Since matrices have different sizes, for this
+dataset matrix multiplication was performed by squaring each matrix.
+Random Matrices: Following the approach of Arroyuelo et al. [1], we generated
+matrices with varying densities to assess the performance of matrix-matrix multiplication
+by measuring computation time. Specifically, we tested matrices of size 103 × 103 with
+densities 2×10−1, 10−1, 10−2, 10−3, and 10−4. For each density, we generated 10 matrices
+with uniformly distributed values. We then performed matrix-matrix multiplication on
+each pair and computed the average computation time.
+2 K2-TREE: https://github.com/adriangbrandon/rpq-matrix
+3 K2-PDF & K2-EDF: https://github.com/acubeLab/k2tree/
+4 K2-BP & K2-CBP: https://github.com/Yhatoh/k2tree
+
+G. Carmona and G. Manzini 23:11
+Dataset Matrix size # Nonzero Nodes / # Nonzero Density
+IN-2004 1,382,908 16,917,053 1.41 8 · 10−6
+ID-2004 7,414,866 194,109,311 1.06 3 · 10−6
+AR-2005 22,744,080 639,999,458 1.31 1 · 10−6
+UK-2005 39,459,925 936,364,282 1.34 6 · 10−7
+Table 1 Information on size, number of nonzero, density of nonzero elements for the matrices in
+the Web Graph dataset.
+Dataset K2-TREE K2-PDF K2-EDF K2-BP K2-CBP
+bits min bits min bits min bits min bits min
+IN-2004 3.12 1.07 2.93 2.20 2.97 1.26 7.80 2.61 2.90 4.40
+ID-2004 2.56 125 2.41 54 2.42 34 6.20 124 1.87 164
+AR-2005 2.92 85 2.75 291 2.75 134 7.24 254 2.37 335
+UK-2005 2.89 89 2.72 901 2.73 429 7.16 425 2.35 909
+Table 2 Results for matrix multiplication for web graph matrices; table reports the compressed
+matrix size in bits per nonzero and running time in minutes.
+We first report the results for the Web Graph dataset. As shown in Table 2 the best
+compression is achieved by K2-CBP with the exception of IN-2004 where the best compression
+is obtained by K2-PDF and K2-EDF; this shows that web graph matrices indeed contain a large
+number of repeated subtrees. Comparing K2-EDF with K2-PDF shows that the space used by
+skip values is relatively modest, and both algorithms take less space than K2-TREE. Notice
+that K2-BP is, as expected, not space efficient and exploiting repeated subtrees reduced the
+overall size by a factor three. This suggests that removing repeated subtrees in the PDF and
+EDF representations can lead to similar significant saving.
+Looking at the running times we notice that, thanks to the skip values, K2-EDF is always
+faster than K2-PDF by a factor roughly two. The algorithm K2-CBP is the slowest, probably
+because of the overhead of locating the reference for pruned subtrees. We plan to improve
+the times/space tradeoff by pruning only subtrees larger than an appropriate threshold. The
+comparison with K2-TREE is less clear cut. For ID-2004 K2-EDF is much faster than K2-TREE
+but for the other matrices K2-TREE is faster, significantly so for UK-2005. We conjecture
+this can be due to the fact that UK-2005 is significantly less dense than the other matrices.
+UK-2005 also has large submatrices, and K2-TREE appears to have a more efficient strategy
+for partitioning a matrix and detecting submatrices which are not to be considered since
+they are going to be multiplied by zero submatrices. More experiments and analysis are
+clearly required for a complete understanding.
+For matrix-matrix multiplication on randomly generated matrices the results in Figure 7
+indicate that K2-PDF and K2-EDF outperform the classical K2-TREE, particularly when the
+matrix density is higher. In contrast, when the matrices are more sparse, all methods exhibit
+similar performance, as the multiplication time remains low due to the relatively small size
+of the matrices tested. This behavior can be explained by the impact of density on the tree
+structure. A slight increase in density results in larger subtrees, requiring the traversal of a
+greater number of them. In such scenarios, K2-PDF and K2-EDF benefit from their simpler
+representations, which allow them to read matrices sequentially from left to right. Conversely,
+the K2-TREE must perform an additional rank operation to determine the starting position
+CVIT 2016
+
+23:12 Depth first representations of k2-trees
+0.1 0.01 0.001 0.0001
+0
+5
+10
+15
+20
+Density
+Averagetimeinsecond
+Multiplication
+K2-TREE K2-PDFT K2-EDF
+K2-BP K2-CBP
+Figure 7 Average computation time for multiplying randomly generated uniform-distributed
+matrices as a function of their density
+Dens. K2-TREE K2-PDF K2-EDF K2-BP K2-CBP
+bits sec bits sec bits sec bits sec bits sec
+0.2 4.86 8.90 4.59 3.93 4.91 3.81 13.86 15.60 11.98 22.04
+0.1 6.73 4.11 6.32 2.95 6.95 2.84 19.37 10.63 17.70 14.59
+10−2 13.58 0.18 12.61 0.31 14.25 0.30 41.98 0.79 23.45 2.16
+10−3 22.14 0.02 19.25 0.03 30.80 0.03 55.19 0.05 43.29 0.10
+10−4 44.03 0.01 25.85 0.01 58.17 0.01 109.02 0.01 149.14 0.01
+Table 3 Results for matrix multiplication for random matrices; table reports average total space
+by the data structure in bits per nonzero and average running time in seconds.
+of the four submatrices, introducing an overhead that affects performance.
+In terms of compression, considering that k2-trees were introduced to exploit the clustering
+of nonzeros, it is interesting that even when the nonzero entries are uniformly distributed
+the results in Table 3 show that there is some compression. We observe that K2-PDF uses
+fewer bits per nonzero element compared to K2-TREE, with the difference becoming more
+pronounced as the matrix density decreases. This is because K2-PDF does not require auxiliary
+data structures for its operations. This effect is further reinforced when examining the space
+usage of K2-EDF, which consumes more bits per nonzero element than both K2-TREE and
+K2-PDF. As expected, the representations K2-BP and K2-CBP require more space due to the
+BP representation and the additional data structures needed for navigation. However, a
+surprising observation is that even with uniformly distributed values, K2-CBP consistently
+requires fewer bits than K2-BP across all densities except for matrices with a density of 10−4.
+At such a low density, the number of nonzero elements is minimal, making it unlikely to find
+identical subtrees within a matrix of this size.
+
+G. Carmona and G. Manzini 23:13
+7 Conclusions and further works
+In this paper we have introduced new representations of k2-trees in which nodes are encoded
+using a depth-first layout. The rationale is that such layout is more cache friendly and
+can be used to detect and exploit the presence of identical subtrees. Our experimental
+results on trees representing the adjacency matrices of web graphs have shown that repeated
+subtrees are indeed present and our Compressed Balanced Parenthesis representation is
+the one obtaining the best compression, even if at the cost of higher running times for the
+matrix-matrix multiplication. Our results also show that if the input matrix is not too dense
+our Enriched Depth First representation takes less space and is faster than the canonical
+k2-tree representation. Although still preliminary, our results show that depth first layouts
+can bring advantages for some classes of matrices and operations, and we plan to pursue this
+idea along the following lines:
+we plan to implement the search of identical subtrees also for the Enriched Depth First
+representation: we notice that instead of working at the single bit level is it possible to
+do the computation considering the input as an array of blocks of k2 bits;
+we plan to improve the performance of our balanced parenthesis representations by writing
+our implementation of the find_close operation: at the moment we are relying on the
+sdsl-lite library which is not space efficient since it supports also other BP operations;
+we plan to experiment with the DFUDS representation with possibly some of the im-
+provements from [13];
+because of its recursive nature, matrix multiplcation can be easily parallelized: we plan
+to extend our comparison to a multithread setting;
+we are currently exploiting the presence of repeated subtrees only to save space; since
+they corresponds to identical submatrices we plan to investigate whether they can lead
+to a speed-up for some matrix operations.
+References
+1 Diego Arroyuelo, Adrián Gómez-Brandón, and Gonzalo Navarro. Evaluating regular path
+queries on compressed adjacency matrices. The VLDB Journal, 34(1):2, 2025.
+2 D. Benoit, E. Demaine, J. I. Munro, R. Raman, V. Raman, and S.S. Rao. Representing trees
+of higher degree. Algorithmica, 43:275–292, 2005.
+3 Paolo Boldi, Marco Rosa, Massimo Santini, and Sebastiano Vigna. Layered label propagation:
+A multiresolution coordinate-free ordering for compressing social networks. In Proceedings of
+the 20th international conference on World Wide Web. ACM Press, 2011.
+4 Paolo Boldi and Sebastiano Vigna. The WebGraph framework I: Compression techniques.
+In Proc. of the Thirteenth International World Wide Web Conference (WWW 2004), pages
+595–601, Manhattan, USA, 2004. ACM Press.
+5 Nieves R. Brisaboa, Guillermo De Bernardo, Gilberto Gutierrez, Susana Ladra, Miguel R.
+Penabad, and Brunny A. Troncoso. Efficient set operations over k2-trees. In 2015 Data
+Compression Conference, pages 373–382, 2015. doi:10.1109/DCC.2015.9.
+6 Nieves R Brisaboa, Susana Ladra, and Gonzalo Navarro. k2-trees for compact web graph
+representation. In International symposium on string processing and information retrieval,
+pages 18–30. Springer, 2009.
+7 Nieves R. Brisaboa, Susana Ladra, and Gonzalo Navarro. Compact representation of web graphs
+with extended functionality. Information Systems, 39:152–174, 2014. URL: https://www.
+sciencedirect.com/science/article/pii/S0306437913001051, doi:https://doi.org/10.
+1016/j.is.2013.08.003.
+8 Francisco Claude and Gonzalo Navarro. Fast and compact web graph representations. ACM
+Transactions on the Web (TWEB), 4(4):1–31, 2010.
+CVIT 2016
+
+23:14 Depth first representations of k2-trees
+9 Guillermo de Bernardo, Travis Gagie, Susana Ladra, Gonzalo Navarro, and Diego Seco.
+Faster compressed quadtrees. Journal of Computer and System Sciences, 131:86–104,
+2023. URL: https://www.sciencedirect.com/science/article/pii/S0022000022000629,
+doi:https://doi.org/10.1016/j.jcss.2022.09.001.
+10 Paolo Ferragina. Pearls of Algorithm Engineering. Cambridge University Press, 2023. doi:
+10.1017/9781009128933.
+11 Sandra Álvarez García, Nieves R. Brisaboa, Guillermo de Bernardo, and Gonzalo Navarro.
+Interleaved k2-tree: Indexing and navigating ternary relations. In 2014 Data Compression
+Conference, pages 342–351, 2014. doi:10.1109/DCC.2014.56.
+12 Simon Gog, Timo Beller, Alistair Moffat, and Matthias Petri. From theory to practice: Plug
+and play with succinct data structures. In 13th International Symposium on Experimental
+Algorithms, (SEA 2014), pages 326–337, 2014.
+13 Jesper Jansson, Kunihiko Sadakane, and Wing Kin Sung. Ultra-succinct representation of
+ordered trees with applications. Journal of Computer and System Sciences, 78(2):619–631,
+2012. doi:10.1016/j.jcss.2011.09.002.
+14 J. Kärkkäinen, P. Sanders, and S. Burkhardt. Linear work suffix array construction. Journal
+of the ACM, 53(6):918–936, 2006.
+15 Juha Kärkkäinen, Giovanni Manzini, and Simon J Puglisi. Permuted longest-common-prefix
+array. In Combinatorial Pattern Matching: 20th Annual Symposium, CPM 2009 Lille, France,
+June 22-24, 2009 Proceedings 20, pages 181–192. Springer, 2009.
+16 D. K. Kim, J. S. Sim, H. Park, and K. Park. Linear-time construction of suffix arrays.
+In Proc. 14th Symposium on Combinatorial Pattern Matching (CPM ’03), pages 186–199.
+Springer-Verlag LNCS n. 2676, 2003.
+17 P. Ko and S. Aluru. Space efficient linear time construction of suffix arrays. In Proc. 14th
+Symposium on Combinatorial Pattern Matching (CPM ’03), pages 200–210. Springer-Verlag
+LNCS n. 2676, 2003.
+18 Susana Ladra, José R Paramá, and Fernando Silva-Coira. Scalable and queryable compressed
+storage structure for raster data. Information Systems, 72:179–204, 2017.
+19 U. Manber and G. Myers. Suffix arrays: a new method for on-line string searches. SIAM
+Journal on Computing, 22(5):935–948, 1993.
+20 J. I. Munro. Tables. In Proceeding of the 16th Conference on Foundations of Software
+Technology and Theoretical Computer Science, Lecture Notes in Computer Science vol. 1180,
+pages 37–42. Springer, 1996.
+21 J. Ian Munro and Venkatesh Raman. Succinct representation of balanced parentheses and static
+trees. SIAM Journal on Computing, 31(3):762–776, 2002. doi:10.1137/S0097539799364092.
+22 Gonzalo Navarro. Compact Data Strucures. Cambridge University Press, 2016.
+23 Hanan Samet. Foundations of multidimensional and metric data structures. Morgan Kaufmann,
+2006.

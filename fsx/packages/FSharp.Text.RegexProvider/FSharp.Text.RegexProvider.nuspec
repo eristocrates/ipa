@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
+  <metadata>
+    <id>FSharp.Text.RegexProvider</id>
+    <version>2.1.0</version>
+    <title>FSharp.Text.RegexProvider</title>
+    <authors>Steffen Forkmann, David Tchepak, Sergey Tihon, Daniel Mohl, Tomas Petricek, Ryan Riley, Mauricio Scheffer, Phil Trelford, Vasily Kirichenko, Jeremie Chassaing</authors>
+    <licenseUrl>https://github.com/fsprojects/FSharp.Text.RegexProvider/blob/master/LICENSE.txt</licenseUrl>
+    <projectUrl>https://fsprojects.github.io/FSharp.Text.RegexProvider/</projectUrl>
+    <description>A type provider for regular expressions.</description>
+    <releaseNotes>Add TryTypedMatch that returns an option - https://github.com/fsprojects/FSharp.Text.RegexProvider/issues/20
+Add extension methods on Group to easily and safely convert to primitive types
+Add TypedReplace with typed evaluator
+Make type set local to provider instance to have consitent type names over rebuilds
+Add overload for Match and Matches that takes starting position and number of occurence
+Add ctor overload that takes a timeout</releaseNotes>
+    <copyright>Copyright 2013 - 2019</copyright>
+    <tags>F# fsharp typeproviders regex</tags>
+    <dependencies>
+      <dependency id="FSharp.Core" version="4.3.4" />
+    </dependencies>
+  </metadata>
+</package>

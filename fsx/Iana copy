@@ -1,0 +1,317 @@
+#time on
+
+fsi.PrintLength <- 10
+fsi.ShowDeclarationValues <- false
+
+open System
+open System.Linq
+open System.IO
+open System.Xml.Linq
+open System.Collections
+#load @".paket/load/main.group.fsx"
+#I @"D:\https\com\github\eristocrates\ipa\fsx"
+
+#r "FSLang.dll"
+#r "Ast.dll"
+
+open FSharp.Data
+
+open Fabulous.AST
+open Fantomas.Core
+open FsHttp
+open PuppeteerSharp
+open PuppeteerSharp.Cdp
+open VDS.Common.Tries
+
+open Dubzer.WhatwgUrl
+open FolkerKinzel.MimeTypes
+open ktsu.Semantics.Paths
+
+let tokenDelimiters = [| '-'; '.'; '+'; '/' |]
+
+[<RequireQualifiedAccess>]
+type IanaStatus =
+    | Permanent
+    | Provisional
+    | Historical
+    | UnknownStatus of string
+
+type IanaScheme = {
+    lexicalForm: string
+    description: string option
+    status: IanaStatus
+    criSchemeNumber: int
+} with
+
+    member this.asAstRecordExprValue =
+        [|
+            Ast.RecordFieldExpr("lexicalForm", Ast.String this.lexicalForm)
+            Ast.RecordFieldExpr(
+                "description",
+                if this.description.IsSome then
+                    $"Some(\"\"\"{this.description.Value}\"\"\")"
+                else
+                    "None"
+            )
+            Ast.RecordFieldExpr("status", Ast.ConstantExpr $"IanaStatus.{this.status}")
+            Ast.RecordFieldExpr("criSchemeNumber", Ast.Int this.criSchemeNumber)
+        |]
+        |> Ast.RecordExprValue(
+            this.lexicalForm.Split(tokenDelimiters, StringSplitOptions.TrimEntries)
+            |> Array.last
+        )
+
+
+
+module uri =
+    module schemes =
+        // https://www.iana.org/assignments/uri-schemes/uri-schemes.xml
+        // [<Literal>]
+        // let filePath = @"https/org/iana/www/assignments/uri-schemes/uri-schemes.xml"
+
+        let xml = XmlProvider<"https://www.iana.org/assignments/uri-schemes/uri-schemes.xml">.Load "https://www.iana.org/assignments/uri-schemes/uri-schemes.xml"
+
+module https =
+    module org =
+        module iana =
+            module www =
+                module assignments =
+                    module uri_schemes =
+                        type UriSchemesXmlProvider = XmlProvider<UseOriginalNames=true, Sample="https://www.iana.org/assignments/uri-schemes/uri-schemes.xml">
+                        let xml = UriSchemesXmlProvider.Load "https://www.iana.org/assignments/uri-schemes/uri-schemes.xml"
+                    module media_types =
+                        type MediaTypesXmlProvider = XmlProvider<UseOriginalNames=true, Sample="https://www.iana.org/assignments/media-types/media-types.xml">
+                        let xml = MediaTypesXmlProvider.Load("https://www.iana.org/assignments/media-types/media-types.xml")
+
+
+let schemeRegistry =
+    https.org.iana.www.assignments.uri_schemes.xml.registries
+    |> Array.find (fun registry -> registry.title = "Uniform Resource Identifier (URI) Schemes")
+
+let IanaSchemes =
+    schemeRegistry.records
+    |> Array.distinctBy (fun scheme -> scheme.value.Value.XElement.Value)
+    |> Array.Parallel.filter (fun scheme -> not (scheme.value.Value.XElement.Value.Contains("OBSOLETE")))
+    |> Array.Parallel.map (fun scheme ->
+
+        let namespaceName = scheme.XElement.Name.NamespaceName
+        let lexicalForm = scheme.value.Value.XElement.Value
+
+        let description =
+            if scheme.description.Value.Value.Value = lexicalForm then
+                None
+            else
+                Some scheme.description.Value.Value.Value
+
+        let status =
+            match scheme.status.Value with
+            | "Permanent" -> IanaStatus.Permanent
+            | "Provisional" -> IanaStatus.Provisional
+            | "Historical" -> IanaStatus.Historical
+            | unknown -> IanaStatus.UnknownStatus unknown
+
+        let criSchemeNumber = scheme.cri.Value
+
+        {
+            lexicalForm = lexicalForm
+            description = description
+            status = status
+            criSchemeNumber = criSchemeNumber
+
+        })
+
+
+let schemeTrie = Trie<string array, string, IanaScheme>(fun tokens -> tokens :> seq<string>)
+IanaSchemes
+|> Array.map (fun scheme -> scheme, scheme.lexicalForm.Split(tokenDelimiters, StringSplitOptions.TrimEntries))
+|> Array.iter (fun (scheme, tokens) -> schemeTrie.Add(tokens, scheme))
+
+
+let codegenSchemes () =
+
+
+    let rec processBranchNode (trieNode: ITrieNode<string, IanaScheme>) =
+        let moduleBinder = FSLang.ModuleBinder trieNode.KeyBit
+        Ast.Module(moduleBinder.binding) {
+            for childNode in trieNode.Children do
+                if childNode.IsLeaf then
+                    childNode.Value.asAstRecordExprValue
+                else
+                    processBranchNode childNode
+        }
+    Ast.Oak() {
+        Ast.AnonymousModule() {
+            Ast.Open("System")
+            Ast.HashDirective("load", Ast.VerbatimString(@".paket/load/main.group.fsx"))
+            Ast.HashDirective("I", Ast.VerbatimString(@"D:\https\com\github\eristocrates\ipa\fsx\"))
+            Ast.HashDirective("r", Ast.VerbatimString("Iana.dll"))
+            Ast.Open("Iana")
+            Ast.Union("IanaStatus") {
+
+                Ast.UnionCase("Permanent")
+                Ast.UnionCase("Provisional")
+                Ast.UnionCase("Historical")
+                Ast.UnionCase("UnknownStatus", "string")
+            }
+            Ast.Record("IanaScheme") {
+                Ast.Field("lexicalForm", "string")
+                Ast.Field("description", "string option")
+                Ast.Field("status", "Status")
+                Ast.Field("criSchemeNumber", "int")
+
+            }
+            for trieNode in schemeTrie.Root.Children do
+                if trieNode.IsLeaf then
+                    trieNode.Value.asAstRecordExprValue
+                else
+                    processBranchNode trieNode
+        }
+    }
+    |> Gen.mkOak
+    |> Gen.run
+    |> fun text -> File.WriteAllText(@"D:\https\com\github\eristocrates\ipa\fsx\IanaScheme.fsx", text)
+
+
+
+(*
+codegenSchemes ()
+*)
+
+type IanaDocProvider = JsonProvider<UseOriginalNames=true, OmitNullFields=true, RootName="doc", Sample= @"D:\https\org\ietf\datatracker\sample\doc.json">
+type IanaDraft = {
+    draftName: string
+    draftRevision: int
+} with
+
+    member this.docUrl = DomUrl $"https://datatracker.ietf.org/doc/{this.draftName}/doc.json"
+    member this.GetDocJson() =
+        http { GET this.docUrl.Href }
+        |> Request.send
+        |> Response.toText
+        |> IanaDocProvider.Parse
+
+
+
+
+
+
+
+
+
+type IanaNote = IanaNote of int
+type IanaRfc = IanaRfc of string
+type IanaRfcErrata = IanaRfcErrata of String
+type IanaUrl = IanaUrl of DomUrl
+
+type IanaPerson = {
+    id: string
+    name: string
+    org: string option
+    updated: DateTime option
+    urls: DomUrl array
+}
+
+type IanaXRef = { xrefType: string; xrefData: string }
+
+
+
+let ianaPeople =
+    https.org.iana.www.assignments.media_types.xml.people.persons
+    |> Array.map (fun person ->
+        let name =
+            match person.name with
+            | Some name -> name
+            | None -> person.id
+        {
+            id = person.id
+            name = name
+            org = person.org
+            updated = person.updated
+            urls =
+                person.uris
+                |> Array.choose (fun maybeUri -> maybeUri)
+                |> Array.map (fun uri -> DomUrl uri)
+        })
+
+let ianaPersonByName = ianaPeople |> Array.map (fun person -> person.name, person) |> Map.ofArray
+
+
+
+
+type IanaMediaType = {
+    registry: string
+    name: string
+    xrefs: IanaXRef array
+    file: string
+    extension: string
+    mime: MimeType
+// tokens: string array
+// type_iri: string
+// resource_iri: string
+} with
+
+    member this.fileExtension = FileExtension.Create this.extension
+    member this.rfcXrefs = this.xrefs |> Array.filter (fun xref -> xref.xrefType = "rfc")
+    member this.personXrefs = this.xrefs |> Array.filter (fun xref -> xref.xrefType = "person")
+    member this.uriXrefs = this.xrefs |> Array.filter (fun xref -> xref.xrefType = "uri")
+    member this.draftXrefs = this.xrefs |> Array.filter (fun xref -> xref.xrefType = "draft")
+    member this.rfcErrataXrefs = this.xrefs |> Array.filter (fun xref -> xref.xrefType = "rfc-errata")
+    member this.noteXrefs = this.xrefs |> Array.filter (fun xref -> xref.xrefType = "note")
+    member this.ianaDrafts =
+        this.draftXrefs
+        |> Array.map (fun xref ->
+            let segments = xref.xrefData.Replace("RFC-", "draft-").Split('-')
+            {
+                draftName = segments[.. segments.Length - 2] |> String.concat "-"
+                draftRevision = segments |> Array.last |> int
+            })
+    member this.ianaPeople =
+        this.personXrefs
+        |> Array.map (fun personXref -> ianaPersonByName[personXref.xrefData])
+
+
+let IanaMediaTypes =
+    https.org.iana.www.assignments.media_types.xml.registries
+    // |> Array.take 1
+    |> Array.collect (fun registry -> registry.records |> Array.map (fun record -> record.file.Value))
+
+
+let mediaTypeTrie = Trie<string array, string, string>(fun tokens -> tokens :> seq<string>)
+
+IanaMediaTypes
+|> Array.map (fun mediaType -> mediaType, mediaType.Split(tokenDelimiters, StringSplitOptions.TrimEntries))
+|> Array.iter (fun (contentType, tokens) -> mediaTypeTrie.Add(tokens, contentType))
+
+
+
+let codegenMediaTypes () =
+
+    let processLeafNode (trieNode: ITrieNode<string, string>) =
+        let letBinder = FSLang.VariableBinder trieNode.KeyBit
+        Ast.Value(letBinder.binding, Ast.ConstantExpr(sprintf "MimeType.Parse \"%s\"" trieNode.Value))
+    let rec processBranchNode (trieNode: ITrieNode<string, string>) =
+        let moduleBinder = FSLang.ModuleBinder trieNode.KeyBit
+        Ast.Module(moduleBinder.binding) {
+            for childNode in trieNode.Children do
+                if childNode.IsLeaf then
+                    processLeafNode childNode
+                else
+                    processBranchNode childNode
+        }
+
+    Ast.Oak() {
+        Ast.AnonymousModule() {
+            Ast.Open("System")
+            Ast.HashDirective("load", Ast.VerbatimString(@".paket/load/main.group.fsx"))
+            Ast.HashDirective("I", Ast.VerbatimString(@"D:\https\com\github\eristocrates\ipa\fsx\"))
+            Ast.HashDirective("r", Ast.VerbatimString("Iana.dll"))
+            Ast.Open("Iana")
+            Ast.Open("FolkerKinzel.MimeTypes")
+            for trieNode in mediaTypeTrie.Root.Children do
+                processBranchNode trieNode
+
+        }
+    }
+    |> Gen.mkOak
+    |> Gen.run
+    |> fun text -> File.WriteAllText(@"D:\https\com\github\eristocrates\ipa\fsx\IanaMediaType.fsx", text)

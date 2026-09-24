@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>ByteDev.Strings</id>
+    <version>11.2.0</version>
+    <title>ByteDev.Strings</title>
+    <authors>Paul Stanley</authors>
+    <owners>Paul Stanley</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="file">LICENSE</license>
+    <licenseUrl>https://aka.ms/deprecateLicenseUrl</licenseUrl>
+    <icon>images\icon.png</icon>
+    <readme>README.md</readme>
+    <projectUrl>https://github.com/ByteDev/ByteDev.Strings</projectUrl>
+    <description>Library of extended string related functionality.</description>
+    <copyright>Copyright 2020</copyright>
+    <tags>string strings extension methods helper case converter command mask</tags>
+    <dependencies>
+      <group targetFramework=".NETStandard2.0" />
+    </dependencies>
+  </metadata>
+</package>

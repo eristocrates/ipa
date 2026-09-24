@@ -1,0 +1,1253 @@
+#time on
+
+fsi.PrintLength <- 10
+fsi.PrintSize <- 100
+
+// fsi.ShowDeclarationValues <- false
+#I @"D:\https\com\github\eristocrates\ipa\dll"
+#r "SharedKernel.dll"
+#r "StringModule.dll"
+
+#I @"D:\https\com\github\eristocrates\ipa\fsx"
+#load "PrettierNaming.fsx"
+#load "Ast.fsx"
+
+open SharedKernel
+open StringModule
+#I @"D:\https\com\github\eristocrates\ipa\fsx\Sites"
+
+#load @".paket/load/main.group.fsx"
+
+open System
+open System.Web
+open System.Linq
+open System.Collections
+open FSharp.Data
+open TextCopy
+open Nager.PublicSuffix
+open Nager.PublicSuffix.Models
+open Nager.PublicSuffix.RuleProviders
+open System.Text
+open System.Net
+open System.IO
+open Fabulous.AST
+open Fantomas.Core
+open System.Globalization
+open ModelingEvolution.Ipv4
+open System.Net.Sockets
+open Dubzer.WhatwgUrl
+open VDS.Common.Tries
+open Meziantou.Framework
+open Microsoft.AspNetCore.Http
+open ktsu.Semantics.Paths
+open Universal.Common
+open FolkerKinzel.MimeTypes
+open Tavis.UriTemplates
+open Humanizer
+open CaseConverter
+open PuppeteerSharp
+open PuppeteerSharp.Cdp
+open BrowserApi
+open BrowserApi.Common
+open System.Collections.Concurrent
+open PuppeteerSharp.Cdp.Messaging
+open System.Numerics
+open System.Threading.Tasks
+open WebDriverBiDi
+open WebDriverBiDi.Session
+open WebDriverBiDi.BrowsingContext
+open BrowserApi.Css.Authoring
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+let defaultUrlPattern = UrlPattern.Create(new UrlPatternInit())
+
+
+
+
+
+
+type HostName =
+    | LocalHost
+    | IPAddressHost of IPAddress
+    | RegistrableDomain of Nager.PublicSuffix.DomainInfo
+
+
+type WhatwgSite = {
+    scheme: string
+    host: HostName
+    port: int option
+}
+
+type Iri = {
+    remoteReference: string
+    site: WhatwgSite
+    absolutePath: PathString
+    pathMap: Map<string, string>
+    hashFragment: FragmentString
+    fragmentMap: Map<string, string>
+    searchQuery: QueryString
+    queryMap: Map<string, string>
+} with
+
+    member this.lexicalForm = this.remoteReference
+    member this.identity = this.lexicalForm
+
+type IriSpace = {
+    siteRoot: WhatwgSite
+    pathTemplate: UriTemplate
+}
+
+
+
+type NamespaceName = {
+    namespaceIri: Iri
+    iriSpace: IriSpace
+    graphDistribution: Iri option
+    datasetDistribution: Iri array
+}
+type QueryParameter =
+    | ParameterKeyValue of string * string
+    | ParameterKeyValues of string * string array
+
+
+
+[<RequireQualifiedAccess>]
+type HTTPMethod =
+    | DELETE
+    | GET
+    | PATCH
+    | POST
+    | PUT
+    | UnknownMethod of string
+
+    static member fromString(rawMethod: string) =
+        match rawMethod with
+        | "DELETE" -> DELETE
+        | "GET" -> GET
+        | "PATCH" -> PATCH
+        | "POST" -> POST
+        | "PUT" -> PUT
+        | unknown -> UnknownMethod rawMethod
+    member this.asString = this.ToString()
+
+
+type IPAddress with
+    member this.asIpv4 =
+        match this.AddressFamily with
+        | AddressFamily.InterNetwork -> Ipv4Address.FromIPAddress this
+        | _ -> this.MapToIPv4() |> Ipv4Address.FromIPAddress
+    member this.remoteReference = this.ToString()
+    member this.localReference = this.remoteReference.Replace(".", "//")
+
+
+
+type Ipv4Address with
+    member this.remoteReference = this.ToString()
+    member this.localReference = this.remoteReference.Replace(".", "//")
+    member this.asIpAddress = this.ToIPAddress()
+    member this.outerLeft = int this.A
+    member this.innerLeft = int this.B
+    member this.innerRight = int this.C
+    member this.outerRight = int this.D
+
+
+
+
+type HostName with
+    static member (..//)((scheme: string), (host: HostName)) = {
+        scheme = scheme
+        host = host
+        port = None
+    }
+    static member (.+)((host: HostName), (subdomainName: string)) =
+        RegistrableDomainParser.Parse $"{subdomainName}.{host.remoteReference}"
+        |> RegistrableDomain
+    static member (+.)((subdomainName: string), (host: HostName)) =
+        RegistrableDomainParser.Parse $"{subdomainName}.{host.remoteReference}"
+        |> RegistrableDomain
+    member this.remoteReference =
+        match this with
+        | LocalHost -> "localhost"
+        | IPAddressHost ipAddress -> ipAddress.remoteReference
+        | RegistrableDomain domainInfo -> domainInfo.domainName
+    member this.localReference =
+        match this with
+        | LocalHost -> "localhost"
+        | IPAddressHost ipAddress -> ipAddress.localReference
+        | RegistrableDomain domainInfo -> domainInfo.localReference
+    member this.topLevelDomain =
+        match this with
+        | LocalHost -> None
+        | IPAddressHost ipAddress -> None
+        | RegistrableDomain domainInfo -> Some domainInfo.topLevelDomain
+    member this.secondLevelDomain =
+        match this with
+        | LocalHost -> None
+        | IPAddressHost ipAddress -> None
+        | RegistrableDomain domainInfo -> Some domainInfo.secondLevelDomain
+    member this.subdomain =
+        match this with
+        | LocalHost -> None
+        | IPAddressHost ipAddress -> None
+        | RegistrableDomain domainInfo -> domainInfo.subdomain
+    member this.reverseDomainName =
+        match this with
+        | LocalHost -> "localhost"
+        | IPAddressHost ipAddress -> ipAddress.remoteReference
+        | RegistrableDomain domainInfo -> domainInfo.reverseDomainName
+    member this.pathSegments =
+        match this with
+        | LocalHost -> [| "localhost" |]
+        | IPAddressHost ipAddress -> ipAddress.remoteReference.lexicalTokens
+        | RegistrableDomain domainInfo -> domainInfo.localReference.pathTokens
+
+
+
+
+
+
+
+type Uri with
+    member this.tryIanaScheme = IanaSchemes |> Array.tryFind (fun scheme -> scheme.lexicalForm = this.Scheme)
+    member this.PathAndFragment = this.AbsolutePath + this.Fragment
+    member this.localPart = this.PathAndFragment.lexicalTokens |> Array.last
+    member this.asUrl = DomUrl this.OriginalString
+    member this.HostName =
+        match this.DnsSafeHost with
+        | "localhost" -> LocalHost
+        | _ -> RegistrableDomainParser.Parse this.DnsSafeHost |> RegistrableDomain
+    member this.WhatwgSite = this.Scheme ..// this.HostName
+    member this.terminal = this.PathAndFragment[this.PathAndFragment.Length - this.localPart.Length - 1]
+    member this.urlPattern =
+        let init = new UrlPatternInit()
+        init.Hash <- this.Fragment
+        init.Hostname <- this.Host
+        match this.UserInfo.Split(':') with
+        | [| username; password |] ->
+            init.Username <- username
+            init.Password <- password
+        | [| username |] -> init.Username <- username
+        | _ -> ()
+        init.Pathname <- this.AbsolutePath
+        init.Port <- string this.Port
+        init.Protocol <- this.Scheme
+        init.Search <- this.Query
+        UrlPattern.Create(init)
+
+type DomUrl with
+    member this.urlPattern =
+        let init = new UrlPatternInit()
+        match Option.ofNullOrWhiteSpace this.Hash with
+        | Some hash -> init.Hash <- hash
+        | _ -> ()
+        init.Hostname <- this.Hostname
+        match Option.ofNullOrWhiteSpace this.Pathname with
+        | Some path -> init.Pathname <- path
+        | _ -> ()
+        match Option.ofNullOrWhiteSpace this.Port with
+        | Some port -> init.Port <- port
+        | _ -> ()
+        init.Protocol <- this.Protocol
+        match Option.ofNullOrWhiteSpace this.Search with
+        | Some search -> init.Search <- search
+        | _ -> ()
+        UrlPattern.Create(init)
+
+type WhatwgSite with
+    static member (+/)((site: WhatwgSite), (pathTemplate: string)) = {
+        siteRoot = site
+        pathTemplate = UriTemplate($"{site.remoteReference}/{pathTemplate.TrimStart('/')}")
+    }
+    member this.localReference = Path.Combine(this.scheme.lexicalForm, this.host.localReference)
+    member this.remoteReference = $"{this.scheme.lexicalForm}://{this.host.remoteReference}"
+    member this.asUri = Uri this.remoteReference
+
+type UrlPatternResult with
+    member this.hostName = RegistrableDomainParser.Parse this.Hostname.Input |> RegistrableDomain
+    member this.site = IanaSchemeByName[this.Protocol.Input] ..// this.hostName
+    member this.remoteReference = this.Inputs[0].Url
+    member this.localPath = this.Pathname.Input.Replace("/", "\\")
+    member this.localReference =
+        localComputer.preferredDrive.Name
+        + this.site.localReference
+        + this.localPath
+        + this.Hash.Input
+        + this.Search.Input
+type PathString with
+    member this.pathName = this.Value.TrimStart('/')
+    member this.asRelativePath = this.pathName.Replace("/", "\\") |> RelativePath.Create
+
+
+
+type QueryParameter with
+
+    member this.parameterKey =
+        match this with
+        | ParameterKeyValue(parameterKey, parameterValue) -> parameterKey
+        | ParameterKeyValues(parameterKey, parameterValues) -> parameterKey
+
+    member this.parameterValue =
+        match this with
+        | ParameterKeyValue(parameterKey, parameterValue) -> parameterValue
+        | ParameterKeyValues(parameterKey, parameterValues) -> parameterValues[0]
+
+    member this.parameterValues =
+        match this with
+        | ParameterKeyValue(parameterKey, parameterValue) -> [| parameterValue |]
+        | ParameterKeyValues(parameterKey, parameterValues) -> parameterValues
+
+type RelativeDirectoryPath with
+    static member EnsureCreate(rawPath: string) =
+        let invalidChars = Path.GetInvalidFileNameChars() |> Set.ofArray
+        rawPath.Split([| '/'; '\\' |], StringSplitOptions.TrimEntries)
+        |> Array.choose (fun segment -> Option.ofNullOrWhiteSpace segment)
+        |> Array.map (fun segment ->
+            segment
+            |> String.collect (fun character ->
+                if invalidChars.Contains character then
+                    match character.tryHtmlEntity with
+                    | Some htmlEntity -> htmlEntity
+                    | None -> String.prepostfix "&#x" character.hexName ";"
+                else
+                    string character))
+
+
+type QueryStringParameterCollection with
+    member this.parameters =
+        this
+        |> Seq.map (fun keyValue ->
+            match keyValue.Key, keyValue.Value |> Seq.toArray with
+            | parameterKey, [| parameterValue |] -> ParameterKeyValue(parameterKey, parameterValue)
+            | parameterKey, parameterValues -> ParameterKeyValues(parameterKey, parameterValues))
+        |> Seq.toArray
+
+    member this.asRelativeDirectoryPath =
+        this.parameters
+        |> Array.map (fun parameter ->
+            Array.concat [| [| parameter.parameterKey |]; parameter.parameterValues |]
+            |> String.concat "\\")
+        |> String.concat "\\"
+        |> RelativeDirectoryPath.EnsureCreate
+
+type QueryString with
+    member this.parameterCollection = QueryStringUtilities.ParseQuery this.Value
+    member this.localReference =
+        let invalidChars = Path.GetInvalidFileNameChars() |> Set.ofArray
+        this.parameterCollection.parameters
+        |> Array.map (fun parameter ->
+            Array.concat [| [| parameter.parameterKey |]; parameter.parameterValues |]
+            |> Array.map (fun segment ->
+                segment
+                |> String.collect (fun character ->
+                    if invalidChars.Contains character then
+                        match character.tryHtmlEntity with
+                        | Some htmlEntity -> htmlEntity
+                        | None -> String.prepostfix "&#x" character.hexName ";"
+                    else
+                        string character))
+            |> String.concat "\\")
+        |> String.concat "\\"
+
+
+type Iri with
+
+    static member (./)((baseIri: Iri), (relativePath: string)) =
+        Iri.fromString $"{baseIri.site.remoteReference}{baseIri.absolutePath.Value}/{relativePath.TrimStart('/')}{baseIri.searchQuery.Value}{baseIri.hashFragment.Value}"
+
+    static member fromPatternResult(result: UrlPatternResult) =
+        let uri = Uri result.Inputs[0].Url
+        {
+            remoteReference = result.Inputs[0].Url
+            site = result.site
+            absolutePath = PathString.FromUriComponent uri
+            pathMap = result.Pathname.Groups |> Seq.map (|KeyValue|) |> Map.ofSeq
+            hashFragment = FragmentString.FromUriComponent uri
+            fragmentMap = result.Hash.Groups |> Seq.map (|KeyValue|) |> Map.ofSeq
+            searchQuery = QueryString.FromUriComponent uri
+            queryMap = result.Search.Groups |> Seq.map (|KeyValue|) |> Map.ofSeq
+        }
+    static member fromString(iriString: string) =
+        defaultUrlPattern.Match iriString |> Iri.fromPatternResult
+    member this.localReference =
+        $"{localComputer.preferredDrive.Name}{this.site.scheme.lexicalForm}\{this.site.host.localReference}\{this.absolutePath.asRelativePath.WeakString}"
+    member this.asUri = Uri this.remoteReference
+    member this.asUrl = DomUrl this.remoteReference
+
+    member this.urlPattern =
+        let init = new UrlPatternInit()
+        match Option.ofNullOrWhiteSpace this.hashFragment.Value with
+        | Some hash -> init.Hash <- hash
+        | _ -> ()
+        init.Hostname <- this.site.host.remoteReference
+        match Option.ofNullOrWhiteSpace this.absolutePath.Value with
+        | Some path -> init.Pathname <- path
+        | _ -> ()
+        match this.site.port with
+        | Some port -> init.Port <- string port
+        | _ -> ()
+        init.Protocol <- this.site.scheme.lexicalForm
+        match Option.ofNullOrWhiteSpace this.searchQuery.Value with
+        | Some search -> init.Search <- search
+        | _ -> ()
+        UrlPattern.Create(init)
+    member this.dotExtension = Path.GetExtension this.absolutePath.Value
+    member this.extension = this.dotExtension.TrimStart('.')
+    member this.tryDotExtension = Option.ofNullOrWhiteSpace this.dotExtension
+    member this.tryExtension = this.tryDotExtension |> Option.map (fun extension -> extension.TrimStart('.'))
+    member this.fileExtension =
+        this.tryDotExtension
+        |> Option.map (fun extension -> FileExtension.Create extension)
+type WhatwgSite with
+    static member op_Addition((site: WhatwgSite), (port: int)) = { site with port = Some port }
+    member this.urlPattern =
+        let init = new UrlPatternInit()
+        init.Protocol <- this.scheme.lexicalForm
+        init.Hostname <- this.host.remoteReference
+        UrlPattern.Create(init)
+    static member (/)((site: WhatwgSite), (rawPath: string)) =
+        site.urlPattern.Match $"{site.remoteReference}/{rawPath}"
+        |> Iri.fromPatternResult
+    static member (.+)((site: WhatwgSite), (rawSubdomain: string)) = {
+        site with
+            host =
+                RegistrableDomainParser.Parse $"{rawSubdomain}.{site.host.remoteReference}"
+                |> RegistrableDomain
+    }
+    static member op_Subtraction((site: WhatwgSite), (rawUri: string)) =
+        site.urlPattern.Match rawUri |> Iri.fromPatternResult
+
+    static member fromUri(uri: Uri) = uri.WhatwgSite
+    member this.asUrl = DomUrl this.remoteReference
+
+    // TODO maybe add paths
+    // TODO figure out how to group modules from array of iri strings
+    // TODO consider generation a file per site, to avoid dealwith with module nesting
+    member this.asAstModule =
+
+        let schemeModuleBinder = PrettierNaming.ModuleBinder this.scheme.lexicalForm
+        let schemeVariableBinder = PrettierNaming.VariableBinder this.scheme.lexicalForm
+
+        Ast.Oak() {
+            Ast.AnonymousModule() {
+
+                Ast.HashDirective("I", Ast.VerbatimString @"D:\https\com\github\eristocrates\ipa\dll\")
+                Ast.HashDirective("r", Ast.VerbatimString @"StringModule.dll")
+                Ast.HashDirective("r", Ast.VerbatimString @"Internet.dll")
+                Ast.HashDirective("r", Ast.VerbatimString @"TopLevelDomain.dll")
+                Ast.HashDirective("r", Ast.VerbatimString @"IanaScheme.dll")
+                Ast.HashDirective("I", Ast.VerbatimString @"D:\https\com\github\eristocrates\ipa\fsx\")
+                Ast.HashDirective("load", Ast.VerbatimString "PrettierNaming.fsx")
+                Ast.Open("Internet")
+                Ast.Open("StringModule")
+                Ast.HashDirective("load", Ast.VerbatimString @".paket/load/main.group.fsx")
+                Ast.Open("System")
+                Ast.Module(schemeModuleBinder.binding) {
+                    Ast.Value("scheme", $"IanaScheme.{schemeVariableBinder.binding}")
+                    match this.host.topLevelDomain with
+                    | Some topLevelDomain ->
+                        let topLevelDomainModuleBinder = PrettierNaming.ModuleBinder topLevelDomain.tldRule.Name
+                        let topLevelDomainVariableBinder = PrettierNaming.VariableBinder topLevelDomain.tldRule.Name
+                        Ast.Module(topLevelDomainModuleBinder.binding) {
+                            Ast.Value("topLevelDomain", $"TopLevelDomain.{topLevelDomainVariableBinder.binding}")
+                            match this.host.secondLevelDomain with
+                            | Some secondLevelDomain ->
+                                let secondLevelDomainModuleBinder = PrettierNaming.ModuleBinder secondLevelDomain
+                                Ast.Module(secondLevelDomainModuleBinder.binding) {
+                                    Ast.Value("secondLevelDomain", Ast.String secondLevelDomainModuleBinder.identifier)
+                                    Ast.Value("host", Ast.ConstantExpr "secondLevelDomain +. topLevelDomain")
+                                    Ast.Value("site", Ast.ConstantExpr "scheme ..// host")
+                                    match this.host.subdomain with
+                                    | Some subdomain ->
+                                        let subdomainModuleBinder = PrettierNaming.ModuleBinder subdomain
+                                        Ast.Module(subdomainModuleBinder.binding) {
+                                            if subdomain = "www" then
+                                                Ast.Value("site", Ast.ConstantExpr "scheme |> www secondLevelDomain topLevelDomain")
+                                            else
+                                                Ast.Value("site", Ast.ConstantExpr $"site .+ \"{subdomain}\"")
+                                        }
+                                    | None -> ()
+                                }
+                            | None -> ()
+                        }
+                    | None -> ()
+                }
+            }
+        }
+        |> Gen.mkOak
+        |> Gen.run
+    member this.moduleFilePath = AbsoluteFilePath.Create $"{__SOURCE_DIRECTORY__}\Sites\{this.scheme.lexicalForm}\{this.host.localReference}\Site.fsx"
+    member this.codegenSite() =
+        Directory.CreateDirectory this.moduleFilePath.DirectoryPath.WeakString |> ignore
+        File.WriteAllText(this.moduleFilePath.WeakString, this.asAstModule)
+
+type Iri with
+    member this.codegenSite() = this.site.codegenSite ()
+
+type FragmentString with
+    member this.localPart = this.Value.TrimStart('#')
+
+
+
+let codegenSites (sites: string array) =
+    sites
+    |> Array.iter (fun siteString -> (Iri.fromString siteString).codegenSite ())
+
+
+(*
+[|
+    "https://example.com"
+    "https://www.iana.org"
+    "https://github.com"
+|]
+|> codegenSites
+
+*)
+
+
+
+type IriSpace with
+    static member localName(iri: Iri) = {
+        siteRoot = iri.site
+        pathTemplate = UriTemplate(sprintf "%s{localName}" iri.remoteReference)
+    }
+    static member codegenParameter(parameter: string) =
+        let variableBinder = PrettierNaming.VariableBinder parameter
+        $"let {variableBinder.binding} ({variableBinder.binding}) = space.pathTemplate.AddParameter(\"{parameter}\", {parameter}).Resolve() |> HttpUtility.UrlDecode |> Iri.fromString"
+    static member clipParameter(parameter) =
+        IriSpace.codegenParameter parameter |> String.Clipboard.SetText
+
+
+type NamespaceName with
+    static member fromIri(iri: Iri) = {
+        namespaceIri = iri
+        iriSpace = IriSpace.localName iri
+        graphDistribution = None
+        datasetDistribution = [||]
+    }
+
+
+    member this.prefix(localName: string) =
+        this.iriSpace.pathTemplate.AddParameter(nameof (localName), localName).Resolve()
+        |> HttpUtility.UrlDecode
+        |> Iri.fromString
+
+    member this.Match(iri: Iri) =
+        this.namespaceIri.urlPattern.Match iri.remoteReference |> Option.ofObj
+    static member fromString(iriString: string) =
+        Iri.fromString iriString |> NamespaceName.fromIri
+    member this.localDelimiter = this.namespaceIri.remoteReference.ToCharArray() |> Array.last |> string
+    member this.localReference =
+        let terminalName =
+            match this.localDelimiter with
+            | "/" -> '/'.tryHtmlEntity.Value
+            | "#" -> '#'.tryHtmlEntity.Value
+            | _ -> String.Empty
+        $"{this.namespaceIri.localReference}\{terminalName}"
+
+(*
+    member this.localTurtlePath =
+        this.namespaceAbsoluteDirectoryPath
+        / IanaMimeType.text.turtle.asRelativeFilePath
+
+*)
+
+
+
+let www (secondLevelDomain: string) (topLevelDomain: TopLevelDomain) (scheme: IanaScheme) =
+    scheme ..// (topLevelDomain .+ secondLevelDomain .+ "www")
+
+
+
+
+type BiDiDriver with
+    static member Connect() =
+        let driver = BiDiDriver(TimeSpan.FromSeconds 30.)
+        task { return! driver.StartAsync("ws://127.0.0.1:9223/session") } |> await
+        driver.Session.NewSessionAsync(NewCommandParameters()) |> await |> ignore
+        driver
+
+    member this.BrowsingContextTree =
+        task {
+            let! tree = this.BrowsingContext.GetTreeAsync(GetTreeCommandParameters())
+            return tree.ContextTree |> Seq.toArray
+        }
+        |> await
+
+
+type BrowsingContextInfo with
+    member this.ResourceName = DomUrl this.Url
+
+
+
+
+type IBrowser with
+    member this.asCdp = this :?> CdpBrowser
+
+type IBrowserContext with
+    member this.asCdp = this :?> CdpBrowserContext
+
+type IRequest with
+    member this.asCdp = this :?> CdpHttpRequest
+
+type IResponse with
+    member this.asCdp = this :?> CdpHttpResponse
+
+type IPage with
+    member this.asCdp = this :?> CdpPage
+
+type IFrame with
+    member this.asCdp = this :?> CdpFrame
+
+
+
+type Target with
+    member this.asCdp = this :?> CdpTarget
+type ITarget with
+    member this.asCdp = this :?> CdpTarget
+
+
+
+
+
+
+
+module BrowserApiReflection =
+    open BrowserApi.Common
+    open System.Reflection
+
+    let private handleSetter = typeof<JsObject>.GetProperty("Handle", BindingFlags.Instance ||| BindingFlags.Public).GetSetMethod(true)
+
+    let fromHandle<'T when 'T :> JsObject> (handle: JsHandle) : 'T =
+
+        let instance = Activator.CreateInstance(typeof<'T>) :?> 'T
+
+        handleSetter.Invoke(instance, [| box handle |]) |> ignore
+
+        instance
+
+
+
+// ---------------------------------------------------------------------------
+// CDP handle normalization
+//
+// PuppeteerSharp's EvaluateFunctionHandleAsync signature returns IJSHandle,
+// even when operating through CdpFrame. We immediately narrow that boundary
+// back to the concrete CDP hierarchy.
+// ---------------------------------------------------------------------------
+
+let private asCdpHandle (handle: IJSHandle) : JSHandle =
+    match handle with
+    | :? CdpElementHandle as handle -> handle :> JSHandle
+
+    | :? CdpJSHandle as handle -> handle :> JSHandle
+
+    | handle -> invalidOp $"Expected a CDP JavaScript handle, but received {handle.GetType().FullName}."
+
+
+let private remoteObject (handle: JSHandle) =
+    match handle with
+    | :? CdpElementHandle as handle -> handle.RemoteObject
+
+    | :? CdpJSHandle as handle -> handle.RemoteObject
+
+    | handle -> invalidOp $"Expected a CDP JavaScript handle, but received {handle.GetType().FullName}."
+
+
+// ---------------------------------------------------------------------------
+// BrowserApi return conversion
+//
+// BrowserApi's JsObject layer asks the backend for a raw value and then does
+// its own JsObject / enum / primitive conversion.
+//
+// Therefore:
+//     JS primitive -> .NET primitive
+//     JS object    -> JsHandle
+// ---------------------------------------------------------------------------
+
+let private coerce<'T> (value: obj) : 'T =
+    if isNull value then
+        Unchecked.defaultof<'T>
+    elif typeof<'T>.IsInstanceOfType value then
+        unbox<'T> value
+    elif value :? IConvertible && typeof<IConvertible>.IsAssignableFrom typeof<'T> then
+        Convert.ChangeType(value, typeof<'T>) |> unbox<'T>
+    else
+        unbox<'T> value
+
+
+// ---------------------------------------------------------------------------
+// BrowserApi <-> Puppeteer CDP backend
+// ---------------------------------------------------------------------------
+
+type CdpRealm(frame: CdpFrame) as this =
+    do JsObject.Backend <- this :> IBrowserBackend
+
+    let handles = ConcurrentDictionary<JsHandle, JSHandle>()
+
+
+    // IMPORTANT:
+    //
+    // The BrowserApi handle contains the REAL Puppeteer handle.
+    //
+    // The dictionary exists solely because JsHandle.Value is internal,
+    // preventing an external IBrowserBackend from reading it back.
+    let wrap (puppeteerHandle: JSHandle) =
+        let browserHandle = JsHandle(box puppeteerHandle)
+
+        handles[browserHandle] <- puppeteerHandle
+
+        browserHandle
+
+
+    let unwrap (browserHandle: JsHandle) =
+        match handles.TryGetValue browserHandle with
+        | true, puppeteerHandle -> puppeteerHandle
+
+        | false, _ -> invalidOp "Unknown BrowserApi JsHandle."
+
+
+    let convertArgument (value: obj) =
+        match value with
+        | null -> null
+
+        | :? JsHandle as browserHandle -> box (unwrap browserHandle)
+
+        // This case is intentional.
+        //
+        // BrowserApi itself sometimes accesses JsHandle.Value internally.
+        // Because Value contains our actual JSHandle, it can arrive here
+        // directly and Puppeteer already knows how to pass it to JavaScript.
+        | :? JSHandle -> value
+
+        | value -> value
+
+
+    let numberValue (handle: JSHandle) (remote: RemoteObject) =
+        task {
+            match remote.UnserializableValue with
+            | "NaN" -> return Double.NaN
+
+            | "Infinity" -> return Double.PositiveInfinity
+
+            | "-Infinity" -> return Double.NegativeInfinity
+
+            | "-0" -> return -0.0
+
+            | _ -> return! handle.JsonValueAsync<double>()
+        }
+
+
+    let convertResultAsync (result: IJSHandle) =
+        task {
+            let handle = asCdpHandle result
+
+            let remote = remoteObject handle
+
+            match remote.Type, remote.Subtype with
+
+            | _, RemoteObjectSubtype.Null ->
+                do! handle.DisposeAsync().AsTask()
+                return null
+
+            | RemoteObjectType.Undefined, _ ->
+                do! handle.DisposeAsync().AsTask()
+                return null
+
+            | RemoteObjectType.String, _ ->
+                let! value = handle.JsonValueAsync<string>()
+
+                do! handle.DisposeAsync().AsTask()
+
+                return box value
+
+            | RemoteObjectType.Boolean, _ ->
+                let! value = handle.JsonValueAsync<bool>()
+
+                do! handle.DisposeAsync().AsTask()
+
+                return box value
+
+            | RemoteObjectType.Number, _ ->
+                let! value = numberValue handle remote
+
+                do! handle.DisposeAsync().AsTask()
+
+                return box value
+
+            | RemoteObjectType.Bigint, _ ->
+                let lexicalForm = remote.UnserializableValue.TrimEnd('n')
+
+                let value = BigInteger.Parse lexicalForm
+
+                do! handle.DisposeAsync().AsTask()
+
+                return box value
+
+            | RemoteObjectType.Symbol, _ ->
+                do! handle.DisposeAsync().AsTask()
+
+                return raise (NotSupportedException("JavaScript Symbol values are not yet supported by the CDP BrowserApi backend."))
+
+            | _ ->
+                // Objects and functions remain live remote objects.
+                return box (wrap handle)
+        }
+
+
+    let convertResult result = convertResultAsync result |> _.await
+
+    new(page: CdpPage) = CdpRealm(page.MainFrame.asCdp)
+    member this.Frame = frame
+
+
+    member this.Wrap(handle: JSHandle) = wrap handle
+    member this.document =
+
+        let handle = (this :> IBrowserBackend).GetGlobal("document")
+
+        BrowserApiReflection.fromHandle<BrowserApi.Dom.Document> handle
+
+
+    member this.window =
+
+        let handle = (this :> IBrowserBackend).GetGlobal("window")
+
+        BrowserApiReflection.fromHandle<BrowserApi.Dom.Window> handle
+
+    interface IBrowserBackend with
+
+        member this.GetProperty<'T>(target, propertyName) =
+
+            let targetHandle = unwrap target
+
+            let result =
+                targetHandle
+                    .EvaluateFunctionHandleAsync(
+                        """
+                        (target, propertyName) =>
+                            target[propertyName]
+                        """,
+                        [| box propertyName |]
+                    )
+                    .await
+
+            result |> convertResult |> coerce<'T>
+
+
+        member this.SetProperty(target, propertyName, value) =
+
+            let targetHandle = unwrap target
+
+            targetHandle
+                .EvaluateFunctionAsync(
+                    """
+                    (target, propertyName, value) => {
+                        target[propertyName] = value;
+                    }
+                    """,
+                    [| box propertyName; convertArgument value |]
+                )
+                .await
+            |> ignore
+
+
+        member this.Invoke<'T>(target, methodName, arguments) =
+
+            let targetHandle = unwrap target
+
+            let arguments = Array.append [| box methodName |] (arguments |> Array.map convertArgument)
+
+            let result =
+                targetHandle
+                    .EvaluateFunctionHandleAsync(
+                        """
+                        (target, methodName, ...arguments) =>
+                            target[methodName](...arguments)
+                        """,
+                        arguments
+                    )
+                    .await
+
+            result |> convertResult |> coerce<'T>
+
+
+        member this.InvokeVoid(target, methodName, arguments) =
+
+            let targetHandle = unwrap target
+
+            let arguments = Array.append [| box methodName |] (arguments |> Array.map convertArgument)
+
+            targetHandle
+                .EvaluateFunctionAsync(
+                    """
+                    (target, methodName, ...arguments) => {
+                        target[methodName](...arguments);
+                    }
+                    """,
+                    arguments
+                )
+                .await
+            |> ignore
+
+
+        member this.InvokeAsync<'T>(target, methodName, arguments) =
+
+            task {
+                let targetHandle = unwrap target
+
+                let arguments = Array.append [| box methodName |] (arguments |> Array.map convertArgument)
+
+                let! result =
+                    targetHandle.EvaluateFunctionHandleAsync(
+                        """
+                        (target, methodName, ...arguments) =>
+                            target[methodName](...arguments)
+                        """,
+                        arguments
+                    )
+
+                let! converted = convertResultAsync result
+
+                return coerce<'T> converted
+            }
+
+
+        member this.InvokeVoidAsync(target, methodName, arguments) =
+
+            task {
+                let targetHandle = unwrap target
+
+                let arguments = Array.append [| box methodName |] (arguments |> Array.map convertArgument)
+
+                let! _ =
+                    targetHandle.EvaluateFunctionAsync(
+                        """
+                        (target, methodName, ...arguments) => {
+                            target[methodName](...arguments);
+                        }
+                        """,
+                        arguments
+                    )
+                return ()
+            }
+            :> Task
+
+
+        member this.GetGlobal(name) =
+
+            frame
+                .EvaluateFunctionHandleAsync(
+                    """
+                    name => globalThis[name]
+                    """,
+                    [| box name |]
+                )
+                .await
+            |> asCdpHandle
+            |> wrap
+
+
+        member this.Construct(jsClassName, arguments) =
+
+            let arguments = Array.append [| box jsClassName |] (arguments |> Array.map convertArgument)
+
+            frame
+                .EvaluateFunctionHandleAsync(
+                    """
+                    (className, ...arguments) => {
+                        const constructor =
+                            className
+                                .split(".")
+                                .reduce(
+                                    (current, part) => current[part],
+                                    globalThis
+                                );
+
+                        return Reflect.construct(
+                            constructor,
+                            arguments
+                        );
+                    }
+                    """,
+                    arguments
+                )
+                .await
+            |> asCdpHandle
+            |> wrap
+
+
+        member this.DisposeHandle(browserHandle) =
+
+            match handles.TryRemove browserHandle with
+            | true, puppeteerHandle -> puppeteerHandle.DisposeAsync()
+
+            | false, _ -> ValueTask.CompletedTask
+
+
+        member this.AddEventListener(_, _, _) =
+            raise (NotSupportedException("BrowserApi events have not yet been implemented by CdpBrowserApiBackend."))
+
+
+        member this.RemoveEventListener(_, _, _) =
+            raise (NotSupportedException("BrowserApi events have not yet been implemented by CdpBrowserApiBackend."))
+
+
+        member this.DisposeAsync() =
+
+            let dispose =
+                task {
+                    for KeyValue(_, handle) in handles do
+                        do! handle.DisposeAsync().AsTask()
+
+                    handles.Clear()
+                }
+
+            ValueTask(dispose :> Task)
+
+
+
+
+
+
+
+
+type CdpHttpRequest with
+    member this.Iri = Iri.fromString this.Url
+
+    member this.headers = this.Headers |> Seq.map (fun kvp -> kvp.Key, kvp.Value) |> Seq.toArray
+
+    member this.header(targetHeader: string) =
+        this.headers
+        |> Array.tryPick (fun (headerKey, headerValue) -> if headerKey = targetHeader then Some headerValue else None)
+
+    member this.PostText = if this.HasPostData then Some this.PostData else None
+
+type MimeType with
+    static member fromHeaders(headerDictionary: Generic.Dictionary<string, string>) =
+        try
+            MimeType.TryParse(headerDictionary["content-type"])
+            |> fun (wasParsed, mimeType) ->
+                match wasParsed with
+                | true -> Some mimeType
+                | false -> None
+        with _ ->
+            None
+
+type CdpHttpResponse with
+    member this.Iri = Iri.fromString this.Url
+
+    member this.headers = this.Headers |> Seq.map (fun kvp -> kvp.Key, kvp.Value) |> Seq.toArray
+
+    member this.Text() =
+        try
+            task { return! this.TextAsync() } |> await |> Some
+        with err ->
+            let headers =
+                this.headers
+                |> Array.map (fun (key, value) -> $"{key}:{value}")
+                |> String.concat "\n"
+            printfn "request %s %s threw %s" this.Url headers err.Message
+            None
+
+    member this.mimeType = MimeType.fromHeaders this.Headers
+    member this.mediaType = MimeType.fromHeaders this.Headers
+
+
+    member this.WriteAllText() =
+        match this.Text() |> Option.tryNullOrWhiteSpace with
+        | Some text ->
+            Path.GetDirectoryName this.Iri.localReference
+            |> Directory.CreateDirectory
+            |> ignore
+            printfn "%s ----> %s" this.Iri.remoteReference this.Iri.localReference
+
+            File.WriteAllText(this.Iri.localReference, text)
+        | None -> ()
+    member this.WriteAllText(extensionOverride: FileExtension) =
+        match this.Text() |> Option.tryNullOrWhiteSpace with
+        | Some text ->
+            let localFilePath =
+                match this.Iri.tryDotExtension with
+                | Some dotExtension -> Path.ChangeExtension(this.Iri.localReference, extensionOverride.WeakString)
+                | None -> this.Iri.localReference + extensionOverride.WeakString
+            Path.GetDirectoryName localFilePath |> Directory.CreateDirectory |> ignore
+            printfn "%s ----> %s" this.Iri.remoteReference localFilePath
+
+            File.WriteAllText(localFilePath, text)
+        | None -> ()
+    member this.WriteAllText(pathOverride: AbsoluteFilePath) =
+        match this.Text() |> Option.tryNullOrWhiteSpace with
+        | Some text ->
+            let localFilePath = pathOverride
+            Directory.CreateDirectory pathOverride.DirectoryPath.WeakString |> ignore
+            printfn "%s ----> %s" this.Iri.remoteReference localFilePath.WeakString
+
+            File.WriteAllText(localFilePath.WeakString, text)
+
+        | None -> ()
+
+
+type CdpBrowser with
+    static member Connect() =
+
+        let options = ConnectOptions()
+
+        options.BrowserURL <- "http://127.0.0.1:9222"
+        options.DefaultViewport <- null
+
+        let ibrowser = task { return! Puppeteer.ConnectAsync(options) } |> await
+
+        ibrowser :?> CdpBrowser
+    member this.NewPageBackgroundAsync() =
+        let options = new CreatePageOptions()
+        options.Background <- true
+        this.NewPageAsync(options)
+
+    member this.targets = this.Targets() |> Array.map (fun itarget -> itarget :?> CdpTarget)
+
+    member this.otherDevToolsTargets =
+        this.targets
+        |> Array.choose (fun target ->
+            match target.Type, target.GetType().Name with
+            | TargetType.Other, "CdpDevToolsTarget" -> Some(target :?> CdpDevToolsTarget)
+            | _ -> None)
+
+    member this.otherTargets =
+        this.targets
+        |> Array.choose (fun target ->
+            match target.Type, target.GetType().Name with
+            | TargetType.Other, "CdpOtherTarget" -> Some(target :?> CdpOtherTarget)
+            | _ -> None)
+
+    member this.pageOtherTargets =
+        this.targets
+        |> Array.choose (fun target ->
+            match target.Type, target.GetType().Name with
+            | TargetType.Page, "CdpOtherTarget" -> Some(target :?> CdpOtherTarget)
+            | _ -> None)
+
+    member this.pageTargets =
+        this.targets
+        |> Array.choose (fun target ->
+            match target.Type, target.GetType().Name with
+            | TargetType.Page, "CdpPageTarget" -> Some(target :?> CdpPageTarget)
+            | _ -> None)
+
+    member this.workerTargets =
+        this.targets
+        |> Array.choose (fun target ->
+            match target.Type, target.GetType().Name with
+            | TargetType.ServiceWorker, "CdpWorkerTarget" -> Some(target :?> CdpWorkerTarget)
+            | _ -> None)
+
+    member this.browserOtherTargets =
+        this.targets
+        |> Array.choose (fun target ->
+            match target.Type, target.GetType().Name with
+            | TargetType.Browser, "CdpOtherTarget" -> Some(target :?> CdpOtherTarget)
+            | _ -> None)
+
+    member this.workerOtherTargets =
+        this.targets
+        |> Array.choose (fun target ->
+            match target.Type, target.GetType().Name with
+            | TargetType.Worker, "CdpOtherTarget" -> Some(target :?> CdpOtherTarget)
+            | _ -> None)
+
+    member this.iframeOtherTargets =
+        this.targets
+        |> Array.choose (fun target ->
+            match target.Type, target.GetType().Name with
+            | TargetType.IFrame, "CdpOtherTarget" -> Some(target :?> CdpOtherTarget)
+            | _ -> None)
+
+    member this.maybePageTarget(pageTargetFinder: CdpPageTarget -> bool) =
+        this.pageTargets |> Array.tryFind pageTargetFinder
+
+    member this.tabs =
+        let pages = this.pageTargets |> Array.map (fun target -> target.AsPageAsync().await.asCdp)
+
+        pages
+
+
+
+
+type CdpPageTarget with
+    member this.Iri = Iri.fromString this.Url
+
+type CdpFrame with
+    member this.Iri = Iri.fromString this.Url
+    member this.Locator(selector: Selector) = this.Locator(selector.Css)
+
+    member this.QuerySelectorAllAsync(selector: Selector) = this.QuerySelectorAllAsync selector.Css
+    member this.QuerySelectorAllHandleAsync(selector: Selector) =
+        this.QuerySelectorAllHandleAsync selector.Css
+    member this.QuerySelectorAsync(selector: Selector) = this.QuerySelectorAsync selector.Css
+
+type CdpPage with
+    member this.Iri = Iri.fromString this.Url
+    member this.frames = this.Frames |> Array.map (fun frame -> frame.asCdp)
+    member this.Locator(selector: Selector) = this.Locator(selector.Css)
+    member this.QuerySelectorAllAsync(selector: Selector) = this.QuerySelectorAllAsync selector.Css
+    member this.QuerySelectorAllHandleAsync(selector: Selector) =
+        this.QuerySelectorAllHandleAsync selector.Css
+    member this.QuerySelectorAsync(selector: Selector) = this.QuerySelectorAsync selector.Css
+    member this.ScrollToBottom() =
+        task { return! this.EvaluateFunctionAsync("() => window.scrollTo(0, document.documentElement.scrollHeight)") }
+        |> await
+
+    member this.ScrollDown(pixels: int) =
+        task { return! this.EvaluateFunctionAsync("(pixels) => window.scrollBy(0, pixels)", pixels) }
+        |> await
+
+    member this.ScrollUp(pixels: int) =
+        task { return! this.EvaluateFunctionAsync("(pixels) => window.scrollBy(0, -pixels)", pixels) }
+        |> await
+
+    member this.SetTabName(name: string) =
+        task { return! this.EvaluateFunctionAsync<string>("name => document.title = name", name) }
+
+
+
+type Iri with
+
+    member this.downloadResponseHtml(tab: CdpPage) =
+
+        let response = tab.GoToAsync(this.remoteReference).await.asCdp
+        let responseText = response.TextAsync().await
+        if responseText.Contains("Oops! Page not found. Please contact the Administrator.") then
+            ()
+        else
+            let responsePath = AbsolutePath.Create(this.localReference.Split([| '?'; '='; '-'; '\\' |]) |> String.concat "\\")
+
+            let responseFilePath = responsePath.As<AbsoluteFilePath>().WithSuffix ".html"
+            Directory.CreateDirectory responseFilePath.AbsoluteDirectoryPath.WeakString
+            |> ignore
+            File.WriteAllText(responseFilePath.WeakString, responseText)
+
+
+type DataUriBuilder with
+    member this.SetMediaType(mimeType: MimeType) =
+        this.SetMediaType(MediaType.FromExtension mimeType.dotExtension)
+type MimeType with
+    member this.asDataUri(data: Byte array) =
+        DataUriBuilder().SetMediaType(this).SetData(data).DataUri

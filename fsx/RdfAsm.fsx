@@ -18,6 +18,7 @@ open Ipa
 #r "Iana.dll"
 open Iana
 #r "IanaScheme.dll"
+#r "IanaMimeType.dll"
 #r "NamespaceErgonomics.dll"
 open NamespaceErgonomics
 
@@ -79,6 +80,7 @@ let wellKnownGenid = $"https://eristocrates.dev/.well-known/genid"
 let GlobalGreatGraph = new ThreadSafeGraph()
 let ggg = GlobalGreatGraph
 let namespaceMapper = ggg.NamespaceMap :?> NamespaceMapper
+
 type InMemoryDataset with
     member this.namespaceMap =
         let namespaceMapper = new NamespaceMapper()
@@ -425,7 +427,7 @@ and PrefixId = {
 
     member this.namespaceTurtleFilePath =
         this.namespaceAbsoluteDirectoryPath
-        / (IanaMediaTypesByDotExtension[".ttl"][0]).asRelativeFilePath
+        / IanaMimeType.text.turtle.asRelativeFilePath
 
 
 

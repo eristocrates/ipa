@@ -19,6 +19,7 @@ open System.Collections
 #r "Iana.dll"
 open Iana
 #r "IanaScheme.dll"
+#r "IanaMimeType.dll"
 
 
 open Humanizer
@@ -63,6 +64,8 @@ open VDS.RDF.Query.Inference
 open VDS.RDF.Ontology
 open BrowserApi.Common
 open BrowserApi.Css.Authoring
+open VDS.Common.Tries
+open Universal.Common
 
 let clipboard = new Clipboard()
 
@@ -75,6 +78,14 @@ let failedRequests = new ResizeArray<CdpHttpRequest>()
 
 let backgroundOption = new CreatePageOptions()
 backgroundOption.Background <- true
+
+
+
+
+
+
+type ITrieNode<'Key, 'Value when 'Value: not struct> with
+    member this.children = this.Children |> Seq.toArray
 
 
 
@@ -340,10 +351,10 @@ type CdpRealm(frame: CdpFrame) as this =
     let convertResult result = convertResultAsync result |> _.await
 
     new(page: CdpPage) = CdpRealm(page.MainFrame.asCdp)
-    member _.Frame = frame
+    member this.Frame = frame
 
 
-    member _.Wrap(handle: JSHandle) = wrap handle
+    member this.Wrap(handle: JSHandle) = wrap handle
     member this.document =
 
         let handle = (this :> IBrowserBackend).GetGlobal("document")
@@ -359,7 +370,7 @@ type CdpRealm(frame: CdpFrame) as this =
 
     interface IBrowserBackend with
 
-        member _.GetProperty<'T>(target, propertyName) =
+        member this.GetProperty<'T>(target, propertyName) =
 
             let targetHandle = unwrap target
 
@@ -377,7 +388,7 @@ type CdpRealm(frame: CdpFrame) as this =
             result |> convertResult |> coerce<'T>
 
 
-        member _.SetProperty(target, propertyName, value) =
+        member this.SetProperty(target, propertyName, value) =
 
             let targetHandle = unwrap target
 
@@ -394,7 +405,7 @@ type CdpRealm(frame: CdpFrame) as this =
             |> ignore
 
 
-        member _.Invoke<'T>(target, methodName, arguments) =
+        member this.Invoke<'T>(target, methodName, arguments) =
 
             let targetHandle = unwrap target
 
@@ -414,7 +425,7 @@ type CdpRealm(frame: CdpFrame) as this =
             result |> convertResult |> coerce<'T>
 
 
-        member _.InvokeVoid(target, methodName, arguments) =
+        member this.InvokeVoid(target, methodName, arguments) =
 
             let targetHandle = unwrap target
 
@@ -433,7 +444,7 @@ type CdpRealm(frame: CdpFrame) as this =
             |> ignore
 
 
-        member _.InvokeAsync<'T>(target, methodName, arguments) =
+        member this.InvokeAsync<'T>(target, methodName, arguments) =
 
             task {
                 let targetHandle = unwrap target
@@ -455,7 +466,7 @@ type CdpRealm(frame: CdpFrame) as this =
             }
 
 
-        member _.InvokeVoidAsync(target, methodName, arguments) =
+        member this.InvokeVoidAsync(target, methodName, arguments) =
 
             task {
                 let targetHandle = unwrap target
@@ -476,7 +487,7 @@ type CdpRealm(frame: CdpFrame) as this =
             :> Task
 
 
-        member _.GetGlobal(name) =
+        member this.GetGlobal(name) =
 
             frame
                 .EvaluateFunctionHandleAsync(
@@ -490,7 +501,7 @@ type CdpRealm(frame: CdpFrame) as this =
             |> wrap
 
 
-        member _.Construct(jsClassName, arguments) =
+        member this.Construct(jsClassName, arguments) =
 
             let arguments = Array.append [| box jsClassName |] (arguments |> Array.map convertArgument)
 
@@ -519,7 +530,7 @@ type CdpRealm(frame: CdpFrame) as this =
             |> wrap
 
 
-        member _.DisposeHandle(browserHandle) =
+        member this.DisposeHandle(browserHandle) =
 
             match handles.TryRemove browserHandle with
             | true, puppeteerHandle -> puppeteerHandle.DisposeAsync()
@@ -527,15 +538,15 @@ type CdpRealm(frame: CdpFrame) as this =
             | false, _ -> ValueTask.CompletedTask
 
 
-        member _.AddEventListener(_, _, _) =
+        member this.AddEventListener(_, _, _) =
             raise (NotSupportedException("BrowserApi events have not yet been implemented by CdpBrowserApiBackend."))
 
 
-        member _.RemoveEventListener(_, _, _) =
+        member this.RemoveEventListener(_, _, _) =
             raise (NotSupportedException("BrowserApi events have not yet been implemented by CdpBrowserApiBackend."))
 
 
-        member _.DisposeAsync() =
+        member this.DisposeAsync() =
 
             let dispose =
                 task {
@@ -610,8 +621,8 @@ type CdpTargetMonitor(browser: CdpBrowser) =
             | _ -> None)
         |> Array.iter (Add >> mailbox.Post)
 
-    member _.currentTargets = currentTargetCollection |> Seq.toArray
-    member _.historicalTargets = historicalTargetCollection |> Seq.toArray
+    member this.currentTargets = currentTargetCollection |> Seq.toArray
+    member this.historicalTargets = historicalTargetCollection |> Seq.toArray
 
     member this.currentOtherDevToolsTargets =
         this.currentTargets
@@ -879,7 +890,7 @@ type GraphemeCluster = { glyph: string; runes: Rune array }
 
 
 module String =
-    open System.Globalization
+
     module subString =
         let fromLast (delimeter: string) (superString: string) =
             match superString.LastIndexOf(delimeter) with
@@ -995,29 +1006,6 @@ type PhoneNumber with
     static member Parse(numberString: string) =
         PhoneNumberUtil.GetInstance().Parse(numberString, "US")
 
-module GraphemeCluster =
-    let tryHtmlName (graphemeCluster: GraphemeCluster) =
-        match HtmlEntityProvider.ReverseResolver.GetName(graphemeCluster.glyph) with
-        | null -> None
-        | name -> Some(name.TrimEnd ';')
-
-    let tryHtmlEntity (graphemeCluster: GraphemeCluster) =
-        tryHtmlName graphemeCluster
-        |> Option.map (fun name -> name.prepostfix ("&", ";"))
-    let hexName (graphemeCluster: GraphemeCluster) =
-        graphemeCluster.runes
-        |> Array.map (fun rune -> rune.hexName)
-        |> String.concat " "
-    let UHexName (graphemeCluster: GraphemeCluster) =
-        graphemeCluster.runes
-        |> Array.map (fun rune -> rune.UHexName)
-        |> String.concat " "
-type GraphemeCluster with
-    member this.tryHtmlName = GraphemeCluster.tryHtmlName this
-    member this.tryHtmlEntity = GraphemeCluster.tryHtmlEntity this
-    member this.hexName = GraphemeCluster.hexName this
-    member this.UHexName = GraphemeCluster.UHexName this
-
 module Char =
     let graphemeCluster (character: char) =
         string character |> String.tryGraphemeCluster |> Option.get
@@ -1085,7 +1073,7 @@ let personalSiteReference = "https://eristocrates.dev"
 
 type IanaScheme with
     static member byName =
-        IanaScheme.all
+        IanaSchemes
         |> Array.map (fun scheme -> scheme.lexicalForm, scheme)
         |> Map.ofArray
 
@@ -1127,6 +1115,7 @@ type RegistrableDomain with
     static member Parse(originalString: string) = {
         domainName = RegistrableDomainParser.Parse originalString
     }
+
     member this.topLevelDomain = this.domainName.TopLevelDomainRule
     member this.remoteReference = this.domainName.FullyQualifiedDomainName
     member this.secondLevelDomain = this.domainName.Domain
@@ -1292,6 +1281,15 @@ type RelativePath with
 
 type ResolvedResource with
 
+    static member (./)((resource: ResolvedResource), (relativeString: string)) = {
+        resource with
+            pathSegments =
+                Array.concat [|
+                    resource.pathSegments
+                    relativeString.Split([| '/'; '\\' |], StringSplitOptions.TrimEntries)
+                    |> Array.filter (fun segment -> not (String.IsNullOrWhiteSpace segment))
+                |]
+    }
 
     member this.localReference = Path.Combine(this.absoluteRoot.localReference, this.pathSegments |> String.concat "\\")
     member this.remoteReference =
@@ -1341,8 +1339,6 @@ type MimeType with
     static member FromFileName(fileName: FileName) =
         MimeType.FromFileName fileName.WeakString
 
-type IanaMediaType with
-    member this.asRelativeFilePath = this.file + this.extension |> RelativeFilePath.Create
 fsi.AddPrinter<RelativeDirectoryPath>(fun path -> path.WeakString)
 fsi.AddPrinter<RelativeFilePath>(fun path -> path.WeakString)
 fsi.AddPrinter<RelativePath>(fun path -> path.WeakString)
@@ -1689,6 +1685,27 @@ type ResolvedResource with
             File.WriteAllText(responseFilePath.WeakString, responseText)
 
 
+type MimeType with
+    member this.extension = this.GetFileTypeExtension(false)
+    member this.dotExtension = this.GetFileTypeExtension(true)
+    member this.fileExtension = FileExtension.Create this.dotExtension
+    member this.asRelativeFilePath =
+        sprintf "%s/%s.%s" this.MediaType this.SubType this.extension
+        |> RelativeFilePath.Create
+    member this.asString = this.ToString()
+
+
+type DataUriBuilder with
+    member this.SetMediaType(mimeType: MimeType) =
+        this.SetMediaType(MediaType.FromExtension mimeType.dotExtension)
+type MimeType with
+    member this.asDataUri(data: Byte array) =
+        DataUriBuilder().SetMediaType(this).SetData(data).DataUri
+
+
+type String with
+    member this.asUtf8 = Encoding.UTF8.GetBytes(this.ToCharArray())
+    member this.asDataUri = DataUriBuilder().SetMediaType(IanaMimeType.text.plain).SetData(this).SetCharset(Encoding.UTF8.WebName).DataUri
 /// https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/MIME_types/Common_types
 let commonContentTypes =
     set [
@@ -1777,12 +1794,13 @@ let commonContentTypes =
         "application/x-7z-compressed"
     ]
 let commonMediaTypes =
-    IanaMediaTypes
-    |> Array.filter (fun ianaMediaType -> commonContentTypes.Contains(ianaMediaType.file))
+    IanaMimeTypes
+    |> Array.filter (fun IanaMimeType -> commonContentTypes.Contains(IanaMimeType))
+    |> Array.map (fun IanaMimeType -> MimeType.Parse IanaMimeType)
 
 let commonExtensions =
     commonMediaTypes
-    |> Array.map (fun ianaMediaType -> ianaMediaType.extension)
+    |> Array.map (fun IanaMimeType -> IanaMimeType.extension)
     |> Array.distinct
     |> Set.ofArray
 let rdfExtensions =
@@ -1860,19 +1878,18 @@ let rdfMediaTypes =
         "application/sparql-results+thrift"
         "application/sparql-results+protobuf"
     |]
-    |> Array.collect (fun contentType ->
-        IanaMediaTypes
-        |> Array.filter (fun ianaMediaType -> ianaMediaType.file = contentType))
+    |> Array.collect (fun contentType -> IanaMimeTypes |> Array.filter (fun IanaMimeType -> IanaMimeType = contentType))
+    |> Array.map (fun IanaMimeType -> MimeType.Parse IanaMimeType)
 
 
 
 let targetExtensions = set [ ".jsonhtml" ] + commonExtensions + rdfExtensions
 let targetMediaTypes = Array.concat [| commonMediaTypes; rdfMediaTypes |]
 
-type IanaMediaType with
+type MimeType with
     member this.isCommonMediaType = commonMediaTypes |> Array.exists (fun commonMediaType -> this = commonMediaType)
     member this.isTargetMediaType = targetMediaTypes |> Array.exists (fun targetMediaType -> this = targetMediaType)
-
+(*
 let networkMailbox =
     MailboxProcessor<CdpHttpRequest>.Start(fun inbox ->
         let rec loop () =
@@ -1881,16 +1898,13 @@ let networkMailbox =
                 match request.Response.Status with
                 | HttpStatusCode.OK ->
                     finishedRequests.Add request
-                    let maybeIanaMediaType =
+                    let maybeIanaMimeType =
                         MimeType.TryParse(request.Response.Headers["content-type"])
                         |> fun (wasParsed, mimeType) ->
                             match wasParsed with
-                            | true ->
-                                IanaMediaTypes
-                                |> Array.find (fun ianaMediaType -> ianaMediaType.mime = mimeType)
-                                |> Some
+                            | true -> Some mimeType
                             | false -> None
-                    match request.Response.resource.host, request.Response.resource.pathStem, request.Response.resource.extension, maybeIanaMediaType with
+                    match request.Response.resource.host, request.Response.resource.pathStem, request.Response.resource.extension, maybeIanaMimeType with
                     | host, pathstem, None, Some mediaType when mediaType.isTargetMediaType -> request.Response.WriteAllText(mediaType.fileExtension)
                     | host, pathstem, Some extension, _ when targetExtensions.Contains extension -> request.Response.WriteAllText()
                     | host, pathstem, maybeExtension, maybeMediaType -> ()
@@ -1903,34 +1917,135 @@ let networkMailbox =
 let watchPageNetworkTraffic (page: CdpPage) =
     page.RequestFinished.Add(fun eventArguments -> networkMailbox.Post eventArguments.Request.asCdp)
 
+*)
 
 
 type CdpBrowser with
     member this.tabs =
         let pages = this.pageTargets |> Array.map (fun target -> target.AsPageAsync().await.asCdp)
 
-        pages |> Array.iter watchPageNetworkTraffic
         pages
 
-type IanaMediaType with
+type MimeType with
     static member fromHeaders(headerDictionary: Generic.Dictionary<string, string>) =
-        let contentType = MimeType.Parse headerDictionary["content-type"]
-        IanaMediaTypes
-        |> Array.pick (fun ianaMediaType ->
-            if
-                ianaMediaType.mime.MediaType = contentType.MediaType
-                && ianaMediaType.mime.SubType = contentType.SubType
-            then
-                Some(
-                    {
-                        ianaMediaType with
-                            mime = contentType
-                    }
-                )
-            else
-                None)
+        try
+            MimeType.TryParse(headerDictionary["content-type"])
+            |> fun (wasParsed, mimeType) ->
+                match wasParsed with
+                | true -> Some mimeType
+                | false -> None
+        with _ ->
+            None
+
 type CdpHttpResponse with
-    member this.mediaType = IanaMediaType.fromHeaders this.Headers
+    member this.mimeType = MimeType.fromHeaders this.Headers
+    member this.mediaType = MimeType.fromHeaders this.Headers
+
+
+
+type NetworkMonitorMessage = FinishedRequest of CdpHttpRequest
+
+type CdpNetworkMonitor private (browser: CdpBrowser, initialPages: CdpPage array) =
+
+    let finishedRequestCollection = ResizeArray<CdpHttpRequest>()
+    let monitoredPageCollection = ResizeArray<CdpPage>()
+
+    let mailbox =
+        MailboxProcessor.Start(fun inbox ->
+
+            let rec loop () =
+                async {
+                    let! message = inbox.Receive()
+
+                    match message with
+                    | FinishedRequest request -> finishedRequestCollection.Add request
+                    (*
+                        match request.Response.asCdp.mimeType with
+                        | Some mimeType ->
+                            match mimeType.MediaType, mimeType.SubType, request.Response.resource.extension with
+                            | "application", "json", _
+                            | _, _, Some ".json"
+                            | _, _, Some ".jsonhtml"
+                            | "application", "xml", _
+                            | _, _, Some ".xml" ->
+                                request.Response.Text()
+                                |> Option.iter (fun text ->
+                                    printfn "%s\t\t----->\t\t%s" request.Response.resource.remoteReference request.Response.resource.localReference
+                                    File.WriteAllText(request.Response.resource.localReference, text))
+                        | None -> ()
+                        *)
+                    return! loop ()
+                }
+            loop ())
+
+    let monitorPage (page: CdpPage) =
+
+        let targetId = (page.Target :?> CdpTarget).TargetId
+
+        let alreadyMonitored =
+            monitoredPageCollection
+            |> Seq.exists (fun existing -> (existing.Target :?> CdpTarget).TargetId = targetId)
+
+        if not alreadyMonitored then
+
+            monitoredPageCollection.Add page
+
+            page.RequestFinished.Add(fun args -> mailbox.Post(FinishedRequest(args.Request :?> CdpHttpRequest)))
+
+    do
+        // Pages which existed when the monitor was created.
+        initialPages |> Array.iter monitorPage
+
+        // Pages which come into existence afterward.
+        browser.TargetCreated.Add(fun args ->
+
+            match args.Target with
+            | :? CdpPageTarget as target ->
+
+                task {
+                    let! page = target.PageAsync()
+
+                    match page with
+                    | :? CdpPage as page -> monitorPage page
+                    | _ -> ()
+                }
+                |> ignore
+
+            | _ -> ())
+
+    member this.finishedRequests = finishedRequestCollection |> Seq.toArray
+    member this.responsesByMimeType(mimeType: MimeType) =
+        this.finishedRequests
+        |> Array.filter (fun request ->
+            match request.Response.asCdp.mimeType with
+            | Some contentType ->
+                contentType.MediaType = mimeType.MediaType
+                && contentType.SubType = mimeType.SubType
+            | None -> false
+
+        )
+
+    member this.monitoredPages = monitoredPageCollection |> Seq.toArray
+
+
+    static member Create(browser: CdpBrowser) =
+        task {
+            let! pages = browser.PagesAsync(true)
+
+            let pages =
+                pages
+                |> Array.choose (function
+                    | :? CdpPage as page -> Some page
+                    | _ -> None)
+
+            return CdpNetworkMonitor(browser, pages)
+        }
+
+
+
+
+
+
 
 
 

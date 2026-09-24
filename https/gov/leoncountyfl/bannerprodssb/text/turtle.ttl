@@ -1,0 +1,508 @@
+@prefix cdp: <urn:chromedevtools:> .
+@prefix chromedevtools: <https://chromedevtools.github.io/devtools-protocol/#/> .
+@prefix cnt: <http://www.w3.org/2011/content#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix http: <http://www.w3.org/2011/http#> .
+@prefix httpm: <http://www.w3.org/2011/http-methods#> .
+@prefix httpsc: <http://www.w3.org/2011/http-statusCodes#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+cdp:http:header:sec-ch-ua-mobile:25964.1517 http:fieldValue "?0" .
+cdp:http:header:if-modified-since:25964.1517 http:fieldValue "0" .
+cdp:http:header:cookie:25964.1517 http:fieldValue "JSESSIONID=1F30B648B869E98403395349B2F9D12B; _ga=GA1.1.505960643.1788352620; _ga_F306KLCMQN=GS2.1.s1788556449$o1$g1$t1788556571$j31$l0$h0; _ga_VJ0B3XCQTR=GS2.1.s1788899347$o7$g0$t1788899347$j60$l0$h0" .
+cdp:http:body:25964.1517 cnt:characterEncoding "UTF-8" .
+cdp:http:header:date:25964.1517 http:fieldName "date" .
+cdp:http:header:content-type:25964.1517 http:fieldValue "application/json;charset=UTF-8" .
+cdp:http:response:25964.1517 http:headers cdp:http:header:connection:25964.1517 .
+cdp:http:header:date:25964.1517 http:fieldValue "Tue, 22 Sep 2026 18:51:10 GMT" .
+cdp:http:request:25964.1517 http:requestURI "https://bannerprodssb.leoncountyfl.gov:8449/EmployeeSelfService/ssb/payStubSummary/getPayStubSummary"^^xsd:anyURI .
+cdp:http:response:25964.1517 http:body cdp:http:body:25964.1517 .
+cdp:http:request:25964.1517 http:headers cdp:http:header:sec-ch-ua-platform:25964.1517 .
+cdp:http:header:expires:25964.1517 a http:MessageHeader .
+cdp:http:header:if-modified-since:25964.1517 a http:MessageHeader .
+cdp:http:header:vary:25964.1517 http:fieldName "vary" .
+cdp:http:header:accept-encoding:25964.1517 a http:MessageHeader .
+cdp:http:header:user-agent:25964.1517 a http:MessageHeader .
+cdp:http:response:25964.1517 http:headers cdp:http:header:expires:25964.1517 .
+cdp:http:request:25964.1517 http:headers cdp:http:header:connection:25964.1517 .
+cdp:http:request:25964.1517 http:headers cdp:http:header:sec-fetch-dest:25964.1517 .
+<https://bannerprodssb.leoncountyfl.gov:8449/EmployeeSelfService/ssb/payStubSummary/getPayStubSummary> a chromedevtools:Network.Request .
+cdp:http:header:x-requested-with:25964.1517 http:fieldName "X-Requested-With" .
+cdp:http:header:sec-ch-ua-mobile:25964.1517 http:fieldName "sec-ch-ua-mobile" .
+cdp:http:header:sec-fetch-dest:25964.1517 http:fieldValue "empty" .
+cdp:http:header:sec-fetch-dest:25964.1517 http:fieldName "sec-fetch-dest" .
+cdp:http:header:referer:25964.1517 a http:MessageHeader .
+cdp:http:header:host:25964.1517 http:fieldValue "bannerprodssb.leoncountyfl.gov:8449" .
+cdp:http:header:accept-language:25964.1517 http:fieldValue "en-US,en;q=0.9" .
+cdp:http:response:25964.1517 dcterms:date "2026-09-22"^^xsd:date .
+cdp:http:header:transfer-encoding:25964.1517 a http:MessageHeader .
+cdp:http:header:sec-fetch-mode:25964.1517 a http:MessageHeader .
+cdp:25964.1517 dcterms:date "2026-09-22"^^xsd:date .
+cdp:http:header:cookie:25964.1517 http:fieldName "cookie" .
+cdp:http:header:accept-encoding:25964.1517 http:fieldValue "gzip, deflate, br, zstd" .
+cdp:http:response:25964.1517 http:headers cdp:http:header:x-content-type-options:25964.1517 .
+cdp:http:header:connection:25964.1517 http:fieldValue "keep-alive" .
+cdp:http:response:25964.1517 http:headers cdp:http:header:vary:25964.1517 .
+cdp:http:header:vary:25964.1517 http:fieldValue "Origin, Access-Control-Request-Method, Access-Control-Request-Headers" .
+cdp:http:request:25964.1517 http:headers cdp:http:header:sec-ch-ua-mobile:25964.1517 .
+cdp:http:header:content-type:25964.1517 a http:MessageHeader .
+cdp:http:header:cache-control:25964.1517 a http:MessageHeader .
+cdp:http:body:25964.1517 dcterms:hasFormat <data:application/json;base64,ewogICJpc0FkbWluIjogZmFsc2UsCiAgIm5vUGF5U3R1YlllYXJzIjogZmFsc2UsCiAgInBheVN0dWJZZWFycyI6IAogIFsKICAgIHsKICAgICAgImRpc3BsYXlZZWFyIjogIjIwMjYiLAogICAgICAieWVhciI6ICIyMDI2IgogICAgfSwKICAgIHsKICAgICAgImRpc3BsYXlZZWFyIjogIjIwMjUiLAogICAgICAieWVhciI6ICIyMDI1IgogICAgfSwKICAgIHsKICAgICAgImRpc3BsYXlZZWFyIjogIjIwMjQiLAogICAgICAieWVhciI6ICIyMDI0IgogICAgfQogIF0KfQ==> .
+cdp:http:header:accept:25964.1517 a http:MessageHeader .
+cdp:http:header:referer:25964.1517 http:fieldValue "https://bannerprodssb.leoncountyfl.gov:8449/EmployeeSelfService/ssb/hrDashboard" .
+cdp:http:header:x-ua-compatible:25964.1517 http:fieldValue "IE=edge" .
+cdp:http:header:transfer-encoding:25964.1517 http:fieldValue "chunked" .
+<https://bannerprodssb.leoncountyfl.gov:8449/EmployeeSelfService/ssb/payStubSummary/getPayStubSummary> dcterms:hasPart cdp:http:request:25964.1517 .
+cdp:http:request:25964.1517 http:headers cdp:http:header:user-agent:25964.1517 .
+cdp:http:request:25964.1517 http:headers cdp:http:header:x-requested-with:25964.1517 .
+cdp:http:header:x-requested-with:25964.1517 a http:MessageHeader .
+cdp:http:header:sec-fetch-mode:25964.1517 http:fieldValue "cors" .
+cdp:http:header:sec-ch-ua-platform:25964.1517 a http:MessageHeader .
+cdp:http:header:cookie:25964.1517 a http:MessageHeader .
+cdp:http:header:host:25964.1517 http:fieldName "host" .
+cdp:http:header:sec-fetch-site:25964.1517 http:fieldValue "same-origin" .
+cdp:http:header:sec-ch-ua-platform:25964.1517 http:fieldValue """\"Windows\"""" .
+cdp:http:header:referer:25964.1517 http:fieldName "Referer" .
+cdp:http:header:accept-language:25964.1517 http:fieldName "accept-language" .
+cdp:http:header:accept:25964.1517 http:fieldValue "application/json, text/plain, */*" .
+cdp:http:header:accept:25964.1517 http:fieldName "Accept" .
+cdp:http:response:25964.1517 http:headers cdp:http:header:keep-alive:25964.1517 .
+cdp:http:request:25964.1517 http:headers cdp:http:header:accept-encoding:25964.1517 .
+cdp:http:request:25964.1517 http:headers cdp:http:header:sec-fetch-site:25964.1517 .
+cdp:http:body:25964.1517 cnt:bytes "ewogICJpc0FkbWluIjogZmFsc2UsCiAgIm5vUGF5U3R1YlllYXJzIjogZmFsc2UsCiAgInBheVN0dWJZZWFycyI6IAogIFsKICAgIHsKICAgICAgImRpc3BsYXlZZWFyIjogIjIwMjYiLAogICAgICAieWVhciI6ICIyMDI2IgogICAgfSwKICAgIHsKICAgICAgImRpc3BsYXlZZWFyIjogIjIwMjUiLAogICAgICAieWVhciI6ICIyMDI1IgogICAgfSwKICAgIHsKICAgICAgImRpc3BsYXlZZWFyIjogIjIwMjQiLAogICAgICAieWVhciI6ICIyMDI0IgogICAgfQogIF0KfQ=="^^xsd:base64Binary .
+cdp:http:header:cache-control:25964.1517 http:fieldName "cache-control" .
+cdp:http:request:25964.1517 http:headers cdp:http:header:sec-fetch-mode:25964.1517 .
+cdp:http:response:25964.1517 http:headers cdp:http:header:cache-control:25964.1517 .
+cdp:http:response:25964.1517 http:statusCodeValue "200"^^xsd:int .
+cdp:http:header:transfer-encoding:25964.1517 http:fieldName "transfer-encoding" .
+<https://bannerprodssb.leoncountyfl.gov:8449/EmployeeSelfService/ssb/payStubSummary/getPayStubSummary> chromedevtools:Network.RequestId "25964.1517" .
+cdp:http:request:25964.1517 http:mthd httpm:GET .
+cdp:http:header:x-content-type-options:25964.1517 http:fieldName "x-content-type-options" .
+cdp:http:header:if-modified-since:25964.1517 http:fieldName "If-Modified-Since" .
+cdp:http:body:25964.1517 a cnt:ContentAsBase64 .
+cdp:http:header:content-type:25964.1517 http:fieldName "content-type" .
+cdp:http:request:25964.1517 http:methodName "GET" .
+cdp:http:request:25964.1517 http:headers cdp:http:header:cookie:25964.1517 .
+cdp:http:header:accept-encoding:25964.1517 http:fieldName "accept-encoding" .
+cdp:http:header:user-agent:25964.1517 http:fieldValue "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36" .
+cdp:http:request:25964.1517 http:headers cdp:http:header:accept-language:25964.1517 .
+cdp:http:header:x-content-type-options:25964.1517 a http:MessageHeader .
+cdp:http:header:sec-ch-ua:25964.1517 a http:MessageHeader .
+cdp:http:header:connection:25964.1517 a http:MessageHeader .
+cdp:http:header:host:25964.1517 a http:MessageHeader .
+cdp:http:header:x-ua-compatible:25964.1517 a http:MessageHeader .
+cdp:http:response:25964.1517 http:headers cdp:http:header:x-xss-protection:25964.1517 .
+cdp:http:header:x-requested-with:25964.1517 http:fieldValue "XMLHttpRequest" .
+cdp:http:header:sec-ch-ua:25964.1517 http:fieldName "sec-ch-ua" .
+cdp:http:response:25964.1517 http:headers cdp:http:header:x-ua-compatible:25964.1517 .
+cdp:http:request:25964.1517 http:resp cdp:http:response:25964.1517 .
+cdp:http:header:x-xss-protection:25964.1517 a http:MessageHeader .
+cdp:http:header:x-ua-compatible:25964.1517 http:fieldName "x-ua-compatible" .
+cdp:http:header:keep-alive:25964.1517 a http:MessageHeader .
+cdp:http:request:25964.1517 http:headers cdp:http:header:sec-ch-ua:25964.1517 .
+<data:application/json;base64,ewogICJpc0FkbWluIjogZmFsc2UsCiAgIm5vUGF5U3R1YlllYXJzIjogZmFsc2UsCiAgInBheVN0dWJZZWFycyI6IAogIFsKICAgIHsKICAgICAgImRpc3BsYXlZZWFyIjogIjIwMjYiLAogICAgICAieWVhciI6ICIyMDI2IgogICAgfSwKICAgIHsKICAgICAgImRpc3BsYXlZZWFyIjogIjIwMjUiLAogICAgICAieWVhciI6ICIyMDI1IgogICAgfSwKICAgIHsKICAgICAgImRpc3BsYXlZZWFyIjogIjIwMjQiLAogICAgICAieWVhciI6ICIyMDI0IgogICAgfQogIF0KfQ==> a cnt:ContentAsText .
+cdp:http:header:cache-control:25964.1517 http:fieldValue "no-cache, no-store" .
+cdp:http:request:25964.1517 http:headers cdp:http:header:accept:25964.1517 .
+cdp:http:header:keep-alive:25964.1517 http:fieldValue "timeout=20" .
+cdp:http:response:25964.1517 http:headers cdp:http:header:transfer-encoding:25964.1517 .
+cdp:http:response:25964.1517 http:headers cdp:http:header:content-type:25964.1517 .
+cdp:http:header:accept-language:25964.1517 a http:MessageHeader .
+cdp:http:header:sec-fetch-site:25964.1517 http:fieldName "sec-fetch-site" .
+cdp:http:header:keep-alive:25964.1517 http:fieldName "keep-alive" .
+cdp:http:header:x-content-type-options:25964.1517 http:fieldValue "nosniff" .
+cdp:http:response:25964.1517 a http:Response .
+cdp:http:request:25964.1517 http:headers cdp:http:header:host:25964.1517 .
+cdp:http:header:sec-fetch-dest:25964.1517 a http:MessageHeader .
+cdp:http:header:x-xss-protection:25964.1517 http:fieldValue "1; mode=block" .
+cdp:http:header:date:25964.1517 a http:MessageHeader .
+cdp:http:request:25964.1517 http:headers cdp:http:header:if-modified-since:25964.1517 .
+cdp:http:header:sec-fetch-site:25964.1517 a http:MessageHeader .
+cdp:http:header:sec-fetch-mode:25964.1517 http:fieldName "sec-fetch-mode" .
+cdp:http:header:cache-control:25964.1517 http:fieldValue "max-age=0" .
+<data:application/json;base64,ewogICJpc0FkbWluIjogZmFsc2UsCiAgIm5vUGF5U3R1YlllYXJzIjogZmFsc2UsCiAgInBheVN0dWJZZWFycyI6IAogIFsKICAgIHsKICAgICAgImRpc3BsYXlZZWFyIjogIjIwMjYiLAogICAgICAieWVhciI6ICIyMDI2IgogICAgfSwKICAgIHsKICAgICAgImRpc3BsYXlZZWFyIjogIjIwMjUiLAogICAgICAieWVhciI6ICIyMDI1IgogICAgfSwKICAgIHsKICAgICAgImRpc3BsYXlZZWFyIjogIjIwMjQiLAogICAgICAieWVhciI6ICIyMDI0IgogICAgfQogIF0KfQ==> cnt:chars """{
+  \"isAdmin\": false,
+  \"noPayStubYears\": false,
+  \"payStubYears\": 
+  [
+    {
+      \"displayYear\": \"2026\",
+      \"year\": \"2026\"
+    },
+    {
+      \"displayYear\": \"2025\",
+      \"year\": \"2025\"
+    },
+    {
+      \"displayYear\": \"2024\",
+      \"year\": \"2024\"
+    }
+  ]
+}"""^^rdf:JSON .
+<data:application/json;base64,ewogICJpc0FkbWluIjogZmFsc2UsCiAgIm5vUGF5U3R1YlllYXJzIjogZmFsc2UsCiAgInBheVN0dWJZZWFycyI6IAogIFsKICAgIHsKICAgICAgImRpc3BsYXlZZWFyIjogIjIwMjYiLAogICAgICAieWVhciI6ICIyMDI2IgogICAgfSwKICAgIHsKICAgICAgImRpc3BsYXlZZWFyIjogIjIwMjUiLAogICAgICAieWVhciI6ICIyMDI1IgogICAgfSwKICAgIHsKICAgICAgImRpc3BsYXlZZWFyIjogIjIwMjQiLAogICAgICAieWVhciI6ICIyMDI0IgogICAgfQogIF0KfQ==> cnt:characterEncoding "UTF-8" .
+cdp:http:request:25964.1517 dcterms:date "2026-09-22"^^xsd:date .
+cdp:http:header:connection:25964.1517 http:fieldName "connection" .
+cdp:http:header:expires:25964.1517 http:fieldName "expires" .
+cdp:http:header:expires:25964.1517 http:fieldValue "-1" .
+cdp:http:response:25964.1517 http:sc httpsc:OK .
+cdp:http:header:sec-ch-ua-platform:25964.1517 http:fieldName "sec-ch-ua-platform" .
+cdp:http:header:vary:25964.1517 a http:MessageHeader .
+cdp:http:request:25964.1517 a http:Request .
+cdp:http:request:25964.1517 http:headers cdp:http:header:cache-control:25964.1517 .
+cdp:http:header:sec-ch-ua:25964.1517 http:fieldValue """\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\"""" .
+cdp:http:header:x-xss-protection:25964.1517 http:fieldName "x-xss-protection" .
+cdp:http:header:sec-ch-ua-mobile:25964.1517 a http:MessageHeader .
+cdp:http:response:25964.1517 http:headers cdp:http:header:date:25964.1517 .
+cdp:http:header:user-agent:25964.1517 http:fieldName "User-Agent" .
+cdp:http:request:25964.1517 http:headers cdp:http:header:referer:25964.1517 .
+cdp:http:request:25964.1519 http:headers cdp:http:header:accept:25964.1519 .
+cdp:http:header:connection:25964.1519 http:fieldValue "keep-alive" .
+cdp:http:header:cookie:25964.1519 http:fieldValue "JSESSIONID=1F30B648B869E98403395349B2F9D12B; _ga=GA1.1.505960643.1788352620; _ga_F306KLCMQN=GS2.1.s1788556449$o1$g1$t1788556571$j31$l0$h0; _ga_VJ0B3XCQTR=GS2.1.s1788899347$o7$g0$t1788899347$j60$l0$h0" .
+cdp:http:header:cookie:25964.1519 http:fieldName "cookie" .
+cdp:http:header:sec-fetch-dest:25964.1519 a http:MessageHeader .
+cdp:http:header:x-xss-protection:25964.1519 a http:MessageHeader .
+cdp:http:header:connection:25964.1519 a http:MessageHeader .
+cdp:http:header:sec-fetch-dest:25964.1519 http:fieldValue "empty" .
+cdp:http:response:25964.1519 a http:Response .
+cdp:http:header:expires:25964.1519 http:fieldValue "-1" .
+cdp:http:header:x-requested-with:25964.1519 a http:MessageHeader .
+cdp:http:header:host:25964.1519 http:fieldName "host" .
+cdp:http:header:cache-control:25964.1519 a http:MessageHeader .
+cdp:http:header:sec-ch-ua-mobile:25964.1519 a http:MessageHeader .
+cdp:http:request:25964.1519 http:headers cdp:http:header:sec-fetch-mode:25964.1519 .
+cdp:http:header:accept:25964.1519 http:fieldValue "application/json, text/plain, */*" .
+cdp:http:request:25964.1519 http:headers cdp:http:header:sec-fetch-site:25964.1519 .
+cdp:http:request:25964.1519 dcterms:date "2026-09-22"^^xsd:date .
+cdp:http:header:vary:25964.1519 a http:MessageHeader .
+<https://bannerprodssb.leoncountyfl.gov:8449/EmployeeSelfService/ssb/payStubSummary/getPayStubSummaryList?payYear=2026> chromedevtools:Network.RequestId "25964.1519" .
+cdp:http:header:x-ua-compatible:25964.1519 a http:MessageHeader .
+cdp:http:request:25964.1519 http:headers cdp:http:header:referer:25964.1519 .
+cdp:http:request:25964.1519 http:mthd httpm:GET .
+cdp:http:header:user-agent:25964.1519 a http:MessageHeader .
+cdp:http:header:sec-ch-ua-platform:25964.1519 http:fieldValue """\"Windows\"""" .
+cdp:http:header:accept-language:25964.1519 a http:MessageHeader .
+cdp:http:request:25964.1519 http:headers cdp:http:header:if-modified-since:25964.1519 .
+cdp:http:request:25964.1519 http:headers cdp:http:header:accept-language:25964.1519 .
+cdp:http:response:25964.1519 http:headers cdp:http:header:x-xss-protection:25964.1519 .
+cdp:http:header:if-modified-since:25964.1519 http:fieldValue "0" .
+cdp:http:header:referer:25964.1519 a http:MessageHeader .
+cdp:http:header:x-content-type-options:25964.1519 a http:MessageHeader .
+cdp:http:header:transfer-encoding:25964.1519 a http:MessageHeader .
+cdp:http:header:accept-language:25964.1519 http:fieldValue "en-US,en;q=0.9" .
+cdp:http:header:accept-encoding:25964.1519 http:fieldName "accept-encoding" .
+cdp:http:response:25964.1519 http:headers cdp:http:header:x-ua-compatible:25964.1519 .
+cdp:http:request:25964.1519 http:headers cdp:http:header:sec-ch-ua-mobile:25964.1519 .
+cdp:http:header:x-content-type-options:25964.1519 http:fieldName "x-content-type-options" .
+cdp:http:header:accept-language:25964.1519 http:fieldName "accept-language" .
+cdp:http:response:25964.1519 http:statusCodeValue "200"^^xsd:int .
+cdp:http:request:25964.1519 http:headers cdp:http:header:sec-fetch-dest:25964.1519 .
+cdp:http:header:x-ua-compatible:25964.1519 http:fieldValue "IE=edge" .
+cdp:http:header:user-agent:25964.1519 http:fieldName "User-Agent" .
+cdp:http:header:content-type:25964.1519 a http:MessageHeader .
+cdp:http:header:sec-ch-ua:25964.1519 a http:MessageHeader .
+cdp:http:header:sec-ch-ua:25964.1519 http:fieldName "sec-ch-ua" .
+cdp:http:header:cache-control:25964.1519 http:fieldName "cache-control" .
+cdp:http:header:sec-ch-ua-platform:25964.1519 a http:MessageHeader .
+cdp:http:header:accept:25964.1519 a http:MessageHeader .
+cdp:http:header:sec-ch-ua:25964.1519 http:fieldValue """\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\"""" .
+cdp:http:header:x-content-type-options:25964.1519 http:fieldValue "nosniff" .
+cdp:http:header:keep-alive:25964.1519 http:fieldValue "timeout=20" .
+cdp:http:header:cache-control:25964.1519 http:fieldValue "no-cache, no-store" .
+cdp:http:header:referer:25964.1519 http:fieldName "Referer" .
+cdp:http:header:sec-fetch-site:25964.1519 http:fieldValue "same-origin" .
+cdp:http:header:date:25964.1519 http:fieldName "date" .
+cdp:http:header:date:25964.1519 http:fieldValue "Tue, 22 Sep 2026 18:51:10 GMT" .
+cdp:http:request:25964.1519 http:methodName "GET" .
+cdp:http:header:cache-control:25964.1519 http:fieldValue "max-age=0" .
+cdp:http:header:content-type:25964.1519 http:fieldName "content-type" .
+cdp:http:body:25964.1519 dcterms:hasFormat <data:application/json;base64,ewogICJpc0FkbWluIjogZmFsc2UsCiAgIm5vUGF5U3R1YnMiOiBmYWxzZSwKICAicGF5U3R1YnMiOiAKICBbCiAgICB7CiAgICAgICJwYXlZZWFyIjogIjIwMjYiLAogICAgICAicGF5SWQiOiAiQlciLAogICAgICAicGF5TnVtYmVyIjogMTgsCiAgICAgICJzZXFOdW1iZXIiOiAwLAogICAgICAicGF5RGF0ZSI6ICIwOS8xMC8yMDI2IiwKICAgICAgInBheURhdGVVcmxTYWZlIjogIjIwMjYwOTEwIiwKICAgICAgInBheVBlcmlvZFN0YXJ0RGF0ZSI6ICIwOC8yMi8yMDI2IiwKICAgICAgInBheVBlcmlvZEVuZERhdGUiOiAiMDkvMDQvMjAyNiIsCiAgICAgICJuZXRBbW91bnQiOiAiJDIsMDQ5LjY4IiwKICAgICAgImdyb3NzQW1vdW50IjogIiQyLDY4MC4yNiIKICAgIH0sCiAgICB7CiAgICAgICJwYXlZZWFyIjogIjIwMjYiLAogICAgICAicGF5SWQiOiAiQlciLAogICAgICAicGF5TnVtYmVyIjogMTcsCiAgICAgICJzZXFOdW1iZXIiOiAwLAogICAgICAicGF5RGF0ZSI6ICIwOC8yNy8yMDI2IiwKICAgICAgInBheURhdGVVcmxTYWZlIjogIjIwMjYwODI3IiwKICAgICAgInBheVBlcmlvZFN0YXJ0RGF0ZSI6ICIwOC8wOC8yMDI2IiwKICAgICAgInBheVBlcmlvZEVuZERhdGUiOiAiMDgvMjEvMjAyNiIsCiAgICAgICJuZXRBbW91bnQiOiAiJDIsMDUxLjI3IiwKICAgICAgImdyb3NzQW1vdW50IjogIiQyLDY4MC4yNiIKICAgIH0sCiAgICB7CiAgICAgICJwYXlZZWFyIjogIjIwMjYiLAogICAgICAicGF5SWQiOiAiQlciLAogICAgICAicGF5TnVtYmVyIjogMTYsCiAgICAgICJzZXFOdW1iZXIiOiAwLAogICAgICAicGF5RGF0ZSI6ICIwOC8xMy8yMDI2IiwKICAgICAgInBheURhdGVVcmxTYWZlIjogIjIwMjYwODEzIiwKICAgICAgInBheVBlcmlvZFN0YXJ0RGF0ZSI6ICIwNy8yNS8yMDI2IiwKICAgICAgInBheVBlcmlvZEVuZERhdGUiOiAiMDgvMDcvMjAyNiIsCiAgICAgICJuZXRBbW91bnQiOiAiJDIsMDQ5LjY4IiwKICAgICAgImdyb3NzQW1vdW50IjogIiQyLDY4MC4yNiIKICAgIH0sCiAgICB7CiAgICAgICJwYXlZZWFyIjogIjIwMjYiLAogICAgICAicGF5SWQiOiAiQlciLAogICAgICAicGF5TnVtYmVyIjogMTUsCiAgICAgICJzZXFOdW1iZXIiOiAwLAogICAgICAicGF5RGF0ZSI6ICIwNy8zMC8yMDI2IiwKICAgICAgInBheURhdGVVcmxTYWZlIjogIjIwMjYwNzMwIiwKICAgICAgInBheVBlcmlvZFN0YXJ0RGF0ZSI6ICIwNy8xMS8yMDI2IiwKICAgICAgInBheVBlcmlvZEVuZERhdGUiOiAiMDcvMjQvMjAyNiIsCiAgICAgICJuZXRBbW91bnQiOiAiJDIsMTYyLjQ2IiwKICAgICAgImdyb3NzQW1vdW50IjogIiQyLDY4MC4yNiIKICAgIH0sCiAgICB7CiAgICAgICJwYXlZZWFyIjogIjIwMjYiLAogICAgICAicGF5SWQiOiAiQlciLAogICAgICAicGF5TnVtYmVyIjogMTQsCiAgICAgICJzZXFOdW1iZXIiOiAwLAogICAgICAicGF5RGF0ZSI6ICIwNy8xNi8yMDI2IiwKICAgICAgInBheURhdGVVcmxTYWZlIjogIjIwMjYwNzE2IiwKICAgICAgInBheVBlcmlvZFN0YXJ0RGF0ZSI6ICIwNi8yNy8yMDI2IiwKICAgICAgInBheVBlcmlvZEVuZERhdGUiOiAiMDcvMTAvMjAyNiIsCiAgICAgICJuZXRBbW91bnQiOiAiJDIsMDUxLjI3IiwKICAgICAgImdyb3NzQW1vdW50IjogIiQyLDY4MC4yNiIKICAgIH0sCiAgICB7CiAgICAgICJwYXlZZWFyIjogIjIwMjYiLAogICAgICAicGF5SWQiOiAiQlciLAogICAgICAicGF5TnVtYmVyIjogMTMsCiAgICAgICJzZXFOdW1iZXIiOiAwLAogICAgICAicGF5RGF0ZSI6ICIwNy8wMi8yMDI2IiwKICAgICAgInBheURhdGVVcmxTYWZlIjogIjIwMjYwNzAyIiwKICAgICAgInBheVBlcmlvZFN0YXJ0RGF0ZSI6ICIwNi8xMy8yMDI2IiwKICAgICAgInBheVBlcmlvZEVuZERhdGUiOiAiMDYvMjYvMjAyNiIsCiAgICAgICJuZXRBbW91bnQiOiAiJDIsMDQ5LjY4IiwKICAgICAgImdyb3NzQW1vdW50IjogIiQyLDY4MC4yNiIKICAgIH0sCiAgICB7CiAgICAgICJwYXlZZWFyIjogIjIwMjYiLAogICAgICAicGF5SWQiOiAiQlciLAogICAgICAicGF5TnVtYmVyIjogMTIsCiAgICAgICJzZXFOdW1iZXIiOiAwLAogICAgICAicGF5RGF0ZSI6ICIwNi8xOC8yMDI2IiwKICAgICAgInBheURhdGVVcmxTYWZlIjogIjIwMjYwNjE4IiwKICAgICAgInBheVBlcmlvZFN0YXJ0RGF0ZSI6ICIwNS8zMC8yMDI2IiwKICAgICAgInBheVBlcmlvZEVuZERhdGUiOiAiMDYvMTIvMjAyNiIsCiAgICAgICJuZXRBbW91bnQiOiAiJDIsMDUxLjI2IiwKICAgICAgImdyb3NzQW1vdW50IjogIiQyLDY4MC4yNiIKICAgIH0sCiAgICB7CiAgICAgICJwYXlZZWFyIjogIjIwMjYiLAogICAgICAicGF5SWQiOiAiQlciLAogICAgICAicGF5TnVtYmVyIjogMTEsCiAgICAgICJzZXFOdW1iZXIiOiAwLAogICAgICAicGF5RGF0ZSI6ICIwNi8wNC8yMDI2IiwKICAgICAgInBheURhdGVVcmxTYWZlIjogIjIwMjYwNjA0IiwKICAgICAgInBheVBlcmlvZFN0YXJ0RGF0ZSI6ICIwNS8xNi8yMDI2IiwKICAgICAgInBheVBlcmlvZEVuZERhdGUiOiAiMDUvMjkvMjAyNiIsCiAgICAgICJuZXRBbW91bnQiOiAiJDIsMDQ5LjY4IiwKICAgICAgImdyb3NzQW1vdW50IjogIiQyLDY4MC4yNiIKICAgIH0sCiAgICB7CiAgICAgICJwYXlZZWFyIjogIjIwMjYiLAogICAgICAicGF5SWQiOiAiQlciLAogICAgICAicGF5TnVtYmVyIjogMTAsCiAgICAgICJzZXFOdW1iZXIiOiAwLAogICAgICAicGF5RGF0ZSI6ICIwNS8yMS8yMDI2IiwKICAgICAgInBheURhdGVVcmxTYWZlIjogIjIwMjYwNTIxIiwKICAgICAgInBheVBlcmlvZFN0YXJ0RGF0ZSI6ICIwNS8wMi8yMDI2IiwKICAgICAgInBheVBlcmlvZEVuZERhdGUiOiAiMDUvMTUvMjAyNiIsCiAgICAgICJuZXRBbW91bnQiOiAiJDIsMDUxLjI3IiwKICAgICAgImdyb3NzQW1vdW50IjogIiQyLDY4MC4yNiIKICAgIH0sCiAgICB7CiAgICAgICJwYXlZZWFyIjogIjIwMjYiLAogICAgICAicGF5SWQiOiAiQlciLAogICAgICAicGF5TnVtYmVyIjogOSwKICAgICAgInNlcU51bWJlciI6IDAsCiAgICAgICJwYXlEYXRlIjogIjA1LzA3LzIwMjYiLAogICAgICAicGF5RGF0ZVVybFNhZmUiOiAiMjAyNjA1MDciLAogICAgICAicGF5UGVyaW9kU3RhcnREYXRlIjogIjA0LzE4LzIwMjYiLAogICAgICAicGF5UGVyaW9kRW5kRGF0ZSI6ICIwNS8wMS8yMDI2IiwKICAgICAgIm5ldEFtb3VudCI6ICIkMiwwNDkuNjgiLAogICAgICAiZ3Jvc3NBbW91bnQiOiAiJDIsNjgwLjI2IgogICAgfSwKICAgIHsKICAgICAgInBheVllYXIiOiAiMjAyNiIsCiAgICAgICJwYXlJZCI6ICJCVyIsCiAgICAgICJwYXlOdW1iZXIiOiA4LAogICAgICAic2VxTnVtYmVyIjogMCwKICAgICAgInBheURhdGUiOiAiMDQvMjMvMjAyNiIsCiAgICAgICJwYXlEYXRlVXJsU2FmZSI6ICIyMDI2MDQyMyIsCiAgICAgICJwYXlQZXJpb2RTdGFydERhdGUiOiAiMDQvMDQvMjAyNiIsCiAgICAgICJwYXlQZXJpb2RFbmREYXRlIjogIjA0LzE3LzIwMjYiLAogICAgICAibmV0QW1vdW50IjogIiQyLDA1MS4yNyIsCiAgICAgICJncm9zc0Ftb3VudCI6ICIkMiw2ODAuMjYiCiAgICB9LAogICAgewogICAgICAicGF5WWVhciI6ICIyMDI2IiwKICAgICAgInBheUlkIjogIkJXIiwKICAgICAgInBheU51bWJlciI6IDcsCiAgICAgICJzZXFOdW1iZXIiOiAwLAogICAgICAicGF5RGF0ZSI6ICIwNC8wOS8yMDI2IiwKICAgICAgInBheURhdGVVcmxTYWZlIjogIjIwMjYwNDA5IiwKICAgICAgInBheVBlcmlvZFN0YXJ0RGF0ZSI6ICIwMy8yMS8yMDI2IiwKICAgICAgInBheVBlcmlvZEVuZERhdGUiOiAiMDQvMDMvMjAyNiIsCiAgICAgICJuZXRBbW91bnQiOiAiJDIsMDQ5LjY3IiwKICAgICAgImdyb3NzQW1vdW50IjogIiQyLDY4MC4yNiIKICAgIH0sCiAgICB7CiAgICAgICJwYXlZZWFyIjogIjIwMjYiLAogICAgICAicGF5SWQiOiAiQlciLAogICAgICAicGF5TnVtYmVyIjogNiwKICAgICAgInNlcU51bWJlciI6IDAsCiAgICAgICJwYXlEYXRlIjogIjAzLzI2LzIwMjYiLAogICAgICAicGF5RGF0ZVVybFNhZmUiOiAiMjAyNjAzMjYiLAogICAgICAicGF5UGVyaW9kU3RhcnREYXRlIjogIjAzLzA3LzIwMjYiLAogICAgICAicGF5UGVyaW9kRW5kRGF0ZSI6ICIwMy8yMC8yMDI2IiwKICAgICAgIm5ldEFtb3VudCI6ICIkMiwwNTEuMjciLAogICAgICAiZ3Jvc3NBbW91bnQiOiAiJDIsNjgwLjI2IgogICAgfSwKICAgIHsKICAgICAgInBheVllYXIiOiAiMjAyNiIsCiAgICAgICJwYXlJZCI6ICJCVyIsCiAgICAgICJwYXlOdW1iZXIiOiA1LAogICAgICAic2VxTnVtYmVyIjogMCwKICAgICAgInBheURhdGUiOiAiMDMvMTIvMjAyNiIsCiAgICAgICJwYXlEYXRlVXJsU2FmZSI6ICIyMDI2MDMxMiIsCiAgICAgICJwYXlQZXJpb2RTdGFydERhdGUiOiAiMDIvMjEvMjAyNiIsCiAgICAgICJwYXlQZXJpb2RFbmREYXRlIjogIjAzLzA2LzIwMjYiLAogICAgICAibmV0QW1vdW50IjogIiQyLDA0OS42OCIsCiAgICAgICJncm9zc0Ftb3VudCI6ICIkMiw2ODAuMjYiCiAgICB9LAogICAgewogICAgICAicGF5WWVhciI6ICIyMDI2IiwKICAgICAgInBheUlkIjogIkJXIiwKICAgICAgInBheU51bWJlciI6IDQsCiAgICAgICJzZXFOdW1iZXIiOiAwLAogICAgICAicGF5RGF0ZSI6ICIwMi8yNi8yMDI2IiwKICAgICAgInBheURhdGVVcmxTYWZlIjogIjIwMjYwMjI2IiwKICAgICAgInBheVBlcmlvZFN0YXJ0RGF0ZSI6ICIwMi8wNy8yMDI2IiwKICAgICAgInBheVBlcmlvZEVuZERhdGUiOiAiMDIvMjAvMjAyNiIsCiAgICAgICJuZXRBbW91bnQiOiAiJDIsMDUxLjI3IiwKICAgICAgImdyb3NzQW1vdW50IjogIiQyLDY4MC4yNiIKICAgIH0sCiAgICB7CiAgICAgICJwYXlZZWFyIjogIjIwMjYiLAogICAgICAicGF5SWQiOiAiQlciLAogICAgICAicGF5TnVtYmVyIjogMywKICAgICAgInNlcU51bWJlciI6IDAsCiAgICAgICJwYXlEYXRlIjogIjAyLzEyLzIwMjYiLAogICAgICAicGF5RGF0ZVVybFNhZmUiOiAiMjAyNjAyMTIiLAogICAgICAicGF5UGVyaW9kU3RhcnREYXRlIjogIjAxLzI0LzIwMjYiLAogICAgICAicGF5UGVyaW9kRW5kRGF0ZSI6ICIwMi8wNi8yMDI2IiwKICAgICAgIm5ldEFtb3VudCI6ICIkMiwwNDkuNjciLAogICAgICAiZ3Jvc3NBbW91bnQiOiAiJDIsNjgwLjI2IgogICAgfSwKICAgIHsKICAgICAgInBheVllYXIiOiAiMjAyNiIsCiAgICAgICJwYXlJZCI6ICJCVyIsCiAgICAgICJwYXlOdW1iZXIiOiAyLAogICAgICAic2VxTnVtYmVyIjogMCwKICAgICAgInBheURhdGUiOiAiMDEvMjkvMjAyNiIsCiAgICAgICJwYXlEYXRlVXJsU2FmZSI6ICIyMDI2MDEyOSIsCiAgICAgICJwYXlQZXJpb2RTdGFydERhdGUiOiAiMDEvMTAvMjAyNiIsCiAgICAgICJwYXlQZXJpb2RFbmREYXRlIjogIjAxLzIzLzIwMjYiLAogICAgICAibmV0QW1vdW50IjogIiQyLDA1MS4yNyIsCiAgICAgICJncm9zc0Ftb3VudCI6ICIkMiw2ODAuMjYiCiAgICB9LAogICAgewogICAgICAicGF5WWVhciI6ICIyMDI2IiwKICAgICAgInBheUlkIjogIkJXIiwKICAgICAgInBheU51bWJlciI6IDEsCiAgICAgICJzZXFOdW1iZXIiOiAwLAogICAgICAicGF5RGF0ZSI6ICIwMS8xNS8yMDI2IiwKICAgICAgInBheURhdGVVcmxTYWZlIjogIjIwMjYwMTE1IiwKICAgICAgInBheVBlcmlvZFN0YXJ0RGF0ZSI6ICIxMi8yNy8yMDI1IiwKICAgICAgInBheVBlcmlvZEVuZERhdGUiOiAiMDEvMDkvMjAyNiIsCiAgICAgICJuZXRBbW91bnQiOiAiJDIsMDQ5LjY4IiwKICAgICAgImdyb3NzQW1vdW50IjogIiQyLDY4MC4yNiIKICAgIH0KICBdCn0=> .
+cdp:http:header:sec-fetch-mode:25964.1519 http:fieldValue "cors" .
+cdp:http:header:accept-encoding:25964.1519 http:fieldValue "gzip, deflate, br, zstd" .
+<https://bannerprodssb.leoncountyfl.gov:8449/EmployeeSelfService/ssb/payStubSummary/getPayStubSummaryList?payYear=2026> dcterms:hasPart cdp:http:request:25964.1519 .
+cdp:http:response:25964.1519 http:headers cdp:http:header:vary:25964.1519 .
+cdp:http:header:x-ua-compatible:25964.1519 http:fieldName "x-ua-compatible" .
+cdp:http:request:25964.1519 http:headers cdp:http:header:connection:25964.1519 .
+cdp:http:header:x-requested-with:25964.1519 http:fieldValue "XMLHttpRequest" .
+cdp:http:request:25964.1519 a http:Request .
+cdp:25964.1519 dcterms:date "2026-09-22"^^xsd:date .
+cdp:http:response:25964.1519 http:sc httpsc:OK .
+cdp:http:header:date:25964.1519 a http:MessageHeader .
+<https://bannerprodssb.leoncountyfl.gov:8449/EmployeeSelfService/ssb/payStubSummary/getPayStubSummaryList?payYear=2026> a chromedevtools:Network.Request .
+cdp:http:request:25964.1519 http:headers cdp:http:header:cookie:25964.1519 .
+cdp:http:header:keep-alive:25964.1519 a http:MessageHeader .
+cdp:http:header:sec-fetch-mode:25964.1519 http:fieldName "sec-fetch-mode" .
+cdp:http:header:vary:25964.1519 http:fieldValue "Origin, Access-Control-Request-Method, Access-Control-Request-Headers" .
+cdp:http:body:25964.1519 cnt:characterEncoding "UTF-8" .
+cdp:http:header:sec-ch-ua-mobile:25964.1519 http:fieldName "sec-ch-ua-mobile" .
+cdp:http:response:25964.1519 dcterms:date "2026-09-22"^^xsd:date .
+cdp:http:request:25964.1519 http:headers cdp:http:header:user-agent:25964.1519 .
+cdp:http:header:if-modified-since:25964.1519 a http:MessageHeader .
+cdp:http:header:x-xss-protection:25964.1519 http:fieldName "x-xss-protection" .
+cdp:http:header:sec-ch-ua-platform:25964.1519 http:fieldName "sec-ch-ua-platform" .
+cdp:http:header:connection:25964.1519 http:fieldName "connection" .
+cdp:http:response:25964.1519 http:headers cdp:http:header:content-type:25964.1519 .
+cdp:http:header:accept:25964.1519 http:fieldName "Accept" .
+cdp:http:header:referer:25964.1519 http:fieldValue "https://bannerprodssb.leoncountyfl.gov:8449/EmployeeSelfService/ssb/hrDashboard" .
+cdp:http:response:25964.1519 http:headers cdp:http:header:expires:25964.1519 .
+cdp:http:header:accept-encoding:25964.1519 a http:MessageHeader .
+cdp:http:header:content-type:25964.1519 http:fieldValue "application/json;charset=UTF-8" .
+cdp:http:response:25964.1519 http:body cdp:http:body:25964.1519 .
+<data:application/json;base64,ewogICJpc0FkbWluIjogZmFsc2UsCiAgIm5vUGF5U3R1YnMiOiBmYWxzZSwKICAicGF5U3R1YnMiOiAKICBbCiAgICB7CiAgICAgICJwYXlZZWFyIjogIjIwMjYiLAogICAgICAicGF5SWQiOiAiQlciLAogICAgICAicGF5TnVtYmVyIjogMTgsCiAgICAgICJzZXFOdW1iZXIiOiAwLAogICAgICAicGF5RGF0ZSI6ICIwOS8xMC8yMDI2IiwKICAgICAgInBheURhdGVVcmxTYWZlIjogIjIwMjYwOTEwIiwKICAgICAgInBheVBlcmlvZFN0YXJ0RGF0ZSI6ICIwOC8yMi8yMDI2IiwKICAgICAgInBheVBlcmlvZEVuZERhdGUiOiAiMDkvMDQvMjAyNiIsCiAgICAgICJuZXRBbW91bnQiOiAiJDIsMDQ5LjY4IiwKICAgICAgImdyb3NzQW1vdW50IjogIiQyLDY4MC4yNiIKICAgIH0sCiAgICB7CiAgICAgICJwYXlZZWFyIjogIjIwMjYiLAogICAgICAicGF5SWQiOiAiQlciLAogICAgICAicGF5TnVtYmVyIjogMTcsCiAgICAgICJzZXFOdW1iZXIiOiAwLAogICAgICAicGF5RGF0ZSI6ICIwOC8yNy8yMDI2IiwKICAgICAgInBheURhdGVVcmxTYWZlIjogIjIwMjYwODI3IiwKICAgICAgInBheVBlcmlvZFN0YXJ0RGF0ZSI6ICIwOC8wOC8yMDI2IiwKICAgICAgInBheVBlcmlvZEVuZERhdGUiOiAiMDgvMjEvMjAyNiIsCiAgICAgICJuZXRBbW91bnQiOiAiJDIsMDUxLjI3IiwKICAgICAgImdyb3NzQW1vdW50IjogIiQyLDY4MC4yNiIKICAgIH0sCiAgICB7CiAgICAgICJwYXlZZWFyIjogIjIwMjYiLAogICAgICAicGF5SWQiOiAiQlciLAogICAgICAicGF5TnVtYmVyIjogMTYsCiAgICAgICJzZXFOdW1iZXIiOiAwLAogICAgICAicGF5RGF0ZSI6ICIwOC8xMy8yMDI2IiwKICAgICAgInBheURhdGVVcmxTYWZlIjogIjIwMjYwODEzIiwKICAgICAgInBheVBlcmlvZFN0YXJ0RGF0ZSI6ICIwNy8yNS8yMDI2IiwKICAgICAgInBheVBlcmlvZEVuZERhdGUiOiAiMDgvMDcvMjAyNiIsCiAgICAgICJuZXRBbW91bnQiOiAiJDIsMDQ5LjY4IiwKICAgICAgImdyb3NzQW1vdW50IjogIiQyLDY4MC4yNiIKICAgIH0sCiAgICB7CiAgICAgICJwYXlZZWFyIjogIjIwMjYiLAogICAgICAicGF5SWQiOiAiQlciLAogICAgICAicGF5TnVtYmVyIjogMTUsCiAgICAgICJzZXFOdW1iZXIiOiAwLAogICAgICAicGF5RGF0ZSI6ICIwNy8zMC8yMDI2IiwKICAgICAgInBheURhdGVVcmxTYWZlIjogIjIwMjYwNzMwIiwKICAgICAgInBheVBlcmlvZFN0YXJ0RGF0ZSI6ICIwNy8xMS8yMDI2IiwKICAgICAgInBheVBlcmlvZEVuZERhdGUiOiAiMDcvMjQvMjAyNiIsCiAgICAgICJuZXRBbW91bnQiOiAiJDIsMTYyLjQ2IiwKICAgICAgImdyb3NzQW1vdW50IjogIiQyLDY4MC4yNiIKICAgIH0sCiAgICB7CiAgICAgICJwYXlZZWFyIjogIjIwMjYiLAogICAgICAicGF5SWQiOiAiQlciLAogICAgICAicGF5TnVtYmVyIjogMTQsCiAgICAgICJzZXFOdW1iZXIiOiAwLAogICAgICAicGF5RGF0ZSI6ICIwNy8xNi8yMDI2IiwKICAgICAgInBheURhdGVVcmxTYWZlIjogIjIwMjYwNzE2IiwKICAgICAgInBheVBlcmlvZFN0YXJ0RGF0ZSI6ICIwNi8yNy8yMDI2IiwKICAgICAgInBheVBlcmlvZEVuZERhdGUiOiAiMDcvMTAvMjAyNiIsCiAgICAgICJuZXRBbW91bnQiOiAiJDIsMDUxLjI3IiwKICAgICAgImdyb3NzQW1vdW50IjogIiQyLDY4MC4yNiIKICAgIH0sCiAgICB7CiAgICAgICJwYXlZZWFyIjogIjIwMjYiLAogICAgICAicGF5SWQiOiAiQlciLAogICAgICAicGF5TnVtYmVyIjogMTMsCiAgICAgICJzZXFOdW1iZXIiOiAwLAogICAgICAicGF5RGF0ZSI6ICIwNy8wMi8yMDI2IiwKICAgICAgInBheURhdGVVcmxTYWZlIjogIjIwMjYwNzAyIiwKICAgICAgInBheVBlcmlvZFN0YXJ0RGF0ZSI6ICIwNi8xMy8yMDI2IiwKICAgICAgInBheVBlcmlvZEVuZERhdGUiOiAiMDYvMjYvMjAyNiIsCiAgICAgICJuZXRBbW91bnQiOiAiJDIsMDQ5LjY4IiwKICAgICAgImdyb3NzQW1vdW50IjogIiQyLDY4MC4yNiIKICAgIH0sCiAgICB7CiAgICAgICJwYXlZZWFyIjogIjIwMjYiLAogICAgICAicGF5SWQiOiAiQlciLAogICAgICAicGF5TnVtYmVyIjogMTIsCiAgICAgICJzZXFOdW1iZXIiOiAwLAogICAgICAicGF5RGF0ZSI6ICIwNi8xOC8yMDI2IiwKICAgICAgInBheURhdGVVcmxTYWZlIjogIjIwMjYwNjE4IiwKICAgICAgInBheVBlcmlvZFN0YXJ0RGF0ZSI6ICIwNS8zMC8yMDI2IiwKICAgICAgInBheVBlcmlvZEVuZERhdGUiOiAiMDYvMTIvMjAyNiIsCiAgICAgICJuZXRBbW91bnQiOiAiJDIsMDUxLjI2IiwKICAgICAgImdyb3NzQW1vdW50IjogIiQyLDY4MC4yNiIKICAgIH0sCiAgICB7CiAgICAgICJwYXlZZWFyIjogIjIwMjYiLAogICAgICAicGF5SWQiOiAiQlciLAogICAgICAicGF5TnVtYmVyIjogMTEsCiAgICAgICJzZXFOdW1iZXIiOiAwLAogICAgICAicGF5RGF0ZSI6ICIwNi8wNC8yMDI2IiwKICAgICAgInBheURhdGVVcmxTYWZlIjogIjIwMjYwNjA0IiwKICAgICAgInBheVBlcmlvZFN0YXJ0RGF0ZSI6ICIwNS8xNi8yMDI2IiwKICAgICAgInBheVBlcmlvZEVuZERhdGUiOiAiMDUvMjkvMjAyNiIsCiAgICAgICJuZXRBbW91bnQiOiAiJDIsMDQ5LjY4IiwKICAgICAgImdyb3NzQW1vdW50IjogIiQyLDY4MC4yNiIKICAgIH0sCiAgICB7CiAgICAgICJwYXlZZWFyIjogIjIwMjYiLAogICAgICAicGF5SWQiOiAiQlciLAogICAgICAicGF5TnVtYmVyIjogMTAsCiAgICAgICJzZXFOdW1iZXIiOiAwLAogICAgICAicGF5RGF0ZSI6ICIwNS8yMS8yMDI2IiwKICAgICAgInBheURhdGVVcmxTYWZlIjogIjIwMjYwNTIxIiwKICAgICAgInBheVBlcmlvZFN0YXJ0RGF0ZSI6ICIwNS8wMi8yMDI2IiwKICAgICAgInBheVBlcmlvZEVuZERhdGUiOiAiMDUvMTUvMjAyNiIsCiAgICAgICJuZXRBbW91bnQiOiAiJDIsMDUxLjI3IiwKICAgICAgImdyb3NzQW1vdW50IjogIiQyLDY4MC4yNiIKICAgIH0sCiAgICB7CiAgICAgICJwYXlZZWFyIjogIjIwMjYiLAogICAgICAicGF5SWQiOiAiQlciLAogICAgICAicGF5TnVtYmVyIjogOSwKICAgICAgInNlcU51bWJlciI6IDAsCiAgICAgICJwYXlEYXRlIjogIjA1LzA3LzIwMjYiLAogICAgICAicGF5RGF0ZVVybFNhZmUiOiAiMjAyNjA1MDciLAogICAgICAicGF5UGVyaW9kU3RhcnREYXRlIjogIjA0LzE4LzIwMjYiLAogICAgICAicGF5UGVyaW9kRW5kRGF0ZSI6ICIwNS8wMS8yMDI2IiwKICAgICAgIm5ldEFtb3VudCI6ICIkMiwwNDkuNjgiLAogICAgICAiZ3Jvc3NBbW91bnQiOiAiJDIsNjgwLjI2IgogICAgfSwKICAgIHsKICAgICAgInBheVllYXIiOiAiMjAyNiIsCiAgICAgICJwYXlJZCI6ICJCVyIsCiAgICAgICJwYXlOdW1iZXIiOiA4LAogICAgICAic2VxTnVtYmVyIjogMCwKICAgICAgInBheURhdGUiOiAiMDQvMjMvMjAyNiIsCiAgICAgICJwYXlEYXRlVXJsU2FmZSI6ICIyMDI2MDQyMyIsCiAgICAgICJwYXlQZXJpb2RTdGFydERhdGUiOiAiMDQvMDQvMjAyNiIsCiAgICAgICJwYXlQZXJpb2RFbmREYXRlIjogIjA0LzE3LzIwMjYiLAogICAgICAibmV0QW1vdW50IjogIiQyLDA1MS4yNyIsCiAgICAgICJncm9zc0Ftb3VudCI6ICIkMiw2ODAuMjYiCiAgICB9LAogICAgewogICAgICAicGF5WWVhciI6ICIyMDI2IiwKICAgICAgInBheUlkIjogIkJXIiwKICAgICAgInBheU51bWJlciI6IDcsCiAgICAgICJzZXFOdW1iZXIiOiAwLAogICAgICAicGF5RGF0ZSI6ICIwNC8wOS8yMDI2IiwKICAgICAgInBheURhdGVVcmxTYWZlIjogIjIwMjYwNDA5IiwKICAgICAgInBheVBlcmlvZFN0YXJ0RGF0ZSI6ICIwMy8yMS8yMDI2IiwKICAgICAgInBheVBlcmlvZEVuZERhdGUiOiAiMDQvMDMvMjAyNiIsCiAgICAgICJuZXRBbW91bnQiOiAiJDIsMDQ5LjY3IiwKICAgICAgImdyb3NzQW1vdW50IjogIiQyLDY4MC4yNiIKICAgIH0sCiAgICB7CiAgICAgICJwYXlZZWFyIjogIjIwMjYiLAogICAgICAicGF5SWQiOiAiQlciLAogICAgICAicGF5TnVtYmVyIjogNiwKICAgICAgInNlcU51bWJlciI6IDAsCiAgICAgICJwYXlEYXRlIjogIjAzLzI2LzIwMjYiLAogICAgICAicGF5RGF0ZVVybFNhZmUiOiAiMjAyNjAzMjYiLAogICAgICAicGF5UGVyaW9kU3RhcnREYXRlIjogIjAzLzA3LzIwMjYiLAogICAgICAicGF5UGVyaW9kRW5kRGF0ZSI6ICIwMy8yMC8yMDI2IiwKICAgICAgIm5ldEFtb3VudCI6ICIkMiwwNTEuMjciLAogICAgICAiZ3Jvc3NBbW91bnQiOiAiJDIsNjgwLjI2IgogICAgfSwKICAgIHsKICAgICAgInBheVllYXIiOiAiMjAyNiIsCiAgICAgICJwYXlJZCI6ICJCVyIsCiAgICAgICJwYXlOdW1iZXIiOiA1LAogICAgICAic2VxTnVtYmVyIjogMCwKICAgICAgInBheURhdGUiOiAiMDMvMTIvMjAyNiIsCiAgICAgICJwYXlEYXRlVXJsU2FmZSI6ICIyMDI2MDMxMiIsCiAgICAgICJwYXlQZXJpb2RTdGFydERhdGUiOiAiMDIvMjEvMjAyNiIsCiAgICAgICJwYXlQZXJpb2RFbmREYXRlIjogIjAzLzA2LzIwMjYiLAogICAgICAibmV0QW1vdW50IjogIiQyLDA0OS42OCIsCiAgICAgICJncm9zc0Ftb3VudCI6ICIkMiw2ODAuMjYiCiAgICB9LAogICAgewogICAgICAicGF5WWVhciI6ICIyMDI2IiwKICAgICAgInBheUlkIjogIkJXIiwKICAgICAgInBheU51bWJlciI6IDQsCiAgICAgICJzZXFOdW1iZXIiOiAwLAogICAgICAicGF5RGF0ZSI6ICIwMi8yNi8yMDI2IiwKICAgICAgInBheURhdGVVcmxTYWZlIjogIjIwMjYwMjI2IiwKICAgICAgInBheVBlcmlvZFN0YXJ0RGF0ZSI6ICIwMi8wNy8yMDI2IiwKICAgICAgInBheVBlcmlvZEVuZERhdGUiOiAiMDIvMjAvMjAyNiIsCiAgICAgICJuZXRBbW91bnQiOiAiJDIsMDUxLjI3IiwKICAgICAgImdyb3NzQW1vdW50IjogIiQyLDY4MC4yNiIKICAgIH0sCiAgICB7CiAgICAgICJwYXlZZWFyIjogIjIwMjYiLAogICAgICAicGF5SWQiOiAiQlciLAogICAgICAicGF5TnVtYmVyIjogMywKICAgICAgInNlcU51bWJlciI6IDAsCiAgICAgICJwYXlEYXRlIjogIjAyLzEyLzIwMjYiLAogICAgICAicGF5RGF0ZVVybFNhZmUiOiAiMjAyNjAyMTIiLAogICAgICAicGF5UGVyaW9kU3RhcnREYXRlIjogIjAxLzI0LzIwMjYiLAogICAgICAicGF5UGVyaW9kRW5kRGF0ZSI6ICIwMi8wNi8yMDI2IiwKICAgICAgIm5ldEFtb3VudCI6ICIkMiwwNDkuNjciLAogICAgICAiZ3Jvc3NBbW91bnQiOiAiJDIsNjgwLjI2IgogICAgfSwKICAgIHsKICAgICAgInBheVllYXIiOiAiMjAyNiIsCiAgICAgICJwYXlJZCI6ICJCVyIsCiAgICAgICJwYXlOdW1iZXIiOiAyLAogICAgICAic2VxTnVtYmVyIjogMCwKICAgICAgInBheURhdGUiOiAiMDEvMjkvMjAyNiIsCiAgICAgICJwYXlEYXRlVXJsU2FmZSI6ICIyMDI2MDEyOSIsCiAgICAgICJwYXlQZXJpb2RTdGFydERhdGUiOiAiMDEvMTAvMjAyNiIsCiAgICAgICJwYXlQZXJpb2RFbmREYXRlIjogIjAxLzIzLzIwMjYiLAogICAgICAibmV0QW1vdW50IjogIiQyLDA1MS4yNyIsCiAgICAgICJncm9zc0Ftb3VudCI6ICIkMiw2ODAuMjYiCiAgICB9LAogICAgewogICAgICAicGF5WWVhciI6ICIyMDI2IiwKICAgICAgInBheUlkIjogIkJXIiwKICAgICAgInBheU51bWJlciI6IDEsCiAgICAgICJzZXFOdW1iZXIiOiAwLAogICAgICAicGF5RGF0ZSI6ICIwMS8xNS8yMDI2IiwKICAgICAgInBheURhdGVVcmxTYWZlIjogIjIwMjYwMTE1IiwKICAgICAgInBheVBlcmlvZFN0YXJ0RGF0ZSI6ICIxMi8yNy8yMDI1IiwKICAgICAgInBheVBlcmlvZEVuZERhdGUiOiAiMDEvMDkvMjAyNiIsCiAgICAgICJuZXRBbW91bnQiOiAiJDIsMDQ5LjY4IiwKICAgICAgImdyb3NzQW1vdW50IjogIiQyLDY4MC4yNiIKICAgIH0KICBdCn0=> cnt:chars """{
+  \"isAdmin\": false,
+  \"noPayStubs\": false,
+  \"payStubs\": 
+  [
+    {
+      \"payYear\": \"2026\",
+      \"payId\": \"BW\",
+      \"payNumber\": 18,
+      \"seqNumber\": 0,
+      \"payDate\": \"09/10/2026\",
+      \"payDateUrlSafe\": \"20260910\",
+      \"payPeriodStartDate\": \"08/22/2026\",
+      \"payPeriodEndDate\": \"09/04/2026\",
+      \"netAmount\": \"$2,049.68\",
+      \"grossAmount\": \"$2,680.26\"
+    },
+    {
+      \"payYear\": \"2026\",
+      \"payId\": \"BW\",
+      \"payNumber\": 17,
+      \"seqNumber\": 0,
+      \"payDate\": \"08/27/2026\",
+      \"payDateUrlSafe\": \"20260827\",
+      \"payPeriodStartDate\": \"08/08/2026\",
+      \"payPeriodEndDate\": \"08/21/2026\",
+      \"netAmount\": \"$2,051.27\",
+      \"grossAmount\": \"$2,680.26\"
+    },
+    {
+      \"payYear\": \"2026\",
+      \"payId\": \"BW\",
+      \"payNumber\": 16,
+      \"seqNumber\": 0,
+      \"payDate\": \"08/13/2026\",
+      \"payDateUrlSafe\": \"20260813\",
+      \"payPeriodStartDate\": \"07/25/2026\",
+      \"payPeriodEndDate\": \"08/07/2026\",
+      \"netAmount\": \"$2,049.68\",
+      \"grossAmount\": \"$2,680.26\"
+    },
+    {
+      \"payYear\": \"2026\",
+      \"payId\": \"BW\",
+      \"payNumber\": 15,
+      \"seqNumber\": 0,
+      \"payDate\": \"07/30/2026\",
+      \"payDateUrlSafe\": \"20260730\",
+      \"payPeriodStartDate\": \"07/11/2026\",
+      \"payPeriodEndDate\": \"07/24/2026\",
+      \"netAmount\": \"$2,162.46\",
+      \"grossAmount\": \"$2,680.26\"
+    },
+    {
+      \"payYear\": \"2026\",
+      \"payId\": \"BW\",
+      \"payNumber\": 14,
+      \"seqNumber\": 0,
+      \"payDate\": \"07/16/2026\",
+      \"payDateUrlSafe\": \"20260716\",
+      \"payPeriodStartDate\": \"06/27/2026\",
+      \"payPeriodEndDate\": \"07/10/2026\",
+      \"netAmount\": \"$2,051.27\",
+      \"grossAmount\": \"$2,680.26\"
+    },
+    {
+      \"payYear\": \"2026\",
+      \"payId\": \"BW\",
+      \"payNumber\": 13,
+      \"seqNumber\": 0,
+      \"payDate\": \"07/02/2026\",
+      \"payDateUrlSafe\": \"20260702\",
+      \"payPeriodStartDate\": \"06/13/2026\",
+      \"payPeriodEndDate\": \"06/26/2026\",
+      \"netAmount\": \"$2,049.68\",
+      \"grossAmount\": \"$2,680.26\"
+    },
+    {
+      \"payYear\": \"2026\",
+      \"payId\": \"BW\",
+      \"payNumber\": 12,
+      \"seqNumber\": 0,
+      \"payDate\": \"06/18/2026\",
+      \"payDateUrlSafe\": \"20260618\",
+      \"payPeriodStartDate\": \"05/30/2026\",
+      \"payPeriodEndDate\": \"06/12/2026\",
+      \"netAmount\": \"$2,051.26\",
+      \"grossAmount\": \"$2,680.26\"
+    },
+    {
+      \"payYear\": \"2026\",
+      \"payId\": \"BW\",
+      \"payNumber\": 11,
+      \"seqNumber\": 0,
+      \"payDate\": \"06/04/2026\",
+      \"payDateUrlSafe\": \"20260604\",
+      \"payPeriodStartDate\": \"05/16/2026\",
+      \"payPeriodEndDate\": \"05/29/2026\",
+      \"netAmount\": \"$2,049.68\",
+      \"grossAmount\": \"$2,680.26\"
+    },
+    {
+      \"payYear\": \"2026\",
+      \"payId\": \"BW\",
+      \"payNumber\": 10,
+      \"seqNumber\": 0,
+      \"payDate\": \"05/21/2026\",
+      \"payDateUrlSafe\": \"20260521\",
+      \"payPeriodStartDate\": \"05/02/2026\",
+      \"payPeriodEndDate\": \"05/15/2026\",
+      \"netAmount\": \"$2,051.27\",
+      \"grossAmount\": \"$2,680.26\"
+    },
+    {
+      \"payYear\": \"2026\",
+      \"payId\": \"BW\",
+      \"payNumber\": 9,
+      \"seqNumber\": 0,
+      \"payDate\": \"05/07/2026\",
+      \"payDateUrlSafe\": \"20260507\",
+      \"payPeriodStartDate\": \"04/18/2026\",
+      \"payPeriodEndDate\": \"05/01/2026\",
+      \"netAmount\": \"$2,049.68\",
+      \"grossAmount\": \"$2,680.26\"
+    },
+    {
+      \"payYear\": \"2026\",
+      \"payId\": \"BW\",
+      \"payNumber\": 8,
+      \"seqNumber\": 0,
+      \"payDate\": \"04/23/2026\",
+      \"payDateUrlSafe\": \"20260423\",
+      \"payPeriodStartDate\": \"04/04/2026\",
+      \"payPeriodEndDate\": \"04/17/2026\",
+      \"netAmount\": \"$2,051.27\",
+      \"grossAmount\": \"$2,680.26\"
+    },
+    {
+      \"payYear\": \"2026\",
+      \"payId\": \"BW\",
+      \"payNumber\": 7,
+      \"seqNumber\": 0,
+      \"payDate\": \"04/09/2026\",
+      \"payDateUrlSafe\": \"20260409\",
+      \"payPeriodStartDate\": \"03/21/2026\",
+      \"payPeriodEndDate\": \"04/03/2026\",
+      \"netAmount\": \"$2,049.67\",
+      \"grossAmount\": \"$2,680.26\"
+    },
+    {
+      \"payYear\": \"2026\",
+      \"payId\": \"BW\",
+      \"payNumber\": 6,
+      \"seqNumber\": 0,
+      \"payDate\": \"03/26/2026\",
+      \"payDateUrlSafe\": \"20260326\",
+      \"payPeriodStartDate\": \"03/07/2026\",
+      \"payPeriodEndDate\": \"03/20/2026\",
+      \"netAmount\": \"$2,051.27\",
+      \"grossAmount\": \"$2,680.26\"
+    },
+    {
+      \"payYear\": \"2026\",
+      \"payId\": \"BW\",
+      \"payNumber\": 5,
+      \"seqNumber\": 0,
+      \"payDate\": \"03/12/2026\",
+      \"payDateUrlSafe\": \"20260312\",
+      \"payPeriodStartDate\": \"02/21/2026\",
+      \"payPeriodEndDate\": \"03/06/2026\",
+      \"netAmount\": \"$2,049.68\",
+      \"grossAmount\": \"$2,680.26\"
+    },
+    {
+      \"payYear\": \"2026\",
+      \"payId\": \"BW\",
+      \"payNumber\": 4,
+      \"seqNumber\": 0,
+      \"payDate\": \"02/26/2026\",
+      \"payDateUrlSafe\": \"20260226\",
+      \"payPeriodStartDate\": \"02/07/2026\",
+      \"payPeriodEndDate\": \"02/20/2026\",
+      \"netAmount\": \"$2,051.27\",
+      \"grossAmount\": \"$2,680.26\"
+    },
+    {
+      \"payYear\": \"2026\",
+      \"payId\": \"BW\",
+      \"payNumber\": 3,
+      \"seqNumber\": 0,
+      \"payDate\": \"02/12/2026\",
+      \"payDateUrlSafe\": \"20260212\",
+      \"payPeriodStartDate\": \"01/24/2026\",
+      \"payPeriodEndDate\": \"02/06/2026\",
+      \"netAmount\": \"$2,049.67\",
+      \"grossAmount\": \"$2,680.26\"
+    },
+    {
+      \"payYear\": \"2026\",
+      \"payId\": \"BW\",
+      \"payNumber\": 2,
+      \"seqNumber\": 0,
+      \"payDate\": \"01/29/2026\",
+      \"payDateUrlSafe\": \"20260129\",
+      \"payPeriodStartDate\": \"01/10/2026\",
+      \"payPeriodEndDate\": \"01/23/2026\",
+      \"netAmount\": \"$2,051.27\",
+      \"grossAmount\": \"$2,680.26\"
+    },
+    {
+      \"payYear\": \"2026\",
+      \"payId\": \"BW\",
+      \"payNumber\": 1,
+      \"seqNumber\": 0,
+      \"payDate\": \"01/15/2026\",
+      \"payDateUrlSafe\": \"20260115\",
+      \"payPeriodStartDate\": \"12/27/2025\",
+      \"payPeriodEndDate\": \"01/09/2026\",
+      \"netAmount\": \"$2,049.68\",
+      \"grossAmount\": \"$2,680.26\"
+    }
+  ]
+}"""^^rdf:JSON .
+cdp:http:header:sec-fetch-site:25964.1519 http:fieldName "sec-fetch-site" .
+cdp:http:response:25964.1519 http:headers cdp:http:header:date:25964.1519 .
+cdp:http:header:sec-fetch-mode:25964.1519 a http:MessageHeader .
+<data:application/json;base64,ewogICJpc0FkbWluIjogZmFsc2UsCiAgIm5vUGF5U3R1YnMiOiBmYWxzZSwKICAicGF5U3R1YnMiOiAKICBbCiAgICB7CiAgICAgICJwYXlZZWFyIjogIjIwMjYiLAogICAgICAicGF5SWQiOiAiQlciLAogICAgICAicGF5TnVtYmVyIjogMTgsCiAgICAgICJzZXFOdW1iZXIiOiAwLAogICAgICAicGF5RGF0ZSI6ICIwOS8xMC8yMDI2IiwKICAgICAgInBheURhdGVVcmxTYWZlIjogIjIwMjYwOTEwIiwKICAgICAgInBheVBlcmlvZFN0YXJ0RGF0ZSI6ICIwOC8yMi8yMDI2IiwKICAgICAgInBheVBlcmlvZEVuZERhdGUiOiAiMDkvMDQvMjAyNiIsCiAgICAgICJuZXRBbW91bnQiOiAiJDIsMDQ5LjY4IiwKICAgICAgImdyb3NzQW1vdW50IjogIiQyLDY4MC4yNiIKICAgIH0sCiAgICB7CiAgICAgICJwYXlZZWFyIjogIjIwMjYiLAogICAgICAicGF5SWQiOiAiQlciLAogICAgICAicGF5TnVtYmVyIjogMTcsCiAgICAgICJzZXFOdW1iZXIiOiAwLAogICAgICAicGF5RGF0ZSI6ICIwOC8yNy8yMDI2IiwKICAgICAgInBheURhdGVVcmxTYWZlIjogIjIwMjYwODI3IiwKICAgICAgInBheVBlcmlvZFN0YXJ0RGF0ZSI6ICIwOC8wOC8yMDI2IiwKICAgICAgInBheVBlcmlvZEVuZERhdGUiOiAiMDgvMjEvMjAyNiIsCiAgICAgICJuZXRBbW91bnQiOiAiJDIsMDUxLjI3IiwKICAgICAgImdyb3NzQW1vdW50IjogIiQyLDY4MC4yNiIKICAgIH0sCiAgICB7CiAgICAgICJwYXlZZWFyIjogIjIwMjYiLAogICAgICAicGF5SWQiOiAiQlciLAogICAgICAicGF5TnVtYmVyIjogMTYsCiAgICAgICJzZXFOdW1iZXIiOiAwLAogICAgICAicGF5RGF0ZSI6ICIwOC8xMy8yMDI2IiwKICAgICAgInBheURhdGVVcmxTYWZlIjogIjIwMjYwODEzIiwKICAgICAgInBheVBlcmlvZFN0YXJ0RGF0ZSI6ICIwNy8yNS8yMDI2IiwKICAgICAgInBheVBlcmlvZEVuZERhdGUiOiAiMDgvMDcvMjAyNiIsCiAgICAgICJuZXRBbW91bnQiOiAiJDIsMDQ5LjY4IiwKICAgICAgImdyb3NzQW1vdW50IjogIiQyLDY4MC4yNiIKICAgIH0sCiAgICB7CiAgICAgICJwYXlZZWFyIjogIjIwMjYiLAogICAgICAicGF5SWQiOiAiQlciLAogICAgICAicGF5TnVtYmVyIjogMTUsCiAgICAgICJzZXFOdW1iZXIiOiAwLAogICAgICAicGF5RGF0ZSI6ICIwNy8zMC8yMDI2IiwKICAgICAgInBheURhdGVVcmxTYWZlIjogIjIwMjYwNzMwIiwKICAgICAgInBheVBlcmlvZFN0YXJ0RGF0ZSI6ICIwNy8xMS8yMDI2IiwKICAgICAgInBheVBlcmlvZEVuZERhdGUiOiAiMDcvMjQvMjAyNiIsCiAgICAgICJuZXRBbW91bnQiOiAiJDIsMTYyLjQ2IiwKICAgICAgImdyb3NzQW1vdW50IjogIiQyLDY4MC4yNiIKICAgIH0sCiAgICB7CiAgICAgICJwYXlZZWFyIjogIjIwMjYiLAogICAgICAicGF5SWQiOiAiQlciLAogICAgICAicGF5TnVtYmVyIjogMTQsCiAgICAgICJzZXFOdW1iZXIiOiAwLAogICAgICAicGF5RGF0ZSI6ICIwNy8xNi8yMDI2IiwKICAgICAgInBheURhdGVVcmxTYWZlIjogIjIwMjYwNzE2IiwKICAgICAgInBheVBlcmlvZFN0YXJ0RGF0ZSI6ICIwNi8yNy8yMDI2IiwKICAgICAgInBheVBlcmlvZEVuZERhdGUiOiAiMDcvMTAvMjAyNiIsCiAgICAgICJuZXRBbW91bnQiOiAiJDIsMDUxLjI3IiwKICAgICAgImdyb3NzQW1vdW50IjogIiQyLDY4MC4yNiIKICAgIH0sCiAgICB7CiAgICAgICJwYXlZZWFyIjogIjIwMjYiLAogICAgICAicGF5SWQiOiAiQlciLAogICAgICAicGF5TnVtYmVyIjogMTMsCiAgICAgICJzZXFOdW1iZXIiOiAwLAogICAgICAicGF5RGF0ZSI6ICIwNy8wMi8yMDI2IiwKICAgICAgInBheURhdGVVcmxTYWZlIjogIjIwMjYwNzAyIiwKICAgICAgInBheVBlcmlvZFN0YXJ0RGF0ZSI6ICIwNi8xMy8yMDI2IiwKICAgICAgInBheVBlcmlvZEVuZERhdGUiOiAiMDYvMjYvMjAyNiIsCiAgICAgICJuZXRBbW91bnQiOiAiJDIsMDQ5LjY4IiwKICAgICAgImdyb3NzQW1vdW50IjogIiQyLDY4MC4yNiIKICAgIH0sCiAgICB7CiAgICAgICJwYXlZZWFyIjogIjIwMjYiLAogICAgICAicGF5SWQiOiAiQlciLAogICAgICAicGF5TnVtYmVyIjogMTIsCiAgICAgICJzZXFOdW1iZXIiOiAwLAogICAgICAicGF5RGF0ZSI6ICIwNi8xOC8yMDI2IiwKICAgICAgInBheURhdGVVcmxTYWZlIjogIjIwMjYwNjE4IiwKICAgICAgInBheVBlcmlvZFN0YXJ0RGF0ZSI6ICIwNS8zMC8yMDI2IiwKICAgICAgInBheVBlcmlvZEVuZERhdGUiOiAiMDYvMTIvMjAyNiIsCiAgICAgICJuZXRBbW91bnQiOiAiJDIsMDUxLjI2IiwKICAgICAgImdyb3NzQW1vdW50IjogIiQyLDY4MC4yNiIKICAgIH0sCiAgICB7CiAgICAgICJwYXlZZWFyIjogIjIwMjYiLAogICAgICAicGF5SWQiOiAiQlciLAogICAgICAicGF5TnVtYmVyIjogMTEsCiAgICAgICJzZXFOdW1iZXIiOiAwLAogICAgICAicGF5RGF0ZSI6ICIwNi8wNC8yMDI2IiwKICAgICAgInBheURhdGVVcmxTYWZlIjogIjIwMjYwNjA0IiwKICAgICAgInBheVBlcmlvZFN0YXJ0RGF0ZSI6ICIwNS8xNi8yMDI2IiwKICAgICAgInBheVBlcmlvZEVuZERhdGUiOiAiMDUvMjkvMjAyNiIsCiAgICAgICJuZXRBbW91bnQiOiAiJDIsMDQ5LjY4IiwKICAgICAgImdyb3NzQW1vdW50IjogIiQyLDY4MC4yNiIKICAgIH0sCiAgICB7CiAgICAgICJwYXlZZWFyIjogIjIwMjYiLAogICAgICAicGF5SWQiOiAiQlciLAogICAgICAicGF5TnVtYmVyIjogMTAsCiAgICAgICJzZXFOdW1iZXIiOiAwLAogICAgICAicGF5RGF0ZSI6ICIwNS8yMS8yMDI2IiwKICAgICAgInBheURhdGVVcmxTYWZlIjogIjIwMjYwNTIxIiwKICAgICAgInBheVBlcmlvZFN0YXJ0RGF0ZSI6ICIwNS8wMi8yMDI2IiwKICAgICAgInBheVBlcmlvZEVuZERhdGUiOiAiMDUvMTUvMjAyNiIsCiAgICAgICJuZXRBbW91bnQiOiAiJDIsMDUxLjI3IiwKICAgICAgImdyb3NzQW1vdW50IjogIiQyLDY4MC4yNiIKICAgIH0sCiAgICB7CiAgICAgICJwYXlZZWFyIjogIjIwMjYiLAogICAgICAicGF5SWQiOiAiQlciLAogICAgICAicGF5TnVtYmVyIjogOSwKICAgICAgInNlcU51bWJlciI6IDAsCiAgICAgICJwYXlEYXRlIjogIjA1LzA3LzIwMjYiLAogICAgICAicGF5RGF0ZVVybFNhZmUiOiAiMjAyNjA1MDciLAogICAgICAicGF5UGVyaW9kU3RhcnREYXRlIjogIjA0LzE4LzIwMjYiLAogICAgICAicGF5UGVyaW9kRW5kRGF0ZSI6ICIwNS8wMS8yMDI2IiwKICAgICAgIm5ldEFtb3VudCI6ICIkMiwwNDkuNjgiLAogICAgICAiZ3Jvc3NBbW91bnQiOiAiJDIsNjgwLjI2IgogICAgfSwKICAgIHsKICAgICAgInBheVllYXIiOiAiMjAyNiIsCiAgICAgICJwYXlJZCI6ICJCVyIsCiAgICAgICJwYXlOdW1iZXIiOiA4LAogICAgICAic2VxTnVtYmVyIjogMCwKICAgICAgInBheURhdGUiOiAiMDQvMjMvMjAyNiIsCiAgICAgICJwYXlEYXRlVXJsU2FmZSI6ICIyMDI2MDQyMyIsCiAgICAgICJwYXlQZXJpb2RTdGFydERhdGUiOiAiMDQvMDQvMjAyNiIsCiAgICAgICJwYXlQZXJpb2RFbmREYXRlIjogIjA0LzE3LzIwMjYiLAogICAgICAibmV0QW1vdW50IjogIiQyLDA1MS4yNyIsCiAgICAgICJncm9zc0Ftb3VudCI6ICIkMiw2ODAuMjYiCiAgICB9LAogICAgewogICAgICAicGF5WWVhciI6ICIyMDI2IiwKICAgICAgInBheUlkIjogIkJXIiwKICAgICAgInBheU51bWJlciI6IDcsCiAgICAgICJzZXFOdW1iZXIiOiAwLAogICAgICAicGF5RGF0ZSI6ICIwNC8wOS8yMDI2IiwKICAgICAgInBheURhdGVVcmxTYWZlIjogIjIwMjYwNDA5IiwKICAgICAgInBheVBlcmlvZFN0YXJ0RGF0ZSI6ICIwMy8yMS8yMDI2IiwKICAgICAgInBheVBlcmlvZEVuZERhdGUiOiAiMDQvMDMvMjAyNiIsCiAgICAgICJuZXRBbW91bnQiOiAiJDIsMDQ5LjY3IiwKICAgICAgImdyb3NzQW1vdW50IjogIiQyLDY4MC4yNiIKICAgIH0sCiAgICB7CiAgICAgICJwYXlZZWFyIjogIjIwMjYiLAogICAgICAicGF5SWQiOiAiQlciLAogICAgICAicGF5TnVtYmVyIjogNiwKICAgICAgInNlcU51bWJlciI6IDAsCiAgICAgICJwYXlEYXRlIjogIjAzLzI2LzIwMjYiLAogICAgICAicGF5RGF0ZVVybFNhZmUiOiAiMjAyNjAzMjYiLAogICAgICAicGF5UGVyaW9kU3RhcnREYXRlIjogIjAzLzA3LzIwMjYiLAogICAgICAicGF5UGVyaW9kRW5kRGF0ZSI6ICIwMy8yMC8yMDI2IiwKICAgICAgIm5ldEFtb3VudCI6ICIkMiwwNTEuMjciLAogICAgICAiZ3Jvc3NBbW91bnQiOiAiJDIsNjgwLjI2IgogICAgfSwKICAgIHsKICAgICAgInBheVllYXIiOiAiMjAyNiIsCiAgICAgICJwYXlJZCI6ICJCVyIsCiAgICAgICJwYXlOdW1iZXIiOiA1LAogICAgICAic2VxTnVtYmVyIjogMCwKICAgICAgInBheURhdGUiOiAiMDMvMTIvMjAyNiIsCiAgICAgICJwYXlEYXRlVXJsU2FmZSI6ICIyMDI2MDMxMiIsCiAgICAgICJwYXlQZXJpb2RTdGFydERhdGUiOiAiMDIvMjEvMjAyNiIsCiAgICAgICJwYXlQZXJpb2RFbmREYXRlIjogIjAzLzA2LzIwMjYiLAogICAgICAibmV0QW1vdW50IjogIiQyLDA0OS42OCIsCiAgICAgICJncm9zc0Ftb3VudCI6ICIkMiw2ODAuMjYiCiAgICB9LAogICAgewogICAgICAicGF5WWVhciI6ICIyMDI2IiwKICAgICAgInBheUlkIjogIkJXIiwKICAgICAgInBheU51bWJlciI6IDQsCiAgICAgICJzZXFOdW1iZXIiOiAwLAogICAgICAicGF5RGF0ZSI6ICIwMi8yNi8yMDI2IiwKICAgICAgInBheURhdGVVcmxTYWZlIjogIjIwMjYwMjI2IiwKICAgICAgInBheVBlcmlvZFN0YXJ0RGF0ZSI6ICIwMi8wNy8yMDI2IiwKICAgICAgInBheVBlcmlvZEVuZERhdGUiOiAiMDIvMjAvMjAyNiIsCiAgICAgICJuZXRBbW91bnQiOiAiJDIsMDUxLjI3IiwKICAgICAgImdyb3NzQW1vdW50IjogIiQyLDY4MC4yNiIKICAgIH0sCiAgICB7CiAgICAgICJwYXlZZWFyIjogIjIwMjYiLAogICAgICAicGF5SWQiOiAiQlciLAogICAgICAicGF5TnVtYmVyIjogMywKICAgICAgInNlcU51bWJlciI6IDAsCiAgICAgICJwYXlEYXRlIjogIjAyLzEyLzIwMjYiLAogICAgICAicGF5RGF0ZVVybFNhZmUiOiAiMjAyNjAyMTIiLAogICAgICAicGF5UGVyaW9kU3RhcnREYXRlIjogIjAxLzI0LzIwMjYiLAogICAgICAicGF5UGVyaW9kRW5kRGF0ZSI6ICIwMi8wNi8yMDI2IiwKICAgICAgIm5ldEFtb3VudCI6ICIkMiwwNDkuNjciLAogICAgICAiZ3Jvc3NBbW91bnQiOiAiJDIsNjgwLjI2IgogICAgfSwKICAgIHsKICAgICAgInBheVllYXIiOiAiMjAyNiIsCiAgICAgICJwYXlJZCI6ICJCVyIsCiAgICAgICJwYXlOdW1iZXIiOiAyLAogICAgICAic2VxTnVtYmVyIjogMCwKICAgICAgInBheURhdGUiOiAiMDEvMjkvMjAyNiIsCiAgICAgICJwYXlEYXRlVXJsU2FmZSI6ICIyMDI2MDEyOSIsCiAgICAgICJwYXlQZXJpb2RTdGFydERhdGUiOiAiMDEvMTAvMjAyNiIsCiAgICAgICJwYXlQZXJpb2RFbmREYXRlIjogIjAxLzIzLzIwMjYiLAogICAgICAibmV0QW1vdW50IjogIiQyLDA1MS4yNyIsCiAgICAgICJncm9zc0Ftb3VudCI6ICIkMiw2ODAuMjYiCiAgICB9LAogICAgewogICAgICAicGF5WWVhciI6ICIyMDI2IiwKICAgICAgInBheUlkIjogIkJXIiwKICAgICAgInBheU51bWJlciI6IDEsCiAgICAgICJzZXFOdW1iZXIiOiAwLAogICAgICAicGF5RGF0ZSI6ICIwMS8xNS8yMDI2IiwKICAgICAgInBheURhdGVVcmxTYWZlIjogIjIwMjYwMTE1IiwKICAgICAgInBheVBlcmlvZFN0YXJ0RGF0ZSI6ICIxMi8yNy8yMDI1IiwKICAgICAgInBheVBlcmlvZEVuZERhdGUiOiAiMDEvMDkvMjAyNiIsCiAgICAgICJuZXRBbW91bnQiOiAiJDIsMDQ5LjY4IiwKICAgICAgImdyb3NzQW1vdW50IjogIiQyLDY4MC4yNiIKICAgIH0KICBdCn0=> cnt:characterEncoding "UTF-8" .
+cdp:http:header:sec-fetch-dest:25964.1519 http:fieldName "sec-fetch-dest" .
+cdp:http:response:25964.1519 http:headers cdp:http:header:keep-alive:25964.1519 .
+cdp:http:header:sec-ch-ua-mobile:25964.1519 http:fieldValue "?0" .
+cdp:http:response:25964.1519 http:headers cdp:http:header:x-content-type-options:25964.1519 .
+cdp:http:request:25964.1519 http:requestURI "https://bannerprodssb.leoncountyfl.gov:8449/EmployeeSelfService/ssb/payStubSummary/getPayStubSummaryList?payYear=2026"^^xsd:anyURI .
+cdp:http:response:25964.1519 http:headers cdp:http:header:cache-control:25964.1519 .
+cdp:http:header:vary:25964.1519 http:fieldName "vary" .
+cdp:http:header:host:25964.1519 a http:MessageHeader .
+cdp:http:header:expires:25964.1519 a http:MessageHeader .
+cdp:http:request:25964.1519 http:headers cdp:http:header:accept-encoding:25964.1519 .
+cdp:http:header:if-modified-since:25964.1519 http:fieldName "If-Modified-Since" .
+cdp:http:header:user-agent:25964.1519 http:fieldValue "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36" .
+cdp:http:request:25964.1519 http:headers cdp:http:header:cache-control:25964.1519 .
+cdp:http:body:25964.1519 cnt:bytes "ewogICJpc0FkbWluIjogZmFsc2UsCiAgIm5vUGF5U3R1YnMiOiBmYWxzZSwKICAicGF5U3R1YnMiOiAKICBbCiAgICB7CiAgICAgICJwYXlZZWFyIjogIjIwMjYiLAogICAgICAicGF5SWQiOiAiQlciLAogICAgICAicGF5TnVtYmVyIjogMTgsCiAgICAgICJzZXFOdW1iZXIiOiAwLAogICAgICAicGF5RGF0ZSI6ICIwOS8xMC8yMDI2IiwKICAgICAgInBheURhdGVVcmxTYWZlIjogIjIwMjYwOTEwIiwKICAgICAgInBheVBlcmlvZFN0YXJ0RGF0ZSI6ICIwOC8yMi8yMDI2IiwKICAgICAgInBheVBlcmlvZEVuZERhdGUiOiAiMDkvMDQvMjAyNiIsCiAgICAgICJuZXRBbW91bnQiOiAiJDIsMDQ5LjY4IiwKICAgICAgImdyb3NzQW1vdW50IjogIiQyLDY4MC4yNiIKICAgIH0sCiAgICB7CiAgICAgICJwYXlZZWFyIjogIjIwMjYiLAogICAgICAicGF5SWQiOiAiQlciLAogICAgICAicGF5TnVtYmVyIjogMTcsCiAgICAgICJzZXFOdW1iZXIiOiAwLAogICAgICAicGF5RGF0ZSI6ICIwOC8yNy8yMDI2IiwKICAgICAgInBheURhdGVVcmxTYWZlIjogIjIwMjYwODI3IiwKICAgICAgInBheVBlcmlvZFN0YXJ0RGF0ZSI6ICIwOC8wOC8yMDI2IiwKICAgICAgInBheVBlcmlvZEVuZERhdGUiOiAiMDgvMjEvMjAyNiIsCiAgICAgICJuZXRBbW91bnQiOiAiJDIsMDUxLjI3IiwKICAgICAgImdyb3NzQW1vdW50IjogIiQyLDY4MC4yNiIKICAgIH0sCiAgICB7CiAgICAgICJwYXlZZWFyIjogIjIwMjYiLAogICAgICAicGF5SWQiOiAiQlciLAogICAgICAicGF5TnVtYmVyIjogMTYsCiAgICAgICJzZXFOdW1iZXIiOiAwLAogICAgICAicGF5RGF0ZSI6ICIwOC8xMy8yMDI2IiwKICAgICAgInBheURhdGVVcmxTYWZlIjogIjIwMjYwODEzIiwKICAgICAgInBheVBlcmlvZFN0YXJ0RGF0ZSI6ICIwNy8yNS8yMDI2IiwKICAgICAgInBheVBlcmlvZEVuZERhdGUiOiAiMDgvMDcvMjAyNiIsCiAgICAgICJuZXRBbW91bnQiOiAiJDIsMDQ5LjY4IiwKICAgICAgImdyb3NzQW1vdW50IjogIiQyLDY4MC4yNiIKICAgIH0sCiAgICB7CiAgICAgICJwYXlZZWFyIjogIjIwMjYiLAogICAgICAicGF5SWQiOiAiQlciLAogICAgICAicGF5TnVtYmVyIjogMTUsCiAgICAgICJzZXFOdW1iZXIiOiAwLAogICAgICAicGF5RGF0ZSI6ICIwNy8zMC8yMDI2IiwKICAgICAgInBheURhdGVVcmxTYWZlIjogIjIwMjYwNzMwIiwKICAgICAgInBheVBlcmlvZFN0YXJ0RGF0ZSI6ICIwNy8xMS8yMDI2IiwKICAgICAgInBheVBlcmlvZEVuZERhdGUiOiAiMDcvMjQvMjAyNiIsCiAgICAgICJuZXRBbW91bnQiOiAiJDIsMTYyLjQ2IiwKICAgICAgImdyb3NzQW1vdW50IjogIiQyLDY4MC4yNiIKICAgIH0sCiAgICB7CiAgICAgICJwYXlZZWFyIjogIjIwMjYiLAogICAgICAicGF5SWQiOiAiQlciLAogICAgICAicGF5TnVtYmVyIjogMTQsCiAgICAgICJzZXFOdW1iZXIiOiAwLAogICAgICAicGF5RGF0ZSI6ICIwNy8xNi8yMDI2IiwKICAgICAgInBheURhdGVVcmxTYWZlIjogIjIwMjYwNzE2IiwKICAgICAgInBheVBlcmlvZFN0YXJ0RGF0ZSI6ICIwNi8yNy8yMDI2IiwKICAgICAgInBheVBlcmlvZEVuZERhdGUiOiAiMDcvMTAvMjAyNiIsCiAgICAgICJuZXRBbW91bnQiOiAiJDIsMDUxLjI3IiwKICAgICAgImdyb3NzQW1vdW50IjogIiQyLDY4MC4yNiIKICAgIH0sCiAgICB7CiAgICAgICJwYXlZZWFyIjogIjIwMjYiLAogICAgICAicGF5SWQiOiAiQlciLAogICAgICAicGF5TnVtYmVyIjogMTMsCiAgICAgICJzZXFOdW1iZXIiOiAwLAogICAgICAicGF5RGF0ZSI6ICIwNy8wMi8yMDI2IiwKICAgICAgInBheURhdGVVcmxTYWZlIjogIjIwMjYwNzAyIiwKICAgICAgInBheVBlcmlvZFN0YXJ0RGF0ZSI6ICIwNi8xMy8yMDI2IiwKICAgICAgInBheVBlcmlvZEVuZERhdGUiOiAiMDYvMjYvMjAyNiIsCiAgICAgICJuZXRBbW91bnQiOiAiJDIsMDQ5LjY4IiwKICAgICAgImdyb3NzQW1vdW50IjogIiQyLDY4MC4yNiIKICAgIH0sCiAgICB7CiAgICAgICJwYXlZZWFyIjogIjIwMjYiLAogICAgICAicGF5SWQiOiAiQlciLAogICAgICAicGF5TnVtYmVyIjogMTIsCiAgICAgICJzZXFOdW1iZXIiOiAwLAogICAgICAicGF5RGF0ZSI6ICIwNi8xOC8yMDI2IiwKICAgICAgInBheURhdGVVcmxTYWZlIjogIjIwMjYwNjE4IiwKICAgICAgInBheVBlcmlvZFN0YXJ0RGF0ZSI6ICIwNS8zMC8yMDI2IiwKICAgICAgInBheVBlcmlvZEVuZERhdGUiOiAiMDYvMTIvMjAyNiIsCiAgICAgICJuZXRBbW91bnQiOiAiJDIsMDUxLjI2IiwKICAgICAgImdyb3NzQW1vdW50IjogIiQyLDY4MC4yNiIKICAgIH0sCiAgICB7CiAgICAgICJwYXlZZWFyIjogIjIwMjYiLAogICAgICAicGF5SWQiOiAiQlciLAogICAgICAicGF5TnVtYmVyIjogMTEsCiAgICAgICJzZXFOdW1iZXIiOiAwLAogICAgICAicGF5RGF0ZSI6ICIwNi8wNC8yMDI2IiwKICAgICAgInBheURhdGVVcmxTYWZlIjogIjIwMjYwNjA0IiwKICAgICAgInBheVBlcmlvZFN0YXJ0RGF0ZSI6ICIwNS8xNi8yMDI2IiwKICAgICAgInBheVBlcmlvZEVuZERhdGUiOiAiMDUvMjkvMjAyNiIsCiAgICAgICJuZXRBbW91bnQiOiAiJDIsMDQ5LjY4IiwKICAgICAgImdyb3NzQW1vdW50IjogIiQyLDY4MC4yNiIKICAgIH0sCiAgICB7CiAgICAgICJwYXlZZWFyIjogIjIwMjYiLAogICAgICAicGF5SWQiOiAiQlciLAogICAgICAicGF5TnVtYmVyIjogMTAsCiAgICAgICJzZXFOdW1iZXIiOiAwLAogICAgICAicGF5RGF0ZSI6ICIwNS8yMS8yMDI2IiwKICAgICAgInBheURhdGVVcmxTYWZlIjogIjIwMjYwNTIxIiwKICAgICAgInBheVBlcmlvZFN0YXJ0RGF0ZSI6ICIwNS8wMi8yMDI2IiwKICAgICAgInBheVBlcmlvZEVuZERhdGUiOiAiMDUvMTUvMjAyNiIsCiAgICAgICJuZXRBbW91bnQiOiAiJDIsMDUxLjI3IiwKICAgICAgImdyb3NzQW1vdW50IjogIiQyLDY4MC4yNiIKICAgIH0sCiAgICB7CiAgICAgICJwYXlZZWFyIjogIjIwMjYiLAogICAgICAicGF5SWQiOiAiQlciLAogICAgICAicGF5TnVtYmVyIjogOSwKICAgICAgInNlcU51bWJlciI6IDAsCiAgICAgICJwYXlEYXRlIjogIjA1LzA3LzIwMjYiLAogICAgICAicGF5RGF0ZVVybFNhZmUiOiAiMjAyNjA1MDciLAogICAgICAicGF5UGVyaW9kU3RhcnREYXRlIjogIjA0LzE4LzIwMjYiLAogICAgICAicGF5UGVyaW9kRW5kRGF0ZSI6ICIwNS8wMS8yMDI2IiwKICAgICAgIm5ldEFtb3VudCI6ICIkMiwwNDkuNjgiLAogICAgICAiZ3Jvc3NBbW91bnQiOiAiJDIsNjgwLjI2IgogICAgfSwKICAgIHsKICAgICAgInBheVllYXIiOiAiMjAyNiIsCiAgICAgICJwYXlJZCI6ICJCVyIsCiAgICAgICJwYXlOdW1iZXIiOiA4LAogICAgICAic2VxTnVtYmVyIjogMCwKICAgICAgInBheURhdGUiOiAiMDQvMjMvMjAyNiIsCiAgICAgICJwYXlEYXRlVXJsU2FmZSI6ICIyMDI2MDQyMyIsCiAgICAgICJwYXlQZXJpb2RTdGFydERhdGUiOiAiMDQvMDQvMjAyNiIsCiAgICAgICJwYXlQZXJpb2RFbmREYXRlIjogIjA0LzE3LzIwMjYiLAogICAgICAibmV0QW1vdW50IjogIiQyLDA1MS4yNyIsCiAgICAgICJncm9zc0Ftb3VudCI6ICIkMiw2ODAuMjYiCiAgICB9LAogICAgewogICAgICAicGF5WWVhciI6ICIyMDI2IiwKICAgICAgInBheUlkIjogIkJXIiwKICAgICAgInBheU51bWJlciI6IDcsCiAgICAgICJzZXFOdW1iZXIiOiAwLAogICAgICAicGF5RGF0ZSI6ICIwNC8wOS8yMDI2IiwKICAgICAgInBheURhdGVVcmxTYWZlIjogIjIwMjYwNDA5IiwKICAgICAgInBheVBlcmlvZFN0YXJ0RGF0ZSI6ICIwMy8yMS8yMDI2IiwKICAgICAgInBheVBlcmlvZEVuZERhdGUiOiAiMDQvMDMvMjAyNiIsCiAgICAgICJuZXRBbW91bnQiOiAiJDIsMDQ5LjY3IiwKICAgICAgImdyb3NzQW1vdW50IjogIiQyLDY4MC4yNiIKICAgIH0sCiAgICB7CiAgICAgICJwYXlZZWFyIjogIjIwMjYiLAogICAgICAicGF5SWQiOiAiQlciLAogICAgICAicGF5TnVtYmVyIjogNiwKICAgICAgInNlcU51bWJlciI6IDAsCiAgICAgICJwYXlEYXRlIjogIjAzLzI2LzIwMjYiLAogICAgICAicGF5RGF0ZVVybFNhZmUiOiAiMjAyNjAzMjYiLAogICAgICAicGF5UGVyaW9kU3RhcnREYXRlIjogIjAzLzA3LzIwMjYiLAogICAgICAicGF5UGVyaW9kRW5kRGF0ZSI6ICIwMy8yMC8yMDI2IiwKICAgICAgIm5ldEFtb3VudCI6ICIkMiwwNTEuMjciLAogICAgICAiZ3Jvc3NBbW91bnQiOiAiJDIsNjgwLjI2IgogICAgfSwKICAgIHsKICAgICAgInBheVllYXIiOiAiMjAyNiIsCiAgICAgICJwYXlJZCI6ICJCVyIsCiAgICAgICJwYXlOdW1iZXIiOiA1LAogICAgICAic2VxTnVtYmVyIjogMCwKICAgICAgInBheURhdGUiOiAiMDMvMTIvMjAyNiIsCiAgICAgICJwYXlEYXRlVXJsU2FmZSI6ICIyMDI2MDMxMiIsCiAgICAgICJwYXlQZXJpb2RTdGFydERhdGUiOiAiMDIvMjEvMjAyNiIsCiAgICAgICJwYXlQZXJpb2RFbmREYXRlIjogIjAzLzA2LzIwMjYiLAogICAgICAibmV0QW1vdW50IjogIiQyLDA0OS42OCIsCiAgICAgICJncm9zc0Ftb3VudCI6ICIkMiw2ODAuMjYiCiAgICB9LAogICAgewogICAgICAicGF5WWVhciI6ICIyMDI2IiwKICAgICAgInBheUlkIjogIkJXIiwKICAgICAgInBheU51bWJlciI6IDQsCiAgICAgICJzZXFOdW1iZXIiOiAwLAogICAgICAicGF5RGF0ZSI6ICIwMi8yNi8yMDI2IiwKICAgICAgInBheURhdGVVcmxTYWZlIjogIjIwMjYwMjI2IiwKICAgICAgInBheVBlcmlvZFN0YXJ0RGF0ZSI6ICIwMi8wNy8yMDI2IiwKICAgICAgInBheVBlcmlvZEVuZERhdGUiOiAiMDIvMjAvMjAyNiIsCiAgICAgICJuZXRBbW91bnQiOiAiJDIsMDUxLjI3IiwKICAgICAgImdyb3NzQW1vdW50IjogIiQyLDY4MC4yNiIKICAgIH0sCiAgICB7CiAgICAgICJwYXlZZWFyIjogIjIwMjYiLAogICAgICAicGF5SWQiOiAiQlciLAogICAgICAicGF5TnVtYmVyIjogMywKICAgICAgInNlcU51bWJlciI6IDAsCiAgICAgICJwYXlEYXRlIjogIjAyLzEyLzIwMjYiLAogICAgICAicGF5RGF0ZVVybFNhZmUiOiAiMjAyNjAyMTIiLAogICAgICAicGF5UGVyaW9kU3RhcnREYXRlIjogIjAxLzI0LzIwMjYiLAogICAgICAicGF5UGVyaW9kRW5kRGF0ZSI6ICIwMi8wNi8yMDI2IiwKICAgICAgIm5ldEFtb3VudCI6ICIkMiwwNDkuNjciLAogICAgICAiZ3Jvc3NBbW91bnQiOiAiJDIsNjgwLjI2IgogICAgfSwKICAgIHsKICAgICAgInBheVllYXIiOiAiMjAyNiIsCiAgICAgICJwYXlJZCI6ICJCVyIsCiAgICAgICJwYXlOdW1iZXIiOiAyLAogICAgICAic2VxTnVtYmVyIjogMCwKICAgICAgInBheURhdGUiOiAiMDEvMjkvMjAyNiIsCiAgICAgICJwYXlEYXRlVXJsU2FmZSI6ICIyMDI2MDEyOSIsCiAgICAgICJwYXlQZXJpb2RTdGFydERhdGUiOiAiMDEvMTAvMjAyNiIsCiAgICAgICJwYXlQZXJpb2RFbmREYXRlIjogIjAxLzIzLzIwMjYiLAogICAgICAibmV0QW1vdW50IjogIiQyLDA1MS4yNyIsCiAgICAgICJncm9zc0Ftb3VudCI6ICIkMiw2ODAuMjYiCiAgICB9LAogICAgewogICAgICAicGF5WWVhciI6ICIyMDI2IiwKICAgICAgInBheUlkIjogIkJXIiwKICAgICAgInBheU51bWJlciI6IDEsCiAgICAgICJzZXFOdW1iZXIiOiAwLAogICAgICAicGF5RGF0ZSI6ICIwMS8xNS8yMDI2IiwKICAgICAgInBheURhdGVVcmxTYWZlIjogIjIwMjYwMTE1IiwKICAgICAgInBheVBlcmlvZFN0YXJ0RGF0ZSI6ICIxMi8yNy8yMDI1IiwKICAgICAgInBheVBlcmlvZEVuZERhdGUiOiAiMDEvMDkvMjAyNiIsCiAgICAgICJuZXRBbW91bnQiOiAiJDIsMDQ5LjY4IiwKICAgICAgImdyb3NzQW1vdW50IjogIiQyLDY4MC4yNiIKICAgIH0KICBdCn0="^^xsd:base64Binary .
+cdp:http:header:expires:25964.1519 http:fieldName "expires" .
+cdp:http:header:x-requested-with:25964.1519 http:fieldName "X-Requested-With" .
+cdp:http:request:25964.1519 http:headers cdp:http:header:host:25964.1519 .
+cdp:http:header:x-xss-protection:25964.1519 http:fieldValue "1; mode=block" .
+cdp:http:header:cookie:25964.1519 a http:MessageHeader .
+cdp:http:response:25964.1519 http:headers cdp:http:header:transfer-encoding:25964.1519 .
+cdp:http:request:25964.1519 http:headers cdp:http:header:sec-ch-ua:25964.1519 .
+cdp:http:header:transfer-encoding:25964.1519 http:fieldValue "chunked" .
+cdp:http:response:25964.1519 http:headers cdp:http:header:connection:25964.1519 .
+cdp:http:request:25964.1519 http:headers cdp:http:header:sec-ch-ua-platform:25964.1519 .
+cdp:http:body:25964.1519 a cnt:ContentAsBase64 .
+cdp:http:header:keep-alive:25964.1519 http:fieldName "keep-alive" .
+cdp:http:header:host:25964.1519 http:fieldValue "bannerprodssb.leoncountyfl.gov:8449" .
+<data:application/json;base64,ewogICJpc0FkbWluIjogZmFsc2UsCiAgIm5vUGF5U3R1YnMiOiBmYWxzZSwKICAicGF5U3R1YnMiOiAKICBbCiAgICB7CiAgICAgICJwYXlZZWFyIjogIjIwMjYiLAogICAgICAicGF5SWQiOiAiQlciLAogICAgICAicGF5TnVtYmVyIjogMTgsCiAgICAgICJzZXFOdW1iZXIiOiAwLAogICAgICAicGF5RGF0ZSI6ICIwOS8xMC8yMDI2IiwKICAgICAgInBheURhdGVVcmxTYWZlIjogIjIwMjYwOTEwIiwKICAgICAgInBheVBlcmlvZFN0YXJ0RGF0ZSI6ICIwOC8yMi8yMDI2IiwKICAgICAgInBheVBlcmlvZEVuZERhdGUiOiAiMDkvMDQvMjAyNiIsCiAgICAgICJuZXRBbW91bnQiOiAiJDIsMDQ5LjY4IiwKICAgICAgImdyb3NzQW1vdW50IjogIiQyLDY4MC4yNiIKICAgIH0sCiAgICB7CiAgICAgICJwYXlZZWFyIjogIjIwMjYiLAogICAgICAicGF5SWQiOiAiQlciLAogICAgICAicGF5TnVtYmVyIjogMTcsCiAgICAgICJzZXFOdW1iZXIiOiAwLAogICAgICAicGF5RGF0ZSI6ICIwOC8yNy8yMDI2IiwKICAgICAgInBheURhdGVVcmxTYWZlIjogIjIwMjYwODI3IiwKICAgICAgInBheVBlcmlvZFN0YXJ0RGF0ZSI6ICIwOC8wOC8yMDI2IiwKICAgICAgInBheVBlcmlvZEVuZERhdGUiOiAiMDgvMjEvMjAyNiIsCiAgICAgICJuZXRBbW91bnQiOiAiJDIsMDUxLjI3IiwKICAgICAgImdyb3NzQW1vdW50IjogIiQyLDY4MC4yNiIKICAgIH0sCiAgICB7CiAgICAgICJwYXlZZWFyIjogIjIwMjYiLAogICAgICAicGF5SWQiOiAiQlciLAogICAgICAicGF5TnVtYmVyIjogMTYsCiAgICAgICJzZXFOdW1iZXIiOiAwLAogICAgICAicGF5RGF0ZSI6ICIwOC8xMy8yMDI2IiwKICAgICAgInBheURhdGVVcmxTYWZlIjogIjIwMjYwODEzIiwKICAgICAgInBheVBlcmlvZFN0YXJ0RGF0ZSI6ICIwNy8yNS8yMDI2IiwKICAgICAgInBheVBlcmlvZEVuZERhdGUiOiAiMDgvMDcvMjAyNiIsCiAgICAgICJuZXRBbW91bnQiOiAiJDIsMDQ5LjY4IiwKICAgICAgImdyb3NzQW1vdW50IjogIiQyLDY4MC4yNiIKICAgIH0sCiAgICB7CiAgICAgICJwYXlZZWFyIjogIjIwMjYiLAogICAgICAicGF5SWQiOiAiQlciLAogICAgICAicGF5TnVtYmVyIjogMTUsCiAgICAgICJzZXFOdW1iZXIiOiAwLAogICAgICAicGF5RGF0ZSI6ICIwNy8zMC8yMDI2IiwKICAgICAgInBheURhdGVVcmxTYWZlIjogIjIwMjYwNzMwIiwKICAgICAgInBheVBlcmlvZFN0YXJ0RGF0ZSI6ICIwNy8xMS8yMDI2IiwKICAgICAgInBheVBlcmlvZEVuZERhdGUiOiAiMDcvMjQvMjAyNiIsCiAgICAgICJuZXRBbW91bnQiOiAiJDIsMTYyLjQ2IiwKICAgICAgImdyb3NzQW1vdW50IjogIiQyLDY4MC4yNiIKICAgIH0sCiAgICB7CiAgICAgICJwYXlZZWFyIjogIjIwMjYiLAogICAgICAicGF5SWQiOiAiQlciLAogICAgICAicGF5TnVtYmVyIjogMTQsCiAgICAgICJzZXFOdW1iZXIiOiAwLAogICAgICAicGF5RGF0ZSI6ICIwNy8xNi8yMDI2IiwKICAgICAgInBheURhdGVVcmxTYWZlIjogIjIwMjYwNzE2IiwKICAgICAgInBheVBlcmlvZFN0YXJ0RGF0ZSI6ICIwNi8yNy8yMDI2IiwKICAgICAgInBheVBlcmlvZEVuZERhdGUiOiAiMDcvMTAvMjAyNiIsCiAgICAgICJuZXRBbW91bnQiOiAiJDIsMDUxLjI3IiwKICAgICAgImdyb3NzQW1vdW50IjogIiQyLDY4MC4yNiIKICAgIH0sCiAgICB7CiAgICAgICJwYXlZZWFyIjogIjIwMjYiLAogICAgICAicGF5SWQiOiAiQlciLAogICAgICAicGF5TnVtYmVyIjogMTMsCiAgICAgICJzZXFOdW1iZXIiOiAwLAogICAgICAicGF5RGF0ZSI6ICIwNy8wMi8yMDI2IiwKICAgICAgInBheURhdGVVcmxTYWZlIjogIjIwMjYwNzAyIiwKICAgICAgInBheVBlcmlvZFN0YXJ0RGF0ZSI6ICIwNi8xMy8yMDI2IiwKICAgICAgInBheVBlcmlvZEVuZERhdGUiOiAiMDYvMjYvMjAyNiIsCiAgICAgICJuZXRBbW91bnQiOiAiJDIsMDQ5LjY4IiwKICAgICAgImdyb3NzQW1vdW50IjogIiQyLDY4MC4yNiIKICAgIH0sCiAgICB7CiAgICAgICJwYXlZZWFyIjogIjIwMjYiLAogICAgICAicGF5SWQiOiAiQlciLAogICAgICAicGF5TnVtYmVyIjogMTIsCiAgICAgICJzZXFOdW1iZXIiOiAwLAogICAgICAicGF5RGF0ZSI6ICIwNi8xOC8yMDI2IiwKICAgICAgInBheURhdGVVcmxTYWZlIjogIjIwMjYwNjE4IiwKICAgICAgInBheVBlcmlvZFN0YXJ0RGF0ZSI6ICIwNS8zMC8yMDI2IiwKICAgICAgInBheVBlcmlvZEVuZERhdGUiOiAiMDYvMTIvMjAyNiIsCiAgICAgICJuZXRBbW91bnQiOiAiJDIsMDUxLjI2IiwKICAgICAgImdyb3NzQW1vdW50IjogIiQyLDY4MC4yNiIKICAgIH0sCiAgICB7CiAgICAgICJwYXlZZWFyIjogIjIwMjYiLAogICAgICAicGF5SWQiOiAiQlciLAogICAgICAicGF5TnVtYmVyIjogMTEsCiAgICAgICJzZXFOdW1iZXIiOiAwLAogICAgICAicGF5RGF0ZSI6ICIwNi8wNC8yMDI2IiwKICAgICAgInBheURhdGVVcmxTYWZlIjogIjIwMjYwNjA0IiwKICAgICAgInBheVBlcmlvZFN0YXJ0RGF0ZSI6ICIwNS8xNi8yMDI2IiwKICAgICAgInBheVBlcmlvZEVuZERhdGUiOiAiMDUvMjkvMjAyNiIsCiAgICAgICJuZXRBbW91bnQiOiAiJDIsMDQ5LjY4IiwKICAgICAgImdyb3NzQW1vdW50IjogIiQyLDY4MC4yNiIKICAgIH0sCiAgICB7CiAgICAgICJwYXlZZWFyIjogIjIwMjYiLAogICAgICAicGF5SWQiOiAiQlciLAogICAgICAicGF5TnVtYmVyIjogMTAsCiAgICAgICJzZXFOdW1iZXIiOiAwLAogICAgICAicGF5RGF0ZSI6ICIwNS8yMS8yMDI2IiwKICAgICAgInBheURhdGVVcmxTYWZlIjogIjIwMjYwNTIxIiwKICAgICAgInBheVBlcmlvZFN0YXJ0RGF0ZSI6ICIwNS8wMi8yMDI2IiwKICAgICAgInBheVBlcmlvZEVuZERhdGUiOiAiMDUvMTUvMjAyNiIsCiAgICAgICJuZXRBbW91bnQiOiAiJDIsMDUxLjI3IiwKICAgICAgImdyb3NzQW1vdW50IjogIiQyLDY4MC4yNiIKICAgIH0sCiAgICB7CiAgICAgICJwYXlZZWFyIjogIjIwMjYiLAogICAgICAicGF5SWQiOiAiQlciLAogICAgICAicGF5TnVtYmVyIjogOSwKICAgICAgInNlcU51bWJlciI6IDAsCiAgICAgICJwYXlEYXRlIjogIjA1LzA3LzIwMjYiLAogICAgICAicGF5RGF0ZVVybFNhZmUiOiAiMjAyNjA1MDciLAogICAgICAicGF5UGVyaW9kU3RhcnREYXRlIjogIjA0LzE4LzIwMjYiLAogICAgICAicGF5UGVyaW9kRW5kRGF0ZSI6ICIwNS8wMS8yMDI2IiwKICAgICAgIm5ldEFtb3VudCI6ICIkMiwwNDkuNjgiLAogICAgICAiZ3Jvc3NBbW91bnQiOiAiJDIsNjgwLjI2IgogICAgfSwKICAgIHsKICAgICAgInBheVllYXIiOiAiMjAyNiIsCiAgICAgICJwYXlJZCI6ICJCVyIsCiAgICAgICJwYXlOdW1iZXIiOiA4LAogICAgICAic2VxTnVtYmVyIjogMCwKICAgICAgInBheURhdGUiOiAiMDQvMjMvMjAyNiIsCiAgICAgICJwYXlEYXRlVXJsU2FmZSI6ICIyMDI2MDQyMyIsCiAgICAgICJwYXlQZXJpb2RTdGFydERhdGUiOiAiMDQvMDQvMjAyNiIsCiAgICAgICJwYXlQZXJpb2RFbmREYXRlIjogIjA0LzE3LzIwMjYiLAogICAgICAibmV0QW1vdW50IjogIiQyLDA1MS4yNyIsCiAgICAgICJncm9zc0Ftb3VudCI6ICIkMiw2ODAuMjYiCiAgICB9LAogICAgewogICAgICAicGF5WWVhciI6ICIyMDI2IiwKICAgICAgInBheUlkIjogIkJXIiwKICAgICAgInBheU51bWJlciI6IDcsCiAgICAgICJzZXFOdW1iZXIiOiAwLAogICAgICAicGF5RGF0ZSI6ICIwNC8wOS8yMDI2IiwKICAgICAgInBheURhdGVVcmxTYWZlIjogIjIwMjYwNDA5IiwKICAgICAgInBheVBlcmlvZFN0YXJ0RGF0ZSI6ICIwMy8yMS8yMDI2IiwKICAgICAgInBheVBlcmlvZEVuZERhdGUiOiAiMDQvMDMvMjAyNiIsCiAgICAgICJuZXRBbW91bnQiOiAiJDIsMDQ5LjY3IiwKICAgICAgImdyb3NzQW1vdW50IjogIiQyLDY4MC4yNiIKICAgIH0sCiAgICB7CiAgICAgICJwYXlZZWFyIjogIjIwMjYiLAogICAgICAicGF5SWQiOiAiQlciLAogICAgICAicGF5TnVtYmVyIjogNiwKICAgICAgInNlcU51bWJlciI6IDAsCiAgICAgICJwYXlEYXRlIjogIjAzLzI2LzIwMjYiLAogICAgICAicGF5RGF0ZVVybFNhZmUiOiAiMjAyNjAzMjYiLAogICAgICAicGF5UGVyaW9kU3RhcnREYXRlIjogIjAzLzA3LzIwMjYiLAogICAgICAicGF5UGVyaW9kRW5kRGF0ZSI6ICIwMy8yMC8yMDI2IiwKICAgICAgIm5ldEFtb3VudCI6ICIkMiwwNTEuMjciLAogICAgICAiZ3Jvc3NBbW91bnQiOiAiJDIsNjgwLjI2IgogICAgfSwKICAgIHsKICAgICAgInBheVllYXIiOiAiMjAyNiIsCiAgICAgICJwYXlJZCI6ICJCVyIsCiAgICAgICJwYXlOdW1iZXIiOiA1LAogICAgICAic2VxTnVtYmVyIjogMCwKICAgICAgInBheURhdGUiOiAiMDMvMTIvMjAyNiIsCiAgICAgICJwYXlEYXRlVXJsU2FmZSI6ICIyMDI2MDMxMiIsCiAgICAgICJwYXlQZXJpb2RTdGFydERhdGUiOiAiMDIvMjEvMjAyNiIsCiAgICAgICJwYXlQZXJpb2RFbmREYXRlIjogIjAzLzA2LzIwMjYiLAogICAgICAibmV0QW1vdW50IjogIiQyLDA0OS42OCIsCiAgICAgICJncm9zc0Ftb3VudCI6ICIkMiw2ODAuMjYiCiAgICB9LAogICAgewogICAgICAicGF5WWVhciI6ICIyMDI2IiwKICAgICAgInBheUlkIjogIkJXIiwKICAgICAgInBheU51bWJlciI6IDQsCiAgICAgICJzZXFOdW1iZXIiOiAwLAogICAgICAicGF5RGF0ZSI6ICIwMi8yNi8yMDI2IiwKICAgICAgInBheURhdGVVcmxTYWZlIjogIjIwMjYwMjI2IiwKICAgICAgInBheVBlcmlvZFN0YXJ0RGF0ZSI6ICIwMi8wNy8yMDI2IiwKICAgICAgInBheVBlcmlvZEVuZERhdGUiOiAiMDIvMjAvMjAyNiIsCiAgICAgICJuZXRBbW91bnQiOiAiJDIsMDUxLjI3IiwKICAgICAgImdyb3NzQW1vdW50IjogIiQyLDY4MC4yNiIKICAgIH0sCiAgICB7CiAgICAgICJwYXlZZWFyIjogIjIwMjYiLAogICAgICAicGF5SWQiOiAiQlciLAogICAgICAicGF5TnVtYmVyIjogMywKICAgICAgInNlcU51bWJlciI6IDAsCiAgICAgICJwYXlEYXRlIjogIjAyLzEyLzIwMjYiLAogICAgICAicGF5RGF0ZVVybFNhZmUiOiAiMjAyNjAyMTIiLAogICAgICAicGF5UGVyaW9kU3RhcnREYXRlIjogIjAxLzI0LzIwMjYiLAogICAgICAicGF5UGVyaW9kRW5kRGF0ZSI6ICIwMi8wNi8yMDI2IiwKICAgICAgIm5ldEFtb3VudCI6ICIkMiwwNDkuNjciLAogICAgICAiZ3Jvc3NBbW91bnQiOiAiJDIsNjgwLjI2IgogICAgfSwKICAgIHsKICAgICAgInBheVllYXIiOiAiMjAyNiIsCiAgICAgICJwYXlJZCI6ICJCVyIsCiAgICAgICJwYXlOdW1iZXIiOiAyLAogICAgICAic2VxTnVtYmVyIjogMCwKICAgICAgInBheURhdGUiOiAiMDEvMjkvMjAyNiIsCiAgICAgICJwYXlEYXRlVXJsU2FmZSI6ICIyMDI2MDEyOSIsCiAgICAgICJwYXlQZXJpb2RTdGFydERhdGUiOiAiMDEvMTAvMjAyNiIsCiAgICAgICJwYXlQZXJpb2RFbmREYXRlIjogIjAxLzIzLzIwMjYiLAogICAgICAibmV0QW1vdW50IjogIiQyLDA1MS4yNyIsCiAgICAgICJncm9zc0Ftb3VudCI6ICIkMiw2ODAuMjYiCiAgICB9LAogICAgewogICAgICAicGF5WWVhciI6ICIyMDI2IiwKICAgICAgInBheUlkIjogIkJXIiwKICAgICAgInBheU51bWJlciI6IDEsCiAgICAgICJzZXFOdW1iZXIiOiAwLAogICAgICAicGF5RGF0ZSI6ICIwMS8xNS8yMDI2IiwKICAgICAgInBheURhdGVVcmxTYWZlIjogIjIwMjYwMTE1IiwKICAgICAgInBheVBlcmlvZFN0YXJ0RGF0ZSI6ICIxMi8yNy8yMDI1IiwKICAgICAgInBheVBlcmlvZEVuZERhdGUiOiAiMDEvMDkvMjAyNiIsCiAgICAgICJuZXRBbW91bnQiOiAiJDIsMDQ5LjY4IiwKICAgICAgImdyb3NzQW1vdW50IjogIiQyLDY4MC4yNiIKICAgIH0KICBdCn0=> a cnt:ContentAsText .
+cdp:http:request:25964.1519 http:headers cdp:http:header:x-requested-with:25964.1519 .
+cdp:http:request:25964.1519 http:resp cdp:http:response:25964.1519 .
+cdp:http:header:sec-fetch-site:25964.1519 a http:MessageHeader .
+cdp:http:header:transfer-encoding:25964.1519 http:fieldName "transfer-encoding" .
