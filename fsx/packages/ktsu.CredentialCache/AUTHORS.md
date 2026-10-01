@@ -1,1 +1,0 @@
-ktsu.dev contributors

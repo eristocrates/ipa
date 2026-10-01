@@ -1,1 +1,0 @@
-schema;data schema;type system;polymorphic serialization;json schema;schema editor;imgui;data modeling;code generation;dotnet;csharp

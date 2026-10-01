@@ -1,1 +1,0 @@
-`FSharp.Idioms` is a library of functions for FSharp.

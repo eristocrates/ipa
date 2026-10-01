@@ -1,1 +1,0 @@
-credential cache;secure storage;credentials;encryption;api keys;oauth tokens;authentication;memory cache;persistent cache;thread safe;security;dotnet;csharp

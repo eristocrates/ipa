@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<coreProperties xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.openxmlformats.org/package/2006/metadata/core-properties">
-  <dc:creator>Patrik Svensson, Phil Scott, Nils Andresen, Cédric Luthi</dc:creator>
-  <dc:description>A library that makes it easier to create beautiful console applications.</dc:description>
-  <dc:identifier>Spectre.Console.Ansi</dc:identifier>
-  <version>0.57.2</version>
-  <keywords></keywords>
-  <lastModifiedBy>NuGet.Packaging, Version=7.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35;.NET 8.0</lastModifiedBy>
-</coreProperties>
