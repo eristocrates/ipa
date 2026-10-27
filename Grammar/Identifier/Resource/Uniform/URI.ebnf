@@ -1,0 +1,103 @@
+/* converted on Sat Sep 12, 2026, 11:04 (UTC-04) by abnf-to-w3c v0.73 which is Copyright (c) 2011-2025 by Gunther Rademacher <grd@gmx.net> */
+
+URI      ::= scheme ':' hier-part ( '?' query )? ( '#' fragment )?
+hier-part
+         ::= '//' authority path-abempty
+           | path-absolute
+           | path-rootless
+           | path-empty
+URI-reference
+         ::= URI
+           | relative-ref
+absolute-URI
+         ::= scheme ':' hier-part ( '?' query )?
+relative-ref
+         ::= relative-part ( '?' query )? ( '#' fragment )?
+relative-part
+         ::= '//' authority path-abempty
+           | path-absolute
+           | path-noscheme
+           | path-empty
+scheme   ::= ALPHA ( ALPHA | DIGIT | '+' | '-' | '.' )*
+authority
+         ::= ( userinfo '@' )? host ( ':' port )?
+userinfo ::= ( unreserved | pct-encoded | sub-delims | ':' )*
+host     ::= IP-literal
+           | IPv4address
+           | reg-name
+port     ::= DIGIT*
+IP-literal
+         ::= '[' ( IPv6address | IPvFuture ) ']'
+IPvFuture
+         ::= 'v' HEXDIG+ '.' ( unreserved | sub-delims | ':' )+
+IPv6address
+         ::= ( ( ( ( ( ( h16 ':' | '::' ) h16 ':' | h16? '::' ) h16 ':' | ( h16 ( ':' h16 )? )? '::' ) h16 ':' | ( h16 ( ':' h16 ( ':' h16 )? )? )? '::' ) h16 ':' | ( h16 ( ':' h16 ( ':' h16 ( ':' h16 )? )? )? )? '::' ) h16 ':' | ( h16 ( ':' h16 ( ':' h16 ( ':' h16 ( ':' h16 )? )? )? )? )? '::' ) ls32
+           | ( h16 ( ':' h16 ( ':' h16 ( ':' h16 ( ':' h16 ( ':' h16 )? )? )? )? )? )? '::' h16
+           | ( h16 ( ':' h16 ( ':' h16 ( ':' h16 ( ':' h16 ( ':' h16 ( ':' h16 )? )? )? )? )? )? )? '::'
+h16      ::= HEXDIG ( HEXDIG ( HEXDIG HEXDIG? )? )?
+ls32     ::= h16 ':' h16
+           | IPv4address
+IPv4address
+         ::= dec-octet '.' dec-octet '.' dec-octet '.' dec-octet
+dec-octet
+         ::= ( [1-9] | '1' DIGIT | '2' [0-4] )? DIGIT
+           | '25' [0-5]
+reg-name ::= ( unreserved | pct-encoded | sub-delims )*
+path     ::= path-abempty
+           | path-absolute
+           | path-noscheme
+           | path-rootless
+           | path-empty
+path-abempty
+         ::= ( '/' segment )*
+path-absolute
+         ::= '/' ( segment-nz ( '/' segment )* )?
+path-noscheme
+         ::= segment-nz-nc ( '/' segment )*
+path-rootless
+         ::= segment-nz ( '/' segment )*
+path-empty
+         ::=
+segment  ::= pchar*
+segment-nz
+         ::= pchar+
+segment-nz-nc
+         ::= ( unreserved | pct-encoded | sub-delims | '@' )+
+pchar    ::= unreserved
+           | pct-encoded
+           | sub-delims
+           | ':'
+           | '@'
+query    ::= ( pchar | '/' | '?' )*
+fragment ::= ( pchar | '/' | '?' )*
+pct-encoded
+         ::= '%' HEXDIG HEXDIG
+unreserved
+         ::= ALPHA
+           | DIGIT
+           | '-'
+           | '.'
+           | '_'
+           | '~'
+reserved ::= gen-delims
+           | sub-delims
+gen-delims
+         ::= ':'
+           | '/'
+           | '?'
+           | '#'
+           | '['
+           | ']'
+           | '@'
+sub-delims
+         ::= '!'
+           | '$'
+           | '&'
+           | "'"
+           | '('
+           | ')'
+           | '*'
+           | '+'
+           | ','
+           | ';'
+           | '='

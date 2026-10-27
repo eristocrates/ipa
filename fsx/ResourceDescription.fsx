@@ -1023,6 +1023,7 @@ and SparqlGraphSelector =
 and GraphVerb =
     | PredicateVerb of RdfPredicate
     | PathVerb of GraphPath
+
 type String with
     member this.rdfString = SimpleString this
     member this.datatyped(datatypeIri: NamedReference) =

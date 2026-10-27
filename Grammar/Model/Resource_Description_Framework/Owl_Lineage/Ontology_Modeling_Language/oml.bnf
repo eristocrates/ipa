@@ -1,0 +1,442 @@
+Ontology ::=
+  VocabularyBox |
+  DescriptionBox
+
+Annotation ::=
+  "@" [AnnotationProperty|IRI] ((Literal | [Member|IRI]) ("," (Literal | [Member|IRI]))*)?
+
+VocabularyBox ::=
+  Vocabulary |
+  VocabularyBundle
+
+Vocabulary ::=
+  Annotation*
+  "vocabulary" NAMESPACE "as" ID  "{"
+    (Extension|Usage)*
+    VocabularyStatement*
+  "}"
+
+VocabularyBundle ::=
+  Annotation*
+  "vocabulary" "bundle" NAMESPACE "as" ID "{"
+    (Extension|Inclusion)*
+  "}"
+
+DescriptionBox ::=
+  Description |
+  DescriptionBundle
+	
+Description ::=
+  Annotation*
+  "description" NAMESPACE "as" ID "{"
+    (Extension|Usage)*
+    DescriptionStatement*
+  "}"
+
+DescriptionBundle ::=
+  Annotation*
+  "description" "bundle" NAMESPACE "as" ID "{"
+    (Extension|Usage|Inclusion)*
+  "}"
+
+SpecializableTerm ::=
+  Type |
+  AnnotationProperty |
+  ScalarProperty |
+  UnreifiedRelation
+
+Type ::=
+  Entity |
+  Scalar  
+	
+Entity ::=
+  Aspect |
+  Concept |
+  RelationEntity
+
+Aspect ::=
+  Annotation*
+  ("aspect" ID | "ref" "aspect" [Aspect|IRI]) ("["
+    (KeyAxiom)* 
+  "]")? (EntitySpecialization)? (EntityEquivalence)?
+
+Concept ::=
+  Annotation*
+  ("concept" ID | "ref" "concept" [Concept|IRI]) ("["
+    (InstanceEnumerationAxiom)?
+    (KeyAxiom)* 
+  "]")? (EntitySpecialization)? (EntityEquivalence)?
+	
+RelationEntity ::=
+  Annotation*
+  ("relation" "entity" ID | "ref" "relation" "entity" [RelationEntity|IRI]) ("["
+    ("from" [Entity|IRI] ("," [Entity|IRI])*)?
+    ("to" [Entity|IRI] ("," [Entity|IRI])*)?
+    (ForwardRelation)?
+    (ReverseRelation)?
+    ("functional")?
+    ("inverse" "functional")?
+    ("symmetric")?
+    ("asymmetric")?
+    ("reflexive")?
+    ("irreflexive")?
+    ("transitive")?
+    (KeyAxiom)*
+  "]")? (EntitySpecialization)? (EntityEquivalence)?
+	
+EntitySpecialization ::=
+  "<" (Entity ("," Entity)* 
+    |
+    (Entity ("," Entity)*)? "["
+      PropertyRestrictionAxiom*
+    "]")
+
+EntityEquivalence ::=
+  "=" EntityEquivalenceAxiom ("," EntityEquivalenceAxiom)*
+
+EntityEquivalenceAxiom ::=
+  [Entity|IRI] ("&" [Entity|IRI])*
+  |
+  {EntityEquivalenceAxiom} 
+  ([Entity|IRI] ("&" [Entity|IRI])*)? "["
+    PropertyRestrictionAxiom*
+  "]"
+
+Scalar ::=
+  Annotation*
+  ("scalar" ID | "ref" "scalar" [Scalar|IRI]) ("["
+     (LiteralEnumerationAxiom)?
+  "]")? (ScalarSpecialization)? (ScalarEquivalence)?
+
+ScalarSpecialization ::=
+  "<" Scalar ("," Scalar)*
+
+ScalarEquivalence ::=
+  "=" ScalarEquivalenceAxiom ("," ScalarEquivalenceAxiom)*;
+
+ScalarEquivalenceAxiom ::=
+  [Scalar|IRI] ("["
+     ("length" UnsignedInteger)? 
+     ("minLength" UnsignedInteger)?
+     ("maxLength" UnsignedInteger)?
+     ("pattern" STRING)?
+     ("language" ID)?
+     ("minInclusive" Literal)?
+     ("minExclusive" Literal)?
+     ("maxInclusive" Literal)?
+     ("maxExclusive" Literal)?
+  "]")?
+
+Property ::=
+  AnnotationProperty |
+  SemanticProperty
+
+AnnotationProperty ::=
+  Annotation*
+  ("annotation" "property" ID | "ref" "annotation" "property" [AnnotationProperty|IRI])
+    (PropertySpecialization)? (PropertyEquivalence)?
+
+SemanticProperty ::=
+  ScalarProperty |
+  Relation
+
+ScalarProperty ::=
+  Annotation*
+  ("scalar" "property" ID | "ref" "scalar" "property" [ScalarProperty|IRI]) ("["
+    ("domain" [Entity|IRI] ("," [Entity|IRI])*)?
+    ("range" [Scalar|IRI] ("," [Scalar|IRI])*)?
+    ("functional")?
+  "]")? (PropertySpecialization)? (PropertyEquivalence)?
+
+Relation ::=
+  ForwardRelation |
+  ReverseRelation |
+  UnreifiedRelation
+
+ForwardRelation ::=
+  Annotation*
+  "forward" ID
+
+ReverseRelation ::=
+  Annotation*
+  "reverse" ID
+
+UnreifiedRelation ::=
+  Annotation*
+  ("relation" ID | "ref" "relation" [Relation|IRI]) ("["
+    ("from" [Entity|IRI] ("," [Entity|IRI])*)?
+    ("to" [Entity|IRI] ("," [Entity|IRI])*)?
+    (ReverseRelation)?
+    ("functional")? 
+    ("inverse" "functional")?
+    ("symmetric")?
+    ("asymmetric")?
+    ("reflexive")?
+    ("irreflexive")?
+    ("transitive")?
+  "]")? (PropertySpecialization)? (PropertyEquivalence)?
+
+PropertySpecialization ::=
+  "<" Property ("," Property)*
+
+PropertyEquivalence ::=
+  "=" PropertyEquivalenceAxiom ("," PropertyEquivalenceAxiom)*
+
+PropertyEquivalenceAxiom ::=
+  [Property|IRI]
+
+Rule ::=
+  Annotation*
+  ("rule" ID | "ref" "rule" [Rule|IRI]) ("["
+    (Predicate ("&" Predicate)* "->" Predicate ("&" Predicate)*)?
+  "]")?
+
+BuiltIn ::=
+  Annotation*
+  ("builtin" ID | "ref" "builtin" [BuiltIn|IRI])
+
+AnonymousInstance ::=  
+  AnonymousConceptInstance |
+  AnonymousRelationInstance
+
+AnonymousConceptInstance ::=  
+  (":" [Entity|IRI])? "["
+    PropertyValueAssertion*
+  "]"
+	
+AnonymousRelationInstance ::=  
+  [NamedInstance|IRI] "["
+    PropertyValueAssertion*
+  "]"
+
+NamedInstance ::=
+  ConceptInstance |
+  RelationInstance
+
+ConceptInstance ::=
+  Annotation*
+  ("instance" ID | "ref" "instance" [ConceptInstance|IRI]) (":" ConceptTypeAssertion ("," ConceptTypeAssertion)*)? ("["
+    PropertyValueAssertion*
+  "]")?
+	
+RelationInstance ::=
+  Annotation*
+  ("relation" "instance" ID | "ref" "relation" "instance" [RelationInstance|IRI]) (":" RelationTypeAssertion ("," RelationTypeAssertion)*)? ("["
+    ("from" [NamedInstance|IRI] ("," [NamedInstance|IRI])*)? 
+    ("to" [NamedInstance|IRI] ("," [NamedInstance|IRI])*)?
+    PropertyValueAssertion*
+  "]")?
+
+Member ::=
+  VocabularyMember |
+  DescriptionMember |
+  Statement
+
+VocabularyMember ::=
+  VocabularyStatement |
+  Term
+
+DescriptionMember ::=
+  DescriptionStatement
+
+Statement ::=
+  VocabularyStatement |
+  DescriptionStatement
+
+VocabularyStatement ::=
+  Rule |
+  BuiltIn |
+  SpecializableTerm
+	
+DescriptionStatement ::=
+  NamedInstance
+
+Term ::=
+  Property |
+  SpecializableTerm
+
+Import ::=
+  Extension |
+  Usage |
+  Inclusion
+
+Extension ::=
+  Extends NAMESPACE ("as" ID)?
+    	
+Usage ::=
+  Uses NAMESPACE ("as" ID)?
+    	
+Inclusion ::=
+  Includes NAMESPACE ("as" ID)?
+
+PropertyRestrictionAxiom ::=
+  PropertySelfRestrictionAxiom |
+  PropertyRangeRestrictionAxiom |
+  PropertyCardinalityRestrictionAxiom |
+  PropertyValueRestrictionAxiom
+
+PropertyRangeRestrictionAxiom ::=
+  "restricts" RangeRestrictionKind [SemanticProperty|IRI] "to" [Type|IRI]
+
+PropertyCardinalityRestrictionAxiom ::=
+  "restricts" [SemanticProperty|IRI] "to" CardinalityRestrictionKind UnsignedInteger ([Type|IRI])?
+
+PropertyValueRestrictionAxiom ::=
+  "restricts" [SemanticProperty|IRI] "to" (Literal | AnonymousInstance | [NamedInstance|IRI])
+
+PropertySelfRestrictionAxiom ::=
+  "restricts" [SemanticProperty|IRI] "to" "self"
+
+KeyAxiom ::=
+  "key" [Property|IRI] ("," [Property|IRI])*
+
+InstanceEnumerationAxiom ::=
+  "oneOf" [ConceptInstance|IRI] ("," [ConceptInstance|IRI])*
+
+LiteralEnumerationAxiom ::=
+  "oneOf" Literal ("," Literal)*
+
+ConceptTypeAssertion ::=
+  [Concept|IRI]
+
+RelationTypeAssertion ::=
+  [RelationEntity|IRI]
+
+PropertyValueAssertion ::=
+  [SemanticProperty|IRI] (Literal | AnonymousInstance | [NamedInstance|IRI])  ("," (Literal | AnonymousInstance | [NamedInstance|IRI]))*
+
+Predicate ::=
+  UnaryPredicate |
+  BinaryPredicate |
+  BuiltInPredicate
+
+UnaryPredicate ::=
+  TypePredicate |
+  RelationEntityPredicate
+	
+BinaryPredicate ::=
+    PropertyPredicate |
+    SameAsPredicate |
+    DifferentFromPredicate
+
+TypePredicate ::=
+  [Type|IRI] "(" Argument ")"
+	
+RelationEntityPredicate ::=
+    [RelationEntity|IRI] "(" Argument "," Argument "," Argument ")"
+
+PropertyPredicate ::=
+  [Property|IRI] "(" Argument "," Argument ")"
+
+SameAsPredicate ::=
+    "sameAs" "(" Argument "," Argument ")"
+
+DifferentFromPredicate ::=
+    "differentFrom" "(" Argument "," Argument ")"
+
+BuiltInPredicate ::=
+    "builtIn" "(" [BuiltIn|IRI] "," Argument ("," Argument)* ")"
+
+Argument ::=
+  ID | Literal | [NamedInstance|REF]
+
+
+Literal ::=
+  IntegerLiteral |
+  DecimalLiteral |
+  DoubleLiteral |
+  BooleanLiteral |
+  QuotedLiteral
+
+IntegerLiteral ::=
+  Integer
+
+DecimalLiteral ::=
+  Decimal
+
+DoubleLiteral ::=
+  Double
+
+BooleanLiteral ::=
+  Boolean
+
+QuotedLiteral ::=
+  STRING (("^^" [Scalar|IRI]) | ("$" ID))?
+
+RangeRestrictionKind ::=
+  all |
+  some
+
+CardinalityRestrictionKind ::=
+  exactly |
+  min |
+  max
+
+Extends ::=
+  "extends"
+
+Uses ::=
+  "uses"
+
+Includes ::=
+  "includes"
+
+Boolean ::= 
+  BOOLEAN_STR
+
+UnsignedInteger ::= 
+  UNSIGNED_INTEGER_STR
+
+Integer ::= 
+  UNSIGNED_INTEGER_STR | INTEGER_STR
+
+Decimal ::=
+  DECIMAL_STR
+
+Double ::=
+  DOUBLE_STR
+
+BOOLEAN_STR ::= 
+  "false" | "true"
+
+UNSIGNED_INTEGER_STR ::= 
+  NUMERIC+
+
+INTEGER_STR ::= 
+  ("+"|"-")? NUMERIC+
+
+DECIMAL_STR ::= 
+  ("+"|"-")? (NUMERIC+("."NUMERIC*)? | ("."NUMERIC+))
+
+DOUBLE_STR ::= 
+  ("+"|"-")? (NUMERIC+("."NUMERIC*)? | ("."NUMERIC+)) (("e"|"E") ("+"|"-")? NUMERIC+)?
+
+STRING ::= 
+  (""" -> """) | ("'" -> "'") | ("'''" -> "'''") | ("\"\"\"" -> "\"\"\"")
+
+NAMESPACE ::= 
+  "<" (!(">"|\s|"#"))* ("#"|"/") ">"
+
+IRI ::= 
+  ID | REF
+
+REF ::=
+  FULL_IRI | ABBREVIATED_IRI
+
+FULL_IRI ::= 
+  "<" (!(">"|\s|"#"))* ">"
+
+ABBREVIATED_IRI ::= 
+  ID ":" ID
+
+ID ::= 
+  "^"? (ALPHA|NUMERIC|SPECIAL) (ALPHA|NUMERIC|SPECIAL|"$")*
+
+ALPHA ::= 
+  "a".."z" | "A".."Z"
+
+NUMERIC ::= 
+  "0".."9"
+
+SPECIAL ::= 
+  "_"|"-"|"."|"~"|"%"

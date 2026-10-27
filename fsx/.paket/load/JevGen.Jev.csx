@@ -1,0 +1,10 @@
+
+#load "JevGen.csx" 
+#load "Microsoft.Extensions.Configuration.Abstractions.csx" 
+#load "Microsoft.Extensions.DependencyInjection.csx" 
+#load "Microsoft.Extensions.DependencyInjection.Abstractions.csx" 
+#load "Microsoft.Extensions.Http.csx" 
+#load "Microsoft.Extensions.Logging.Abstractions.csx" 
+#load "Microsoft.Extensions.Options.csx" 
+#load "Microsoft.Extensions.Options.ConfigurationExtensions.csx" 
+#r "../../packages/JevGen.Jev/lib/net10.0/JevGen.Jev.dll" 

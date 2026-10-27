@@ -1,0 +1,441 @@
+#I @"D:\https\com\github\eristocrates\ipa\fsx"
+#r "Ipa.dll"
+open Ipa
+#r "Iana.dll"
+open Iana
+#r "IanaScheme.dll"
+#r "IanaMimeType.dll"
+
+
+#r "RdfAsm.dll"
+open RdfAsm
+#r "RdfIO.dll"
+open RdfIO
+#r "ManualDistributions.dll"
+open ManualDistributions
+#r "Turtle.dll"
+#r "ResolvedResource.dll"
+#r "Lov.dll"
+open Lov
+#r "NamespaceErgonomics.dll"
+open NamespaceErgonomics
+#load "SiteMap.fsx"
+
+
+
+
+
+
+
+
+#I @"D:\https\com\github\eristocrates\ipa\fsx\Namespaces\Generated"
+#load "PrefixMap.fsx"
+open PrefixMap
+#load "RdfNamespace.fsx"
+open RdfNamespace
+
+#load @".paket/load/main.group.fsx"
+
+open Universal.Common
+
+
+
+open System.Net
+open System
+open System.IO
+open System.Linq
+open System.Text
+open System.Text.RegularExpressions
+open System.Threading.Tasks
+open System.Net
+open System.Net.Sockets
+open System.Net.NetworkInformation
+
+open ModelingEvolution.Ipv4
+open Nager.PublicSuffix
+open Microsoft.AspNetCore.Http
+open Meziantou.Framework
+open Dubzer.WhatwgUrl
+open PuppeteerSharp.Cdp
+open BrowserApi.Css.Authoring
+open FolkerKinzel.MimeTypes
+open System.Collections
+open VDS.RDF
+open VDS.RDF.Parsing
+open System.Net.Http
+open RDFSharp.Model
+open VDS.RDF.Query.Datasets
+open VDS.Common.Tries
+open FsHttp
+
+
+
+
+
+
+
+
+
+let pathDelimiters = [| '/'; '\\' |]
+let lexicalDelimiters = [| '-'; '.'; '+'; '/' |]
+
+
+type String with
+    member this.pathTokens =
+        this.Split(pathDelimiters, StringSplitOptions.TrimEntries)
+        |> Array.choose (fun segment -> Option.ofNullOrWhiteSpace segment)
+    member this.lexicalTokens =
+        this.Split(lexicalDelimiters, StringSplitOptions.TrimEntries)
+        |> Array.choose (fun segment -> Option.ofNullOrWhiteSpace segment)
+
+
+
+// https://chromium.googlesource.com/v8/v8/+/HEAD/include
+
+type Nager.PublicSuffix.DomainInfo with
+
+    member this.topLevelDomain = this.TopLevelDomainRule
+    member this.secondLevelDomain = this.Domain
+    member this.subdomain = Option.ofNullOrWhiteSpace this.Subdomain
+    member this.dnsDomain = this.RegistrableDomain
+    member this.domainName = this.FullyQualifiedDomainName
+    member this.reverseDomainName =
+        match this.subdomain with
+        | Some subdomain -> Path.Combine(this.topLevelDomain.Name, this.secondLevelDomain, subdomain)
+        | None -> Path.Combine(this.topLevelDomain.Name, this.secondLevelDomain)
+
+    member this.ipAddresses =
+        try
+            Dns.GetHostAddresses this.dnsDomain
+        with _ -> [||]
+
+
+
+
+type LocalComputer() =
+    let _publicIPAddress =
+        http { GET "https://api.ipify.org" }
+        |> Request.send
+        |> Response.toText
+        |> IPAddress.Parse
+    let _localIPAddress =
+        NetworkInterface.GetAllNetworkInterfaces()
+        |> Seq.collect (fun networkInterface -> networkInterface.GetIPProperties().UnicastAddresses)
+        |> Seq.map (fun unicastIp -> unicastIp.Address)
+        |> Seq.pick (fun ipAddress ->
+            if ipAddress.AddressFamily = AddressFamily.InterNetwork then
+                Some ipAddress
+            else
+                None)
+    member this.machineName = Environment.MachineName
+    member this.hardDrives = DriveInfo.GetDrives()
+    member this.hostName = Dns.GetHostName()
+    member this.hostAddresses = Dns.GetHostAddresses this.hostName
+    member this.hardDriveByLetter =
+        this.hardDrives
+        |> Array.map (fun hardDrive -> hardDrive.Name[0], hardDrive)
+        |> Map.ofArray
+    member this.networkInterfaces = NetworkInterface.GetAllNetworkInterfaces()
+    member this.unicastIPAddresses =
+        this.networkInterfaces
+        |> Array.collect (fun networkInterface -> networkInterface.GetIPProperties().UnicastAddresses |> Seq.toArray)
+    member this.localIPAddress = _localIPAddress
+    member this.publicIPAddress = _publicIPAddress
+type HostName =
+    | LocalHost
+    | IPAddressHost of IPAddress
+    | RegistrableDomain of Nager.PublicSuffix.DomainInfo
+
+
+type IPAddress with
+    member this.asIpv4 =
+        match this.AddressFamily with
+        | AddressFamily.InterNetwork -> Ipv4Address.FromIPAddress this
+        | _ -> this.MapToIPv4() |> Ipv4Address.FromIPAddress
+    member this.asString = this.ToString()
+
+
+
+
+type Ipv4Address with
+    member this.asString = this.ToString()
+    member this.asIpAddress = this.ToIPAddress()
+    member this.outerLeft = int this.A
+    member this.innerLeft = int this.B
+    member this.innerRight = int this.C
+    member this.outerRight = int this.D
+
+
+
+type Uri with
+    member this.IanaScheme = IanaSchemes |> Array.find (fun scheme -> scheme.lexicalForm = this.Scheme)
+    member this.asUrl = DomUrl this.OriginalString
+    member this.HostName =
+        match this.DnsSafeHost with
+        | "localhost" -> LocalHost
+        | _ -> RegistrableDomainParser.Parse this.DnsSafeHost |> RegistrableDomain
+
+
+type HostName with
+    member this.name =
+        match this with
+        | LocalHost -> "localhost"
+        | IPAddressHost ipAddress -> ipAddress.asString
+        | RegistrableDomain domainInfo -> domainInfo.domainName
+    member this.topLevelDomain =
+        match this with
+        | LocalHost -> None
+        | IPAddressHost ipAddress -> None
+        | RegistrableDomain domainInfo -> Some domainInfo.topLevelDomain
+    member this.secondLevelDomain =
+        match this with
+        | LocalHost -> None
+        | IPAddressHost ipAddress -> None
+        | RegistrableDomain domainInfo -> Some domainInfo.secondLevelDomain
+    member this.subdomain =
+        match this with
+        | LocalHost -> None
+        | IPAddressHost ipAddress -> None
+        | RegistrableDomain domainInfo -> domainInfo.subdomain
+    member this.reverseDomainName =
+        match this with
+        | LocalHost -> "localhost"
+        | IPAddressHost ipAddress -> ipAddress.asString
+        | RegistrableDomain domainInfo -> domainInfo.reverseDomainName
+    member this.pathSegments =
+        match this with
+        | LocalHost -> [| "localhost" |]
+        | IPAddressHost ipAddress -> ipAddress.asString.lexicalTokens
+        | RegistrableDomain domainInfo -> domainInfo.reverseDomainName.pathTokens
+
+
+
+
+type IanaScheme with 
+    member this.urlPattern =
+        let init = new UrlPatternInit()
+        init.Protocol <- this.lexicalForm
+        UrlPattern.Create(init)
+
+type WhatwgSite = 
+    {
+        scheme:IanaScheme
+        host:HostName
+    }
+
+
+IanaScheme.https.urlPattern.IsMatch  "https://en.wikipedia.org/wiki/Reverse_domain_name_notation"
+
+var pattern3 = UrlPattern.Create(new UrlPatternInit
+{
+    Pathname = "/users/:userId/posts/:postId",
+});
+UrlPatternResult? result = pattern3.Match("https://example.com/users/42/posts/99");
+
+
+let httpsUri = Uri "https://en.wikipedia.org/wiki/Reverse_domain_name_notation"
+let localhostUri = Uri @"file://localhost/d:/https/com/discord/api/v9/channels/319303514507575297"
+
+localComputer.localIPAddress.asString.clip
+
+localhostUri.asUrl.Href.clip
+localhostUri.Host
+localhostUri.DnsSafeHost
+httpsUri.HostName
+httpsUri.HostNameType
+
+httpsUri.IanaScheme
+
+
+
+
+
+
+
+
+
+
+
+
+
+type Iri = {
+    scheme: IanaScheme
+    host: HostName
+    pathSegments: string array
+    fragment: FragmentString option
+    query: QueryStringParameterCollection
+    terminal: char
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+module data =
+    module text =
+        module plain =
+            let prefixId = PrefixId.fromNamespaceLabel "data:text/plain;charset=utf-8," String.Empty
+            let prefix (data: string) = prefixId.prefix data
+
+type String with
+    member this.asDataIri = data.text.plain.prefix this
+
+
+
+
+
+
+
+
+
+module dbug =
+    let _prefixId = PrefixId.fromNamespaceLabel $"{personalSiteReference}/ontology/dbug" "commonplace"
+    let _prefix (localName: string) = _prefixId.prefix localName
+
+
+module commonplace =
+    let _prefixId = PrefixId.fromNamespaceLabel $"{personalSiteReference}/ontology/commonplace" "commonplace"
+    let _prefix (localName: string) = _prefixId.prefix localName
+    let eristocrates = _prefix "eristocrates"
+    let syrislove = _prefix "syrislove"
+
+
+
+
+
+
+// let httpVocabulary = PrefixId.http.RdfVocabulary
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+let chrome = CdpBrowser.Connect()
+let networkMonitor = CdpNetworkMonitor.Create chrome |> await
+
+let replTab = chrome.NewPageAsync().await.asCdp
+
+replTab.GoToAsync("https://bannerprodssb.leoncountyfl.gov:8449/EmployeeSelfService/ssb/hrDashboard").await
+(*
+
+                        match request.Response.asCdp.mimeType with
+                        | Some mimeType ->
+                            match mimeType.MediaType, mimeType.SubType, request.Response.resource.extension with
+                            | "application", "json", _
+                            | _, _, Some ".json"
+                            | _, _, Some ".jsonhtml"
+                            | "application", "xml", _
+                            | _, _, Some ".xml" ->
+                                request.Response.Text()
+                                |> Option.iter (fun text ->
+                                    printfn "%s\t\t----->\t\t%s" request.Response.resource.remoteReference request.Response.resource.localReference
+                                    File.WriteAllText(request.Response.resource.localReference, text))
+                        | None -> ()
+*)
+
+let selectedResponses =
+    networkMonitor.finishedRequests
+    |> Array.choose (fun request ->
+        match request.Response.asCdp.mimeType, request.Response.asCdp.resource.extension with
+        | _, Some ".json"
+        | _, Some ".jsonhtml"
+        | _, Some ".xml" -> Some request.Response
+        | Some mimeType, _ ->
+            match mimeType.MediaType, mimeType.SubType with
+            | "application", "json"
+            | "application", "xml" -> Some request.Response
+            | _, _ -> None
+        | _, _ -> None)
+
+selectedResponses
+|> Array.iter (fun selectedResponse ->
+    selectedResponse.Text()
+    |> Option.iter (fun text ->
+        printfn "%s\t----->\t%s\n\n" selectedResponse.resource.remoteReference selectedResponse.resource.localReference
+        Directory.CreateDirectory selectedResponse.resource.asAbsoluteFilePath.DirectoryPath.WeakString
+        |> ignore
+        File.WriteAllText(selectedResponse.resource.localReference, text)))
+
+
+// https://xproc.org/specifications.html
+
+
+
+// finishedRequests.Clear()
+
+let testRequests = finishedRequests |> Seq.toArray
+
+
+IanaMimeType.text.html
+IanaMimeType.text.css
+IanaMimeType.image.png
+IanaMimeType.font.woff2
+IanaMimeType.image.svg.xml
+
+// "text/html; charset=utf-8"; "text/css; charset=utf-8"; "image/png"; "font/woff2"; "image/svg+xml"|
+testRequests[0]
+
+
+
+finishedRequests[0].Response.asCdp.Text()
+
+
+finishedRequests.Count()
+finishedRequests
+|> Seq.filter (fun request -> request.Response.resource.host.remoteReference = "claims.akko.app")
+
+let finishedRequest = finishedRequests |> Seq.head
+finishedRequest.Response.mediaType
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//

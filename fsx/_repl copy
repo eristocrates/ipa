@@ -1,441 +1,496 @@
-#I @"D:\https\com\github\eristocrates\ipa\fsx"
-#r "Ipa.dll"
-open Ipa
-#r "Iana.dll"
-open Iana
+/// TODO use dynamic operator for namespacenames for adhoc local names
+
+#time on
+
+fsi.PrintLength <- 10
+fsi.PrintSize <- 100
+
+// fsi.ShowDeclarationValues <- false
+#I @"D:\https\com\github\eristocrates\ipa\dll"
+#r "SharedKernel.dll"
+#r "StringModule.dll"
+#r "Internet.dll"
+#r "TopLevelDomain.dll"
 #r "IanaScheme.dll"
-#r "IanaMimeType.dll"
-
-
-#r "RdfAsm.dll"
-open RdfAsm
-#r "RdfIO.dll"
-open RdfIO
-#r "ManualDistributions.dll"
-open ManualDistributions
+#r "ResourceIdentification.dll"
+// #r "ResourceDescription.dll"
+#r "Iana.dll"
+#r "IanaScheme.dll"
+#r "IanaMime.dll"
+#r "NetworkMonitor.dll"
 #r "Turtle.dll"
-#r "ResolvedResource.dll"
-#r "Lov.dll"
-open Lov
-#r "NamespaceErgonomics.dll"
-open NamespaceErgonomics
-#load "SiteMap.fsx"
-
-
-
-
-
-
-
-
-#I @"D:\https\com\github\eristocrates\ipa\fsx\Namespaces\Generated"
-#load "PrefixMap.fsx"
-open PrefixMap
-#load "RdfNamespace.fsx"
-open RdfNamespace
+#I @"D:\https\com\github\eristocrates\ipa\fsx"
+#load "Ast.fsx"
+#load "Me.fsx"
+open SharedKernel
+open StringModule
+open Internet
+open ResourceIdentification
+open Me
+// open ResourceDescription
+open Turtle
+open Iana
+open NetworkMonitor
+// #I @"D:\https\com\github\eristocrates\ipa\fsx\Sites"
 
 #load @".paket/load/main.group.fsx"
+open PuppeteerSharp
+open PuppeteerSharp.Cdp
+open FolkerKinzel.MimeTypes
+open System.Web
+open IriTools
 
-open Universal.Common
-
-
-
-open System.Net
 open System
+open System.Collections
+open System.Text
 open System.IO
 open System.Linq
-open System.Text
-open System.Text.RegularExpressions
-open System.Threading.Tasks
-open System.Net
-open System.Net.Sockets
-open System.Net.NetworkInformation
-
-open ModelingEvolution.Ipv4
-open Nager.PublicSuffix
-open Microsoft.AspNetCore.Http
-open Meziantou.Framework
-open Dubzer.WhatwgUrl
+open PuppeteerSharp
 open PuppeteerSharp.Cdp
+open Tavis.UriTemplates
 open BrowserApi.Css.Authoring
-open FolkerKinzel.MimeTypes
-open System.Collections
+open BrowserApi.Css
+open BrowserApi
+open Meziantou.Framework
+open System.Threading
 open VDS.RDF
+open FSharp.Data
 open VDS.RDF.Parsing
-open System.Net.Http
+open Universal.Common
 open RDFSharp.Model
-open VDS.RDF.Query.Datasets
-open VDS.Common.Tries
-open FsHttp
+open AW.Identifiers
+open LSL.DataUri
+open VDS.RDF.Ontology
+open OWLSharp
+open OWLSharp.Validator
+open OWLSharp.Reasoner
+open OWLSharp.Profiler
+open OWLSharp.Ontology
+open OWLSharp.Extensions
+open System.Globalization
+open System.Xml
+open Dubzer.WhatwgUrl
 
+#I @"D:\https\com\github\eristocrates\ipa\fs\DoxAletheia\src\DoxAletheia.Runtime\bin\Release\net10.0"
 
-
-
-
-
-
-
-
-let pathDelimiters = [| '/'; '\\' |]
-let lexicalDelimiters = [| '-'; '.'; '+'; '/' |]
-
-
-type String with
-    member this.pathTokens =
-        this.Split(pathDelimiters, StringSplitOptions.TrimEntries)
-        |> Array.choose (fun segment -> Option.ofNullOrWhiteSpace segment)
-    member this.lexicalTokens =
-        this.Split(lexicalDelimiters, StringSplitOptions.TrimEntries)
-        |> Array.choose (fun segment -> Option.ofNullOrWhiteSpace segment)
-
-
-
-// https://chromium.googlesource.com/v8/v8/+/HEAD/include
-
-type Nager.PublicSuffix.DomainInfo with
-
-    member this.topLevelDomain = this.TopLevelDomainRule
-    member this.secondLevelDomain = this.Domain
-    member this.subdomain = Option.ofNullOrWhiteSpace this.Subdomain
-    member this.dnsDomain = this.RegistrableDomain
-    member this.domainName = this.FullyQualifiedDomainName
-    member this.reverseDomainName =
-        match this.subdomain with
-        | Some subdomain -> Path.Combine(this.topLevelDomain.Name, this.secondLevelDomain, subdomain)
-        | None -> Path.Combine(this.topLevelDomain.Name, this.secondLevelDomain)
-
-    member this.ipAddresses =
-        try
-            Dns.GetHostAddresses this.dnsDomain
-        with _ -> [||]
-
-
-
-
-type LocalComputer() =
-    let _publicIPAddress =
-        http { GET "https://api.ipify.org" }
-        |> Request.send
-        |> Response.toText
-        |> IPAddress.Parse
-    let _localIPAddress =
-        NetworkInterface.GetAllNetworkInterfaces()
-        |> Seq.collect (fun networkInterface -> networkInterface.GetIPProperties().UnicastAddresses)
-        |> Seq.map (fun unicastIp -> unicastIp.Address)
-        |> Seq.pick (fun ipAddress ->
-            if ipAddress.AddressFamily = AddressFamily.InterNetwork then
-                Some ipAddress
-            else
-                None)
-    member this.machineName = Environment.MachineName
-    member this.hardDrives = DriveInfo.GetDrives()
-    member this.hostName = Dns.GetHostName()
-    member this.hostAddresses = Dns.GetHostAddresses this.hostName
-    member this.hardDriveByLetter =
-        this.hardDrives
-        |> Array.map (fun hardDrive -> hardDrive.Name[0], hardDrive)
-        |> Map.ofArray
-    member this.networkInterfaces = NetworkInterface.GetAllNetworkInterfaces()
-    member this.unicastIPAddresses =
-        this.networkInterfaces
-        |> Array.collect (fun networkInterface -> networkInterface.GetIPProperties().UnicastAddresses |> Seq.toArray)
-    member this.localIPAddress = _localIPAddress
-    member this.publicIPAddress = _publicIPAddress
-type HostName =
-    | LocalHost
-    | IPAddressHost of IPAddress
-    | RegistrableDomain of Nager.PublicSuffix.DomainInfo
-
-
-type IPAddress with
-    member this.asIpv4 =
-        match this.AddressFamily with
-        | AddressFamily.InterNetwork -> Ipv4Address.FromIPAddress this
-        | _ -> this.MapToIPv4() |> Ipv4Address.FromIPAddress
-    member this.asString = this.ToString()
-
-
-
-
-type Ipv4Address with
-    member this.asString = this.ToString()
-    member this.asIpAddress = this.ToIPAddress()
-    member this.outerLeft = int this.A
-    member this.innerLeft = int this.B
-    member this.innerRight = int this.C
-    member this.outerRight = int this.D
-
-
-
-type Uri with
-    member this.IanaScheme = IanaSchemes |> Array.find (fun scheme -> scheme.lexicalForm = this.Scheme)
-    member this.asUrl = DomUrl this.OriginalString
-    member this.HostName =
-        match this.DnsSafeHost with
-        | "localhost" -> LocalHost
-        | _ -> RegistrableDomainParser.Parse this.DnsSafeHost |> RegistrableDomain
-
-
-type HostName with
-    member this.name =
-        match this with
-        | LocalHost -> "localhost"
-        | IPAddressHost ipAddress -> ipAddress.asString
-        | RegistrableDomain domainInfo -> domainInfo.domainName
-    member this.topLevelDomain =
-        match this with
-        | LocalHost -> None
-        | IPAddressHost ipAddress -> None
-        | RegistrableDomain domainInfo -> Some domainInfo.topLevelDomain
-    member this.secondLevelDomain =
-        match this with
-        | LocalHost -> None
-        | IPAddressHost ipAddress -> None
-        | RegistrableDomain domainInfo -> Some domainInfo.secondLevelDomain
-    member this.subdomain =
-        match this with
-        | LocalHost -> None
-        | IPAddressHost ipAddress -> None
-        | RegistrableDomain domainInfo -> domainInfo.subdomain
-    member this.reverseDomainName =
-        match this with
-        | LocalHost -> "localhost"
-        | IPAddressHost ipAddress -> ipAddress.asString
-        | RegistrableDomain domainInfo -> domainInfo.reverseDomainName
-    member this.pathSegments =
-        match this with
-        | LocalHost -> [| "localhost" |]
-        | IPAddressHost ipAddress -> ipAddress.asString.lexicalTokens
-        | RegistrableDomain domainInfo -> domainInfo.reverseDomainName.pathTokens
-
-
-
-
-type IanaScheme with 
-    member this.urlPattern =
-        let init = new UrlPatternInit()
-        init.Protocol <- this.lexicalForm
-        UrlPattern.Create(init)
-
-type WhatwgSite = 
-    {
-        scheme:IanaScheme
-        host:HostName
+#r "DoxAletheia.Runtime.dll"
+open DoxAletheia
+open DoxAletheia.Runtime
+let iriref (iriString: string) = IriReference iriString |> IRIREF
+module NamespaceName =
+    let fromNamespaceLabel (namespaceString: string) (prefixLabel: string) = {
+        namespaceIri = IriReference namespaceString |> IRIREF
+        graphDocumentPaths = []
+        prefixLabels = [ prefixLabel ]
     }
+    let personal (namespacePrefix: string) =
+        fromNamespaceLabel $"https://eristocrates.dev/ontology/{namespacePrefix}/" namespacePrefix
 
+type RDFNamespace with
+    member this.NamespaceName = NamespaceName.fromNamespaceLabel this.NamespaceUri.OriginalString this.NamespacePrefix
+    member this.asOntologyProvider = $"type {this.NamespacePrefix} = OntologyProvider<\"{this.NamespaceUri}\", @\"{this.NamespaceName.localTurtlePath}\">"
 
-IanaScheme.https.urlPattern.IsMatch  "https://en.wikipedia.org/wiki/Reverse_domain_name_notation"
+(*
+let foafRDFGraph = RDFGraph.FromFile(RDFModelEnums.RDFFormats.Turtle, @"D:\http\com\xmlns\foaf\0.1&sol;\text\turtle.ttl", true)
+foafRDFGraph.SetContext(Uri "http://xmlns.com/foaf/0.1/")
+let foafVocabulary = new OWLOntologyView(OWLOntology.FromRDFGraphAsync(foafRDFGraph).await)
+let loader = new Loader()
+let ontologyGraph = new OntologyGraph(Uri "http://xmlns.com/foaf/0.1/")
+loader.LoadGraph(ontologyGraph, Uri @"D:\http\com\xmlns\foaf\0.1&sol;\text\turtle.ttl")
 
-var pattern3 = UrlPattern.Create(new UrlPatternInit
-{
-    Pathname = "/users/:userId/posts/:postId",
-});
-UrlPatternResult? result = pattern3.Match("https://example.com/users/42/posts/99");
+let asNamespace = RDFNamespaceRegister.GetByUri("https://www.w3.org/ns/activitystreams#", true)
+let ccNamespace = RDFNamespaceRegister.GetByUri("http://creativecommons.org/ns#", true)
+let csvwNamespace = RDFNamespaceRegister.GetByUri("http://www.w3.org/ns/csvw#", true)
+let ctagNamespace = RDFNamespaceRegister.GetByUri("http://commontag.org/ns#", true)
+let dc11Namespace = RDFNamespaceRegister.GetByUri("http://purl.org/dc/elements/1.1/", true)
+let dcatNamespace = RDFNamespaceRegister.GetByUri("http://www.w3.org/ns/dcat#", true)
+let dctermsNamespace = RDFNamespaceRegister.GetByUri("http://purl.org/dc/terms/", true)
+let dqvNamespace = RDFNamespaceRegister.GetByUri("http://www.w3.org/ns/dqv#", true)
+let duvNamespace = RDFNamespaceRegister.GetByUri("https://www.w3.org/ns/duv#", true)
+let foafNamespace = RDFNamespaceRegister.GetByUri("http://xmlns.com/foaf/0.1/", true)
+let grNamespace = RDFNamespaceRegister.GetByUri("http://purl.org/goodrelations/v1#", true)
+let grddlNamespace = RDFNamespaceRegister.GetByUri("http://www.w3.org/2003/g/data-view#", true)
+let icalNamespace = RDFNamespaceRegister.GetByUri("http://www.w3.org/2002/12/cal/icaltzd#", true)
+let jsonldNamespace = RDFNamespaceRegister.GetByUri("http://www.w3.org/ns/json-ld#", true)
+let ldpNamespace = RDFNamespaceRegister.GetByUri("http://www.w3.org/ns/ldp#", true)
+let maNamespace = RDFNamespaceRegister.GetByUri("http://www.w3.org/ns/ma-ont#", true)
+let oaNamespace = RDFNamespaceRegister.GetByUri("http://www.w3.org/ns/oa#", true)
+let odrlNamespace = RDFNamespaceRegister.GetByUri("http://www.w3.org/ns/odrl/2/", true)
+let ogNamespace = RDFNamespaceRegister.GetByUri("http://ogp.me/ns#", true)
+let orgNamespace = RDFNamespaceRegister.GetByUri("http://www.w3.org/ns/org#", true)
+let owlNamespace = RDFNamespaceRegister.GetByUri("http://www.w3.org/2002/07/owl#", true)
+let provNamespace = RDFNamespaceRegister.GetByUri("http://www.w3.org/ns/prov#", true)
+let qbNamespace = RDFNamespaceRegister.GetByUri("http://purl.org/linked-data/cube#", true)
+let rdfNamespace = RDFNamespaceRegister.GetByUri("http://www.w3.org/1999/02/22-rdf-syntax-ns#", true)
+let rdfaNamespace = RDFNamespaceRegister.GetByUri("http://www.w3.org/ns/rdfa#", true)
+let rdfsNamespace = RDFNamespaceRegister.GetByUri("http://www.w3.org/2000/01/rdf-schema#", true)
+let revNamespace = RDFNamespaceRegister.GetByUri("http://purl.org/stuff/rev#", true)
+let rifNamespace = RDFNamespaceRegister.GetByUri("http://www.w3.org/2007/rif#", true)
+let rrNamespace = RDFNamespaceRegister.GetByUri("http://www.w3.org/ns/r2rml#", true)
+let schemaNamespace = RDFNamespaceRegister.GetByUri("http://schema.org/", true)
+let sdNamespace = RDFNamespaceRegister.GetByUri("http://www.w3.org/ns/sparql-service-description#", true)
+let siocNamespace = RDFNamespaceRegister.GetByUri("http://rdfs.org/sioc/ns#", true)
+let skosNamespace = RDFNamespaceRegister.GetByUri("http://www.w3.org/2004/02/skos/core#", true)
+let skosxlNamespace = RDFNamespaceRegister.GetByUri("http://www.w3.org/2008/05/skos-xl#", true)
+let sosaNamespace = RDFNamespaceRegister.GetByUri("http://www.w3.org/ns/sosa/", true)
+let ssnNamespace = RDFNamespaceRegister.GetByUri("http://www.w3.org/ns/ssn/", true)
+let timeNamespace = RDFNamespaceRegister.GetByUri("http://www.w3.org/2006/time#", true)
+let vNamespace = RDFNamespaceRegister.GetByUri("http://rdf.data-vocabulary.org/#", true)
+let vcardNamespace = RDFNamespaceRegister.GetByUri("http://www.w3.org/2006/vcard/ns#", true)
+let voidNamespace = RDFNamespaceRegister.GetByUri("http://rdfs.org/ns/void#", true)
+let wdrNamespace = RDFNamespaceRegister.GetByUri("http://www.w3.org/2007/05/powder#", true)
+let wdrsNamespace = RDFNamespaceRegister.GetByUri("http://www.w3.org/2007/05/powder-s#", true)
+let xhvNamespace = RDFNamespaceRegister.GetByUri("http://www.w3.org/1999/xhtml/vocab#", true)
+let xmlNamespace = RDFNamespaceRegister.GetByUri("http://www.w3.org/XML/1998/namespace", true)
+let xsdNamespace = RDFNamespaceRegister.GetByUri("http://www.w3.org/2001/XMLSchema#", true)
+[|
 
+    asNamespace
 
-let httpsUri = Uri "https://en.wikipedia.org/wiki/Reverse_domain_name_notation"
-let localhostUri = Uri @"file://localhost/d:/https/com/discord/api/v9/channels/319303514507575297"
+    ccNamespace
 
-localComputer.localIPAddress.asString.clip
+    csvwNamespace
 
-localhostUri.asUrl.Href.clip
-localhostUri.Host
-localhostUri.DnsSafeHost
-httpsUri.HostName
-httpsUri.HostNameType
+    ctagNamespace
 
-httpsUri.IanaScheme
+    dc11Namespace
 
+    dcatNamespace
 
+    dctermsNamespace
 
+    dqvNamespace
 
+    duvNamespace
 
+    foafNamespace
 
+    grNamespace
 
+    grddlNamespace
 
+    icalNamespace
 
+    jsonldNamespace
 
+    ldpNamespace
 
+    maNamespace
 
+    oaNamespace
 
-type Iri = {
-    scheme: IanaScheme
-    host: HostName
-    pathSegments: string array
-    fragment: FragmentString option
-    query: QueryStringParameterCollection
-    terminal: char
-}
+    odrlNamespace
 
+    ogNamespace
 
+    orgNamespace
 
+    owlNamespace
 
+    provNamespace
 
+    qbNamespace
 
+    rdfNamespace
 
+    rdfaNamespace
 
+    rdfsNamespace
 
+    revNamespace
 
+    rifNamespace
 
+    rrNamespace
 
+    schemaNamespace
 
+    sdNamespace
 
+    siocNamespace
 
+    skosNamespace
 
+    skosxlNamespace
 
+    sosaNamespace
 
+    ssnNamespace
 
+    timeNamespace
 
+    vNamespace
 
+    vcardNamespace
 
+    voidNamespace
 
+    wdrNamespace
 
+    wdrsNamespace
 
+    xhvNamespace
 
+    xmlNamespace
 
+    xsdNamespace
 
+|]
+|> Array.choose (fun rdfNamespace -> 
+    match Option.ofNullOrWhiteSpace rdfNamespace with 
+    | Some rdfNamespace -> Some rdfNamespace.asOntologyProvider
+    | _ -> None)
+|> String.concat "\n"
+|> String.Clipboard.SetText
+*)
+// type activitystreams = OntologyProvider<"https://www.w3.org/ns/activitystreams#", @"D:\https\org\w3\www\ns\activitystreams&num;\text\turtle.ttl">
+(*
+type cc = Ontology<"http://creativecommons.org/ns#", @"D:\http\org\creativecommons\ns&num;\text\turtle.ttl">
+type csvw = Ontology<"http://www.w3.org/ns/csvw#", @"D:\http\org\w3\www\ns\csvw&num;\text\turtle.ttl">
+type ctag = Ontology<"http://commontag.org/ns#", @"D:\http\org\commontag\ns&num;\text\turtle.ttl">
+type dqv = Ontology<"http://www.w3.org/ns/dqv#", @"D:\http\org\w3\www\ns\dqv&num;\text\turtle.ttl">
+type gr = Ontology<"http://purl.org/goodrelations/v1#", @"D:\http\org\purl\goodrelations\v1&num;\text\turtle.ttl">
+type grddl = Ontology<"http://www.w3.org/2003/g/data-view#", @"D:\http\org\w3\www\2003\g\data-view&num;\text\turtle.ttl">
+// type icaltzd = Ontology<"http://www.w3.org/2002/12/cal/icaltzd#", @"D:\http\org\w3\www\2002\12\cal\icaltzd&num;\text\turtle.ttl">
+type jsonld = Ontology<"http://www.w3.org/ns/json-ld#", @"D:\http\org\w3\www\ns\json-ld&num;\text\turtle.ttl">
+type ldp = Ontology<"http://www.w3.org/ns/ldp#", @"D:\http\org\w3\www\ns\ldp&num;\text\turtle.ttl">
+type ma = Ontology<"http://www.w3.org/ns/ma-ont#", @"D:\http\org\w3\www\ns\ma-ont&num;\text\turtle.ttl">
+type oa = Ontology<"http://www.w3.org/ns/oa#", @"D:\http\org\w3\www\ns\oa&num;\text\turtle.ttl">
+type odrl = Ontology<"http://www.w3.org/ns/odrl/2/", @"D:\http\org\w3\www\ns\odrl\2&sol;\text\turtle.ttl">
+type ogp = Ontology<"http://ogp.me/ns#", @"D:\http\me\ogp\ns&num;\text\turtle.ttl">
+type prov = Ontology<"http://www.w3.org/ns/prov#", @"D:\http\org\w3\www\ns\prov&num;\text\turtle.ttl">
+type qb = Ontology<"http://purl.org/linked-data/cube#", @"D:\http\org\purl\linked-data\cube&num;\text\turtle.ttl">
+type rev = Ontology<"http://purl.org/stuff/rev#", @"D:\http\org\purl\stuff\rev&num;\text\turtle.ttl">
+// type rif = Ontology<"http://www.w3.org/2007/rif#", @"D:\http\org\w3\www\2007\rif&num;\text\turtle.ttl">
+type rr = Ontology<"http://www.w3.org/ns/r2rml#", @"D:\http\org\w3\www\ns\r2rml&num;\text\turtle.ttl">
+type schema = Ontology<"http://schema.org/", @"D:\http\org\schema&sol;\text\turtle.ttl">
+type schemas = Ontology<"https://schema.org/", @"D:\https\org\schema&sol;\text\turtle.ttl">
+type sd = Ontology<"http://www.w3.org/ns/sparql-service-description#", @"D:\http\org\w3\www\ns\sparql-service-description&num;\text\turtle.ttl">
+type ssn = Ontology<"http://www.w3.org/ns/ssn/", @"D:\http\org\w3\www\ns\ssn&sol;\text\turtle.ttl">
+// type rich = Ontology<"http://rdf.data-vocabulary.org/", @"D:\http\org\data-vocabulary\rdf&sol;\text\turtle.ttl">
+type vcard = Ontology<"http://www.w3.org/2006/vcard/ns#", @"D:\http\org\w3\www\2006\vcard\ns&num;\text\turtle.ttl">
+type powder = Ontology<"http://www.w3.org/2007/05/powder#", @"D:\http\org\w3\www\2007\05\powder&num;\text\turtle.ttl">
+type wdrs = Ontology<"http://www.w3.org/2007/05/powder-s#", @"D:\http\org\w3\www\2007\05\powder-s&num;\text\turtle.ttl">
+type xhv = Ontology<"http://www.w3.org/1999/xhtml/vocab#", @"D:\http\org\w3\www\1999\xhtml\vocab&num;\text\turtle.ttl">
+type xml = Ontology<"http://www.w3.org/XML/1998/namespace", @"D:\http\org\w3\www\XML\1998\namespace\text\turtle.ttl">
+*)
+type rdf = Ontology<"http://www.w3.org/1999/02/22-rdf-syntax-ns#", @"D:\http\org\w3\www\1999\02\22-rdf-syntax-ns&num;\text\turtle.ttl">
+type xsd = Ontology<"http://www.w3.org/2001/XMLSchema#", @"D:\http\org\w3\www\2001\XMLSchema&num;\text\turtle.ttl">
+type rdfs = Ontology<"http://www.w3.org/2000/01/rdf-schema#", @"D:\http\org\w3\www\2000\01\rdf-schema&num;\text\turtle.ttl">
+type rdfa = Ontology<"http://www.w3.org/ns/rdfa#", @"D:\http\org\w3\www\ns\rdfa&num;\text\turtle.ttl">
+type owl = Ontology<"http://www.w3.org/2002/07/owl#", @"D:\http\org\w3\www\2002\07\owl&num;\text\turtle.ttl">
+type void_ = Ontology<"http://rdfs.org/ns/void#", @"D:\http\org\rdfs\ns\void&num;\text\turtle.ttl">
+type skos = Ontology<"http://www.w3.org/2004/02/skos/core#", @"D:\http\org\w3\www\2004\02\skos\core&num;\text\turtle.ttl">
+type skosxl = Ontology<"http://www.w3.org/2008/05/skos-xl#", @"D:\http\org\w3\www\2008\05\skos-xl&num;\text\turtle.ttl">
+type foaf = Ontology<"http://xmlns.com/foaf/0.1/", @"D:\http\com\xmlns\foaf\0.1&sol;\text\turtle.ttl">
+type dc = Ontology<"http://purl.org/dc/elements/1.1/", @"D:\http\org\purl\dc\elements\1.1&sol;\text\turtle.ttl">
+type dcat = Ontology<"http://www.w3.org/ns/dcat#", @"D:\http\org\w3\www\ns\dcat&num;\text\turtle.ttl">
+type dcterms = Ontology<"http://purl.org/dc/terms/", @"D:\http\org\purl\dc\terms&sol;\text\turtle.ttl">
+type time = Ontology<"http://www.w3.org/2006/time#", @"D:\http\org\w3\www\2006\time&num;\text\turtle.ttl">
+type org = Ontology<"http://www.w3.org/ns/org#", @"D:\http\org\w3\www\ns\org&num;\text\turtle.ttl">
 
+module governmentjobs =
+    let ApplicationsSystemsAnalystI = iriref "https://www.governmentjobs.com/careers/leoncountyfl/classspecs/1183950"
+module myfuelmaster =
+    let https = iriref "https://myfuelmaster.com/"
+    let desktop_support_technician = iriref "https://myfuelmaster.com/job/desktop-support-technician-8"
 
+module wellsfargo =
+    let _namespace = NamespaceName.personal "wellsfargo"
+    let everydayChecking = _namespace.curie "everydayChecking"
+    let platinumCard = _namespace.curie "platinumCard"
+    let installmentLoans = _namespace.curie "installmentLoans"
+    let wellsFargoRewards = _namespace.curie "wellsFargoRewards"
 
+    module checking =
+        let everyday = iriref "https://www.wellsfargo.com/checking/everyday"
+module usaa =
+    let _namespace = NamespaceName.personal "usaa"
+    let checking = _namespace.curie "checking"
+    let platinumVisa = _namespace.curie "platinumVisa"
+    let usaaSavings = _namespace.curie "usaaSavings"
 
-module data =
-    module text =
-        module plain =
-            let prefixId = PrefixId.fromNamespaceLabel "data:text/plain;charset=utf-8," String.Empty
-            let prefix (data: string) = prefixId.prefix data
+    module banking =
 
-type String with
-    member this.asDataIri = data.text.plain.prefix this
+        let checking = iriref "https://www.usaa.com/banking/checking"
+        let savings = iriref "https://www.usaa.com/banking/savings"
+module crew =
+    let checkingAccountDisclosure = iriref "https://www.trycrew.com/pdfjs/web/viewer?file=%2Fdocs%2Fdeposit-agreement.pdf#h.g82ej3s9bgif"
 
-
-
-
-
-
-
-
+module gov =
+    module leoncountyfl =
+        module cms =
+            let OfficeofInformationTechnology = iriref "https://cms.leoncountyfl.gov/Government/Departments/Information-and-Technology/Office-of-Information-Technology"
+module leinfo =
+    let _namespace = NamespaceName.fromNamespaceLabel "http://lei.info/" "lei"
+    let _l1 = NamespaceName.fromNamespaceLabel "http://lei.info/voc/l1/" "leiL1"
+    let WellsFargoNationalBank = _namespace.curie "KB1H1DSPRFMYMCUFXT09"
+    let USAAFederalSavingsBank = _namespace.curie "C5654JQHZUHN0772B561"
+    let BangorSavingsBank = _namespace.curie "549300JEBULFT3BSU682"
 
 module dbug =
-    let _prefixId = PrefixId.fromNamespaceLabel $"{personalSiteReference}/ontology/dbug" "commonplace"
-    let _prefix (localName: string) = _prefixId.prefix localName
-
+    let _namespace = NamespaceName.personal "dbug"
+    let Alice = _namespace.curie "Alice" |> foaf.Person.OwlClass.NamedIndividual
+    let Bob = _namespace.curie "Bob" |> foaf.Person.OwlClass.NamedIndividual
 
 module commonplace =
-    let _prefixId = PrefixId.fromNamespaceLabel $"{personalSiteReference}/ontology/commonplace" "commonplace"
-    let _prefix (localName: string) = _prefixId.prefix localName
-    let eristocrates = _prefix "eristocrates"
-    let syrislove = _prefix "syrislove"
+    let _prefix = "commonplace"
+    let _namespace = NamespaceName.personal _prefix
+    RDFNamespace(_prefix, _namespace.namespaceIri.identity)
+    |> RDFNamespaceRegister.AddNamespace
+    let eristocrates = _namespace.curie "eristocrates" |> foaf.Person.OwlClass.NamedIndividual
+    let syrislove = _namespace.curie "syrislove" |> foaf.Person.OwlClass.NamedIndividual
+    let WellsFargoEverydayChecking = _namespace.curie "WellsFargoEverydayChecking"
+    let WellsFargoEverydayCheckingAccount = _namespace.curie "WellsFargoEverydayCheckingAccount"
+    let WellsFargoEverydayCheckingAccountCurrentBalance = _namespace.curie "WellsFargoEverydayCheckingAccountCurrentBalance"
+    let WellsFargoEverydayCheckingAccountAvailableBalance = _namespace.curie "WellsFargoEverydayCheckingAccountAvailableBalance"
+    let USAAClassicChecking = _namespace.curie "USAAClassicChecking"
+    let USAAClassicCheckingAccount = _namespace.curie "USAAClassicCheckingAccount"
+    let USAAClassicCheckingAccountCurrentBalance = _namespace.curie "USAAClassicCheckingAccountCurrentBalance"
+    let USAAClassicCheckingAccountAvailableBalance = _namespace.curie "USAAClassicCheckingAccountAvailableBalance"
+    let USAAClassicSavings = _namespace.curie "USAAClassicSavings"
+    let USAAClassicSavingsAccount = _namespace.curie "USAAClassicSavingsAccount"
+    let USAAClassicSavingsAccountCurrentBalance = _namespace.curie "USAAClassicSavingsAccountCurrentBalance"
+    let USAAClassicSavingsAccountAvailableBalance = _namespace.curie "USAAClassicSavingsAccountAvailableBalance"
+    let CrewFinanceChecking = _namespace.curie "CrewFinanceChecking"
+    let CrewFinanceCheckingAccount = _namespace.curie "CrewFinanceCheckingAccount"
+    let CrewFinanceCheckingAccountCurrentBalance = _namespace.curie "CrewFinanceCheckingAccountCurrentBalance"
+    let CrewFinanceCheckingAccountAvailableBalance = _namespace.curie "CrewFinanceCheckingAccountAvailableBalance"
+    let hasCurrentBalance = _namespace.curie "hasCurrentBalance"
+    let hasAvailableBalance = _namespace.curie "hasAvailableBalance"
+    let CurrentBalance = _namespace.curie "CurrentBalance"
+    let AvailableBalance = _namespace.curie "AvailableBalance"
 
+let predicateObjectList<'Assertion when 'Assertion :> OWLAssertionAxiom> (propertyObjectList: list<OWLNamedIndividual -> 'Assertion>) (namedIndividual: OWLNamedIndividual) =
+    propertyObjectList
+    |> List.map (fun predicateObject -> namedIndividual |> predicateObject :> OWLAssertionAxiom)
 
+let (||>) (namedIndividual: OWLNamedIndividual) (properties: list<OWLNamedIndividual -> 'Assertion>) =
+    predicateObjectList properties namedIndividual
+let predicateListObject<'Assertion when 'Assertion :> OWLAssertionAxiom>
+    (properties: list<'Literal -> OWLNamedIndividual -> 'Assertion>)
+    (literal: 'Literal)
+    : list<OWLNamedIndividual -> 'Assertion> =
+    properties |> List.map (fun property -> property literal)
 
+type a = rdf.``type``
+let rdfGraph =
+    List.concat [
 
+        commonplace.eristocrates.NamedIndividual
+        ||> [
+            foaf.firstName.DataProperty myFirstName
+            foaf.familyName.DataProperty myLastName
+            foaf.lastName.DataProperty myLastName
+            foaf.surname.DataProperty myLastName
+            foaf.age.DataProperty myBirthday.currentAge
+            foaf.nick.DataProperty myUsername
+        ]
+        commonplace.eristocrates.NamedIndividual
+        ||> [
+            foaf.knows.ObjectProperty commonplace.syrislove.NamedIndividual
+            foaf.workInfoHomepage.ObjectProperty governmentjobs.ApplicationsSystemsAnalystI.NamedIndividual
+            foaf.workplaceHomepage.ObjectProperty gov.leoncountyfl.cms.OfficeofInformationTechnology.NamedIndividual
+        ]
+        commonplace.syrislove.NamedIndividual
+        ||> [
+            foaf.firstName.DataProperty "Tierra"
+            foaf.familyName.DataProperty "Fisher"
+            foaf.lastName.DataProperty "Fisher"
+            foaf.surname.DataProperty "Fisher"
+            foaf.age.DataProperty syrisBirthday.currentAge
+            foaf.nick.DataProperty "syrislove"
+        ]
+        commonplace.syrislove.NamedIndividual
+        ||> [
+            foaf.knows.ObjectProperty commonplace.eristocrates.NamedIndividual
+            foaf.workInfoHomepage.ObjectProperty myfuelmaster.desktop_support_technician.NamedIndividual
+            foaf.workplaceHomepage.ObjectProperty myfuelmaster.https.NamedIndividual
+        ]
 
+    ]
+    |> List.collect (fun axiom -> axiom.ToRDFGraph() |> Seq.map (fun rdfTriple -> rdfTriple) |> Seq.toList)
+    |> List.append [
+        NamedSubject commonplace.eristocrates.NamedReference
+        |> a.Property(NamedObject foaf.Person.Iri)
+        |> RDFTriple.ofTripleStatement
+    ]
+    |> Generic.List
+    |> RDFGraph
 
-// let httpVocabulary = PrefixId.http.RdfVocabulary
+commonplace.eristocrates
+rdfGraph.ToFile(RDFModelEnums.RDFFormats.Turtle, @"D:\https\com\github\eristocrates\ipa\scratch\scratch.ttl")
 
+commonplace.eristocrates.NamedIndividual
+|> foaf.firstName.DataProperty "Brandon"
 
+commonplace.eristocrates.firstName "Brandon"
+foaf.knows.ObjectProperty(dbug.Alice, dbug.Bob)
 
+dbug.Alice.knows dbug.Bob
 
+dbug.Alice.firstName "Alice"
+let (---) ((subjectIri: NamedReference), (objectProperty: OWLNamedIndividual * OWLNamedIndividual -> OWLObjectPropertyAssertion)) =
+    fun (objectIri: NamedReference) -> objectProperty (subjectIri.NamedIndividual, objectIri.NamedIndividual)
 
-
-
-
-
-
-
-
-
-
-
-
-let chrome = CdpBrowser.Connect()
-let networkMonitor = CdpNetworkMonitor.Create chrome |> await
-
-let replTab = chrome.NewPageAsync().await.asCdp
-
-replTab.GoToAsync("https://bannerprodssb.leoncountyfl.gov:8449/EmployeeSelfService/ssb/hrDashboard").await
+//  --> dbug.Bob.NamedIndividual
 (*
 
-                        match request.Response.asCdp.mimeType with
-                        | Some mimeType ->
-                            match mimeType.MediaType, mimeType.SubType, request.Response.resource.extension with
-                            | "application", "json", _
-                            | _, _, Some ".json"
-                            | _, _, Some ".jsonhtml"
-                            | "application", "xml", _
-                            | _, _, Some ".xml" ->
-                                request.Response.Text()
-                                |> Option.iter (fun text ->
-                                    printfn "%s\t\t----->\t\t%s" request.Response.resource.remoteReference request.Response.resource.localReference
-                                    File.WriteAllText(request.Response.resource.localReference, text))
-                        | None -> ()
+let responses = new ResizeArray<CdpHttpResponse>()
+
+let downloadConfiguration = {
+    shouldDownload =
+        fun (response: CdpHttpResponse) ->
+            match response.mimeType, response.iriref.tryDotExtension with
+            | _, Some ".json"
+            | _, Some ".jsonhtml"
+            | _, Some ".xml" -> true
+
+            | Some mimeType, _ ->
+                match mimeType.MediaType, mimeType.SubType with
+                | "application", "json"
+                | "application", "xml" -> true
+                | _, _ -> false
+            | _, _ -> false
+
+    download =
+        fun (response: CdpHttpResponse) ->
+            match response.Text() with
+            | Some text ->
+                let maybeMime =
+                    response.mimeType
+                    |> Option.map (fun mime -> mime.contentType + mime.dotExtension)
+                printf "\u001b[2K\r%s\t %s\t %s\t" response.iriref.Origin response.iriref.PathQueryFragment (defaultArg maybeMime String.Empty)
+                responses.Add response
+                true
+            (*
+                response.iriref.NamespaceOrigin
+
+                Directory.CreateDirectory(Path.GetDirectoryName response.iriref.localReference)
+                |> ignore
+                File.WriteAllText(response.iriref.localReference, text)
+                true
+                *)
+            | None -> false
+}
+
+let chrome = CdpBrowser.Connect()
+
+let networkMonitor = CdpNetworkMonitor.Create(chrome, downloadConfiguration).Result
+
+let tab =
+    let maybeTab =
+        chrome.tabs
+        |> Array.tryFind (fun tab -> tab.Url = "https://yasenstar.github.io/protege_pizza/")
+    match maybeTab with
+    | Some tab -> tab
+    | None -> chrome.tabs |> Array.last
+
+let googleSearch (searchTerm: string) =
+    $"https://www.google.com/search?q={searchTerm}"
+tab.GoToAsync(googleSearch "ibs diet").Result
+
+networkMonitor.monitorPage tab
+tab.BringToFrontAsync().await
+tab.GoToAsync
 *)
-
-let selectedResponses =
-    networkMonitor.finishedRequests
-    |> Array.choose (fun request ->
-        match request.Response.asCdp.mimeType, request.Response.asCdp.resource.extension with
-        | _, Some ".json"
-        | _, Some ".jsonhtml"
-        | _, Some ".xml" -> Some request.Response
-        | Some mimeType, _ ->
-            match mimeType.MediaType, mimeType.SubType with
-            | "application", "json"
-            | "application", "xml" -> Some request.Response
-            | _, _ -> None
-        | _, _ -> None)
-
-selectedResponses
-|> Array.iter (fun selectedResponse ->
-    selectedResponse.Text()
-    |> Option.iter (fun text ->
-        printfn "%s\t----->\t%s\n\n" selectedResponse.resource.remoteReference selectedResponse.resource.localReference
-        Directory.CreateDirectory selectedResponse.resource.asAbsoluteFilePath.DirectoryPath.WeakString
-        |> ignore
-        File.WriteAllText(selectedResponse.resource.localReference, text)))
-
-
-// https://xproc.org/specifications.html
-
-
-
-// finishedRequests.Clear()
-
-let testRequests = finishedRequests |> Seq.toArray
-
-
-IanaMimeType.text.html
-IanaMimeType.text.css
-IanaMimeType.image.png
-IanaMimeType.font.woff2
-IanaMimeType.image.svg.xml
-
-// "text/html; charset=utf-8"; "text/css; charset=utf-8"; "image/png"; "font/woff2"; "image/svg+xml"|
-testRequests[0]
-
-
-
-finishedRequests[0].Response.asCdp.Text()
-
-
-finishedRequests.Count()
-finishedRequests
-|> Seq.filter (fun request -> request.Response.resource.host.remoteReference = "claims.akko.app")
-
-let finishedRequest = finishedRequests |> Seq.head
-finishedRequest.Response.mediaType
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//

@@ -47,6 +47,8 @@ ScaffoldingReadMe.txt
 *.nupkg
 # NuGet Symbol Packages
 *.snupkg
+# Paket Packages
+**packages/
 
 # dotenv environment variables file
 .env
@@ -72,8 +74,11 @@ nunit-*.xml
 # root: {rootFull}
 # ------------------------------------------------------------
 .git/objects/pack/pack-0cbe931f2056bd4afca80230aa33d6211352bd14.pack
+.git/objects/pack/pack-41279cfa840c96ce76217ce31bd5cb95409aa2f4.pack
 .git/objects/pack/pack-51a3996cd54734dbee5262b6a9d0e7fbff2c6310.pack
 .git/objects/pack/tmp_pack_swa5ds
+fsx/packages/Esri.ArcGISRuntime.runtimes.win/runtimes/win-arm64/native/runtimecore.dll
+fsx/packages/Esri.ArcGISRuntime.runtimes.win/runtimes/win-x64/native/runtimecore.dll
 jar/Rml/RMLStreamer-v2.5.0-standalone.jar
 jar/Rml/rmlmapper-8.1.0-r380-all.jar
 jar/Sparql/sparql-anything-server-v1.1.0-geosparql.jar

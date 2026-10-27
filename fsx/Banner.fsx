@@ -188,8 +188,7 @@ let httpMethodNamespace = NamedReference "http://www.w3.org/2011/http-methods#" 
 // httpMethodNamespace.codegenAstModule()
 #load @"Namespaces\Generated\httpmNamespace.fsx"
 open HttpmNamespace
-RDFNamespace("httpm", "http://www.w3.org/2011/http-methods#")
-|> RDFNamespaceRegister.AddNamespace
+RDFNamespace("httpm", "http://www.w3.org/2011/http-methods#") |> RDFNamespaceRegister.AddNamespace
 let httpHeadersNamespace = NamedReference "http://www.w3.org/2011/http-headers#" |> NamespaceName
 // httpHeadersNamespace.codegenAstModule()
 #load @"Namespaces\Generated\httphNamespace.fsx"

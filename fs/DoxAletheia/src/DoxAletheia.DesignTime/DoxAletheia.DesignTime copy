@@ -1,0 +1,885 @@
+namespace DoxAletheia.DesignTime
+open Dubzer.WhatwgUrl
+open FSharp.Data
+open FSharp.HashCollections
+open FSharpPlus
+open IriTools
+open Meziantou.Framework
+open Microsoft.FSharp.Core.CompilerServices
+open Microsoft.FSharp.Quotations
+open Newtonsoft.Json.Linq
+open NLanguageTag
+open OWLSharp
+open OWLSharp.Extensions
+open OWLSharp.Ontology
+open OWLSharp.Profiler
+open OWLSharp.Reasoner
+open OWLSharp.Validator
+open ProviderImplementation.ProvidedTypes
+open RDFSharp
+open RDFSharp.Model
+open System
+open System.Collections
+open System.Globalization
+open System.IO
+open System.Reflection
+open System.Security.Cryptography
+open System.Text
+open System.Text.Json
+open System.Text.RegularExpressions
+open System.Xml
+open System.Xml.Linq
+open VDS.RDF
+open VDS.RDF.Ontology
+open VDS.RDF.Parsing
+
+
+
+[<TypeProvider>]
+type OntologyProvider(config: TypeProviderConfig) as this =
+
+    inherit
+        TypeProviderForNamespaces(
+            config,
+            assemblyReplacementMap = [ "DoxAletheia.DesignTime", "DoxAletheia.Runtime" ],
+            addDefaultProbingLocation = true
+        )
+
+    let providedNamespace = "DoxAletheia"
+
+    let assembly = Assembly.GetExecutingAssembly()
+
+    let localParts (resources: OntologyClass seq) =
+        resources
+        |> Seq.choose (fun resource -> resource.Resource.tryNamedReference)
+        |> Seq.map _.localPart
+        |> String.concat "'"
+
+    let literalValueOfValueOverloads =
+        typeof<LiteralValue>.GetMethods(BindingFlags.Public ||| BindingFlags.Static)
+        |> Array.filter (fun methodInfo ->
+            methodInfo.Name = "ofValue"
+            && methodInfo.ReturnType = typeof<LiteralValue>
+            && methodInfo.GetParameters().Length = 1)
+        |> Array.map (fun methodInfo ->
+            let valueType = (methodInfo.GetParameters()[0]).ParameterType
+
+            methodInfo, valueType)
+
+    let createType (typeName: string) (namespaceString: string) (graphDocumentPath: string) =
+        let namespaceName =
+            { namespaceIri = IriReference namespaceString |> IRIREF
+              graphDocumentPaths = [ graphDocumentPath ]
+              prefixLabels = RDFNamespaceRegister.prefixLabelsByNamespaceString namespaceString }
+
+        let dereferenceUri =
+            match graphDocumentPath, namespaceName.localTurtlePath with
+            | _, turtlePath when Path.Exists turtlePath -> Uri turtlePath
+            | documentPath, _ when not (String.IsNullOrWhiteSpace documentPath) -> Uri documentPath
+            | _, _ -> Uri namespaceString
+
+        // ------------------------------------------------------------
+        // Load the ontology only at design time.
+        // ------------------------------------------------------------
+
+        let ontologyGraph = new OntologyGraph()
+
+        let loader = Loader()
+
+        loader.LoadGraph(ontologyGraph, dereferenceUri)
+
+        // ------------------------------------------------------------
+        // Find every named term belonging to this namespace.
+        // ------------------------------------------------------------
+
+        let prefixedNames = ontologyGraph.prefixedNames namespaceName |> Seq.toArray
+
+        // ------------------------------------------------------------
+        // Build indexes for semantic classifications.
+        //
+        // Start with only one classification. More can be added
+        // independently once the basic provider works.
+        // ------------------------------------------------------------
+
+        let owlObjectPropertyIris =
+            ontologyGraph.OwlObjectProperties
+            |> Seq.choose (fun ontologyProperty -> ontologyProperty.tryOriginalString)
+            |> Set.ofSeq
+        // Specialized provided type
+        // ------------------------------------------------------------
+
+        let providedType =
+            ProvidedTypeDefinition(assembly, providedNamespace, typeName, Some typeof<obj>, isErased = true)
+
+        // Useful mainly for inspection/debugging.
+
+        providedType.AddMember(
+            ProvidedProperty(
+                propertyName = "NamespaceString",
+                propertyType = typeof<string>,
+                isStatic = true,
+                getterCode = fun _ -> <@@ namespaceString @@>
+            )
+        )
+
+        providedType.AddMember(
+            ProvidedProperty(
+                propertyName = "DereferenceUri",
+                propertyType = typeof<string>,
+                isStatic = true,
+                getterCode = fun _ -> <@@ dereferenceUri @@>
+            )
+        )
+
+        let vocabularyRdfClasses = ontologyGraph.vocabularyRdfClasses namespaceName
+
+        let vocabularyOwlClasses = ontologyGraph.vocabularyOwlClasses namespaceName
+
+        let vocabularyClasses =
+            seq {
+                yield! ontologyGraph.vocabularyRdfClasses namespaceName |> Map.toSeq
+
+                yield! ontologyGraph.vocabularyOwlClasses namespaceName |> Map.toSeq
+            }
+            |> Seq.distinctBy fst
+            |> Map.ofSeq
+
+        // ------------------------------------------------------------
+        // One nested provided type per term.
+        // ------------------------------------------------------------
+        for prefixedName in prefixedNames do
+            let iriString = prefixedName.identity
+
+            let termType =
+                ProvidedTypeDefinition(prefixedName.localName, Some typeof<obj>, isErased = true)
+
+            termType.AddMember(
+                ProvidedProperty(
+                    propertyName = "Iri",
+                    propertyType = typeof<NamedReference>,
+                    isStatic = true,
+                    getterCode = fun _ -> <@@ ProviderRuntime.namedReference iriString @@>
+                )
+            )
+
+            termType.AddMember(
+                ProvidedProperty(
+                    propertyName = "NamedSubject",
+                    propertyType = typeof<SubjectVertex>,
+                    isStatic = true,
+                    getterCode = fun _ -> <@@ (ProviderRuntime.namedReference iriString) |> NamedSubject @@>
+                )
+            )
+
+            termType.AddMember(
+                ProvidedProperty(
+                    propertyName = "NamedPredicate",
+                    propertyType = typeof<PredicateEdge>,
+                    isStatic = true,
+                    getterCode = fun _ -> <@@ (ProviderRuntime.namedReference iriString) |> NamedPredicate @@>
+                )
+            )
+
+            termType.AddMember(
+                ProvidedProperty(
+                    propertyName = "NamedObject",
+                    propertyType = typeof<ObjectVertex>,
+                    isStatic = true,
+                    getterCode = fun _ -> <@@ (ProviderRuntime.namedReference iriString) |> NamedObject @@>
+                )
+            )
+
+            match vocabularyRdfClasses |> Map.tryFind prefixedName.IRI with
+            | Some ontologyClass ->
+
+                let rdfClassType =
+                    ProvidedTypeDefinition("RdfClass", Some typeof<obj>, isErased = true)
+
+                let instanceType =
+                    ProvidedTypeDefinition("Instance", Some typeof<SubjectVertex>, isErased = true)
+
+                instanceType.AddMember(
+                    ProvidedConstructor(
+                        parameters = [ ProvidedParameter("iri", typeof<NamedReference>) ],
+
+                        invokeCode =
+                            fun args ->
+                                let iri = args[0]
+
+                                <@@ NamedSubject(%%iri: NamedReference) @@>
+                    )
+                )
+
+                for KeyValue(propertyReference, _) in ontologyClass.propertiesForClass do
+                    let propertyIriString = propertyReference.identity
+
+                    let propertyName = propertyReference.localPart
+
+                    instanceType.AddMember(
+                        ProvidedMethod(
+                            methodName = propertyName,
+
+                            parameters = [ ProvidedParameter("object", typeof<ObjectVertex>) ],
+
+                            returnType = typeof<TripleStatement>,
+
+                            invokeCode =
+                                fun args ->
+
+                                    let subject = args[0]
+                                    let objectVertex = args[1]
+
+                                    <@@
+                                        ProviderRuntime.rdfPropertyPredicate
+                                            propertyIriString
+                                            (%%objectVertex: ObjectVertex)
+                                            (%%subject: SubjectVertex)
+                                    @@>
+                        )
+                    )
+
+                    rdfClassType.AddMember instanceType
+                    termType.AddMember rdfClassType
+
+            | None -> ()
+
+            match vocabularyOwlClasses |> Map.tryFind prefixedName.IRI with
+            | Some ontologyClass ->
+
+                let owlClassType =
+                    ProvidedTypeDefinition("OwlClass", Some typeof<obj>, isErased = true)
+
+                let namedIndividualType =
+                    ProvidedTypeDefinition("NamedIndividual", Some typeof<OWLNamedIndividual>, isErased = true)
+
+                namedIndividualType.AddMember(
+                    ProvidedConstructor(
+                        parameters = [ ProvidedParameter("iri", typeof<NamedReference>) ],
+
+                        invokeCode =
+                            fun args ->
+
+                                let iri = args[0]
+
+                                <@@ ProviderRuntime.namedIndividualFromNamedReference (%%iri: NamedReference) @@>
+                    )
+                )
+
+                namedIndividualType.AddMember(
+                    ProvidedProperty(
+                        propertyName = "NamedSubject",
+                        propertyType = typeof<SubjectVertex>,
+                        isStatic = false,
+                        getterCode =
+                            fun args ->
+
+                                let individual = args[0]
+
+                                <@@ (%%individual: OWLNamedIndividual).NamedReference |> NamedSubject @@>
+                    )
+                )
+
+                namedIndividualType.AddMember(
+                    ProvidedProperty(
+                        propertyName = "NamedObject",
+                        propertyType = typeof<ObjectVertex>,
+                        isStatic = false,
+                        getterCode =
+                            fun args ->
+
+                                let individual = args[0]
+
+                                <@@ (%%individual: OWLNamedIndividual).NamedReference |> NamedObject @@>
+                    )
+                )
+
+                namedIndividualType.AddMember(
+                    ProvidedProperty(
+                        propertyName = "NamedIndividual",
+                        propertyType = typeof<OWLNamedIndividual>,
+                        isStatic = false,
+                        getterCode = fun args -> args[0]
+                    )
+                )
+
+                for KeyValue(propertyReference, _) in ontologyClass.propertiesForClass do
+
+                    let propertyName = propertyReference.localPart
+
+                    let propertyIriString = propertyReference.identity
+
+                    // ------------------------------------------------------------
+                    // owl:ObjectProperty
+                    // ------------------------------------------------------------
+
+                    if ontologyGraph.owlObjectProperties |> Map.containsKey propertyReference then
+
+                        namedIndividualType.AddMember(
+                            ProvidedMethod(
+                                methodName = propertyName,
+
+                                parameters = [ ProvidedParameter("range", typeof<OWLNamedIndividual>) ],
+
+                                returnType = typeof<OWLObjectPropertyAssertion>,
+
+                                isStatic = false,
+
+                                invokeCode =
+                                    fun args ->
+
+                                        let domainIndividual = args[0]
+
+                                        let rangeIndividual = args[1]
+
+                                        <@@
+                                            ProviderRuntime.objectPropertyPredicate
+                                                propertyIriString
+                                                (%%rangeIndividual: OWLNamedIndividual)
+                                                (%%domainIndividual: OWLNamedIndividual)
+                                        @@>
+                            )
+                        )
+
+                    // ------------------------------------------------------------
+                    // owl:DatatypeProperty
+                    // ------------------------------------------------------------
+
+                    if ontologyGraph.owlDatatypeProperties |> Map.containsKey propertyReference then
+
+                        namedIndividualType.AddMember(
+                            ProvidedMethod(
+                                methodName = propertyName,
+
+                                parameters = [ ProvidedParameter("range", typeof<OWLLiteral>) ],
+
+                                returnType = typeof<OWLDataPropertyAssertion>,
+
+                                isStatic = false,
+
+                                invokeCode =
+                                    fun args ->
+
+                                        let domainIndividual = args[0]
+
+                                        let rangeLiteral = args[1]
+
+                                        <@@
+                                            ProviderRuntime.dataPropertyPredicate
+                                                propertyIriString
+                                                (%%rangeLiteral: OWLLiteral)
+                                                (%%domainIndividual: OWLNamedIndividual)
+                                        @@>
+                            )
+                        )
+
+                        for ofValueMethod, valueType in literalValueOfValueOverloads do
+
+                            namedIndividualType.AddMember(
+                                ProvidedMethod(
+                                    methodName = propertyName,
+
+                                    parameters = [ ProvidedParameter("range", valueType) ],
+
+                                    returnType = typeof<OWLDataPropertyAssertion>,
+
+                                    isStatic = false,
+
+                                    invokeCode =
+                                        fun args ->
+
+                                            let domainIndividual = args[0]
+
+                                            let rangeValue = args[1]
+
+                                            let literalValueExpression = Expr.Call(ofValueMethod, [ rangeValue ])
+
+                                            <@@
+                                                ProviderRuntime.dataPropertyPredicate
+                                                    propertyIriString
+                                                    (ProviderRuntime.owlLiteralOfLiteralValue (
+                                                        %%literalValueExpression: LiteralValue
+                                                    ))
+                                                    (%%domainIndividual: OWLNamedIndividual)
+                                            @@>
+                                )
+                            )
+
+                    if ontologyGraph.owlAnnotationProperties |> Map.containsKey propertyReference then
+
+                        // ------------------------------------------------------------
+                        // Resource-valued annotation
+                        // ------------------------------------------------------------
+
+                        namedIndividualType.AddMember(
+                            ProvidedMethod(
+                                methodName = propertyName,
+
+                                parameters = [ ProvidedParameter("range", typeof<RDFResource>) ],
+
+                                returnType = typeof<OWLAnnotationAssertion>,
+
+                                isStatic = false,
+
+                                invokeCode =
+                                    fun args ->
+
+                                        let domainIndividual = args[0]
+
+                                        let rangeResource = args[1]
+
+                                        <@@
+                                            ProviderRuntime.annotationResourcePropertyPredicate
+                                                propertyIriString
+                                                (%%rangeResource: RDFResource)
+                                                ((%%domainIndividual: OWLNamedIndividual).GetIRI())
+                                        @@>
+                            )
+                        )
+
+                        // ------------------------------------------------------------
+                        // Literal-valued annotation
+                        // ------------------------------------------------------------
+
+                        namedIndividualType.AddMember(
+                            ProvidedMethod(
+                                methodName = propertyName,
+
+                                parameters = [ ProvidedParameter("range", typeof<OWLLiteral>) ],
+
+                                returnType = typeof<OWLAnnotationAssertion>,
+
+                                isStatic = false,
+
+                                invokeCode =
+                                    fun args ->
+
+                                        let domainIndividual = args[0]
+
+                                        let rangeLiteral = args[1]
+
+                                        <@@
+                                            ProviderRuntime.annotationLiteralPropertyPredicate
+                                                propertyIriString
+                                                (%%rangeLiteral: OWLLiteral)
+                                                ((%%domainIndividual: OWLNamedIndividual).GetIRI())
+                                        @@>
+                            )
+                        )
+
+                owlClassType.AddMember namedIndividualType
+                termType.AddMember owlClassType
+
+            | None -> ()
+
+            match
+                ontologyGraph.vocabularyOwlObjectProperties namespaceName
+                |> Map.tryFind prefixedName.IRI
+            with
+            | Some _ontologyProperty ->
+                let domains =
+                    _ontologyProperty.Domains
+                    |> Seq.choose (fun domain -> domain.Resource.tryNamedReference)
+                    |> Seq.map (fun namedReference -> namedReference.localPart)
+                    |> String.concat "'"
+
+                let ranges =
+                    _ontologyProperty.Ranges
+                    |> Seq.choose (fun domain -> domain.Resource.tryNamedReference)
+                    |> Seq.map (fun namedReference -> namedReference.localPart)
+                    |> String.concat "'"
+
+                termType.AddMember(
+                    ProvidedMethod(
+                        methodName = "ObjectProperty",
+
+                        parameters =
+                            [ ProvidedParameter($"domain'{domains}", typeof<OWLNamedIndividual>)
+                              ProvidedParameter($"range'{ranges}", typeof<OWLNamedIndividual>) ],
+
+                        returnType = typeof<OWLObjectPropertyAssertion>,
+
+                        isStatic = true,
+
+                        invokeCode =
+                            fun args ->
+
+                                let domainIndividual = args[0]
+
+                                let rangeIndividual = args[1]
+
+                                <@@
+                                    ProviderRuntime.objectPropertyPredicate
+                                        iriString
+                                        (%%rangeIndividual: OWLNamedIndividual)
+                                        (%%domainIndividual: OWLNamedIndividual)
+                                @@>
+                    )
+                )
+
+                termType.AddMember(
+                    ProvidedMethod(
+                        methodName = "ObjectProperty",
+
+                        parameters =
+                            [ ProvidedParameter($"range'{ranges}_domain'{domains}", typeof<OWLNamedIndividual>) ],
+
+                        returnType = typeof<OWLNamedIndividual -> OWLObjectPropertyAssertion>,
+
+                        isStatic = true,
+
+                        invokeCode =
+                            fun args ->
+
+                                let rangeIndividual = args[0]
+
+                                <@@
+                                    ProviderRuntime.objectPropertyPredicate
+                                        iriString
+                                        (%%rangeIndividual: OWLNamedIndividual)
+                                @@>
+                    )
+                )
+            | None -> ()
+
+            match
+                ontologyGraph.vocabularyOwlDatatypeProperties namespaceName
+                |> Map.tryFind prefixedName.IRI
+            with
+            | Some ontologyProperty ->
+
+                let domains = ontologyProperty.Domains |> localParts
+
+                let ranges = ontologyProperty.Ranges |> localParts
+
+                // Non-curried overload
+                termType.AddMember(
+                    ProvidedMethod(
+                        methodName = "DataProperty",
+
+                        parameters =
+                            [ ProvidedParameter($"domain'{domains}", typeof<OWLNamedIndividual>)
+                              ProvidedParameter($"range'{ranges}", typeof<OWLLiteral>) ],
+
+                        returnType = typeof<OWLDataPropertyAssertion>,
+
+                        isStatic = true,
+
+                        invokeCode =
+                            fun args ->
+
+                                let domainIndividual = args[0]
+                                let rangeLiteral = args[1]
+
+                                <@@
+                                    ProviderRuntime.dataPropertyPredicate
+                                        iriString
+                                        (%%rangeLiteral: OWLLiteral)
+                                        (%%domainIndividual: OWLNamedIndividual)
+                                @@>
+                    )
+                )
+
+                for ofValueMethod, valueType in literalValueOfValueOverloads do
+
+                    termType.AddMember(
+                        ProvidedMethod(
+                            methodName = "DataProperty",
+
+                            parameters =
+                                [ ProvidedParameter($"domain'{domains}", typeof<OWLNamedIndividual>)
+
+                                  ProvidedParameter($"range'{ranges}", valueType) ],
+
+                            returnType = typeof<OWLDataPropertyAssertion>,
+
+                            isStatic = true,
+
+                            invokeCode =
+                                fun args ->
+
+                                    let domainIndividual = args[0]
+
+                                    let rangeValue = args[1]
+
+                                    let literalValueExpression = Expr.Call(ofValueMethod, [ rangeValue ])
+
+                                    <@@
+                                        ProviderRuntime.dataPropertyPredicate
+                                            iriString
+                                            (ProviderRuntime.owlLiteralOfLiteralValue (
+                                                %%literalValueExpression: LiteralValue
+                                            ))
+                                            (%%domainIndividual: OWLNamedIndividual)
+                                    @@>
+                        )
+                    )
+
+                // Curried overload
+                termType.AddMember(
+                    ProvidedMethod(
+                        methodName = "DataProperty",
+
+                        parameters = [ ProvidedParameter($"range'{ranges}_domain'{domains}", typeof<OWLLiteral>) ],
+
+                        returnType = typeof<OWLNamedIndividual -> OWLDataPropertyAssertion>,
+
+                        isStatic = true,
+
+                        invokeCode =
+                            fun args ->
+
+                                let rangeLiteral = args[0]
+
+                                <@@ ProviderRuntime.dataPropertyPredicate iriString (%%rangeLiteral: OWLLiteral) @@>
+                    )
+                )
+
+                for ofValueMethod, valueType in literalValueOfValueOverloads do
+
+                    termType.AddMember(
+                        ProvidedMethod(
+                            methodName = "DataProperty",
+
+                            parameters = [ ProvidedParameter($"range'{ranges}_domain'{domains}", valueType) ],
+
+                            returnType = typeof<OWLNamedIndividual -> OWLDataPropertyAssertion>,
+
+                            isStatic = true,
+
+                            invokeCode =
+                                fun args ->
+
+                                    let rangeValue = args[0]
+
+                                    let literalValueExpression = Expr.Call(ofValueMethod, [ rangeValue ])
+
+                                    <@@
+                                        ProviderRuntime.dataPropertyPredicate
+                                            iriString
+                                            (ProviderRuntime.owlLiteralOfLiteralValue (
+                                                %%literalValueExpression: LiteralValue
+                                            ))
+                                    @@>
+                        )
+                    )
+            | None -> ()
+
+            match
+                ontologyGraph.vocabularyOwlAnnotationProperties namespaceName
+                |> Map.tryFind prefixedName.IRI
+            with
+            | Some ontologyProperty ->
+
+                let domains = ontologyProperty.Domains |> localParts
+
+                let ranges = ontologyProperty.Ranges |> localParts
+
+                // Resource-valued, non-curried
+                termType.AddMember(
+                    ProvidedMethod(
+                        methodName = "AnnotationProperty",
+
+                        parameters =
+                            [ ProvidedParameter($"domain'{domains}", typeof<RDFResource>)
+                              ProvidedParameter($"range'{ranges}", typeof<RDFResource>) ],
+
+                        returnType = typeof<OWLAnnotationAssertion>,
+
+                        isStatic = true,
+
+                        invokeCode =
+                            fun args ->
+
+                                let domainResource = args[0]
+                                let rangeResource = args[1]
+
+                                <@@
+                                    ProviderRuntime.annotationResourcePropertyPredicate
+                                        iriString
+                                        (%%rangeResource: RDFResource)
+                                        (%%domainResource: RDFResource)
+                                @@>
+                    )
+                )
+
+                // Resource-valued, curried
+                termType.AddMember(
+                    ProvidedMethod(
+                        methodName = "AnnotationProperty",
+
+                        parameters = [ ProvidedParameter($"range'{ranges}_domain'{domains}", typeof<RDFResource>) ],
+
+                        returnType = typeof<RDFResource -> OWLAnnotationAssertion>,
+
+                        isStatic = true,
+
+                        invokeCode =
+                            fun args ->
+
+                                let rangeResource = args[0]
+
+                                <@@
+                                    ProviderRuntime.annotationResourcePropertyPredicate
+                                        iriString
+                                        (%%rangeResource: RDFResource)
+                                @@>
+                    )
+                )
+                // Literal-valued, non-curried
+                termType.AddMember(
+                    ProvidedMethod(
+                        methodName = "AnnotationProperty",
+
+                        parameters =
+                            [ ProvidedParameter($"domain'{domains}", typeof<RDFResource>)
+                              ProvidedParameter($"range'{ranges}", typeof<OWLLiteral>) ],
+
+                        returnType = typeof<OWLAnnotationAssertion>,
+
+                        isStatic = true,
+
+                        invokeCode =
+                            fun args ->
+
+                                let domainResource = args[0]
+                                let rangeLiteral = args[1]
+
+                                <@@
+                                    ProviderRuntime.annotationLiteralPropertyPredicate
+                                        iriString
+                                        (%%rangeLiteral: OWLLiteral)
+                                        (%%domainResource: RDFResource)
+                                @@>
+                    )
+                )
+
+                // Literal-valued, curried
+                termType.AddMember(
+                    ProvidedMethod(
+                        methodName = "AnnotationProperty",
+
+                        parameters = [ ProvidedParameter($"range'{ranges}_domain'{domains}", typeof<OWLLiteral>) ],
+
+                        returnType = typeof<RDFResource -> OWLAnnotationAssertion>,
+
+                        isStatic = true,
+
+                        invokeCode =
+                            fun args ->
+
+                                let rangeLiteral = args[0]
+
+                                <@@
+                                    ProviderRuntime.annotationLiteralPropertyPredicate
+                                        iriString
+                                        (%%rangeLiteral: OWLLiteral)
+                                @@>
+                    )
+                )
+
+            | None -> ()
+
+            match
+                ontologyGraph.vocabularyRdfProperties namespaceName
+                |> Map.tryFind prefixedName.IRI
+            with
+            | Some ontologyProperty ->
+
+                let domains =
+                    ontologyProperty.Domains
+                    |> Seq.choose (fun domain -> domain.Resource.tryNamedReference)
+                    |> Seq.map _.localPart
+                    |> String.concat "'"
+
+                let ranges =
+                    ontologyProperty.Ranges
+                    |> Seq.choose (fun range -> range.Resource.tryNamedReference)
+                    |> Seq.map _.localPart
+                    |> String.concat "'"
+
+                // Non-curried form:
+                //
+                // property(domain, range)
+
+                termType.AddMember(
+                    ProvidedMethod(
+                        methodName = "Property",
+
+                        parameters =
+                            [ ProvidedParameter($"domain'{domains}", typeof<SubjectVertex>)
+                              ProvidedParameter($"range'{ranges}", typeof<ObjectVertex>) ],
+
+                        returnType = typeof<TripleStatement>,
+
+                        isStatic = true,
+
+                        invokeCode =
+                            fun args ->
+
+                                let domainVertex = args[0]
+                                let rangeVertex = args[1]
+
+                                <@@
+                                    ProviderRuntime.rdfPropertyPredicate
+                                        iriString
+                                        (%%rangeVertex: ObjectVertex)
+                                        (%%domainVertex: SubjectVertex)
+                                @@>
+                    )
+                )
+
+                // Curried form:
+                //
+                // domain |> property range
+
+                termType.AddMember(
+                    ProvidedMethod(
+                        methodName = "Property",
+
+                        parameters = [ ProvidedParameter($"range'{ranges}_domain'{domains}", typeof<ObjectVertex>) ],
+
+                        returnType = typeof<SubjectVertex -> TripleStatement>,
+
+                        isStatic = true,
+
+                        invokeCode =
+                            fun args ->
+
+                                let rangeVertex = args[0]
+
+                                <@@ ProviderRuntime.rdfPropertyPredicate iriString (%%rangeVertex: ObjectVertex) @@>
+                    )
+                )
+
+            | None -> ()
+
+            providedType.AddMember termType
+
+        providedType
+
+    // ------------------------------------------------------------
+    // Unspecialized provider root
+    // ------------------------------------------------------------
+
+    let providerType =
+        ProvidedTypeDefinition(assembly, providedNamespace, "Ontology", Some typeof<obj>, isErased = true)
+
+    do
+        providerType.DefineStaticParameters(
+            parameters =
+                [ ProvidedStaticParameter("NamespaceIri", typeof<string>)
+                  ProvidedStaticParameter("DereferenceIri", typeof<string>, "") ],
+            instantiationFunction =
+                fun typeName args ->
+
+                    let namespaceIri = args.[0] :?> string
+
+                    let dereferenceIri = args.[1] :?> string
+
+                    createType typeName namespaceIri dereferenceIri
+        )
+
+    do this.AddNamespace(providedNamespace, [ providerType ])
+
+[<assembly: TypeProviderAssembly>]
+do ()

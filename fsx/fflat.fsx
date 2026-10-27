@@ -118,10 +118,9 @@ compilationTargets
 
 *)
 
-let result = Async.RunSynchronously(compileScriptToDll @"D:\https\com\github\eristocrates\ipa\fsx\NetworkMonitor.fsx")
+compileScriptToDll @"D:\https\com\github\eristocrates\ipa\fsx\StringModule.fsx" |> Async.RunSynchronously
 
 (*
-
 match result with 
 | Error err -> err.Message
 

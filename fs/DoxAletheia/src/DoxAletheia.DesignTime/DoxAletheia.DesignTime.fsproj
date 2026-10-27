@@ -1,0 +1,70 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Library</OutputType>
+    <TargetFrameworks>net10.0</TargetFrameworks>
+    <DefineConstants>IS_DESIGNTIME</DefineConstants>
+    <!-- This allows the component to execute from 'bin' directory during build -->
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="..\..\paket-files\fsprojects\FSharp.TypeProviders.SDK\src\ProvidedTypes.fsi">
+      <Paket>True</Paket>
+      <Link>paket-files/ProvidedTypes.fsi</Link>
+    </Compile>
+    <Compile Include="..\..\paket-files\fsprojects\FSharp.TypeProviders.SDK\src\ProvidedTypes.fs">
+      <Paket>True</Paket>
+      <Link>paket-files/ProvidedTypes.fs</Link>
+    </Compile>
+    <Compile Include="AssemblyInfo.fs" />
+    <Compile Include="..\DoxAletheia.Runtime\DoxAletheia.Runtime.fs" />
+    <Compile Include="DoxAletheia.DesignTime.fs" />
+	  
+    <None Include="paket.references" />
+  </ItemGroup>
+  <ItemGroup>
+   <!-- 
+    To use a reference to the FSharp.TypeProviders.SDK nuget package, do this:
+    
+    <PackageReference Include="FSharp.TypeProviders.SDK" Version="7.0.3">
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    -->
+    
+  </ItemGroup>
+
+	<Target Name="CopyDesignTimeDependenciesToIntermediateOutput" AfterTargets="Build">
+		<Copy SourceFiles="@(ReferenceCopyLocalPaths)" DestinationFolder="$(IntermediateOutputPath)" SkipUnchangedFiles="true" />
+	</Target>
+  <Target Name="ReportDesignTimeAssemblyLocations"
+          AfterTargets="Build">
+
+    <Message Importance="high"
+             Text="DesignTime TargetPath: $(TargetPath)" />
+
+    <Message Importance="high"
+             Text="DesignTime OutputPath: $(TargetDir)" />
+
+    <Message Importance="high"
+             Text="DesignTime IntermediatePath: $(IntermediateOutputPath)" />
+
+    <Message Importance="high"
+             Text="Configuration dependencies: @(ReferenceCopyLocalPaths->WithMetadataValue('Filename', 'Microsoft.Extensions.Configuration.Abstractions'))" />
+
+  </Target>
+	<Target Name="ReportConfigurationAssemblyIdentity"
+			AfterTargets="Build">
+
+		<GetAssemblyIdentity
+			AssemblyFiles="@(ReferenceCopyLocalPaths->WithMetadataValue('Filename', 'Microsoft.Extensions.Configuration.Abstractions'))">
+
+			<Output TaskParameter="Assemblies"
+					ItemName="_ConfigurationAssemblyIdentity" />
+		</GetAssemblyIdentity>
+
+		<Message
+			Importance="high"
+			Text="Configuration assembly: @(_ConfigurationAssemblyIdentity->'%(Identity) | Version=%(Version) | PublicKeyToken=%(PublicKeyToken)')" />
+
+	</Target>
+	<Import Project="..\..\.paket\Paket.Restore.targets" />
+</Project>

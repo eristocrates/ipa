@@ -3,7 +3,22 @@ source https://api.nuget.org/v3/index.json
 generate_load_scripts: true
 framework: net10.0
 
+nuget Aardvark.Base 
+nuget Aardvark.Base.Essentials
+nuget Aardvark.Base.FSharp
+nuget Aardvark.Base.Rendering
+nuget Aardvark.Base.TypeProviders
+nuget Aardvark.GPGPU
+nuget AccelaWebSDK.NET 
+nuget Ada.Url
 nuget AngleSharp = 1.7.2
+nuget AngleSharp.Css
+nuget AngleSharp.Diffing
+nuget AngleSharp.Js
+nuget AngleSharp.Renderer
+nuget AngleSharp.Wasm
+nuget AngleSharp.Xml
+nuget AngleSharp.XPath
 nuget Argolis.Nancy
 nuget AssetCloudPublicAPI 
 nuget AW.Identifiers
@@ -12,22 +27,51 @@ nuget BrightstarDB
 nuget BrowserApi = 0.1.0-preview.9
 nuget ByteDev.ResourceIdentifier
 nuget Cambia.UriExtensions
+nuget canopy
 nuget CaseConverter
+nuget causalontology 
 nuget ChromeProtocol.Domains 2.1.1.1367902
 nuget ClosedXML
+nuget com.IvanMurzak.ReflectorNet
+nuget Community.OData.Linq
 nuget CsvHelper
 nuget Cytoscape.NET
+nuget DagSemTools.AlcTableau
+nuget DagSemTools.Api
+nuget DagSemTools.Datalog
+nuget DagSemTools.Datalog.Parser
+nuget DagSemTools.ELI
+nuget DagSemTools.Ingress
+nuget DagSemTools.Manchester
+nuget DagSemTools.Manchester.Parser
+nuget DagSemTools.OWL2ALC
+nuget DagSemTools.OWL2RL2Datalog
+nuget DagSemTools.OwlOntology
+nuget DagSemTools.Parser
+nuget DagSemTools.Rdf
+nuget DagSemTools.RdfOwlTranslator
+nuget DagSemTools.Sparql.Parser
+nuget DagSemTools.Turtle.Parser
 nuget Databasic.MsSql
 nuget Deedle
 nuget DependentTypes
+nuget DotGram.Web
+nuget DotLiquid 
 nuget dotNetRdf
 nuget Dubzer.WhatwgUrl
 nuget EnvironmentVariableProvider 
-nuget Fabulous.AST
+nuget Esri.ArcGISRuntime = 300.0.0
+nuget Eto.Parse
+nuget Eyu.Core
+nuget Eyu.Formbase
+nuget Eyu.Rdf
+nuget Fabulous.AST >= 2.0.0-pre01 (pre)
+nuget Fabulous.AST.Json
 nuget Fantomas.FCS
 nuget Fare 
 nuget Fli
 nuget Flora.CssProvider
+nuget FluentFTP
 nuget Flurl
 nuget Flurl.Http
 nuget Flurl.Http.Net40
@@ -36,13 +80,25 @@ nuget Flurl.Http.Soap
 nuget Flurl.Http.Xml
 nuget Flurl.Serialization.TextJson
 nuget FolkerKinzel.MimeTypes
+nuget FoxLearn.JsonLd
 nuget FPrimitive
 nuget FRange
 nuget FsCheck
 nuget FsExcel
+nuget FShade
+nuget FShade.Core
+nuget FShade.Core.Web
+nuget FShade.Debug
+nuget FShade.GLSL
+nuget FShade.GLSL.Web
+nuget FShade.Imperative
+nuget FShade.Imperative.Web
+nuget FShade.SpirV
 nuget FSharp.Collections.ParallelSeq
-nuget FSharp.Compiler.Service = 43.10.103
+nuget FSharp.Compiler.Service = 43.11.302
 nuget FSharp.Configuration
+nuget FSharp.Control.AsyncSeq 
+nuget FSharp.Control.Reactive 
 nuget FSharp.Data
 nuget FSharp.Data.Adaptive
 nuget FSharp.Data.DbPedia
@@ -64,6 +120,10 @@ nuget FSharp.Json
 nuget FSharp.Literals
 nuget FSharp.Literate
 nuget FSharp.Management
+nuget FSharp.Quotations.Evaluator
+nuget FSharp.RDF 
+nuget FSharp.SourceDjinn
+nuget FSharp.SystemTextJson 
 nuget FSharp.Text.Experimental.Transform
 nuget FSharp.Text.RegexProvider
 nuget FSharp.UMX
@@ -71,13 +131,22 @@ nuget FSharp.ViewEngine
 nuget FSharp.XExtensions
 nuget FSharpPlus
 nuget FsHttp
+nuget FSLogger
 nuget FsPdf
+nuget FsPickler 
+nuget FsPublicSuffix
+nuget Fss-lib.Core
+nuget FsSpreadsheet.Net
 nuget FsUnit
+nuget GCore.Antlr.Grammers.Abnf
+nuget GCore.Antlr.Grammers.Bnf
+nuget GCore.Antlr.Grammers.Http
 nuget Gherkin.TypeProvider 
 nuget Going.Plaid >= 6.66.0
 nuget Google.DataTable.Net.Wrapper
 nuget GoogleApi >= 5.8.15
 nuget Grafeo 
+nuget Graphoscope >= 0.6.0-preview.1 
 nuget GraphProvider 
 nuget GraphQL
 nuget GraphQL-Parser
@@ -105,6 +174,13 @@ nuget Hl7.Fhir.R4
 nuget HtmlAgilityPack 
 nuget HtmlTypeProvider
 nuget Humanizer.Core
+nuget ICU4N 
+nuget ICU4N.Collation 
+nuget ICU4N.CurrencyData 
+nuget ICU4N.LanguageData 
+nuget ICU4N.RegionData 
+nuget ICU4N.Resources 
+nuget ICU4N.Transliterator 
 nuget Iride
 nuget IriTools
 nuget IS4.SFI.Formats.WARC
@@ -113,11 +189,28 @@ nuget JevGen.Providers.TypeSafe
 nuget JmesPath.Net >= 1.1.0
 nuget json-ld.net
 nuget Json.More.Net
+nuget JsonCons.JmesPath
+nuget JsonCons.JsonPath
+nuget JsonCons.Utilities
+nuget JsonDSL 
+nuget JsonE.Net
+nuget JsonLogic
+nuget JsonPatch.Net
 nuget JsonPath.Net
 nuget JsonPointer.Net
+nuget JsonSchema.Net
+nuget JsonSchema.Net.Api
+nuget JsonSchema.Net.ArrayExt
+nuget JsonSchema.Net.Data
+nuget JsonSchema.Net.DataGeneration
+nuget JsonSchema.Net.Generation
+nuget JsonSchema.Net.Generation.DataAnnotations
+nuget JsonSchema.Net.OpenApi
 nuget JsonStructure
 nuget JWT 
+nuget Know
 nuget KTrie
+nuget ktsu.CaseConverter
 nuget ktsu.Coder.Core
 nuget ktsu.CredentialCache 
 nuget ktsu.Extensions
@@ -146,8 +239,43 @@ nuget LightningDB
 nuget LITEQ.RDF
 nuget LitXml
 nuget LSL.DataUri
-nuget MathNet.Numerics 
-nuget MathNet.Numerics.FSharp
+nuget Lucene.Net >= 4.8.0-beta00017
+nuget Lumoin.Base <= 0.0.12
+nuget Lumoin.Veridical.Analysis
+nuget Lumoin.Veridical.Backends.Managed
+nuget Lumoin.Veridical.Bbs
+nuget Lumoin.Veridical.Cli
+nuget Lumoin.Veridical.Core
+nuget Lumoin.Veridical.Hashing
+nuget Lumoin.Veridical.Longfellow
+nuget Lumoin.Veridical.Secdsa
+nuget Lumoin.Verisync.Cbor
+nuget Lumoin.Verisync.Core
+nuget Lumoin.Verisync.Json
+nuget Lumoin.Veritas.Canonicalization
+nuget Lumoin.Veritas.Cbor
+nuget Lumoin.Veritas.CborLd
+nuget Lumoin.Veritas.Cid
+nuget Lumoin.Veritas.Cli
+nuget Lumoin.Veritas.Core
+nuget Lumoin.Veritas.Json
+nuget Lumoin.Veritas.Json.Stj
+nuget Lumoin.Veritas.Jsonata
+nuget Lumoin.Veritas.JsonLd
+nuget Lumoin.Veritas.JsonPointer
+nuget Lumoin.Veritas.JsonSchema
+nuget Lumoin.Veritas.LinkedData
+nuget Lumoin.Veritas.NQuads
+nuget Lumoin.Veritas.Owl
+nuget Lumoin.Veritas.Rdf
+nuget Lumoin.Veritas.Rdf.Json
+nuget Lumoin.Veritas.Shacl
+nuget Lumoin.Veritas.Skos
+nuget Lumoin.Veritas.Sparql
+nuget Lumoin.Veritas.Turtle
+nuget Lumoin.Veritas.Xml
+nuget MathNet.Numerics >= 6.0.0-beta1 
+nuget MathNet.Numerics.FSharp >= 6.0.0-beta1
 nuget MessagePack
 nuget MessagePack.FSharpExtensions
 nuget MetaTp 
@@ -207,11 +335,14 @@ nuget Microsoft.AspNetCore.Metadata
 nuget Microsoft.AspNetCore.Mvc.Core
 nuget Microsoft.AspNetCore.Mvc.NewtonsoftJson
 nuget Microsoft.AspNetCore.WebUtilities
+nuget Microsoft.Data.Edm
 nuget Microsoft.Extensions.Logging.Abstractions
 nuget Microsoft.Graph
 nuget Microsoft.SqlServer.DacFx = 162.5.57
+nuget Microsoft.SqlServer.SqlManagementObjects
 nuget Microsoft.SqlServer.TransactSql.ScriptDom >= 180.102.0
 nuget Mime-Detective
+nuget Mime-Detective.Definitions.Exhaustive
 nuget ModelingEvolution.Bytes
 nuget ModelingEvolution.FileSystem
 nuget ModelingEvolution.Ipv4
@@ -222,27 +353,43 @@ nuget Neo4j.Driver
 nuget Neo4j.Driver.Reactive
 nuget Neo4jClient
 nuget Nerdbank.MessagePack
+nuget NestGen 
 nuget NetworkingPrimitivesCore
 nuget NetworkInspector.Values
 nuget Newtonsoft.Json
+nuget Newtonsoft.Json >= 13.0.0
+nuget NJsonSchema
 nuget NLanguageTag
+nuget NRules 
+nuget NuGet.CatalogReader
+nuget NuGet.Protocol
 nuget NUnit.Framework
 nuget ObjectLayoutInspector
 nuget OBO.NET
 nuget OBO.NET.CodeGeneration
-nuget OpenAPITypeProvider 
+nuget OData.QueryBuilder
+nuget Ontology.NET
+nuget Ontology.NET.Extensions
+nuget OpenAI
 nuget OWLSharp
 nuget OWLSharp.Extensions
+nuget Oxigraph
+nuget Oxigraph.Extensions.DotNetRDF
+nuget PaGetto.Protocol
 nuget PdfPig
+nuget PdfSharpDslCore 
 nuget Phoenixml.Platform.Editor.Xml 0.1.0
 nuget PhoenixmlDb.Core 1.6.7
 nuget PhoenixmlDb.Schema.Inference 0.1.0
 nuget PhoenixmlDb.Xslt 1.6.13
+nuget PolyglotSSSOM
 nuget PosInformatique.Foundations.EmailAddresses
 nuget PuppeteerExtraSharp
 nuget PuppeteerSharp
 nuget PuppeteerSharp.Contrib.Extensions
 nuget PuppeteerSharp.Dom = 5.0.43
+nuget Qsi 
+nuget Qsi.SqlServer 
 nuget QuikGraph
 nuget QuikGraph.Data
 nuget QuikGraph.Graphviz
@@ -251,9 +398,12 @@ nuget QuikGraph.Petri
 nuget QuikGraph.Serialization
 nuget r2rml4net 
 nuget RDFSharp
+nuget Rehman.Slugify
 nuget Rsft.Net.DomainParser
 nuget SafeName
-nuget Selenium.WebDriver = 4.47.0
+nuget Schema.NET.Pending
+nuget SchemeGenerator 
+nuget Selenium.WebDriver = 4.43.0
 nuget SemanticVersioning 
 nuget Semiodesk.Trinity
 nuget Semver
@@ -262,8 +412,9 @@ nuget SerilogMetrics
 nuget SerilogTimings 
 nuget SerilogTracing
 nuget SerilogTracing.Expressions 
-nuget FSharp.Quotations.Evaluator
+nuget ShapeSifter
 nuget SigmaGraph.NET
+nuget Simple.OData.V4.Client
 nuget SimpleCrawler.Puppeteer 
 nuget SimpleTemplateTypeProvider
 nuget Soenneker.Extensions.Char
@@ -274,27 +425,104 @@ nuget Spectre.Console
 nuget SQLProvider.MsSql = 1.5.18
 nuget SqlSharp 
 nuget Stardust.Paradox.Data.Linq 
+nuget StringToExpression 
 nuget Suave
 nuget System.DirectoryServices.AccountManagement >= 10.0.11
 nuget System.DirectoryServices.Protocols >= 10.0.11
 nuget Tavis.UriTemplates
 nuget Taynftmf.FglExtnsn
 nuget TextCopy
+nuget Thoth.Json.Core 
+nuget Thoth.Json.Core.Auto 
+nuget Thoth.Json.Newtonsoft 
+nuget Thoth.Json.System.Text.Json 
 nuget TokensRegexProvider 
 nuget TruePath >= 1.12.0
 nuget TruePath.SystemIo >= 1.12.0
+nuget TypeShape
 nuget Universal.Common
+nuget Universal.Common.Audio
+nuget Universal.Common.Collections
 nuget Universal.Common.Css.Selectors
+nuget Universal.Common.Data
+nuget Universal.Common.Drawing
+nuget Universal.Common.Forms
+nuget Universal.Common.Image
+nuget Universal.Common.Json
+nuget Universal.Common.Language
+nuget Universal.Common.Logic
+nuget Universal.Common.Mathematics
+nuget Universal.Common.Net.Ftp
+nuget Universal.Common.Net.Http
+nuget Universal.Common.Net.WebSocket
+nuget Universal.Common.Pipelines
+nuget Universal.Common.Reflection
+nuget Universal.Common.Security
+nuget Universal.Common.Serialization
+nuget Universal.Common.Threading.Tasks
 nuget Unquote
 nuget UUIDNext
+nuget Varve.Iri
+nuget Varve.Rdf
+nuget Varve.Sparql
+nuget Varve.Sparql.Evaluation
+nuget Varve.Sparql.Results
+nuget Varve.Sparql.Store
+nuget Varve.Store
+nuget Varve.Turtle
+nuget Varve.Xsd
 nuget VDS.Common
+nuget Verifiable
+nuget Verifiable.Core
+nuget Verifiable.DataStorage
+nuget Verifiable.Jwt
+nuget Verifiable.Microsoft
+nuget Verifiable.Sidetree
+nuget Veritas
 nuget Waher.Content.Semantic
 nuget WebFlux 
 nuget WebSharper
+nuget WebSharper =  10.0.0.652
+nuget WebSharper.Compiler.FSharp = 10.0.0.652
+nuget WebSharper.FSharp = 10.0.0.652
+nuget WinSCP
 nuget WordGlue 
 nuget Xilium.Crdtp.Client
 nuget XParsec
 nuget XPlot.GoogleCharts
 nuget XPlot.GoogleCharts.Deedle
 nuget XPlot.Plotly
+nuget XSDLib
+nuget Yaml2JsonNode
 nuget Yog.FSharp
+nuget YamlDotNet
+nuget FSharp.SystemTextJson
+nuget FSharp.TypeProviders.SDK
+nuget PeregrineValueTypesas
+nuget TypeEquality
+nuget ParquetSharp
+nuget ParquetSharp.DataFrame
+nuget FSharp.Control.Websockets
+nuget FSharp.Control.Websockets.TPL
+nuget ws
+nuget Microsoft.Playwright
+nuget Selenium.HarCapture
+nuget Dramaturge
+nuget WebDriverBiDi
+nuget WebDriverBiDi.Analyzers
+nuget WebDriverBiDi.Logging
+nuget WebDriverBiDi.Extensions
+UnifiedConfig
+MailMerge
+Microsoft.Xml.SgmlReader
+Flattener
+BaseXClient
+FluentXpath
+
+
+
+
+
+
+
+nuget XPath2

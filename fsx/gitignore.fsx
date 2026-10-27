@@ -1,14 +1,16 @@
 #time on
 
-
-open System
-open System.IO
+fsi.PrintLength <- 1
+// fsi.PrintSize <- Int32.MaxValue
+fsi.ShowDeclarationValues <- true
+#I @"D:\https\com\github\eristocrates\ipa\dll"
+#r "StringModule.dll"
+open StringModule
+#I @"D:\https\com\github\eristocrates\ipa\fsx"
 
 #load @".paket/load/main.group.fsx"
-#I @"D:\https\com\github\eristocrates\ipa\fsx"
-#r "Ipa.dll"
-open Ipa
-
+open System
+open System.IO
 
 let authored_text =
     $"""
@@ -32,7 +34,6 @@ let gitignoreFilepath = $"""{rootDirectory}\.gitignore"""
 open System.IO
 // https://docs.github.com/en/repositories/working-with-files/managing-large-files/about-large-files-on-github#file-size-limits
 
-
 let thresholdBytes = 100L * 1024L * 1024L // 100 MiB
 
 let normalizeToGitPath (p: string) = p.Replace('\\', '/')
@@ -49,21 +50,6 @@ let escapeGitignoreLine (line: string) =
         "\\" + line
     else
         line
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 let enumerateFilesRecursive (rootDir: string) : string array =
     let opts = EnumerationOptions()
@@ -85,9 +71,6 @@ let rootFull = Path.GetFullPath(rootDirectory)
 if not (Directory.Exists(rootFull)) then
     failwith $"rootDirectory does not exist: {rootFull}"
 
-
-
-
 let largeFiles =
     let opts = EnumerationOptions()
     opts.RecurseSubdirectories <- true
@@ -107,11 +90,6 @@ let largeFiles =
     |> Array.sort
     |> Array.map (relativeGitPath rootFull)
     |> Array.map escapeGitignoreLine
-
-
-
-
-
 
 let dotnet_gitignore =
     """
@@ -152,6 +130,8 @@ ScaffoldingReadMe.txt
 *.nupkg
 # NuGet Symbol Packages
 *.snupkg
+# Paket Packages
+**packages/
 
 # dotenv environment variables file
 .env
@@ -174,8 +154,6 @@ TestResult.xml
 nunit-*.xml
     """
 
-
-
 let generated_header =
     """
 # ------------------------------------------------------------
@@ -197,7 +175,6 @@ let file_text =
         generated_text
     |]
     |> String.concat "\n"
-
 
 let outputPath =
     if Path.IsPathRooted(gitignoreFilepath) then

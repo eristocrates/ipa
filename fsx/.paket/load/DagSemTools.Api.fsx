@@ -1,0 +1,15 @@
+namespace PaketLoadScripts
+
+#load "DagSemTools.Datalog.fsx" 
+#load "DagSemTools.Datalog.Parser.fsx" 
+#load "DagSemTools.OWL2ALC.fsx" 
+#load "DagSemTools.OWL2RL2Datalog.fsx" 
+#load "DagSemTools.OwlOntology.fsx" 
+#load "DagSemTools.Rdf.fsx" 
+#load "DagSemTools.RdfOwlTranslator.fsx" 
+#load "DagSemTools.Sparql.Parser.fsx" 
+#load "DagSemTools.Turtle.Parser.fsx" 
+#load "IriTools.fsx" 
+#load "LanguageExt.Core.fsx" 
+#load "Serilog.fsx" 
+#r "../../packages/DagSemTools.Api/lib/net8.0/Api.dll" 

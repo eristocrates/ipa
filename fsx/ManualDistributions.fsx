@@ -26,9 +26,20 @@ open StringModule
         "https://www.commoncoreontologies.org/mro/", "https://github.com/CommonCoreOntology/CommonCoreOntologies/raw/refs/heads/develop/src/cco-extensions/ModalRelationOntology.ttl" // "cco.mro"
 
         "http://www.loc.gov/premis/rdf/v3/", "https://id.loc.gov/ontologies/premis-3-0-0.rdf"
+        "http://www.w3.org/2005/xpath-functions"
+        "http://www.w3.org/2009/rdf-PlainLiteral-functions"
 *)
 
 let graphDistributions = [|
+
+    "http://www.w3.org/ns/dx/prof/role/", "https://www.w3.org/ns/dx/prof/role/index.ttl"
+    "http://www.w3.org/ns/dx/prof/", "https://www.w3.org/TR/dx-prof/rdf/prof.ttl"
+    "http://www.w3.org/ns/shacl-shacl#", "https://github.com/w3c/data-shapes/raw/refs/heads/gh-pages/shacl12-vocabularies/shacl-shacl.ttl"
+    "http://www.w3.org/ns/shacl-ui/", "https://github.com/w3c/data-shapes/raw/refs/heads/gh-pages/shacl12-vocabularies/shacl-ui.ttl"
+    "http://www.w3.org/ns/shacl-owl#", "https://github.com/w3c/shacl-resources/raw/eaffc1aa8958d21dac4c6bb514014e1a2ac23b02/shacl-owl/shacl-owl.ttl"
+    "http://www.w3.org/ns/shacl#", "https://github.com/w3c/data-shapes/raw/refs/heads/gh-pages/shacl12-vocabularies/shacl.ttl"
+    "http://www.w3.org/ns/shacl-node-expr-sparql#", "https://github.com/w3c/data-shapes/raw/refs/heads/gh-pages/shacl12-vocabularies/shnex-sparql.ttl"
+    "http://www.w3.org/ns/shacl-node-expr#", "https://github.com/w3c/data-shapes/raw/refs/heads/gh-pages/shacl12-vocabularies/shnex.ttl"
     "http://www.w3.org/ns/activitystreams#", "https://www.w3.org/ns/activitystreams-owl"
     "https://w3id.org/vocab/sdm#", "https://linkedvocabs.org/vocab/sdm/sdm.owl#"
     "http://purl.org/vocab/vann/", "http://purl.org/vocab/vann/vann-vocab-20100607.rdf"
@@ -237,9 +248,6 @@ let graphDistributions = [|
     "http://www.w3.org/ns/prov#", "http://www.w3.org/ns/prov#"
     "http://www.w3.org/ns/r2rml#", "http://www.w3.org/ns/r2rml#"
     "http://www.w3.org/ns/rdfa#", "http://www.w3.org/ns/rdfa#"
-    "http://www.w3.org/ns/shacl-shacl#", "http://www.w3.org/ns/shacl-shacl#"
-    "http://www.w3.org/ns/shacl-shacl#", "https://www.w3.org/ns/shacl-shacl.ttl"
-    "http://www.w3.org/ns/shacl#", "http://www.w3.org/ns/shacl#"
     "http://www.w3.org/ns/shex#", "https://www.w3.org/ns/shex.ttl"
     "http://www.w3.org/ns/solid/acp#", "http://www.w3.org/ns/solid/acp#"
     "http://www.w3.org/ns/solid/interop#", "http://www.w3.org/ns/solid/interop#"

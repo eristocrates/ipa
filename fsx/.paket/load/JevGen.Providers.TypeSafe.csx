@@ -1,0 +1,12 @@
+
+#load "JevGen.DependencyInjection.csx" 
+#load "JevGen.Jev.csx" 
+#load "Microsoft.Extensions.Configuration.Abstractions.csx" 
+#load "Microsoft.Extensions.DependencyInjection.csx" 
+#load "Microsoft.Extensions.DependencyInjection.Abstractions.csx" 
+#load "Microsoft.Extensions.Hosting.Abstractions.csx" 
+#load "Microsoft.Extensions.Http.csx" 
+#load "Microsoft.Extensions.Logging.Abstractions.csx" 
+#load "Microsoft.Extensions.Options.csx" 
+#load "Microsoft.Extensions.Options.ConfigurationExtensions.csx" 
+#r "../../packages/JevGen.Providers.TypeSafe/lib/net10.0/JevGen.Providers.TypeSafe.dll" 

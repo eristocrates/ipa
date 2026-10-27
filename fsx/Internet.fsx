@@ -1,74 +1,177 @@
 #time on
 
-fsi.PrintLength <- 10
-fsi.PrintSize <- 100
+fsi.PrintLength <- 1
+fsi.PrintSize <- 3000
+fsi.ShowDeclarationValues <- true
 
-// fsi.ShowDeclarationValues <- false
 #I @"D:\https\com\github\eristocrates\ipa\dll"
-#r "SharedKernel.dll"
 #r "StringModule.dll"
-#r "ResourceIdentification.dll"
-#r "ResourceDescription.dll"
-#r "Iana.dll"
-#r @"IanaScheme.dll"
-#r @"IanaMime.dll"
 
 #I @"D:\https\com\github\eristocrates\ipa\fsx"
-#load "PrettierNaming.fsx"
-#load "Ast.fsx"
-
-open SharedKernel
 open StringModule
-open Iana
-open ResourceIdentification
-open ResourceDescription
-#I @"D:\https\com\github\eristocrates\ipa\fsx\Sites"
+#load "Me.fsx"
+open Me
+#I @"D:\https\com\github\eristocrates\ipa\fs\DoxAletheia\src\DoxAletheia.Runtime\bin\Release\net10.0"
 
+#r "DoxAletheia.Runtime.dll"
+open DoxAletheia
+open DoxAletheia.Runtime
+open type Functional
 #load @".paket/load/main.group.fsx"
 
-open System
-open System.Web
-open System.Linq
-open System.Collections
+open BrowserApi.Css.Authoring
+open canopy
+open canopy.classic
 open FSharp.Data
-open TextCopy
-open Nager.PublicSuffix
-open Nager.PublicSuffix.Models
-open Nager.PublicSuffix.RuleProviders
-open System.Text
-open System.Net
-open System.IO
-open Fabulous.AST
-open Fantomas.Core
-open System.Globalization
-open ModelingEvolution.Ipv4
-open System.Net.Sockets
-open Dubzer.WhatwgUrl
-open VDS.Common.Tries
-open Meziantou.Framework
-open Microsoft.AspNetCore.Http
-open ktsu.Semantics.Paths
-//open Universal.Common
-open FolkerKinzel.MimeTypes
-open Tavis.UriTemplates
-open Humanizer
-open CaseConverter
+open FSharpPlus
+open NLanguageTag
+open OpenQA.Selenium
+open OpenQA.Selenium.Edge
+open OpenQA.Selenium.Remote
 open PuppeteerSharp
 open PuppeteerSharp.Cdp
-open BrowserApi
-open BrowserApi.Common
+open RDFSharp.Model
+open System
+open System.Collections
 open System.Collections.Concurrent
-open PuppeteerSharp.Cdp.Messaging
-open System.Numerics
-open System.Threading.Tasks
+open System.Globalization
+open System.IO
+open System.Security.Cryptography
+open System.Text
+open System.Text.Json
+open System.Text.RegularExpressions
+open System.Xml
+open System.Xml.Linq
+
 open WebDriverBiDi
 open WebDriverBiDi.Session
 open WebDriverBiDi.BrowsingContext
-open BrowserApi.Css.Authoring
-open IriTools
-open VDS.RDF
+open System.Threading.Tasks
+open BrowserApi.Common
+open PuppeteerSharp.Cdp.Messaging
+open System.Numerics
+open AW.Identifiers
+open Dubzer.WhatwgUrl
+open BrowserApi.Url
+open FolkerKinzel.MimeTypes
 open LSL.DataUri
+open Iana
+open ktsu.Semantics.Paths
 
+type Irn = {
+    namespaceIdentifier: string
+    namespaceSpecificString: string
+} with
+
+    member this.urn = Urn.Parse $"urn:{this.namespaceIdentifier}:{this.namespaceSpecificString}"
+    member this.lexicalForm = this.urn.ToString()
+    member this.asIri = Iri.op_Implicit this.lexicalForm 
+    member this.asSubject = this.asIri.asSubject
+    member this.asPredicate = this.asIri.asPredicate
+    member this.asObject = this.asIri.asObject
+    
+type Task<'OutputType> with
+    member this.await = this.GetAwaiter().GetResult()
+
+type Task with
+    member this.await = this.GetAwaiter().GetResult()
+
+let await (operation: Task<'OutputType>) : 'OutputType = operation.GetAwaiter().GetResult()
+
+let awaitUnit (task: Task) = task.GetAwaiter().GetResult()
+
+type FileInfo with
+    member this.stem = Path.GetFileNameWithoutExtension this.Name
+    member this.stemPath = Path.Combine(this.DirectoryName, this.stem)
+
+type DriveInfo with
+    static member byLetter =
+        DriveInfo.GetDrives()
+        |> Array.map (fun hardDrive -> hardDrive.Name[0], hardDrive)
+        |> Map.ofArray
+    static member preferredDrive =
+        match DriveInfo.byLetter.TryFind 'D' with
+        | Some drive -> drive
+        | None -> DriveInfo.byLetter['C']
+
+type Iri with 
+    member this.Scheme =  this.asUri.Scheme
+    member this.Authority = this.asUri.Authority
+    member this.UserInfo = this.asUri.UserInfo
+    member this.Host = this.asUri.Host
+    member this.DnsSafeHost = this.asUri.DnsSafeHost
+    member this.Port = this.asUri.Port
+    member this.Path = this.asUri.AbsolutePath
+    member this.Query = this.asUri.Query
+    member this.Fragment = this.asUri.Fragment
+    member this.LocalPath = this.asUri.LocalPath.Replace("/", "\\").TrimEnd('\\')
+    member this.Segments = this.asUri.Segments |> Array.choose (fun uriSegment -> 
+        match uriSegment.TrimStart('/') with 
+        | segment when String.IsNullOrWhiteSpace segment -> None
+        | segment -> Some segment
+     ) 
+type Iri with 
+    member this.asUrl = Url.Parse this.identity
+    member this.Hash = this.asUrl.Hash
+    member this.Hostname = this.asUrl.Hostname
+    member this.Href = this.asUrl.Href
+    member this.Origin = this.asUrl.Origin
+    member this.Password = this.asUrl.Password
+    member this.Pathname = this.asUrl.Pathname
+    member this.Port = this.asUrl.Port
+    member this.Protocol = this.asUrl.Protocol
+    member this.Search = this.asUrl.Search
+    member this.SearchParams = this.asUrl.SearchParams
+    member this.Username = this.asUrl.Username
+    member this.jsonString = this.asUrl.ToJsOn()
+type Iri with 
+    member this.PathQueryFragment = this.identity[this.Origin.Length ..].TrimStart('/')
+    member this.dotExtension = Path.GetExtension this.LocalPath
+    member this.extension = this.dotExtension.TrimStart('.')
+    member this.tryDotExtension = Option.ofNullOrWhiteSpace this.dotExtension
+    member this.tryExtension = this.tryDotExtension |> Option.map (fun extension -> extension.TrimStart('.'))
+
+    member this.terminal = this.identity.ToCharArray() |> Array.last |> string
+
+    member this.terminalName =
+        match this.terminal with
+        | "/" -> '/'.tryHtmlEntity.Value
+        | "#" -> '#'.tryHtmlEntity.Value
+        | _ -> String.Empty
+
+    member this.reverseHostPath = this.Host.Split('.') |> Array.rev |> String.concat "\\"
+    member this.remoteReference = this.identity
+    member this.localReference = 
+        DriveInfo.preferredDrive.Name
+        + this.Scheme
+        + "\\"
+        + this.reverseHostPath
+        + this.LocalPath
+        + this.terminalName
+type HtmlDocument with 
+    static member ofWebDriver (webDriver:RemoteWebDriver) = HtmlDocument.Parse webDriver.PageSource
+
+type RemoteWebDriver with 
+    static member Connect() = 
+    
+        let edgeOptions = EdgeOptions()
+        edgeOptions.DebuggerAddress <- "127.0.0.1:9222"
+        new RemoteWebDriver(Uri("http://127.0.0.1:9515"), edgeOptions)
+    member this.url (iri:Iri) = url iri.identity
+    member this.bringToFront() =
+        this.SwitchTo().Window(this.CurrentWindowHandle)
+    member this.tabs =
+        let currentWindowHandle = this.CurrentWindowHandle
+        let titleUrls =
+            this.WindowHandles
+            |> Seq.toArray
+            |> Array.map (fun handle ->
+                this.SwitchTo().Window(handle) |> ignore
+                printfn "\n%s\n\t| %s\n" this.Title this.Url
+                this.Title, this.Url)
+        this.SwitchTo().Window(currentWindowHandle) |> ignore
+        titleUrls
+    member this.highlight (selector: Selector) = highlight <| selector.Css
 type BiDiDriver with
     static member Connect() =
         let driver = BiDiDriver(TimeSpan.FromSeconds 30.)
@@ -82,9 +185,8 @@ type BiDiDriver with
             return tree.ContextTree |> Seq.toArray
         }
         |> await
-
 type BrowsingContextInfo with
-    member this.iriref = IriReference this.Url
+    member this.Iri = Iri.op_Implicit this.Url
 
 type IBrowser with
     member this.asCdp = this :?> CdpBrowser
@@ -480,16 +582,14 @@ type CdpRealm(frame: CdpFrame) as this =
                 }
 
             ValueTask(dispose :> Task)
-
 module HttpHeader =
     let Irn (requestId: string) (fieldName: string) =
-        NamedReference $"urn:chromedevtools:http:header:{fieldName}:{requestId}"
+        Iri.op_Implicit $"urn:chromedevtools:http:header:{fieldName}:{requestId}"
 type CdpHttpRequest with
-    member this.iriref = IriReference this.Url
 
-    member this.iri = NamedReference this.iriref
-    member this.httpIri = NamedReference $"https://eristocrates.dev/ontology/cdp/http/request/{this.Id}"
-    member this.originIri = NamedReference this.iriref.Origin
+    member this.Iri = Iri.op_Implicit this.Url
+    member this.httpIri = Iri.op_Implicit $"https://eristocrates.dev/ontology/cdp/http/request/{this.Id}"
+    member this.originIri = Iri.op_Implicit this.Iri.Origin
     member this.headers = this.Headers |> Seq.map (fun kvp -> kvp.Key, kvp.Value) |> Seq.toArray
 
     member this.header(targetHeader: string) =
@@ -498,7 +598,7 @@ type CdpHttpRequest with
 
     member this.PostText = if this.HasPostData then Some this.PostData else None
     member this.CdpRequestId = this.Id
-    member this.irn = {
+    member this.Irn = {
         namespaceIdentifier = "chromedevtools"
         namespaceSpecificString = $"http:request:{this.Id}"
     }
@@ -507,9 +607,8 @@ type CdpHttpRequest with
         this.headers
         |> Array.map (fun (fieldName, fieldValue) -> HttpHeader.Irn this.Id fieldName)
         |> Array.toList
-
 type MimeType with
-    static member fromHeaders(headerDictionary: Generic.Dictionary<string, string>) =
+    static member ofHeaders(headerDictionary: Generic.Dictionary<string, string>) =
         try
             MimeType.TryParse(headerDictionary["content-type"])
             |> fun (wasParsed, mimeType) ->
@@ -519,13 +618,25 @@ type MimeType with
         with _ ->
             None
 
+    member this.extension = this.GetFileTypeExtension(false)
+    member this.dotExtension = this.GetFileTypeExtension(true)
+    member this.asFileName = $"{this.SubType}.{this.extension}"
+
+    member this.asRelativeFilePath =
+        Path.Combine(this.MediaType, this.asFileName)
+
+    static member mimeFilePath(file: FileInfo) =
+        let mimeType = IanaMimeByName[(MimeType.FromFileName file.Name).contentType]
+        Path.Combine(file.stemPath, mimeType.asRelativeFilePath )
+
+    member this.contentType = $"{this.MediaType}/{this.SubType}"
+
 type CdpHttpResponse with
     member this.CdpRequestId = (this :> IResponse).Request.Id
-    member this.iriref = IriReference this.Url
-    member this.iri = NamedReference this.iriref
-    member this.originIri = NamedReference this.iriref.Origin
-    member this.httpIri = NamedReference $"https://eristocrates.dev/ontology/cdp/http/response/{this.CdpRequestId}"
-    member this.bodyIri = NamedReference $"https://eristocrates.dev/ontology/cdp/http/body/{this.CdpRequestId}"
+    member this.Iri = Iri.op_Implicit this.Url
+    member this.originIri = Iri.op_Implicit this.Iri.Origin
+    member this.httpIri = Iri.op_Implicit $"https://eristocrates.dev/ontology/cdp/http/response/{this.CdpRequestId}"
+    member this.bodyIri = Iri.op_Implicit $"https://eristocrates.dev/ontology/cdp/http/body/{this.CdpRequestId}"
 
     member this.headers = this.Headers |> Seq.map (fun kvp -> kvp.Key, kvp.Value) |> Seq.toArray
 
@@ -540,39 +651,39 @@ type CdpHttpResponse with
             printfn "request %s %s threw %s" this.Url headers err.Message
             None
 
-    member this.mimeType = MimeType.fromHeaders this.Headers
-    member this.mediaType = MimeType.fromHeaders this.Headers
+    member this.mimeType = MimeType.ofHeaders this.Headers
+    member this.mediaType = MimeType.ofHeaders this.Headers
 
     member this.WriteAllText() =
         match this.Text() |> Option.tryNullOrWhiteSpace with
         | Some text ->
-            Path.GetDirectoryName this.iriref.localReference
+            Path.GetDirectoryName this.Iri.localReference
             |> Directory.CreateDirectory
             |> ignore
-            printfn "%s ----> %s" this.iriref.remoteReference this.iriref.localReference
+            printfn "%s ----> %s" this.Iri.remoteReference this.Iri.localReference
 
-            File.WriteAllText(this.iriref.localReference, text)
+            File.WriteAllText(this.Iri.localReference, text)
         | None -> ()
-    member this.WriteAllText(extensionOverride: FileExtension) =
+    member this.WriteAllText(dotExtension: FileExtension) =
         match this.Text() |> Option.tryNullOrWhiteSpace with
         | Some text ->
             let localFilePath =
-                match this.iriref.tryDotExtension with
-                | Some dotExtension -> Path.ChangeExtension(this.iriref.localReference, extensionOverride.WeakString)
-                | None -> this.iriref.localReference + extensionOverride.WeakString
+                match this.Iri.tryDotExtension with
+                | Some dotExtension -> Path.ChangeExtension(this.Iri.localReference, dotExtension)
+                | None -> this.Iri.localReference + dotExtension.WeakString
             Path.GetDirectoryName localFilePath |> Directory.CreateDirectory |> ignore
-            printfn "%s ----> %s" this.iriref.remoteReference localFilePath
+            printfn "%s ----> %s" this.Iri.remoteReference localFilePath
 
             File.WriteAllText(localFilePath, text)
         | None -> ()
-    member this.WriteAllText(pathOverride: AbsoluteFilePath) =
+    member this.WriteAllText(pathOverride: string) =
         match this.Text() |> Option.tryNullOrWhiteSpace with
         | Some text ->
             let localFilePath = pathOverride
-            Directory.CreateDirectory pathOverride.DirectoryPath.WeakString |> ignore
-            printfn "%s ----> %s" this.iriref.remoteReference localFilePath.WeakString
+            Directory.CreateDirectory pathOverride |> ignore
+            printfn "%s ----> %s" this.Iri.remoteReference localFilePath
 
-            File.WriteAllText(localFilePath.WeakString, text)
+            File.WriteAllText(localFilePath, text)
 
         | None -> ()
 
@@ -607,18 +718,14 @@ type CdpHttpResponse with
 type CdpRequest = {
     httpRequest: CdpHttpRequest
     httpResponse: CdpHttpResponse
-    iri: NamedReference
+    iri: Iri
     text: string
 } with
 
     member this.Id = this.httpRequest.CdpRequestId
-    member this.cdpIri = NamedReference $"https://eristocrates.dev/ontology/cdp/{this.Id}"
+    member this.cdpIri = Iri.op_Implicit $"https://eristocrates.dev/ontology/cdp/{this.Id}"
 
-    member this.originGraph =
-        if not (ggg.dataset.HasGraph this.httpResponse.originIri.irefnode) then
-            ggg.dataset.AddGraph(new ThreadSafeGraph(this.httpResponse.originIri.irefnode))
-            |> ignore
-        ggg.dataset[this.httpResponse.originIri.irefnode] :?> ThreadSafeGraph
+    member this.originOntology = OntologyBuilder this.httpResponse.originIri
 
     member this.asSubject = this.iri.asSubject
     member this.asPredicate = this.iri.asPredicate
@@ -714,8 +821,7 @@ type CdpBrowser with
         pages
 
 type CdpPageTarget with
-    member this.iriref = IriReference this.Url
-
+    member this.Iri = Iri.op_Implicit this.Url
 type BrowserApi.Dom.NodeList with
     member this.asElements =
         Array.init (int this.Length) (fun index ->
@@ -755,8 +861,8 @@ type HtmlNode with
 type Attr with
     static member Class = AttrSelector "Class"
 type CdpFrame with
-    member this.GoToAsync(iriref: IriReference) = this.GoToAsync(iriref.remoteReference)
-    member this.iriref = IriReference this.Url
+    member this.Iri = Iri.op_Implicit this.Url
+    member this.GoToAsync(iri: Iri) = this.GoToAsync(iri.remoteReference)
     member this.Locator(selector: Selector) = this.Locator(selector.Css)
 
     member this.QuerySelectorAllAsync(selector: Selector) = this.QuerySelectorAllAsync selector.Css
@@ -765,8 +871,8 @@ type CdpFrame with
     member this.QuerySelectorAsync(selector: Selector) = this.QuerySelectorAsync selector.Css
 
 type CdpPage with
-    member this.GoToAsync(iriref: IriReference) = this.GoToAsync(iriref.remoteReference)
-    member this.iriref = IriReference this.Url
+    member this.Iri = Iri.op_Implicit this.Url
+    member this.GoToAsync(iri: Iri) = this.GoToAsync(iri.remoteReference)
     member this.frames = this.Frames |> Array.map (fun frame -> frame.asCdp)
     member this.Locator(selector: Selector) = this.Locator(selector.Css)
     member this.QuerySelectorAllAsync(selector: Selector) = this.QuerySelectorAllAsync selector.Css
@@ -774,31 +880,13 @@ type CdpPage with
         this.QuerySelectorAllHandleAsync selector.Css
     member this.QuerySelectorAsync(selector: Selector) = this.QuerySelectorAsync selector.Css
     member this.Realm = CdpRealm this.MainFrame.asCdp
-(*
-    member this.ScrollToBottom() =
-        task { return! this.EvaluateFunctionAsync("() => window.scrollTo(0, document.documentElement.scrollHeight)") }
-        |> await
-
-    member this.ScrollDown(pixels: int) =
-        task { return! this.EvaluateFunctionAsync("(pixels) => window.scrollBy(0, pixels)", pixels) }
-        |> await
-
-    member this.ScrollUp(pixels: int) =
-        task { return! this.EvaluateFunctionAsync("(pixels) => window.scrollBy(0, -pixels)", pixels) }
-        |> await
-
-    member this.SetTabName(name: string) =
-        task { return! this.EvaluateFunctionAsync<string>("name => document.title = name", name) }
-*)
 
 type CdpElementHandle with
     member this.RealmElement(realm: CdpRealm) =
         realm.document.QuerySelector this.RemoteObject.Description
     member this.RealmElements(realm: CdpRealm) =
         (realm.document.QuerySelectorAll this.RemoteObject.Description).asElements
-
-type IriReference with
-
+type Iri with 
     member this.downloadResponseHtml(tab: CdpPage) =
 
         let response = tab.GoToAsync(this.remoteReference).await.asCdp

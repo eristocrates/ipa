@@ -22,15 +22,9 @@ open AngleSharp.Html
 open TextCopy
 open PhoneNumbers
 
-
-
-
-
 let utf8Encoding = UTF8Encoding(encoderShouldEmitUTF8Identifier = false, throwOnInvalidBytes = true)
 
-
 let escapedSurrogatePair = Regex(@"\\u([dD][89aAbB][0-9a-fA-F]{2})\\u([dD][c-fC-F][0-9a-fA-F]{2})", RegexOptions.Compiled ||| RegexOptions.CultureInvariant)
-
 
 type GraphemeCluster = { glyph: string; runes: Rune array }
 
@@ -67,7 +61,6 @@ module String =
 
     /// just a crumb of humor to lighten the day
     let gnirts (text: string) = rev text
-
 
     let prepostfix (prefix: string) (text: string) (postfix: string) = prefix + text + postfix
     let circumfix (affix: string) (text: string) = prepostfix affix text affix
@@ -118,7 +111,6 @@ module String =
     let asUtf8 (text: string) =
         Encoding.UTF8.GetBytes(text.ToCharArray())
 type String with
-    static member Clipboard = new Clipboard()
     member this.trimmed = String.trimmed this
     member this.rev = String.rev this
     /// just a crumb of humor to lighten the day
@@ -127,7 +119,6 @@ type String with
     member this.postfix(affix: string) = String.postfix affix this
     member this.circumfix(affix: string) = String.prepostfix affix this affix
     member this.prepostfix(prefix: string, postfix: string) = String.prepostfix prefix this postfix
-    member this.clip = String.Clipboard.SetText this
     member this.runes = String.runes this
     member this.graphemeClusters = String.graphemeClusters this
     member this.tryGraphemeCluster = String.tryGraphemeCluster this
@@ -135,7 +126,6 @@ type String with
     member this.pathTokens = String.pathTokens this
     member this.lexicalTokens = String.lexicalTokens this
     member this.asUtf8 = String.asUtf8 this
-
 
 module Rune =
     let codePoint (rune: Rune) = rune.Value
@@ -149,7 +139,6 @@ type Rune with
     member this.codePoint = Rune.codePoint this
     member this.hexName = Rune.hexName this
     member this.UHexName = Rune.UHexName this
-
 
 module GraphemeCluster =
     let tryHtmlName (graphemeCluster: GraphemeCluster) =
@@ -194,8 +183,6 @@ type Char with
     member this.tryHtmlEntity = Char.tryHtmlEntity this
     member this.hexName = Char.hexName this
     member this.UHexName = Char.UHexName this
-
-
 
 type Guid with
     member this.asString = this.ToString("N")

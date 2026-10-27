@@ -96,8 +96,8 @@ type CdpNetworkMonitor private (browser: CdpBrowser, downloadConfiguration: CdpR
                                 if downloaded then
                                     lock downloadedResponseCollection (fun () -> downloadedResponseCollection.Add response)
 
-                            with exception' ->
-                                lock failedDownloadCollection (fun () -> failedDownloadCollection.Add(response, exception'))
+                            with exception_ ->
+                                lock failedDownloadCollection (fun () -> failedDownloadCollection.Add((response, exception_)))
 
                     return! loop ()
                 }

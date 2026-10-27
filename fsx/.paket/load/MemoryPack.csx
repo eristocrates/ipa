@@ -1,0 +1,2 @@
+
+#load "MemoryPack.Core.csx" 

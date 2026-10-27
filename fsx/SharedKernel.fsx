@@ -70,6 +70,8 @@ Username = %s
         uri.Protocol.Input
         uri.Search.Input
         uri.Username.Input)
+let inline (..+) (toList: List<'ItemType>) (value: 'ItemType) = toList @ [ value ]
+
 let HttpRuleProvider = new SimpleHttpRuleProvider()
 do HttpRuleProvider.BuildAsync().GetAwaiter().GetResult() |> ignore
 let RegistrableDomainParser = new DomainParser(HttpRuleProvider)
