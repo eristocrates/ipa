@@ -1,2 +1,2 @@
 @echo off
-powershell -NoLogo -NoProfile -ExecutionPolicy Bypass -Command " & java -jar "D:\Program_Files\gephi\gephi-toolkit-0.10.1-all.jar" " %*
+powershell -NoLogo -NoProfile -ExecutionPolicy Bypass -Command "& D:\Program_Files\gephi\gephi-0.11.3\gephi-0.11.3-windows-x64.exe" %*

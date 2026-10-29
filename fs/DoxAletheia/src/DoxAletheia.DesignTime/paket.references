@@ -15,6 +15,7 @@ FSharp.ViewEngine
 FSharpPlus
 IriTools
 LitXml
+FSharp.Literals
 Meziantou.Framework
 Meziantou.Framework.Uri
 Mime-Detective
@@ -25,7 +26,11 @@ Newtonsoft.Json
 NLanguageTag
 OWLSharp
 OWLSharp.Extensions
+FSharp.SystemTextJson
 RDFSharp
+DynamicObj
+DynamicObj.Immutable
+ShapeSifter
 Tavis.UriTemplates
 VDS.Common
 TypeShape

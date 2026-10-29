@@ -38,7 +38,392 @@ open NuGet.Common
 open NuGet.Protocol
 open NuGet.Protocol.Core.Types
 open NuGet.Protocol.Resources
+open FSharpPlus
+open DynamicObj
 
+module FSharpLiteral = FSharp.Literals.Literal
+
+type CodeProvision = 
+
+    static member inline staticProperty<'ValueType> ((propertyName:string), (propertyType:Type), (value:'ValueType))
+        =
+
+        match CodeQuotation<'ValueType>.lift value with
+
+        | DirectQuote expression ->
+
+            ProvidedProperty(
+                propertyName = propertyName,
+                propertyType = propertyType,
+                isStatic = true,
+                getterCode = fun _ ->
+                    expression :> Expr
+            )
+
+        | IndirectQuote projection ->
+
+            ProvidedProperty(
+                propertyName = propertyName,
+                propertyType = typeof<obj>,
+                isStatic = true,
+                getterCode = fun _ ->
+                    Expr.Coerce(
+                        projection.projectionExpression,
+                        typeof<obj>
+                    )
+            )
+
+    static member inline staticProperty<'ValueType>  ((propertyName:string), (value:'ValueType)) = CodeProvision.staticProperty(propertyName, typeof<'ValueType>, value)
+
+    static member inline staticProperty<'ValueType>  (propertyName:string) = 
+        fun (value:'ValueType) -> CodeProvision.staticProperty<'ValueType>(propertyName,  value)
+    static member inline staticProperty<'ValueType>  (propertyType:Type) = 
+        fun (propertyName:string) -> 
+            fun (value:'ValueType) ->  CodeProvision.staticProperty<'ValueType>(propertyName, propertyType, value)
+    static member inline erasedType<'ValueType>(className:string) = ProvidedTypeDefinition(className, Some typeof<'ValueType>, isErased = true)
+    static member  erasedType<'ValueType>() = CodeProvision.erasedType typeof<'ValueType>.fsharpName
+    static member inline erasedType(className:string, baseType:Type) = ProvidedTypeDefinition(className, Some baseType, isErased = true)
+    static member inline erasedType(baseType:Type) =
+        fun (className:string) -> CodeProvision.erasedType(className, baseType)
+    static member  erasedType(className:string) =
+        fun (baseType:Type) -> CodeProvision.erasedType(className, baseType)
+module CodeProvision =
+
+    type ProvidedTypeDefinition with
+        member  this.addProjectionMembers<'ValueType> (projection : Projection<'ValueType>) : unit =
+
+            let addMember
+                (projectionSource : 'SourceType)
+                (memberShape : IShapeReadOnlyMember<'SourceType>)
+                : unit
+                =
+
+                if Projection<'SourceType>.usableMember memberShape then
+
+                    memberShape.Accept {
+                        new IReadOnlyMemberVisitor<'SourceType, bool> with
+
+                            member _.Visit<'MemberType>
+                                (
+                                    memberShape :
+                                        ReadOnlyMember<'SourceType, 'MemberType>
+                                )
+                                =
+
+                                let memberValue : 'MemberType =
+                                    memberShape.Get projectionSource
+
+                                match CodeQuotation<'MemberType>.lift memberValue with
+
+                                | DirectQuote expression ->
+
+                                    this.AddMember(
+                                        ProvidedProperty(
+                                            propertyName = memberShape.Label,
+                                            propertyType = typeof<'MemberType>,
+                                            isStatic = false,
+                                            getterCode =
+                                                fun _ ->
+                                                    expression :> Expr
+                                        )
+                                    )
+
+                                | IndirectQuote memberProjection ->
+
+                                    let ProjectionTypeDefinition =
+                                        ProvidedTypeDefinition(
+                                            memberShape.Label + "'Projection",
+                                            Some typeof<obj>,
+                                            isErased = true
+                                        )
+
+                                    ProjectionTypeDefinition.addProjectionMembers
+                                        memberProjection
+
+                                    this.AddMember
+                                        ProjectionTypeDefinition
+
+                                    this.AddMember(
+                                        this.projectionProperty(
+                                            memberShape.Label,
+                                            ProjectionTypeDefinition,
+                                            memberProjection,
+                                            false
+                                        )
+                                    )
+
+                                true
+                    }
+                    |> ignore
+
+            match projection with
+
+            | RecordProduct projectionSource ->
+
+                match shapeof<'ValueType> with
+
+                | Shape.FSharpRecord
+                    (:? ShapeFSharpRecord<'ValueType> as recordShape) ->
+
+                    recordShape.Fields
+                    |> Array.map (fun field ->
+                        field :> IShapeReadOnlyMember<'ValueType>
+                    )
+                    |> Array.iter (
+                        addMember projectionSource
+                    )
+
+                | _ ->
+                    invalidOp
+                        $"Expected {typeof<'ValueType>.FullName} to be an F# record."
+
+            | PocoProduct projectionSource ->
+
+                match shapeof<'ValueType> with
+
+                | Shape.Poco
+                    (:? ShapePoco<'ValueType> as pocoShape) ->
+
+                    let publicFields :
+                        IShapeReadOnlyMember<'ValueType> array
+                        =
+
+                        pocoShape.Fields
+                        |> Array.map (fun field ->
+                            field :> IShapeReadOnlyMember<'ValueType>
+                        )
+
+                    Array.append
+                        publicFields
+                        pocoShape.Properties
+                    |> Array.iter (
+                        addMember projectionSource
+                    )
+
+                | _ ->
+                    invalidOp
+                        $"Expected {typeof<'ValueType>.FullName} to be a POCO."
+
+            | TupleProduct projectionSource ->
+
+                match shapeof<'ValueType> with
+
+                | Shape.Tuple
+                    (:? ShapeTuple<'ValueType> as tupleShape) ->
+
+                    tupleShape.Elements
+                    |> Array.map (fun element ->
+                        element :> IShapeReadOnlyMember<'ValueType>
+                    )
+                    |> Array.iter (
+                        addMember projectionSource
+                    )
+
+                | _ ->
+                    invalidOp
+                        $"Expected {typeof<'ValueType>.FullName} to be a tuple."
+
+            | UnionProduct projectionSource ->
+
+                match shapeof<'ValueType> with
+
+                | Shape.FSharpUnion
+                    (:? ShapeFSharpUnion<'ValueType> as unionShape) ->
+
+                    let caseIndex =
+                        unionShape.GetTag projectionSource
+
+                    let activeCase =
+                        unionShape.UnionCases.[caseIndex]
+
+                    this.AddMember(
+                        ProvidedProperty(
+                            propertyName = "Case",
+                            propertyType = typeof<string>,
+                            isStatic = false,
+                            getterCode =
+                                fun _ ->
+                                    Expr.Value activeCase.CaseInfo.Name
+                        )
+                    )
+
+                    activeCase.Fields
+                    |> Array.map (fun field ->
+                        field :> IShapeReadOnlyMember<'ValueType>
+                    )
+                    |> Array.iter (
+                        addMember projectionSource
+                    )
+
+                | _ ->
+                    invalidOp
+                        $"Expected {typeof<'ValueType>.FullName} to be an F# union."
+
+            | EnumerableProduct projectionSource ->
+
+                match shapeof<'ValueType> with
+
+                | Shape.Enumerable enumerableShape ->
+
+                    enumerableShape.Accept {
+                        new IEnumerableVisitor<bool> with
+
+                            member _.Visit<
+                                'Enumerable,
+                                'Element
+                                    when 'Enumerable :> seq<'Element>
+                            >() =
+
+                                let enumerableValue : 'Enumerable =
+                                    projectionSource
+                                    |> box
+                                    |> unbox<'Enumerable>
+
+                                enumerableValue
+                                |> Seq.iteri (fun index element ->
+
+                                    let propertyName =
+                                        $"Item{index}"
+
+                                    match CodeQuotation<'Element>.lift element with
+
+                                    | DirectQuote expression ->
+
+                                        this.AddMember(
+                                            ProvidedProperty(
+                                                propertyName = propertyName,
+                                                propertyType = typeof<'Element>,
+                                                isStatic = false,
+                                                getterCode =
+                                                    fun _ ->
+                                                        expression :> Expr
+                                            )
+                                        )
+
+                                    | IndirectQuote elementProjection ->
+
+                                        let ProjectionTypeDefinition =
+                                            ProvidedTypeDefinition(
+                                                propertyName + "'Projection",
+                                                Some typeof<obj>,
+                                                isErased = true
+                                            )
+
+                                        ProjectionTypeDefinition.addProjectionMembers
+                                            elementProjection
+
+                                        this.AddMember
+                                            ProjectionTypeDefinition
+
+                                        this.AddMember(
+                                            this.projectionProperty(
+                                                propertyName,
+                                                ProjectionTypeDefinition,
+                                                elementProjection,
+                                                false
+                                            )
+                                        )
+                                )
+
+                                true
+                    }
+                    |> ignore
+
+                | _ ->
+                    invalidOp
+                        $"Expected {typeof<'ValueType>.FullName} to be enumerable."
+
+        member this.projectionProperty<'ValueType> ( (propertyName : string), (propertyType : Type), (projection : Projection<'ValueType>), (isStatic : bool) ) : ProvidedProperty =
+
+            ProvidedProperty(
+                propertyName = propertyName,
+                propertyType = propertyType,
+                isStatic = isStatic,
+                getterCode =
+                    fun _ ->
+                        Expr.Coerce(
+                            projection.projectionExpression,
+                            typeof<obj>
+                        )
+            )
+
+        member inline this.projectionProperty<'ValueType> ( (propertyName : string), (propertyType : Type), (projection : Projection<'ValueType>) ) : ProvidedProperty =
+
+            this.projectionProperty(
+                propertyName,
+                propertyType,
+                projection,
+                true
+            )
+
+        member inline this.staticProperty<'ValueType> ( (propertyName : string), (propertyType : Type), (value : 'ValueType) ) : unit =
+
+            match CodeQuotation<'ValueType>.lift value with
+
+            | DirectQuote expression ->
+
+                this.AddMember(
+                    ProvidedProperty(
+                        propertyName = propertyName,
+                        propertyType = propertyType,
+                        isStatic = true,
+                        getterCode =
+                            fun _ ->
+                                expression :> Expr
+                    )
+                )
+
+            | IndirectQuote projection ->
+
+                let ProjectionTypeDefinition =
+                    ProvidedTypeDefinition(
+                        propertyName + "'Projection",
+                        Some typeof<obj>,
+                        isErased = true
+                    )
+
+                ProjectionTypeDefinition.addProjectionMembers
+                    projection
+
+                this.AddMember
+                    ProjectionTypeDefinition
+
+                this.AddMember(
+                    this.projectionProperty(
+                        propertyName,
+                        ProjectionTypeDefinition,
+                        projection
+                    )
+                )
+
+        member inline this.staticProperty<'ValueType> ( (propertyName : string), (value : 'ValueType) ) : unit =
+
+            this.staticProperty(
+                propertyName,
+                typeof<'ValueType>,
+                value
+            )
+
+        member inline this.staticProperty<'ValueType> (propertyName : string)
+            =
+
+            fun (value : 'ValueType) ->
+                this.staticProperty(
+                    propertyName,
+                    typeof<'ValueType>,
+                    value
+                )
+
+        member inline this.staticProperty<'ValueType> (propertyType : Type) =
+
+            fun (propertyName : string) ->
+                fun (value : 'ValueType) ->
+                    this.staticProperty(
+                        propertyName,
+                        propertyType,
+                        value
+                    )
+open CodeProvision
 [<TypeProvider>]
 type VocabularyProvider(config: TypeProviderConfig) as this =
 
@@ -52,7 +437,7 @@ type VocabularyProvider(config: TypeProviderConfig) as this =
     let providedNamespace = "DoxAletheia"
     let assembly = Assembly.GetExecutingAssembly()
 
-    let createType (typeName: string) (namespaceIriString: string) (documentIrisString: string) =
+    let createType (typeName: string) (namespacePrefix: string)(namespaceName: string) (documentIrisString: string) =
         let documentIris =
             documentIrisString.Split(' ', StringSplitOptions.RemoveEmptyEntries ||| StringSplitOptions.TrimEntries)
             |> Array.map Uri
@@ -60,50 +445,28 @@ type VocabularyProvider(config: TypeProviderConfig) as this =
             |> Array.toList
 
         let vocabulary =
-            { RdfVocabulary.PREFIX(typeName.ToLowerInvariant(), namespaceIriString) with
+            { RdfVocabulary.PREFIX(namespacePrefix, namespaceName) with
                 documentIris = documentIris }
 
         let threadSafeGraph = ThreadSafeGraph.ofRdfVocabulary vocabulary
         let ontologyGraph = OntologyGraph.ofRdfVocabulary vocabulary
-        let classes = ontologyGraph.vocabularyClassByPrefixedName vocabulary
-        let properties = ontologyGraph.vocabularyPropertyByPrefixedName vocabulary
-        let owlClasses = ontologyGraph.vocabularyOwlClassByPrefixedName vocabulary
+        
+        let classes = vocabulary.ClassMap ontologyGraph 
+        let properties =  vocabulary.PropertyMap ontologyGraph
+        let owlClasses =  vocabulary.OwlClassMap ontologyGraph
+        let owlObjectProperties = vocabulary.OwlObjectPropertyMap ontologyGraph
+        let owlDataProperties = vocabulary.OwlDatatypePropertyMap ontologyGraph 
+        let owlAnnotationProperties = vocabulary.OwlAnnotationPropertyMap  ontologyGraph 
 
-        let owlObjectProperties =
-            ontologyGraph.vocabularyOwlObjectPropertyByPrefixedName vocabulary
-
-        let owlDataProperties =
-            ontologyGraph.vocabularyOwlDatatypePropertyByPrefixedName vocabulary
-
-        let owlAnnotationProperties =
-            ontologyGraph.vocabularyOwlAnnotationPropertyByPrefixedName vocabulary
-
-        let RdfClassTypeDefinition =
-            ProvidedTypeDefinition("RdfClass", Some typeof<Iri>, isErased = true)
-
-        let RdfPropertyTypeDefinition =
-            ProvidedTypeDefinition("RdfProperty", Some typeof<NormativePredicate>, isErased = true)
-
-        let OwlClassTypeDefinition =
-            ProvidedTypeDefinition("OwlClass", Some typeof<Class>, isErased = true)
-
-        let OwlObjectPropertyTypeDefinition =
-            ProvidedTypeDefinition("OwlObjectProperty", Some typeof<ObjectProperty>, isErased = true)
-
-        let OwlDataPropertyTypeDefinition =
-            ProvidedTypeDefinition("OwlDataProperty", Some typeof<DataProperty>, isErased = true)
-
-        let OwlAnnotationPropertyTypeDefinition =
-            ProvidedTypeDefinition("OwlAnnotationProperty", Some typeof<AnnotationProperty>, isErased = true)
-
-        let NamedIndividualTypeDefinition =
-            ProvidedTypeDefinition("NamedIndividual_", Some typeof<obj>, isErased = true)
-
-        let AnonymousIndividualTypeDefinition =
-            ProvidedTypeDefinition("AnonymousIndividual_", Some typeof<obj>, isErased = true)
-
-        let OfClassTypeDefinition =
-            ProvidedTypeDefinition("OfClass", Some typeof<obj>, isErased = true)
+        let RdfClassTypeDefinition = "RdfClass"  |> CodeProvision.erasedType typeof<Iri>
+        let RdfPropertyTypeDefinition = "RdfProperty" |> CodeProvision.erasedType typeof<NormativePredicate> 
+        let OwlClassTypeDefinition = "OwlClass" |> CodeProvision.erasedType typeof<Class> 
+        let OwlObjectPropertyTypeDefinition = "OwlObjectProperty" |> CodeProvision.erasedType typeof<ObjectProperty> 
+        let OwlDataPropertyTypeDefinition = "OwlDataProperty" |> CodeProvision.erasedType typeof<DataProperty> 
+        let OwlAnnotationPropertyTypeDefinition = "OwlAnnotationProperty" |> CodeProvision.erasedType typeof<AnnotationProperty> 
+        let NamedIndividualTypeDefinition = "NamedIndividual_" |> CodeProvision.erasedType typeof<obj> 
+        let AnonymousIndividualTypeDefinition = "AnonymousIndividual'" |> CodeProvision.erasedType typeof<obj> 
+        let OfClassTypeDefinition = "OfClass" |> CodeProvision.erasedType typeof<obj> 
 
         let VocabularyTypeDefinition =
             ProvidedTypeDefinition(assembly, providedNamespace, typeName, Some typeof<obj>, isErased = true)
@@ -118,15 +481,8 @@ type VocabularyProvider(config: TypeProviderConfig) as this =
               OwlDataPropertyTypeDefinition
               OwlAnnotationPropertyTypeDefinition ])
 
-        VocabularyTypeDefinition.AddMember(
-            ProvidedProperty(
-                propertyName = "vocabulary_",
-                propertyType = typeof<RdfVocabulary>,
-                isStatic = true,
-                getterCode = fun _ -> Quotation.ofValue vocabulary
-            )
-        )
-
+        VocabularyTypeDefinition.AddMember( vocabulary |> CodeProvision.staticProperty "vocabulary'")
+        
         VocabularyTypeDefinition.AddMembersDelayed(fun () ->
             [
 
@@ -151,39 +507,15 @@ type VocabularyProvider(config: TypeProviderConfig) as this =
                       owlAnnotationProperties.TryFind prefixedName
                   with
                   | Some objectProperty, None, None ->
-
-                      yield
-                          ProvidedProperty(
-                              propertyName = prefixedName.localName,
-                              propertyType = OwlObjectPropertyTypeDefinition,
-                              isStatic = true,
-                              getterCode = fun _ -> <@@ ObjectPropertyIri(Iri.op_Implicit (%%identity: string)) @@>
-                          )
+                        yield ObjectPropertyIri(PrefixedName prefixedName)  |> CodeProvision.staticProperty OwlObjectPropertyTypeDefinition prefixedName.localName
+                    // TODO next rewrite the rest of these cases
                   | None, Some dataProperty, None ->
-                      yield
-                          ProvidedProperty(
-                              propertyName = prefixedName.localName,
-                              propertyType = OwlDataPropertyTypeDefinition,
-                              isStatic = true,
-                              getterCode = fun _ -> <@@ DataPropertyIri(Iri.op_Implicit (%%identity: string)) @@>
-                          )
+                      yield DataPropertyIri(PrefixedName prefixedName)  |> CodeProvision.staticProperty OwlDataPropertyTypeDefinition prefixedName.localName
                   | None, None, Some annotationProperty ->
-
-                      yield
-                          ProvidedProperty(
-                              propertyName = prefixedName.localName,
-                              propertyType = OwlAnnotationPropertyTypeDefinition,
-                              isStatic = true,
-                              getterCode = fun _ -> <@@ AnnotationPropertyIri(Iri.op_Implicit (%%identity: string)) @@>
-                          )
+                      yield AnnotationPropertyIri(PrefixedName prefixedName)  |> CodeProvision.staticProperty OwlAnnotationPropertyTypeDefinition prefixedName.localName
                   | _, _, _ ->
-                      yield
-                          ProvidedProperty(
-                              propertyName = prefixedName.localName,
-                              propertyType = typeof<NormativePredicate>,
-                              isStatic = true,
-                              getterCode = fun _ -> <@@ IriPredicate(Iri.op_Implicit (%%identity: string)) @@>
-                          ) ]
+                      yield IriPredicate(PrefixedName prefixedName)  |> CodeProvision.staticProperty  prefixedName.localName
+            ]
 
         )
 
@@ -191,8 +523,7 @@ type VocabularyProvider(config: TypeProviderConfig) as this =
 
         for KeyValue(prefixedName, ontologyClass) in classes do
 
-            let TermTypeDefinition =
-                ProvidedTypeDefinition(prefixedName.localName, Some typeof<NamedIndividual>, isErased = true)
+            let TermTypeDefinition = prefixedName.localName |> CodeProvision.erasedType typeof<NamedIndividual>
 
             OfClassTypeDefinition.AddMember TermTypeDefinition
 
@@ -204,8 +535,9 @@ type VocabularyProvider(config: TypeProviderConfig) as this =
                     isStatic = true,
                     invokeCode =
                         fun args ->
-                            let iri = Expr.Coerce(args[0], typeof<Iri>)
-                            <@@ NamedIndividualIri(%%iri: Iri) @@>
+                            let iri = Expr.Coerce(args[0], typeof<Iri>) 
+                            
+                            <@@ NamedIndividualIri (%%iri : Iri)  @@>
                 ))
 
             TermTypeDefinition.AddMember(
@@ -225,8 +557,7 @@ type VocabularyProvider(config: TypeProviderConfig) as this =
 
         for KeyValue(prefixedName, ontologyClass) in classes do
 
-            let TermTypeDefinition =
-                ProvidedTypeDefinition(prefixedName.localName, Some typeof<AnonymousIndividual>, isErased = true)
+            let TermTypeDefinition = prefixedName.localName |> CodeProvision.erasedType typeof<AnonymousIndividual>
 
             OfClassTypeDefinition.AddMember TermTypeDefinition
 
@@ -574,14 +905,7 @@ type VocabularyProvider(config: TypeProviderConfig) as this =
 
                   match owlClasses.TryFind prefixedName with
                   | Some owlClass ->
-
-                      yield
-                          ProvidedProperty(
-                              propertyName = prefixedName.localName,
-                              propertyType = OwlClassTypeDefinition,
-                              isStatic = true,
-                              getterCode = fun _ -> <@@ ClassIri(Iri.op_Implicit (%%identity: string)) @@>
-                          )
+                      yield ClassIri(PrefixedName prefixedName) |> CodeProvision.staticProperty OwlClassTypeDefinition prefixedName.localName
                   | None ->
                       (*
                     RdfClassTypeDefinition.AddMemberDelayed(fun () ->
@@ -609,13 +933,7 @@ type VocabularyProvider(config: TypeProviderConfig) as this =
                         ))
 
     *)
-                      yield
-                          ProvidedProperty(
-                              propertyName = prefixedName.localName,
-                              propertyType = RdfClassTypeDefinition,
-                              isStatic = true,
-                              getterCode = fun _ -> <@@ Iri.op_Implicit (%%identity: string) @@>
-                          )
+                      yield PrefixedName prefixedName |> CodeProvision.staticProperty RdfClassTypeDefinition prefixedName.localName
 
               ])
 
@@ -627,14 +945,16 @@ type VocabularyProvider(config: TypeProviderConfig) as this =
 
         vocabularyProvider.DefineStaticParameters(
             parameters =
-                [ ProvidedStaticParameter("NamespaceIri", typeof<string>)
+                [ ProvidedStaticParameter("NamespacePrefix", typeof<string>)
+                  ProvidedStaticParameter("NamespaceName", typeof<string>)
                   ProvidedStaticParameter("DocumentIris", typeof<string>) ],
             instantiationFunction =
                 fun typeName args ->
-                    let namespaceIriString = args[0] :?> string
-                    let documentIrisString = args[1] :?> string
+                    let namespacePrefix = args[0] :?> string
+                    let namespaceName = args[1] :?> string
+                    let documentIriString = args[2] :?> string
 
-                    createType typeName namespaceIriString documentIrisString
+                    createType typeName namespacePrefix namespaceName documentIriString
         )
 
         this.AddNamespace(providedNamespace, [ vocabularyProvider ])

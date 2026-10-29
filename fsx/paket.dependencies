@@ -9,8 +9,11 @@ nuget Aardvark.Base.FSharp
 nuget Aardvark.Base.Rendering
 nuget Aardvark.Base.TypeProviders
 nuget Aardvark.GPGPU
+nuget Acadian.FSharp
 nuget AccelaWebSDK.NET 
 nuget Ada.Url
+nuget Akkling
+nuget DynamicObj.Immutable
 nuget AngleSharp = 1.7.2
 nuget AngleSharp.Css
 nuget AngleSharp.Diffing
@@ -20,8 +23,10 @@ nuget AngleSharp.Wasm
 nuget AngleSharp.Xml
 nuget AngleSharp.XPath
 nuget Argolis.Nancy
+nuget Argu
 nuget AssetCloudPublicAPI 
 nuget AW.Identifiers
+nuget BaseXClient
 nuget Blake3 
 nuget BrightstarDB
 nuget BrowserApi = 0.1.0-preview.9
@@ -53,15 +58,20 @@ nuget DagSemTools.RdfOwlTranslator
 nuget DagSemTools.Sparql.Parser
 nuget DagSemTools.Turtle.Parser
 nuget Databasic.MsSql
+nuget dbarbashov.Elasticsearch.FSharp
 nuget Deedle
 nuget DependentTypes
 nuget DotGram.Web
 nuget DotLiquid 
 nuget dotNetRdf
+nuget Dramaturge
 nuget Dubzer.WhatwgUrl
+nuget DynamicObj
+nuget Elmish
 nuget EnvironmentVariableProvider 
 nuget Esri.ArcGISRuntime = 300.0.0
 nuget Eto.Parse
+nuget ExcelFinancialFunctions
 nuget Eyu.Core
 nuget Eyu.Formbase
 nuget Eyu.Rdf
@@ -69,9 +79,12 @@ nuget Fabulous.AST >= 2.0.0-pre01 (pre)
 nuget Fabulous.AST.Json
 nuget Fantomas.FCS
 nuget Fare 
+nuget Felicity
+nuget Flattener
 nuget Fli
 nuget Flora.CssProvider
 nuget FluentFTP
+nuget FluentXpath
 nuget Flurl
 nuget Flurl.Http
 nuget Flurl.Http.Net40
@@ -84,6 +97,7 @@ nuget FoxLearn.JsonLd
 nuget FPrimitive
 nuget FRange
 nuget FsCheck
+nuget Fsdk
 nuget FsExcel
 nuget FShade
 nuget FShade.Core
@@ -94,42 +108,58 @@ nuget FShade.GLSL.Web
 nuget FShade.Imperative
 nuget FShade.Imperative.Web
 nuget FShade.SpirV
+nuget FSharp.Azure.StorageTypeProvider
+nuget FSharp.Collections.Immutable
 nuget FSharp.Collections.ParallelSeq
 nuget FSharp.Compiler.Service = 43.11.302
 nuget FSharp.Configuration
 nuget FSharp.Control.AsyncSeq 
 nuget FSharp.Control.Reactive 
+nuget FSharp.Control.Websockets
+nuget FSharp.Control.Websockets.TPL
+nuget FSharp.Core.Fluent
 nuget FSharp.Data
 nuget FSharp.Data.Adaptive
 nuget FSharp.Data.DbPedia
+nuget FSharp.Data.GraphQL.Client
 nuget FSharp.Data.JsonPath
+nuget FSharp.Data.JsonProvider
 nuget FSharp.Data.JsonSchema.Core
 nuget FSharp.Data.JsonSchema.NJsonSchema
 nuget FSharp.Data.JsonSchema.OpenApi
 nuget FSharp.Data.LiteralProviders
 nuget FSharp.Data.Mutator
+nuget FSharp.Data.Toolbox.Twitter
 nuget FSharp.Data.WsdlProvider
 nuget FSharp.DependentTypesProvider
+nuget FSharp.Domain.Validation
 nuget FSharp.FGL
 nuget FSharp.FGL.ArrayAdjacencyGraph
 nuget FSharp.FGL.IO
 nuget FSharp.Formatting
 nuget FSharp.Formatting.Literate
 nuget FSharp.HashCollections
+nuget FSharp.Interop.Dynamic
 nuget FSharp.Json
 nuget FSharp.Literals
 nuget FSharp.Literate
 nuget FSharp.Management
+nuget FSharp.OpenApi
 nuget FSharp.Quotations.Evaluator
 nuget FSharp.RDF 
 nuget FSharp.SourceDjinn
+nuget FSharp.SystemTextJson
 nuget FSharp.SystemTextJson 
+nuget FSharp.Text.Docker
 nuget FSharp.Text.Experimental.Transform
 nuget FSharp.Text.RegexProvider
+nuget FSharp.TypeProviders.SDK
 nuget FSharp.UMX
+nuget FSharp.Units
 nuget FSharp.ViewEngine
 nuget FSharp.XExtensions
 nuget FSharpPlus
+nuget FSharpPlus.TypeLevel
 nuget FsHttp
 nuget FSLogger
 nuget FsPdf
@@ -141,6 +171,8 @@ nuget FsUnit
 nuget GCore.Antlr.Grammers.Abnf
 nuget GCore.Antlr.Grammers.Bnf
 nuget GCore.Antlr.Grammers.Http
+nuget GeographicLib.FSharp
+nuget gexf-dotnet
 nuget Gherkin.TypeProvider 
 nuget Going.Plaid >= 6.66.0
 nuget Google.DataTable.Net.Wrapper
@@ -236,6 +268,13 @@ nuget LevelUp.Strategos.Ontology.Generators
 nuget libphonenumber-csharp
 nuget LicenseToCIL
 nuget LightningDB 
+nuget LiteDB
+nuget LiteDB.FSharp
+nuget LiteDB.Async 
+nuget LiteDB.Queryable
+nuget LiteDB.Identity
+nuget LiteDb.Extensions.Caching
+nuget EasyCaching.LiteDB
 nuget LITEQ.RDF
 nuget LitXml
 nuget LSL.DataUri
@@ -274,8 +313,10 @@ nuget Lumoin.Veritas.Skos
 nuget Lumoin.Veritas.Sparql
 nuget Lumoin.Veritas.Turtle
 nuget Lumoin.Veritas.Xml
+nuget MailMerge
 nuget MathNet.Numerics >= 6.0.0-beta1 
 nuget MathNet.Numerics.FSharp >= 6.0.0-beta1
+nuget MathNet.Symbolics
 nuget MessagePack
 nuget MessagePack.FSharpExtensions
 nuget MetaTp 
@@ -338,9 +379,13 @@ nuget Microsoft.AspNetCore.WebUtilities
 nuget Microsoft.Data.Edm
 nuget Microsoft.Extensions.Logging.Abstractions
 nuget Microsoft.Graph
+nuget Microsoft.OpenApi
+nuget Microsoft.OpenApi.YamlReader
+nuget Microsoft.Playwright
 nuget Microsoft.SqlServer.DacFx = 162.5.57
 nuget Microsoft.SqlServer.SqlManagementObjects
 nuget Microsoft.SqlServer.TransactSql.ScriptDom >= 180.102.0
+nuget Microsoft.Xml.SgmlReader
 nuget Mime-Detective
 nuget Mime-Detective.Definitions.Exhaustive
 nuget ModelingEvolution.Bytes
@@ -371,13 +416,20 @@ nuget OData.QueryBuilder
 nuget Ontology.NET
 nuget Ontology.NET.Extensions
 nuget OpenAI
+nuget Orleankka
+nuget Orleankka.Client
+nuget Orleankka.Fsharp
+nuget Orleankka.Runtime
 nuget OWLSharp
 nuget OWLSharp.Extensions
 nuget Oxigraph
 nuget Oxigraph.Extensions.DotNetRDF
 nuget PaGetto.Protocol
+nuget ParquetSharp
+nuget ParquetSharp.DataFrame
 nuget PdfPig
 nuget PdfSharpDslCore 
+nuget PeregrineValueTypes
 nuget Phoenixml.Platform.Editor.Xml 0.1.0
 nuget PhoenixmlDb.Core 1.6.7
 nuget PhoenixmlDb.Schema.Inference 0.1.0
@@ -403,6 +455,7 @@ nuget Rsft.Net.DomainParser
 nuget SafeName
 nuget Schema.NET.Pending
 nuget SchemeGenerator 
+nuget Selenium.HarCapture
 nuget Selenium.WebDriver = 4.43.0
 nuget SemanticVersioning 
 nuget Semiodesk.Trinity
@@ -439,7 +492,9 @@ nuget Thoth.Json.System.Text.Json
 nuget TokensRegexProvider 
 nuget TruePath >= 1.12.0
 nuget TruePath.SystemIo >= 1.12.0
+nuget TypeEquality
 nuget TypeShape
+nuget UnifiedConfig
 nuget Universal.Common
 nuget Universal.Common.Audio
 nuget Universal.Common.Collections
@@ -479,7 +534,13 @@ nuget Verifiable.Jwt
 nuget Verifiable.Microsoft
 nuget Verifiable.Sidetree
 nuget Veritas
+nuget Vp.FSharp.Sql
+nuget Vp.FSharp.Sql.SqlServer
 nuget Waher.Content.Semantic
+nuget WebDriverBiDi
+nuget WebDriverBiDi.Analyzers
+nuget WebDriverBiDi.Extensions
+nuget WebDriverBiDi.Logging
 nuget WebFlux 
 nuget WebSharper
 nuget WebSharper =  10.0.0.652
@@ -487,42 +548,14 @@ nuget WebSharper.Compiler.FSharp = 10.0.0.652
 nuget WebSharper.FSharp = 10.0.0.652
 nuget WinSCP
 nuget WordGlue 
+nuget ws
 nuget Xilium.Crdtp.Client
 nuget XParsec
+nuget XPath2
 nuget XPlot.GoogleCharts
 nuget XPlot.GoogleCharts.Deedle
 nuget XPlot.Plotly
 nuget XSDLib
 nuget Yaml2JsonNode
-nuget Yog.FSharp
 nuget YamlDotNet
-nuget FSharp.SystemTextJson
-nuget FSharp.TypeProviders.SDK
-nuget PeregrineValueTypesas
-nuget TypeEquality
-nuget ParquetSharp
-nuget ParquetSharp.DataFrame
-nuget FSharp.Control.Websockets
-nuget FSharp.Control.Websockets.TPL
-nuget ws
-nuget Microsoft.Playwright
-nuget Selenium.HarCapture
-nuget Dramaturge
-nuget WebDriverBiDi
-nuget WebDriverBiDi.Analyzers
-nuget WebDriverBiDi.Logging
-nuget WebDriverBiDi.Extensions
-UnifiedConfig
-MailMerge
-Microsoft.Xml.SgmlReader
-Flattener
-BaseXClient
-FluentXpath
-
-
-
-
-
-
-
-nuget XPath2
+nuget Yog.FSharp

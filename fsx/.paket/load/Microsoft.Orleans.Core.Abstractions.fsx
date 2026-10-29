@@ -1,0 +1,15 @@
+namespace PaketLoadScripts
+
+#load "Microsoft.CodeAnalysis.Common.fsx" 
+#load "Microsoft.CodeAnalysis.Workspaces.Common.fsx" 
+#load "Microsoft.Extensions.Configuration.Abstractions.fsx" 
+#load "Microsoft.Extensions.DependencyInjection.fsx" 
+#load "Microsoft.Extensions.DependencyInjection.Abstractions.fsx" 
+#load "Microsoft.Extensions.DependencyModel.fsx" 
+#load "Microsoft.Extensions.Logging.fsx" 
+#load "Microsoft.Extensions.Logging.Abstractions.fsx" 
+#load "Microsoft.Extensions.ObjectPool.fsx" 
+#load "Microsoft.Extensions.Options.fsx" 
+#load "Microsoft.Orleans.Serialization.fsx" 
+#load "System.IO.Hashing.fsx" 
+#r "../../packages/Microsoft.Orleans.Core.Abstractions/lib/net10.0/Orleans.Core.Abstractions.dll" 

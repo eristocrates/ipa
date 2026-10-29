@@ -1,0 +1,10 @@
+
+#load "Microsoft.CodeAnalysis.Common.csx" 
+#load "Microsoft.CodeAnalysis.Workspaces.Common.csx" 
+#load "Microsoft.Extensions.DependencyInjection.Abstractions.csx" 
+#load "Microsoft.Extensions.DependencyModel.csx" 
+#load "Microsoft.Extensions.ObjectPool.csx" 
+#load "Microsoft.Extensions.Options.csx" 
+#load "Microsoft.Orleans.Serialization.Abstractions.csx" 
+#load "System.IO.Hashing.csx" 
+#r "../../packages/Microsoft.Orleans.Serialization/lib/net10.0/Orleans.Serialization.dll" 

@@ -22,8 +22,13 @@ open NLanguageTag
 open AngleSharp
 open FSharp.Data
 open FolkerKinzel.MimeTypes
-
+open NuGet.Common
+open NuGet.Protocol
+open NuGet.Protocol.Core.Types
+open NuGet.Protocol.Resources
 open AW.Identifiers
+open TypeShape
+open TypeShape.Core
 open VDS.Common.Tries
 open Nager.PublicSuffix
 open Nager.PublicSuffix.Models
@@ -38,7 +43,23 @@ open Flurl
 open Ada.Url
 open Dubzer.WhatwgUrl
 open AngleSharp.Html
+open NuGet.Common
+open NuGet.Protocol
+open NuGet.Protocol.Core.Types
+open NuGet.Protocol.Resources
+open ShapeSifter
+open TypeShape.Core
+open System.Reflection
+open Microsoft.FSharp.Linq.RuntimeHelpers
+open HCollections
+open Microsoft.FSharp.Reflection
+open TypeEquality
+open FSharp.SystemTextJson
+open System.Text.Json
+open System.Text.Json.Serialization
+open DynamicObj
 
+module FSharpLiteral = FSharp.Literals.Literal
 let domainParser =
     lazy
         let ruleProvider = new SimpleHttpRuleProvider()
@@ -49,9 +70,14 @@ let pathDelimiters = [| '/'; '\\'; ':'; '#' |]
 let lexicalDelimiters = [| '-'; '.'; '+'; '/'; '#' |]
 type NonNegativeInteger = uint32
 
-let utf8Encoding = UTF8Encoding(encoderShouldEmitUTF8Identifier = false, throwOnInvalidBytes = true)
+let utf8Encoding =
+    UTF8Encoding(encoderShouldEmitUTF8Identifier = false, throwOnInvalidBytes = true)
 
-let escapedSurrogatePair = Regex(@"\\u([dD][89aAbB][0-9a-fA-F]{2})\\u([dD][c-fC-F][0-9a-fA-F]{2})", RegexOptions.Compiled ||| RegexOptions.CultureInvariant)
+let escapedSurrogatePair =
+    Regex(
+        @"\\u([dD][89aAbB][0-9a-fA-F]{2})\\u([dD][c-fC-F][0-9a-fA-F]{2})",
+        RegexOptions.Compiled ||| RegexOptions.CultureInvariant
+    )
 
 type GraphemeCluster = { glyph: string; runes: Rune array }
 
@@ -131,10 +157,9 @@ module String =
 
     let graphemeClusters (text: string) =
         textElements text
-        |> Array.map (fun textElement -> {
-            glyph = textElement
-            runes = runes textElement
-        })
+        |> Array.map (fun textElement ->
+            { glyph = textElement
+              runes = runes textElement })
 
     let tryGraphemeCluster (text: string) =
         match graphemeClusters text with
@@ -329,7 +354,8 @@ module Set =
             more |> Set.add two |> Set.add one |> TwoOrMore.Create
 
         static member More(one: 'SetElement) =
-            fun (two: 'SetElement) -> fun (more: Set<'SetElement>) -> more |> Set.add two |> Set.add one |> TwoOrMore.Create
+            fun (two: 'SetElement) ->
+                fun (more: Set<'SetElement>) -> more |> Set.add two |> Set.add one |> TwoOrMore.Create
 
         member this.elements =
             let (TwoOrMoreElements elements) = this
@@ -413,7 +439,9 @@ type UMX =
     static member inline tag<[<Measure>] 'DatatypeMeasure>(x: string) : string<'DatatypeMeasure> = Unsafe.cast x
     static member inline untag<[<Measure>] 'DatatypeMeasure>(x: string<'DatatypeMeasure>) : string = Unsafe.cast x
 
-    static member inline cast<[<Measure>] 'FromDatatypeMeasure, [<Measure>] 'ToDatatypeMeasure>(literal: string<'FromDatatypeMeasure>) : string<'ToDatatypeMeasure> =
+    static member inline cast<[<Measure>] 'FromDatatypeMeasure, [<Measure>] 'ToDatatypeMeasure>
+        (literal: string<'FromDatatypeMeasure>)
+        : string<'ToDatatypeMeasure> =
         Unsafe.cast literal
 
 module Operators =
@@ -423,7 +451,92 @@ module Operators =
     /// Infix operator used for tagging, untagging, or casting units of measure
     let inline (~%) (x: string) : string<'DatatypeMeasure> =
         _cast<UMX, string, string<'DatatypeMeasure>> x
+type FSharpRecord<'RecordType> =
+    private
+    | FSharpRecord of 'RecordType
 
+    member this.value =
+        let (FSharpRecord value) = this
+        value
+    static member Parse
+        (value : 'RecordType)
+        : FSharpRecord<'RecordType>
+        =
+
+        match shapeof<'RecordType> with
+
+        | Shape.FSharpRecord
+            (:? ShapeFSharpRecord<'RecordType>) ->
+
+            FSharpRecord value
+
+        | _ ->
+
+            invalidArg
+                (nameof value)
+                $"{typeof<'RecordType>.FullName} is not an F# record."
+
+    member this.fieldStrings : (string * string) list =
+
+        let value =
+            this.value
+
+        match shapeof<'RecordType> with
+
+        | Shape.FSharpRecord
+            (:? ShapeFSharpRecord<'RecordType> as recordShape) ->
+
+            recordShape.Fields
+            |> Array.map (fun field ->
+
+                field.Accept {
+                    new IReadOnlyMemberVisitor<'RecordType, string * string> with
+
+                        member _.Visit<'FieldType>
+                            (field : ReadOnlyMember<'RecordType, 'FieldType>)
+                            =
+
+                            let fieldValue : 'FieldType =
+                                field.Get value
+
+                            let fieldString =
+                                if
+                                    typeof<'FieldType>.IsGenericType
+                                    &&
+                                    typeof<'FieldType>.GetGenericTypeDefinition()
+                                        = typedefof<list<_>>
+                                then
+
+                                    fieldValue
+                                    |> box
+                                    |> unbox<System.Collections.IEnumerable>
+                                    |> Seq.cast<obj>
+                                    |> Seq.map string
+                                    |> String.concat ","
+
+                                else
+                                    string fieldValue
+
+                            field.Label, fieldString
+                }
+            )
+            |> Array.toList
+
+        | _ ->
+            invalidOp
+                $"FSharpRecord<{typeof<'RecordType>.FullName}> contains a non-record value."
+
+    member this.jsonString =
+        let jsonSerializerOptions =
+            JsonFSharpOptions.Default()
+                .ToJsonSerializerOptions()
+        jsonSerializerOptions.NumberHandling  <- JsonNumberHandling.AllowNamedFloatingPointLiterals
+        jsonSerializerOptions.ReferenceHandler <- ReferenceHandler.Preserve
+
+        JsonSerializer.Serialize(
+            this.value,            
+            jsonSerializerOptions
+        )
 type LanguageTag with
     member this.identity = this.ToString().ToLowerInvariant()
 
@@ -442,23 +555,20 @@ type InitialTextDirection =
 type PublicSuffix =
     | TopLevelDomainRule of TldRule
 
-    member this.domain(label: string) = {
-        topLevelDomain = this
-        secondLevelDomain = label
-        subdomainLabels = []
-    }
+    member this.domain(label: string) =
+        { topLevelDomain = this
+          secondLevelDomain = label
+          subdomainLabels = [] }
 
-    static member (.+)(suffix: PublicSuffix, label: string) = {
-        topLevelDomain = suffix
-        secondLevelDomain = label
-        subdomainLabels = []
-    }
+    static member (.+)(suffix: PublicSuffix, label: string) =
+        { topLevelDomain = suffix
+          secondLevelDomain = label
+          subdomainLabels = [] }
 
-    static member (+.)(label: string, suffix: PublicSuffix) = {
-        topLevelDomain = suffix
-        secondLevelDomain = label
-        subdomainLabels = []
-    }
+    static member (+.)(label: string, suffix: PublicSuffix) =
+        { topLevelDomain = suffix
+          secondLevelDomain = label
+          subdomainLabels = [] }
 
     static member ofDomainInfo(domainInfo: DomainInfo) =
         TopLevelDomainRule domainInfo.TopLevelDomainRule
@@ -476,11 +586,16 @@ type PublicSuffix =
     member this.labels = this.name.Split(".")
     member this.reverseName = this.labels |> Array.rev |> String.concat "."
 
-and Domain = {
-    topLevelDomain: PublicSuffix
-    secondLevelDomain: string
-    subdomainLabels: string list
-} with
+and Domain =
+    { topLevelDomain: PublicSuffix
+      secondLevelDomain: string
+      subdomainLabels: string list }
+
+    member this.labels =
+        Array.concat
+            [ this.subdomainLabels |> List.toArray
+              [| this.secondLevelDomain |]
+              this.topLevelDomain.labels ]
 
     member this.subdomain =
         if this.subdomainLabels.Length > 0 then
@@ -493,40 +608,35 @@ and Domain = {
         |> String.concat "."
 
     member this.reverseDomainName =
-        List.concat [
-            [ this.topLevelDomain.name; this.secondLevelDomain ]
-            this.subdomainLabels |> List.rev
-        ]
+        List.concat
+            [ [ this.topLevelDomain.name; this.secondLevelDomain ]
+              this.subdomainLabels |> List.rev ]
         |> String.concat "."
 
-    static member (+.)(domain: Domain, subdomain: string) = {
-        domain with
-            subdomainLabels = domain.subdomainLabels @ [ subdomain ]
-    }
+    static member (+.)(domain: Domain, subdomain: string) =
+        { domain with
+            subdomainLabels = domain.subdomainLabels @ [ subdomain ] }
 
-    static member (.+)(subdomain: string, domain: Domain) = {
-        domain with
-            subdomainLabels = domain.subdomainLabels @ [ subdomain ]
-    }
+    static member (.+)(subdomain: string, domain: Domain) =
+        { domain with
+            subdomainLabels = domain.subdomainLabels @ [ subdomain ] }
 
-    member this.www = {
-        this with
-            subdomainLabels = [ "www" ]
-    }
+    member this.www =
+        { this with
+            subdomainLabels = [ "www" ] }
 
 module Iana =
     type ProtocolClass =
         | Group of int
         | Registry of int
 
-    type ProtocolRegistryEntry = {
-        group: string
-        name: string
-        localName: string
-        documentation: string
-        references: string array
-        comment: string
-    }
+    type ProtocolRegistryEntry =
+        { group: string
+          name: string
+          localName: string
+          documentation: string
+          references: string array
+          comment: string }
 
     type Status =
         | Permanent
@@ -559,18 +669,17 @@ module Iana =
             | "uri" -> XRef.uri (_data, _value)
             | _ -> XRef.unknown (_type, _data, _value)
 
-    type ProtocolScheme = {
-        name: string
-        date: DateTime option
-        updated: DateTime option
-        fileTemplate: string option
-        description: string option
-        status: Status option
-        cri: int option
-        wellKnown: XRef option
-        references: XRef array
-        notes: string option
-    } with
+    type ProtocolScheme =
+        { name: string
+          date: DateTime option
+          updated: DateTime option
+          fileTemplate: string option
+          description: string option
+          status: Status option
+          cri: int option
+          wellKnown: XRef option
+          references: XRef array
+          notes: string option }
 
         static member ByName =
             XmlProvider<UseOriginalNames=true, Sample= @"D:\ftp\org\iana\assignments\uri-schemes\uri-schemes.xml">
@@ -616,21 +725,20 @@ module Iana =
 
                     let notes =
                         match record.notes with
-                        | Some notes when not (String.IsNullOrWhiteSpace notes.XElement.Value) -> Some notes.XElement.Value
+                        | Some notes when not (String.IsNullOrWhiteSpace notes.XElement.Value) ->
+                            Some notes.XElement.Value
                         | _ -> None
 
-                    {
-                        date = record.date
-                        updated = record.updated
-                        fileTemplate = file
-                        name = value
-                        description = description
-                        status = Status.ofString record.status.Value |> Some
-                        cri = Some record.cri.Value
-                        wellKnown = wellKnown
-                        references = references
-                        notes = notes
-                    }
+                    { date = record.date
+                      updated = record.updated
+                      fileTemplate = file
+                      name = value
+                      description = description
+                      status = Status.ofString record.status.Value |> Some
+                      cri = Some record.cri.Value
+                      wellKnown = wellKnown
+                      references = references
+                      notes = notes }
                     : ProtocolScheme))
             |> Array.map (fun protocolScheme -> protocolScheme.name, protocolScheme)
             |> Map.ofArray
@@ -640,41 +748,131 @@ module Iana =
             | Some protocolScheme -> protocolScheme
             | None ->
 
-                {
-                    name = scheme
-                    date = None
-                    updated = None
-                    fileTemplate = None
-                    description = None
-                    status = None
-                    cri = None
-                    wellKnown = None
-                    references = [||]
-                    notes = None
-                }
+                { name = scheme
+                  date = None
+                  updated = None
+                  fileTemplate = None
+                  description = None
+                  status = None
+                  cri = None
+                  wellKnown = None
+                  references = [||]
+                  notes = None }
 
         static member op_Implicit(scheme: string) = ProtocolScheme.ofString scheme
         static member op_Implicit(scheme: ProtocolScheme) = scheme.name
 
-    type Mime = {
-        mimeType: MimeType
-        references: XRef array
-    } with
+    [<RequireQualifiedAccess>]
+    type TopLevelMediaType =
+        /// RFC 2046
+        /// Application Media Types
+        | application
+        /// RFC 2046
+        /// Audio Media Types
+        | audio
+        /// RFC 4735
+        /// Example Media Types	no registrations, for examples only
+        | example
+        /// RFC 8081
+        /// Font Media Types
+        | font
+        /// RFC 9695
+        /// Haptics Media Types
+        | haptics
+        /// RFC 2046
+        /// Image Media Types
+        | image
+        /// RFC 2046
+        /// Message Media Types
+        | message
+        /// RFC 2077
+        /// Model Media Types
+        | model
+        /// RFC 2046
+        /// Multipart Media Types
+        | multipart
+        /// RFC 2046
+        /// Text Media Types	requires CRLF for newlines
+        | text
+        /// RFC 2046
+        /// Video Media Types
+        | video
+        | additional of string
 
-        static member ofExtension(extension: string) = {
-            mimeType = MimeType.FromFileName extension
-            references = [||]
+        static member ofMimeType(mime: MimeType) =
+            match mime.MediaType with
+            | "application" -> application
+            | "audio" -> audio
+            | "example" -> example
+            | "font" -> font
+            | "haptics" -> haptics
+            | "image" -> image
+            | "message" -> message
+            | "model" -> model
+            | "multipart" -> multipart
+            | "text" -> text
+            | "video" -> video
+            | mediaType -> additional mediaType
+
+    /// https://www.rfc-editor.org/info/rfc6838/#section-3
+    [<RequireQualifiedAccess>]
+    type RegistrationTree =
+        /// https://www.rfc-editor.org/info/rfc6838/#section-3.1
+        | Standards
+        /// https://www.rfc-editor.org/info/rfc6838/#section-3.2
+        | Vendor
+        /// https://www.rfc-editor.org/info/rfc6838/#section-3.3
+        | Personal
+        /// https://www.rfc-editor.org/info/rfc6838/#section-3.4
+        | Unregistered
+        | Additional of string
+
+        static member ofMimeType(mime: MimeType) =
+            match mime.SubType.IndexOf(".") with
+            | -1 -> Standards
+            | dotIndex ->
+                match mime.SubType[..dotIndex] with
+                | "vnd." -> Vendor
+                | "prs." -> Personal
+                | "x." -> Unregistered
+                | tree -> Additional tree
+
+    /// https://www.rfc-editor.org/info/rfc6838/#section-4.2.8
+    type StructuredSyntaxNameSuffix =
+        | NameSuffix of string
+
+        static member tryMimeType(mime: MimeType) =
+            match mime.SubType.IndexOf("+") with
+            | -1 -> None
+            | plusIndex -> Some(NameSuffix mime.SubType[plusIndex + 1 ..])
+
+    and InternetMediaType =
+        { topLevelMediaType: TopLevelMediaType
+          registrationTree: RegistrationTree
+          mimeType: MimeType
+          suffix: StructuredSyntaxNameSuffix option
+          references: XRef array
+
         }
 
-        static member ofContentType(contentType: string) = {
-            mimeType = MimeType.Parse contentType
-            references = [||]
-        }
+        static member ofMimeType(mime: MimeType) =
+            { topLevelMediaType = TopLevelMediaType.ofMimeType mime
+              registrationTree = RegistrationTree.ofMimeType mime
+              mimeType = mime
+              suffix = StructuredSyntaxNameSuffix.tryMimeType mime
+              references = [||]
 
-        static member ofContentType(contentType: string, references: XRef array) = {
-            mimeType = MimeType.Parse contentType
-            references = references
-        }
+            }
+
+        static member ofExtension(extension: string) =
+            MimeType.FromFileName extension |> InternetMediaType.ofMimeType
+
+        static member ofContentType(contentType: string) =
+            MimeType.Parse contentType |> InternetMediaType.ofMimeType
+
+        static member ofRegistryRecord(contentType: string, references: XRef array) =
+            { InternetMediaType.ofContentType contentType with
+                references = references }
 
         member this.contentType = this.mimeType.ToString()
         member this.extension = this.mimeType.GetFileTypeExtension(false)
@@ -688,25 +886,7 @@ module Iana =
             | terminal when Char.IsLetterOrDigit terminal -> tokens
             | '+' -> Array.append tokens [| "plus" |]
             | terminal -> Array.append tokens [| $"U{int terminal:X4}" |]
-(*
-        member this.tokens =
 
-            let terminal = this.contentType[this.contentType.Length - 1]
-
-            let tokens =
-                if Char.IsLetterOrDigit terminal then
-                    this.contentType.lexicalTokens
-                else
-                    let suffix =
-                        match terminal.tryHtmlName with
-                        | Some htmlName -> htmlName
-                        | None -> $"U{terminal.hexName}"
-
-                    Array.append this.contentType.lexicalTokens [| suffix |]
-
-            tokens
-
-*)
 [<CustomEquality; CustomComparison>]
 type Iri =
     | IRIREF of IriReference
@@ -748,19 +928,22 @@ type Iri =
         Functional.AnnotationAssertion(annotationProperty, IriSubject this, IriObject annotationObject)
 
     member this.Annotation(annotationObject: Iri) =
-        fun (annotationProperty: AnnotationProperty) -> Functional.AnnotationAssertion(annotationProperty, IriSubject this, IriObject annotationObject)
+        fun (annotationProperty: AnnotationProperty) ->
+            Functional.AnnotationAssertion(annotationProperty, IriSubject this, IriObject annotationObject)
 
     member this.Annotation((annotationProperty: AnnotationProperty), (annotationObject: BNode)) =
         Functional.AnnotationAssertion(annotationProperty, IriSubject this, BNodeObject annotationObject)
 
     member this.Annotation(annotationObject: BNode) =
-        fun (annotationProperty: AnnotationProperty) -> Functional.AnnotationAssertion(annotationProperty, IriSubject this, BNodeObject annotationObject)
+        fun (annotationProperty: AnnotationProperty) ->
+            Functional.AnnotationAssertion(annotationProperty, IriSubject this, BNodeObject annotationObject)
 
     member this.Annotation((annotationProperty: AnnotationProperty), (annotationObject: Literal)) =
         Functional.AnnotationAssertion(annotationProperty, IriSubject this, LiteralObject annotationObject)
 
     member this.Annotation(annotationObject: Literal) =
-        fun (annotationProperty: AnnotationProperty) -> Functional.AnnotationAssertion(annotationProperty, IriSubject this, LiteralObject annotationObject)
+        fun (annotationProperty: AnnotationProperty) ->
+            Functional.AnnotationAssertion(annotationProperty, IriSubject this, LiteralObject annotationObject)
 
     member this.label(annotationObject: Iri) =
         this.Annotation(RdfVocabulary.rdfs'label, annotationObject)
@@ -866,10 +1049,9 @@ type Iri =
             | :? Iri as other -> compare this.identity other.identity
             | _ -> invalidArg (nameof other) "Incompatible comparison"
 
-and [<CustomEquality; CustomComparison>] PrefixedName = {
-    vocabulary: RdfVocabulary
-    localName: string
-} with
+and [<CustomEquality; CustomComparison>] PrefixedName =
+    { vocabulary: RdfVocabulary
+      localName: string }
 
     member this.namespaceName = this.vocabulary.namespaceIri.identity
 
@@ -892,16 +1074,16 @@ and [<CustomEquality; CustomComparison>] PrefixedName = {
             | :? PrefixedName as other -> compare this.identity other.identity
             | _ -> invalidArg (nameof other) "Incompatible comparison"
 
-and Irl = {
-    site: Site
-    port: int option
-    template: UriTemplate option
-    pattern: UrlPattern option
-    pathSegments: string list
-    hashFragment: string option
-    searchQuery: string option
+and Irl =
+    { site: Site
+      port: int option
+      template: UriTemplate option
+      pattern: UrlPattern option
+      pathSegments: string list
+      hashFragment: string option
+      searchQuery: string option
 
-} with
+    }
 
     member this.scheme = this.site.scheme
     member this.domain = this.site.host
@@ -916,36 +1098,34 @@ and Irl = {
     member this.extension = this.dotExtension.TrimStart('.')
     member this.tryDotExtension = Option.ofNullOrWhiteSpace this.dotExtension
 
-    member this.tryExtension = this.tryDotExtension |> Option.map (fun extension -> extension.TrimStart('.'))
+    member this.tryExtension =
+        this.tryDotExtension |> Option.map (fun extension -> extension.TrimStart('.'))
 
     static member ofUrl(url: Url) =
 
         let domainInfo = domainParser.Value.Parse(url.ToUri(): Uri)
 
-        {
-            site = {
-                scheme = Iana.ProtocolScheme.ofString url.Scheme
-                host = {
-                    topLevelDomain = TopLevelDomainRule domainInfo.TopLevelDomainRule
-                    secondLevelDomain = domainInfo.Domain
-                    subdomainLabels =
-                        match Option.ofNullOrWhiteSpace domainInfo.Subdomain with
-                        | Some subdomain -> subdomain.Split('.') |> Array.toList
-                        | None -> []
-                }
+        { site =
+            { scheme = Iana.ProtocolScheme.ofString url.Scheme
+              host =
+                { topLevelDomain = TopLevelDomainRule domainInfo.TopLevelDomainRule
+                  secondLevelDomain = domainInfo.Domain
+                  subdomainLabels =
+                    match Option.ofNullOrWhiteSpace domainInfo.Subdomain with
+                    | Some subdomain -> subdomain.Split('.') |> Array.toList
+                    | None -> [] }
 
             }
 
-            port = Option.ofNullable url.Port
-            template = None
-            pattern = None
-            pathSegments =
-                match Option.ofObj url.PathSegments with
-                | Some segments -> segments |> Seq.toList
-                | _ -> List.empty
-            hashFragment = Option.ofNullOrWhiteSpace url.Fragment
-            searchQuery = Option.ofNullOrWhiteSpace url.Query
-        }
+          port = Option.ofNullable url.Port
+          template = None
+          pattern = None
+          pathSegments =
+            match Option.ofObj url.PathSegments with
+            | Some segments -> segments |> Seq.toList
+            | _ -> List.empty
+          hashFragment = Option.ofNullOrWhiteSpace url.Fragment
+          searchQuery = Option.ofNullOrWhiteSpace url.Query }
 
     static member op_Implicit(url: Url) = Irl.ofUrl url
 
@@ -966,6 +1146,7 @@ and Irl = {
            | Some fragment -> $"#{fragment.TrimStart('#')}"
            | None -> String.Empty)
 
+    member this.localReference = Path.Combine(this.site.localReference, this.localPath)
     member this.identity = this.remoteReference
     static member op_Implicit(irl: Irl) = irl.remoteReference
     member this.Iri = Irl this
@@ -1045,6 +1226,13 @@ and Irl = {
         let parameterKey = fst queryStringParameter
         let parameterValue = string (snd queryStringParameter)
         irl.Url.SetQueryParam(parameterKey, parameterValue) |> Irl.ofUrl
+    static member (=?)
+        (
+            irl : Irl,
+            queryStringParameters : FSharpRecord<'RecordType>
+        )
+        =
+        irl =? queryStringParameters.fieldStrings
 
     member this.hash = this.DomUrl.Hash
     // member this.host = this.DomUrl.Host
@@ -1052,7 +1240,8 @@ and Irl = {
     member this.href = this.DomUrl.Href
     member this.origin = this.DomUrl.Origin
 
-    member this.remotePathQueryFragment = this.remoteReference[this.origin.Length ..].TrimStart('/')
+    member this.remotePathQueryFragment =
+        this.remoteReference[this.origin.Length ..].TrimStart('/')
 
     member this.password = this.DomUrl.Password
     member this.pathname = this.DomUrl.Pathname
@@ -1084,12 +1273,12 @@ and Irl = {
 // member this.search = this.AdaUrl.Search
 // member this.username = this.AdaUrl.Username
 
-and Irn = {
-    namespaceIdentifier: string
-    namespaceSpecificString: string
-} with
+and Irn =
+    { namespaceIdentifier: string
+      namespaceSpecificString: string }
 
-    member this.urn = Urn.Parse $"urn:{this.namespaceIdentifier}:{this.namespaceSpecificString}"
+    member this.urn =
+        Urn.Parse $"urn:{this.namespaceIdentifier}:{this.namespaceSpecificString}"
 
     member this.identity = this.urn.ToString()
     member this.Iri = Irn this
@@ -1097,87 +1286,101 @@ and Irn = {
     member this.asPredicate = this.Iri.asPredicate
     member this.asObject = this.Iri.asObject
 
-and Site = {
-    scheme: Iana.ProtocolScheme
-    host: Domain
-} with
+and Site =
+    { scheme: Iana.ProtocolScheme
+      host: Domain }
 
     member this.protocol = this.scheme.name
     member this.origin = $"{this.protocol}://{this.host.domainName}"
 
-    static member (/)(site: Site, segment: string) = {
-        site = site
-        port = None
-        template = None
-        pattern = None
-        pathSegments = [ segment ]
-        hashFragment = None
-        searchQuery = None
-    }
+    static member (/)(site: Site, segment: string) =
+        { site = site
+          port = None
+          template = None
+          pattern = None
+          pathSegments = [ segment ]
+          hashFragment = None
+          searchQuery = None }
 
-    static member (=?)(site: Site, queryString: string) = {
-        site = site
-        port = None
-        template = None
-        pattern = None
-        pathSegments = List.empty
-        hashFragment = None
-        searchQuery = Some(queryString.TrimStart('?'))
-    }
+    static member (=?)(site: Site, queryString: string) =
+        { site = site
+          port = None
+          template = None
+          pattern = None
+          pathSegments = List.empty
+          hashFragment = None
+          searchQuery = Some(queryString.TrimStart('?')) }
 
-    static member (/=/)(site: Site, fragmentString: string) = {
-        site = site
-        port = None
-        template = None
-        pattern = None
-        pathSegments = List.empty
-        hashFragment = Some(fragmentString.TrimStart('#'))
-        searchQuery = None
-    }
+    static member (=?)
+        (
+            site: Site,
+            queryStringParameters : FSharpRecord<'RecordType>
+        )
+        =
+        let queryString = 
+            queryStringParameters.fieldStrings
+            |> List.map (fun (parameter, value) -> $"{parameter}={value}")
+            |> String.concat "&"
+        site =? queryString
 
-    static member (=*)(site: Site, template: UriTemplate) = {
-        site = site
-        port = None
-        template = Some template
-        pattern = None
-        pathSegments = List.empty
-        hashFragment = None
-        searchQuery = None
-    }
+    static member (/=/)(site: Site, fragmentString: string) =
+        { site = site
+          port = None
+          template = None
+          pattern = None
+          pathSegments = List.empty
+          hashFragment = Some(fragmentString.TrimStart('#'))
+          searchQuery = None }
 
-    static member (.*)(site: Site, pattern: UrlPattern) = {
-        site = site
-        port = None
-        template = None
-        pattern = Some pattern
-        pathSegments = List.empty
-        hashFragment = None
-        searchQuery = None
-    }
+    static member (=*)(site: Site, template: UriTemplate) =
+        { site = site
+          port = None
+          template = Some template
+          pattern = None
+          pathSegments = List.empty
+          hashFragment = None
+          searchQuery = None }
 
-    static member (..+)(site: Site, port: int) = {
-        site = site
-        port = Some port
-        template = None
-        pattern = None
-        pathSegments = List.empty
-        hashFragment = None
-        searchQuery = None
-    }
+    static member (.*)(site: Site, pattern: UrlPattern) =
+        { site = site
+          port = None
+          template = None
+          pattern = Some pattern
+          pathSegments = List.empty
+          hashFragment = None
+          searchQuery = None }
+
+    static member (..+)(site: Site, port: int) =
+        { site = site
+          port = Some port
+          template = None
+          pattern = None
+          pathSegments = List.empty
+          hashFragment = None
+          searchQuery = None }
 
     member this.remoteReference = $"{this.scheme.name}://{this.host.domainName}"
+
+    member this.localReference =
+        Path.Combine(
+            DriveInfo.preferredDrive.RootDirectory.FullName,
+            this.scheme.name,
+            this.host.labels
+            |> Array.rev
+            |> String.concat (string Path.DirectorySeparatorChar)
+        )
+
     member this.Iri = Iri.op_Implicit this.remoteReference
 
     member this.asSubject = this.Iri.asSubject
     member this.asPredicate = this.Iri.asPredicate
     member this.asObject = this.Iri.asObject
 
-and RdfVocabulary = {
-    namespacePrefix: string
-    namespaceIri: Iri
-    distributionIris: Iri list
-    documentIris: Iri list
-} with
+and RdfVocabulary =
+    { namespacePrefix: string
+      namespaceIri: Iri
+      distributionIris: Iri list
+      documentIris: Iri list }
 
     static member ofPrefixedName((prefixedName: PrefixedName), (suffix: string)) =
         RdfVocabulary.PREFIX(prefixedName.localName, prefixedName.identity + suffix)
@@ -1192,24 +1395,47 @@ and RdfVocabulary = {
         RdfVocabulary.slashPrefixedName (prefixedName)
 
     member this.identity = this.namespaceIri.identity
+
+    member this.terminal = this.identity.ToCharArray() |> Array.last |> string
+
+    member this.terminalName =
+        match this.terminal with
+        | "/" -> '/'.tryHtmlEntity.Value
+        | "#" -> '#'.tryHtmlEntity.Value
+        | _ -> String.Empty
+
+    member this.remoteReference = this.identity
+    member this.Irl = Url this.namespaceIri.remoteReference |> Irl.ofUrl
+
+    member this.localTurtleReference =
+        Path.Combine(this.Irl.localReference + this.terminalName, "text", "turtle.ttl")
+
     member this.asXNamespace = XNamespace.Get this.identity
 
-    member this.prefixedName(localName: string) = {
-        vocabulary = this
-        localName = localName
-    }
+    member this.prefixedName(localName: string) =
+        { vocabulary = this
+          localName = localName }
 
     member this.curie(localName: string) : Iri =
         this.prefixedName localName |> PrefixedName
 
-    static member PREFIX((namespacePrefix: string), (namespaceIriString: string)) = {
-        namespacePrefix = namespacePrefix
-        namespaceIri = IriReference namespaceIriString |> IRIREF
-        distributionIris = []
-        documentIris = []
-    }
+    static member PREFIX((namespacePrefix: string), (namespaceName: string)) =
+        { namespacePrefix = namespacePrefix
+          namespaceIri = IriReference namespaceName |> IRIREF
+          distributionIris = []
+          documentIris = [] }
 
-    static member genid = RdfVocabulary.PREFIX("genid", $"https://eristocrates.dev/.well-known/genid/")
+    static member PREFIX((namespacePrefix: string), (namespaceUri: Uri)) =
+        RdfVocabulary.PREFIX(namespacePrefix, namespaceUri.OriginalString)
+
+    static member PREFIX((namespacePrefix: string), (namespaceIri: Iri)) =
+        RdfVocabulary.PREFIX(namespacePrefix, namespaceIri.identity)
+
+    static member PREFIX((namespacePrefix: string), (namespaceIrl: Irl)) =
+        RdfVocabulary.PREFIX(namespacePrefix, namespaceIrl.identity)
+
+    static member genid =
+        RdfVocabulary.PREFIX("genid", $"https://eristocrates.dev/.well-known/genid/")
 
     static member xml = RdfVocabulary.PREFIX("xml", "http://www.w3.org/XML/1998/namespace#")
     static member xsd = RdfVocabulary.PREFIX("xsd", "http://www.w3.org/2001/XMLSchema#")
@@ -1219,9 +1445,11 @@ and RdfVocabulary = {
     static member xsd'maxLength = RdfVocabulary.xsd.curie "maxLength" |> FacetIri
     static member xsd'pattern = RdfVocabulary.xsd.curie "pattern" |> FacetIri
 
-    static member xsd'nonNegativeInteger = RdfVocabulary.xsd.curie "nonNegativeInteger" |> DatatypeIri
+    static member xsd'nonNegativeInteger =
+        RdfVocabulary.xsd.curie "nonNegativeInteger" |> DatatypeIri
 
     static member rdf = RdfVocabulary.PREFIX("rdf", "http://www.w3.org/1999/02/22-rdf-syntax-ns#")
+
     static member rdf'type = RdfVocabulary.rdf.curie "type"
     static member rdf'langString = RdfVocabulary.rdf.curie "langString" |> DatatypeIri
     static member rdf'dirLangString = RdfVocabulary.rdf.curie "dirLangString" |> DatatypeIri
@@ -1229,7 +1457,8 @@ and RdfVocabulary = {
     static member rdf'PropositionForm = RdfVocabulary.rdf.curie "PropositionForm"
     static member rdf'PropositionFormSubject = RdfVocabulary.rdf.curie "PropositionFormSubject"
 
-    static member rdf'PropositionFormPredicate = RdfVocabulary.rdf.curie "PropositionFormPredicate"
+    static member rdf'PropositionFormPredicate =
+        RdfVocabulary.rdf.curie "PropositionFormPredicate"
 
     static member rdf'PropositionFormObject = RdfVocabulary.rdf.curie "PropositionFormObject"
     static member rdfs = RdfVocabulary.PREFIX("rdfs", "http://www.w3.org/2000/01/rdf-schema#")
@@ -1237,41 +1466,49 @@ and RdfVocabulary = {
     static member rdfs'comment = RdfVocabulary.rdfs.curie "comment" |> AnnotationPropertyIri
     static member rdfs'seeAlso = RdfVocabulary.rdfs.curie "seeAlso" |> AnnotationPropertyIri
 
-    static member rdfsIsDefinedBy = RdfVocabulary.rdfs.curie "isDefinedBy" |> AnnotationPropertyIri
+    static member rdfsIsDefinedBy =
+        RdfVocabulary.rdfs.curie "isDefinedBy" |> AnnotationPropertyIri
 
     static member owl = RdfVocabulary.PREFIX("owl", "http://www.w3.org/2002/07/owl#")
     static member owlDeprecated = RdfVocabulary.owl.curie "deprecated" |> AnnotationPropertyIri
     static member owlVersionInfo = RdfVocabulary.owl.curie "versionInfo" |> AnnotationPropertyIri
 
-    static member owlPriorVersion = RdfVocabulary.owl.curie "priorVersion" |> AnnotationPropertyIri
+    static member owlPriorVersion =
+        RdfVocabulary.owl.curie "priorVersion" |> AnnotationPropertyIri
 
-    static member owlBackwardCompatibleWith = RdfVocabulary.owl.curie "backwardCompatibleWith" |> AnnotationPropertyIri
+    static member owlBackwardCompatibleWith =
+        RdfVocabulary.owl.curie "backwardCompatibleWith" |> AnnotationPropertyIri
 
-    static member owlIncompatibleWith = RdfVocabulary.owl.curie "incompatibleWith" |> AnnotationPropertyIri
+    static member owlIncompatibleWith =
+        RdfVocabulary.owl.curie "incompatibleWith" |> AnnotationPropertyIri
 
     static member rdfa = RdfVocabulary.PREFIX("rdfa", "http://www.w3.org/ns/rdfa#")
+
     static member xhtml = RdfVocabulary.PREFIX("xhtml", "http://www.w3.org/1999/xhtml/datatypes/")
+
     static member xsi = RdfVocabulary.PREFIX("xsi", "http://www.w3.org/2001/XMLSchema-instance#")
 
-    static member ianassignments = RdfVocabulary.PREFIX("ianassignments", "https://www.iana.org/assignments/")
+    static member ianassignments =
+        RdfVocabulary.PREFIX("ianassignments", "https://www.iana.org/assignments/")
 
     static member media_types =
         RdfVocabulary.ianassignments.prefixedName "media-types"
         |> RdfVocabulary.ofPrefixedName
 
-    static member w3id_mediatype = RdfVocabulary.PREFIX("mediatype", "https://w3id.org/mediatype/")
+    static member w3id_mediatype =
+        RdfVocabulary.PREFIX("mediatype", "https://w3id.org/mediatype/")
 
-    static member spar_mediatype = RdfVocabulary.PREFIX("spar_mediatype", "https://w3id.org/https://w3id.org/spar/mediatype/")
+    static member spar_mediatype =
+        RdfVocabulary.PREFIX("spar_mediatype", "https://w3id.org/https://w3id.org/spar/mediatype/")
 
     static member spdx = RdfVocabulary.PREFIX("spdx", "https://spdx.org/rdf/3.0.1/terms/Core/")
-    static member dcterms = RdfVocabulary.PREFIX("dcterms", "http://purl.org/dc/terms/")
 
-and [<StructuralEquality; StructuralComparison>] LiteralIdentity = private {
-    lexicalForm: string
-    literalDatatype: DatatypeIri
-    languageTag: string option
-    baseDirection: InitialTextDirection option
-}
+and [<StructuralEquality; StructuralComparison>] LiteralIdentity =
+    private
+        { lexicalForm: string
+          literalDatatype: DatatypeIri
+          languageTag: string option
+          baseDirection: InitialTextDirection option }
 
 and DatatypeIri =
     | DatatypeIri of Iri
@@ -1307,22 +1544,23 @@ and DatatypeIri =
         this |> Functional.DatatypeRestriction(facetValue)
 
     member this.pattern(pattern: string) =
-        let facetValue: FacetValue = RdfVocabulary.xsd'pattern |> Functional.FacetValue(Literal.string pattern)
+        let facetValue: FacetValue =
+            RdfVocabulary.xsd'pattern |> Functional.FacetValue(Literal.string pattern)
 
         this |> Functional.DatatypeRestriction(facetValue)
 
     member this.langRange(langRange: string) =
-        let facetValue: FacetValue = RdfVocabulary.rdf'langRange |> Functional.FacetValue(Literal.string langRange)
+        let facetValue: FacetValue =
+            RdfVocabulary.rdf'langRange |> Functional.FacetValue(Literal.string langRange)
 
         this |> Functional.DatatypeRestriction(facetValue)
 
     member this.withRestrictions(facetValues: Set.OneOrMore<FacetValue>) =
         Functional.DatatypeRestriction(this, facetValues)
 
-and FacetValue = {
-    constrainingFacet: FacetIri
-    restrictionValue: Literal
-}
+and FacetValue =
+    { constrainingFacet: FacetIri
+      restrictionValue: Literal }
 
 and FacetIri =
     | FacetIri of Iri
@@ -1336,30 +1574,27 @@ and FacetIri =
     static member op_Implicit(facetIri: FacetIri) = facetIri.Iri
     member this.identity: string = this.Iri.identity
 
-and Datatype<[<Measure>] 'Datatype> = private {
-    _datatypeIri: DatatypeIri
-} with
+and Datatype<[<Measure>] 'Datatype> =
+    private
+        { _datatypeIri: DatatypeIri }
 
     static member ofDatatypeIri(datatypeIri: DatatypeIri) : Datatype<'Datatype> = { _datatypeIri = datatypeIri }
     member this.datatypeIri = this._datatypeIri
 
     member this.Iri = this._datatypeIri.Iri
 
-    static member (^^)((lexicalForm: System.String), (datatype: Datatype<'Datatype>)) : StaticTypedLiteral<'Datatype> = {
-        literal = UMX.tag lexicalForm
-        datatype = datatype
-    }
+    static member (^^)((lexicalForm: System.String), (datatype: Datatype<'Datatype>)) : StaticTypedLiteral<'Datatype> =
+        { literal = UMX.tag lexicalForm
+          datatype = datatype }
 
-and StaticTypedLiteral<[<Measure>] 'Datatype> = {
-    literal: string<'Datatype>
-    datatype: Datatype<'Datatype>
-} with
+and StaticTypedLiteral<[<Measure>] 'Datatype> =
+    { literal: string<'Datatype>
+      datatype: Datatype<'Datatype> }
 
-    static member toTypedLiteral(staticTypedLiteral: StaticTypedLiteral<'Datatype>) : TypedLiteral = {
-        lexicalForm = UMX.untag staticTypedLiteral.literal
+    static member toTypedLiteral(staticTypedLiteral: StaticTypedLiteral<'Datatype>) : TypedLiteral =
+        { lexicalForm = UMX.untag staticTypedLiteral.literal
 
-        datatypeIri = staticTypedLiteral.datatype._datatypeIri
-    }
+          datatypeIri = staticTypedLiteral.datatype._datatypeIri }
 
     static member op_Implicit(staticTypedLiteral: StaticTypedLiteral<'Datatype>) =
         StaticTypedLiteral.toTypedLiteral staticTypedLiteral
@@ -1370,152 +1605,131 @@ and StaticTypedLiteral<[<Measure>] 'Datatype> = {
     static member op_Implicit(staticTypedLiteral: StaticTypedLiteral<'Datatype>) =
         StaticTypedLiteral.toLiteral staticTypedLiteral
 
-    member this.asObject = StaticTypedLiteral.toLiteral this |> LiteralObject |> BasicNormativeObject
+    member this.asObject =
+        StaticTypedLiteral.toLiteral this |> LiteralObject |> BasicNormativeObject
 
     member this.identity: LiteralIdentity = (StaticTypedLiteral.toLiteral this).identity
 
-and TypedLiteral = {
-    lexicalForm: string
-    datatypeIri: DatatypeIri
-} with
+and TypedLiteral =
+    { lexicalForm: string
+      datatypeIri: DatatypeIri }
 
     member this.asObject = TypedLiteral this |> LiteralObject |> BasicNormativeObject
 
-    static member nonNegativeInteger(nonNegativeInteger: uint32) : TypedLiteral = {
-        lexicalForm = string nonNegativeInteger
-        datatypeIri = RdfVocabulary.xsd'nonNegativeInteger
-    }
+    static member nonNegativeInteger(nonNegativeInteger: uint32) : TypedLiteral =
+        { lexicalForm = string nonNegativeInteger
+          datatypeIri = RdfVocabulary.xsd'nonNegativeInteger }
 
-    static member op_Implicit(value: bool) = {
-        lexicalForm = if value then "true" else "false"
-        datatypeIri = RdfVocabulary.xsd.curie "boolean" |> DatatypeIri
-    }
+    static member op_Implicit(value: bool) =
+        { lexicalForm = if value then "true" else "false"
+          datatypeIri = RdfVocabulary.xsd.curie "boolean" |> DatatypeIri }
 
     // byte[] -> xsd:base64Binary
-    static member op_Implicit(value: byte array) = {
-        lexicalForm = Convert.ToBase64String value
-        datatypeIri = RdfVocabulary.xsd.curie "base64Binary" |> DatatypeIri
-    }
+    static member op_Implicit(value: byte array) =
+        { lexicalForm = Convert.ToBase64String value
+          datatypeIri = RdfVocabulary.xsd.curie "base64Binary" |> DatatypeIri }
 
     // byte -> xsd:unsignedByte
-    static member op_Implicit(value: byte) = {
-        lexicalForm = Convert.ToString(value, CultureInfo.InvariantCulture)
-        datatypeIri = RdfVocabulary.xsd.curie "unsignedByte" |> DatatypeIri
-    }
+    static member op_Implicit(value: byte) =
+        { lexicalForm = Convert.ToString(value, CultureInfo.InvariantCulture)
+          datatypeIri = RdfVocabulary.xsd.curie "unsignedByte" |> DatatypeIri }
 
     // DateOnly -> xsd:date
-    static member op_Implicit(value: DateOnly) = {
-        lexicalForm = value.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture)
-        datatypeIri = RdfVocabulary.xsd.curie "date" |> DatatypeIri
-    }
+    static member op_Implicit(value: DateOnly) =
+        { lexicalForm = value.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture)
+          datatypeIri = RdfVocabulary.xsd.curie "date" |> DatatypeIri }
 
     // DateTime -> xsd:dateTime
-    static member op_Implicit(value: DateTime) = {
-        lexicalForm = value.ToString("o", CultureInfo.InvariantCulture)
-        datatypeIri = RdfVocabulary.xsd.curie "dateTime" |> DatatypeIri
-    }
+    static member op_Implicit(value: DateTime) =
+        { lexicalForm = value.ToString("o", CultureInfo.InvariantCulture)
+          datatypeIri = RdfVocabulary.xsd.curie "dateTime" |> DatatypeIri }
 
     // DateTimeOffset -> xsd:dateTimeStamp
-    static member op_Implicit(value: DateTimeOffset) = {
-        lexicalForm = value.ToString("o", CultureInfo.InvariantCulture)
-        datatypeIri = RdfVocabulary.xsd.curie "dateTimeStamp" |> DatatypeIri
-    }
+    static member op_Implicit(value: DateTimeOffset) =
+        { lexicalForm = value.ToString("o", CultureInfo.InvariantCulture)
+          datatypeIri = RdfVocabulary.xsd.curie "dateTimeStamp" |> DatatypeIri }
 
     // decimal -> xsd:decimal
-    static member op_Implicit(value: decimal) = {
-        lexicalForm = Convert.ToString(value, CultureInfo.InvariantCulture)
-        datatypeIri = RdfVocabulary.xsd.curie "decimal" |> DatatypeIri
-    }
+    static member op_Implicit(value: decimal) =
+        { lexicalForm = Convert.ToString(value, CultureInfo.InvariantCulture)
+          datatypeIri = RdfVocabulary.xsd.curie "decimal" |> DatatypeIri }
 
     // double -> xsd:double
-    static member op_Implicit(value: double) = {
-        lexicalForm = Xml.XmlConvert.ToString(value)
-        datatypeIri = RdfVocabulary.xsd.curie "double" |> DatatypeIri
-    }
+    static member op_Implicit(value: double) =
+        { lexicalForm = Xml.XmlConvert.ToString(value)
+          datatypeIri = RdfVocabulary.xsd.curie "double" |> DatatypeIri }
 
     // int16 -> xsd:short
-    static member op_Implicit(value: int16) = {
-        lexicalForm = Convert.ToString(value, CultureInfo.InvariantCulture)
-        datatypeIri = RdfVocabulary.xsd.curie "short" |> DatatypeIri
-    }
+    static member op_Implicit(value: int16) =
+        { lexicalForm = Convert.ToString(value, CultureInfo.InvariantCulture)
+          datatypeIri = RdfVocabulary.xsd.curie "short" |> DatatypeIri }
 
     // int32 -> xsd:int
-    static member op_Implicit(value: int32) = {
-        lexicalForm = Convert.ToString(value, CultureInfo.InvariantCulture)
-        datatypeIri = RdfVocabulary.xsd.curie "int" |> DatatypeIri
-    }
+    static member op_Implicit(value: int32) =
+        { lexicalForm = Convert.ToString(value, CultureInfo.InvariantCulture)
+          datatypeIri = RdfVocabulary.xsd.curie "int" |> DatatypeIri }
 
     // int64 -> xsd:long
-    static member op_Implicit(value: int64) = {
-        lexicalForm = Convert.ToString(value, CultureInfo.InvariantCulture)
-        datatypeIri = RdfVocabulary.xsd.curie "long" |> DatatypeIri
-    }
+    static member op_Implicit(value: int64) =
+        { lexicalForm = Convert.ToString(value, CultureInfo.InvariantCulture)
+          datatypeIri = RdfVocabulary.xsd.curie "long" |> DatatypeIri }
 
     // sbyte -> xsd:byte
-    static member op_Implicit(value: sbyte) = {
-        lexicalForm = Convert.ToString(value, CultureInfo.InvariantCulture)
-        datatypeIri = RdfVocabulary.xsd.curie "byte" |> DatatypeIri
-    }
+    static member op_Implicit(value: sbyte) =
+        { lexicalForm = Convert.ToString(value, CultureInfo.InvariantCulture)
+          datatypeIri = RdfVocabulary.xsd.curie "byte" |> DatatypeIri }
 
     // single -> xsd:float
-    static member op_Implicit(value: single) = {
-        lexicalForm = Xml.XmlConvert.ToString(value)
-        datatypeIri = RdfVocabulary.xsd.curie "float" |> DatatypeIri
-    }
+    static member op_Implicit(value: single) =
+        { lexicalForm = Xml.XmlConvert.ToString(value)
+          datatypeIri = RdfVocabulary.xsd.curie "float" |> DatatypeIri }
 
     // TimeOnly -> xsd:time
-    static member op_Implicit(value: TimeOnly) = {
-        lexicalForm = value.ToString("HH:mm:ss.fffffff", CultureInfo.InvariantCulture)
-        datatypeIri = RdfVocabulary.xsd.curie "time" |> DatatypeIri
-    }
+    static member op_Implicit(value: TimeOnly) =
+        { lexicalForm = value.ToString("HH:mm:ss.fffffff", CultureInfo.InvariantCulture)
+          datatypeIri = RdfVocabulary.xsd.curie "time" |> DatatypeIri }
 
     // TimeSpan -> xsd:duration
-    static member op_Implicit(value: TimeSpan) = {
-        lexicalForm = Xml.XmlConvert.ToString value
-        datatypeIri = RdfVocabulary.xsd.curie "duration" |> DatatypeIri
-    }
+    static member op_Implicit(value: TimeSpan) =
+        { lexicalForm = Xml.XmlConvert.ToString value
+          datatypeIri = RdfVocabulary.xsd.curie "duration" |> DatatypeIri }
 
     // uint16 -> xsd:unsignedShort
-    static member op_Implicit(value: uint16) = {
-        lexicalForm = Convert.ToString(value, CultureInfo.InvariantCulture)
-        datatypeIri = RdfVocabulary.xsd.curie "unsignedShort" |> DatatypeIri
-    }
+    static member op_Implicit(value: uint16) =
+        { lexicalForm = Convert.ToString(value, CultureInfo.InvariantCulture)
+          datatypeIri = RdfVocabulary.xsd.curie "unsignedShort" |> DatatypeIri }
 
     // uint32 -> xsd:unsignedInt
-    static member op_Implicit(value: uint32) = {
-        lexicalForm = Convert.ToString(value, CultureInfo.InvariantCulture)
-        datatypeIri = RdfVocabulary.xsd.curie "unsignedInt" |> DatatypeIri
-    }
+    static member op_Implicit(value: uint32) =
+        { lexicalForm = Convert.ToString(value, CultureInfo.InvariantCulture)
+          datatypeIri = RdfVocabulary.xsd.curie "unsignedInt" |> DatatypeIri }
 
     // uint64 -> xsd:unsignedLong
-    static member op_Implicit(value: uint64) = {
-        lexicalForm = Convert.ToString(value, CultureInfo.InvariantCulture)
-        datatypeIri = RdfVocabulary.xsd.curie "unsignedLong" |> DatatypeIri
-    }
+    static member op_Implicit(value: uint64) =
+        { lexicalForm = Convert.ToString(value, CultureInfo.InvariantCulture)
+          datatypeIri = RdfVocabulary.xsd.curie "unsignedLong" |> DatatypeIri }
 
     // System.Uri -> xsd:anyURI
-    static member op_Implicit(value: Uri) = {
-        lexicalForm = value.OriginalString
-        datatypeIri = RdfVocabulary.xsd.curie "anyURI" |> DatatypeIri
-    }
+    static member op_Implicit(value: Uri) =
+        { lexicalForm = value.OriginalString
+          datatypeIri = RdfVocabulary.xsd.curie "anyURI" |> DatatypeIri }
 
-    static member nil = {
-        lexicalForm = "true"
-        datatypeIri = RdfVocabulary.xsi.curie "nil" |> DatatypeIri
-    }
+    static member nil =
+        { lexicalForm = "true"
+          datatypeIri = RdfVocabulary.xsi.curie "nil" |> DatatypeIri }
 
     static member inline autotyped(value: ^ValueType) : TypedLiteral = FSharpPlus.Operators.implicit value
 
-    member this.identity: LiteralIdentity = {
+    member this.identity: LiteralIdentity =
+        {
 
-        lexicalForm = this.lexicalForm
+          lexicalForm = this.lexicalForm
 
-        literalDatatype = this.datatypeIri
+          literalDatatype = this.datatypeIri
 
-        languageTag = None
+          languageTag = None
 
-        baseDirection = None
-    }
+          baseDirection = None }
 
 and [<CustomEquality; CustomComparison>] Literal =
     | StringLiteral of StringLiteral
@@ -1548,50 +1762,41 @@ and [<CustomEquality; CustomComparison>] Literal =
 
     member this.asObject = LiteralObject this |> BasicNormativeObject
 
-    static member (!>=)(restrictionValue: Literal) = {
-        constrainingFacet = RdfVocabulary.xsd.curie "minInclusive" |> FacetIri
-        restrictionValue = restrictionValue
-    }
+    static member (!>=)(restrictionValue: Literal) =
+        { constrainingFacet = RdfVocabulary.xsd.curie "minInclusive" |> FacetIri
+          restrictionValue = restrictionValue }
 
-    static member (!>)(restrictionValue: Literal) = {
-        constrainingFacet = RdfVocabulary.xsd.curie "minExclusive" |> FacetIri
-        restrictionValue = restrictionValue
-    }
+    static member (!>)(restrictionValue: Literal) =
+        { constrainingFacet = RdfVocabulary.xsd.curie "minExclusive" |> FacetIri
+          restrictionValue = restrictionValue }
 
-    static member (!<=)(restrictionValue: Literal) = {
-        constrainingFacet = RdfVocabulary.xsd.curie "maxInclusive" |> FacetIri
-        restrictionValue = restrictionValue
-    }
+    static member (!<=)(restrictionValue: Literal) =
+        { constrainingFacet = RdfVocabulary.xsd.curie "maxInclusive" |> FacetIri
+          restrictionValue = restrictionValue }
 
-    static member (!<)(restrictionValue: Literal) = {
-        constrainingFacet = RdfVocabulary.xsd.curie "maxExclusive" |> FacetIri
-        restrictionValue = restrictionValue
-    }
+    static member (!<)(restrictionValue: Literal) =
+        { constrainingFacet = RdfVocabulary.xsd.curie "maxExclusive" |> FacetIri
+          restrictionValue = restrictionValue }
 
-    static member (!@)(restrictionValue: Literal) = {
-        constrainingFacet = RdfVocabulary.rdf.curie "langRange" |> FacetIri
-        restrictionValue = restrictionValue
-    }
+    static member (!@)(restrictionValue: Literal) =
+        { constrainingFacet = RdfVocabulary.rdf.curie "langRange" |> FacetIri
+          restrictionValue = restrictionValue }
 
-    static member (!*)(restrictionValue: Literal) = {
-        constrainingFacet = RdfVocabulary.xsd.curie "pattern" |> FacetIri
-        restrictionValue = restrictionValue
-    }
+    static member (!*)(restrictionValue: Literal) =
+        { constrainingFacet = RdfVocabulary.xsd.curie "pattern" |> FacetIri
+          restrictionValue = restrictionValue }
 
-    static member (!.<)(restrictionValue: Literal) = {
-        constrainingFacet = RdfVocabulary.xsd.curie "maxLength" |> FacetIri
-        restrictionValue = restrictionValue
-    }
+    static member (!.<)(restrictionValue: Literal) =
+        { constrainingFacet = RdfVocabulary.xsd.curie "maxLength" |> FacetIri
+          restrictionValue = restrictionValue }
 
-    static member (!.=)(restrictionValue: Literal) = {
-        constrainingFacet = RdfVocabulary.xsd.curie "length" |> FacetIri
-        restrictionValue = restrictionValue
-    }
+    static member (!.=)(restrictionValue: Literal) =
+        { constrainingFacet = RdfVocabulary.xsd.curie "length" |> FacetIri
+          restrictionValue = restrictionValue }
 
-    static member (!.>)(restrictionValue: Literal) = {
-        constrainingFacet = RdfVocabulary.xsd.curie "minLength" |> FacetIri
-        restrictionValue = restrictionValue
-    }
+    static member (!.>)(restrictionValue: Literal) =
+        { constrainingFacet = RdfVocabulary.xsd.curie "minLength" |> FacetIri
+          restrictionValue = restrictionValue }
 
     member this.identity: LiteralIdentity =
         match this with
@@ -1645,139 +1850,164 @@ and StringLiteral =
         | SimpleString stringLiteral -> stringLiteral.datatypeIri
         | LanguageString languageString -> languageString.datatypeIri
 
-and SimpleString = {
-    simpleString: string
-} with
+and SimpleString =
+    { simpleString: string }
 
     member this.datatypeIri = RdfVocabulary.xsd'string
     member this.lexicalForm = this.simpleString
 
-    member this.asObject = SimpleString this |> StringLiteral |> LiteralObject |> BasicNormativeObject
+    member this.asObject =
+        SimpleString this |> StringLiteral |> LiteralObject |> BasicNormativeObject
 
-    member this.identity: LiteralIdentity = {
-        lexicalForm = this.simpleString
-        literalDatatype = RdfVocabulary.xsd.curie "string" |> DatatypeIri
-        languageTag = None
-        baseDirection = None
-    }
+    member this.identity: LiteralIdentity =
+        { lexicalForm = this.simpleString
+          literalDatatype = RdfVocabulary.xsd.curie "string" |> DatatypeIri
+          languageTag = None
+          baseDirection = None }
 
-and LanguageString = {
-    lexicalForm: string
-    languageTag: LanguageTag
-    baseDirection: InitialTextDirection option
-} with
+and LanguageString =
+    { lexicalForm: string
+      languageTag: LanguageTag
+      baseDirection: InitialTextDirection option }
 
     member this.datatypeIri =
         match this.baseDirection with
         | Some baseDirection -> RdfVocabulary.rdf'dirLangString
         | None -> RdfVocabulary.rdf'langString
 
-    member this.identity: LiteralIdentity = {
-        lexicalForm = this.lexicalForm
-        literalDatatype =
+    member this.identity: LiteralIdentity =
+        { lexicalForm = this.lexicalForm
+          literalDatatype =
             match this.baseDirection with
             | None -> RdfVocabulary.rdf.curie "langString" |> DatatypeIri
             | Some _ -> RdfVocabulary.rdf.curie "dirLangString" |> DatatypeIri
-        languageTag = Some this.languageTag.identity
-        baseDirection = this.baseDirection
-    }
+          languageTag = Some this.languageTag.identity
+          baseDirection = this.baseDirection }
 
-    member this.asObject = LanguageString this |> StringLiteral |> LiteralObject |> BasicNormativeObject
+    member this.asObject =
+        LanguageString this |> StringLiteral |> LiteralObject |> BasicNormativeObject
 
 and EmbeddedLiteral =
     | EmbeddedHtml of HtmlLiteral
     | EmbeddedXml of XmlLiteral
     | EmbeddedJson of JsonLiteral
+    | EmbeddedJavascript of JavascriptLiteral
 
     member this.asObject = EmbeddedLiteral this |> LiteralObject |> BasicNormativeObject
 
     member this.identity: LiteralIdentity =
         match this with
         | EmbeddedHtml htmlLiteral -> htmlLiteral.identity
+
         | EmbeddedXml xmlLiteral -> xmlLiteral.identity
+
         | EmbeddedJson jsonLiteral -> jsonLiteral.identity
+
+        | EmbeddedJavascript javascriptLiteral -> javascriptLiteral.identity
 
     member this.lexicalForm =
         match this with
         | EmbeddedHtml htmlLiteral -> htmlLiteral.lexicalForm
+
         | EmbeddedXml xmlLiteral -> xmlLiteral.lexicalForm
+
         | EmbeddedJson jsonLiteral -> jsonLiteral.lexicalForm
+
+        | EmbeddedJavascript javascriptLiteral -> javascriptLiteral.lexicalForm
 
     member this.datatypeIri: DatatypeIri =
         match this with
         | EmbeddedHtml htmlLiteral -> htmlLiteral.datatypeIri
+
         | EmbeddedXml xmlLiteral -> xmlLiteral.datatypeIri
+
         | EmbeddedJson jsonLiteral -> jsonLiteral.datatypeIri
 
-and HtmlLiteral = {
-    htmlString: string
-} with
+        | EmbeddedJavascript javascriptLiteral -> javascriptLiteral.datatypeIri
 
-    member this.asObject = EmbeddedHtml this |> EmbeddedLiteral |> LiteralObject |> BasicNormativeObject
+and HtmlLiteral =
+    { htmlString: string }
+
+    member this.asObject =
+        EmbeddedHtml this |> EmbeddedLiteral |> LiteralObject |> BasicNormativeObject
 
     member this.lexicalForm = this.htmlString
 
     member this.datatypeIri = RdfVocabulary.rdf.curie "HTML" |> DatatypeIri
 
-    member this.identity = {
-        lexicalForm = this.htmlString
-        literalDatatype = this.datatypeIri
-        languageTag = None
-        baseDirection = None
-    }
+    member this.identity =
+        { lexicalForm = this.htmlString
+          literalDatatype = this.datatypeIri
+          languageTag = None
+          baseDirection = None }
 
-and XmlLiteral = {
-    xmlString: string
-} with
+and XmlLiteral =
+    { xmlString: string }
 
     member this.lexicalForm = this.xmlString
 
-    member this.asObject = EmbeddedXml this |> EmbeddedLiteral |> LiteralObject |> BasicNormativeObject
+    member this.asObject =
+        EmbeddedXml this |> EmbeddedLiteral |> LiteralObject |> BasicNormativeObject
 
     member this.datatypeIri = RdfVocabulary.rdf.curie "XMLLiteral" |> DatatypeIri
 
-    member this.identity = {
-        lexicalForm = this.xmlString
-        literalDatatype = this.datatypeIri
-        languageTag = None
-        baseDirection = None
-    }
+    member this.identity =
+        { lexicalForm = this.xmlString
+          literalDatatype = this.datatypeIri
+          languageTag = None
+          baseDirection = None }
 
-and JsonLiteral = {
-    jsonString: string
-} with
+and JsonLiteral =
+    { jsonString: string }
 
     member this.lexicalForm = this.jsonString
 
-    member this.asObject = EmbeddedJson this |> EmbeddedLiteral |> LiteralObject |> BasicNormativeObject
+    member this.asObject =
+        EmbeddedJson this |> EmbeddedLiteral |> LiteralObject |> BasicNormativeObject
 
     member this.datatypeIri = RdfVocabulary.rdf.curie "JSON" |> DatatypeIri
 
-    member this.identity = {
-        lexicalForm = this.jsonString
-        literalDatatype = this.datatypeIri
-        languageTag = None
-        baseDirection = None
-    }
+    member this.identity =
+        { lexicalForm = this.jsonString
+          literalDatatype = this.datatypeIri
+          languageTag = None
+          baseDirection = None }
 
-and NormativeDataset = {
-    defaultGraph: NormativeGraph
-    namedGraphs: Map<GraphName, NormativeNamedGraph>
-}
+and JavascriptLiteral =
+    { javascriptString: string }
 
-and [<CustomEquality; CustomComparison>] NormativeNamedGraph = {
-    normativeGraph: NormativeGraph
-    graphName: GraphName
-} with
+    member this.lexicalForm = this.javascriptString
 
-    static member ofOntology(ontology: Ontology, scope: string) = {
-        normativeGraph = {
-            context = ontology.tryVersionIri
-            normativeTriples = ontology.assertedTriples
+    member this.asObject =
+        EmbeddedJavascript this
+        |> EmbeddedLiteral
+        |> LiteralObject
+        |> BasicNormativeObject
+
+    member this.datatypeIri =
+        RdfVocabulary.spar_mediatype.curie "text/javascript" |> DatatypeIri
+
+    member this.identity =
+        { lexicalForm = this.javascriptString
+          literalDatatype = this.datatypeIri
+          languageTag = None
+          baseDirection = None }
+
+and NormativeDataset =
+    { defaultGraph: NormativeGraph
+      namedGraphs: Map<GraphName, NormativeNamedGraph> }
+
+and [<CustomEquality; CustomComparison>] NormativeNamedGraph =
+    { normativeGraph: NormativeGraph
+      graphName: GraphName }
+
+    static member ofOntology(ontology: Ontology, scope: string) =
+        { normativeGraph =
+            { context = ontology.tryVersionIri
+              normativeTriples = ontology.assertedTriples }
+          graphName = GraphName.ofOntology (ontology, scope)
+
         }
-        graphName = GraphName.ofOntology (ontology, scope)
-
-    }
 
     static member ofOntology(ontology: Annotated<Ontology>, scope: string) =
         NormativeNamedGraph.ofOntology (ontology.value, scope)
@@ -1795,118 +2025,130 @@ and [<CustomEquality; CustomComparison>] NormativeNamedGraph = {
         member this.CompareTo(other: obj) =
             match other with
             | :? NormativeNamedGraph as other -> compare this.identity other.identity
-            | _ -> invalidArg (nameof other) $"Cannot compare {typeof<NormativeNamedGraph>.Name} with {other.GetType().Name}"
+            | _ ->
+                invalidArg
+                    (nameof other)
+                    $"Cannot compare {typeof<NormativeNamedGraph>.Name} with {other.GetType().Name}"
 
-and BasicNormativeGraph = {
-    context: Iri option
-    basicNormativeTriples: Set<BasicNormativeTriple>
-} with
+and BasicNormativeGraph =
+    { context: Iri option
+      basicNormativeTriples: Set<BasicNormativeTriple> }
 
-    member this.normativeTriples = this.basicNormativeTriples |> Set.map BasicNormativeTriple.toNormativeTriple
+    member this.normativeTriples =
+        this.basicNormativeTriples |> Set.map BasicNormativeTriple.toNormativeTriple
 
 and NormativeGraph =
 
-    {
-        context: Iri option
-        normativeTriples: Set<NormativeTriple>
-    } with
+    { context: Iri option
+      normativeTriples: Set<NormativeTriple> }
 
-        member this.BNodes =
+    member this.BNodes =
+        this.normativeTriples
+        |> Seq.toArray
+        |> Array.collect (fun normativeTriple -> normativeTriple.BNodes)
+
+    member this.Iris =
+        this.normativeTriples
+        |> Seq.toArray
+        |> Array.collect (fun normativeTriple -> normativeTriple.Iris)
+
+    member this.BNodeIdentities =
+        this.BNodes |> Array.map (fun (bnode: BNode) -> bnode.identity) |> Set.ofArray
+
+    /// https://w3c.github.io/rdf-interop/spec/#section-basicenc-algo
+    member this.basicEncode: BasicNormativeGraph =
+        let hasTripleTerms =
             this.normativeTriples
-            |> Seq.toArray
-            |> Array.collect (fun normativeTriple -> normativeTriple.BNodes)
+            |> Seq.exists (fun (triple: NormativeTriple) -> triple.normativeObject.IsTripleTermObject)
 
-        member this.Iris =
+        let hasPropositionFormMarker =
             this.normativeTriples
-            |> Seq.toArray
-            |> Array.collect (fun normativeTriple -> normativeTriple.Iris)
+            |> Seq.exists (fun triple -> triple.isPropositionFormMarker)
 
-        member this.BNodeIdentities = this.BNodes |> Array.map (fun (bnode: BNode) -> bnode.identity) |> Set.ofArray
+        if hasTripleTerms && hasPropositionFormMarker then
+            invalidOp
+                "RDF 1.2 basic encoding is undefined for a hybrid graph containing both triple terms and blank-node rdf:PropositionForm markers."
+        // Freshness is checked on the exported blank-node identity, not only on
+        // Doxaletheia's (scope, identity) equality, because external RDF libraries
+        // generally expose the identifier without our scope component.
+        let mutable extantBNodeIdentities = this.BNodeIdentities
 
-        /// https://w3c.github.io/rdf-interop/spec/#section-basicenc-algo
-        member this.basicEncode: BasicNormativeGraph =
-            let hasTripleTerms =
-                this.normativeTriples
-                |> Seq.exists (fun (triple: NormativeTriple) -> triple.normativeObject.IsTripleTermObject)
+        let freshBlankNode () =
+            let rec create () =
+                let sinsignId = Guid.NewGuid()
+                let identity = sinsignId.ToString("N")
 
-            let hasPropositionFormMarker =
-                this.normativeTriples
-                |> Seq.exists (fun triple -> triple.isPropositionFormMarker)
+                if extantBNodeIdentities.Contains identity then
+                    create ()
+                else
+                    extantBNodeIdentities <- extantBNodeIdentities.Add identity
 
-            if hasTripleTerms && hasPropositionFormMarker then
-                invalidOp "RDF 1.2 basic encoding is undefined for a hybrid graph containing both triple terms and blank-node rdf:PropositionForm markers."
-            // Freshness is checked on the exported blank-node identity, not only on
-            // Doxaletheia's (scope, identity) equality, because external RDF libraries
-            // generally expose the identifier without our scope component.
-            let mutable extantBNodeIdentities = this.BNodeIdentities
+                    { sinsignId = sinsignId
+                      scope =
+                        this.context
+                        |> Option.map (fun iri -> iri.identity)
+                        |> Option.defaultValue String.Empty
+                      localIdentifier = None }
 
-            let freshBlankNode () =
-                let rec create () =
-                    let sinsignId = Guid.NewGuid()
-                    let identity = sinsignId.ToString("N")
+            create ()
 
-                    if extantBNodeIdentities.Contains identity then
-                        create ()
-                    else
-                        extantBNodeIdentities <- extantBNodeIdentities.Add identity
+        let tripleTermMap = Generic.Dictionary<NormativeTriple, BNode>()
+        let outputTriples = ResizeArray<BasicNormativeTriple>()
 
-                        {
-                            sinsignId = sinsignId
-                            scope =
-                                this.context
-                                |> Option.map (fun iri -> iri.identity)
-                                |> Option.defaultValue String.Empty
-                            localIdentifier = None
-                        }
+        let rec encodeNormativeObject (normativeObject: NormativeObject) : BasicNormativeObject =
+            match normativeObject with
+            | BasicNormativeObject basicObject -> basicObject
+            | TripleTermObject tripleTerm -> encodeTripleTerm tripleTerm |> BNodeObject
 
-                create ()
+        and encodeTripleTerm (tripleTerm: TripleTerm) : BNode =
+            let (TripleTerm triple) = tripleTerm
 
-            let tripleTermMap = Generic.Dictionary<NormativeTriple, BNode>()
-            let outputTriples = ResizeArray<BasicNormativeTriple>()
+            match tripleTermMap.TryGetValue triple with
+            | true, existingBlankNode -> existingBlankNode
+            | false, _ ->
+                let encodedObject = encodeNormativeObject triple.normativeObject
+                let blankNode = freshBlankNode ()
+                tripleTermMap.Add(triple, blankNode)
 
-            let rec encodeNormativeObject (normativeObject: NormativeObject) : BasicNormativeObject =
-                match normativeObject with
-                | BasicNormativeObject basicObject -> basicObject
-                | TripleTermObject tripleTerm -> encodeTripleTerm tripleTerm |> BNodeObject
+                outputTriples.Add(
+                    BasicNormativeTriple.PropositionForm
+                        blankNode
+                        RdfVocabulary.rdf'type
+                        (IriObject RdfVocabulary.rdf'PropositionForm)
+                )
 
-            and encodeTripleTerm (tripleTerm: TripleTerm) : BNode =
-                let (TripleTerm triple) = tripleTerm
+                outputTriples.Add(
+                    BasicNormativeTriple.PropositionForm
+                        blankNode
+                        RdfVocabulary.rdf'PropositionFormSubject
+                        triple.normativeSubject.asBasicNormativeObject
+                )
 
-                match tripleTermMap.TryGetValue triple with
-                | true, existingBlankNode -> existingBlankNode
-                | false, _ ->
-                    let encodedObject = encodeNormativeObject triple.normativeObject
-                    let blankNode = freshBlankNode ()
-                    tripleTermMap.Add(triple, blankNode)
+                outputTriples.Add(
+                    BasicNormativeTriple.PropositionForm
+                        blankNode
+                        RdfVocabulary.rdf'PropositionFormPredicate
+                        triple.normativePredicate.asBasicNormativeObject
+                )
 
-                    outputTriples.Add(BasicNormativeTriple.PropositionForm blankNode RdfVocabulary.rdf'type (IriObject RdfVocabulary.rdf'PropositionForm))
+                outputTriples.Add(
+                    BasicNormativeTriple.PropositionForm blankNode RdfVocabulary.rdf'PropositionFormObject encodedObject
+                )
 
-                    outputTriples.Add(BasicNormativeTriple.PropositionForm blankNode RdfVocabulary.rdf'PropositionFormSubject triple.normativeSubject.asBasicNormativeObject)
+                blankNode
 
-                    outputTriples.Add(
-                        BasicNormativeTriple.PropositionForm blankNode RdfVocabulary.rdf'PropositionFormPredicate triple.normativePredicate.asBasicNormativeObject
-                    )
+        for normativeTriple in this.normativeTriples do
+            outputTriples.Add
+                { normativeSubject = normativeTriple.normativeSubject
+                  normativePredicate = normativeTriple.normativePredicate
+                  basicNormativeObject = encodeNormativeObject normativeTriple.normativeObject }
 
-                    outputTriples.Add(BasicNormativeTriple.PropositionForm blankNode RdfVocabulary.rdf'PropositionFormObject encodedObject)
+        { context = this.context
+          basicNormativeTriples = outputTriples |> Set.ofSeq }
 
-                    blankNode
-
-            for normativeTriple in this.normativeTriples do
-                outputTriples.Add {
-                    normativeSubject = normativeTriple.normativeSubject
-                    normativePredicate = normativeTriple.normativePredicate
-                    basicNormativeObject = encodeNormativeObject normativeTriple.normativeObject
-                }
-
-            {
-                context = this.context
-                basicNormativeTriples = outputTriples |> Set.ofSeq
-            }
-
-and NormativeQuad = {
-    normativeTriple: NormativeTriple
-    graphName: GraphName option
-}
+and NormativeQuad =
+    { normativeTriple: NormativeTriple
+      graphName: GraphName option }
 
 and GraphName =
     | GraphName of NormativeSubject
@@ -1925,42 +2167,43 @@ and GraphName =
         | Some iri -> IriSubject iri |> GraphName
         | None -> BNode.Mint scope |> BNodeSubject |> GraphName
 
-and BasicNormativeTriple = {
-    normativeSubject: NormativeSubject
-    normativePredicate: NormativePredicate
-    basicNormativeObject: BasicNormativeObject
-} with
+and BasicNormativeTriple =
+    { normativeSubject: NormativeSubject
+      normativePredicate: NormativePredicate
+      basicNormativeObject: BasicNormativeObject }
 
-    static member SPO((S: NormativeSubject), (P: NormativePredicate), (O: BasicNormativeObject)) = {
-        normativeSubject = S
-        normativePredicate = P
-        basicNormativeObject = O
-    }
+    static member SPO((S: NormativeSubject), (P: NormativePredicate), (O: BasicNormativeObject)) =
+        { normativeSubject = S
+          normativePredicate = P
+          basicNormativeObject = O }
 
-    static member SOP((S: NormativeSubject), (O: BasicNormativeObject), (P: NormativePredicate)) = BasicNormativeTriple.SPO(S, P, O)
+    static member SOP((S: NormativeSubject), (O: BasicNormativeObject), (P: NormativePredicate)) =
+        BasicNormativeTriple.SPO(S, P, O)
 
-    static member PSO((P: NormativePredicate), (S: NormativeSubject), (O: BasicNormativeObject)) = BasicNormativeTriple.SPO(S, P, O)
+    static member PSO((P: NormativePredicate), (S: NormativeSubject), (O: BasicNormativeObject)) =
+        BasicNormativeTriple.SPO(S, P, O)
 
-    static member POS((P: NormativePredicate), (O: BasicNormativeObject), (S: NormativeSubject)) = BasicNormativeTriple.SPO(S, P, O)
+    static member POS((P: NormativePredicate), (O: BasicNormativeObject), (S: NormativeSubject)) =
+        BasicNormativeTriple.SPO(S, P, O)
 
-    static member OSP((O: BasicNormativeObject), (S: NormativeSubject), (P: NormativePredicate)) = BasicNormativeTriple.SPO(S, P, O)
+    static member OSP((O: BasicNormativeObject), (S: NormativeSubject), (P: NormativePredicate)) =
+        BasicNormativeTriple.SPO(S, P, O)
 
-    static member OPS((O: BasicNormativeObject), (S: NormativeSubject), (P: NormativePredicate)) = BasicNormativeTriple.SPO(S, P, O)
+    static member OPS((O: BasicNormativeObject), (S: NormativeSubject), (P: NormativePredicate)) =
+        BasicNormativeTriple.SPO(S, P, O)
 
-    static member toNormativeTriple(basicNormativeTriple: BasicNormativeTriple) = {
-        normativeSubject = basicNormativeTriple.normativeSubject
-        normativePredicate = basicNormativeTriple.normativePredicate
-        normativeObject = BasicNormativeObject basicNormativeTriple.basicNormativeObject
-    }
+    static member toNormativeTriple(basicNormativeTriple: BasicNormativeTriple) =
+        { normativeSubject = basicNormativeTriple.normativeSubject
+          normativePredicate = basicNormativeTriple.normativePredicate
+          normativeObject = BasicNormativeObject basicNormativeTriple.basicNormativeObject }
 
     member this.asNormativeTriple = BasicNormativeTriple.toNormativeTriple this
     static member op_Implicit(basicNormativeTriple: BasicNormativeTriple) = basicNormativeTriple.asNormativeTriple
 
-    static member PropositionForm (subject: BNode) (predicate: Iri) (objectValue: BasicNormativeObject) = {
-        normativeSubject = BNodeSubject subject
-        normativePredicate = IriPredicate predicate
-        basicNormativeObject = objectValue
-    }
+    static member PropositionForm (subject: BNode) (predicate: Iri) (objectValue: BasicNormativeObject) =
+        { normativeSubject = BNodeSubject subject
+          normativePredicate = IriPredicate predicate
+          basicNormativeObject = objectValue }
 
     member this.BNodes =
         match this.normativeSubject, this.basicNormativeObject with
@@ -1976,27 +2219,30 @@ and BasicNormativeTriple = {
         | _, IriObject iriObject -> [| this.normativePredicate.Iri; iriObject |]
         | _, _ -> [| this.normativePredicate.Iri |]
 
-and NormativeTriple = {
-    normativeSubject: NormativeSubject
-    normativePredicate: NormativePredicate
-    normativeObject: NormativeObject
-} with
+and NormativeTriple =
+    { normativeSubject: NormativeSubject
+      normativePredicate: NormativePredicate
+      normativeObject: NormativeObject }
 
-    static member SPO((S: NormativeSubject), (P: NormativePredicate), (O: NormativeObject)) = {
-        normativeSubject = S
-        normativePredicate = P
-        normativeObject = O
-    }
+    static member SPO((S: NormativeSubject), (P: NormativePredicate), (O: NormativeObject)) =
+        { normativeSubject = S
+          normativePredicate = P
+          normativeObject = O }
 
-    static member SOP((S: NormativeSubject), (O: NormativeObject), (P: NormativePredicate)) = NormativeTriple.SPO(S, P, O)
+    static member SOP((S: NormativeSubject), (O: NormativeObject), (P: NormativePredicate)) =
+        NormativeTriple.SPO(S, P, O)
 
-    static member PSO((P: NormativePredicate), (S: NormativeSubject), (O: NormativeObject)) = NormativeTriple.SPO(S, P, O)
+    static member PSO((P: NormativePredicate), (S: NormativeSubject), (O: NormativeObject)) =
+        NormativeTriple.SPO(S, P, O)
 
-    static member POS((P: NormativePredicate), (O: NormativeObject), (S: NormativeSubject)) = NormativeTriple.SPO(S, P, O)
+    static member POS((P: NormativePredicate), (O: NormativeObject), (S: NormativeSubject)) =
+        NormativeTriple.SPO(S, P, O)
 
-    static member OSP((O: NormativeObject), (S: NormativeSubject), (P: NormativePredicate)) = NormativeTriple.SPO(S, P, O)
+    static member OSP((O: NormativeObject), (S: NormativeSubject), (P: NormativePredicate)) =
+        NormativeTriple.SPO(S, P, O)
 
-    static member OPS((O: NormativeObject), (S: NormativeSubject), (P: NormativePredicate)) = NormativeTriple.SPO(S, P, O)
+    static member OPS((O: NormativeObject), (S: NormativeSubject), (P: NormativePredicate)) =
+        NormativeTriple.SPO(S, P, O)
 
     member this.BNodes =
         let subjectBNodes =
@@ -2051,18 +2297,25 @@ and NormativePredicate =
     member inline this.Property((curSubject: NormativeSubject), (curObject: NormativeObject)) =
         NormativeTriple.PSO(this, curSubject, curObject)
 
-    member inline this.Property((curSubject: ^Subject when ^Subject: (member asSubject: NormativeSubject)), (curObject: NormativeObject)) =
+    member inline this.Property
+        ((curSubject: ^Subject when ^Subject: (member asSubject: NormativeSubject)), (curObject: NormativeObject))
+        =
         NormativeTriple.PSO(this, curSubject.asSubject, curObject)
 
-    member inline this.Property((curSubject: NormativeSubject), (curObject: ^Object when ^Object: (member asObject: NormativeObject))) =
+    member inline this.Property
+        ((curSubject: NormativeSubject), (curObject: ^Object when ^Object: (member asObject: NormativeObject)))
+        =
         NormativeTriple.PSO(this, curSubject, curObject.asObject)
 
     member inline this.Property
-        ((curSubject: ^Subject when ^Subject: (member asSubject: NormativeSubject)), (curObject: ^Object when ^Object: (member asObject: NormativeObject)))
-        =
+        (
+            (curSubject: ^Subject when ^Subject: (member asSubject: NormativeSubject)),
+            (curObject: ^Object when ^Object: (member asObject: NormativeObject))
+        ) =
         NormativeTriple.PSO(this, curSubject.asSubject, curObject.asObject)
 
-    static member inline (/->)((predicate: NormativePredicate), (curObject: NormativeObject)) = PredicateObject(predicate, curObject)
+    static member inline (/->)((predicate: NormativePredicate), (curObject: NormativeObject)) =
+        PredicateObject(predicate, curObject)
 
     static member (/->)(predicate: NormativePredicate, iriObject: Iri) : PredicateObject =
         PredicateObject(predicate, iriObject.asObject)
@@ -2153,7 +2406,9 @@ and NormativePredicate =
         let literalObject = TypedLiteral.op_Implicit literalValue
         PredicateObject(predicate, literalObject.asObject)
 
-    static member (/->)(predicate: NormativePredicate, ((lexicalForm: System.String), (datatype: Datatype<'Datatype>))) : PredicateObject =
+    static member (/->)
+        (predicate: NormativePredicate, ((lexicalForm: System.String), (datatype: Datatype<'Datatype>)))
+        : PredicateObject =
         let literalObject = lexicalForm ^^ datatype
         PredicateObject(predicate, literalObject.asObject)
 
@@ -2163,7 +2418,9 @@ and NormativePredicate =
     static member (/->)(predicate: NormativePredicate, namedIndividualObject: NamedIndividual) : PredicateObject =
         PredicateObject(predicate, namedIndividualObject.asObject)
 
-    static member (/->)(predicate: NormativePredicate, anonymousIndividualObject: AnonymousIndividual) : PredicateObject =
+    static member (/->)
+        (predicate: NormativePredicate, anonymousIndividualObject: AnonymousIndividual)
+        : PredicateObject =
         PredicateObject(predicate, anonymousIndividualObject.asObject)
 
     static member (/->)(predicate: NormativePredicate, individualObject: Individual) : PredicateObject =
@@ -2190,12 +2447,17 @@ and NormativePredicate =
     static member (/->)(predicate: NormativePredicate, objects: Individual list) : PredicateObjectList =
         PredicateObject.List(predicate, objects |> List.map _.asObject)
 
-    static member inline (/->)((predicate: NormativePredicate), (curObject: ^Object when ^Object: (member asObject: NormativeObject))) = predicate /-> curObject.asObject
+    static member inline (/->)
+        ((predicate: NormativePredicate), (curObject: ^Object when ^Object: (member asObject: NormativeObject)))
+        =
+        predicate /-> curObject.asObject
 
     static member (/->)((predicate: NormativePredicate), (objectList: NormativeObject list)) =
         PredicateObject.List(predicate, objectList)
 
-    static member inline (/->)((predicate: NormativePredicate), (objectList: ^Object list when ^Object: (member asObject: NormativeObject))) =
+    static member inline (/->)
+        ((predicate: NormativePredicate), (objectList: ^Object list when ^Object: (member asObject: NormativeObject)))
+        =
         PredicateObject.List(predicate, objectList |> List.map _.asObject)
 
     member this.Iri =
@@ -2226,10 +2488,8 @@ and NormativeObject =
 
 and SubjectPredicate =
 
-    {
-        curSubject: NormativeSubject
-        curPredicate: NormativePredicate
-    }
+    { curSubject: NormativeSubject
+      curPredicate: NormativePredicate }
 
 and PredicateObject =
     | PredicateObject of NormativePredicate * NormativeObject
@@ -2260,40 +2520,55 @@ and PredicateObject =
     static member inline (--/)((curSubject: Individual), (predicateObject: PredicateObject)) =
         NormativeTriple.SPO(curSubject.asSubject, predicateObject.curPredicate, predicateObject.curObject)
 
-    static member inline (--/)((curSubject: ^Subject when ^Subject: (member asSubject: NormativeSubject)), (predicateObject: PredicateObject)) =
+    static member inline (--/)
+        ((curSubject: ^Subject when ^Subject: (member asSubject: NormativeSubject)), (predicateObject: PredicateObject))
+        =
         curSubject.asSubject --/ predicateObject
 
     static member inline (-+/)((subjects: NormativeSubject list), (predicateObject: PredicateObject)) =
         subjects
-        |> List.map (fun curSubject -> NormativeTriple.SPO(curSubject, predicateObject.curPredicate, predicateObject.curObject))
+        |> List.map (fun curSubject ->
+            NormativeTriple.SPO(curSubject, predicateObject.curPredicate, predicateObject.curObject))
 
-    static member inline (-+/)(subjects: seq<#NamedIndividual>, predicateObject: PredicateObject) : NormativeTriple list =
+    static member inline (-+/)
+        (subjects: seq<#NamedIndividual>, predicateObject: PredicateObject)
+        : NormativeTriple list =
 
         subjects
-        |> Seq.map (fun subject -> NormativeTriple.SPO(IriSubject subject.Iri, predicateObject.curPredicate, predicateObject.curObject))
+        |> Seq.map (fun subject ->
+            NormativeTriple.SPO(IriSubject subject.Iri, predicateObject.curPredicate, predicateObject.curObject))
         |> Seq.toList
 
     static member inline (-+/)((subjects: Iri list), (predicateObject: PredicateObject)) =
         subjects
-        |> List.map (fun curSubject -> NormativeTriple.SPO(curSubject.asSubject, predicateObject.curPredicate, predicateObject.curObject))
+        |> List.map (fun curSubject ->
+            NormativeTriple.SPO(curSubject.asSubject, predicateObject.curPredicate, predicateObject.curObject))
 
     static member inline (-+/)((subjects: BNode list), (predicateObject: PredicateObject)) =
         subjects
-        |> List.map (fun curSubject -> NormativeTriple.SPO(curSubject.asSubject, predicateObject.curPredicate, predicateObject.curObject))
+        |> List.map (fun curSubject ->
+            NormativeTriple.SPO(curSubject.asSubject, predicateObject.curPredicate, predicateObject.curObject))
 
     static member inline (-+/)((subjects: NamedIndividual list), (predicateObject: PredicateObject)) =
         subjects
-        |> List.map (fun curSubject -> NormativeTriple.SPO(curSubject.asSubject, predicateObject.curPredicate, predicateObject.curObject))
+        |> List.map (fun curSubject ->
+            NormativeTriple.SPO(curSubject.asSubject, predicateObject.curPredicate, predicateObject.curObject))
 
     static member inline (-+/)((subjects: AnonymousIndividual list), (predicateObject: PredicateObject)) =
         subjects
-        |> List.map (fun curSubject -> NormativeTriple.SPO(curSubject.asSubject, predicateObject.curPredicate, predicateObject.curObject))
+        |> List.map (fun curSubject ->
+            NormativeTriple.SPO(curSubject.asSubject, predicateObject.curPredicate, predicateObject.curObject))
 
     static member inline (-+/)((subjects: Individual list), (predicateObject: PredicateObject)) =
         subjects
-        |> List.map (fun curSubject -> NormativeTriple.SPO(curSubject.asSubject, predicateObject.curPredicate, predicateObject.curObject))
+        |> List.map (fun curSubject ->
+            NormativeTriple.SPO(curSubject.asSubject, predicateObject.curPredicate, predicateObject.curObject))
 
-    static member inline (-+/)((subjects: ^Subject list when ^Subject: (member asSubject: NormativeSubject)), (predicateObject: PredicateObject)) =
+    static member inline (-+/)
+        (
+            (subjects: ^Subject list when ^Subject: (member asSubject: NormativeSubject)),
+            (predicateObject: PredicateObject)
+        ) =
         (subjects |> List.map _.asSubject) -+/ predicateObject
 
     static member List((curPredicate: NormativePredicate), (objectList: NormativeObject list)) : PredicateObjectList =
@@ -2302,15 +2577,22 @@ and PredicateObject =
         | headObject :: tailObjects -> PredicateObjectList(curPredicate, List.OneOrMore.More headObject tailObjects)
         | [] -> invalidOp "One-or-more List must have at least one item."
 
-    static member inline List((curPredicate: NormativePredicate), (objectList: ^Object list when ^Object: (member asObject: NormativeObject))) =
+    static member inline List
+        ((curPredicate: NormativePredicate), (objectList: ^Object list when ^Object: (member asObject: NormativeObject))) =
         PredicateObject.List(curPredicate, objectList |> List.map _.asObject)
 
-    static member inline List((curPredicate: ^Predicate when ^Predicate: (member asPredicate: NormativePredicate)), (objectList: NormativeObject list)) =
+    static member inline List
+        (
+            (curPredicate: ^Predicate when ^Predicate: (member asPredicate: NormativePredicate)),
+            (objectList: NormativeObject list)
+        ) =
         PredicateObject.List(curPredicate.asPredicate, objectList)
 
     static member inline List
-        ((curPredicate: ^Predicate when ^Predicate: (member asPredicate: NormativePredicate)), (objectList: ^Object list when ^Object: (member asObject: NormativeObject)))
-        =
+        (
+            (curPredicate: ^Predicate when ^Predicate: (member asPredicate: NormativePredicate)),
+            (objectList: ^Object list when ^Object: (member asObject: NormativeObject))
+        ) =
         PredicateObject.List(curPredicate.asPredicate, objectList)
 
 and PredicateObjectList =
@@ -2328,7 +2610,11 @@ and PredicateObjectList =
         predicateObjectList.objectList.items
         |> List.map (fun curObject -> NormativeTriple.SPO(curSubject, predicateObjectList.curPredicate, curObject))
 
-    static member inline (--/)((curSubject: ^Subject when ^Subject: (member asSubject: NormativeSubject)), (predicateObjectList: PredicateObjectList)) =
+    static member inline (--/)
+        (
+            (curSubject: ^Subject when ^Subject: (member asSubject: NormativeSubject)),
+            (predicateObjectList: PredicateObjectList)
+        ) =
         curSubject.asSubject --/ predicateObjectList
 
     static member (-+/)((subjects: NormativeSubject list), (predicateObjectList: PredicateObjectList)) =
@@ -2337,21 +2623,33 @@ and PredicateObjectList =
             predicateObjectList.objectList.items
             |> List.map (fun curObject -> NormativeTriple.SPO(curSubject, predicateObjectList.curPredicate, curObject)))
 
-    static member inline (-+/)((subjects: ^Subject list when ^Subject: (member asSubject: NormativeSubject)), (predicateObjectList: PredicateObjectList)) =
+    static member inline (-+/)
+        (
+            (subjects: ^Subject list when ^Subject: (member asSubject: NormativeSubject)),
+            (predicateObjectList: PredicateObjectList)
+        ) =
         (subjects |> List.map _.asSubject) -+/ predicateObjectList
 
     static member append(curObject: NormativeObject) =
         fun (predicateObjectList: PredicateObjectList) ->
-            PredicateObjectList(predicateObjectList.curPredicate, List.OneOrMore<NormativeObject>.More predicateObjectList.objectList.items curObject)
+            PredicateObjectList(
+                predicateObjectList.curPredicate,
+                List.OneOrMore<NormativeObject>.More predicateObjectList.objectList.items curObject
+            )
 
     static member inline append(curObject: ^Object when ^Object: (member asObject: NormativeObject)) =
-        fun (predicateObjectList: PredicateObjectList) -> predicateObjectList |> PredicateObjectList.append curObject.asObject
+        fun (predicateObjectList: PredicateObjectList) ->
+            predicateObjectList |> PredicateObjectList.append curObject.asObject
 
     static member concat(objectList: NormativeObject list) =
         fun (predicateObjectList: PredicateObjectList) ->
-            let headObject :: tailObjects = List.concat [ predicateObjectList.objectList.items; objectList ]
+            let headObject :: tailObjects =
+                List.concat [ predicateObjectList.objectList.items; objectList ]
 
-            PredicateObjectList(predicateObjectList.curPredicate, List.OneOrMore<NormativeObject>.More headObject tailObjects)
+            PredicateObjectList(
+                predicateObjectList.curPredicate,
+                List.OneOrMore<NormativeObject>.More headObject tailObjects
+            )
 
     static member inline concat(objectList: ^Object list when ^Object: (member asObject: NormativeObject)) =
         fun (predicateObjectList: PredicateObjectList) ->
@@ -2382,56 +2680,56 @@ and TripleTerm =
 
 and [<CustomEquality; CustomComparison>] BNode =
 
-    {
-        sinsignId: Guid
-        scope: string
-        localIdentifier: string option
-    } with
+    { sinsignId: Guid
+      scope: string
+      localIdentifier: string option }
 
-        static member Mint(scope: string) = {
-            sinsignId = Guid.NewGuid()
-            scope = scope
-            localIdentifier = None
-        }
+    static member Mint(scope: string) =
+        { sinsignId = Guid.NewGuid()
+          scope = scope
+          localIdentifier = None }
 
-        member this.skolem = SkolemIri this
+    member this.skolem = SkolemIri this
 
-        member this.asSubject = BNodeSubject this
-        member this.asObject = BNodeObject this |> BasicNormativeObject
-        member this.identity = this.sinsignId.ToString("N")
+    member this.asSubject = BNodeSubject this
+    member this.asObject = BNodeObject this |> BasicNormativeObject
+    member this.identity = this.sinsignId.ToString("N")
 
-        override this.Equals(other: obj) =
+    override this.Equals(other: obj) =
+        match other with
+        | :? BNode as other -> this.identity = other.identity && this.scope = other.scope
+        | _ -> false
+
+    override this.GetHashCode() =
+        HashCode.Combine(this.scope, this.identity)
+
+    interface IComparable with
+        member this.CompareTo(other: obj) =
             match other with
-            | :? BNode as other -> this.identity = other.identity && this.scope = other.scope
-            | _ -> false
+            | :? BNode as other -> compare (this.scope, this.identity) (other.scope, other.identity)
 
-        override this.GetHashCode() =
-            HashCode.Combine(this.scope, this.identity)
+            | _ -> invalidArg (nameof other) $"Cannot compare {typeof<BNode>.Name} with {other.GetType().Name}"
 
-        interface IComparable with
-            member this.CompareTo(other: obj) =
-                match other with
-                | :? BNode as other -> compare (this.scope, this.identity) (other.scope, other.identity)
+    member this.Annotation((annotationProperty: AnnotationProperty), (annotationObject: Iri)) =
+        Functional.AnnotationAssertion(annotationProperty, BNodeSubject this, IriObject annotationObject)
 
-                | _ -> invalidArg (nameof other) $"Cannot compare {typeof<BNode>.Name} with {other.GetType().Name}"
-
-        member this.Annotation((annotationProperty: AnnotationProperty), (annotationObject: Iri)) =
+    member this.Annotation(annotationObject: Iri) =
+        fun (annotationProperty: AnnotationProperty) ->
             Functional.AnnotationAssertion(annotationProperty, BNodeSubject this, IriObject annotationObject)
 
-        member this.Annotation(annotationObject: Iri) =
-            fun (annotationProperty: AnnotationProperty) -> Functional.AnnotationAssertion(annotationProperty, BNodeSubject this, IriObject annotationObject)
+    member this.Annotation((annotationProperty: AnnotationProperty), (annotationObject: BNode)) =
+        Functional.AnnotationAssertion(annotationProperty, BNodeSubject this, BNodeObject annotationObject)
 
-        member this.Annotation((annotationProperty: AnnotationProperty), (annotationObject: BNode)) =
+    member this.Annotation(annotationObject: BNode) =
+        fun (annotationProperty: AnnotationProperty) ->
             Functional.AnnotationAssertion(annotationProperty, BNodeSubject this, BNodeObject annotationObject)
 
-        member this.Annotation(annotationObject: BNode) =
-            fun (annotationProperty: AnnotationProperty) -> Functional.AnnotationAssertion(annotationProperty, BNodeSubject this, BNodeObject annotationObject)
+    member this.Annotation((annotationProperty: AnnotationProperty), (annotationObject: Literal)) =
+        Functional.AnnotationAssertion(annotationProperty, BNodeSubject this, LiteralObject annotationObject)
 
-        member this.Annotation((annotationProperty: AnnotationProperty), (annotationObject: Literal)) =
+    member this.Annotation(annotationObject: Literal) =
+        fun (annotationProperty: AnnotationProperty) ->
             Functional.AnnotationAssertion(annotationProperty, BNodeSubject this, LiteralObject annotationObject)
-
-        member this.Annotation(annotationObject: Literal) =
-            fun (annotationProperty: AnnotationProperty) -> Functional.AnnotationAssertion(annotationProperty, BNodeSubject this, LiteralObject annotationObject)
 
 and OntologyIri =
     | OntologyIri of Iri
@@ -2592,17 +2890,23 @@ and AnnotationProperty =
         let literalObject = TypedLiteral.op_Implicit literalValue
         PredicateObject(annotationProperty.asPredicate, literalObject.asObject)
 
-    static member (/->)(annotationProperty: AnnotationProperty, ((lexicalForm: System.String), (datatype: Datatype<'Datatype>))) : PredicateObject =
+    static member (/->)
+        (annotationProperty: AnnotationProperty, ((lexicalForm: System.String), (datatype: Datatype<'Datatype>)))
+        : PredicateObject =
         let literalObject = lexicalForm ^^ datatype
         PredicateObject(annotationProperty.asPredicate, literalObject.asObject)
 
     static member (/->)(annotationProperty: AnnotationProperty, tripleTermObject: TripleTerm) : PredicateObject =
         PredicateObject(annotationProperty.asPredicate, tripleTermObject.asObject)
 
-    static member (/->)(annotationProperty: AnnotationProperty, namedIndividualObject: NamedIndividual) : PredicateObject =
+    static member (/->)
+        (annotationProperty: AnnotationProperty, namedIndividualObject: NamedIndividual)
+        : PredicateObject =
         PredicateObject(annotationProperty.asPredicate, namedIndividualObject.asObject)
 
-    static member (/->)(annotationProperty: AnnotationProperty, anonymousIndividualObject: AnonymousIndividual) : PredicateObject =
+    static member (/->)
+        (annotationProperty: AnnotationProperty, anonymousIndividualObject: AnonymousIndividual)
+        : PredicateObject =
         PredicateObject(annotationProperty.asPredicate, anonymousIndividualObject.asObject)
 
     static member (/->)(annotationProperty: AnnotationProperty, individualObject: Individual) : PredicateObject =
@@ -2623,19 +2927,26 @@ and AnnotationProperty =
     static member (/->)(annotationProperty: AnnotationProperty, objects: NamedIndividual list) : PredicateObjectList =
         PredicateObject.List(annotationProperty.asPredicate, objects |> List.map _.asObject)
 
-    static member (/->)(annotationProperty: AnnotationProperty, objects: AnonymousIndividual list) : PredicateObjectList =
+    static member (/->)
+        (annotationProperty: AnnotationProperty, objects: AnonymousIndividual list)
+        : PredicateObjectList =
         PredicateObject.List(annotationProperty.asPredicate, objects |> List.map _.asObject)
 
     static member (/->)(annotationProperty: AnnotationProperty, objects: Individual list) : PredicateObjectList =
         PredicateObject.List(annotationProperty.asPredicate, objects |> List.map _.asObject)
 
-    static member inline (/->)((annotationProperty: AnnotationProperty), (curObject: ^Object when ^Object: (member asObject: NormativeObject))) =
+    static member inline (/->)
+        ((annotationProperty: AnnotationProperty), (curObject: ^Object when ^Object: (member asObject: NormativeObject))) =
         annotationProperty /-> curObject.asObject
 
     static member (/->)((annotationProperty: AnnotationProperty), (objectList: NormativeObject list)) =
         PredicateObject.List(annotationProperty.asPredicate, objectList)
 
-    static member inline (/->)((annotationProperty: AnnotationProperty), (objectList: ^Object list when ^Object: (member asObject: NormativeObject))) =
+    static member inline (/->)
+        (
+            (annotationProperty: AnnotationProperty),
+            (objectList: ^Object list when ^Object: (member asObject: NormativeObject))
+        ) =
         PredicateObject.List(annotationProperty.asPredicate, objectList |> List.map _.asObject)
 
 and Class =
@@ -2662,31 +2973,26 @@ and Class =
 
 and DirectlyImportsDocument = Import of Iri
 
-and Annotation = {
-    annotationAnnotations: Set<Annotation>
-    annotationProperty: AnnotationProperty
-    annotationValue: BasicNormativeObject
-}
+and Annotation =
+    { annotationAnnotations: Set<Annotation>
+      annotationProperty: AnnotationProperty
+      annotationValue: BasicNormativeObject }
 
-and Annotated<'Value> = {
-    annotations: Set<Annotation>
-    value: 'Value
-} with
+and Annotated<'Value> =
+    { annotations: Set<Annotation>
+      value: 'Value }
 
-    member this.map(mapping: 'Value -> 'MappedValue) : Annotated<'MappedValue> = {
-        annotations = this.annotations
-        value = mapping this.value
-    }
+    member this.map(mapping: 'Value -> 'MappedValue) : Annotated<'MappedValue> =
+        { annotations = this.annotations
+          value = mapping this.value }
 
-    static member Unannotated(value: 'Value) = {
-        annotations = Set.empty
-        value = value
-    }
+    static member Unannotated(value: 'Value) =
+        { annotations = Set.empty
+          value = value }
 
-    static member Annotate(annotations: Set<Annotation>, value: 'Value) = {
-        annotations = annotations
-        value = value
-    }
+    static member Annotate(annotations: Set<Annotation>, value: 'Value) =
+        { annotations = annotations
+          value = value }
 
     static member Annotate(annotations: Set<Annotation>) =
         fun (value: 'Value) -> Annotated.Annotate(annotations, value)
@@ -2707,11 +3013,10 @@ and ObjectProperty =
     static member op_Implicit(objectProperty: ObjectProperty) = objectProperty.asPredicate
     member this.identity: string = this.Iri.identity
 
-    member this.Fact(individual: Individual) = {
-        polarity = Positive
-        objectProperty = this
-        individual = individual
-    }
+    member this.Fact(individual: Individual) =
+        { polarity = Positive
+          objectProperty = this
+          individual = individual }
 
     member this.Fact(individual: NamedIndividual) = this.Fact(Individual individual)
 
@@ -2818,7 +3123,9 @@ and ObjectProperty =
         let literalObject = TypedLiteral.op_Implicit literalValue
         PredicateObject(objectProperty.asPredicate, literalObject.asObject)
 
-    static member (/->)(objectProperty: ObjectProperty, ((lexicalForm: System.String), (datatype: Datatype<'Datatype>))) : PredicateObject =
+    static member (/->)
+        (objectProperty: ObjectProperty, ((lexicalForm: System.String), (datatype: Datatype<'Datatype>)))
+        : PredicateObject =
         let literalObject = lexicalForm ^^ datatype
         PredicateObject(objectProperty.asPredicate, literalObject.asObject)
 
@@ -2828,7 +3135,9 @@ and ObjectProperty =
     static member (/->)(objectProperty: ObjectProperty, namedIndividualObject: NamedIndividual) : PredicateObject =
         PredicateObject(objectProperty.asPredicate, namedIndividualObject.asObject)
 
-    static member (/->)(objectProperty: ObjectProperty, anonymousIndividualObject: AnonymousIndividual) : PredicateObject =
+    static member (/->)
+        (objectProperty: ObjectProperty, anonymousIndividualObject: AnonymousIndividual)
+        : PredicateObject =
         PredicateObject(objectProperty.asPredicate, anonymousIndividualObject.asObject)
 
     static member (/->)(objectProperty: ObjectProperty, individualObject: Individual) : PredicateObject =
@@ -2855,13 +3164,17 @@ and ObjectProperty =
     static member (/->)(objectProperty: ObjectProperty, objects: Individual list) : PredicateObjectList =
         PredicateObject.List(objectProperty.asPredicate, objects |> List.map _.asObject)
 
-    static member inline (/->)((objectProperty: ObjectProperty), (curObject: ^Object when ^Object: (member asObject: NormativeObject))) =
+    static member inline (/->)
+        ((objectProperty: ObjectProperty), (curObject: ^Object when ^Object: (member asObject: NormativeObject)))
+        =
         objectProperty.asPredicate /-> curObject.asObject
 
     static member (/->)((objectProperty: ObjectProperty), (objectList: NormativeObject list)) =
         PredicateObject.List(objectProperty.asPredicate, objectList)
 
-    static member inline (/->)((objectProperty: ObjectProperty), (objectList: ^Object list when ^Object: (member asObject: NormativeObject))) =
+    static member inline (/->)
+        ((objectProperty: ObjectProperty), (objectList: ^Object list when ^Object: (member asObject: NormativeObject)))
+        =
         PredicateObject.List(objectProperty.asPredicate, objectList |> List.map _.asObject)
 
 and DataProperty =
@@ -2930,11 +3243,10 @@ and DataProperty =
         Restriction.DataMaxCardinality(nonNegativeInteger, this)
         |> RestrictionPrimary.ofRestriction
 
-    member this.Fact(literal: Literal) = {
-        polarity = Positive
-        dataProperty = this
-        literal = literal
-    }
+    member this.Fact(literal: Literal) =
+        { polarity = Positive
+          dataProperty = this
+          literal = literal }
 
     member this.Fact(literal: TypedLiteral) = this.Fact(TypedLiteral literal)
 
@@ -3153,7 +3465,9 @@ and DataProperty =
         let literalObject = TypedLiteral.op_Implicit literalValue
         PredicateObject(dataProperty.asPredicate, literalObject.asObject)
 
-    static member (/->)(dataProperty: DataProperty, ((lexicalForm: System.String), (datatype: Datatype<'Datatype>))) : PredicateObject =
+    static member (/->)
+        (dataProperty: DataProperty, ((lexicalForm: System.String), (datatype: Datatype<'Datatype>)))
+        : PredicateObject =
         let literalObject = lexicalForm ^^ datatype
         PredicateObject(dataProperty.asPredicate, literalObject.asObject)
 
@@ -3190,13 +3504,17 @@ and DataProperty =
     static member (/->)(dataProperty: DataProperty, objects: Individual list) : PredicateObjectList =
         PredicateObject.List(dataProperty.asPredicate, objects |> List.map _.asObject)
 
-    static member inline (/->)((dataProperty: DataProperty), (curObject: ^Object when ^Object: (member asObject: NormativeObject))) =
+    static member inline (/->)
+        ((dataProperty: DataProperty), (curObject: ^Object when ^Object: (member asObject: NormativeObject)))
+        =
         dataProperty.asPredicate /-> curObject.asObject
 
     static member (/->)((dataProperty: DataProperty), (objectList: NormativeObject list)) =
         PredicateObject.List(dataProperty.asPredicate, objectList)
 
-    static member inline (/->)((dataProperty: DataProperty), (objectList: ^Object list when ^Object: (member asObject: NormativeObject))) =
+    static member inline (/->)
+        ((dataProperty: DataProperty), (objectList: ^Object list when ^Object: (member asObject: NormativeObject)))
+        =
         PredicateObject.List(dataProperty.asPredicate, objectList |> List.map _.asObject)
 
 and NamedIndividual =
@@ -3235,32 +3553,52 @@ and NamedIndividual =
         Functional.SameIndividual (Individual this) (Individual individual)
 
     member this.SameAs(individuals: NamedIndividual list) : Annotated<SameIndividual> =
-        Functional.SameIndividual(Set.TwoOrMore.More (Individual this) (Individual individuals[0]) (individuals[1..] |> List.map Individual |> Set.ofList))
+        Functional.SameIndividual(
+            Set.TwoOrMore.More
+                (Individual this)
+                (Individual individuals[0])
+                (individuals[1..] |> List.map Individual |> Set.ofList)
+        )
 
     member this.SameAs(individual: AnonymousIndividual) =
         Functional.SameIndividual (Individual this) (AnonymousIndividual individual)
 
     member this.SameAs(individuals: AnonymousIndividual list) =
-        Functional.SameIndividual(Set.TwoOrMore.More (Individual this) (AnonymousIndividual individuals[0]) (individuals[1..] |> List.map AnonymousIndividual |> Set.ofList))
+        Functional.SameIndividual(
+            Set.TwoOrMore.More
+                (Individual this)
+                (AnonymousIndividual individuals[0])
+                (individuals[1..] |> List.map AnonymousIndividual |> Set.ofList)
+        )
 
     member this.DifferentFrom(individual: Individual) =
         Functional.DifferentIndividuals (Individual this) individual
 
     member this.DifferentFrom(individuals: Individual list) =
-        Functional.DifferentIndividuals(Set.TwoOrMore.More (Individual this) individuals[0] (Set.ofList individuals[1..]))
+        Functional.DifferentIndividuals(
+            Set.TwoOrMore.More (Individual this) individuals[0] (Set.ofList individuals[1..])
+        )
 
     member this.DifferentFrom(individual: NamedIndividual) =
         Functional.DifferentIndividuals (Individual this) (Individual individual)
 
     member this.DifferentFrom(individuals: NamedIndividual list) =
-        Functional.DifferentIndividuals(Set.TwoOrMore.More (Individual this) (Individual individuals[0]) (individuals[1..] |> List.map Individual |> Set.ofList))
+        Functional.DifferentIndividuals(
+            Set.TwoOrMore.More
+                (Individual this)
+                (Individual individuals[0])
+                (individuals[1..] |> List.map Individual |> Set.ofList)
+        )
 
     member this.DifferentFrom(individual: AnonymousIndividual) =
         Functional.DifferentIndividuals (Individual this) (AnonymousIndividual individual)
 
     member this.DifferentFrom(individuals: AnonymousIndividual list) =
         Functional.DifferentIndividuals(
-            Set.TwoOrMore.More (Individual this) (AnonymousIndividual individuals[0]) (individuals[1..] |> List.map AnonymousIndividual |> Set.ofList)
+            Set.TwoOrMore.More
+                (Individual this)
+                (AnonymousIndividual individuals[0])
+                (individuals[1..] |> List.map AnonymousIndividual |> Set.ofList)
         )
 
     member this.Fact(fact: Fact) = fact.Assertion(Individual this)
@@ -3307,40 +3645,60 @@ and AnonymousIndividual =
         Functional.SameIndividual (AnonymousIndividual this) individual
 
     member this.SameAs(individuals: Individual list) =
-        Functional.SameIndividual(Set.TwoOrMore.More (AnonymousIndividual this) individuals[0] (Set.ofList individuals[1..]))
+        Functional.SameIndividual(
+            Set.TwoOrMore.More (AnonymousIndividual this) individuals[0] (Set.ofList individuals[1..])
+        )
 
     member this.SameAs(individual: NamedIndividual) =
         Functional.SameIndividual (AnonymousIndividual this) (Individual individual)
 
     member this.SameAs(individuals: NamedIndividual list) =
-        Functional.SameIndividual(Set.TwoOrMore.More (AnonymousIndividual this) (Individual individuals[0]) (individuals[1..] |> List.map Individual |> Set.ofList))
+        Functional.SameIndividual(
+            Set.TwoOrMore.More
+                (AnonymousIndividual this)
+                (Individual individuals[0])
+                (individuals[1..] |> List.map Individual |> Set.ofList)
+        )
 
     member this.SameAs(individual: AnonymousIndividual) =
         Functional.SameIndividual (AnonymousIndividual this) (AnonymousIndividual individual)
 
     member this.SameAs(individuals: AnonymousIndividual list) =
         Functional.SameIndividual(
-            Set.TwoOrMore.More (AnonymousIndividual this) (AnonymousIndividual individuals[0]) (individuals[1..] |> List.map AnonymousIndividual |> Set.ofList)
+            Set.TwoOrMore.More
+                (AnonymousIndividual this)
+                (AnonymousIndividual individuals[0])
+                (individuals[1..] |> List.map AnonymousIndividual |> Set.ofList)
         )
 
     member this.DifferentFrom(individual: Individual) =
         Functional.DifferentIndividuals (AnonymousIndividual this) individual
 
     member this.DifferentFrom(individuals: Individual list) =
-        Functional.DifferentIndividuals(Set.TwoOrMore.More (AnonymousIndividual this) individuals[0] (Set.ofList individuals[1..]))
+        Functional.DifferentIndividuals(
+            Set.TwoOrMore.More (AnonymousIndividual this) individuals[0] (Set.ofList individuals[1..])
+        )
 
     member this.DifferentFrom(individual: NamedIndividual) =
         Functional.DifferentIndividuals (AnonymousIndividual this) (Individual individual)
 
     member this.DifferentFrom(individuals: NamedIndividual list) =
-        Functional.DifferentIndividuals(Set.TwoOrMore.More (AnonymousIndividual this) (Individual individuals[0]) (individuals[1..] |> List.map Individual |> Set.ofList))
+        Functional.DifferentIndividuals(
+            Set.TwoOrMore.More
+                (AnonymousIndividual this)
+                (Individual individuals[0])
+                (individuals[1..] |> List.map Individual |> Set.ofList)
+        )
 
     member this.DifferentFrom(individual: AnonymousIndividual) =
         Functional.DifferentIndividuals (AnonymousIndividual this) (AnonymousIndividual individual)
 
     member this.DifferentFrom(individuals: AnonymousIndividual list) =
         Functional.DifferentIndividuals(
-            Set.TwoOrMore.More (AnonymousIndividual this) (AnonymousIndividual individuals[0]) (individuals[1..] |> List.map AnonymousIndividual |> Set.ofList)
+            Set.TwoOrMore.More
+                (AnonymousIndividual this)
+                (AnonymousIndividual individuals[0])
+                (individuals[1..] |> List.map AnonymousIndividual |> Set.ofList)
         )
 
     member this.Fact(fact: Fact) =
@@ -3396,13 +3754,20 @@ and Individual =
         Functional.SameIndividual this (Individual individual)
 
     member this.SameAs(individuals: NamedIndividual list) =
-        Functional.SameIndividual(Set.TwoOrMore.More this (Individual individuals[0]) (individuals[1..] |> List.map Individual |> Set.ofList))
+        Functional.SameIndividual(
+            Set.TwoOrMore.More this (Individual individuals[0]) (individuals[1..] |> List.map Individual |> Set.ofList)
+        )
 
     member this.SameAs(individual: AnonymousIndividual) =
         Functional.SameIndividual this (AnonymousIndividual individual)
 
     member this.SameAs(individuals: AnonymousIndividual list) =
-        Functional.SameIndividual(Set.TwoOrMore.More this (AnonymousIndividual individuals[0]) (individuals[1..] |> List.map AnonymousIndividual |> Set.ofList))
+        Functional.SameIndividual(
+            Set.TwoOrMore.More
+                this
+                (AnonymousIndividual individuals[0])
+                (individuals[1..] |> List.map AnonymousIndividual |> Set.ofList)
+        )
 
     member this.DifferentFrom(individual: Individual) =
         Functional.DifferentIndividuals this individual
@@ -3414,13 +3779,20 @@ and Individual =
         Functional.DifferentIndividuals this (Individual individual)
 
     member this.DifferentFrom(individuals: NamedIndividual list) =
-        Functional.DifferentIndividuals(Set.TwoOrMore.More this (Individual individuals[0]) (individuals[1..] |> List.map Individual |> Set.ofList))
+        Functional.DifferentIndividuals(
+            Set.TwoOrMore.More this (Individual individuals[0]) (individuals[1..] |> List.map Individual |> Set.ofList)
+        )
 
     member this.DifferentFrom(individual: AnonymousIndividual) =
         Functional.DifferentIndividuals this (AnonymousIndividual individual)
 
     member this.DifferentFrom(individuals: AnonymousIndividual list) =
-        Functional.DifferentIndividuals(Set.TwoOrMore.More this (AnonymousIndividual individuals[0]) (individuals[1..] |> List.map AnonymousIndividual |> Set.ofList))
+        Functional.DifferentIndividuals(
+            Set.TwoOrMore.More
+                this
+                (AnonymousIndividual individuals[0])
+                (individuals[1..] |> List.map AnonymousIndividual |> Set.ofList)
+        )
 
     member this.Fact(fact: Fact) = fact.Assertion this
 
@@ -3519,10 +3891,9 @@ and Cardinal =
     | ExactCardinal of NonNegativeInteger
     | MaximumCardinal of NonNegativeInteger
 
-and DatatypeRestriction = {
-    datatype: DatatypeIri
-    facetValues: Set.OneOrMore<FacetValue>
-}
+and DatatypeRestriction =
+    { datatype: DatatypeIri
+      facetValues: Set.OneOrMore<FacetValue> }
 
 and DataRange =
     | DatatypeRange of DatatypeIri
@@ -3552,112 +3923,128 @@ and Restriction =
     | LiteralValueRestriction of LiteralRestriction
     | CardinalityRestriction of CardinalityRestriction
 
-    static member ObjectSomeValuesFrom((objectPropertyExpression: ObjectPropertyExpression), (classExpression: ClassExpression)) =
-        {
-            onObjectProperty = objectPropertyExpression
-            toClassExpression = classExpression
-        }
+    static member ObjectSomeValuesFrom
+        ((objectPropertyExpression: ObjectPropertyExpression), (classExpression: ClassExpression))
+        =
+        { onObjectProperty = objectPropertyExpression
+          toClassExpression = classExpression }
         |> ExistentialClassRestriction
 
     static member ObjectSomeValuesFrom(classExpression: ClassExpression) =
-        fun (objectPropertyExpression: ObjectPropertyExpression) -> Restriction.ObjectSomeValuesFrom(objectPropertyExpression, classExpression)
+        fun (objectPropertyExpression: ObjectPropertyExpression) ->
+            Restriction.ObjectSomeValuesFrom(objectPropertyExpression, classExpression)
 
-    static member ObjectAllValuesFrom((objectPropertyExpression: ObjectPropertyExpression), (classExpression: ClassExpression)) =
-        {
-            onObjectProperty = objectPropertyExpression
-            toClassExpression = classExpression
-        }
+    static member ObjectAllValuesFrom
+        ((objectPropertyExpression: ObjectPropertyExpression), (classExpression: ClassExpression))
+        =
+        { onObjectProperty = objectPropertyExpression
+          toClassExpression = classExpression }
         |> UniversalClassRestriction
 
     static member ObjectAllValuesFrom(classExpression: ClassExpression) =
-        fun (objectPropertyExpression: ObjectPropertyExpression) -> Restriction.ObjectAllValuesFrom(objectPropertyExpression, classExpression)
+        fun (objectPropertyExpression: ObjectPropertyExpression) ->
+            Restriction.ObjectAllValuesFrom(objectPropertyExpression, classExpression)
 
     static member ObjectHasValue((objectPropertyExpression: ObjectPropertyExpression), (individual: Individual)) =
-        {
-            onObjectPropertyExpression = objectPropertyExpression
-            toIndividual = individual
-        }
+        { onObjectPropertyExpression = objectPropertyExpression
+          toIndividual = individual }
         |> IndividualValueRestriction
 
     static member ObjectHasValue(individual: Individual) =
-        fun (objectPropertyExpression: ObjectPropertyExpression) -> Restriction.ObjectHasValue(objectPropertyExpression, individual)
+        fun (objectPropertyExpression: ObjectPropertyExpression) ->
+            Restriction.ObjectHasValue(objectPropertyExpression, individual)
 
     static member ObjectHasSelf(objectPropertyExpression: ObjectPropertyExpression) =
         objectPropertyExpression |> SelfRestriction
 
     // Tupled overloads preserve Restriction Syntax. Curried qualified forms begin
     // with the qualifier, then cardinality, then property expression.
-    static member ObjectMinCardinality((cardinal: NonNegativeInteger), (objectPropertyExpression: ObjectPropertyExpression)) =
-        {
-            cardinality = ObjectCardinality objectPropertyExpression
-            cardinal = MinimumCardinal cardinal
-        }
+    static member ObjectMinCardinality
+        ((cardinal: NonNegativeInteger), (objectPropertyExpression: ObjectPropertyExpression))
+        =
+        { cardinality = ObjectCardinality objectPropertyExpression
+          cardinal = MinimumCardinal cardinal }
         |> CardinalityRestriction
 
-    static member ObjectMinCardinality((cardinal: NonNegativeInteger), (objectPropertyExpression: ObjectPropertyExpression), (classExpression: ClassExpression)) =
-        {
-            cardinality = (objectPropertyExpression, classExpression) |> ObjectQualifiedCardinality
-            cardinal = MinimumCardinal cardinal
-        }
+    static member ObjectMinCardinality
+        (
+            (cardinal: NonNegativeInteger),
+            (objectPropertyExpression: ObjectPropertyExpression),
+            (classExpression: ClassExpression)
+        ) =
+        { cardinality = (objectPropertyExpression, classExpression) |> ObjectQualifiedCardinality
+          cardinal = MinimumCardinal cardinal }
         |> CardinalityRestriction
 
     static member ObjectMinCardinality(cardinal: NonNegativeInteger) =
-        fun (objectPropertyExpression: ObjectPropertyExpression) -> Restriction.ObjectMinCardinality(cardinal, objectPropertyExpression)
+        fun (objectPropertyExpression: ObjectPropertyExpression) ->
+            Restriction.ObjectMinCardinality(cardinal, objectPropertyExpression)
 
     static member ObjectMinCardinality(classExpression: ClassExpression) =
         fun (cardinal: NonNegativeInteger) ->
-            fun (objectPropertyExpression: ObjectPropertyExpression) -> Restriction.ObjectMinCardinality(cardinal, objectPropertyExpression, classExpression)
+            fun (objectPropertyExpression: ObjectPropertyExpression) ->
+                Restriction.ObjectMinCardinality(cardinal, objectPropertyExpression, classExpression)
 
-    static member ObjectMaxCardinality((cardinal: NonNegativeInteger), (objectPropertyExpression: ObjectPropertyExpression)) =
-        {
-            cardinality = ObjectCardinality objectPropertyExpression
-            cardinal = MaximumCardinal cardinal
-        }
+    static member ObjectMaxCardinality
+        ((cardinal: NonNegativeInteger), (objectPropertyExpression: ObjectPropertyExpression))
+        =
+        { cardinality = ObjectCardinality objectPropertyExpression
+          cardinal = MaximumCardinal cardinal }
         |> CardinalityRestriction
 
-    static member ObjectMaxCardinality((cardinal: NonNegativeInteger), (objectPropertyExpression: ObjectPropertyExpression), (classExpression: ClassExpression)) =
-        {
-            cardinality = (objectPropertyExpression, classExpression) |> ObjectQualifiedCardinality
-            cardinal = MaximumCardinal cardinal
-        }
+    static member ObjectMaxCardinality
+        (
+            (cardinal: NonNegativeInteger),
+            (objectPropertyExpression: ObjectPropertyExpression),
+            (classExpression: ClassExpression)
+        ) =
+        { cardinality = (objectPropertyExpression, classExpression) |> ObjectQualifiedCardinality
+          cardinal = MaximumCardinal cardinal }
         |> CardinalityRestriction
 
     static member ObjectMaxCardinality(cardinal: NonNegativeInteger) =
-        fun (objectPropertyExpression: ObjectPropertyExpression) -> Restriction.ObjectMaxCardinality(cardinal, objectPropertyExpression)
+        fun (objectPropertyExpression: ObjectPropertyExpression) ->
+            Restriction.ObjectMaxCardinality(cardinal, objectPropertyExpression)
 
     static member ObjectMaxCardinality(classExpression: ClassExpression) =
         fun (cardinal: NonNegativeInteger) ->
-            fun (objectPropertyExpression: ObjectPropertyExpression) -> Restriction.ObjectMaxCardinality(cardinal, objectPropertyExpression, classExpression)
+            fun (objectPropertyExpression: ObjectPropertyExpression) ->
+                Restriction.ObjectMaxCardinality(cardinal, objectPropertyExpression, classExpression)
 
-    static member ObjectExactCardinality((cardinal: NonNegativeInteger), (objectPropertyExpression: ObjectPropertyExpression)) =
-        {
-            cardinality = ObjectCardinality objectPropertyExpression
-            cardinal = ExactCardinal cardinal
-        }
+    static member ObjectExactCardinality
+        ((cardinal: NonNegativeInteger), (objectPropertyExpression: ObjectPropertyExpression))
+        =
+        { cardinality = ObjectCardinality objectPropertyExpression
+          cardinal = ExactCardinal cardinal }
         |> CardinalityRestriction
 
-    static member ObjectExactCardinality((cardinal: NonNegativeInteger), (objectPropertyExpression: ObjectPropertyExpression), (classExpression: ClassExpression)) =
-        {
-            cardinality = (objectPropertyExpression, classExpression) |> ObjectQualifiedCardinality
-            cardinal = ExactCardinal cardinal
-        }
+    static member ObjectExactCardinality
+        (
+            (cardinal: NonNegativeInteger),
+            (objectPropertyExpression: ObjectPropertyExpression),
+            (classExpression: ClassExpression)
+        ) =
+        { cardinality = (objectPropertyExpression, classExpression) |> ObjectQualifiedCardinality
+          cardinal = ExactCardinal cardinal }
         |> CardinalityRestriction
 
     static member ObjectExactCardinality(cardinal: NonNegativeInteger) =
-        fun (objectPropertyExpression: ObjectPropertyExpression) -> Restriction.ObjectExactCardinality(cardinal, objectPropertyExpression)
+        fun (objectPropertyExpression: ObjectPropertyExpression) ->
+            Restriction.ObjectExactCardinality(cardinal, objectPropertyExpression)
 
     static member ObjectExactCardinality(classExpression: ClassExpression) =
         fun (cardinal: NonNegativeInteger) ->
-            fun (objectPropertyExpression: ObjectPropertyExpression) -> Restriction.ObjectExactCardinality(cardinal, objectPropertyExpression, classExpression)
+            fun (objectPropertyExpression: ObjectPropertyExpression) ->
+                Restriction.ObjectExactCardinality(cardinal, objectPropertyExpression, classExpression)
 
     static member DataSomeValuesFrom((dataProperties: List.OneOrMore<DataProperty>), (dataRange: DataRange)) =
-        {
-            onDataProperties = dataProperties
-            toDataRange = dataRange
-        }
+        { onDataProperties = dataProperties
+          toDataRange = dataRange }
         |> ExistentialDataRangeRestriction
 
-    static member DataSomeValuesFrom((firstDataProperty: DataProperty), (moreDataProperties: DataProperty list), (dataRange: DataRange)) =
+    static member DataSomeValuesFrom
+        ((firstDataProperty: DataProperty), (moreDataProperties: DataProperty list), (dataRange: DataRange))
+        =
         Restriction.DataSomeValuesFrom(List.OneOrMore.More(firstDataProperty, moreDataProperties), dataRange)
 
     static member DataSomeValuesFrom((dataProperty: DataProperty), (dataRange: DataRange)) =
@@ -3670,13 +4057,13 @@ and Restriction =
         fun (dataProperty: DataProperty) -> Restriction.DataSomeValuesFrom(dataProperty, dataRange)
 
     static member DataAllValuesFrom((dataProperties: List.OneOrMore<DataProperty>), (dataRange: DataRange)) =
-        {
-            onDataProperties = dataProperties
-            toDataRange = dataRange
-        }
+        { onDataProperties = dataProperties
+          toDataRange = dataRange }
         |> UniversalDataRangeRestriction
 
-    static member DataAllValuesFrom((firstDataProperty: DataProperty), (moreDataProperties: DataProperty list), (dataRange: DataRange)) =
+    static member DataAllValuesFrom
+        ((firstDataProperty: DataProperty), (moreDataProperties: DataProperty list), (dataRange: DataRange))
+        =
         Restriction.DataAllValuesFrom(List.OneOrMore.More(firstDataProperty, moreDataProperties), dataRange)
 
     static member DataAllValuesFrom((dataProperty: DataProperty), (dataRange: DataRange)) =
@@ -3689,74 +4076,69 @@ and Restriction =
         fun (dataProperty: DataProperty) -> Restriction.DataAllValuesFrom(dataProperty, dataRange)
 
     static member DataHasValue((dataProperty: DataProperty), (literal: Literal)) =
-        {
-            onDataProperty = dataProperty
-            toLiteral = literal
-        }
+        { onDataProperty = dataProperty
+          toLiteral = literal }
         |> LiteralValueRestriction
 
     static member DataHasValue(literal: Literal) =
         fun (dataProperty: DataProperty) -> Restriction.DataHasValue(dataProperty, literal)
 
     static member DataMinCardinality((cardinal: NonNegativeInteger), (dataProperty: DataProperty)) =
-        {
-            cardinality = DataCardinality dataProperty
-            cardinal = MinimumCardinal cardinal
-        }
+        { cardinality = DataCardinality dataProperty
+          cardinal = MinimumCardinal cardinal }
         |> CardinalityRestriction
 
-    static member DataMinCardinality((cardinal: NonNegativeInteger), (dataProperty: DataProperty), (dataRange: DataRange)) =
-        {
-            cardinality = (dataProperty, dataRange) |> DataQualifiedCardinality
-            cardinal = MinimumCardinal cardinal
-        }
+    static member DataMinCardinality
+        ((cardinal: NonNegativeInteger), (dataProperty: DataProperty), (dataRange: DataRange))
+        =
+        { cardinality = (dataProperty, dataRange) |> DataQualifiedCardinality
+          cardinal = MinimumCardinal cardinal }
         |> CardinalityRestriction
 
     static member DataMinCardinality(cardinal: NonNegativeInteger) =
         fun (dataProperty: DataProperty) -> Restriction.DataMinCardinality(cardinal, dataProperty)
 
     static member DataMinCardinality(dataRange: DataRange) =
-        fun (cardinal: NonNegativeInteger) -> fun (dataProperty: DataProperty) -> Restriction.DataMinCardinality(cardinal, dataProperty, dataRange)
+        fun (cardinal: NonNegativeInteger) ->
+            fun (dataProperty: DataProperty) -> Restriction.DataMinCardinality(cardinal, dataProperty, dataRange)
 
     static member DataMaxCardinality((cardinal: NonNegativeInteger), (dataProperty: DataProperty)) =
-        {
-            cardinality = DataCardinality dataProperty
-            cardinal = MaximumCardinal cardinal
-        }
+        { cardinality = DataCardinality dataProperty
+          cardinal = MaximumCardinal cardinal }
         |> CardinalityRestriction
 
-    static member DataMaxCardinality((cardinal: NonNegativeInteger), (dataProperty: DataProperty), (dataRange: DataRange)) =
-        {
-            cardinality = (dataProperty, dataRange) |> DataQualifiedCardinality
-            cardinal = MaximumCardinal cardinal
-        }
+    static member DataMaxCardinality
+        ((cardinal: NonNegativeInteger), (dataProperty: DataProperty), (dataRange: DataRange))
+        =
+        { cardinality = (dataProperty, dataRange) |> DataQualifiedCardinality
+          cardinal = MaximumCardinal cardinal }
         |> CardinalityRestriction
 
     static member DataMaxCardinality(cardinal: NonNegativeInteger) =
         fun (dataProperty: DataProperty) -> Restriction.DataMaxCardinality(cardinal, dataProperty)
 
     static member DataMaxCardinality(dataRange: DataRange) =
-        fun (cardinal: NonNegativeInteger) -> fun (dataProperty: DataProperty) -> Restriction.DataMaxCardinality(cardinal, dataProperty, dataRange)
+        fun (cardinal: NonNegativeInteger) ->
+            fun (dataProperty: DataProperty) -> Restriction.DataMaxCardinality(cardinal, dataProperty, dataRange)
 
     static member DataExactCardinality((cardinal: NonNegativeInteger), (dataProperty: DataProperty)) =
-        {
-            cardinality = DataCardinality dataProperty
-            cardinal = ExactCardinal cardinal
-        }
+        { cardinality = DataCardinality dataProperty
+          cardinal = ExactCardinal cardinal }
         |> CardinalityRestriction
 
-    static member DataExactCardinality((cardinal: NonNegativeInteger), (dataProperty: DataProperty), (dataRange: DataRange)) =
-        {
-            cardinality = (dataProperty, dataRange) |> DataQualifiedCardinality
-            cardinal = ExactCardinal cardinal
-        }
+    static member DataExactCardinality
+        ((cardinal: NonNegativeInteger), (dataProperty: DataProperty), (dataRange: DataRange))
+        =
+        { cardinality = (dataProperty, dataRange) |> DataQualifiedCardinality
+          cardinal = ExactCardinal cardinal }
         |> CardinalityRestriction
 
     static member DataExactCardinality(cardinal: NonNegativeInteger) =
         fun (dataProperty: DataProperty) -> Restriction.DataExactCardinality(cardinal, dataProperty)
 
     static member DataExactCardinality(dataRange: DataRange) =
-        fun (cardinal: NonNegativeInteger) -> fun (dataProperty: DataProperty) -> Restriction.DataExactCardinality(cardinal, dataProperty, dataRange)
+        fun (cardinal: NonNegativeInteger) ->
+            fun (dataProperty: DataProperty) -> Restriction.DataExactCardinality(cardinal, dataProperty, dataRange)
 
 and Cardinality =
     | ObjectCardinality of ObjectPropertyExpression
@@ -3764,57 +4146,49 @@ and Cardinality =
     | DataCardinality of DataProperty
     | DataQualifiedCardinality of DataProperty * DataRange
 
-and ClassExpressionRestriction = {
-    onObjectProperty: ObjectPropertyExpression
-    toClassExpression: ClassExpression
-}
+and ClassExpressionRestriction =
+    { onObjectProperty: ObjectPropertyExpression
+      toClassExpression: ClassExpression }
 
-and IndividualRestriction = {
-    onObjectPropertyExpression: ObjectPropertyExpression
-    toIndividual: Individual
-}
+and IndividualRestriction =
+    { onObjectPropertyExpression: ObjectPropertyExpression
+      toIndividual: Individual }
 
-and DataRangeRestriction = {
-    onDataProperties: List.OneOrMore<DataProperty>
-    toDataRange: DataRange
-}
+and DataRangeRestriction =
+    { onDataProperties: List.OneOrMore<DataProperty>
+      toDataRange: DataRange }
 
-and LiteralRestriction = {
-    onDataProperty: DataProperty
-    toLiteral: Literal
-}
+and LiteralRestriction =
+    { onDataProperty: DataProperty
+      toLiteral: Literal }
 
-and CardinalityRestriction = {
-    cardinality: Cardinality
-    cardinal: Cardinal
-}
+and CardinalityRestriction =
+    { cardinality: Cardinality
+      cardinal: Cardinal }
 
 and Class with
     member this.Class = ClassExpression this
 
-and SubClass = {
-    subClassExpression: ClassExpression
-    superClassExpression: ClassExpression
-}
+and SubClass =
+    { subClassExpression: ClassExpression
+      superClassExpression: ClassExpression }
 
-and EquivalentClasses = {
-    equivalentClasses: Set.TwoOrMore<ClassExpression>
-}
+and EquivalentClasses =
+    { equivalentClasses: Set.TwoOrMore<ClassExpression> }
 
-and DisjointClasses = {
-    disjointClasses: Set.TwoOrMore<ClassExpression>
-}
+and DisjointClasses =
+    { disjointClasses: Set.TwoOrMore<ClassExpression> }
 
-and DisjointUnion = {
-    disjointClass: Class
-    disjointClassExpressions: Set.TwoOrMore<ClassExpression>
-}
+and DisjointUnion =
+    { disjointClass: Class
+      disjointClassExpressions: Set.TwoOrMore<ClassExpression> }
 
-and PropertyExpressionChain = {
-    objectPropertyChain: List.TwoOrMore<ObjectPropertyExpression>
-} with
+and PropertyExpressionChain =
+    { objectPropertyChain: List.TwoOrMore<ObjectPropertyExpression> }
 
-    static member o((propertyExpressionChain: PropertyExpressionChain), (objectPropertyExpression: ObjectPropertyExpression)) =
+    static member o
+        ((propertyExpressionChain: PropertyExpressionChain), (objectPropertyExpression: ObjectPropertyExpression))
+        =
         match propertyExpressionChain.objectPropertyChain.items with
         | first :: second :: rest ->
             List.TwoOrMore.More(first, second, rest @ [ objectPropertyExpression ])
@@ -3822,7 +4196,8 @@ and PropertyExpressionChain = {
         | _ -> invalidOp "Impossible List.TwoOrMore state."
 
     static member o(objectPropertyExpression: ObjectPropertyExpression) =
-        fun (propertyExpressionChain: PropertyExpressionChain) -> PropertyExpressionChain.o (propertyExpressionChain, objectPropertyExpression)
+        fun (propertyExpressionChain: PropertyExpressionChain) ->
+            PropertyExpressionChain.o (propertyExpressionChain, objectPropertyExpression)
 
     member this._o(objectPropertyExpression: ObjectPropertyExpression) =
         this |> PropertyExpressionChain.o objectPropertyExpression
@@ -3831,60 +4206,47 @@ and SubObjectPropertyExpression =
     | SubObjectPropertyExpression of ObjectPropertyExpression
     | PropertyExpressionChain of PropertyExpressionChain
 
-and SubObjectProperty = {
-    subObjectPropertyExpression: SubObjectPropertyExpression
-    superObjectPropertyExpression: ObjectPropertyExpression
-}
+and SubObjectProperty =
+    { subObjectPropertyExpression: SubObjectPropertyExpression
+      superObjectPropertyExpression: ObjectPropertyExpression }
 
-and EquivalentObjectPropertyExpressions = {
-    equivalentObjectPropertyExpressions: Set.TwoOrMore<ObjectPropertyExpression>
-}
+and EquivalentObjectPropertyExpressions =
+    { equivalentObjectPropertyExpressions: Set.TwoOrMore<ObjectPropertyExpression> }
 
-and DisjointObjectPropertyExpressions = {
-    disjointObjectPropertyExpressions: Set.TwoOrMore<ObjectPropertyExpression>
-}
+and DisjointObjectPropertyExpressions =
+    { disjointObjectPropertyExpressions: Set.TwoOrMore<ObjectPropertyExpression> }
 
-and ObjectPropertyDomain = {
-    objectPropertyExpression: ObjectPropertyExpression
-    objectPropertyDomain: ClassExpression
-}
+and ObjectPropertyDomain =
+    { objectPropertyExpression: ObjectPropertyExpression
+      objectPropertyDomain: ClassExpression }
 
-and ObjectPropertyRange = {
-    objectPropertyExpression: ObjectPropertyExpression
-    objectPropertyRange: ClassExpression
-}
+and ObjectPropertyRange =
+    { objectPropertyExpression: ObjectPropertyExpression
+      objectPropertyRange: ClassExpression }
 
-and InverseObjectProperties = {
-    inverseObjectProperties: ObjectPropertyExpression * ObjectPropertyExpression
-}
+and InverseObjectProperties =
+    { inverseObjectProperties: ObjectPropertyExpression * ObjectPropertyExpression }
 
-and FunctionalObjectProperty = {
-    functionalObjectProperty: ObjectPropertyExpression
-}
+and FunctionalObjectProperty =
+    { functionalObjectProperty: ObjectPropertyExpression }
 
-and InverseFunctionalObjectProperty = {
-    inverseFunctionalObjectProperty: ObjectPropertyExpression
-}
+and InverseFunctionalObjectProperty =
+    { inverseFunctionalObjectProperty: ObjectPropertyExpression }
 
-and ReflexiveObjectProperty = {
-    reflexiveObjectProperty: ObjectPropertyExpression
-}
+and ReflexiveObjectProperty =
+    { reflexiveObjectProperty: ObjectPropertyExpression }
 
-and IrreflexiveObjectProperty = {
-    irreflexiveObjectProperty: ObjectPropertyExpression
-}
+and IrreflexiveObjectProperty =
+    { irreflexiveObjectProperty: ObjectPropertyExpression }
 
-and SymmetricObjectProperty = {
-    symmetricObjectProperty: ObjectPropertyExpression
-}
+and SymmetricObjectProperty =
+    { symmetricObjectProperty: ObjectPropertyExpression }
 
-and AsymmetricObjectProperty = {
-    asymmetricObjectProperty: ObjectPropertyExpression
-}
+and AsymmetricObjectProperty =
+    { asymmetricObjectProperty: ObjectPropertyExpression }
 
-and TransitiveObjectProperty = {
-    transitiveObjectProperty: ObjectPropertyExpression
-}
+and TransitiveObjectProperty =
+    { transitiveObjectProperty: ObjectPropertyExpression }
 
 and ObjectPropertyAxiom =
     | SubObjectProperty of SubObjectProperty
@@ -3907,30 +4269,26 @@ and ClassAxiom =
     | DisjointClassesAxiom of DisjointClasses
     | DisjointUnionAxiom of DisjointUnion
 
-and SubDataProperty = {
-    subDataProperty: DataProperty
-    superDataProperty: DataProperty
-}
+and SubDataProperty =
+    { subDataProperty: DataProperty
+      superDataProperty: DataProperty }
 
-and EquivalentDataProperties = {
-    equivalentDataProperties: Set.TwoOrMore<DataProperty>
-}
+and EquivalentDataProperties =
+    { equivalentDataProperties: Set.TwoOrMore<DataProperty> }
 
-and DisjointDataProperties = {
-    disjointDataProperties: Set.TwoOrMore<DataProperty>
-}
+and DisjointDataProperties =
+    { disjointDataProperties: Set.TwoOrMore<DataProperty> }
 
-and DataPropertyDomain = {
-    dataProperty: DataProperty
-    dataPropertyDomain: ClassExpression
-}
+and DataPropertyDomain =
+    { dataProperty: DataProperty
+      dataPropertyDomain: ClassExpression }
 
-and DataPropertyRange = {
-    dataProperty: DataProperty
-    dataPropertyRange: DataRange
-}
+and DataPropertyRange =
+    { dataProperty: DataProperty
+      dataPropertyRange: DataRange }
 
-and FunctionalDataProperty = { functionalDataProperty: DataProperty }
+and FunctionalDataProperty =
+    { functionalDataProperty: DataProperty }
 
 and DataPropertyAxiom =
     | SubDataProperty of SubDataProperty
@@ -3945,42 +4303,35 @@ and KeyProperties =
     | ObjectKeyProperties of Set.OneOrMore<ObjectPropertyExpression>
     | DataKeyProperties of Set.OneOrMore<DataProperty>
 
-and SameIndividual = {
-    SameIndividual: Set.TwoOrMore<Individual>
-}
+and SameIndividual =
+    { SameIndividual: Set.TwoOrMore<Individual> }
 
-and DifferentIndividuals = {
-    DifferentIndividuals: Set.TwoOrMore<Individual>
-}
+and DifferentIndividuals =
+    { DifferentIndividuals: Set.TwoOrMore<Individual> }
 
-and ClassAssertion = {
-    individual: Individual
-    classExpression: ClassExpression
-}
+and ClassAssertion =
+    { individual: Individual
+      classExpression: ClassExpression }
 
-and ObjectPropertyAssertion = {
-    sourceIndividual: Individual
-    objectPropertyExpression: ObjectPropertyExpression
-    targetIndividual: Individual
-}
+and ObjectPropertyAssertion =
+    { sourceIndividual: Individual
+      objectPropertyExpression: ObjectPropertyExpression
+      targetIndividual: Individual }
 
-and NegativeObjectPropertyAssertion = {
-    sourceIndividual: Individual
-    negativeObjectPropertyExpression: ObjectPropertyExpression
-    targetIndividual: Individual
-}
+and NegativeObjectPropertyAssertion =
+    { sourceIndividual: Individual
+      negativeObjectPropertyExpression: ObjectPropertyExpression
+      targetIndividual: Individual }
 
-and DataPropertyAssertion = {
-    sourceIndividual: Individual
-    dataProperty: DataProperty
-    targetValue: Literal
-}
+and DataPropertyAssertion =
+    { sourceIndividual: Individual
+      dataProperty: DataProperty
+      targetValue: Literal }
 
-and NegativeDataPropertyAssertion = {
-    sourceIndividual: Individual
-    negativeDataProperty: DataProperty
-    targetValue: Literal
-}
+and NegativeDataPropertyAssertion =
+    { sourceIndividual: Individual
+      negativeDataProperty: DataProperty
+      targetValue: Literal }
 
 and Assertion =
     | SameIndividual of SameIndividual
@@ -3991,26 +4342,22 @@ and Assertion =
     | DataPropertyAssertion of DataPropertyAssertion
     | NegativeDataPropertyAssertion of NegativeDataPropertyAssertion
 
-and AnnotationAssertion = {
-    annotationSubject: NormativeSubject
-    annotationProperty: AnnotationProperty
-    annotationValue: BasicNormativeObject
-}
+and AnnotationAssertion =
+    { annotationSubject: NormativeSubject
+      annotationProperty: AnnotationProperty
+      annotationValue: BasicNormativeObject }
 
-and SubAnnotationProperty = {
-    subAnnotationProperty: AnnotationProperty
-    superAnnotationProperty: AnnotationProperty
-}
+and SubAnnotationProperty =
+    { subAnnotationProperty: AnnotationProperty
+      superAnnotationProperty: AnnotationProperty }
 
-and AnnotationPropertyDomain = {
-    annotationProperty: AnnotationProperty
-    domainIri: Iri
-}
+and AnnotationPropertyDomain =
+    { annotationProperty: AnnotationProperty
+      domainIri: Iri }
 
-and AnnotationPropertyRange = {
-    annotationProperty: AnnotationProperty
-    rangeIri: Iri
-}
+and AnnotationPropertyRange =
+    { annotationProperty: AnnotationProperty
+      rangeIri: Iri }
 
 and AnnotationAxiom =
     | AnnotationAssertion of AnnotationAssertion
@@ -4020,15 +4367,13 @@ and AnnotationAxiom =
 
 and Declaration = { entity: Entity }
 
-and DatatypeDefinition = {
-    datatype: DatatypeIri
-    dataRange: DataRange
-}
+and DatatypeDefinition =
+    { datatype: DatatypeIri
+      dataRange: DataRange }
 
-and HasKey = {
-    classExpression: ClassExpression
-    keyProperties: KeyProperties
-}
+and HasKey =
+    { classExpression: ClassExpression
+      keyProperties: KeyProperties }
 
 and Axiom =
     | Declaration of Declaration
@@ -4040,13 +4385,12 @@ and Axiom =
     | Assertion of Assertion
     | AnnotationAxiom of AnnotationAxiom
 
-and Ontology = {
-    ontologyIdentifier: (OntologyIri * VersionIri option) option
-    directlyImportsDocuments: Set<DirectlyImportsDocument>
-    statedAxioms: Set<Annotated<Axiom>>
-    constructedFrames: Frame list
-    assertedTriples: Set<NormativeTriple>
-} with
+and Ontology =
+    { ontologyIdentifier: (OntologyIri * VersionIri option) option
+      directlyImportsDocuments: Set<DirectlyImportsDocument>
+      statedAxioms: Set<Annotated<Axiom>>
+      constructedFrames: Frame list
+      assertedTriples: Set<NormativeTriple> }
 
     member this.tryOntologyIri =
         match this.ontologyIdentifier with
@@ -4068,30 +4412,26 @@ and Ontology = {
            |> Set.ofList)
 
     static member Import(importIri: DirectlyImportsDocument) =
-        fun (ontology: Ontology) -> {
-            ontology with
-                directlyImportsDocuments = Set.add importIri ontology.directlyImportsDocuments
-        }
+        fun (ontology: Ontology) ->
+            { ontology with
+                directlyImportsDocuments = Set.add importIri ontology.directlyImportsDocuments }
 
     static member Import(directlyImportsDocuments: DirectlyImportsDocument list) =
-        fun (ontology: Ontology) -> {
-            ontology with
+        fun (ontology: Ontology) ->
+            { ontology with
                 directlyImportsDocuments =
                     ontology.directlyImportsDocuments
-                    |> Set.union (Set.ofList directlyImportsDocuments)
-        }
+                    |> Set.union (Set.ofList directlyImportsDocuments) }
 
     static member Import(fromOntology: Ontology) =
         fun (toOntology: Ontology) ->
             match fromOntology.ontologyIdentifier with
-            | Some(OntologyIri ontologyIri, Some(VersionIri versionIri)) -> {
-                toOntology with
-                    directlyImportsDocuments = toOntology.directlyImportsDocuments |> Set.add (Import versionIri)
-              }
-            | Some(OntologyIri ontologyIri, _) -> {
-                toOntology with
-                    directlyImportsDocuments = toOntology.directlyImportsDocuments |> Set.add (Import ontologyIri)
-              }
+            | Some(OntologyIri ontologyIri, Some(VersionIri versionIri)) ->
+                { toOntology with
+                    directlyImportsDocuments = toOntology.directlyImportsDocuments |> Set.add (Import versionIri) }
+            | Some(OntologyIri ontologyIri, _) ->
+                { toOntology with
+                    directlyImportsDocuments = toOntology.directlyImportsDocuments |> Set.add (Import ontologyIri) }
             | _ -> toOntology
 
 and OntologyDocument =
@@ -4121,13 +4461,12 @@ and Functional =
             (ontologyAnnotations: Set<Annotation>),
             (axioms: Set<Annotated<Axiom>>)
         ) : Annotated<Ontology> =
-        let ontology: Ontology = {
-            ontologyIdentifier = ontologyIdentifier
-            directlyImportsDocuments = directlyImportsDocuments
-            statedAxioms = axioms
-            constructedFrames = List.empty
-            assertedTriples = Set.empty
-        }
+        let ontology: Ontology =
+            { ontologyIdentifier = ontologyIdentifier
+              directlyImportsDocuments = directlyImportsDocuments
+              statedAxioms = axioms
+              constructedFrames = List.empty
+              assertedTriples = Set.empty }
 
         Annotated.Annotate(ontologyAnnotations, ontology)
 
@@ -4144,23 +4483,36 @@ and Functional =
     static member Ontology((ontologyIri: OntologyIri), (versionIri: VersionIri)) =
         fun (directlyImportsDocuments: Set<DirectlyImportsDocument>) ->
             fun (ontologyAnnotations: Set<Annotation>) ->
-                fun (axioms: Set<Annotated<Axiom>>) -> Functional.Ontology(ontologyIri, versionIri, directlyImportsDocuments, ontologyAnnotations, axioms)
+                fun (axioms: Set<Annotated<Axiom>>) ->
+                    Functional.Ontology(ontologyIri, versionIri, directlyImportsDocuments, ontologyAnnotations, axioms)
 
     static member Ontology
-        ((ontologyIri: OntologyIri), (directlyImportsDocuments: Set<DirectlyImportsDocument>), (ontologyAnnotations: Set<Annotation>), (axioms: Set<Annotated<Axiom>>))
-        =
+        (
+            (ontologyIri: OntologyIri),
+            (directlyImportsDocuments: Set<DirectlyImportsDocument>),
+            (ontologyAnnotations: Set<Annotation>),
+            (axioms: Set<Annotated<Axiom>>)
+        ) =
         Functional.Ontology(Some(ontologyIri, None), directlyImportsDocuments, ontologyAnnotations, axioms)
 
     static member Ontology(ontologyIri: OntologyIri) =
         fun (directlyImportsDocuments: Set<DirectlyImportsDocument>) ->
             fun (ontologyAnnotations: Set<Annotation>) ->
-                fun (axioms: Set<Annotated<Axiom>>) -> Functional.Ontology(ontologyIri, directlyImportsDocuments, ontologyAnnotations, axioms)
+                fun (axioms: Set<Annotated<Axiom>>) ->
+                    Functional.Ontology(ontologyIri, directlyImportsDocuments, ontologyAnnotations, axioms)
 
-    static member Ontology((directlyImportsDocuments: Set<DirectlyImportsDocument>), (ontologyAnnotations: Set<Annotation>), (axioms: Set<Annotated<Axiom>>)) =
+    static member Ontology
+        (
+            (directlyImportsDocuments: Set<DirectlyImportsDocument>),
+            (ontologyAnnotations: Set<Annotation>),
+            (axioms: Set<Annotated<Axiom>>)
+        ) =
         Functional.Ontology(None, directlyImportsDocuments, ontologyAnnotations, axioms)
 
     static member Ontology(directlyImportsDocuments: Set<DirectlyImportsDocument>) =
-        fun (ontologyAnnotations: Set<Annotation>) -> fun (axioms: Set<Annotated<Axiom>>) -> Functional.Ontology(directlyImportsDocuments, ontologyAnnotations, axioms)
+        fun (ontologyAnnotations: Set<Annotation>) ->
+            fun (axioms: Set<Annotated<Axiom>>) ->
+                Functional.Ontology(directlyImportsDocuments, ontologyAnnotations, axioms)
 
     static member Declaration((axiomAnnotations: Set<Annotation>), (entity: Entity)) : Annotated<Declaration> =
         let declaration: Declaration = { entity = entity }
@@ -4203,15 +4555,20 @@ and Functional =
     static member AsIndividual(anonymousIndividual: AnonymousIndividual) = AnonymousIndividual anonymousIndividual
     static member AsDataRange(datatype: DatatypeIri) = DatatypeRange datatype
 
-    static member Annotation((annotationAnnotations: Set<Annotation>), (annotationProperty: AnnotationProperty), (annotationValue: BasicNormativeObject)) = {
-        annotationAnnotations = annotationAnnotations
-        annotationProperty = annotationProperty
-        annotationValue = annotationValue
-    }
+    static member Annotation
+        (
+            (annotationAnnotations: Set<Annotation>),
+            (annotationProperty: AnnotationProperty),
+            (annotationValue: BasicNormativeObject)
+        ) =
+        { annotationAnnotations = annotationAnnotations
+          annotationProperty = annotationProperty
+          annotationValue = annotationValue }
 
     static member Annotation(annotationAnnotations: Set<Annotation>) =
         fun (annotationProperty: AnnotationProperty) ->
-            fun (annotationValue: BasicNormativeObject) -> Functional.Annotation(annotationAnnotations, annotationProperty, annotationValue)
+            fun (annotationValue: BasicNormativeObject) ->
+                Functional.Annotation(annotationAnnotations, annotationProperty, annotationValue)
 
     static member Annotation((annotationProperty: AnnotationProperty), (annotationValue: BasicNormativeObject)) =
         Functional.Annotation(Set.empty, annotationProperty, annotationValue)
@@ -4220,59 +4577,81 @@ and Functional =
         fun (annotationValue: BasicNormativeObject) -> Functional.Annotation(annotationProperty, annotationValue)
 
     static member AnnotationAssertion
-        ((axiomAnnotations: Set<Annotation>), (annotationProperty: AnnotationProperty), (annotationSubject: NormativeSubject), (annotationValue: BasicNormativeObject))
-        =
+        (
+            (axiomAnnotations: Set<Annotation>),
+            (annotationProperty: AnnotationProperty),
+            (annotationSubject: NormativeSubject),
+            (annotationValue: BasicNormativeObject)
+        ) =
         Annotated.Annotate(
             axiomAnnotations,
-            {
-                annotationSubject = annotationSubject
-                annotationProperty = annotationProperty
-                annotationValue = annotationValue
-            }
+            { annotationSubject = annotationSubject
+              annotationProperty = annotationProperty
+              annotationValue = annotationValue }
         )
 
     static member AnnotationAssertion(axiomAnnotations: Set<Annotation>) =
         fun (annotationSubject: NormativeSubject) ->
             fun (annotationProperty: AnnotationProperty) ->
-                fun (annotationValue: BasicNormativeObject) -> Functional.AnnotationAssertion(axiomAnnotations, annotationProperty, annotationSubject, annotationValue)
+                fun (annotationValue: BasicNormativeObject) ->
+                    Functional.AnnotationAssertion(
+                        axiomAnnotations,
+                        annotationProperty,
+                        annotationSubject,
+                        annotationValue
+                    )
 
-    static member AnnotationAssertion((annotationProperty: AnnotationProperty), (annotationSubject: NormativeSubject), (annotationValue: BasicNormativeObject)) =
+    static member AnnotationAssertion
+        (
+            (annotationProperty: AnnotationProperty),
+            (annotationSubject: NormativeSubject),
+            (annotationValue: BasicNormativeObject)
+        ) =
         Functional.AnnotationAssertion(Set.empty, annotationProperty, annotationSubject, annotationValue)
 
     static member AnnotationAssertion(annotationSubject: NormativeSubject) =
         fun (annotationProperty: AnnotationProperty) ->
-            fun (annotationValue: BasicNormativeObject) -> Functional.AnnotationAssertion(annotationProperty, annotationSubject, annotationValue)
+            fun (annotationValue: BasicNormativeObject) ->
+                Functional.AnnotationAssertion(annotationProperty, annotationSubject, annotationValue)
 
-    static member SubAnnotationPropertyOf((axiomAnnotations: Set<Annotation>), (subAnnotationProperty: AnnotationProperty), (superAnnotationProperty: AnnotationProperty)) =
+    static member SubAnnotationPropertyOf
+        (
+            (axiomAnnotations: Set<Annotation>),
+            (subAnnotationProperty: AnnotationProperty),
+            (superAnnotationProperty: AnnotationProperty)
+        ) =
         Annotated.Annotate(
             axiomAnnotations,
-            {
-                subAnnotationProperty = subAnnotationProperty
-                superAnnotationProperty = superAnnotationProperty
-            }
+            { subAnnotationProperty = subAnnotationProperty
+              superAnnotationProperty = superAnnotationProperty }
         )
 
     static member SubAnnotationPropertyOf(axiomAnnotations: Set<Annotation>) =
         fun (subAnnotationProperty: AnnotationProperty) ->
-            fun (superAnnotationProperty: AnnotationProperty) -> Functional.SubAnnotationPropertyOf(axiomAnnotations, subAnnotationProperty, superAnnotationProperty)
+            fun (superAnnotationProperty: AnnotationProperty) ->
+                Functional.SubAnnotationPropertyOf(axiomAnnotations, subAnnotationProperty, superAnnotationProperty)
 
-    static member SubAnnotationPropertyOf((subAnnotationProperty: AnnotationProperty), (superAnnotationProperty: AnnotationProperty)) =
+    static member SubAnnotationPropertyOf
+        ((subAnnotationProperty: AnnotationProperty), (superAnnotationProperty: AnnotationProperty))
+        =
         Functional.SubAnnotationPropertyOf(Set.empty, subAnnotationProperty, superAnnotationProperty)
 
     static member SubAnnotationPropertyOf(subAnnotationProperty: AnnotationProperty) =
-        fun (superAnnotationProperty: AnnotationProperty) -> Functional.SubAnnotationPropertyOf(subAnnotationProperty, superAnnotationProperty)
+        fun (superAnnotationProperty: AnnotationProperty) ->
+            Functional.SubAnnotationPropertyOf(subAnnotationProperty, superAnnotationProperty)
 
-    static member AnnotationPropertyDomain((axiomAnnotations: Set<Annotation>), (annotationProperty: AnnotationProperty), (domainIri: Iri)) =
+    static member AnnotationPropertyDomain
+        ((axiomAnnotations: Set<Annotation>), (annotationProperty: AnnotationProperty), (domainIri: Iri))
+        =
         Annotated.Annotate(
             axiomAnnotations,
-            {
-                annotationProperty = annotationProperty
-                domainIri = domainIri
-            }
+            { annotationProperty = annotationProperty
+              domainIri = domainIri }
         )
 
     static member AnnotationPropertyDomain(axiomAnnotations: Set<Annotation>) =
-        fun (annotationProperty: AnnotationProperty) -> fun (domainIri: Iri) -> Functional.AnnotationPropertyDomain(axiomAnnotations, annotationProperty, domainIri)
+        fun (annotationProperty: AnnotationProperty) ->
+            fun (domainIri: Iri) -> Functional.AnnotationPropertyDomain(axiomAnnotations, annotationProperty, domainIri)
 
     static member AnnotationPropertyDomain((annotationProperty: AnnotationProperty), (domainIri: Iri)) =
         Functional.AnnotationPropertyDomain(Set.empty, annotationProperty, domainIri)
@@ -4280,17 +4659,18 @@ and Functional =
     static member AnnotationPropertyDomain(annotationProperty: AnnotationProperty) =
         fun (domainIri: Iri) -> Functional.AnnotationPropertyDomain(annotationProperty, domainIri)
 
-    static member AnnotationPropertyRange((axiomAnnotations: Set<Annotation>), (annotationProperty: AnnotationProperty), (rangeIri: Iri)) =
+    static member AnnotationPropertyRange
+        ((axiomAnnotations: Set<Annotation>), (annotationProperty: AnnotationProperty), (rangeIri: Iri))
+        =
         Annotated.Annotate(
             axiomAnnotations,
-            {
-                annotationProperty = annotationProperty
-                rangeIri = rangeIri
-            }
+            { annotationProperty = annotationProperty
+              rangeIri = rangeIri }
         )
 
     static member AnnotationPropertyRange(axiomAnnotations: Set<Annotation>) =
-        fun (annotationProperty: AnnotationProperty) -> fun (rangeIri: Iri) -> Functional.AnnotationPropertyRange(axiomAnnotations, annotationProperty, rangeIri)
+        fun (annotationProperty: AnnotationProperty) ->
+            fun (rangeIri: Iri) -> Functional.AnnotationPropertyRange(axiomAnnotations, annotationProperty, rangeIri)
 
     static member AnnotationPropertyRange((annotationProperty: AnnotationProperty), (rangeIri: Iri)) =
         Functional.AnnotationPropertyRange(Set.empty, annotationProperty, rangeIri)
@@ -4300,7 +4680,9 @@ and Functional =
 
     static member ObjectInverseOf(objectProperty: ObjectProperty) = ObjectInverse objectProperty
 
-    static member DataIntersectionOf((firstDataRange: DataRange), (secondDataRange: DataRange), (moreDataRanges: Set<DataRange>)) =
+    static member DataIntersectionOf
+        ((firstDataRange: DataRange), (secondDataRange: DataRange), (moreDataRanges: Set<DataRange>))
+        =
         Set.TwoOrMore.More(firstDataRange, secondDataRange, moreDataRanges)
         |> DataIntersection
 
@@ -4312,7 +4694,9 @@ and Functional =
     static member DataIntersectionOf(firstDataRange: DataRange) =
         fun (secondDataRange: DataRange) -> Functional.DataIntersectionOf(firstDataRange, secondDataRange)
 
-    static member DataUnionOf((firstDataRange: DataRange), (secondDataRange: DataRange), (moreDataRanges: Set<DataRange>)) =
+    static member DataUnionOf
+        ((firstDataRange: DataRange), (secondDataRange: DataRange), (moreDataRanges: Set<DataRange>))
+        =
         Set.TwoOrMore.More(firstDataRange, secondDataRange, moreDataRanges) |> DataUnion
 
     static member DataUnionOf((firstDataRange: DataRange), (secondDataRange: DataRange)) =
@@ -4333,10 +4717,9 @@ and Functional =
     static member DataOneOf(firstLiteral: Literal) =
         firstLiteral |> Set.OneOrMore.One |> DataOne
 
-    static member FacetValue((constrainingFacet: FacetIri), (restrictionValue: Literal)) = {
-        constrainingFacet = constrainingFacet
-        restrictionValue = restrictionValue
-    }
+    static member FacetValue((constrainingFacet: FacetIri), (restrictionValue: Literal)) =
+        { constrainingFacet = constrainingFacet
+          restrictionValue = restrictionValue }
 
     static member FacetValue((constrainingFacet: FacetIri), (staticTypedLiteral: StaticTypedLiteral<_>)) =
         Functional.FacetValue(constrainingFacet, StaticTypedLiteral.toLiteral staticTypedLiteral)
@@ -4353,43 +4736,72 @@ and Functional =
     static member FacetValue(literal: Literal) =
         fun (constrainingFacet: FacetIri) -> Functional.FacetValue(constrainingFacet, literal)
 
-    static member DatatypeRestriction((datatype: DatatypeIri), (facetValues: Set.OneOrMore<FacetValue>)) = {
-        datatype = datatype
-        facetValues = facetValues
-    }
+    static member DatatypeRestriction((datatype: DatatypeIri), (facetValues: Set.OneOrMore<FacetValue>)) =
+        { datatype = datatype
+          facetValues = facetValues }
 
     static member DatatypeRestriction((datatype: DatatypeIri), (facetValue: FacetValue)) =
         Functional.DatatypeRestriction(datatype, Set.OneOrMore.One facetValue)
 
-    static member DatatypeRestriction((datatype: DatatypeIri), (firstConstraint: FacetValue), (moreConstraints: Set<FacetValue>)) =
+    static member DatatypeRestriction
+        ((datatype: DatatypeIri), (firstConstraint: FacetValue), (moreConstraints: Set<FacetValue>))
+        =
         Functional.DatatypeRestriction(datatype, Set.OneOrMore.More(firstConstraint, moreConstraints))
 
-    static member DatatypeRestriction((datatype: DatatypeIri), (constrainingFacet: FacetIri), (restrictionValue: Literal), (moreConstraints: Set<FacetValue>)) =
-        Functional.DatatypeRestriction(datatype, Functional.FacetValue(constrainingFacet, restrictionValue), moreConstraints)
+    static member DatatypeRestriction
+        (
+            (datatype: DatatypeIri),
+            (constrainingFacet: FacetIri),
+            (restrictionValue: Literal),
+            (moreConstraints: Set<FacetValue>)
+        ) =
+        Functional.DatatypeRestriction(
+            datatype,
+            Functional.FacetValue(constrainingFacet, restrictionValue),
+            moreConstraints
+        )
 
-    static member DatatypeRestriction((datatype: DatatypeIri), (constrainingFacet: FacetIri), (restrictionValue: Literal)) =
+    static member DatatypeRestriction
+        ((datatype: DatatypeIri), (constrainingFacet: FacetIri), (restrictionValue: Literal))
+        =
         Functional.DatatypeRestriction(datatype, Functional.FacetValue(constrainingFacet, restrictionValue))
 
     static member DatatypeRestriction(datatype: DatatypeIri) =
-        fun (constrainingFacet: FacetIri) -> fun (restrictionValue: Literal) -> Functional.DatatypeRestriction(datatype, constrainingFacet, restrictionValue)
+        fun (constrainingFacet: FacetIri) ->
+            fun (restrictionValue: Literal) ->
+                Functional.DatatypeRestriction(datatype, constrainingFacet, restrictionValue)
 
     static member DatatypeRestriction(facetValue: FacetValue) =
         fun (datatype: DatatypeIri) -> Functional.DatatypeRestriction(datatype, facetValue)
 
-    static member ObjectIntersectionOf((firstClassExpression: ClassExpression), (secondClassExpression: ClassExpression), (moreClassExpressions: Set<ClassExpression>)) =
+    static member ObjectIntersectionOf
+        (
+            (firstClassExpression: ClassExpression),
+            (secondClassExpression: ClassExpression),
+            (moreClassExpressions: Set<ClassExpression>)
+        ) =
         Set.TwoOrMore.More(firstClassExpression, secondClassExpression, moreClassExpressions)
         |> ObjectIntersection
 
-    static member ObjectIntersectionOf((firstClassExpression: ClassExpression), (secondClassExpression: ClassExpression)) =
+    static member ObjectIntersectionOf
+        ((firstClassExpression: ClassExpression), (secondClassExpression: ClassExpression))
+        =
         Set.TwoOrMore.Two(firstClassExpression, secondClassExpression)
         |> ObjectIntersection
 
-    static member ObjectIntersectionOf(classExpressions: Set.TwoOrMore<ClassExpression>) = classExpressions |> ObjectIntersection
+    static member ObjectIntersectionOf(classExpressions: Set.TwoOrMore<ClassExpression>) =
+        classExpressions |> ObjectIntersection
 
     static member ObjectIntersectionOf(firstClassExpression: ClassExpression) =
-        fun (secondClassExpression: ClassExpression) -> Functional.ObjectIntersectionOf(firstClassExpression, secondClassExpression)
+        fun (secondClassExpression: ClassExpression) ->
+            Functional.ObjectIntersectionOf(firstClassExpression, secondClassExpression)
 
-    static member ObjectUnionOf((firstClassExpression: ClassExpression), (secondClassExpression: ClassExpression), (moreClassExpressions: Set<ClassExpression>)) =
+    static member ObjectUnionOf
+        (
+            (firstClassExpression: ClassExpression),
+            (secondClassExpression: ClassExpression),
+            (moreClassExpressions: Set<ClassExpression>)
+        ) =
         Set.TwoOrMore.More(firstClassExpression, secondClassExpression, moreClassExpressions)
         |> ObjectUnion
 
@@ -4399,7 +4811,8 @@ and Functional =
     static member ObjectUnionOf(classExpressions: Set.TwoOrMore<ClassExpression>) = ObjectUnion classExpressions
 
     static member ObjectUnionOf(firstClassExpression: ClassExpression) =
-        fun (secondClassExpression: ClassExpression) -> Functional.ObjectUnionOf(firstClassExpression, secondClassExpression)
+        fun (secondClassExpression: ClassExpression) ->
+            Functional.ObjectUnionOf(firstClassExpression, secondClassExpression)
 
     static member ObjectComplementOf(classExpression: ClassExpression) = ObjectComplement classExpression
 
@@ -4411,7 +4824,9 @@ and Functional =
     static member ObjectOneOf(firstIndividual: Individual) =
         firstIndividual |> Set.OneOrMore.One |> ObjectOne
 
-    static member ObjectSomeValuesFrom((objectPropertyExpression: ObjectPropertyExpression), (classExpression: ClassExpression)) =
+    static member ObjectSomeValuesFrom
+        ((objectPropertyExpression: ObjectPropertyExpression), (classExpression: ClassExpression))
+        =
         objectPropertyExpression
         |> Restriction.ObjectSomeValuesFrom classExpression
         |> RestrictionClassExpression
@@ -4422,7 +4837,9 @@ and Functional =
             |> Restriction.ObjectSomeValuesFrom classExpression
             |> RestrictionClassExpression
 
-    static member ObjectAllValuesFrom((objectPropertyExpression: ObjectPropertyExpression), (classExpression: ClassExpression)) =
+    static member ObjectAllValuesFrom
+        ((objectPropertyExpression: ObjectPropertyExpression), (classExpression: ClassExpression))
+        =
         objectPropertyExpression
         |> Restriction.ObjectAllValuesFrom classExpression
         |> RestrictionClassExpression
@@ -4449,56 +4866,85 @@ and Functional =
 
     // Tupled overloads preserve Functional Syntax. Curried qualified forms begin
     // with the qualifier, then cardinality, then property expression.
-    static member ObjectMinCardinality((cardinal: NonNegativeInteger), (objectPropertyExpression: ObjectPropertyExpression)) =
+    static member ObjectMinCardinality
+        ((cardinal: NonNegativeInteger), (objectPropertyExpression: ObjectPropertyExpression))
+        =
         Restriction.ObjectMinCardinality(cardinal, objectPropertyExpression)
         |> RestrictionClassExpression
 
-    static member ObjectMinCardinality((cardinal: NonNegativeInteger), (objectPropertyExpression: ObjectPropertyExpression), (classExpression: ClassExpression)) =
+    static member ObjectMinCardinality
+        (
+            (cardinal: NonNegativeInteger),
+            (objectPropertyExpression: ObjectPropertyExpression),
+            (classExpression: ClassExpression)
+        ) =
         Restriction.ObjectMinCardinality(cardinal, objectPropertyExpression, classExpression)
         |> RestrictionClassExpression
 
     static member ObjectMinCardinality(cardinal: NonNegativeInteger) =
-        fun (objectPropertyExpression: ObjectPropertyExpression) -> Functional.ObjectMinCardinality(cardinal, objectPropertyExpression)
+        fun (objectPropertyExpression: ObjectPropertyExpression) ->
+            Functional.ObjectMinCardinality(cardinal, objectPropertyExpression)
 
     static member ObjectMinCardinality(classExpression: ClassExpression) =
         fun (cardinal: NonNegativeInteger) ->
-            fun (objectPropertyExpression: ObjectPropertyExpression) -> Functional.ObjectMinCardinality(cardinal, objectPropertyExpression, classExpression)
+            fun (objectPropertyExpression: ObjectPropertyExpression) ->
+                Functional.ObjectMinCardinality(cardinal, objectPropertyExpression, classExpression)
 
-    static member ObjectMaxCardinality((cardinal: NonNegativeInteger), (objectPropertyExpression: ObjectPropertyExpression)) =
+    static member ObjectMaxCardinality
+        ((cardinal: NonNegativeInteger), (objectPropertyExpression: ObjectPropertyExpression))
+        =
         Restriction.ObjectMaxCardinality(cardinal, objectPropertyExpression)
         |> RestrictionClassExpression
 
-    static member ObjectMaxCardinality((cardinal: NonNegativeInteger), (objectPropertyExpression: ObjectPropertyExpression), (classExpression: ClassExpression)) =
+    static member ObjectMaxCardinality
+        (
+            (cardinal: NonNegativeInteger),
+            (objectPropertyExpression: ObjectPropertyExpression),
+            (classExpression: ClassExpression)
+        ) =
         Restriction.ObjectMaxCardinality(cardinal, objectPropertyExpression, classExpression)
         |> RestrictionClassExpression
 
     static member ObjectMaxCardinality(cardinal: NonNegativeInteger) =
-        fun (objectPropertyExpression: ObjectPropertyExpression) -> Functional.ObjectMaxCardinality(cardinal, objectPropertyExpression)
+        fun (objectPropertyExpression: ObjectPropertyExpression) ->
+            Functional.ObjectMaxCardinality(cardinal, objectPropertyExpression)
 
     static member ObjectMaxCardinality(classExpression: ClassExpression) =
         fun (cardinal: NonNegativeInteger) ->
-            fun (objectPropertyExpression: ObjectPropertyExpression) -> Functional.ObjectMaxCardinality(cardinal, objectPropertyExpression, classExpression)
+            fun (objectPropertyExpression: ObjectPropertyExpression) ->
+                Functional.ObjectMaxCardinality(cardinal, objectPropertyExpression, classExpression)
 
-    static member ObjectExactCardinality((cardinal: NonNegativeInteger), (objectPropertyExpression: ObjectPropertyExpression)) =
+    static member ObjectExactCardinality
+        ((cardinal: NonNegativeInteger), (objectPropertyExpression: ObjectPropertyExpression))
+        =
         Restriction.ObjectExactCardinality(cardinal, objectPropertyExpression)
         |> RestrictionClassExpression
 
-    static member ObjectExactCardinality((cardinal: NonNegativeInteger), (objectPropertyExpression: ObjectPropertyExpression), (classExpression: ClassExpression)) =
+    static member ObjectExactCardinality
+        (
+            (cardinal: NonNegativeInteger),
+            (objectPropertyExpression: ObjectPropertyExpression),
+            (classExpression: ClassExpression)
+        ) =
         Restriction.ObjectExactCardinality(cardinal, objectPropertyExpression, classExpression)
         |> RestrictionClassExpression
 
     static member ObjectExactCardinality(cardinal: NonNegativeInteger) =
-        fun (objectPropertyExpression: ObjectPropertyExpression) -> Functional.ObjectExactCardinality(cardinal, objectPropertyExpression)
+        fun (objectPropertyExpression: ObjectPropertyExpression) ->
+            Functional.ObjectExactCardinality(cardinal, objectPropertyExpression)
 
     static member ObjectExactCardinality(classExpression: ClassExpression) =
         fun (cardinal: NonNegativeInteger) ->
-            fun (objectPropertyExpression: ObjectPropertyExpression) -> Functional.ObjectExactCardinality(cardinal, objectPropertyExpression, classExpression)
+            fun (objectPropertyExpression: ObjectPropertyExpression) ->
+                Functional.ObjectExactCardinality(cardinal, objectPropertyExpression, classExpression)
 
     static member DataSomeValuesFrom((dataProperties: List.OneOrMore<DataProperty>), (dataRange: DataRange)) =
         Restriction.DataSomeValuesFrom(dataProperties, dataRange)
         |> RestrictionClassExpression
 
-    static member DataSomeValuesFrom((firstDataProperty: DataProperty), (moreDataProperties: DataProperty list), (dataRange: DataRange)) =
+    static member DataSomeValuesFrom
+        ((firstDataProperty: DataProperty), (moreDataProperties: DataProperty list), (dataRange: DataRange))
+        =
         Functional.DataSomeValuesFrom(List.OneOrMore.More(firstDataProperty, moreDataProperties), dataRange)
 
     static member DataSomeValuesFrom((dataProperty: DataProperty), (dataRange: DataRange)) =
@@ -4514,7 +4960,9 @@ and Functional =
         Restriction.DataAllValuesFrom(dataPropertys, dataRange)
         |> RestrictionClassExpression
 
-    static member DataAllValuesFrom((firstDataProperty: DataProperty), (moreDataPropertys: DataProperty list), (dataRange: DataRange)) =
+    static member DataAllValuesFrom
+        ((firstDataProperty: DataProperty), (moreDataPropertys: DataProperty list), (dataRange: DataRange))
+        =
         Functional.DataAllValuesFrom(List.OneOrMore.More(firstDataProperty, moreDataPropertys), dataRange)
 
     static member DataAllValuesFrom((dataProperty: DataProperty), (dataRange: DataRange)) =
@@ -4536,7 +4984,9 @@ and Functional =
         Restriction.DataMinCardinality(cardinal, dataProperty)
         |> RestrictionClassExpression
 
-    static member DataMinCardinality((cardinal: NonNegativeInteger), (dataProperty: DataProperty), (dataRange: DataRange)) =
+    static member DataMinCardinality
+        ((cardinal: NonNegativeInteger), (dataProperty: DataProperty), (dataRange: DataRange))
+        =
         Restriction.DataMinCardinality(cardinal, dataProperty, dataRange)
         |> RestrictionClassExpression
 
@@ -4544,13 +4994,16 @@ and Functional =
         fun (dataProperty: DataProperty) -> Functional.DataMinCardinality(cardinal, dataProperty)
 
     static member DataMinCardinality(dataRange: DataRange) =
-        fun (cardinal: NonNegativeInteger) -> fun (dataProperty: DataProperty) -> Functional.DataMinCardinality(cardinal, dataProperty, dataRange)
+        fun (cardinal: NonNegativeInteger) ->
+            fun (dataProperty: DataProperty) -> Functional.DataMinCardinality(cardinal, dataProperty, dataRange)
 
     static member DataMaxCardinality((cardinal: NonNegativeInteger), (dataProperty: DataProperty)) =
         Restriction.DataMaxCardinality(cardinal, dataProperty)
         |> RestrictionClassExpression
 
-    static member DataMaxCardinality((cardinal: NonNegativeInteger), (dataProperty: DataProperty), (dataRange: DataRange)) =
+    static member DataMaxCardinality
+        ((cardinal: NonNegativeInteger), (dataProperty: DataProperty), (dataRange: DataRange))
+        =
         Restriction.DataMaxCardinality(cardinal, dataProperty, dataRange)
         |> RestrictionClassExpression
 
@@ -4558,13 +5011,16 @@ and Functional =
         fun (dataProperty: DataProperty) -> Functional.DataMaxCardinality(cardinal, dataProperty)
 
     static member DataMaxCardinality(dataRange: DataRange) =
-        fun (cardinal: NonNegativeInteger) -> fun (dataProperty: DataProperty) -> Functional.DataMaxCardinality(cardinal, dataProperty, dataRange)
+        fun (cardinal: NonNegativeInteger) ->
+            fun (dataProperty: DataProperty) -> Functional.DataMaxCardinality(cardinal, dataProperty, dataRange)
 
     static member DataExactCardinality((cardinal: NonNegativeInteger), (dataProperty: DataProperty)) =
         Restriction.DataExactCardinality(cardinal, dataProperty)
         |> RestrictionClassExpression
 
-    static member DataExactCardinality((cardinal: NonNegativeInteger), (dataProperty: DataProperty), (dataRange: DataRange)) =
+    static member DataExactCardinality
+        ((cardinal: NonNegativeInteger), (dataProperty: DataProperty), (dataRange: DataRange))
+        =
         Restriction.DataExactCardinality(cardinal, dataProperty, dataRange)
         |> RestrictionClassExpression
 
@@ -4572,20 +5028,25 @@ and Functional =
         fun (dataProperty: DataProperty) -> Functional.DataExactCardinality(cardinal, dataProperty)
 
     static member DataExactCardinality(dataRange: DataRange) =
-        fun (cardinal: NonNegativeInteger) -> fun (dataProperty: DataProperty) -> Functional.DataExactCardinality(cardinal, dataProperty, dataRange)
+        fun (cardinal: NonNegativeInteger) ->
+            fun (dataProperty: DataProperty) -> Functional.DataExactCardinality(cardinal, dataProperty, dataRange)
 
-    static member SubClassOf((axiomAnnotations: Set<Annotation>), (subClassExpression: ClassExpression), (superClassExpression: ClassExpression)) =
+    static member SubClassOf
+        (
+            (axiomAnnotations: Set<Annotation>),
+            (subClassExpression: ClassExpression),
+            (superClassExpression: ClassExpression)
+        ) =
         Annotated.Annotate(
             axiomAnnotations,
-            {
-                subClassExpression = subClassExpression
-                superClassExpression = superClassExpression
-            }
+            { subClassExpression = subClassExpression
+              superClassExpression = superClassExpression }
         )
 
     static member SubClassOf(axiomAnnotations: Set<Annotation>) =
         fun (subClassExpression: ClassExpression) ->
-            fun (superClassExpression: ClassExpression) -> Functional.SubClassOf(axiomAnnotations, subClassExpression, superClassExpression)
+            fun (superClassExpression: ClassExpression) ->
+                Functional.SubClassOf(axiomAnnotations, subClassExpression, superClassExpression)
 
     static member SubClassOf((subClassExpression: ClassExpression), (superClassExpression: ClassExpression)) =
         Functional.SubClassOf(Set.empty, subClassExpression, superClassExpression)
@@ -4593,65 +5054,112 @@ and Functional =
     static member SubClassOf(subClassExpression: ClassExpression) =
         fun (superClassExpression: ClassExpression) -> Functional.SubClassOf(subClassExpression, superClassExpression)
 
-    static member EquivalentClasses((axiomAnnotations: Set<Annotation>), (classExpressions: Set.TwoOrMore<ClassExpression>)) =
+    static member EquivalentClasses
+        ((axiomAnnotations: Set<Annotation>), (classExpressions: Set.TwoOrMore<ClassExpression>))
+        =
         Annotated.Annotate(axiomAnnotations, { equivalentClasses = classExpressions })
 
     static member EquivalentClasses
-        ((axiomAnnotations: Set<Annotation>), (firstClassExpression: ClassExpression), (secondClassExpression: ClassExpression), (moreClassExpressions: Set<ClassExpression>)) =
-        Functional.EquivalentClasses(axiomAnnotations, Set.TwoOrMore.More(firstClassExpression, secondClassExpression, moreClassExpressions))
+        (
+            (axiomAnnotations: Set<Annotation>),
+            (firstClassExpression: ClassExpression),
+            (secondClassExpression: ClassExpression),
+            (moreClassExpressions: Set<ClassExpression>)
+        ) =
+        Functional.EquivalentClasses(
+            axiomAnnotations,
+            Set.TwoOrMore.More(firstClassExpression, secondClassExpression, moreClassExpressions)
+        )
 
-    static member EquivalentClasses((axiomAnnotations: Set<Annotation>), (firstClassExpression: ClassExpression), (secondClassExpression: ClassExpression)) =
+    static member EquivalentClasses
+        (
+            (axiomAnnotations: Set<Annotation>),
+            (firstClassExpression: ClassExpression),
+            (secondClassExpression: ClassExpression)
+        ) =
         Functional.EquivalentClasses(axiomAnnotations, Set.TwoOrMore.Two(firstClassExpression, secondClassExpression))
 
     static member EquivalentClasses(axiomAnnotations: Set<Annotation>) =
         fun (firstClassExpression: ClassExpression) ->
-            fun (secondClassExpression: ClassExpression) -> Functional.EquivalentClasses(axiomAnnotations, firstClassExpression, secondClassExpression)
+            fun (secondClassExpression: ClassExpression) ->
+                Functional.EquivalentClasses(axiomAnnotations, firstClassExpression, secondClassExpression)
 
     static member EquivalentClasses(classExpressions: Set.TwoOrMore<ClassExpression>) =
         Functional.EquivalentClasses(Set.empty, classExpressions)
 
-    static member EquivalentClasses((firstClassExpression: ClassExpression), (secondClassExpression: ClassExpression), (moreClassExpressions: Set<ClassExpression>)) =
+    static member EquivalentClasses
+        (
+            (firstClassExpression: ClassExpression),
+            (secondClassExpression: ClassExpression),
+            (moreClassExpressions: Set<ClassExpression>)
+        ) =
         Functional.EquivalentClasses(Set.empty, firstClassExpression, secondClassExpression, moreClassExpressions)
 
     static member EquivalentClasses((firstClassExpression: ClassExpression), (secondClassExpression: ClassExpression)) =
         Functional.EquivalentClasses(Set.empty, firstClassExpression, secondClassExpression)
 
     static member EquivalentClasses(firstClassExpression: ClassExpression) =
-        fun (secondClassExpression: ClassExpression) -> Functional.EquivalentClasses(firstClassExpression, secondClassExpression)
+        fun (secondClassExpression: ClassExpression) ->
+            Functional.EquivalentClasses(firstClassExpression, secondClassExpression)
 
-    static member DisjointClasses((axiomAnnotations: Set<Annotation>), (classExpressions: Set.TwoOrMore<ClassExpression>)) =
+    static member DisjointClasses
+        ((axiomAnnotations: Set<Annotation>), (classExpressions: Set.TwoOrMore<ClassExpression>))
+        =
         Annotated.Annotate(axiomAnnotations, { disjointClasses = classExpressions })
 
     static member DisjointClasses
-        ((axiomAnnotations: Set<Annotation>), (firstClassExpression: ClassExpression), (secondClassExpression: ClassExpression), (moreClassExpressions: Set<ClassExpression>)) =
-        Functional.DisjointClasses(axiomAnnotations, Set.TwoOrMore.More(firstClassExpression, secondClassExpression, moreClassExpressions))
+        (
+            (axiomAnnotations: Set<Annotation>),
+            (firstClassExpression: ClassExpression),
+            (secondClassExpression: ClassExpression),
+            (moreClassExpressions: Set<ClassExpression>)
+        ) =
+        Functional.DisjointClasses(
+            axiomAnnotations,
+            Set.TwoOrMore.More(firstClassExpression, secondClassExpression, moreClassExpressions)
+        )
 
-    static member DisjointClasses((axiomAnnotations: Set<Annotation>), (firstClassExpression: ClassExpression), (secondClassExpression: ClassExpression)) =
+    static member DisjointClasses
+        (
+            (axiomAnnotations: Set<Annotation>),
+            (firstClassExpression: ClassExpression),
+            (secondClassExpression: ClassExpression)
+        ) =
         Functional.DisjointClasses(axiomAnnotations, Set.TwoOrMore.Two(firstClassExpression, secondClassExpression))
 
     static member DisjointClasses(axiomAnnotations: Set<Annotation>) =
         fun (firstClassExpression: ClassExpression) ->
-            fun (secondClassExpression: ClassExpression) -> Functional.DisjointClasses(axiomAnnotations, firstClassExpression, secondClassExpression)
+            fun (secondClassExpression: ClassExpression) ->
+                Functional.DisjointClasses(axiomAnnotations, firstClassExpression, secondClassExpression)
 
     static member DisjointClasses(classExpressions: Set.TwoOrMore<ClassExpression>) =
         Functional.DisjointClasses(Set.empty, classExpressions)
 
-    static member DisjointClasses((firstClassExpression: ClassExpression), (secondClassExpression: ClassExpression), (moreClassExpressions: Set<ClassExpression>)) =
+    static member DisjointClasses
+        (
+            (firstClassExpression: ClassExpression),
+            (secondClassExpression: ClassExpression),
+            (moreClassExpressions: Set<ClassExpression>)
+        ) =
         Functional.DisjointClasses(Set.empty, firstClassExpression, secondClassExpression, moreClassExpressions)
 
     static member DisjointClasses((firstClassExpression: ClassExpression), (secondClassExpression: ClassExpression)) =
         Functional.DisjointClasses(Set.empty, firstClassExpression, secondClassExpression)
 
     static member DisjointClasses(firstClassExpression: ClassExpression) =
-        fun (secondClassExpression: ClassExpression) -> Functional.DisjointClasses(firstClassExpression, secondClassExpression)
+        fun (secondClassExpression: ClassExpression) ->
+            Functional.DisjointClasses(firstClassExpression, secondClassExpression)
 
-    static member DisjointUnion((axiomAnnotations: Set<Annotation>), (disjointClass: Class), (disjointExpressions: Set.TwoOrMore<ClassExpression>)) =
+    static member DisjointUnion
+        (
+            (axiomAnnotations: Set<Annotation>),
+            (disjointClass: Class),
+            (disjointExpressions: Set.TwoOrMore<ClassExpression>)
+        ) =
         Annotated.Annotate(
             axiomAnnotations,
-            {
-                disjointClass = disjointClass
-                disjointClassExpressions = disjointExpressions
-            }
+            { disjointClass = disjointClass
+              disjointClassExpressions = disjointExpressions }
         )
 
     static member DisjointUnion
@@ -4662,32 +5170,63 @@ and Functional =
             (secondClassExpression: ClassExpression),
             (moreClassExpressions: Set<ClassExpression>)
         ) =
-        Functional.DisjointUnion(axiomAnnotations, disjointClass, Set.TwoOrMore.More(firstClassExpression, secondClassExpression, moreClassExpressions))
+        Functional.DisjointUnion(
+            axiomAnnotations,
+            disjointClass,
+            Set.TwoOrMore.More(firstClassExpression, secondClassExpression, moreClassExpressions)
+        )
 
     static member DisjointUnion
-        ((axiomAnnotations: Set<Annotation>), (disjointClass: Class), (firstClassExpression: ClassExpression), (secondClassExpression: ClassExpression))
-        =
-        Functional.DisjointUnion(axiomAnnotations, disjointClass, Set.TwoOrMore.Two(firstClassExpression, secondClassExpression))
+        (
+            (axiomAnnotations: Set<Annotation>),
+            (disjointClass: Class),
+            (firstClassExpression: ClassExpression),
+            (secondClassExpression: ClassExpression)
+        ) =
+        Functional.DisjointUnion(
+            axiomAnnotations,
+            disjointClass,
+            Set.TwoOrMore.Two(firstClassExpression, secondClassExpression)
+        )
 
     static member DisjointUnion(axiomAnnotations: Set<Annotation>) =
         fun (disjointClass: Class) ->
             fun (firstClassExpression: ClassExpression) ->
-                fun (secondClassExpression: ClassExpression) -> Functional.DisjointUnion(axiomAnnotations, disjointClass, firstClassExpression, secondClassExpression)
+                fun (secondClassExpression: ClassExpression) ->
+                    Functional.DisjointUnion(
+                        axiomAnnotations,
+                        disjointClass,
+                        firstClassExpression,
+                        secondClassExpression
+                    )
 
     static member DisjointUnion((disjointClass: Class), (disjointExpressions: Set.TwoOrMore<ClassExpression>)) =
         Functional.DisjointUnion(Set.empty, disjointClass, disjointExpressions)
 
     static member DisjointUnion
-        ((disjointClass: Class), (firstClassExpression: ClassExpression), (secondClassExpression: ClassExpression), (moreClassExpressions: Set<ClassExpression>))
-        =
-        Functional.DisjointUnion(Set.empty, disjointClass, firstClassExpression, secondClassExpression, moreClassExpressions)
+        (
+            (disjointClass: Class),
+            (firstClassExpression: ClassExpression),
+            (secondClassExpression: ClassExpression),
+            (moreClassExpressions: Set<ClassExpression>)
+        ) =
+        Functional.DisjointUnion(
+            Set.empty,
+            disjointClass,
+            firstClassExpression,
+            secondClassExpression,
+            moreClassExpressions
+        )
 
-    static member DisjointUnion((disjointClass: Class), (firstClassExpression: ClassExpression), (secondClassExpression: ClassExpression)) =
+    static member DisjointUnion
+        ((disjointClass: Class), (firstClassExpression: ClassExpression), (secondClassExpression: ClassExpression))
+        =
         Functional.DisjointUnion(Set.empty, disjointClass, firstClassExpression, secondClassExpression)
 
     static member DisjointUnion(disjointClass: Class) =
         fun (firstClassExpression: ClassExpression) ->
-            fun (secondClassExpression: ClassExpression) -> Functional.DisjointUnion(disjointClass, firstClassExpression, secondClassExpression)
+            fun (secondClassExpression: ClassExpression) ->
+                Functional.DisjointUnion(disjointClass, firstClassExpression, secondClassExpression)
 
     static member ObjectPropertyChain
         (
@@ -4695,62 +5234,88 @@ and Functional =
             (secondObjectPropertyExpression: ObjectPropertyExpression),
             (moreobjectPropertyExpressions: ObjectPropertyExpression list)
         ) =
-        {
-            objectPropertyChain = List.TwoOrMore.More(firstObjectPropertyExpression, secondObjectPropertyExpression, moreobjectPropertyExpressions)
-        }
+        { objectPropertyChain =
+            List.TwoOrMore.More(
+                firstObjectPropertyExpression,
+                secondObjectPropertyExpression,
+                moreobjectPropertyExpressions
+            ) }
 
-    static member ObjectPropertyChain((firstObjectPropertyExpression: ObjectPropertyExpression), (secondObjectPropertyExpression: ObjectPropertyExpression)) = {
-        objectPropertyChain = List.TwoOrMore.Two(firstObjectPropertyExpression, secondObjectPropertyExpression)
-    }
+    static member ObjectPropertyChain
+        (
+            (firstObjectPropertyExpression: ObjectPropertyExpression),
+            (secondObjectPropertyExpression: ObjectPropertyExpression)
+        ) =
+        { objectPropertyChain = List.TwoOrMore.Two(firstObjectPropertyExpression, secondObjectPropertyExpression) }
 
     static member ObjectPropertyChain(chain: List.TwoOrMore<ObjectPropertyExpression>) = { objectPropertyChain = chain }
 
     static member ObjectPropertyChain(firstObjectPropertyExpression: ObjectPropertyExpression) =
-        fun (secondObjectPropertyExpression: ObjectPropertyExpression) -> Functional.ObjectPropertyChain(firstObjectPropertyExpression, secondObjectPropertyExpression)
+        fun (secondObjectPropertyExpression: ObjectPropertyExpression) ->
+            Functional.ObjectPropertyChain(firstObjectPropertyExpression, secondObjectPropertyExpression)
 
     static member SubObjectPropertyExpression(objectPropertyExpression: ObjectPropertyExpression) =
         SubObjectPropertyExpression objectPropertyExpression
 
     static member SubObjectPropertyOf
-        ((axiomAnnotations: Set<Annotation>), (subObjectPropertyExpression: SubObjectPropertyExpression), (superObjectPropertyExpression: ObjectPropertyExpression))
-        =
+        (
+            (axiomAnnotations: Set<Annotation>),
+            (subObjectPropertyExpression: SubObjectPropertyExpression),
+            (superObjectPropertyExpression: ObjectPropertyExpression)
+        ) =
         Annotated.Annotate(
             axiomAnnotations,
-            {
-                subObjectPropertyExpression = subObjectPropertyExpression
-                superObjectPropertyExpression = superObjectPropertyExpression
-            }
+            { subObjectPropertyExpression = subObjectPropertyExpression
+              superObjectPropertyExpression = superObjectPropertyExpression }
         )
 
     static member SubObjectPropertyOf
-        ((axiomAnnotations: Set<Annotation>), (subObjectPropertyExpression: ObjectPropertyExpression), (superObjectPropertyExpression: ObjectPropertyExpression))
-        =
-        Functional.SubObjectPropertyOf(axiomAnnotations, Functional.SubObjectPropertyExpression(subObjectPropertyExpression), superObjectPropertyExpression)
+        (
+            (axiomAnnotations: Set<Annotation>),
+            (subObjectPropertyExpression: ObjectPropertyExpression),
+            (superObjectPropertyExpression: ObjectPropertyExpression)
+        ) =
+        Functional.SubObjectPropertyOf(
+            axiomAnnotations,
+            Functional.SubObjectPropertyExpression(subObjectPropertyExpression),
+            superObjectPropertyExpression
+        )
 
     static member SubObjectPropertyOf(axiomAnnotations: Set<Annotation>) =
         fun (subObjectPropertyExpression: SubObjectPropertyExpression) ->
             fun (superObjectPropertyExpression: ObjectPropertyExpression) ->
-                Functional.SubObjectPropertyOf(axiomAnnotations, subObjectPropertyExpression, superObjectPropertyExpression)
+                Functional.SubObjectPropertyOf(
+                    axiomAnnotations,
+                    subObjectPropertyExpression,
+                    superObjectPropertyExpression
+                )
 
-    static member SubObjectPropertyOf((subObjectPropertyExpression: SubObjectPropertyExpression), (superObjectPropertyExpression: ObjectPropertyExpression)) =
+    static member SubObjectPropertyOf
+        (
+            (subObjectPropertyExpression: SubObjectPropertyExpression),
+            (superObjectPropertyExpression: ObjectPropertyExpression)
+        ) =
         Functional.SubObjectPropertyOf(Set.empty, subObjectPropertyExpression, superObjectPropertyExpression)
 
-    static member SubObjectPropertyOf((subObjectPropertyExpression: ObjectPropertyExpression), (superObjectPropertyExpression: ObjectPropertyExpression)) =
+    static member SubObjectPropertyOf
+        (
+            (subObjectPropertyExpression: ObjectPropertyExpression),
+            (superObjectPropertyExpression: ObjectPropertyExpression)
+        ) =
         Functional.SubObjectPropertyOf(Set.empty, subObjectPropertyExpression, superObjectPropertyExpression)
 
     static member SubObjectPropertyOf(subObjectPropertyExpression: SubObjectPropertyExpression) =
-        fun (superObjectPropertyExpression: ObjectPropertyExpression) -> Functional.SubObjectPropertyOf(subObjectPropertyExpression, superObjectPropertyExpression)
+        fun (superObjectPropertyExpression: ObjectPropertyExpression) ->
+            Functional.SubObjectPropertyOf(subObjectPropertyExpression, superObjectPropertyExpression)
 
     static member SubObjectPropertyOf(subObjectPropertyExpression: ObjectPropertyExpression) =
-        fun (superObjectPropertyExpression: ObjectPropertyExpression) -> Functional.SubObjectPropertyOf(subObjectPropertyExpression, superObjectPropertyExpression)
+        fun (superObjectPropertyExpression: ObjectPropertyExpression) ->
+            Functional.SubObjectPropertyOf(subObjectPropertyExpression, superObjectPropertyExpression)
 
-    static member EquivalentObjectProperties((axiomAnnotations: Set<Annotation>), (objectPropertyExpressions: Set.TwoOrMore<ObjectPropertyExpression>)) =
-        Annotated.Annotate(
-            axiomAnnotations,
-            {
-                equivalentObjectPropertyExpressions = objectPropertyExpressions
-            }
-        )
+    static member EquivalentObjectProperties
+        ((axiomAnnotations: Set<Annotation>), (objectPropertyExpressions: Set.TwoOrMore<ObjectPropertyExpression>))
+        =
+        Annotated.Annotate(axiomAnnotations, { equivalentObjectPropertyExpressions = objectPropertyExpressions })
 
     static member EquivalentObjectProperties
         (
@@ -4761,18 +5326,32 @@ and Functional =
         ) =
         Functional.EquivalentObjectProperties(
             axiomAnnotations,
-            Set.TwoOrMore.More(firstObjectPropertyExpression, secondObjectPropertyExpression, moreobjectPropertyExpressions)
+            Set.TwoOrMore.More(
+                firstObjectPropertyExpression,
+                secondObjectPropertyExpression,
+                moreobjectPropertyExpressions
+            )
         )
 
     static member EquivalentObjectProperties
-        ((axiomAnnotations: Set<Annotation>), (firstObjectPropertyExpression: ObjectPropertyExpression), (secondObjectPropertyExpression: ObjectPropertyExpression))
-        =
-        Functional.EquivalentObjectProperties(axiomAnnotations, Set.TwoOrMore.Two(firstObjectPropertyExpression, secondObjectPropertyExpression))
+        (
+            (axiomAnnotations: Set<Annotation>),
+            (firstObjectPropertyExpression: ObjectPropertyExpression),
+            (secondObjectPropertyExpression: ObjectPropertyExpression)
+        ) =
+        Functional.EquivalentObjectProperties(
+            axiomAnnotations,
+            Set.TwoOrMore.Two(firstObjectPropertyExpression, secondObjectPropertyExpression)
+        )
 
     static member EquivalentObjectProperties(axiomAnnotations: Set<Annotation>) =
         fun (firstObjectPropertyExpression: ObjectPropertyExpression) ->
             fun (secondObjectPropertyExpression: ObjectPropertyExpression) ->
-                Functional.EquivalentObjectProperties(axiomAnnotations, firstObjectPropertyExpression, secondObjectPropertyExpression)
+                Functional.EquivalentObjectProperties(
+                    axiomAnnotations,
+                    firstObjectPropertyExpression,
+                    secondObjectPropertyExpression
+                )
 
     static member EquivalentObjectProperties(objectPropertyExpressions: Set.TwoOrMore<ObjectPropertyExpression>) =
         Functional.EquivalentObjectProperties(Set.empty, objectPropertyExpressions)
@@ -4783,22 +5362,28 @@ and Functional =
             (secondObjectPropertyExpression: ObjectPropertyExpression),
             (moreobjectPropertyExpressions: Set<ObjectPropertyExpression>)
         ) =
-        Functional.EquivalentObjectProperties(Set.empty, firstObjectPropertyExpression, secondObjectPropertyExpression, moreobjectPropertyExpressions)
+        Functional.EquivalentObjectProperties(
+            Set.empty,
+            firstObjectPropertyExpression,
+            secondObjectPropertyExpression,
+            moreobjectPropertyExpressions
+        )
 
-    static member EquivalentObjectProperties((firstObjectPropertyExpression: ObjectPropertyExpression), (secondObjectPropertyExpression: ObjectPropertyExpression)) =
+    static member EquivalentObjectProperties
+        (
+            (firstObjectPropertyExpression: ObjectPropertyExpression),
+            (secondObjectPropertyExpression: ObjectPropertyExpression)
+        ) =
         Functional.EquivalentObjectProperties(Set.empty, firstObjectPropertyExpression, secondObjectPropertyExpression)
 
     static member EquivalentObjectProperties(firstObjectPropertyExpression: ObjectPropertyExpression) =
         fun (secondObjectPropertyExpression: ObjectPropertyExpression) ->
             Functional.EquivalentObjectProperties(firstObjectPropertyExpression, secondObjectPropertyExpression)
 
-    static member DisjointObjectProperties((axiomAnnotations: Set<Annotation>), (objectPropertyExpressions: Set.TwoOrMore<ObjectPropertyExpression>)) =
-        Annotated.Annotate(
-            axiomAnnotations,
-            {
-                disjointObjectPropertyExpressions = objectPropertyExpressions
-            }
-        )
+    static member DisjointObjectProperties
+        ((axiomAnnotations: Set<Annotation>), (objectPropertyExpressions: Set.TwoOrMore<ObjectPropertyExpression>))
+        =
+        Annotated.Annotate(axiomAnnotations, { disjointObjectPropertyExpressions = objectPropertyExpressions })
 
     static member DisjointObjectProperties
         (
@@ -4809,18 +5394,32 @@ and Functional =
         ) =
         Functional.DisjointObjectProperties(
             axiomAnnotations,
-            Set.TwoOrMore.More(firstObjectPropertyExpression, secondObjectPropertyExpression, moreobjectPropertyExpressions)
+            Set.TwoOrMore.More(
+                firstObjectPropertyExpression,
+                secondObjectPropertyExpression,
+                moreobjectPropertyExpressions
+            )
         )
 
     static member DisjointObjectProperties
-        ((axiomAnnotations: Set<Annotation>), (firstObjectPropertyExpression: ObjectPropertyExpression), (secondObjectPropertyExpression: ObjectPropertyExpression))
-        =
-        Functional.DisjointObjectProperties(axiomAnnotations, Set.TwoOrMore.Two(firstObjectPropertyExpression, secondObjectPropertyExpression))
+        (
+            (axiomAnnotations: Set<Annotation>),
+            (firstObjectPropertyExpression: ObjectPropertyExpression),
+            (secondObjectPropertyExpression: ObjectPropertyExpression)
+        ) =
+        Functional.DisjointObjectProperties(
+            axiomAnnotations,
+            Set.TwoOrMore.Two(firstObjectPropertyExpression, secondObjectPropertyExpression)
+        )
 
     static member DisjointObjectProperties(axiomAnnotations: Set<Annotation>) =
         fun (firstObjectPropertyExpression: ObjectPropertyExpression) ->
             fun (secondObjectPropertyExpression: ObjectPropertyExpression) ->
-                Functional.DisjointObjectProperties(axiomAnnotations, firstObjectPropertyExpression, secondObjectPropertyExpression)
+                Functional.DisjointObjectProperties(
+                    axiomAnnotations,
+                    firstObjectPropertyExpression,
+                    secondObjectPropertyExpression
+                )
 
     static member DisjointObjectProperties(objectPropertyExpressions: Set.TwoOrMore<ObjectPropertyExpression>) =
         Functional.DisjointObjectProperties(Set.empty, objectPropertyExpressions)
@@ -4831,182 +5430,204 @@ and Functional =
             (secondObjectPropertyExpression: ObjectPropertyExpression),
             (moreobjectPropertyExpressions: Set<ObjectPropertyExpression>)
         ) =
-        Functional.DisjointObjectProperties(Set.empty, firstObjectPropertyExpression, secondObjectPropertyExpression, moreobjectPropertyExpressions)
+        Functional.DisjointObjectProperties(
+            Set.empty,
+            firstObjectPropertyExpression,
+            secondObjectPropertyExpression,
+            moreobjectPropertyExpressions
+        )
 
-    static member DisjointObjectProperties((firstObjectPropertyExpression: ObjectPropertyExpression), (secondObjectPropertyExpression: ObjectPropertyExpression)) =
+    static member DisjointObjectProperties
+        (
+            (firstObjectPropertyExpression: ObjectPropertyExpression),
+            (secondObjectPropertyExpression: ObjectPropertyExpression)
+        ) =
         Functional.DisjointObjectProperties(Set.empty, firstObjectPropertyExpression, secondObjectPropertyExpression)
 
     static member DisjointObjectProperties(firstObjectPropertyExpression: ObjectPropertyExpression) =
-        fun (secondObjectPropertyExpression: ObjectPropertyExpression) -> Functional.DisjointObjectProperties(firstObjectPropertyExpression, secondObjectPropertyExpression)
+        fun (secondObjectPropertyExpression: ObjectPropertyExpression) ->
+            Functional.DisjointObjectProperties(firstObjectPropertyExpression, secondObjectPropertyExpression)
 
     static member InverseObjectProperties
-        ((axiomAnnotations: Set<Annotation>), (firstObjectPropertyExpression: ObjectPropertyExpression), (secondObjectPropertyExpression: ObjectPropertyExpression))
-        =
+        (
+            (axiomAnnotations: Set<Annotation>),
+            (firstObjectPropertyExpression: ObjectPropertyExpression),
+            (secondObjectPropertyExpression: ObjectPropertyExpression)
+        ) =
         Annotated.Annotate(
             axiomAnnotations,
-            {
-                inverseObjectProperties = firstObjectPropertyExpression, secondObjectPropertyExpression
-            }
+            { inverseObjectProperties = firstObjectPropertyExpression, secondObjectPropertyExpression }
         )
 
     static member InverseObjectProperties(axiomAnnotations: Set<Annotation>) =
         fun (firstObjectPropertyExpression: ObjectPropertyExpression) ->
             fun (secondObjectPropertyExpression: ObjectPropertyExpression) ->
-                Functional.InverseObjectProperties(axiomAnnotations, firstObjectPropertyExpression, secondObjectPropertyExpression)
+                Functional.InverseObjectProperties(
+                    axiomAnnotations,
+                    firstObjectPropertyExpression,
+                    secondObjectPropertyExpression
+                )
 
-    static member InverseObjectProperties((firstObjectPropertyExpression: ObjectPropertyExpression), (secondObjectPropertyExpression: ObjectPropertyExpression)) =
+    static member InverseObjectProperties
+        (
+            (firstObjectPropertyExpression: ObjectPropertyExpression),
+            (secondObjectPropertyExpression: ObjectPropertyExpression)
+        ) =
         Functional.InverseObjectProperties(Set.empty, firstObjectPropertyExpression, secondObjectPropertyExpression)
 
     static member InverseObjectProperties(firstObjectPropertyExpression: ObjectPropertyExpression) =
-        fun (secondObjectPropertyExpression: ObjectPropertyExpression) -> Functional.InverseObjectProperties(firstObjectPropertyExpression, secondObjectPropertyExpression)
+        fun (secondObjectPropertyExpression: ObjectPropertyExpression) ->
+            Functional.InverseObjectProperties(firstObjectPropertyExpression, secondObjectPropertyExpression)
 
-    static member ObjectPropertyDomain((axiomAnnotations: Set<Annotation>), (objectPropertyExpression: ObjectPropertyExpression), (classExpression: ClassExpression)) =
+    static member ObjectPropertyDomain
+        (
+            (axiomAnnotations: Set<Annotation>),
+            (objectPropertyExpression: ObjectPropertyExpression),
+            (classExpression: ClassExpression)
+        ) =
         Annotated.Annotate(
             axiomAnnotations,
-            {
-                objectPropertyExpression = objectPropertyExpression
-                objectPropertyDomain = classExpression
-            }
+            { objectPropertyExpression = objectPropertyExpression
+              objectPropertyDomain = classExpression }
         )
 
     static member ObjectPropertyDomain(axiomAnnotations: Set<Annotation>) =
         fun (objectPropertyExpression: ObjectPropertyExpression) ->
-            fun (classExpression: ClassExpression) -> Functional.ObjectPropertyDomain(axiomAnnotations, objectPropertyExpression, classExpression)
+            fun (classExpression: ClassExpression) ->
+                Functional.ObjectPropertyDomain(axiomAnnotations, objectPropertyExpression, classExpression)
 
-    static member ObjectPropertyDomain((objectPropertyExpression: ObjectPropertyExpression), (classExpression: ClassExpression)) =
+    static member ObjectPropertyDomain
+        ((objectPropertyExpression: ObjectPropertyExpression), (classExpression: ClassExpression))
+        =
         Functional.ObjectPropertyDomain(Set.empty, objectPropertyExpression, classExpression)
 
     static member ObjectPropertyDomain(objectPropertyExpression: ObjectPropertyExpression) =
-        fun (classExpression: ClassExpression) -> Functional.ObjectPropertyDomain(objectPropertyExpression, classExpression)
+        fun (classExpression: ClassExpression) ->
+            Functional.ObjectPropertyDomain(objectPropertyExpression, classExpression)
 
-    static member ObjectPropertyRange((axiomAnnotations: Set<Annotation>), (objectPropertyExpression: ObjectPropertyExpression), (classExpression: ClassExpression)) =
+    static member ObjectPropertyRange
+        (
+            (axiomAnnotations: Set<Annotation>),
+            (objectPropertyExpression: ObjectPropertyExpression),
+            (classExpression: ClassExpression)
+        ) =
         Annotated.Annotate(
             axiomAnnotations,
-            {
-                objectPropertyExpression = objectPropertyExpression
-                objectPropertyRange = classExpression
-            }
+            { objectPropertyExpression = objectPropertyExpression
+              objectPropertyRange = classExpression }
         )
 
     static member ObjectPropertyRange(axiomAnnotations: Set<Annotation>) =
         fun (objectPropertyExpression: ObjectPropertyExpression) ->
-            fun (classExpression: ClassExpression) -> Functional.ObjectPropertyRange(axiomAnnotations, objectPropertyExpression, classExpression)
+            fun (classExpression: ClassExpression) ->
+                Functional.ObjectPropertyRange(axiomAnnotations, objectPropertyExpression, classExpression)
 
-    static member ObjectPropertyRange((objectPropertyExpression: ObjectPropertyExpression), (classExpression: ClassExpression)) =
+    static member ObjectPropertyRange
+        ((objectPropertyExpression: ObjectPropertyExpression), (classExpression: ClassExpression))
+        =
         Functional.ObjectPropertyRange(Set.empty, objectPropertyExpression, classExpression)
 
     static member ObjectPropertyRange(objectPropertyExpression: ObjectPropertyExpression) =
-        fun (classExpression: ClassExpression) -> Functional.ObjectPropertyRange(objectPropertyExpression, classExpression)
+        fun (classExpression: ClassExpression) ->
+            Functional.ObjectPropertyRange(objectPropertyExpression, classExpression)
 
-    static member FunctionalObjectProperty((axiomAnnotations: Set<Annotation>), (objectPropertyExpression: ObjectPropertyExpression)) =
-        Annotated.Annotate(
-            axiomAnnotations,
-            {
-                functionalObjectProperty = objectPropertyExpression
-            }
-        )
+    static member FunctionalObjectProperty
+        ((axiomAnnotations: Set<Annotation>), (objectPropertyExpression: ObjectPropertyExpression))
+        =
+        Annotated.Annotate(axiomAnnotations, { functionalObjectProperty = objectPropertyExpression })
 
     static member FunctionalObjectProperty(axiomAnnotations: Set<Annotation>) =
-        fun (objectPropertyExpression: ObjectPropertyExpression) -> Functional.FunctionalObjectProperty(axiomAnnotations, objectPropertyExpression)
+        fun (objectPropertyExpression: ObjectPropertyExpression) ->
+            Functional.FunctionalObjectProperty(axiomAnnotations, objectPropertyExpression)
 
     static member FunctionalObjectProperty(objectPropertyExpression: ObjectPropertyExpression) =
         Functional.FunctionalObjectProperty(Set.empty, objectPropertyExpression)
 
-    static member InverseFunctionalObjectProperty((axiomAnnotations: Set<Annotation>), (objectPropertyExpression: ObjectPropertyExpression)) =
-        Annotated.Annotate(
-            axiomAnnotations,
-            {
-                inverseFunctionalObjectProperty = objectPropertyExpression
-            }
-        )
+    static member InverseFunctionalObjectProperty
+        ((axiomAnnotations: Set<Annotation>), (objectPropertyExpression: ObjectPropertyExpression))
+        =
+        Annotated.Annotate(axiomAnnotations, { inverseFunctionalObjectProperty = objectPropertyExpression })
 
     static member InverseFunctionalObjectProperty(axiomAnnotations: Set<Annotation>) =
-        fun (objectPropertyExpression: ObjectPropertyExpression) -> Functional.InverseFunctionalObjectProperty(axiomAnnotations, objectPropertyExpression)
+        fun (objectPropertyExpression: ObjectPropertyExpression) ->
+            Functional.InverseFunctionalObjectProperty(axiomAnnotations, objectPropertyExpression)
 
     static member InverseFunctionalObjectProperty(objectPropertyExpression: ObjectPropertyExpression) =
         Functional.InverseFunctionalObjectProperty(Set.empty, objectPropertyExpression)
 
-    static member ReflexiveObjectProperty((axiomAnnotations: Set<Annotation>), (objectPropertyExpression: ObjectPropertyExpression)) =
-        Annotated.Annotate(
-            axiomAnnotations,
-            {
-                reflexiveObjectProperty = objectPropertyExpression
-            }
-        )
+    static member ReflexiveObjectProperty
+        ((axiomAnnotations: Set<Annotation>), (objectPropertyExpression: ObjectPropertyExpression))
+        =
+        Annotated.Annotate(axiomAnnotations, { reflexiveObjectProperty = objectPropertyExpression })
 
     static member ReflexiveObjectProperty(axiomAnnotations: Set<Annotation>) =
-        fun (objectPropertyExpression: ObjectPropertyExpression) -> Functional.ReflexiveObjectProperty(axiomAnnotations, objectPropertyExpression)
+        fun (objectPropertyExpression: ObjectPropertyExpression) ->
+            Functional.ReflexiveObjectProperty(axiomAnnotations, objectPropertyExpression)
 
     static member ReflexiveObjectProperty(objectPropertyExpression: ObjectPropertyExpression) =
         Functional.ReflexiveObjectProperty(Set.empty, objectPropertyExpression)
 
-    static member IrreflexiveObjectProperty((axiomAnnotations: Set<Annotation>), (objectPropertyExpression: ObjectPropertyExpression)) =
-        Annotated.Annotate(
-            axiomAnnotations,
-            {
-                irreflexiveObjectProperty = objectPropertyExpression
-            }
-        )
+    static member IrreflexiveObjectProperty
+        ((axiomAnnotations: Set<Annotation>), (objectPropertyExpression: ObjectPropertyExpression))
+        =
+        Annotated.Annotate(axiomAnnotations, { irreflexiveObjectProperty = objectPropertyExpression })
 
     static member IrreflexiveObjectProperty(axiomAnnotations: Set<Annotation>) =
-        fun (objectPropertyExpression: ObjectPropertyExpression) -> Functional.IrreflexiveObjectProperty(axiomAnnotations, objectPropertyExpression)
+        fun (objectPropertyExpression: ObjectPropertyExpression) ->
+            Functional.IrreflexiveObjectProperty(axiomAnnotations, objectPropertyExpression)
 
     static member IrreflexiveObjectProperty(objectPropertyExpression: ObjectPropertyExpression) =
         Functional.IrreflexiveObjectProperty(Set.empty, objectPropertyExpression)
 
-    static member SymmetricObjectProperty((axiomAnnotations: Set<Annotation>), (objectPropertyExpression: ObjectPropertyExpression)) =
-        Annotated.Annotate(
-            axiomAnnotations,
-            {
-                symmetricObjectProperty = objectPropertyExpression
-            }
-        )
+    static member SymmetricObjectProperty
+        ((axiomAnnotations: Set<Annotation>), (objectPropertyExpression: ObjectPropertyExpression))
+        =
+        Annotated.Annotate(axiomAnnotations, { symmetricObjectProperty = objectPropertyExpression })
 
     static member SymmetricObjectProperty(axiomAnnotations: Set<Annotation>) =
-        fun (objectPropertyExpression: ObjectPropertyExpression) -> Functional.SymmetricObjectProperty(axiomAnnotations, objectPropertyExpression)
+        fun (objectPropertyExpression: ObjectPropertyExpression) ->
+            Functional.SymmetricObjectProperty(axiomAnnotations, objectPropertyExpression)
 
     static member SymmetricObjectProperty(objectPropertyExpression: ObjectPropertyExpression) =
         Functional.SymmetricObjectProperty(Set.empty, objectPropertyExpression)
 
-    static member AsymmetricObjectProperty((axiomAnnotations: Set<Annotation>), (objectPropertyExpression: ObjectPropertyExpression)) =
-        Annotated.Annotate(
-            axiomAnnotations,
-            {
-                asymmetricObjectProperty = objectPropertyExpression
-            }
-        )
+    static member AsymmetricObjectProperty
+        ((axiomAnnotations: Set<Annotation>), (objectPropertyExpression: ObjectPropertyExpression))
+        =
+        Annotated.Annotate(axiomAnnotations, { asymmetricObjectProperty = objectPropertyExpression })
 
     static member AsymmetricObjectProperty(axiomAnnotations: Set<Annotation>) =
-        fun (objectPropertyExpression: ObjectPropertyExpression) -> Functional.AsymmetricObjectProperty(axiomAnnotations, objectPropertyExpression)
+        fun (objectPropertyExpression: ObjectPropertyExpression) ->
+            Functional.AsymmetricObjectProperty(axiomAnnotations, objectPropertyExpression)
 
     static member AsymmetricObjectProperty(objectPropertyExpression: ObjectPropertyExpression) =
         Functional.AsymmetricObjectProperty(Set.empty, objectPropertyExpression)
 
-    static member TransitiveObjectProperty((axiomAnnotations: Set<Annotation>), (objectPropertyExpression: ObjectPropertyExpression)) =
-        Annotated.Annotate(
-            axiomAnnotations,
-            {
-                transitiveObjectProperty = objectPropertyExpression
-            }
-        )
+    static member TransitiveObjectProperty
+        ((axiomAnnotations: Set<Annotation>), (objectPropertyExpression: ObjectPropertyExpression))
+        =
+        Annotated.Annotate(axiomAnnotations, { transitiveObjectProperty = objectPropertyExpression })
 
     static member TransitiveObjectProperty(axiomAnnotations: Set<Annotation>) =
-        fun (objectPropertyExpression: ObjectPropertyExpression) -> Functional.TransitiveObjectProperty(axiomAnnotations, objectPropertyExpression)
+        fun (objectPropertyExpression: ObjectPropertyExpression) ->
+            Functional.TransitiveObjectProperty(axiomAnnotations, objectPropertyExpression)
 
     static member TransitiveObjectProperty(objectPropertyExpression: ObjectPropertyExpression) =
         Functional.TransitiveObjectProperty(Set.empty, objectPropertyExpression)
 
-    static member SubDataPropertyOf((axiomAnnotations: Set<Annotation>), (subDataProperty: DataProperty), (superDataProperty: DataProperty)) =
+    static member SubDataPropertyOf
+        ((axiomAnnotations: Set<Annotation>), (subDataProperty: DataProperty), (superDataProperty: DataProperty))
+        =
         Annotated.Annotate(
             axiomAnnotations,
-            {
-                subDataProperty = subDataProperty
-                superDataProperty = superDataProperty
-            }
+            { subDataProperty = subDataProperty
+              superDataProperty = superDataProperty }
         )
 
     static member SubDataPropertyOf(axiomAnnotations: Set<Annotation>) =
-        fun (subDataProperty: DataProperty) -> fun (superDataProperty: DataProperty) -> Functional.SubDataPropertyOf(axiomAnnotations, subDataProperty, superDataProperty)
+        fun (subDataProperty: DataProperty) ->
+            fun (superDataProperty: DataProperty) ->
+                Functional.SubDataPropertyOf(axiomAnnotations, subDataProperty, superDataProperty)
 
     static member SubDataPropertyOf((subDataProperty: DataProperty), (superDataProperty: DataProperty)) =
         Functional.SubDataPropertyOf(Set.empty, subDataProperty, superDataProperty)
@@ -5014,99 +5635,125 @@ and Functional =
     static member SubDataPropertyOf(subDataProperty: DataProperty) =
         fun (superDataProperty: DataProperty) -> Functional.SubDataPropertyOf(subDataProperty, superDataProperty)
 
-    static member EquivalentDataProperties((axiomAnnotations: Set<Annotation>), (dataProperties: Set.TwoOrMore<DataProperty>)) =
-        Annotated.Annotate(
+    static member EquivalentDataProperties
+        ((axiomAnnotations: Set<Annotation>), (dataProperties: Set.TwoOrMore<DataProperty>))
+        =
+        Annotated.Annotate(axiomAnnotations, { equivalentDataProperties = dataProperties })
+
+    static member EquivalentDataProperties
+        (
+            (axiomAnnotations: Set<Annotation>),
+            (firstDataProperty: DataProperty),
+            (secondDataProperty: DataProperty),
+            (moreDataProperties: Set<DataProperty>)
+        ) =
+        Functional.EquivalentDataProperties(
             axiomAnnotations,
-            {
-                equivalentDataProperties = dataProperties
-            }
+            Set.TwoOrMore.More(firstDataProperty, secondDataProperty, moreDataProperties)
         )
 
     static member EquivalentDataProperties
-        ((axiomAnnotations: Set<Annotation>), (firstDataProperty: DataProperty), (secondDataProperty: DataProperty), (moreDataProperties: Set<DataProperty>))
+        ((axiomAnnotations: Set<Annotation>), (firstDataProperty: DataProperty), (secondDataProperty: DataProperty))
         =
-        Functional.EquivalentDataProperties(axiomAnnotations, Set.TwoOrMore.More(firstDataProperty, secondDataProperty, moreDataProperties))
-
-    static member EquivalentDataProperties((axiomAnnotations: Set<Annotation>), (firstDataProperty: DataProperty), (secondDataProperty: DataProperty)) =
         Functional.EquivalentDataProperties(axiomAnnotations, Set.TwoOrMore.Two(firstDataProperty, secondDataProperty))
 
     static member EquivalentDataProperties(axiomAnnotations: Set<Annotation>) =
         fun (firstDataProperty: DataProperty) ->
-            fun (secondDataProperty: DataProperty) -> Functional.EquivalentDataProperties(axiomAnnotations, firstDataProperty, secondDataProperty)
+            fun (secondDataProperty: DataProperty) ->
+                Functional.EquivalentDataProperties(axiomAnnotations, firstDataProperty, secondDataProperty)
 
     static member EquivalentDataProperties(dataProperties: Set.TwoOrMore<DataProperty>) =
         Functional.EquivalentDataProperties(Set.empty, dataProperties)
 
-    static member EquivalentDataProperties((firstDataProperty: DataProperty), (secondDataProperty: DataProperty), (moreDataProperties: Set<DataProperty>)) =
+    static member EquivalentDataProperties
+        ((firstDataProperty: DataProperty), (secondDataProperty: DataProperty), (moreDataProperties: Set<DataProperty>))
+        =
         Functional.EquivalentDataProperties(Set.empty, firstDataProperty, secondDataProperty, moreDataProperties)
 
     static member EquivalentDataProperties((firstDataProperty: DataProperty), (secondDataProperty: DataProperty)) =
         Functional.EquivalentDataProperties(Set.empty, firstDataProperty, secondDataProperty)
 
     static member EquivalentDataProperties(firstDataProperty: DataProperty) =
-        fun (secondDataProperty: DataProperty) -> Functional.EquivalentDataProperties(firstDataProperty, secondDataProperty)
+        fun (secondDataProperty: DataProperty) ->
+            Functional.EquivalentDataProperties(firstDataProperty, secondDataProperty)
 
-    static member DisjointDataProperties((axiomAnnotations: Set<Annotation>), (dataProperties: Set.TwoOrMore<DataProperty>)) =
-        Annotated.Annotate(
+    static member DisjointDataProperties
+        ((axiomAnnotations: Set<Annotation>), (dataProperties: Set.TwoOrMore<DataProperty>))
+        =
+        Annotated.Annotate(axiomAnnotations, { disjointDataProperties = dataProperties })
+
+    static member DisjointDataProperties
+        (
+            (axiomAnnotations: Set<Annotation>),
+            (firstDataProperty: DataProperty),
+            (secondDataProperty: DataProperty),
+            (moreDataProperties: Set<DataProperty>)
+        ) =
+        Functional.DisjointDataProperties(
             axiomAnnotations,
-            {
-                disjointDataProperties = dataProperties
-            }
+            Set.TwoOrMore.More(firstDataProperty, secondDataProperty, moreDataProperties)
         )
 
     static member DisjointDataProperties
-        ((axiomAnnotations: Set<Annotation>), (firstDataProperty: DataProperty), (secondDataProperty: DataProperty), (moreDataProperties: Set<DataProperty>))
+        ((axiomAnnotations: Set<Annotation>), (firstDataProperty: DataProperty), (secondDataProperty: DataProperty))
         =
-        Functional.DisjointDataProperties(axiomAnnotations, Set.TwoOrMore.More(firstDataProperty, secondDataProperty, moreDataProperties))
-
-    static member DisjointDataProperties((axiomAnnotations: Set<Annotation>), (firstDataProperty: DataProperty), (secondDataProperty: DataProperty)) =
         Functional.DisjointDataProperties(axiomAnnotations, Set.TwoOrMore.Two(firstDataProperty, secondDataProperty))
 
     static member DisjointDataProperties(axiomAnnotations: Set<Annotation>) =
         fun (firstDataProperty: DataProperty) ->
-            fun (secondDataProperty: DataProperty) -> Functional.DisjointDataProperties(axiomAnnotations, firstDataProperty, secondDataProperty)
+            fun (secondDataProperty: DataProperty) ->
+                Functional.DisjointDataProperties(axiomAnnotations, firstDataProperty, secondDataProperty)
 
     static member DisjointDataProperties(dataProperties: Set.TwoOrMore<DataProperty>) =
         Functional.DisjointDataProperties(Set.empty, dataProperties)
 
-    static member DisjointDataProperties((firstDataProperty: DataProperty), (secondDataProperty: DataProperty), (moreDataProperties: Set<DataProperty>)) =
+    static member DisjointDataProperties
+        ((firstDataProperty: DataProperty), (secondDataProperty: DataProperty), (moreDataProperties: Set<DataProperty>))
+        =
         Functional.DisjointDataProperties(Set.empty, firstDataProperty, secondDataProperty, moreDataProperties)
 
     static member DisjointDataProperties((firstDataProperty: DataProperty), (secondDataProperty: DataProperty)) =
         Functional.DisjointDataProperties(Set.empty, firstDataProperty, secondDataProperty)
 
     static member DisjointDataProperties(firstDataProperty: DataProperty) =
-        fun (secondDataProperty: DataProperty) -> Functional.DisjointDataProperties(firstDataProperty, secondDataProperty)
+        fun (secondDataProperty: DataProperty) ->
+            Functional.DisjointDataProperties(firstDataProperty, secondDataProperty)
 
-    static member DataPropertyDomain((axiomAnnotations: Set<Annotation>), (dataProperty: DataProperty), (classExpression: ClassExpression)) =
+    static member DataPropertyDomain
+        ((axiomAnnotations: Set<Annotation>), (dataProperty: DataProperty), (classExpression: ClassExpression))
+        =
         Annotated.Annotate(
             axiomAnnotations,
-            {
-                dataProperty = dataProperty
-                dataPropertyDomain = classExpression
-            }
+            { dataProperty = dataProperty
+              dataPropertyDomain = classExpression }
         )
 
     static member DataPropertyDomain(axiomAnnotations: Set<Annotation>) =
-        curryN (Functional.DataPropertyDomain: Set<Annotation> * DataProperty * ClassExpression -> Annotated<DataPropertyDomain>) axiomAnnotations
+        curryN
+            (Functional.DataPropertyDomain
+            : Set<Annotation> * DataProperty * ClassExpression -> Annotated<DataPropertyDomain>)
+            axiomAnnotations
 
     static member DataPropertyDomain((dataProperty: DataProperty), (classExpression: ClassExpression)) =
         Functional.DataPropertyDomain(Set.empty, dataProperty, classExpression)
 
     static member DataPropertyDomain(dataProperty: DataProperty) =
-        curry (Functional.DataPropertyDomain: DataProperty * ClassExpression -> Annotated<DataPropertyDomain>) dataProperty
+        curry
+            (Functional.DataPropertyDomain: DataProperty * ClassExpression -> Annotated<DataPropertyDomain>)
+            dataProperty
 
-    static member DataPropertyRange((axiomAnnotations: Set<Annotation>), (dataProperty: DataProperty), (dataRange: DataRange)) =
+    static member DataPropertyRange
+        ((axiomAnnotations: Set<Annotation>), (dataProperty: DataProperty), (dataRange: DataRange))
+        =
         Annotated.Annotate(
             axiomAnnotations,
-            {
-                dataProperty = dataProperty
-                dataPropertyRange = dataRange
-            }
+            { dataProperty = dataProperty
+              dataPropertyRange = dataRange }
         )
 
     static member DataPropertyRange(axiomAnnotations: Set<Annotation>) =
-        fun (dataProperty: DataProperty) -> fun (dataRange: DataRange) -> Functional.DataPropertyRange(axiomAnnotations, dataProperty, dataRange)
+        fun (dataProperty: DataProperty) ->
+            fun (dataRange: DataRange) -> Functional.DataPropertyRange(axiomAnnotations, dataProperty, dataRange)
 
     static member DataPropertyRange((dataProperty: DataProperty), (dataRange: DataRange)) =
         Functional.DataPropertyRange(Set.empty, dataProperty, dataRange)
@@ -5115,12 +5762,7 @@ and Functional =
         fun (dataRange: DataRange) -> Functional.DataPropertyRange(dataProperty, dataRange)
 
     static member FunctionalDataProperty((axiomAnnotations: Set<Annotation>), (dataProperty: DataProperty)) =
-        Annotated.Annotate(
-            axiomAnnotations,
-            {
-                functionalDataProperty = dataProperty
-            }
-        )
+        Annotated.Annotate(axiomAnnotations, { functionalDataProperty = dataProperty })
 
     static member FunctionalDataProperty(axiomAnnotations: Set<Annotation>) =
         fun (dataProperty: DataProperty) -> Functional.FunctionalDataProperty(axiomAnnotations, dataProperty)
@@ -5128,17 +5770,18 @@ and Functional =
     static member FunctionalDataProperty(dataProperty: DataProperty) =
         Functional.FunctionalDataProperty(Set.empty, dataProperty)
 
-    static member DatatypeDefinition((axiomAnnotations: Set<Annotation>), (datatype: DatatypeIri), (dataRange: DataRange)) =
+    static member DatatypeDefinition
+        ((axiomAnnotations: Set<Annotation>), (datatype: DatatypeIri), (dataRange: DataRange))
+        =
         Annotated.Annotate(
             axiomAnnotations,
-            {
-                datatype = datatype
-                dataRange = dataRange
-            }
+            { datatype = datatype
+              dataRange = dataRange }
         )
 
     static member DatatypeDefinition(axiomAnnotations: Set<Annotation>) =
-        fun (datatype: DatatypeIri) -> fun (dataRange: DataRange) -> Functional.DatatypeDefinition(axiomAnnotations, datatype, dataRange)
+        fun (datatype: DatatypeIri) ->
+            fun (dataRange: DataRange) -> Functional.DatatypeDefinition(axiomAnnotations, datatype, dataRange)
 
     static member DatatypeDefinition((datatype: DatatypeIri), (dataRange: DataRange)) =
         Functional.DatatypeDefinition(Set.empty, datatype, dataRange)
@@ -5146,9 +5789,14 @@ and Functional =
     static member DatatypeDefinition(datatype: DatatypeIri) =
         fun (dataRange: DataRange) -> Functional.DatatypeDefinition(datatype, dataRange)
 
-    static member ObjectKeyProperties(objectProperties: Set.OneOrMore<ObjectPropertyExpression>) = objectProperties |> ObjectKeyProperties
+    static member ObjectKeyProperties(objectProperties: Set.OneOrMore<ObjectPropertyExpression>) =
+        objectProperties |> ObjectKeyProperties
 
-    static member ObjectKeyProperties((firstObjectPropertyExpression: ObjectPropertyExpression), (moreobjectPropertyExpressions: Set<ObjectPropertyExpression>)) =
+    static member ObjectKeyProperties
+        (
+            (firstObjectPropertyExpression: ObjectPropertyExpression),
+            (moreobjectPropertyExpressions: Set<ObjectPropertyExpression>)
+        ) =
         Set.OneOrMore.More(firstObjectPropertyExpression, moreobjectPropertyExpressions)
         |> ObjectKeyProperties
 
@@ -5163,7 +5811,9 @@ and Functional =
     static member DataKeyProperties(firstDataProperty: DataProperty) =
         firstDataProperty |> Set.OneOrMore.One |> DataKeyProperties
 
-    static member ObjectDataKeyProperties((objectProperties: Set.OneOrMore<ObjectPropertyExpression>), (dataProperties: Set.OneOrMore<DataProperty>)) =
+    static member ObjectDataKeyProperties
+        ((objectProperties: Set.OneOrMore<ObjectPropertyExpression>), (dataProperties: Set.OneOrMore<DataProperty>))
+        =
         (objectProperties, dataProperties) |> ObjectDataKeyProperties
 
     static member ObjectDataKeyProperties
@@ -5173,20 +5823,23 @@ and Functional =
             (firstDataProperty: DataProperty),
             (moreDataPropertys: Set<DataProperty>)
         ) =
-        (Set.OneOrMore.More(firstObjectPropertyExpression, moreobjectPropertyExpressions), Set.OneOrMore.More(firstDataProperty, moreDataPropertys))
+        (Set.OneOrMore.More(firstObjectPropertyExpression, moreobjectPropertyExpressions),
+         Set.OneOrMore.More(firstDataProperty, moreDataPropertys))
         |> ObjectDataKeyProperties
 
-    static member ObjectDataKeyProperties((firstObjectPropertyExpression: ObjectPropertyExpression), (firstDataProperty: DataProperty)) =
+    static member ObjectDataKeyProperties
+        ((firstObjectPropertyExpression: ObjectPropertyExpression), (firstDataProperty: DataProperty))
+        =
         (Set.OneOrMore.One firstObjectPropertyExpression, Set.OneOrMore.One firstDataProperty)
         |> ObjectDataKeyProperties
 
-    static member HasKey((axiomAnnotations: Set<Annotation>), (classExpression: ClassExpression), (keyProperties: KeyProperties)) =
+    static member HasKey
+        ((axiomAnnotations: Set<Annotation>), (classExpression: ClassExpression), (keyProperties: KeyProperties))
+        =
         Annotated.Annotate(
             axiomAnnotations,
-            {
-                classExpression = classExpression
-                keyProperties = keyProperties
-            }
+            { classExpression = classExpression
+              keyProperties = keyProperties }
         )
 
     static member HasKey
@@ -5196,41 +5849,83 @@ and Functional =
             (objectProperties: Set.OneOrMore<ObjectPropertyExpression>),
             (dataProperties: Set.OneOrMore<DataProperty>)
         ) =
-        Functional.HasKey(axiomAnnotations, classExpression, Functional.ObjectDataKeyProperties(objectProperties, dataProperties))
+        Functional.HasKey(
+            axiomAnnotations,
+            classExpression,
+            Functional.ObjectDataKeyProperties(objectProperties, dataProperties)
+        )
 
-    static member HasKey((axiomAnnotations: Set<Annotation>), (classExpression: ClassExpression), (objectProperties: Set.OneOrMore<ObjectPropertyExpression>)) =
+    static member HasKey
+        (
+            (axiomAnnotations: Set<Annotation>),
+            (classExpression: ClassExpression),
+            (objectProperties: Set.OneOrMore<ObjectPropertyExpression>)
+        ) =
         Functional.HasKey(axiomAnnotations, classExpression, Functional.ObjectKeyProperties(objectProperties))
 
-    static member HasKey((axiomAnnotations: Set<Annotation>), (classExpression: ClassExpression), (dataProperties: Set.OneOrMore<DataProperty>)) =
+    static member HasKey
+        (
+            (axiomAnnotations: Set<Annotation>),
+            (classExpression: ClassExpression),
+            (dataProperties: Set.OneOrMore<DataProperty>)
+        ) =
         Functional.HasKey(axiomAnnotations, classExpression, Functional.DataKeyProperties(dataProperties))
 
     static member HasKey
-        ((axiomAnnotations: Set<Annotation>), (classExpression: ClassExpression), (objectPropertyExpression: ObjectPropertyExpression), (dataProperty: DataProperty))
-        =
-        Functional.HasKey(axiomAnnotations, classExpression, Functional.ObjectDataKeyProperties(objectPropertyExpression, dataProperty))
+        (
+            (axiomAnnotations: Set<Annotation>),
+            (classExpression: ClassExpression),
+            (objectPropertyExpression: ObjectPropertyExpression),
+            (dataProperty: DataProperty)
+        ) =
+        Functional.HasKey(
+            axiomAnnotations,
+            classExpression,
+            Functional.ObjectDataKeyProperties(objectPropertyExpression, dataProperty)
+        )
 
-    static member HasKey((axiomAnnotations: Set<Annotation>), (classExpression: ClassExpression), (objectPropertyExpression: ObjectPropertyExpression)) =
+    static member HasKey
+        (
+            (axiomAnnotations: Set<Annotation>),
+            (classExpression: ClassExpression),
+            (objectPropertyExpression: ObjectPropertyExpression)
+        ) =
         Functional.HasKey(axiomAnnotations, classExpression, Functional.ObjectKeyProperties(objectPropertyExpression))
 
-    static member HasKey((axiomAnnotations: Set<Annotation>), (classExpression: ClassExpression), (dataProperty: DataProperty)) =
+    static member HasKey
+        ((axiomAnnotations: Set<Annotation>), (classExpression: ClassExpression), (dataProperty: DataProperty))
+        =
         Functional.HasKey(axiomAnnotations, classExpression, Functional.DataKeyProperties(dataProperty))
 
     static member HasKey(axiomAnnotations: Set<Annotation>) =
-        fun (classExpression: ClassExpression) -> fun (keyProperties: KeyProperties) -> Functional.HasKey(axiomAnnotations, classExpression, keyProperties)
+        fun (classExpression: ClassExpression) ->
+            fun (keyProperties: KeyProperties) -> Functional.HasKey(axiomAnnotations, classExpression, keyProperties)
 
     static member HasKey((classExpression: ClassExpression), (keyProperties: KeyProperties)) =
         Functional.HasKey(Set.empty, classExpression, keyProperties)
 
-    static member HasKey((classExpression: ClassExpression), (objectProperties: Set.OneOrMore<ObjectPropertyExpression>), (dataProperties: Set.OneOrMore<DataProperty>)) =
+    static member HasKey
+        (
+            (classExpression: ClassExpression),
+            (objectProperties: Set.OneOrMore<ObjectPropertyExpression>),
+            (dataProperties: Set.OneOrMore<DataProperty>)
+        ) =
         Functional.HasKey(Set.empty, classExpression, objectProperties, dataProperties)
 
-    static member HasKey((classExpression: ClassExpression), (objectProperties: Set.OneOrMore<ObjectPropertyExpression>)) =
+    static member HasKey
+        ((classExpression: ClassExpression), (objectProperties: Set.OneOrMore<ObjectPropertyExpression>))
+        =
         Functional.HasKey(Set.empty, classExpression, objectProperties)
 
     static member HasKey((classExpression: ClassExpression), (dataProperties: Set.OneOrMore<DataProperty>)) =
         Functional.HasKey(Set.empty, classExpression, dataProperties)
 
-    static member HasKey((classExpression: ClassExpression), (objectPropertyExpression: ObjectPropertyExpression), (dataProperty: DataProperty)) =
+    static member HasKey
+        (
+            (classExpression: ClassExpression),
+            (objectPropertyExpression: ObjectPropertyExpression),
+            (dataProperty: DataProperty)
+        ) =
         Functional.HasKey(Set.empty, classExpression, objectPropertyExpression, dataProperty)
 
     static member HasKey((classExpression: ClassExpression), (objectPropertyExpression: ObjectPropertyExpression)) =
@@ -5245,19 +5940,34 @@ and Functional =
     static member SameIndividual((axiomAnnotations: Set<Annotation>), (individuals: Set.TwoOrMore<Individual>)) =
         Annotated.Annotate(axiomAnnotations, { SameIndividual = individuals })
 
-    static member SameIndividual((axiomAnnotations: Set<Annotation>), (firstIndividual: Individual), (secondIndividual: Individual), (moreIndividuals: Set<Individual>)) =
-        Functional.SameIndividual(axiomAnnotations, Set.TwoOrMore.More(firstIndividual, secondIndividual, moreIndividuals))
+    static member SameIndividual
+        (
+            (axiomAnnotations: Set<Annotation>),
+            (firstIndividual: Individual),
+            (secondIndividual: Individual),
+            (moreIndividuals: Set<Individual>)
+        ) =
+        Functional.SameIndividual(
+            axiomAnnotations,
+            Set.TwoOrMore.More(firstIndividual, secondIndividual, moreIndividuals)
+        )
 
-    static member SameIndividual((axiomAnnotations: Set<Annotation>), (firstIndividual: Individual), (secondIndividual: Individual)) =
+    static member SameIndividual
+        ((axiomAnnotations: Set<Annotation>), (firstIndividual: Individual), (secondIndividual: Individual))
+        =
         Functional.SameIndividual(axiomAnnotations, Set.TwoOrMore.Two(firstIndividual, secondIndividual))
 
     static member SameIndividual(axiomAnnotations: Set<Annotation>) =
-        fun (firstIndividual: Individual) -> fun (secondIndividual: Individual) -> Functional.SameIndividual(axiomAnnotations, firstIndividual, secondIndividual)
+        fun (firstIndividual: Individual) ->
+            fun (secondIndividual: Individual) ->
+                Functional.SameIndividual(axiomAnnotations, firstIndividual, secondIndividual)
 
     static member SameIndividual(individuals: Set.TwoOrMore<Individual>) =
         Functional.SameIndividual(Set.empty, individuals)
 
-    static member SameIndividual((firstIndividual: Individual), (secondIndividual: Individual), (moreIndividuals: Set<Individual>)) =
+    static member SameIndividual
+        ((firstIndividual: Individual), (secondIndividual: Individual), (moreIndividuals: Set<Individual>))
+        =
         Functional.SameIndividual(Set.empty, firstIndividual, secondIndividual, moreIndividuals)
 
     static member SameIndividual((firstIndividual: Individual), (secondIndividual: Individual)) =
@@ -5270,20 +5980,33 @@ and Functional =
         Annotated.Annotate(axiomAnnotations, { DifferentIndividuals = individuals })
 
     static member DifferentIndividuals
-        ((axiomAnnotations: Set<Annotation>), (firstIndividual: Individual), (secondIndividual: Individual), (moreIndividuals: Set<Individual>))
-        =
-        Functional.DifferentIndividuals(axiomAnnotations, Set.TwoOrMore.More(firstIndividual, secondIndividual, moreIndividuals))
+        (
+            (axiomAnnotations: Set<Annotation>),
+            (firstIndividual: Individual),
+            (secondIndividual: Individual),
+            (moreIndividuals: Set<Individual>)
+        ) =
+        Functional.DifferentIndividuals(
+            axiomAnnotations,
+            Set.TwoOrMore.More(firstIndividual, secondIndividual, moreIndividuals)
+        )
 
-    static member DifferentIndividuals((axiomAnnotations: Set<Annotation>), (firstIndividual: Individual), (secondIndividual: Individual)) =
+    static member DifferentIndividuals
+        ((axiomAnnotations: Set<Annotation>), (firstIndividual: Individual), (secondIndividual: Individual))
+        =
         Functional.DifferentIndividuals(axiomAnnotations, Set.TwoOrMore.Two(firstIndividual, secondIndividual))
 
     static member DifferentIndividuals(axiomAnnotations: Set<Annotation>) =
-        fun (firstIndividual: Individual) -> fun (secondIndividual: Individual) -> Functional.DifferentIndividuals(axiomAnnotations, firstIndividual, secondIndividual)
+        fun (firstIndividual: Individual) ->
+            fun (secondIndividual: Individual) ->
+                Functional.DifferentIndividuals(axiomAnnotations, firstIndividual, secondIndividual)
 
     static member DifferentIndividuals(individuals: Set.TwoOrMore<Individual>) =
         Functional.DifferentIndividuals(Set.empty, individuals)
 
-    static member DifferentIndividuals((firstIndividual: Individual), (secondIndividual: Individual), (moreIndividuals: Set<Individual>)) =
+    static member DifferentIndividuals
+        ((firstIndividual: Individual), (secondIndividual: Individual), (moreIndividuals: Set<Individual>))
+        =
         Functional.DifferentIndividuals(Set.empty, firstIndividual, secondIndividual, moreIndividuals)
 
     static member DifferentIndividuals((firstIndividual: Individual), (secondIndividual: Individual)) =
@@ -5293,17 +6016,21 @@ and Functional =
         fun (secondIndividual: Individual) -> Functional.DifferentIndividuals(firstIndividual, secondIndividual)
 
     // Assertion tupled overloads retain Functional-Syntax order; curried overloads use triple order.
-    static member ClassAssertion((axiomAnnotations: Set<Annotation>), (classExpression: ClassExpression), (individual: Individual)) =
+    static member ClassAssertion
+        ((axiomAnnotations: Set<Annotation>), (classExpression: ClassExpression), (individual: Individual))
+        =
         Annotated.Annotate(
             axiomAnnotations,
-            {
-                individual = individual
-                classExpression = classExpression
-            }
+            { individual = individual
+              classExpression = classExpression }
         )
 
     static member ClassAssertion(axiomAnnotations: Set<Annotation>) =
-        flip (curryN (Functional.ClassAssertion: Set<Annotation> * ClassExpression * Individual -> Annotated<ClassAssertion>) axiomAnnotations)
+        flip (
+            curryN
+                (Functional.ClassAssertion: Set<Annotation> * ClassExpression * Individual -> Annotated<ClassAssertion>)
+                axiomAnnotations
+        )
 
     static member ClassAssertion((classExpression: ClassExpression), (individual: Individual)) =
         Functional.ClassAssertion(Set.empty, classExpression, individual)
@@ -5317,94 +6044,149 @@ and Functional =
             |> List.map (fun individual -> Functional.ClassAssertion(classExpression, individual))
 
     static member ObjectPropertyAssertion
-        ((axiomAnnotations: Set<Annotation>), (objectPropertyExpression: ObjectPropertyExpression), (sourceIndividual: Individual), (targetIndividual: Individual))
-        =
+        (
+            (axiomAnnotations: Set<Annotation>),
+            (objectPropertyExpression: ObjectPropertyExpression),
+            (sourceIndividual: Individual),
+            (targetIndividual: Individual)
+        ) =
         Annotated.Annotate(
             axiomAnnotations,
-            {
-                sourceIndividual = sourceIndividual
-                objectPropertyExpression = objectPropertyExpression
-                targetIndividual = targetIndividual
-            }
+            { sourceIndividual = sourceIndividual
+              objectPropertyExpression = objectPropertyExpression
+              targetIndividual = targetIndividual }
         )
 
     static member ObjectPropertyAssertion(axiomAnnotations: Set<Annotation>) =
         fun (sourceIndividual: Individual) ->
             fun (objectPropertyExpression: ObjectPropertyExpression) ->
-                fun (targetIndividual: Individual) -> Functional.ObjectPropertyAssertion(axiomAnnotations, objectPropertyExpression, sourceIndividual, targetIndividual)
+                fun (targetIndividual: Individual) ->
+                    Functional.ObjectPropertyAssertion(
+                        axiomAnnotations,
+                        objectPropertyExpression,
+                        sourceIndividual,
+                        targetIndividual
+                    )
 
-    static member ObjectPropertyAssertion((objectPropertyExpression: ObjectPropertyExpression), (sourceIndividual: Individual), (targetIndividual: Individual)) =
+    static member ObjectPropertyAssertion
+        (
+            (objectPropertyExpression: ObjectPropertyExpression),
+            (sourceIndividual: Individual),
+            (targetIndividual: Individual)
+        ) =
         Functional.ObjectPropertyAssertion(Set.empty, objectPropertyExpression, sourceIndividual, targetIndividual)
 
     static member ObjectPropertyAssertion(sourceIndividual: Individual) =
         fun (objectPropertyExpression: ObjectPropertyExpression) ->
-            fun (targetIndividual: Individual) -> Functional.ObjectPropertyAssertion(objectPropertyExpression, sourceIndividual, targetIndividual)
+            fun (targetIndividual: Individual) ->
+                Functional.ObjectPropertyAssertion(objectPropertyExpression, sourceIndividual, targetIndividual)
 
     static member NegativeObjectPropertyAssertion
-        ((axiomAnnotations: Set<Annotation>), (objectPropertyExpression: ObjectPropertyExpression), (sourceIndividual: Individual), (targetIndividual: Individual))
-        =
+        (
+            (axiomAnnotations: Set<Annotation>),
+            (objectPropertyExpression: ObjectPropertyExpression),
+            (sourceIndividual: Individual),
+            (targetIndividual: Individual)
+        ) =
         Annotated.Annotate(
             axiomAnnotations,
-            {
-                sourceIndividual = sourceIndividual
-                negativeObjectPropertyExpression = objectPropertyExpression
-                targetIndividual = targetIndividual
-            }
+            { sourceIndividual = sourceIndividual
+              negativeObjectPropertyExpression = objectPropertyExpression
+              targetIndividual = targetIndividual }
         )
 
     static member NegativeObjectPropertyAssertion(axiomAnnotations: Set<Annotation>) =
         fun (sourceIndividual: Individual) ->
             fun (objectPropertyExpression: ObjectPropertyExpression) ->
                 fun (targetIndividual: Individual) ->
-                    Functional.NegativeObjectPropertyAssertion(axiomAnnotations, objectPropertyExpression, sourceIndividual, targetIndividual)
+                    Functional.NegativeObjectPropertyAssertion(
+                        axiomAnnotations,
+                        objectPropertyExpression,
+                        sourceIndividual,
+                        targetIndividual
+                    )
 
-    static member NegativeObjectPropertyAssertion((objectPropertyExpression: ObjectPropertyExpression), (sourceIndividual: Individual), (targetIndividual: Individual)) =
-        Functional.NegativeObjectPropertyAssertion(Set.empty, objectPropertyExpression, sourceIndividual, targetIndividual)
+    static member NegativeObjectPropertyAssertion
+        (
+            (objectPropertyExpression: ObjectPropertyExpression),
+            (sourceIndividual: Individual),
+            (targetIndividual: Individual)
+        ) =
+        Functional.NegativeObjectPropertyAssertion(
+            Set.empty,
+            objectPropertyExpression,
+            sourceIndividual,
+            targetIndividual
+        )
 
     static member NegativeObjectPropertyAssertion(sourceIndividual: Individual) =
         fun (objectPropertyExpression: ObjectPropertyExpression) ->
-            fun (targetIndividual: Individual) -> Functional.NegativeObjectPropertyAssertion(objectPropertyExpression, sourceIndividual, targetIndividual)
+            fun (targetIndividual: Individual) ->
+                Functional.NegativeObjectPropertyAssertion(objectPropertyExpression, sourceIndividual, targetIndividual)
 
-    static member DataPropertyAssertion((axiomAnnotations: Set<Annotation>), (dataProperty: DataProperty), (sourceIndividual: Individual), (targetValue: Literal)) =
+    static member DataPropertyAssertion
+        (
+            (axiomAnnotations: Set<Annotation>),
+            (dataProperty: DataProperty),
+            (sourceIndividual: Individual),
+            (targetValue: Literal)
+        ) =
         Annotated.Annotate(
             axiomAnnotations,
-            {
-                sourceIndividual = sourceIndividual
-                dataProperty = dataProperty
-                targetValue = targetValue
-            }
+            { sourceIndividual = sourceIndividual
+              dataProperty = dataProperty
+              targetValue = targetValue }
         )
 
     static member DataPropertyAssertion(axiomAnnotations: Set<Annotation>) =
         fun (sourceIndividual: Individual) ->
-            fun (dataProperty: DataProperty) -> fun (targetValue: Literal) -> Functional.DataPropertyAssertion(axiomAnnotations, dataProperty, sourceIndividual, targetValue)
+            fun (dataProperty: DataProperty) ->
+                fun (targetValue: Literal) ->
+                    Functional.DataPropertyAssertion(axiomAnnotations, dataProperty, sourceIndividual, targetValue)
 
-    static member DataPropertyAssertion((dataProperty: DataProperty), (sourceIndividual: Individual), (targetValue: Literal)) =
+    static member DataPropertyAssertion
+        ((dataProperty: DataProperty), (sourceIndividual: Individual), (targetValue: Literal))
+        =
         Functional.DataPropertyAssertion(Set.empty, dataProperty, sourceIndividual, targetValue)
 
     static member DataPropertyAssertion(sourceIndividual: Individual) =
-        fun (dataProperty: DataProperty) -> fun (targetValue: Literal) -> Functional.DataPropertyAssertion(dataProperty, sourceIndividual, targetValue)
+        fun (dataProperty: DataProperty) ->
+            fun (targetValue: Literal) -> Functional.DataPropertyAssertion(dataProperty, sourceIndividual, targetValue)
 
-    static member NegativeDataPropertyAssertion((axiomAnnotations: Set<Annotation>), (dataProperty: DataProperty), (sourceIndividual: Individual), (targetValue: Literal)) =
+    static member NegativeDataPropertyAssertion
+        (
+            (axiomAnnotations: Set<Annotation>),
+            (dataProperty: DataProperty),
+            (sourceIndividual: Individual),
+            (targetValue: Literal)
+        ) =
         Annotated.Annotate(
             axiomAnnotations,
-            {
-                sourceIndividual = sourceIndividual
-                negativeDataProperty = dataProperty
-                targetValue = targetValue
-            }
+            { sourceIndividual = sourceIndividual
+              negativeDataProperty = dataProperty
+              targetValue = targetValue }
         )
 
     static member NegativeDataPropertyAssertion(axiomAnnotations: Set<Annotation>) =
         fun (sourceIndividual: Individual) ->
             fun (dataProperty: DataProperty) ->
-                fun (targetValue: Literal) -> Functional.NegativeDataPropertyAssertion(axiomAnnotations, dataProperty, sourceIndividual, targetValue)
+                fun (targetValue: Literal) ->
+                    Functional.NegativeDataPropertyAssertion(
+                        axiomAnnotations,
+                        dataProperty,
+                        sourceIndividual,
+                        targetValue
+                    )
 
-    static member NegativeDataPropertyAssertion((dataProperty: DataProperty), (sourceIndividual: Individual), (targetValue: Literal)) =
+    static member NegativeDataPropertyAssertion
+        ((dataProperty: DataProperty), (sourceIndividual: Individual), (targetValue: Literal))
+        =
         Functional.NegativeDataPropertyAssertion(Set.empty, dataProperty, sourceIndividual, targetValue)
 
     static member NegativeDataPropertyAssertion(sourceIndividual: Individual) =
-        fun (dataProperty: DataProperty) -> fun (targetValue: Literal) -> Functional.NegativeDataPropertyAssertion(dataProperty, sourceIndividual, targetValue)
+        fun (dataProperty: DataProperty) ->
+            fun (targetValue: Literal) ->
+                Functional.NegativeDataPropertyAssertion(dataProperty, sourceIndividual, targetValue)
 
 and Polarity =
     | Positive
@@ -5455,7 +6237,8 @@ and DataConjunction =
             List.TwoOrMore.Two oneDataConjunction dataConjunction
             |> DataConjunctionOrDataConjunction
 
-    static member (.||)((dataConjunction: DataConjunction), (dataDescription: DataDescription)) = dataDescription .|| dataConjunction
+    static member (.||)((dataConjunction: DataConjunction), (dataDescription: DataDescription)) =
+        dataDescription .|| dataConjunction
 
     static member (.&&)((dataConjunction: DataConjunction), (dataPrimary: DataPrimary)) =
         match dataConjunction with
@@ -5485,15 +6268,13 @@ and DataConjunction =
             |> DataIntersection
         | DataPrimary dataPrimary -> dataPrimary.dataRange
 
-and DataPrimary = {
-    polarity: Polarity
-    dataAtomic: DataAtomic
-} with
+and DataPrimary =
+    { polarity: Polarity
+      dataAtomic: DataAtomic }
 
-    static member (!!)(primary: DataPrimary) = {
-        primary with
-            polarity = !!primary.polarity
-    }
+    static member (!!)(primary: DataPrimary) =
+        { primary with
+            polarity = !!primary.polarity }
 
     static member (.&&)((one: DataPrimary), (two: DataPrimary)) =
         List.TwoOrMore.Two one two |> DataPrimaryAndDataPrimary
@@ -5573,11 +6354,13 @@ and Conjunction =
             | first :: second :: rest -> List.TwoOrMore.More(first, second, rest @ [ primary ]) |> PrimaryAndPrimary
             | _ -> invalidOp "Impossible List.TwoOrMore state."
         | Primary first -> List.TwoOrMore.Two first primary |> PrimaryAndPrimary
-        | ClassThatRestriction _ -> invalidArg (nameof primary) "A class-that conjunction can only be extended by another restriction primary."
+        | ClassThatRestriction _ ->
+            invalidArg (nameof primary) "A class-that conjunction can only be extended by another restriction primary."
 
     static member (.&&)((conjunction: Conjunction), (restrictionPrimary: RestrictionPrimary)) =
         match conjunction with
-        | ClassThatRestriction(classIRI, restrictions) -> ClassThatRestriction(classIRI, List.OneOrMore.More(restrictions.items, restrictionPrimary))
+        | ClassThatRestriction(classIRI, restrictions) ->
+            ClassThatRestriction(classIRI, List.OneOrMore.More(restrictions.items, restrictionPrimary))
         | _ -> conjunction .&& Primary.RestrictionPrimary restrictionPrimary
 
     member this.asClassExpression =
@@ -5621,10 +6404,8 @@ and Conjunction =
     static member that((classIRI: Class), (polarity: Polarity), (restriction: Restriction)) =
         Conjunction.that (
             classIRI,
-            {
-                polarity = polarity
-                restriction = restriction
-            }
+            { polarity = polarity
+              restriction = restriction }
         )
 
     static member that((classIRI: Class), (restriction: Restriction)) =
@@ -5656,7 +6437,10 @@ and Primary =
             | first :: second :: rest -> List.TwoOrMore.More(one, first, second :: rest) |> PrimaryAndPrimary
             | _ -> invalidOp "Impossible List.TwoOrMore state."
         | Primary two -> List.TwoOrMore.Two one two |> PrimaryAndPrimary
-        | ClassThatRestriction _ -> invalidArg (nameof conjunction) "A class-that conjunction cannot be appended to a primary conjunction without parentheses."
+        | ClassThatRestriction _ ->
+            invalidArg
+                (nameof conjunction)
+                "A class-that conjunction cannot be appended to a primary conjunction without parentheses."
 
     member this.asClassExpression =
         match this with
@@ -5666,25 +6450,22 @@ and Primary =
     static member and_((one: Primary), (two: Primary)) = one .&& two
     member this._and(primary: Primary) = this .&& primary
 
-and RestrictionPrimary = {
-    polarity: Polarity
-    restriction: Restriction
-} with
+and RestrictionPrimary =
+    { polarity: Polarity
+      restriction: Restriction }
 
-    static member ofRestriction(restriction: Restriction) = {
-        polarity = Positive
-        restriction = restriction
-    }
+    static member ofRestriction(restriction: Restriction) =
+        { polarity = Positive
+          restriction = restriction }
 
     static member op_Implicit(restriction: Restriction) =
         RestrictionPrimary.ofRestriction restriction
 
     member this.primary = Primary.RestrictionPrimary this
 
-    static member (!!)(restrictionPrimary: RestrictionPrimary) = {
-        restrictionPrimary with
-            polarity = !!restrictionPrimary.polarity
-    }
+    static member (!!)(restrictionPrimary: RestrictionPrimary) =
+        { restrictionPrimary with
+            polarity = !!restrictionPrimary.polarity }
 
     static member (.&&)((one: RestrictionPrimary), (two: RestrictionPrimary)) = one.primary .&& two.primary
 
@@ -5698,19 +6479,18 @@ and RestrictionPrimary = {
     member this._and(other: RestrictionPrimary) = this .&& other
     static member and_((one: RestrictionPrimary), (two: RestrictionPrimary)) = one .&& two
 
-and AtomicPrimary = {
-    polarity: Polarity
-    atomic: Atomic
-} with
+and AtomicPrimary =
+    { polarity: Polarity
+      atomic: Atomic }
 
-    static member ofAtomic(atomic: Atomic) = { polarity = Positive; atomic = atomic }
+    static member ofAtomic(atomic: Atomic) =
+        { polarity = Positive; atomic = atomic }
 
     member this.primary = Primary.AtomicPrimary this
 
-    static member (!!)(atomicPrimary: AtomicPrimary) = {
-        atomicPrimary with
-            polarity = !!atomicPrimary.polarity
-    }
+    static member (!!)(atomicPrimary: AtomicPrimary) =
+        { atomicPrimary with
+            polarity = !!atomicPrimary.polarity }
 
     member this.asClassExpression =
         match this.polarity with
@@ -5731,16 +6511,14 @@ and Atomic =
         | AtomicIndividuals individuals -> ObjectOne individuals
         | AtomicDescription description -> description.asClassExpression
 
-and ObjectPropertyFact = {
-    polarity: Polarity
-    objectProperty: ObjectProperty
-    individual: Individual
-} with
+and ObjectPropertyFact =
+    { polarity: Polarity
+      objectProperty: ObjectProperty
+      individual: Individual }
 
-    static member (!!)(objectPropertyFact: ObjectPropertyFact) : ObjectPropertyFact = {
-        objectPropertyFact with
-            polarity = !!objectPropertyFact.polarity
-    }
+    static member (!!)(objectPropertyFact: ObjectPropertyFact) : ObjectPropertyFact =
+        { objectPropertyFact with
+            polarity = !!objectPropertyFact.polarity }
 
     static member not(objectPropertyFact: ObjectPropertyFact) = !!objectPropertyFact
     member this._not = !!this
@@ -5748,19 +6526,17 @@ and ObjectPropertyFact = {
     member this.Assertion(sourceIndividual: Individual) : Assertion =
         match this.polarity with
         | Positive ->
-            let assertion: ObjectPropertyAssertion = {
-                sourceIndividual = sourceIndividual
-                objectPropertyExpression = Functional.AsObjectPropertyExpression this.objectProperty
-                targetIndividual = this.individual
-            }
+            let assertion: ObjectPropertyAssertion =
+                { sourceIndividual = sourceIndividual
+                  objectPropertyExpression = Functional.AsObjectPropertyExpression this.objectProperty
+                  targetIndividual = this.individual }
 
             Assertion.ObjectPropertyAssertion assertion
         | Negative ->
-            let assertion: NegativeObjectPropertyAssertion = {
-                sourceIndividual = sourceIndividual
-                negativeObjectPropertyExpression = Functional.AsObjectPropertyExpression this.objectProperty
-                targetIndividual = this.individual
-            }
+            let assertion: NegativeObjectPropertyAssertion =
+                { sourceIndividual = sourceIndividual
+                  negativeObjectPropertyExpression = Functional.AsObjectPropertyExpression this.objectProperty
+                  targetIndividual = this.individual }
 
             Assertion.NegativeObjectPropertyAssertion assertion
 
@@ -5768,16 +6544,14 @@ and ObjectPropertyFact = {
         individuals
         |> List.map (fun sourceIndividual -> this.Assertion sourceIndividual)
 
-and DataPropertyFact = {
-    polarity: Polarity
-    dataProperty: DataProperty
-    literal: Literal
-} with
+and DataPropertyFact =
+    { polarity: Polarity
+      dataProperty: DataProperty
+      literal: Literal }
 
-    static member (!!)(dataPropertyFact: DataPropertyFact) : DataPropertyFact = {
-        dataPropertyFact with
-            polarity = !!dataPropertyFact.polarity
-    }
+    static member (!!)(dataPropertyFact: DataPropertyFact) : DataPropertyFact =
+        { dataPropertyFact with
+            polarity = !!dataPropertyFact.polarity }
 
     static member not(dataPropertyFact: DataPropertyFact) = !!dataPropertyFact
     member this._not = !!this
@@ -5785,19 +6559,17 @@ and DataPropertyFact = {
     member this.Assertion(sourceIndividual: Individual) : Assertion =
         match this.polarity with
         | Positive ->
-            let assertion: DataPropertyAssertion = {
-                sourceIndividual = sourceIndividual
-                dataProperty = this.dataProperty
-                targetValue = this.literal
-            }
+            let assertion: DataPropertyAssertion =
+                { sourceIndividual = sourceIndividual
+                  dataProperty = this.dataProperty
+                  targetValue = this.literal }
 
             Assertion.DataPropertyAssertion assertion
         | Negative ->
-            let assertion: NegativeDataPropertyAssertion = {
-                sourceIndividual = sourceIndividual
-                negativeDataProperty = this.dataProperty
-                targetValue = this.literal
-            }
+            let assertion: NegativeDataPropertyAssertion =
+                { sourceIndividual = sourceIndividual
+                  negativeDataProperty = this.dataProperty
+                  targetValue = this.literal }
 
             Assertion.NegativeDataPropertyAssertion assertion
 
@@ -5840,46 +6612,36 @@ and [<RequireQualifiedAccess>] ObjectPropertyCharacteristic =
 
 and [<RequireQualifiedAccess>] DataPropertyCharacteristic = | Functional
 
-and DisjointUnionDescriptions = {
-    disjointUnionDescriptions: Set.TwoOrMore<Description>
-}
+and DisjointUnionDescriptions =
+    { disjointUnionDescriptions: Set.TwoOrMore<Description> }
 
-and KeyPropertyExpressions = {
-    keyPropertyExpressions: List.OneOrMore<PropertyExpression>
-}
+and KeyPropertyExpressions =
+    { keyPropertyExpressions: List.OneOrMore<PropertyExpression> }
 
 // The following n-ary types correspond to Manchester's top-level misc productions.
-and EquivalentDescriptions = {
-    equivalentDescriptions: Set.TwoOrMore<Description>
-}
+and EquivalentDescriptions =
+    { equivalentDescriptions: Set.TwoOrMore<Description> }
 
-and DisjointDescriptions = {
-    disjointDescriptions: Set.TwoOrMore<Description>
-}
+and DisjointDescriptions =
+    { disjointDescriptions: Set.TwoOrMore<Description> }
 
-and EquivalentObjectProperties = {
-    equivalentObjectProperties: Set.TwoOrMore<ObjectProperty>
-}
+and EquivalentObjectProperties =
+    { equivalentObjectProperties: Set.TwoOrMore<ObjectProperty> }
 
-and DisjointObjectProperties = {
-    disjointObjectProperties: Set.TwoOrMore<ObjectProperty>
-}
+and DisjointObjectProperties =
+    { disjointObjectProperties: Set.TwoOrMore<ObjectProperty> }
 
-and EquivalentDataPropertyExpressions = {
-    equivalentDataProperties: Set.TwoOrMore<DataProperty>
-}
+and EquivalentDataPropertyExpressions =
+    { equivalentDataProperties: Set.TwoOrMore<DataProperty> }
 
-and DisjointDataPropertyExpressions = {
-    disjointDataProperties: Set.TwoOrMore<DataProperty>
-}
+and DisjointDataPropertyExpressions =
+    { disjointDataProperties: Set.TwoOrMore<DataProperty> }
 
-and SameIndividuals = {
-    sameIndividuals: Set.TwoOrMore<Individual>
-}
+and SameIndividuals =
+    { sameIndividuals: Set.TwoOrMore<Individual> }
 
-and DifferentIndividualValues = {
-    differentIndividuals: Set.TwoOrMore<Individual>
-}
+and DifferentIndividualValues =
+    { differentIndividuals: Set.TwoOrMore<Individual> }
 
 and [<RequireQualifiedAccess>] Misc =
     | EquivalentClasses of Annotated<EquivalentDescriptions>
@@ -5895,11 +6657,10 @@ and [<RequireQualifiedAccess>] Misc =
         match this with
         | Misc.EquivalentClasses entry ->
             entry.map (fun equivalentDescriptions ->
-                let equivalent: EquivalentClasses = {
-                    equivalentClasses =
+                let equivalent: EquivalentClasses =
+                    { equivalentClasses =
                         equivalentDescriptions.equivalentDescriptions
-                        |> Set.TwoOrMore<Description>.map (fun description -> description.asClassExpression)
-                }
+                        |> Set.TwoOrMore<Description>.map (fun description -> description.asClassExpression) }
 
                 ClassAxiom.EquivalentClassesAxiom equivalent)
             |> Manchester.classAxiom
@@ -5907,11 +6668,10 @@ and [<RequireQualifiedAccess>] Misc =
 
         | Misc.DisjointClasses entry ->
             entry.map (fun disjointDescriptions ->
-                let disjoint: DisjointClasses = {
-                    disjointClasses =
+                let disjoint: DisjointClasses =
+                    { disjointClasses =
                         disjointDescriptions.disjointDescriptions
-                        |> Set.TwoOrMore<Description>.map (fun description -> description.asClassExpression)
-                }
+                        |> Set.TwoOrMore<Description>.map (fun description -> description.asClassExpression) }
 
                 ClassAxiom.DisjointClassesAxiom disjoint)
             |> Manchester.classAxiom
@@ -5919,11 +6679,10 @@ and [<RequireQualifiedAccess>] Misc =
 
         | Misc.EquivalentObjectProperties entry ->
             entry.map (fun equivalentObjectProperties ->
-                let equivalent: EquivalentObjectPropertyExpressions = {
-                    equivalentObjectPropertyExpressions =
+                let equivalent: EquivalentObjectPropertyExpressions =
+                    { equivalentObjectPropertyExpressions =
                         equivalentObjectProperties.equivalentObjectProperties
-                        |> Set.TwoOrMore<ObjectProperty>.map Functional.AsObjectPropertyExpression
-                }
+                        |> Set.TwoOrMore<ObjectProperty>.map Functional.AsObjectPropertyExpression }
 
                 ObjectPropertyAxiom.EquivalentObjectProperties equivalent)
             |> Manchester.objectPropertyAxiom
@@ -5931,11 +6690,10 @@ and [<RequireQualifiedAccess>] Misc =
 
         | Misc.DisjointObjectProperties entry ->
             entry.map (fun disjointObjectProperties ->
-                let disjoint: DisjointObjectPropertyExpressions = {
-                    disjointObjectPropertyExpressions =
+                let disjoint: DisjointObjectPropertyExpressions =
+                    { disjointObjectPropertyExpressions =
                         disjointObjectProperties.disjointObjectProperties
-                        |> Set.TwoOrMore<ObjectProperty>.map Functional.AsObjectPropertyExpression
-                }
+                        |> Set.TwoOrMore<ObjectProperty>.map Functional.AsObjectPropertyExpression }
 
                 ObjectPropertyAxiom.DisjointObjectProperties disjoint)
             |> Manchester.objectPropertyAxiom
@@ -5943,9 +6701,8 @@ and [<RequireQualifiedAccess>] Misc =
 
         | Misc.EquivalentDataProperties entry ->
             entry.map (fun equivalentDataProperties ->
-                let equivalent: EquivalentDataProperties = {
-                    equivalentDataProperties = equivalentDataProperties.equivalentDataProperties
-                }
+                let equivalent: EquivalentDataProperties =
+                    { equivalentDataProperties = equivalentDataProperties.equivalentDataProperties }
 
                 DataPropertyAxiom.EquivalentDataProperties equivalent)
             |> Manchester.dataPropertyAxiom
@@ -5953,9 +6710,8 @@ and [<RequireQualifiedAccess>] Misc =
 
         | Misc.DisjointDataProperties entry ->
             entry.map (fun disjointDataProperties ->
-                let disjoint: DisjointDataProperties = {
-                    disjointDataProperties = disjointDataProperties.disjointDataProperties
-                }
+                let disjoint: DisjointDataProperties =
+                    { disjointDataProperties = disjointDataProperties.disjointDataProperties }
 
                 DataPropertyAxiom.DisjointDataProperties disjoint)
             |> Manchester.dataPropertyAxiom
@@ -5963,45 +6719,42 @@ and [<RequireQualifiedAccess>] Misc =
 
         | Misc.SameIndividual entry ->
             entry.map (fun sameIndividuals ->
-                let same: SameIndividual = {
-                    SameIndividual = sameIndividuals.sameIndividuals
-                }
+                let same: SameIndividual = { SameIndividual = sameIndividuals.sameIndividuals }
                 Assertion.SameIndividual same)
             |> Manchester.assertionAxiom
             |> Set.singleton
 
         | Misc.DifferentIndividuals entry ->
             entry.map (fun differentIndividuals ->
-                let different: DifferentIndividuals = {
-                    DifferentIndividuals = differentIndividuals.differentIndividuals
-                }
+                let different: DifferentIndividuals =
+                    { DifferentIndividuals = differentIndividuals.differentIndividuals }
 
                 Assertion.DifferentIndividuals different)
             |> Manchester.assertionAxiom
             |> Set.singleton
 
-and DatatypeFrame = {
-    Datatype: DatatypeIri
-    Annotations: Set<Annotation>
-    EquivalentTo: Annotated<DataRange> option
-} with
+and DatatypeFrame =
+    { Datatype: DatatypeIri
+      Annotations: Set<Annotation>
+      EquivalentTo: Annotated<DataRange> option }
 
     member this.axioms: Set<Annotated<Axiom>> =
         let annotationSubject = IriSubject this.Datatype.Iri
 
-        let annotations = Manchester.annotationAssertions (annotationSubject, this.Annotations)
+        let annotations =
+            Manchester.annotationAssertions (annotationSubject, this.Annotations)
 
-        let declaration = Functional.Datatype this.Datatype |> Manchester.declaration |> Set.singleton
+        let declaration =
+            Functional.Datatype this.Datatype |> Manchester.declaration |> Set.singleton
 
         let definition =
             this.EquivalentTo
             |> Option.map (fun equivalentTo ->
                 equivalentTo
                     .map(fun dataRange ->
-                        let definition: DatatypeDefinition = {
-                            datatype = this.Datatype
-                            dataRange = dataRange
-                        }
+                        let definition: DatatypeDefinition =
+                            { datatype = this.Datatype
+                              dataRange = dataRange }
 
                         definition)
                     .map
@@ -6011,32 +6764,32 @@ and DatatypeFrame = {
 
         Set.unionMany [ declaration; annotations; definition ]
 
-and ClassFrame = {
-    Class: Class
-    Annotations: Set<Annotation>
-    SubClassOf: Set<Annotated<Description>>
-    EquivalentTo: Set<Annotated<Description>>
-    DisjointWith: Set<Annotated<Description>>
-    DisjointUnionOf: Set<Annotated<DisjointUnionDescriptions>>
-    HasKey: Set<Annotated<KeyPropertyExpressions>>
-} with
+and ClassFrame =
+    { Class: Class
+      Annotations: Set<Annotation>
+      SubClassOf: Set<Annotated<Description>>
+      EquivalentTo: Set<Annotated<Description>>
+      DisjointWith: Set<Annotated<Description>>
+      DisjointUnionOf: Set<Annotated<DisjointUnionDescriptions>>
+      HasKey: Set<Annotated<KeyPropertyExpressions>> }
 
     member this.axioms: Set<Annotated<Axiom>> =
         let classExpression = this.Class.Class
         let annotationSubject = IriSubject this.Class.Iri
 
-        let declaration = Functional.Class this.Class |> Manchester.declaration |> Set.singleton
+        let declaration =
+            Functional.Class this.Class |> Manchester.declaration |> Set.singleton
 
-        let annotations = Manchester.annotationAssertions (annotationSubject, this.Annotations)
+        let annotations =
+            Manchester.annotationAssertions (annotationSubject, this.Annotations)
 
         let subClassOf =
             this.SubClassOf
             |> Set.map (fun entry ->
                 entry.map (fun description ->
-                    let subClass: SubClass = {
-                        subClassExpression = classExpression
-                        superClassExpression = description.asClassExpression
-                    }
+                    let subClass: SubClass =
+                        { subClassExpression = classExpression
+                          superClassExpression = description.asClassExpression }
 
                     ClassAxiom.SubClassAxiom subClass)
                 |> Manchester.classAxiom)
@@ -6045,9 +6798,8 @@ and ClassFrame = {
             this.EquivalentTo
             |> Set.map (fun entry ->
                 entry.map (fun description ->
-                    let equivalentClasses: EquivalentClasses = {
-                        equivalentClasses = Set.TwoOrMore.Two(classExpression, description.asClassExpression)
-                    }
+                    let equivalentClasses: EquivalentClasses =
+                        { equivalentClasses = Set.TwoOrMore.Two(classExpression, description.asClassExpression) }
 
                     ClassAxiom.EquivalentClassesAxiom equivalentClasses)
                 |> Manchester.classAxiom)
@@ -6056,9 +6808,8 @@ and ClassFrame = {
             this.DisjointWith
             |> Set.map (fun entry ->
                 entry.map (fun description ->
-                    let disjointClasses: DisjointClasses = {
-                        disjointClasses = Set.TwoOrMore.Two(classExpression, description.asClassExpression)
-                    }
+                    let disjointClasses: DisjointClasses =
+                        { disjointClasses = Set.TwoOrMore.Two(classExpression, description.asClassExpression) }
 
                     ClassAxiom.DisjointClassesAxiom disjointClasses)
                 |> Manchester.classAxiom)
@@ -6067,12 +6818,12 @@ and ClassFrame = {
             this.DisjointUnionOf
             |> Set.map (fun entry ->
                 entry.map (fun disjointUnionDescriptions ->
-                    let disjointUnion: DisjointUnion = {
-                        disjointClass = this.Class
-                        disjointClassExpressions =
+                    let disjointUnion: DisjointUnion =
+                        { disjointClass = this.Class
+                          disjointClassExpressions =
                             disjointUnionDescriptions.disjointUnionDescriptions
-                            |> Set.TwoOrMore<Description>.map (fun (description: Description) -> description.asClassExpression)
-                    }
+                            |> Set.TwoOrMore<Description>
+                                .map (fun (description: Description) -> description.asClassExpression) }
 
                     ClassAxiom.DisjointUnionAxiom disjointUnion)
                 |> Manchester.classAxiom)
@@ -6081,38 +6832,36 @@ and ClassFrame = {
             this.HasKey
             |> Set.map (fun entry ->
                 entry.map (fun keyPropertyExpressions ->
-                    let hasKey: HasKey = {
-                        classExpression = classExpression
-                        keyProperties = Manchester.keyProperties keyPropertyExpressions
-                    }
+                    let hasKey: HasKey =
+                        { classExpression = classExpression
+                          keyProperties = Manchester.keyProperties keyPropertyExpressions }
 
                     Axiom.HasKey hasKey))
 
-        Set.unionMany [
-            declaration
-            annotations
-            subClassOf
-            equivalentTo
-            disjointWith
-            disjointUnionOf
-            hasKey
-        ]
+        Set.unionMany
+            [ declaration
+              annotations
+              subClassOf
+              equivalentTo
+              disjointWith
+              disjointUnionOf
+              hasKey ]
 
-and ObjectPropertyFrame = {
-    ObjectProperty: ObjectProperty
-    Annotations: Set<Annotation>
-    Domain: Set<Annotated<Description>>
-    Range: Set<Annotated<Description>>
-    Characteristics: Set<Annotated<ObjectPropertyCharacteristic>>
-    SubPropertyOf: Set<Annotated<ObjectPropertyExpression>>
-    EquivalentTo: Set<Annotated<ObjectPropertyExpression>>
-    DisjointWith: Set<Annotated<ObjectPropertyExpression>>
-    InverseOf: Set<Annotated<ObjectPropertyExpression>>
-    SubPropertyChain: Set<Annotated<PropertyExpressionChain>>
-} with
+and ObjectPropertyFrame =
+    { ObjectProperty: ObjectProperty
+      Annotations: Set<Annotation>
+      Domain: Set<Annotated<Description>>
+      Range: Set<Annotated<Description>>
+      Characteristics: Set<Annotated<ObjectPropertyCharacteristic>>
+      SubPropertyOf: Set<Annotated<ObjectPropertyExpression>>
+      EquivalentTo: Set<Annotated<ObjectPropertyExpression>>
+      DisjointWith: Set<Annotated<ObjectPropertyExpression>>
+      InverseOf: Set<Annotated<ObjectPropertyExpression>>
+      SubPropertyChain: Set<Annotated<PropertyExpressionChain>> }
 
     member this.axioms: Set<Annotated<Axiom>> =
-        let objectPropertyExpression = Functional.AsObjectPropertyExpression this.ObjectProperty
+        let objectPropertyExpression =
+            Functional.AsObjectPropertyExpression this.ObjectProperty
 
         let annotationSubject = IriSubject this.ObjectProperty.Iri
 
@@ -6121,16 +6870,16 @@ and ObjectPropertyFrame = {
             |> Manchester.declaration
             |> Set.singleton
 
-        let annotations = Manchester.annotationAssertions (annotationSubject, this.Annotations)
+        let annotations =
+            Manchester.annotationAssertions (annotationSubject, this.Annotations)
 
         let domain =
             this.Domain
             |> Set.map (fun entry ->
                 entry.map (fun description ->
-                    let domain: ObjectPropertyDomain = {
-                        objectPropertyExpression = objectPropertyExpression
-                        objectPropertyDomain = description.asClassExpression
-                    }
+                    let domain: ObjectPropertyDomain =
+                        { objectPropertyExpression = objectPropertyExpression
+                          objectPropertyDomain = description.asClassExpression }
 
                     ObjectPropertyAxiom.ObjectPropertyDomain domain)
                 |> Manchester.objectPropertyAxiom)
@@ -6139,10 +6888,9 @@ and ObjectPropertyFrame = {
             this.Range
             |> Set.map (fun entry ->
                 entry.map (fun description ->
-                    let range: ObjectPropertyRange = {
-                        objectPropertyExpression = objectPropertyExpression
-                        objectPropertyRange = description.asClassExpression
-                    }
+                    let range: ObjectPropertyRange =
+                        { objectPropertyExpression = objectPropertyExpression
+                          objectPropertyRange = description.asClassExpression }
 
                     ObjectPropertyAxiom.ObjectPropertyRange range)
                 |> Manchester.objectPropertyAxiom)
@@ -6153,43 +6901,35 @@ and ObjectPropertyFrame = {
                 entry.map (fun characteristic ->
                     match characteristic with
                     | ObjectPropertyCharacteristic.Functional ->
-                        ObjectPropertyAxiom.FunctionalObjectProperty {
-                            functionalObjectProperty = objectPropertyExpression
-                        }
+                        ObjectPropertyAxiom.FunctionalObjectProperty
+                            { functionalObjectProperty = objectPropertyExpression }
                     | ObjectPropertyCharacteristic.InverseFunctional ->
-                        ObjectPropertyAxiom.InverseFunctionalObjectProperty {
-                            inverseFunctionalObjectProperty = objectPropertyExpression
-                        }
+                        ObjectPropertyAxiom.InverseFunctionalObjectProperty
+                            { inverseFunctionalObjectProperty = objectPropertyExpression }
                     | ObjectPropertyCharacteristic.Reflexive ->
-                        ObjectPropertyAxiom.ReflexiveObjectProperty {
-                            reflexiveObjectProperty = objectPropertyExpression
-                        }
+                        ObjectPropertyAxiom.ReflexiveObjectProperty
+                            { reflexiveObjectProperty = objectPropertyExpression }
                     | ObjectPropertyCharacteristic.Irreflexive ->
-                        ObjectPropertyAxiom.IrreflexiveObjectProperty {
-                            irreflexiveObjectProperty = objectPropertyExpression
-                        }
+                        ObjectPropertyAxiom.IrreflexiveObjectProperty
+                            { irreflexiveObjectProperty = objectPropertyExpression }
                     | ObjectPropertyCharacteristic.Symmetric ->
-                        ObjectPropertyAxiom.SymmetricObjectProperty {
-                            symmetricObjectProperty = objectPropertyExpression
-                        }
+                        ObjectPropertyAxiom.SymmetricObjectProperty
+                            { symmetricObjectProperty = objectPropertyExpression }
                     | ObjectPropertyCharacteristic.Asymmetric ->
-                        ObjectPropertyAxiom.AsymmetricObjectProperty {
-                            asymmetricObjectProperty = objectPropertyExpression
-                        }
+                        ObjectPropertyAxiom.AsymmetricObjectProperty
+                            { asymmetricObjectProperty = objectPropertyExpression }
                     | ObjectPropertyCharacteristic.Transitive ->
-                        ObjectPropertyAxiom.TransitiveObjectProperty {
-                            transitiveObjectProperty = objectPropertyExpression
-                        })
+                        ObjectPropertyAxiom.TransitiveObjectProperty
+                            { transitiveObjectProperty = objectPropertyExpression })
                 |> Manchester.objectPropertyAxiom)
 
         let subPropertyOf =
             this.SubPropertyOf
             |> Set.map (fun entry ->
                 entry.map (fun superObjectPropertyExpression ->
-                    let subObjectProperty: SubObjectProperty = {
-                        subObjectPropertyExpression = SubObjectPropertyExpression objectPropertyExpression
-                        superObjectPropertyExpression = superObjectPropertyExpression
-                    }
+                    let subObjectProperty: SubObjectProperty =
+                        { subObjectPropertyExpression = SubObjectPropertyExpression objectPropertyExpression
+                          superObjectPropertyExpression = superObjectPropertyExpression }
 
                     ObjectPropertyAxiom.SubObjectProperty subObjectProperty)
                 |> Manchester.objectPropertyAxiom)
@@ -6198,9 +6938,9 @@ and ObjectPropertyFrame = {
             this.EquivalentTo
             |> Set.map (fun entry ->
                 entry.map (fun equivalentObjectPropertyExpression ->
-                    let equivalent: EquivalentObjectPropertyExpressions = {
-                        equivalentObjectPropertyExpressions = Set.TwoOrMore.Two(objectPropertyExpression, equivalentObjectPropertyExpression)
-                    }
+                    let equivalent: EquivalentObjectPropertyExpressions =
+                        { equivalentObjectPropertyExpressions =
+                            Set.TwoOrMore.Two(objectPropertyExpression, equivalentObjectPropertyExpression) }
 
                     ObjectPropertyAxiom.EquivalentObjectProperties equivalent)
                 |> Manchester.objectPropertyAxiom)
@@ -6209,9 +6949,9 @@ and ObjectPropertyFrame = {
             this.DisjointWith
             |> Set.map (fun entry ->
                 entry.map (fun disjointObjectPropertyExpression ->
-                    let disjoint: DisjointObjectPropertyExpressions = {
-                        disjointObjectPropertyExpressions = Set.TwoOrMore.Two(objectPropertyExpression, disjointObjectPropertyExpression)
-                    }
+                    let disjoint: DisjointObjectPropertyExpressions =
+                        { disjointObjectPropertyExpressions =
+                            Set.TwoOrMore.Two(objectPropertyExpression, disjointObjectPropertyExpression) }
 
                     ObjectPropertyAxiom.DisjointObjectProperties disjoint)
                 |> Manchester.objectPropertyAxiom)
@@ -6220,9 +6960,8 @@ and ObjectPropertyFrame = {
             this.InverseOf
             |> Set.map (fun entry ->
                 entry.map (fun inverseObjectPropertyExpression ->
-                    let inverse: InverseObjectProperties = {
-                        inverseObjectProperties = objectPropertyExpression, inverseObjectPropertyExpression
-                    }
+                    let inverse: InverseObjectProperties =
+                        { inverseObjectProperties = objectPropertyExpression, inverseObjectPropertyExpression }
 
                     ObjectPropertyAxiom.InverseObjectProperties inverse)
                 |> Manchester.objectPropertyAxiom)
@@ -6231,37 +6970,34 @@ and ObjectPropertyFrame = {
             this.SubPropertyChain
             |> Set.map (fun entry ->
                 entry.map (fun propertyExpressionChain ->
-                    let subObjectProperty: SubObjectProperty = {
-                        subObjectPropertyExpression = PropertyExpressionChain propertyExpressionChain
-                        superObjectPropertyExpression = objectPropertyExpression
-                    }
+                    let subObjectProperty: SubObjectProperty =
+                        { subObjectPropertyExpression = PropertyExpressionChain propertyExpressionChain
+                          superObjectPropertyExpression = objectPropertyExpression }
 
                     ObjectPropertyAxiom.SubObjectProperty subObjectProperty)
                 |> Manchester.objectPropertyAxiom)
 
-        Set.unionMany [
-            declaration
-            annotations
-            domain
-            range
-            characteristics
-            subPropertyOf
-            equivalentTo
-            disjointWith
-            inverseOf
-            subPropertyChain
-        ]
+        Set.unionMany
+            [ declaration
+              annotations
+              domain
+              range
+              characteristics
+              subPropertyOf
+              equivalentTo
+              disjointWith
+              inverseOf
+              subPropertyChain ]
 
-and DataPropertyFrame = {
-    DataProperty: DataProperty
-    Annotations: Set<Annotation>
-    Domain: Set<Annotated<Description>>
-    Range: Set<Annotated<DataRange>>
-    Characteristics: Set<Annotated<DataPropertyCharacteristic>>
-    SubPropertyOf: Set<Annotated<DataProperty>>
-    EquivalentTo: Set<Annotated<DataProperty>>
-    DisjointWith: Set<Annotated<DataProperty>>
-} with
+and DataPropertyFrame =
+    { DataProperty: DataProperty
+      Annotations: Set<Annotation>
+      Domain: Set<Annotated<Description>>
+      Range: Set<Annotated<DataRange>>
+      Characteristics: Set<Annotated<DataPropertyCharacteristic>>
+      SubPropertyOf: Set<Annotated<DataProperty>>
+      EquivalentTo: Set<Annotated<DataProperty>>
+      DisjointWith: Set<Annotated<DataProperty>> }
 
     member this.axioms: Set<Annotated<Axiom>> =
         let dataProperty = this.DataProperty
@@ -6272,16 +7008,16 @@ and DataPropertyFrame = {
             |> Manchester.declaration
             |> Set.singleton
 
-        let annotations = Manchester.annotationAssertions (annotationSubject, this.Annotations)
+        let annotations =
+            Manchester.annotationAssertions (annotationSubject, this.Annotations)
 
         let domain =
             this.Domain
             |> Set.map (fun entry ->
                 entry.map (fun description ->
-                    let domain: DataPropertyDomain = {
-                        dataProperty = dataProperty
-                        dataPropertyDomain = description.asClassExpression
-                    }
+                    let domain: DataPropertyDomain =
+                        { dataProperty = dataProperty
+                          dataPropertyDomain = description.asClassExpression }
 
                     DataPropertyAxiom.DataPropertyDomain domain)
                 |> Manchester.dataPropertyAxiom)
@@ -6290,10 +7026,9 @@ and DataPropertyFrame = {
             this.Range
             |> Set.map (fun entry ->
                 entry.map (fun dataRange ->
-                    let range: DataPropertyRange = {
-                        dataProperty = dataProperty
-                        dataPropertyRange = dataRange
-                    }
+                    let range: DataPropertyRange =
+                        { dataProperty = dataProperty
+                          dataPropertyRange = dataRange }
 
                     DataPropertyAxiom.DataPropertyRange range)
                 |> Manchester.dataPropertyAxiom)
@@ -6304,19 +7039,16 @@ and DataPropertyFrame = {
                 entry.map (fun characteristic ->
                     match characteristic with
                     | DataPropertyCharacteristic.Functional ->
-                        DataPropertyAxiom.FunctionalDataProperty {
-                            functionalDataProperty = dataProperty
-                        })
+                        DataPropertyAxiom.FunctionalDataProperty { functionalDataProperty = dataProperty })
                 |> Manchester.dataPropertyAxiom)
 
         let subPropertyOf =
             this.SubPropertyOf
             |> Set.map (fun entry ->
                 entry.map (fun superDataProperty ->
-                    let subDataProperty: SubDataProperty = {
-                        subDataProperty = dataProperty
-                        superDataProperty = superDataProperty
-                    }
+                    let subDataProperty: SubDataProperty =
+                        { subDataProperty = dataProperty
+                          superDataProperty = superDataProperty }
 
                     DataPropertyAxiom.SubDataProperty subDataProperty)
                 |> Manchester.dataPropertyAxiom)
@@ -6325,9 +7057,8 @@ and DataPropertyFrame = {
             this.EquivalentTo
             |> Set.map (fun entry ->
                 entry.map (fun equivalentDataPropertyExpression ->
-                    let equivalent: EquivalentDataProperties = {
-                        equivalentDataProperties = Set.TwoOrMore.Two(dataProperty, equivalentDataPropertyExpression)
-                    }
+                    let equivalent: EquivalentDataProperties =
+                        { equivalentDataProperties = Set.TwoOrMore.Two(dataProperty, equivalentDataPropertyExpression) }
 
                     DataPropertyAxiom.EquivalentDataProperties equivalent)
                 |> Manchester.dataPropertyAxiom)
@@ -6336,31 +7067,28 @@ and DataPropertyFrame = {
             this.DisjointWith
             |> Set.map (fun entry ->
                 entry.map (fun disjointDataPropertyExpression ->
-                    let disjoint: DisjointDataProperties = {
-                        disjointDataProperties = Set.TwoOrMore.Two(dataProperty, disjointDataPropertyExpression)
-                    }
+                    let disjoint: DisjointDataProperties =
+                        { disjointDataProperties = Set.TwoOrMore.Two(dataProperty, disjointDataPropertyExpression) }
 
                     DataPropertyAxiom.DisjointDataProperties disjoint)
                 |> Manchester.dataPropertyAxiom)
 
-        Set.unionMany [
-            declaration
-            annotations
-            domain
-            range
-            characteristics
-            subPropertyOf
-            equivalentTo
-            disjointWith
-        ]
+        Set.unionMany
+            [ declaration
+              annotations
+              domain
+              range
+              characteristics
+              subPropertyOf
+              equivalentTo
+              disjointWith ]
 
-and AnnotationPropertyFrame = {
-    AnnotationProperty: AnnotationProperty
-    Annotations: Set<Annotation>
-    Domain: Set<Annotated<Iri>>
-    Range: Set<Annotated<Iri>>
-    SubPropertyOf: Set<Annotated<AnnotationProperty>>
-} with
+and AnnotationPropertyFrame =
+    { AnnotationProperty: AnnotationProperty
+      Annotations: Set<Annotation>
+      Domain: Set<Annotated<Iri>>
+      Range: Set<Annotated<Iri>>
+      SubPropertyOf: Set<Annotated<AnnotationProperty>> }
 
     member this.axioms: Set<Annotated<Axiom>> =
         let annotationSubject = IriSubject this.AnnotationProperty.Iri
@@ -6370,16 +7098,16 @@ and AnnotationPropertyFrame = {
             |> Manchester.declaration
             |> Set.singleton
 
-        let annotations = Manchester.annotationAssertions (annotationSubject, this.Annotations)
+        let annotations =
+            Manchester.annotationAssertions (annotationSubject, this.Annotations)
 
         let domain =
             this.Domain
             |> Set.map (fun entry ->
                 entry.map (fun domainIri ->
-                    let domain: AnnotationPropertyDomain = {
-                        annotationProperty = this.AnnotationProperty
-                        domainIri = domainIri
-                    }
+                    let domain: AnnotationPropertyDomain =
+                        { annotationProperty = this.AnnotationProperty
+                          domainIri = domainIri }
 
                     AnnotationAxiom.AnnotationPropertyDomain domain)
                 |> Manchester.annotationAxiom)
@@ -6388,10 +7116,9 @@ and AnnotationPropertyFrame = {
             this.Range
             |> Set.map (fun entry ->
                 entry.map (fun rangeIri ->
-                    let range: AnnotationPropertyRange = {
-                        annotationProperty = this.AnnotationProperty
-                        rangeIri = rangeIri
-                    }
+                    let range: AnnotationPropertyRange =
+                        { annotationProperty = this.AnnotationProperty
+                          rangeIri = rangeIri }
 
                     AnnotationAxiom.AnnotationPropertyRange range)
                 |> Manchester.annotationAxiom)
@@ -6400,24 +7127,22 @@ and AnnotationPropertyFrame = {
             this.SubPropertyOf
             |> Set.map (fun entry ->
                 entry.map (fun superAnnotationProperty ->
-                    let subProperty: SubAnnotationProperty = {
-                        subAnnotationProperty = this.AnnotationProperty
-                        superAnnotationProperty = superAnnotationProperty
-                    }
+                    let subProperty: SubAnnotationProperty =
+                        { subAnnotationProperty = this.AnnotationProperty
+                          superAnnotationProperty = superAnnotationProperty }
 
                     AnnotationAxiom.SubAnnotationProperty subProperty)
                 |> Manchester.annotationAxiom)
 
         Set.unionMany [ declaration; annotations; domain; range; subPropertyOf ]
 
-and IndividualFrame = {
-    Individual: Individual
-    Annotations: Set<Annotation>
-    Types: Set<Annotated<Description>>
-    Facts: Set<Annotated<Fact>>
-    SameAs: Set<Annotated<Individual>>
-    DifferentFrom: Set<Annotated<Individual>>
-} with
+and IndividualFrame =
+    { Individual: Individual
+      Annotations: Set<Annotation>
+      Types: Set<Annotated<Description>>
+      Facts: Set<Annotated<Fact>>
+      SameAs: Set<Annotated<Individual>>
+      DifferentFrom: Set<Annotated<Individual>> }
 
     member this.axioms: Set<Annotated<Axiom>> =
         let annotationSubject = Manchester.individualAnnotationSubject this.Individual
@@ -6427,16 +7152,16 @@ and IndividualFrame = {
             |> Option.toList
             |> Set.ofList
 
-        let annotations = Manchester.annotationAssertions (annotationSubject, this.Annotations)
+        let annotations =
+            Manchester.annotationAssertions (annotationSubject, this.Annotations)
 
         let types =
             this.Types
             |> Set.map (fun entry ->
                 entry.map (fun description ->
-                    let assertion: ClassAssertion = {
-                        individual = this.Individual
-                        classExpression = description.asClassExpression
-                    }
+                    let assertion: ClassAssertion =
+                        { individual = this.Individual
+                          classExpression = description.asClassExpression }
 
                     Assertion.ClassAssertion assertion)
                 |> Manchester.assertionAxiom)
@@ -6451,9 +7176,8 @@ and IndividualFrame = {
             this.SameAs
             |> Set.map (fun entry ->
                 entry.map (fun sameIndividual ->
-                    let same: SameIndividual = {
-                        SameIndividual = Set.TwoOrMore.Two(this.Individual, sameIndividual)
-                    }
+                    let same: SameIndividual =
+                        { SameIndividual = Set.TwoOrMore.Two(this.Individual, sameIndividual) }
 
                     Assertion.SameIndividual same)
                 |> Manchester.assertionAxiom)
@@ -6462,9 +7186,8 @@ and IndividualFrame = {
             this.DifferentFrom
             |> Set.map (fun entry ->
                 entry.map (fun differentIndividual ->
-                    let different: DifferentIndividuals = {
-                        DifferentIndividuals = Set.TwoOrMore.Two(this.Individual, differentIndividual)
-                    }
+                    let different: DifferentIndividuals =
+                        { DifferentIndividuals = Set.TwoOrMore.Two(this.Individual, differentIndividual) }
 
                     Assertion.DifferentIndividuals different)
                 |> Manchester.assertionAxiom)
@@ -6494,7 +7217,10 @@ and Manchester =
     static member inverse(objectProperty: ObjectProperty) =
         Functional.ObjectInverseOf objectProperty
 
-    static member inline mapTwoOrMoreSet (mapping: 'Value -> 'MappedValue) (values: Set.TwoOrMore<'Value>) : Set.TwoOrMore<'MappedValue> =
+    static member inline mapTwoOrMoreSet
+        (mapping: 'Value -> 'MappedValue)
+        (values: Set.TwoOrMore<'Value>)
+        : Set.TwoOrMore<'MappedValue> =
         let mapped = values.elements |> Set.map mapping
         let mappedArray = mapped |> Set.toArray
 
@@ -6503,10 +7229,17 @@ and Manchester =
 
         Set.TwoOrMore.More(mappedArray[0], mappedArray[1], mappedArray[2..] |> Set.ofArray)
 
-    static member annotationAssertions(annotationSubject: NormativeSubject, annotations: Set<Annotation>) : Set<Annotated<Axiom>> =
+    static member annotationAssertions
+        (annotationSubject: NormativeSubject, annotations: Set<Annotation>)
+        : Set<Annotated<Axiom>> =
         annotations
         |> Set.map (fun annotation ->
-            Functional.AnnotationAssertion(annotation.annotationAnnotations, annotation.annotationProperty, annotationSubject, annotation.annotationValue)
+            Functional.AnnotationAssertion(
+                annotation.annotationAnnotations,
+                annotation.annotationProperty,
+                annotationSubject,
+                annotation.annotationValue
+            )
             |> fun assertion -> assertion.map AnnotationAxiom.AnnotationAssertion
             |> fun annotationAxiom -> annotationAxiom.map Axiom.AnnotationAxiom)
 
@@ -6523,7 +7256,8 @@ and Manchester =
     static member dataPropertyAxiom(annotatedDataPropertyAxiom: Annotated<DataPropertyAxiom>) : Annotated<Axiom> =
         annotatedDataPropertyAxiom.map Axiom.DataPropertyAxiom
 
-    static member assertionAxiom(annotatedAssertion: Annotated<Assertion>) : Annotated<Axiom> = annotatedAssertion.map Axiom.Assertion
+    static member assertionAxiom(annotatedAssertion: Annotated<Assertion>) : Annotated<Axiom> =
+        annotatedAssertion.map Axiom.Assertion
 
     static member annotationAxiom(annotatedAnnotationAxiom: Annotated<AnnotationAxiom>) : Annotated<Axiom> =
         annotatedAnnotationAxiom.map Axiom.AnnotationAxiom
@@ -6534,15 +7268,18 @@ and Manchester =
             |> List.fold
                 (fun (objectProperties, dataProperties) propertyExpression ->
                     match propertyExpression with
-                    | PropertyExpression.ObjectPropertyExpression objectPropertyExpression -> objectPropertyExpression :: objectProperties, dataProperties
-                    | PropertyExpression.DataPropertyExpression dataPropertyExpression -> objectProperties, dataPropertyExpression :: dataProperties)
+                    | PropertyExpression.ObjectPropertyExpression objectPropertyExpression ->
+                        objectPropertyExpression :: objectProperties, dataProperties
+                    | PropertyExpression.DataPropertyExpression dataPropertyExpression ->
+                        objectProperties, dataPropertyExpression :: dataProperties)
                 ([], [])
 
         let objectPropertySet = objectPropertyExpressions |> Set.ofList
         let dataPropertySet = dataPropertyExpressions |> Set.ofList
 
         match Set.isEmpty objectPropertySet, Set.isEmpty dataPropertySet with
-        | false, false -> ObjectDataKeyProperties(Set.OneOrMore.ofSet objectPropertySet, Set.OneOrMore.ofSet dataPropertySet)
+        | false, false ->
+            ObjectDataKeyProperties(Set.OneOrMore.ofSet objectPropertySet, Set.OneOrMore.ofSet dataPropertySet)
         | false, true -> ObjectKeyProperties(Set.OneOrMore.ofSet objectPropertySet)
         | true, false -> DataKeyProperties(Set.OneOrMore.ofSet dataPropertySet)
         | true, true -> invalidOp "A Manchester HasKey entry must contain at least one property expression."
@@ -6645,10 +7382,8 @@ and OntologyBuilder(ontologyidentifier: (OntologyIri * VersionIri option) option
         assertions
         |> List.iter (fun assertion ->
             _axioms.Add(
-                {
-                    annotations = Set.empty
-                    value = Assertion assertion
-                }
+                { annotations = Set.empty
+                  value = Assertion assertion }
             ))
 
     member _.Yield(annotationAxiom: Annotated<AnnotationAxiom>) =
@@ -6671,16 +7406,14 @@ and OntologyBuilder(ontologyidentifier: (OntologyIri * VersionIri option) option
 
     member _.Zero() : unit = ()
 
-    member _.Run(_: unit) = {
-        annotations = _ontologyAnnotations |> Set.ofSeq
-        value = {
-            ontologyIdentifier = ontologyidentifier
-            directlyImportsDocuments = _directlyImportsDocuments |> Set.ofSeq
-            statedAxioms = _axioms |> Set.ofSeq
-            constructedFrames = _frames |> List.ofSeq
-            assertedTriples = _triples |> Set.ofSeq
-        }
-    }
+    member _.Run(_: unit) =
+        { annotations = _ontologyAnnotations |> Set.ofSeq
+          value =
+            { ontologyIdentifier = ontologyidentifier
+              directlyImportsDocuments = _directlyImportsDocuments |> Set.ofSeq
+              statedAxioms = _axioms |> Set.ofSeq
+              constructedFrames = _frames |> List.ofSeq
+              assertedTriples = _triples |> Set.ofSeq } }
 
 and NTriples =
     static member IRIREF(iri: Iri) =
@@ -6739,9 +7472,12 @@ and NTriples =
     static member literal(literal: Literal) =
         match literal with
         | StringLiteral(SimpleString simpleString) -> NTriples.STRING_LITERAL_QUOTE literal
-        | StringLiteral(LanguageString languageString) -> $"{NTriples.STRING_LITERAL_QUOTE literal}{NTriples.LANG_DIR languageString}"
-        | TypedLiteral typedLiteral -> $"{NTriples.STRING_LITERAL_QUOTE literal}^^{NTriples.IRIREF typedLiteral.datatypeIri}"
-        | EmbeddedLiteral embeddedLiteral -> $"{NTriples.STRING_LITERAL_QUOTE literal}^^{NTriples.IRIREF embeddedLiteral.datatypeIri}"
+        | StringLiteral(LanguageString languageString) ->
+            $"{NTriples.STRING_LITERAL_QUOTE literal}{NTriples.LANG_DIR languageString}"
+        | TypedLiteral typedLiteral ->
+            $"{NTriples.STRING_LITERAL_QUOTE literal}^^{NTriples.IRIREF typedLiteral.datatypeIri}"
+        | EmbeddedLiteral embeddedLiteral ->
+            $"{NTriples.STRING_LITERAL_QUOTE literal}^^{NTriples.IRIREF embeddedLiteral.datatypeIri}"
 
     static member subject(normativeSubject: NormativeSubject) =
         match normativeSubject with
@@ -6781,6 +7517,19 @@ and NTriples =
 type Iana.ProtocolRegistryEntry with
     member this.Iri = RdfVocabulary.ianassignments.curie this.localName
 
+type Iana.InternetMediaType with
+    member this.topLevelIri =
+        RdfVocabulary.ianassignments.prefixedName this.mimeType.MediaType
+
+    member this.registryIri =
+        (RdfVocabulary.ofPrefixedName this.topLevelIri).prefixedName this.mimeType.SubType
+
+    member this.w3idDatatype =
+        RdfVocabulary.w3id_mediatype.curie this.contentType |> DatatypeIri
+
+    member this.sparDatatype =
+        RdfVocabulary.spar_mediatype.curie this.contentType |> DatatypeIri
+
 module xml =
     open LitXml
 
@@ -6811,10 +7560,8 @@ module xml =
 
         member _.For(source: seq<'T>, body: 'T -> XmlPart list) : XmlPart list =
 
-            [
-                for item in source do
-                    yield! body item
-            ]
+            [ for item in source do
+                  yield! body item ]
 
         member _.Run(parts: XmlPart list) : XmlPart =
             Ok(
@@ -6854,14 +7601,12 @@ module xsd =
             static member uriValue(literal: string<anyURI>) : System.Uri =
                 literal |> anyURI.lexicalForm |> System.Uri
 
-            static member datatype: Datatype<anyURI> = {
-                _datatypeIri = _namespace.curie "anyURI" |> DatatypeIri
-            }
+            static member datatype: Datatype<anyURI> =
+                { _datatypeIri = _namespace.curie "anyURI" |> DatatypeIri }
 
-            static member staticTypedLiteral(value: System.Uri) : StaticTypedLiteral<anyURI> = {
-                literal = anyURI.literal value
-                datatype = anyURI.datatype
-            }
+            static member staticTypedLiteral(value: System.Uri) : StaticTypedLiteral<anyURI> =
+                { literal = anyURI.literal value
+                  datatype = anyURI.datatype }
 
             static member typedLiteral(value: System.Uri) : TypedLiteral =
                 anyURI.staticTypedLiteral value |> StaticTypedLiteral.toTypedLiteral
@@ -6873,10 +7618,9 @@ module xsd =
 
             static member urlValue(literal: string<anyURI>) : Url = literal |> anyURI.lexicalForm |> Url
 
-            static member staticTypedLiteral(value: Url) : StaticTypedLiteral<anyURI> = {
-                literal = anyURI.literal value
-                datatype = anyURI.datatype
-            }
+            static member staticTypedLiteral(value: Url) : StaticTypedLiteral<anyURI> =
+                { literal = anyURI.literal value
+                  datatype = anyURI.datatype }
 
             static member typedLiteral(value: Url) : TypedLiteral =
                 anyURI.staticTypedLiteral value |> StaticTypedLiteral.toTypedLiteral
@@ -6889,10 +7633,9 @@ module xsd =
             static member irlValue(literal: string<anyURI>) : Irl =
                 literal |> anyURI.lexicalForm |> Url |> Irl.ofUrl
 
-            static member staticTypedLiteral(value: Irl) : StaticTypedLiteral<anyURI> = {
-                literal = anyURI.literal value
-                datatype = anyURI.datatype
-            }
+            static member staticTypedLiteral(value: Irl) : StaticTypedLiteral<anyURI> =
+                { literal = anyURI.literal value
+                  datatype = anyURI.datatype }
 
             static member typedLiteral(value: Irl) : TypedLiteral =
                 anyURI.staticTypedLiteral value |> StaticTypedLiteral.toTypedLiteral
@@ -6905,10 +7648,9 @@ module xsd =
             static member iriValue(literal: string<anyURI>) : Iri =
                 literal |> anyURI.lexicalForm |> Iri.op_Implicit
 
-            static member staticTypedLiteral(value: Iri) : StaticTypedLiteral<anyURI> = {
-                literal = anyURI.literal value
-                datatype = anyURI.datatype
-            }
+            static member staticTypedLiteral(value: Iri) : StaticTypedLiteral<anyURI> =
+                { literal = anyURI.literal value
+                  datatype = anyURI.datatype }
 
             static member typedLiteral(value: Iri) : TypedLiteral =
                 anyURI.staticTypedLiteral value |> StaticTypedLiteral.toTypedLiteral
@@ -6935,14 +7677,12 @@ module xsd =
                 let value = Convert.FromBase64String(raw)
                 value
 
-            static member datatype: Datatype<base64Binary> = {
-                _datatypeIri = _namespace.curie "base64Binary" |> DatatypeIri
-            }
+            static member datatype: Datatype<base64Binary> =
+                { _datatypeIri = _namespace.curie "base64Binary" |> DatatypeIri }
 
-            static member staticTypedLiteral(value: System.Byte array) : StaticTypedLiteral<base64Binary> = {
-                literal = base64Binary.literal value
-                datatype = base64Binary.datatype
-            }
+            static member staticTypedLiteral(value: System.Byte array) : StaticTypedLiteral<base64Binary> =
+                { literal = base64Binary.literal value
+                  datatype = base64Binary.datatype }
 
             static member typedLiteral(value: System.Byte array) : TypedLiteral =
                 base64Binary.staticTypedLiteral value |> StaticTypedLiteral.toTypedLiteral
@@ -6971,14 +7711,12 @@ module xsd =
 
                 value
 
-            static member datatype: Datatype<boolean> = {
-                _datatypeIri = _namespace.curie "boolean" |> DatatypeIri
-            }
+            static member datatype: Datatype<boolean> =
+                { _datatypeIri = _namespace.curie "boolean" |> DatatypeIri }
 
-            static member staticTypedLiteral(value: System.Boolean) : StaticTypedLiteral<boolean> = {
-                literal = boolean.literal value
-                datatype = boolean.datatype
-            }
+            static member staticTypedLiteral(value: System.Boolean) : StaticTypedLiteral<boolean> =
+                { literal = boolean.literal value
+                  datatype = boolean.datatype }
 
             static member typedLiteral(value: System.Boolean) : TypedLiteral =
                 boolean.staticTypedLiteral value |> StaticTypedLiteral.toTypedLiteral
@@ -6998,18 +7736,17 @@ module xsd =
             static member value(literal: string<date>) : System.DateOnly =
                 let raw = date.lexicalForm literal
 
-                let value = System.DateOnly.ParseExact(raw, "yyyy-MM-dd", CultureInfo.InvariantCulture)
+                let value =
+                    System.DateOnly.ParseExact(raw, "yyyy-MM-dd", CultureInfo.InvariantCulture)
 
                 value
 
-            static member datatype: Datatype<date> = {
-                _datatypeIri = _namespace.curie "date" |> DatatypeIri
-            }
+            static member datatype: Datatype<date> =
+                { _datatypeIri = _namespace.curie "date" |> DatatypeIri }
 
-            static member staticTypedLiteral(value: System.DateOnly) : StaticTypedLiteral<date> = {
-                literal = date.literal value
-                datatype = date.datatype
-            }
+            static member staticTypedLiteral(value: System.DateOnly) : StaticTypedLiteral<date> =
+                { literal = date.literal value
+                  datatype = date.datatype }
 
             static member typedLiteral(value: System.DateOnly) : TypedLiteral =
                 date.staticTypedLiteral value |> StaticTypedLiteral.toTypedLiteral
@@ -7029,18 +7766,17 @@ module xsd =
             static member value(literal: string<dateTime>) : System.DateTime =
                 let raw = dateTime.lexicalForm literal
 
-                let value = System.DateTime.Parse(raw, CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind)
+                let value =
+                    System.DateTime.Parse(raw, CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind)
 
                 value
 
-            static member datatype: Datatype<dateTime> = {
-                _datatypeIri = _namespace.curie "dateTime" |> DatatypeIri
-            }
+            static member datatype: Datatype<dateTime> =
+                { _datatypeIri = _namespace.curie "dateTime" |> DatatypeIri }
 
-            static member staticTypedLiteral(value: System.DateTime) : StaticTypedLiteral<dateTime> = {
-                literal = dateTime.literal value
-                datatype = dateTime.datatype
-            }
+            static member staticTypedLiteral(value: System.DateTime) : StaticTypedLiteral<dateTime> =
+                { literal = dateTime.literal value
+                  datatype = dateTime.datatype }
 
             static member typedLiteral(value: System.DateTime) : TypedLiteral =
                 dateTime.staticTypedLiteral value |> StaticTypedLiteral.toTypedLiteral
@@ -7060,16 +7796,13 @@ module xsd =
 
             static member lexicalForm(literal: string<dateTimeStamp>) : System.String = UMX.untag literal
 
-            static member datatype: Datatype<dateTimeStamp> = {
-                _datatypeIri = _namespace.curie "dateTimeStamp" |> DatatypeIri
-            }
+            static member datatype: Datatype<dateTimeStamp> =
+                { _datatypeIri = _namespace.curie "dateTimeStamp" |> DatatypeIri }
 
             static member staticTypedLiteral(value: System.DateTimeOffset) : StaticTypedLiteral<dateTimeStamp> =
 
-                {
-                    literal = dateTimeStamp.canonicalMapping value |> dateTimeStamp.literal
-                    datatype = dateTimeStamp.datatype
-                }
+                { literal = dateTimeStamp.canonicalMapping value |> dateTimeStamp.literal
+                  datatype = dateTimeStamp.datatype }
 
             static member typedLiteral(value: System.DateTimeOffset) : TypedLiteral =
 
@@ -7093,14 +7826,12 @@ module xsd =
                 let value = literal |> decimal.lexicalForm |> System.Xml.XmlConvert.ToDecimal
                 value
 
-            static member datatype: Datatype<decimal> = {
-                _datatypeIri = _namespace.curie "decimal" |> DatatypeIri
-            }
+            static member datatype: Datatype<decimal> =
+                { _datatypeIri = _namespace.curie "decimal" |> DatatypeIri }
 
-            static member staticTypedLiteral(value: System.Decimal) : StaticTypedLiteral<decimal> = {
-                literal = decimal.literal value
-                datatype = decimal.datatype
-            }
+            static member staticTypedLiteral(value: System.Decimal) : StaticTypedLiteral<decimal> =
+                { literal = decimal.literal value
+                  datatype = decimal.datatype }
 
             static member typedLiteral(value: System.Decimal) : TypedLiteral =
                 decimal.staticTypedLiteral value |> StaticTypedLiteral.toTypedLiteral
@@ -7122,14 +7853,12 @@ module xsd =
                 let value = System.Numerics.BigInteger.Parse(raw, CultureInfo.InvariantCulture)
                 value
 
-            static member datatype: Datatype<integer> = {
-                _datatypeIri = _namespace.curie "integer" |> DatatypeIri
-            }
+            static member datatype: Datatype<integer> =
+                { _datatypeIri = _namespace.curie "integer" |> DatatypeIri }
 
-            static member staticTypedLiteral(value: System.Numerics.BigInteger) : StaticTypedLiteral<integer> = {
-                literal = integer.literal value
-                datatype = integer.datatype
-            }
+            static member staticTypedLiteral(value: System.Numerics.BigInteger) : StaticTypedLiteral<integer> =
+                { literal = integer.literal value
+                  datatype = integer.datatype }
 
             static member typedLiteral(value: System.Numerics.BigInteger) : TypedLiteral =
                 integer.staticTypedLiteral value |> StaticTypedLiteral.toTypedLiteral
@@ -7151,14 +7880,12 @@ module xsd =
                 let value = System.Int64.Parse(raw, CultureInfo.InvariantCulture)
                 value
 
-            static member datatype: Datatype<long> = {
-                _datatypeIri = _namespace.curie "long" |> DatatypeIri
-            }
+            static member datatype: Datatype<long> =
+                { _datatypeIri = _namespace.curie "long" |> DatatypeIri }
 
-            static member staticTypedLiteral(value: System.Int64) : StaticTypedLiteral<long> = {
-                literal = long.literal value
-                datatype = long.datatype
-            }
+            static member staticTypedLiteral(value: System.Int64) : StaticTypedLiteral<long> =
+                { literal = long.literal value
+                  datatype = long.datatype }
 
             static member typedLiteral(value: System.Int64) : TypedLiteral =
                 long.staticTypedLiteral value |> StaticTypedLiteral.toTypedLiteral
@@ -7180,14 +7907,12 @@ module xsd =
                 let value = System.Int32.Parse(raw, CultureInfo.InvariantCulture)
                 value
 
-            static member datatype: Datatype<int> = {
-                _datatypeIri = _namespace.curie "int" |> DatatypeIri
-            }
+            static member datatype: Datatype<int> =
+                { _datatypeIri = _namespace.curie "int" |> DatatypeIri }
 
-            static member staticTypedLiteral(value: System.Int32) : StaticTypedLiteral<int> = {
-                literal = int.literal value
-                datatype = int.datatype
-            }
+            static member staticTypedLiteral(value: System.Int32) : StaticTypedLiteral<int> =
+                { literal = int.literal value
+                  datatype = int.datatype }
 
             static member typedLiteral(value: System.Int32) : TypedLiteral =
                 int.staticTypedLiteral value |> StaticTypedLiteral.toTypedLiteral
@@ -7209,14 +7934,12 @@ module xsd =
                 let value = System.Int16.Parse(raw, CultureInfo.InvariantCulture)
                 value
 
-            static member datatype: Datatype<short> = {
-                _datatypeIri = _namespace.curie "short" |> DatatypeIri
-            }
+            static member datatype: Datatype<short> =
+                { _datatypeIri = _namespace.curie "short" |> DatatypeIri }
 
-            static member staticTypedLiteral(value: System.Int16) : StaticTypedLiteral<short> = {
-                literal = short.literal value
-                datatype = short.datatype
-            }
+            static member staticTypedLiteral(value: System.Int16) : StaticTypedLiteral<short> =
+                { literal = short.literal value
+                  datatype = short.datatype }
 
             static member typedLiteral(value: System.Int16) : TypedLiteral =
                 short.staticTypedLiteral value |> StaticTypedLiteral.toTypedLiteral
@@ -7238,14 +7961,12 @@ module xsd =
                 let value = System.SByte.Parse(raw, CultureInfo.InvariantCulture)
                 value
 
-            static member datatype: Datatype<byte> = {
-                _datatypeIri = _namespace.curie "byte" |> DatatypeIri
-            }
+            static member datatype: Datatype<byte> =
+                { _datatypeIri = _namespace.curie "byte" |> DatatypeIri }
 
-            static member staticTypedLiteral(value: System.SByte) : StaticTypedLiteral<byte> = {
-                literal = byte.literal value
-                datatype = byte.datatype
-            }
+            static member staticTypedLiteral(value: System.SByte) : StaticTypedLiteral<byte> =
+                { literal = byte.literal value
+                  datatype = byte.datatype }
 
             static member typedLiteral(value: System.SByte) : TypedLiteral =
                 byte.staticTypedLiteral value |> StaticTypedLiteral.toTypedLiteral
@@ -7274,14 +7995,14 @@ module xsd =
 
                 value
 
-            static member datatype: Datatype<nonNegativeInteger> = {
-                _datatypeIri = _namespace.curie "nonNegativeInteger" |> DatatypeIri
-            }
+            static member datatype: Datatype<nonNegativeInteger> =
+                { _datatypeIri = _namespace.curie "nonNegativeInteger" |> DatatypeIri }
 
-            static member staticTypedLiteral(value: System.Numerics.BigInteger) : StaticTypedLiteral<nonNegativeInteger> = {
-                literal = nonNegativeInteger.literal value
-                datatype = nonNegativeInteger.datatype
-            }
+            static member staticTypedLiteral
+                (value: System.Numerics.BigInteger)
+                : StaticTypedLiteral<nonNegativeInteger> =
+                { literal = nonNegativeInteger.literal value
+                  datatype = nonNegativeInteger.datatype }
 
             static member typedLiteral(value: System.Numerics.BigInteger) : TypedLiteral =
                 nonNegativeInteger.staticTypedLiteral value |> StaticTypedLiteral.toTypedLiteral
@@ -7310,14 +8031,12 @@ module xsd =
 
                 value
 
-            static member datatype: Datatype<positiveInteger> = {
-                _datatypeIri = _namespace.curie "positiveInteger" |> DatatypeIri
-            }
+            static member datatype: Datatype<positiveInteger> =
+                { _datatypeIri = _namespace.curie "positiveInteger" |> DatatypeIri }
 
-            static member staticTypedLiteral(value: System.Numerics.BigInteger) : StaticTypedLiteral<positiveInteger> = {
-                literal = positiveInteger.literal value
-                datatype = positiveInteger.datatype
-            }
+            static member staticTypedLiteral(value: System.Numerics.BigInteger) : StaticTypedLiteral<positiveInteger> =
+                { literal = positiveInteger.literal value
+                  datatype = positiveInteger.datatype }
 
             static member typedLiteral(value: System.Numerics.BigInteger) : TypedLiteral =
                 positiveInteger.staticTypedLiteral value |> StaticTypedLiteral.toTypedLiteral
@@ -7339,14 +8058,12 @@ module xsd =
                 let value = System.UInt64.Parse(raw, CultureInfo.InvariantCulture)
                 value
 
-            static member datatype: Datatype<unsignedLong> = {
-                _datatypeIri = _namespace.curie "unsignedLong" |> DatatypeIri
-            }
+            static member datatype: Datatype<unsignedLong> =
+                { _datatypeIri = _namespace.curie "unsignedLong" |> DatatypeIri }
 
-            static member staticTypedLiteral(value: System.UInt64) : StaticTypedLiteral<unsignedLong> = {
-                literal = unsignedLong.literal value
-                datatype = unsignedLong.datatype
-            }
+            static member staticTypedLiteral(value: System.UInt64) : StaticTypedLiteral<unsignedLong> =
+                { literal = unsignedLong.literal value
+                  datatype = unsignedLong.datatype }
 
             static member typedLiteral(value: System.UInt64) : TypedLiteral =
                 unsignedLong.staticTypedLiteral value |> StaticTypedLiteral.toTypedLiteral
@@ -7368,14 +8085,12 @@ module xsd =
                 let value = System.UInt32.Parse(raw, CultureInfo.InvariantCulture)
                 value
 
-            static member datatype: Datatype<unsignedInt> = {
-                _datatypeIri = _namespace.curie "unsignedInt" |> DatatypeIri
-            }
+            static member datatype: Datatype<unsignedInt> =
+                { _datatypeIri = _namespace.curie "unsignedInt" |> DatatypeIri }
 
-            static member staticTypedLiteral(value: System.UInt32) : StaticTypedLiteral<unsignedInt> = {
-                literal = unsignedInt.literal value
-                datatype = unsignedInt.datatype
-            }
+            static member staticTypedLiteral(value: System.UInt32) : StaticTypedLiteral<unsignedInt> =
+                { literal = unsignedInt.literal value
+                  datatype = unsignedInt.datatype }
 
             static member typedLiteral(value: System.UInt32) : TypedLiteral =
                 unsignedInt.staticTypedLiteral value |> StaticTypedLiteral.toTypedLiteral
@@ -7397,14 +8112,12 @@ module xsd =
                 let value = System.UInt16.Parse(raw, CultureInfo.InvariantCulture)
                 value
 
-            static member datatype: Datatype<unsignedShort> = {
-                _datatypeIri = _namespace.curie "unsignedShort" |> DatatypeIri
-            }
+            static member datatype: Datatype<unsignedShort> =
+                { _datatypeIri = _namespace.curie "unsignedShort" |> DatatypeIri }
 
-            static member staticTypedLiteral(value: System.UInt16) : StaticTypedLiteral<unsignedShort> = {
-                literal = unsignedShort.literal value
-                datatype = unsignedShort.datatype
-            }
+            static member staticTypedLiteral(value: System.UInt16) : StaticTypedLiteral<unsignedShort> =
+                { literal = unsignedShort.literal value
+                  datatype = unsignedShort.datatype }
 
             static member typedLiteral(value: System.UInt16) : TypedLiteral =
                 unsignedShort.staticTypedLiteral value |> StaticTypedLiteral.toTypedLiteral
@@ -7426,14 +8139,12 @@ module xsd =
                 let value = System.Byte.Parse(raw, CultureInfo.InvariantCulture)
                 value
 
-            static member datatype: Datatype<unsignedByte> = {
-                _datatypeIri = _namespace.curie "unsignedByte" |> DatatypeIri
-            }
+            static member datatype: Datatype<unsignedByte> =
+                { _datatypeIri = _namespace.curie "unsignedByte" |> DatatypeIri }
 
-            static member staticTypedLiteral(value: System.Byte) : StaticTypedLiteral<unsignedByte> = {
-                literal = unsignedByte.literal value
-                datatype = unsignedByte.datatype
-            }
+            static member staticTypedLiteral(value: System.Byte) : StaticTypedLiteral<unsignedByte> =
+                { literal = unsignedByte.literal value
+                  datatype = unsignedByte.datatype }
 
             static member typedLiteral(value: System.Byte) : TypedLiteral =
                 unsignedByte.staticTypedLiteral value |> StaticTypedLiteral.toTypedLiteral
@@ -7462,14 +8173,14 @@ module xsd =
 
                 value
 
-            static member datatype: Datatype<nonPositiveInteger> = {
-                _datatypeIri = _namespace.curie "nonPositiveInteger" |> DatatypeIri
-            }
+            static member datatype: Datatype<nonPositiveInteger> =
+                { _datatypeIri = _namespace.curie "nonPositiveInteger" |> DatatypeIri }
 
-            static member staticTypedLiteral(value: System.Numerics.BigInteger) : StaticTypedLiteral<nonPositiveInteger> = {
-                literal = nonPositiveInteger.literal value
-                datatype = nonPositiveInteger.datatype
-            }
+            static member staticTypedLiteral
+                (value: System.Numerics.BigInteger)
+                : StaticTypedLiteral<nonPositiveInteger> =
+                { literal = nonPositiveInteger.literal value
+                  datatype = nonPositiveInteger.datatype }
 
             static member typedLiteral(value: System.Numerics.BigInteger) : TypedLiteral =
                 nonPositiveInteger.staticTypedLiteral value |> StaticTypedLiteral.toTypedLiteral
@@ -7498,14 +8209,12 @@ module xsd =
 
                 value
 
-            static member datatype: Datatype<negativeInteger> = {
-                _datatypeIri = _namespace.curie "negativeInteger" |> DatatypeIri
-            }
+            static member datatype: Datatype<negativeInteger> =
+                { _datatypeIri = _namespace.curie "negativeInteger" |> DatatypeIri }
 
-            static member staticTypedLiteral(value: System.Numerics.BigInteger) : StaticTypedLiteral<negativeInteger> = {
-                literal = negativeInteger.literal value
-                datatype = negativeInteger.datatype
-            }
+            static member staticTypedLiteral(value: System.Numerics.BigInteger) : StaticTypedLiteral<negativeInteger> =
+                { literal = negativeInteger.literal value
+                  datatype = negativeInteger.datatype }
 
             static member typedLiteral(value: System.Numerics.BigInteger) : TypedLiteral =
                 negativeInteger.staticTypedLiteral value |> StaticTypedLiteral.toTypedLiteral
@@ -7530,21 +8239,20 @@ module xsd =
                 let value = System.Xml.XmlConvert.ToDouble(raw)
                 value
 
-            static member datatype: Datatype<double> = {
-                _datatypeIri = _namespace.curie "double" |> DatatypeIri
-            }
+            static member datatype: Datatype<double> =
+                { _datatypeIri = _namespace.curie "double" |> DatatypeIri }
 
-            static member staticTypedLiteral(value: System.Double) : StaticTypedLiteral<double> = {
-                literal = double.literal value
-                datatype = double.datatype
-            }
+            static member staticTypedLiteral(value: System.Double) : StaticTypedLiteral<double> =
+                { literal = double.literal value
+                  datatype = double.datatype }
 
             static member typedLiteral(value: System.Double) : TypedLiteral =
                 double.staticTypedLiteral value |> StaticTypedLiteral.toTypedLiteral
 
         [<Measure>]
         type duration =
-            static member canonicalMapping(value: System.TimeSpan) : System.String = System.Xml.XmlConvert.ToString(value)
+            static member canonicalMapping(value: System.TimeSpan) : System.String =
+                System.Xml.XmlConvert.ToString(value)
 
             static member lexicalForm(literal: string<duration>) : System.String = UMX.untag literal
 
@@ -7558,21 +8266,20 @@ module xsd =
                 let value = System.Xml.XmlConvert.ToTimeSpan(raw)
                 value
 
-            static member datatype: Datatype<duration> = {
-                _datatypeIri = _namespace.curie "duration" |> DatatypeIri
-            }
+            static member datatype: Datatype<duration> =
+                { _datatypeIri = _namespace.curie "duration" |> DatatypeIri }
 
-            static member staticTypedLiteral(value: System.TimeSpan) : StaticTypedLiteral<duration> = {
-                literal = duration.literal value
-                datatype = duration.datatype
-            }
+            static member staticTypedLiteral(value: System.TimeSpan) : StaticTypedLiteral<duration> =
+                { literal = duration.literal value
+                  datatype = duration.datatype }
 
             static member typedLiteral(value: System.TimeSpan) : TypedLiteral =
                 duration.staticTypedLiteral value |> StaticTypedLiteral.toTypedLiteral
 
         [<Measure>]
         type dayTimeDuration =
-            static member canonicalMapping(value: System.TimeSpan) : System.String = System.Xml.XmlConvert.ToString(value)
+            static member canonicalMapping(value: System.TimeSpan) : System.String =
+                System.Xml.XmlConvert.ToString(value)
 
             static member lexicalForm(literal: string<dayTimeDuration>) : System.String = UMX.untag literal
 
@@ -7586,14 +8293,12 @@ module xsd =
                 let value = System.Xml.XmlConvert.ToTimeSpan(raw)
                 value
 
-            static member datatype: Datatype<dayTimeDuration> = {
-                _datatypeIri = _namespace.curie "dayTimeDuration" |> DatatypeIri
-            }
+            static member datatype: Datatype<dayTimeDuration> =
+                { _datatypeIri = _namespace.curie "dayTimeDuration" |> DatatypeIri }
 
-            static member staticTypedLiteral(value: System.TimeSpan) : StaticTypedLiteral<dayTimeDuration> = {
-                literal = dayTimeDuration.literal value
-                datatype = dayTimeDuration.datatype
-            }
+            static member staticTypedLiteral(value: System.TimeSpan) : StaticTypedLiteral<dayTimeDuration> =
+                { literal = dayTimeDuration.literal value
+                  datatype = dayTimeDuration.datatype }
 
             static member typedLiteral(value: System.TimeSpan) : TypedLiteral =
                 dayTimeDuration.staticTypedLiteral value |> StaticTypedLiteral.toTypedLiteral
@@ -7618,14 +8323,12 @@ module xsd =
                 let value = System.Xml.XmlConvert.ToSingle(raw)
                 value
 
-            static member datatype: Datatype<float> = {
-                _datatypeIri = _namespace.curie "float" |> DatatypeIri
-            }
+            static member datatype: Datatype<float> =
+                { _datatypeIri = _namespace.curie "float" |> DatatypeIri }
 
-            static member staticTypedLiteral(value: System.Single) : StaticTypedLiteral<float> = {
-                literal = float.literal value
-                datatype = float.datatype
-            }
+            static member staticTypedLiteral(value: System.Single) : StaticTypedLiteral<float> =
+                { literal = float.literal value
+                  datatype = float.datatype }
 
             static member typedLiteral(value: System.Single) : TypedLiteral =
                 float.staticTypedLiteral value |> StaticTypedLiteral.toTypedLiteral
@@ -7646,14 +8349,12 @@ module xsd =
                 let value = Convert.FromHexString(raw)
                 value
 
-            static member datatype: Datatype<hexBinary> = {
-                _datatypeIri = _namespace.curie "hexBinary" |> DatatypeIri
-            }
+            static member datatype: Datatype<hexBinary> =
+                { _datatypeIri = _namespace.curie "hexBinary" |> DatatypeIri }
 
-            static member staticTypedLiteral(value: System.Byte array) : StaticTypedLiteral<hexBinary> = {
-                literal = hexBinary.literal value
-                datatype = hexBinary.datatype
-            }
+            static member staticTypedLiteral(value: System.Byte array) : StaticTypedLiteral<hexBinary> =
+                { literal = hexBinary.literal value
+                  datatype = hexBinary.datatype }
 
             static member typedLiteral(value: System.Byte array) : TypedLiteral =
                 hexBinary.staticTypedLiteral value |> StaticTypedLiteral.toTypedLiteral
@@ -7675,14 +8376,12 @@ module xsd =
                 let value = System.TimeOnly.Parse(raw, CultureInfo.InvariantCulture)
                 value
 
-            static member datatype: Datatype<time> = {
-                _datatypeIri = _namespace.curie "time" |> DatatypeIri
-            }
+            static member datatype: Datatype<time> =
+                { _datatypeIri = _namespace.curie "time" |> DatatypeIri }
 
-            static member staticTypedLiteral(value: System.TimeOnly) : StaticTypedLiteral<time> = {
-                literal = time.literal value
-                datatype = time.datatype
-            }
+            static member staticTypedLiteral(value: System.TimeOnly) : StaticTypedLiteral<time> =
+                { literal = time.literal value
+                  datatype = time.datatype }
 
             static member typedLiteral(value: System.TimeOnly) : TypedLiteral =
                 time.staticTypedLiteral value |> StaticTypedLiteral.toTypedLiteral
@@ -7693,14 +8392,12 @@ module xsd =
 
             static member literal(lexicalForm: System.String) : string<yearMonthDuration> = UMX.tag lexicalForm
 
-            static member datatype: Datatype<yearMonthDuration> = {
-                _datatypeIri = _namespace.curie "yearMonthDuration" |> DatatypeIri
-            }
+            static member datatype: Datatype<yearMonthDuration> =
+                { _datatypeIri = _namespace.curie "yearMonthDuration" |> DatatypeIri }
 
-            static member staticTypedLiteral(lexicalForm: System.String) : StaticTypedLiteral<yearMonthDuration> = {
-                literal = yearMonthDuration.literal lexicalForm
-                datatype = yearMonthDuration.datatype
-            }
+            static member staticTypedLiteral(lexicalForm: System.String) : StaticTypedLiteral<yearMonthDuration> =
+                { literal = yearMonthDuration.literal lexicalForm
+                  datatype = yearMonthDuration.datatype }
 
             static member typedLiteral(lexicalForm: System.String) : TypedLiteral =
                 yearMonthDuration.staticTypedLiteral lexicalForm
@@ -7712,14 +8409,12 @@ module xsd =
 
             static member literal(lexicalForm: System.String) : string<gDay> = UMX.tag lexicalForm
 
-            static member datatype: Datatype<gDay> = {
-                _datatypeIri = _namespace.curie "gDay" |> DatatypeIri
-            }
+            static member datatype: Datatype<gDay> =
+                { _datatypeIri = _namespace.curie "gDay" |> DatatypeIri }
 
-            static member staticTypedLiteral(lexicalForm: System.String) : StaticTypedLiteral<gDay> = {
-                literal = gDay.literal lexicalForm
-                datatype = gDay.datatype
-            }
+            static member staticTypedLiteral(lexicalForm: System.String) : StaticTypedLiteral<gDay> =
+                { literal = gDay.literal lexicalForm
+                  datatype = gDay.datatype }
 
             static member typedLiteral(lexicalForm: System.String) : TypedLiteral =
                 gDay.staticTypedLiteral lexicalForm |> StaticTypedLiteral.toTypedLiteral
@@ -7730,14 +8425,12 @@ module xsd =
 
             static member literal(lexicalForm: System.String) : string<gMonth> = UMX.tag lexicalForm
 
-            static member datatype: Datatype<gMonth> = {
-                _datatypeIri = _namespace.curie "gMonth" |> DatatypeIri
-            }
+            static member datatype: Datatype<gMonth> =
+                { _datatypeIri = _namespace.curie "gMonth" |> DatatypeIri }
 
-            static member staticTypedLiteral(lexicalForm: System.String) : StaticTypedLiteral<gMonth> = {
-                literal = gMonth.literal lexicalForm
-                datatype = gMonth.datatype
-            }
+            static member staticTypedLiteral(lexicalForm: System.String) : StaticTypedLiteral<gMonth> =
+                { literal = gMonth.literal lexicalForm
+                  datatype = gMonth.datatype }
 
             static member typedLiteral(lexicalForm: System.String) : TypedLiteral =
                 gMonth.staticTypedLiteral lexicalForm |> StaticTypedLiteral.toTypedLiteral
@@ -7748,14 +8441,12 @@ module xsd =
 
             static member literal(lexicalForm: System.String) : string<gMonthDay> = UMX.tag lexicalForm
 
-            static member datatype: Datatype<gMonthDay> = {
-                _datatypeIri = _namespace.curie "gMonthDay" |> DatatypeIri
-            }
+            static member datatype: Datatype<gMonthDay> =
+                { _datatypeIri = _namespace.curie "gMonthDay" |> DatatypeIri }
 
-            static member staticTypedLiteral(lexicalForm: System.String) : StaticTypedLiteral<gMonthDay> = {
-                literal = gMonthDay.literal lexicalForm
-                datatype = gMonthDay.datatype
-            }
+            static member staticTypedLiteral(lexicalForm: System.String) : StaticTypedLiteral<gMonthDay> =
+                { literal = gMonthDay.literal lexicalForm
+                  datatype = gMonthDay.datatype }
 
             static member typedLiteral(lexicalForm: System.String) : TypedLiteral =
                 gMonthDay.staticTypedLiteral lexicalForm |> StaticTypedLiteral.toTypedLiteral
@@ -7766,14 +8457,12 @@ module xsd =
 
             static member literal(lexicalForm: System.String) : string<gYear> = UMX.tag lexicalForm
 
-            static member datatype: Datatype<gYear> = {
-                _datatypeIri = _namespace.curie "gYear" |> DatatypeIri
-            }
+            static member datatype: Datatype<gYear> =
+                { _datatypeIri = _namespace.curie "gYear" |> DatatypeIri }
 
-            static member staticTypedLiteral(lexicalForm: System.String) : StaticTypedLiteral<gYear> = {
-                literal = gYear.literal lexicalForm
-                datatype = gYear.datatype
-            }
+            static member staticTypedLiteral(lexicalForm: System.String) : StaticTypedLiteral<gYear> =
+                { literal = gYear.literal lexicalForm
+                  datatype = gYear.datatype }
 
             static member typedLiteral(lexicalForm: System.String) : TypedLiteral =
                 gYear.staticTypedLiteral lexicalForm |> StaticTypedLiteral.toTypedLiteral
@@ -7784,14 +8473,12 @@ module xsd =
 
             static member literal(lexicalForm: System.String) : string<gYearMonth> = UMX.tag lexicalForm
 
-            static member datatype: Datatype<gYearMonth> = {
-                _datatypeIri = _namespace.curie "gYearMonth" |> DatatypeIri
-            }
+            static member datatype: Datatype<gYearMonth> =
+                { _datatypeIri = _namespace.curie "gYearMonth" |> DatatypeIri }
 
-            static member staticTypedLiteral(lexicalForm: System.String) : StaticTypedLiteral<gYearMonth> = {
-                literal = gYearMonth.literal lexicalForm
-                datatype = gYearMonth.datatype
-            }
+            static member staticTypedLiteral(lexicalForm: System.String) : StaticTypedLiteral<gYearMonth> =
+                { literal = gYearMonth.literal lexicalForm
+                  datatype = gYearMonth.datatype }
 
             static member typedLiteral(lexicalForm: System.String) : TypedLiteral =
                 gYearMonth.staticTypedLiteral lexicalForm |> StaticTypedLiteral.toTypedLiteral
@@ -7802,14 +8489,12 @@ module xsd =
 
             static member literal(lexicalForm: System.String) : string<string> = UMX.tag lexicalForm
 
-            static member datatype: Datatype<string> = {
-                _datatypeIri = _namespace.curie "string" |> DatatypeIri
-            }
+            static member datatype: Datatype<string> =
+                { _datatypeIri = _namespace.curie "string" |> DatatypeIri }
 
-            static member staticTypedLiteral(lexicalForm: System.String) : StaticTypedLiteral<string> = {
-                literal = string.literal lexicalForm
-                datatype = string.datatype
-            }
+            static member staticTypedLiteral(lexicalForm: System.String) : StaticTypedLiteral<string> =
+                { literal = string.literal lexicalForm
+                  datatype = string.datatype }
 
             static member typedLiteral(lexicalForm: System.String) : TypedLiteral =
                 string.staticTypedLiteral lexicalForm |> StaticTypedLiteral.toTypedLiteral
@@ -7820,14 +8505,12 @@ module xsd =
 
             static member literal(lexicalForm: System.String) : string<normalizedString> = UMX.tag lexicalForm
 
-            static member datatype: Datatype<normalizedString> = {
-                _datatypeIri = _namespace.curie "normalizedString" |> DatatypeIri
-            }
+            static member datatype: Datatype<normalizedString> =
+                { _datatypeIri = _namespace.curie "normalizedString" |> DatatypeIri }
 
-            static member staticTypedLiteral(lexicalForm: System.String) : StaticTypedLiteral<normalizedString> = {
-                literal = normalizedString.literal lexicalForm
-                datatype = normalizedString.datatype
-            }
+            static member staticTypedLiteral(lexicalForm: System.String) : StaticTypedLiteral<normalizedString> =
+                { literal = normalizedString.literal lexicalForm
+                  datatype = normalizedString.datatype }
 
             static member typedLiteral(lexicalForm: System.String) : TypedLiteral =
                 normalizedString.staticTypedLiteral lexicalForm
@@ -7839,14 +8522,12 @@ module xsd =
 
             static member literal(lexicalForm: System.String) : string<token> = UMX.tag lexicalForm
 
-            static member datatype: Datatype<token> = {
-                _datatypeIri = _namespace.curie "token" |> DatatypeIri
-            }
+            static member datatype: Datatype<token> =
+                { _datatypeIri = _namespace.curie "token" |> DatatypeIri }
 
-            static member staticTypedLiteral(lexicalForm: System.String) : StaticTypedLiteral<token> = {
-                literal = token.literal lexicalForm
-                datatype = token.datatype
-            }
+            static member staticTypedLiteral(lexicalForm: System.String) : StaticTypedLiteral<token> =
+                { literal = token.literal lexicalForm
+                  datatype = token.datatype }
 
             static member typedLiteral(lexicalForm: System.String) : TypedLiteral =
                 token.staticTypedLiteral lexicalForm |> StaticTypedLiteral.toTypedLiteral
@@ -7857,14 +8538,12 @@ module xsd =
 
             static member literal(lexicalForm: System.String) : string<language> = UMX.tag lexicalForm
 
-            static member datatype: Datatype<language> = {
-                _datatypeIri = _namespace.curie "language" |> DatatypeIri
-            }
+            static member datatype: Datatype<language> =
+                { _datatypeIri = _namespace.curie "language" |> DatatypeIri }
 
-            static member staticTypedLiteral(lexicalForm: System.String) : StaticTypedLiteral<language> = {
-                literal = language.literal lexicalForm
-                datatype = language.datatype
-            }
+            static member staticTypedLiteral(lexicalForm: System.String) : StaticTypedLiteral<language> =
+                { literal = language.literal lexicalForm
+                  datatype = language.datatype }
 
             static member typedLiteral(lexicalForm: System.String) : TypedLiteral =
                 language.staticTypedLiteral lexicalForm |> StaticTypedLiteral.toTypedLiteral
@@ -7875,14 +8554,12 @@ module xsd =
 
             static member literal(lexicalForm: System.String) : string<Name> = UMX.tag lexicalForm
 
-            static member datatype: Datatype<Name> = {
-                _datatypeIri = _namespace.curie "Name" |> DatatypeIri
-            }
+            static member datatype: Datatype<Name> =
+                { _datatypeIri = _namespace.curie "Name" |> DatatypeIri }
 
-            static member staticTypedLiteral(lexicalForm: System.String) : StaticTypedLiteral<Name> = {
-                literal = Name.literal lexicalForm
-                datatype = Name.datatype
-            }
+            static member staticTypedLiteral(lexicalForm: System.String) : StaticTypedLiteral<Name> =
+                { literal = Name.literal lexicalForm
+                  datatype = Name.datatype }
 
             static member typedLiteral(lexicalForm: System.String) : TypedLiteral =
                 Name.staticTypedLiteral lexicalForm |> StaticTypedLiteral.toTypedLiteral
@@ -7893,14 +8570,12 @@ module xsd =
 
             static member literal(lexicalForm: System.String) : string<NCName> = UMX.tag lexicalForm
 
-            static member datatype: Datatype<NCName> = {
-                _datatypeIri = _namespace.curie "NCName" |> DatatypeIri
-            }
+            static member datatype: Datatype<NCName> =
+                { _datatypeIri = _namespace.curie "NCName" |> DatatypeIri }
 
-            static member staticTypedLiteral(lexicalForm: System.String) : StaticTypedLiteral<NCName> = {
-                literal = NCName.literal lexicalForm
-                datatype = NCName.datatype
-            }
+            static member staticTypedLiteral(lexicalForm: System.String) : StaticTypedLiteral<NCName> =
+                { literal = NCName.literal lexicalForm
+                  datatype = NCName.datatype }
 
             static member typedLiteral(lexicalForm: System.String) : TypedLiteral =
                 NCName.staticTypedLiteral lexicalForm |> StaticTypedLiteral.toTypedLiteral
@@ -7911,14 +8586,12 @@ module xsd =
 
             static member literal(lexicalForm: System.String) : string<NMTOKEN> = UMX.tag lexicalForm
 
-            static member datatype: Datatype<NMTOKEN> = {
-                _datatypeIri = _namespace.curie "NMTOKEN" |> DatatypeIri
-            }
+            static member datatype: Datatype<NMTOKEN> =
+                { _datatypeIri = _namespace.curie "NMTOKEN" |> DatatypeIri }
 
-            static member staticTypedLiteral(lexicalForm: System.String) : StaticTypedLiteral<NMTOKEN> = {
-                literal = NMTOKEN.literal lexicalForm
-                datatype = NMTOKEN.datatype
-            }
+            static member staticTypedLiteral(lexicalForm: System.String) : StaticTypedLiteral<NMTOKEN> =
+                { literal = NMTOKEN.literal lexicalForm
+                  datatype = NMTOKEN.datatype }
 
             static member typedLiteral(lexicalForm: System.String) : TypedLiteral =
                 NMTOKEN.staticTypedLiteral lexicalForm |> StaticTypedLiteral.toTypedLiteral
@@ -7936,25 +8609,31 @@ module xsd =
     let short: Datatype<Measure.short> = Measure.short.datatype
     let byte: Datatype<Measure.byte> = Measure.byte.datatype
 
-    let nonNegativeInteger: Datatype<Measure.nonNegativeInteger> = Measure.nonNegativeInteger.datatype
+    let nonNegativeInteger: Datatype<Measure.nonNegativeInteger> =
+        Measure.nonNegativeInteger.datatype
 
-    let positiveInteger: Datatype<Measure.positiveInteger> = Measure.positiveInteger.datatype
+    let positiveInteger: Datatype<Measure.positiveInteger> =
+        Measure.positiveInteger.datatype
 
     let unsignedLong: Datatype<Measure.unsignedLong> = Measure.unsignedLong.datatype
     let unsignedInt: Datatype<Measure.unsignedInt> = Measure.unsignedInt.datatype
     let unsignedShort: Datatype<Measure.unsignedShort> = Measure.unsignedShort.datatype
     let unsignedByte: Datatype<Measure.unsignedByte> = Measure.unsignedByte.datatype
 
-    let nonPositiveInteger: Datatype<Measure.nonPositiveInteger> = Measure.nonPositiveInteger.datatype
+    let nonPositiveInteger: Datatype<Measure.nonPositiveInteger> =
+        Measure.nonPositiveInteger.datatype
 
-    let negativeInteger: Datatype<Measure.negativeInteger> = Measure.negativeInteger.datatype
+    let negativeInteger: Datatype<Measure.negativeInteger> =
+        Measure.negativeInteger.datatype
 
     let double: Datatype<Measure.double> = Measure.double.datatype
     let duration: Datatype<Measure.duration> = Measure.duration.datatype
 
-    let dayTimeDuration: Datatype<Measure.dayTimeDuration> = Measure.dayTimeDuration.datatype
+    let dayTimeDuration: Datatype<Measure.dayTimeDuration> =
+        Measure.dayTimeDuration.datatype
 
-    let yearMonthDuration: Datatype<Measure.yearMonthDuration> = Measure.yearMonthDuration.datatype
+    let yearMonthDuration: Datatype<Measure.yearMonthDuration> =
+        Measure.yearMonthDuration.datatype
 
     let float: Datatype<Measure.float> = Measure.float.datatype
     let gDay: Datatype<Measure.gDay> = Measure.gDay.datatype
@@ -7965,7 +8644,8 @@ module xsd =
     let hexBinary: Datatype<Measure.hexBinary> = Measure.hexBinary.datatype
     let string: Datatype<Measure.string> = Measure.string.datatype
 
-    let normalizedString: Datatype<Measure.normalizedString> = Measure.normalizedString.datatype
+    let normalizedString: Datatype<Measure.normalizedString> =
+        Measure.normalizedString.datatype
 
     let token: Datatype<Measure.token> = Measure.token.datatype
     let language: Datatype<Measure.language> = Measure.language.datatype
@@ -8046,51 +8726,45 @@ module rdf =
             static member literal(value: string) : string<langString> = UMX.tag value
 
             /// https://www.w3.org/TR/rdf-plain-literal-1/
-            static member Datatype: Datatype<langString> = {
-                _datatypeIri = _namespace.curie "langString" |> DatatypeIri
-            }
+            static member Datatype: Datatype<langString> =
+                { _datatypeIri = _namespace.curie "langString" |> DatatypeIri }
 
         [<Measure>]
         type dirLangString =
             static member literal(value: string) : string<dirLangString> = UMX.tag value
 
             /// https://www.w3.org/TR/rdf-plain-literal-1/
-            static member Datatype: Datatype<dirLangString> = {
-                _datatypeIri = _namespace.curie "dirLangString" |> DatatypeIri
-            }
+            static member Datatype: Datatype<dirLangString> =
+                { _datatypeIri = _namespace.curie "dirLangString" |> DatatypeIri }
 
         [<Measure>]
         type PlainLiteral =
             static member literal(value: string) : string<PlainLiteral> = UMX.tag value
 
             /// https://www.w3.org/TR/rdf-plain-literal-1/
-            static member Datatype: Datatype<PlainLiteral> = {
-                _datatypeIri = _namespace.curie "PlainLiteral" |> DatatypeIri
-            }
+            static member Datatype: Datatype<PlainLiteral> =
+                { _datatypeIri = _namespace.curie "PlainLiteral" |> DatatypeIri }
 
         [<Measure>]
         type HTML =
             static member literal(value: string) : string<HTML> = UMX.tag value
 
-            static member Datatype: Datatype<HTML> = {
-                _datatypeIri = _namespace.curie "HTML" |> DatatypeIri
-            }
+            static member Datatype: Datatype<HTML> =
+                { _datatypeIri = _namespace.curie "HTML" |> DatatypeIri }
 
         [<Measure>]
         type JSON =
             static member literal(value: string) : string<JSON> = UMX.tag value
 
-            static member Datatype: Datatype<JSON> = {
-                _datatypeIri = _namespace.curie "JSON" |> DatatypeIri
-            }
+            static member Datatype: Datatype<JSON> =
+                { _datatypeIri = _namespace.curie "JSON" |> DatatypeIri }
 
         [<Measure>]
         type XMLLiteral =
             static member literal(value: string) : string<XMLLiteral> = UMX.tag value
 
-            static member Datatype: Datatype<XMLLiteral> = {
-                _datatypeIri = _namespace.curie "XMLLiteral" |> DatatypeIri
-            }
+            static member Datatype: Datatype<XMLLiteral> =
+                { _datatypeIri = _namespace.curie "XMLLiteral" |> DatatypeIri }
 
     let langString = Measure.langString.Datatype
     let dirLangString = Measure.dirLangString.Datatype
@@ -8176,321 +8850,281 @@ module xhtml =
         type Length =
             static member literal(value: string) : string<Length> = UMX.tag value
 
-            static member Datatype: Datatype<Length> = {
-                _datatypeIri = _namespace.curie "Length" |> DatatypeIri
-            }
+            static member Datatype: Datatype<Length> =
+                { _datatypeIri = _namespace.curie "Length" |> DatatypeIri }
 
         [<Measure>]
         type LinkTypes =
             static member literal(value: string) : string<LinkTypes> = UMX.tag value
 
-            static member Datatype: Datatype<LinkTypes> = {
-                _datatypeIri = _namespace.curie "LinkTypes" |> DatatypeIri
-            }
+            static member Datatype: Datatype<LinkTypes> =
+                { _datatypeIri = _namespace.curie "LinkTypes" |> DatatypeIri }
 
         [<Measure>]
         type MediaDesc =
             static member literal(value: string) : string<MediaDesc> = UMX.tag value
 
-            static member Datatype: Datatype<MediaDesc> = {
-                _datatypeIri = _namespace.curie "MediaDesc" |> DatatypeIri
-            }
+            static member Datatype: Datatype<MediaDesc> =
+                { _datatypeIri = _namespace.curie "MediaDesc" |> DatatypeIri }
 
         [<Measure>]
         type MultiLength =
             static member literal(value: string) : string<MultiLength> = UMX.tag value
 
-            static member Datatype: Datatype<MultiLength> = {
-                _datatypeIri = _namespace.curie "MultiLength" |> DatatypeIri
-            }
+            static member Datatype: Datatype<MultiLength> =
+                { _datatypeIri = _namespace.curie "MultiLength" |> DatatypeIri }
 
         [<Measure>]
         type Number =
             static member literal(value: string) : string<Number> = UMX.tag value
 
-            static member Datatype: Datatype<Number> = {
-                _datatypeIri = _namespace.curie "Number" |> DatatypeIri
-            }
+            static member Datatype: Datatype<Number> =
+                { _datatypeIri = _namespace.curie "Number" |> DatatypeIri }
 
         [<Measure>]
         type Pixels =
             static member literal(value: string) : string<Pixels> = UMX.tag value
 
-            static member Datatype: Datatype<Pixels> = {
-                _datatypeIri = _namespace.curie "Pixels" |> DatatypeIri
-            }
+            static member Datatype: Datatype<Pixels> =
+                { _datatypeIri = _namespace.curie "Pixels" |> DatatypeIri }
 
         [<Measure>]
         type Script =
             static member literal(value: string) : string<Script> = UMX.tag value
 
-            static member Datatype: Datatype<Script> = {
-                _datatypeIri = _namespace.curie "Script" |> DatatypeIri
-            }
+            static member Datatype: Datatype<Script> =
+                { _datatypeIri = _namespace.curie "Script" |> DatatypeIri }
 
         [<Measure>]
         type Color =
             static member literal(value: string) : string<Color> = UMX.tag value
 
-            static member Datatype: Datatype<Color> = {
-                _datatypeIri = _namespace.curie "Color" |> DatatypeIri
-            }
+            static member Datatype: Datatype<Color> =
+                { _datatypeIri = _namespace.curie "Color" |> DatatypeIri }
 
         [<Measure>]
         type Text =
             static member literal(value: string) : string<Text> = UMX.tag value
 
-            static member Datatype: Datatype<Text> = {
-                _datatypeIri = _namespace.curie "Text" |> DatatypeIri
-            }
+            static member Datatype: Datatype<Text> =
+                { _datatypeIri = _namespace.curie "Text" |> DatatypeIri }
 
         [<Measure>]
         type Character =
             static member literal(value: string) : string<Character> = UMX.tag value
 
-            static member Datatype: Datatype<Character> = {
-                _datatypeIri = _namespace.curie "Character" |> DatatypeIri
-            }
+            static member Datatype: Datatype<Character> =
+                { _datatypeIri = _namespace.curie "Character" |> DatatypeIri }
 
         [<Measure>]
         type Charset =
             static member literal(value: string) : string<Charset> = UMX.tag value
 
-            static member Datatype: Datatype<Charset> = {
-                _datatypeIri = _namespace.curie "Charset" |> DatatypeIri
-            }
+            static member Datatype: Datatype<Charset> =
+                { _datatypeIri = _namespace.curie "Charset" |> DatatypeIri }
 
         [<Measure>]
         type Charsets =
             static member literal(value: string) : string<Charsets> = UMX.tag value
 
-            static member Datatype: Datatype<Charsets> = {
-                _datatypeIri = _namespace.curie "Charsets" |> DatatypeIri
-            }
+            static member Datatype: Datatype<Charsets> =
+                { _datatypeIri = _namespace.curie "Charsets" |> DatatypeIri }
 
         [<Measure>]
         type ContentType =
             static member literal(value: string) : string<ContentType> = UMX.tag value
 
-            static member Datatype: Datatype<ContentType> = {
-                _datatypeIri = _namespace.curie "ContentType" |> DatatypeIri
-            }
+            static member Datatype: Datatype<ContentType> =
+                { _datatypeIri = _namespace.curie "ContentType" |> DatatypeIri }
 
         [<Measure>]
         type ContentTypes =
             static member literal(value: string) : string<ContentTypes> = UMX.tag value
 
-            static member Datatype: Datatype<ContentTypes> = {
-                _datatypeIri = _namespace.curie "ContentTypes" |> DatatypeIri
-            }
+            static member Datatype: Datatype<ContentTypes> =
+                { _datatypeIri = _namespace.curie "ContentTypes" |> DatatypeIri }
 
         [<Measure>]
         type Datetime =
             static member literal(value: string) : string<Datetime> = UMX.tag value
 
-            static member Datatype: Datatype<Datetime> = {
-                _datatypeIri = _namespace.curie "Datetime" |> DatatypeIri
-            }
+            static member Datatype: Datatype<Datetime> =
+                { _datatypeIri = _namespace.curie "Datetime" |> DatatypeIri }
 
         [<Measure>]
         type FPI =
             static member literal(value: string) : string<FPI> = UMX.tag value
 
-            static member Datatype: Datatype<FPI> = {
-                _datatypeIri = _namespace.curie "FPI" |> DatatypeIri
-            }
+            static member Datatype: Datatype<FPI> =
+                { _datatypeIri = _namespace.curie "FPI" |> DatatypeIri }
 
         [<Measure>]
         type FrameTarget =
             static member literal(value: string) : string<FrameTarget> = UMX.tag value
 
-            static member Datatype: Datatype<FrameTarget> = {
-                _datatypeIri = _namespace.curie "FrameTarget" |> DatatypeIri
-            }
+            static member Datatype: Datatype<FrameTarget> =
+                { _datatypeIri = _namespace.curie "FrameTarget" |> DatatypeIri }
 
         [<Measure>]
         type LanguageCode =
             static member literal(value: string) : string<LanguageCode> = UMX.tag value
 
-            static member Datatype: Datatype<LanguageCode> = {
-                _datatypeIri = _namespace.curie "LanguageCode" |> DatatypeIri
-            }
+            static member Datatype: Datatype<LanguageCode> =
+                { _datatypeIri = _namespace.curie "LanguageCode" |> DatatypeIri }
 
         [<Measure>]
         type LanguageCodes =
             static member literal(value: string) : string<LanguageCodes> = UMX.tag value
 
-            static member Datatype: Datatype<LanguageCodes> = {
-                _datatypeIri = _namespace.curie "LanguageCodes" |> DatatypeIri
-            }
+            static member Datatype: Datatype<LanguageCodes> =
+                { _datatypeIri = _namespace.curie "LanguageCodes" |> DatatypeIri }
 
         [<Measure>]
         type URI =
             static member literal(value: string) : string<URI> = UMX.tag value
 
-            static member Datatype: Datatype<URI> = {
-                _datatypeIri = _namespace.curie "URI" |> DatatypeIri
-            }
+            static member Datatype: Datatype<URI> =
+                { _datatypeIri = _namespace.curie "URI" |> DatatypeIri }
 
         [<Measure>]
         type URIs =
             static member literal(value: string) : string<URIs> = UMX.tag value
 
-            static member Datatype: Datatype<URIs> = {
-                _datatypeIri = _namespace.curie "URIs" |> DatatypeIri
-            }
+            static member Datatype: Datatype<URIs> =
+                { _datatypeIri = _namespace.curie "URIs" |> DatatypeIri }
 
         [<Measure>]
         type URIREF =
             static member literal(value: string) : string<URIREF> = UMX.tag value
 
-            static member Datatype: Datatype<URIREF> = {
-                _datatypeIri = _namespace.curie "URIREF" |> DatatypeIri
-            }
+            static member Datatype: Datatype<URIREF> =
+                { _datatypeIri = _namespace.curie "URIREF" |> DatatypeIri }
 
         [<Measure>]
         type MultiLengths =
             static member literal(value: string) : string<MultiLengths> = UMX.tag value
 
-            static member Datatype: Datatype<MultiLengths> = {
-                _datatypeIri = _namespace.curie "MultiLengths" |> DatatypeIri
-            }
+            static member Datatype: Datatype<MultiLengths> =
+                { _datatypeIri = _namespace.curie "MultiLengths" |> DatatypeIri }
 
         [<Measure>]
         type CDATA =
             static member literal(value: string) : string<CDATA> = UMX.tag value
 
-            static member Datatype: Datatype<CDATA> = {
-                _datatypeIri = _namespace.curie "CDATA" |> DatatypeIri
-            }
+            static member Datatype: Datatype<CDATA> =
+                { _datatypeIri = _namespace.curie "CDATA" |> DatatypeIri }
 
         [<Measure>]
         type CURIE =
             static member literal(value: string) : string<CURIE> = UMX.tag value
 
-            static member Datatype: Datatype<CURIE> = {
-                _datatypeIri = _namespace.curie "CURIE" |> DatatypeIri
-            }
+            static member Datatype: Datatype<CURIE> =
+                { _datatypeIri = _namespace.curie "CURIE" |> DatatypeIri }
 
         [<Measure>]
         type CURIEs =
             static member literal(value: string) : string<CURIEs> = UMX.tag value
 
-            static member Datatype: Datatype<CURIEs> = {
-                _datatypeIri = _namespace.curie "CURIEs" |> DatatypeIri
-            }
+            static member Datatype: Datatype<CURIEs> =
+                { _datatypeIri = _namespace.curie "CURIEs" |> DatatypeIri }
 
         [<Measure>]
         type SafeCURIE =
             static member literal(value: string) : string<SafeCURIE> = UMX.tag value
 
-            static member Datatype: Datatype<SafeCURIE> = {
-                _datatypeIri = _namespace.curie "SafeCURIE" |> DatatypeIri
-            }
+            static member Datatype: Datatype<SafeCURIE> =
+                { _datatypeIri = _namespace.curie "SafeCURIE" |> DatatypeIri }
 
         [<Measure>]
         type SafeCURIEs =
             static member literal(value: string) : string<SafeCURIEs> = UMX.tag value
 
-            static member Datatype: Datatype<SafeCURIEs> = {
-                _datatypeIri = _namespace.curie "SafeCURIEs" |> DatatypeIri
-            }
+            static member Datatype: Datatype<SafeCURIEs> =
+                { _datatypeIri = _namespace.curie "SafeCURIEs" |> DatatypeIri }
 
         [<Measure>]
         type URIorSafeCURIE =
             static member literal(value: string) : string<URIorSafeCURIE> = UMX.tag value
 
-            static member Datatype: Datatype<URIorSafeCURIE> = {
-                _datatypeIri = _namespace.curie "URIorSafeCURIE" |> DatatypeIri
-            }
+            static member Datatype: Datatype<URIorSafeCURIE> =
+                { _datatypeIri = _namespace.curie "URIorSafeCURIE" |> DatatypeIri }
 
         [<Measure>]
         type URIorSafeCURIEs =
             static member literal(value: string) : string<URIorSafeCURIEs> = UMX.tag value
 
-            static member Datatype: Datatype<URIorSafeCURIEs> = {
-                _datatypeIri = _namespace.curie "URIorSafeCURIEs" |> DatatypeIri
-            }
+            static member Datatype: Datatype<URIorSafeCURIEs> =
+                { _datatypeIri = _namespace.curie "URIorSafeCURIEs" |> DatatypeIri }
 
         [<Measure>]
         type PREFIX =
             static member literal(value: string) : string<PREFIX> = UMX.tag value
 
-            static member Datatype: Datatype<PREFIX> = {
-                _datatypeIri = _namespace.curie "PREFIX" |> DatatypeIri
-            }
+            static member Datatype: Datatype<PREFIX> =
+                { _datatypeIri = _namespace.curie "PREFIX" |> DatatypeIri }
 
         [<Measure>]
         type PREFIXes =
             static member literal(value: string) : string<PREFIXes> = UMX.tag value
 
-            static member Datatype: Datatype<PREFIXes> = {
-                _datatypeIri = _namespace.curie "PREFIXes" |> DatatypeIri
-            }
+            static member Datatype: Datatype<PREFIXes> =
+                { _datatypeIri = _namespace.curie "PREFIXes" |> DatatypeIri }
 
         [<Measure>]
         type TERM =
             static member literal(value: string) : string<TERM> = UMX.tag value
 
-            static member Datatype: Datatype<TERM> = {
-                _datatypeIri = _namespace.curie "TERM" |> DatatypeIri
-            }
+            static member Datatype: Datatype<TERM> =
+                { _datatypeIri = _namespace.curie "TERM" |> DatatypeIri }
 
         [<Measure>]
         type CURIEorIri =
             static member literal(value: string) : string<CURIEorIri> = UMX.tag value
 
-            static member Datatype: Datatype<CURIEorIri> = {
-                _datatypeIri = _namespace.curie "CURIEorIri" |> DatatypeIri
-            }
+            static member Datatype: Datatype<CURIEorIri> =
+                { _datatypeIri = _namespace.curie "CURIEorIri" |> DatatypeIri }
 
         [<Measure>]
         type CURIEorIris =
             static member literal(value: string) : string<CURIEorIris> = UMX.tag value
 
-            static member Datatype: Datatype<CURIEorIris> = {
-                _datatypeIri = _namespace.curie "CURIEorIris" |> DatatypeIri
-            }
+            static member Datatype: Datatype<CURIEorIris> =
+                { _datatypeIri = _namespace.curie "CURIEorIris" |> DatatypeIri }
 
         [<Measure>]
         type SafeCURIEorCURIEorIri =
             static member literal(value: string) : string<SafeCURIEorCURIEorIri> = UMX.tag value
 
-            static member Datatype: Datatype<SafeCURIEorCURIEorIri> = {
-                _datatypeIri = _namespace.curie "SafeCURIEorCURIEorIri" |> DatatypeIri
-            }
+            static member Datatype: Datatype<SafeCURIEorCURIEorIri> =
+                { _datatypeIri = _namespace.curie "SafeCURIEorCURIEorIri" |> DatatypeIri }
 
         [<Measure>]
         type SafeCURIEorCURIEorIris =
             static member literal(value: string) : string<SafeCURIEorCURIEorIris> = UMX.tag value
 
-            static member Datatype: Datatype<SafeCURIEorCURIEorIris> = {
-                _datatypeIri = _namespace.curie "SafeCURIEorCURIEorIris" |> DatatypeIri
-            }
+            static member Datatype: Datatype<SafeCURIEorCURIEorIris> =
+                { _datatypeIri = _namespace.curie "SafeCURIEorCURIEorIris" |> DatatypeIri }
 
         [<Measure>]
         type AbsIri =
             static member literal(value: string) : string<AbsIri> = UMX.tag value
 
-            static member Datatype: Datatype<AbsIri> = {
-                _datatypeIri = _namespace.curie "AbsIri" |> DatatypeIri
-            }
+            static member Datatype: Datatype<AbsIri> =
+                { _datatypeIri = _namespace.curie "AbsIri" |> DatatypeIri }
 
         [<Measure>]
         type TERMorCURIEorAbsIri =
             static member literal(value: string) : string<TERMorCURIEorAbsIri> = UMX.tag value
 
-            static member Datatype: Datatype<TERMorCURIEorAbsIri> = {
-                _datatypeIri = _namespace.curie "TERMorCURIEorAbsIri" |> DatatypeIri
-            }
+            static member Datatype: Datatype<TERMorCURIEorAbsIri> =
+                { _datatypeIri = _namespace.curie "TERMorCURIEorAbsIri" |> DatatypeIri }
 
         [<Measure>]
         type TERMorCURIEorAbsIris =
             static member literal(value: string) : string<TERMorCURIEorAbsIris> = UMX.tag value
 
-            static member Datatype: Datatype<TERMorCURIEorAbsIris> = {
-                _datatypeIri = _namespace.curie "TERMorCURIEorAbsIris" |> DatatypeIri
-            }
+            static member Datatype: Datatype<TERMorCURIEorAbsIris> =
+                { _datatypeIri = _namespace.curie "TERMorCURIEorAbsIris" |> DatatypeIri }
 
     let Length = Measure.Length.Datatype
     let LinkTypes = Measure.LinkTypes.Datatype
@@ -8595,30 +9229,28 @@ module spdx =
         [<Measure>]
         type MediaType =
 
-            static member canonicalMapping(value: Iana.Mime) : System.String = value.contentType
+            static member canonicalMapping(value: Iana.InternetMediaType) : System.String = value.contentType
 
             static member lexicalForm(literal: string<MediaType>) : System.String = UMX.untag literal
 
             static member literal(lexicalForm: System.String) : string<MediaType> = UMX.tag lexicalForm
 
-            static member literal(value: Iana.Mime) : string<MediaType> =
+            static member literal(value: Iana.InternetMediaType) : string<MediaType> =
                 MediaType.canonicalMapping value |> MediaType.literal
 
-            static member value(literal: string<MediaType>) : Iana.Mime =
+            static member value(literal: string<MediaType>) : Iana.InternetMediaType =
                 let raw = MediaType.lexicalForm literal
-                let value = Iana.Mime.ofContentType raw
+                let value = Iana.InternetMediaType.ofContentType raw
                 value
 
-            static member datatype: Datatype<MediaType> = {
-                _datatypeIri = _namespace.curie "MediaType" |> DatatypeIri
-            }
+            static member datatype: Datatype<MediaType> =
+                { _datatypeIri = _namespace.curie "MediaType" |> DatatypeIri }
 
-            static member staticTypedLiteral(value: Iana.Mime) : StaticTypedLiteral<MediaType> = {
-                literal = MediaType.literal value
-                datatype = MediaType.datatype
-            }
+            static member staticTypedLiteral(value: Iana.InternetMediaType) : StaticTypedLiteral<MediaType> =
+                { literal = MediaType.literal value
+                  datatype = MediaType.datatype }
 
-            static member typedLiteral(value: Iana.Mime) : TypedLiteral =
+            static member typedLiteral(value: Iana.InternetMediaType) : TypedLiteral =
                 MediaType.staticTypedLiteral value |> StaticTypedLiteral.toTypedLiteral
 
     let MediaType = Measure.MediaType.datatype
@@ -8631,17 +9263,15 @@ module owl =
         type rational =
             static member literal(value: string) : string<rational> = UMX.tag value
 
-            static member Datatype: Datatype<rational> = {
-                _datatypeIri = _namespace.curie "rational" |> DatatypeIri
-            }
+            static member Datatype: Datatype<rational> =
+                { _datatypeIri = _namespace.curie "rational" |> DatatypeIri }
 
         [<Measure>]
         type real =
             static member literal(value: string) : string<real> = UMX.tag value
 
-            static member Datatype: Datatype<real> = {
-                _datatypeIri = _namespace.curie "real" |> DatatypeIri
-            }
+            static member Datatype: Datatype<real> =
+                { _datatypeIri = _namespace.curie "real" |> DatatypeIri }
 
     let rational = Measure.rational.Datatype
     let real = Measure.real.Datatype
@@ -9045,7 +9675,8 @@ module Owl =
                     Xml.Individual restriction.toIndividual
                 }
 
-            | SelfRestriction objectPropertyExpression -> xml.ObjectHasSelf { Xml.ObjectPropertyExpression objectPropertyExpression }
+            | SelfRestriction objectPropertyExpression ->
+                xml.ObjectHasSelf { Xml.ObjectPropertyExpression objectPropertyExpression }
 
             | ExistentialDataRangeRestriction restriction ->
                 xml.DataSomeValuesFrom {
@@ -9130,7 +9761,9 @@ module Owl =
         // Generic annotated element composition
         // ----------------------------------------
 
-        static member Annotated(annotated: Annotated<'T>, serializeContent: 'T -> XmlPart list, constructElement: seq<XmlPart> -> XmlPart) : XmlPart =
+        static member Annotated
+            (annotated: Annotated<'T>, serializeContent: 'T -> XmlPart list, constructElement: seq<XmlPart> -> XmlPart)
+            : XmlPart =
 
             let contents =
                 seq {
@@ -9148,10 +9781,8 @@ module Owl =
 
         static member ClassAssertionContent(classAssertion: ClassAssertion) : XmlPart list =
 
-            [
-                Xml.ClassExpression classAssertion.classExpression
-                Xml.Individual classAssertion.individual
-            ]
+            [ Xml.ClassExpression classAssertion.classExpression
+              Xml.Individual classAssertion.individual ]
 
         // ----------------------------------------
         // Class assertion
@@ -9165,55 +9796,67 @@ module Owl =
 
             Xml.Annotated(annotated, Xml.ClassAssertionContent, fun contents -> xml.ClassAssertion { yield! contents })
 
-        static member SameIndividualContent(assertion: SameIndividual) : XmlPart list = [
-            for individual in assertion.SameIndividual.elements do
-                Xml.Individual individual
-        ]
+        static member SameIndividualContent(assertion: SameIndividual) : XmlPart list =
+            [ for individual in assertion.SameIndividual.elements do
+                  Xml.Individual individual ]
 
-        static member DifferentIndividualsContent(assertion: DifferentIndividuals) : XmlPart list = [
-            for individual in assertion.DifferentIndividuals.elements do
-                Xml.Individual individual
-        ]
+        static member DifferentIndividualsContent(assertion: DifferentIndividuals) : XmlPart list =
+            [ for individual in assertion.DifferentIndividuals.elements do
+                  Xml.Individual individual ]
 
-        static member ObjectPropertyAssertionContent(assertion: ObjectPropertyAssertion) : XmlPart list = [
-            Xml.ObjectPropertyExpression assertion.objectPropertyExpression
-            Xml.Individual assertion.sourceIndividual
-            Xml.Individual assertion.targetIndividual
-        ]
+        static member ObjectPropertyAssertionContent(assertion: ObjectPropertyAssertion) : XmlPart list =
+            [ Xml.ObjectPropertyExpression assertion.objectPropertyExpression
+              Xml.Individual assertion.sourceIndividual
+              Xml.Individual assertion.targetIndividual ]
 
-        static member NegativeObjectPropertyAssertionContent(assertion: NegativeObjectPropertyAssertion) : XmlPart list = [
-            Xml.ObjectPropertyExpression assertion.negativeObjectPropertyExpression
-            Xml.Individual assertion.sourceIndividual
-            Xml.Individual assertion.targetIndividual
-        ]
+        static member NegativeObjectPropertyAssertionContent
+            (assertion: NegativeObjectPropertyAssertion)
+            : XmlPart list =
+            [ Xml.ObjectPropertyExpression assertion.negativeObjectPropertyExpression
+              Xml.Individual assertion.sourceIndividual
+              Xml.Individual assertion.targetIndividual ]
 
-        static member DataPropertyAssertionContent(assertion: DataPropertyAssertion) : XmlPart list = [
-            Xml.DataProperty assertion.dataProperty
-            Xml.Individual assertion.sourceIndividual
-            Xml.Literal assertion.targetValue
-        ]
+        static member DataPropertyAssertionContent(assertion: DataPropertyAssertion) : XmlPart list =
+            [ Xml.DataProperty assertion.dataProperty
+              Xml.Individual assertion.sourceIndividual
+              Xml.Literal assertion.targetValue ]
 
-        static member NegativeDataPropertyAssertionContent(assertion: NegativeDataPropertyAssertion) : XmlPart list = [
-            Xml.DataProperty assertion.negativeDataProperty
-            Xml.Individual assertion.sourceIndividual
-            Xml.Literal assertion.targetValue
-        ]
+        static member NegativeDataPropertyAssertionContent(assertion: NegativeDataPropertyAssertion) : XmlPart list =
+            [ Xml.DataProperty assertion.negativeDataProperty
+              Xml.Individual assertion.sourceIndividual
+              Xml.Literal assertion.targetValue ]
 
         static member Assertion(annotated: Annotated<Assertion>) : XmlPart =
 
             match annotated.value with
 
             | Assertion.SameIndividual assertion ->
-                Xml.Annotated(annotated.map (fun _ -> assertion), Xml.SameIndividualContent, fun contents -> xml.SameIndividual { yield! contents })
+                Xml.Annotated(
+                    annotated.map (fun _ -> assertion),
+                    Xml.SameIndividualContent,
+                    fun contents -> xml.SameIndividual { yield! contents }
+                )
 
             | Assertion.DifferentIndividuals assertion ->
-                Xml.Annotated(annotated.map (fun _ -> assertion), Xml.DifferentIndividualsContent, fun contents -> xml.DifferentIndividuals { yield! contents })
+                Xml.Annotated(
+                    annotated.map (fun _ -> assertion),
+                    Xml.DifferentIndividualsContent,
+                    fun contents -> xml.DifferentIndividuals { yield! contents }
+                )
 
             | Assertion.ClassAssertion assertion ->
-                Xml.Annotated(annotated.map (fun _ -> assertion), Xml.ClassAssertionContent, fun contents -> xml.ClassAssertion { yield! contents })
+                Xml.Annotated(
+                    annotated.map (fun _ -> assertion),
+                    Xml.ClassAssertionContent,
+                    fun contents -> xml.ClassAssertion { yield! contents }
+                )
 
             | Assertion.ObjectPropertyAssertion assertion ->
-                Xml.Annotated(annotated.map (fun _ -> assertion), Xml.ObjectPropertyAssertionContent, fun contents -> xml.ObjectPropertyAssertion { yield! contents })
+                Xml.Annotated(
+                    annotated.map (fun _ -> assertion),
+                    Xml.ObjectPropertyAssertionContent,
+                    fun contents -> xml.ObjectPropertyAssertion { yield! contents }
+                )
 
             | Assertion.NegativeObjectPropertyAssertion assertion ->
                 Xml.Annotated(
@@ -9223,7 +9866,11 @@ module Owl =
                 )
 
             | Assertion.DataPropertyAssertion assertion ->
-                Xml.Annotated(annotated.map (fun _ -> assertion), Xml.DataPropertyAssertionContent, fun contents -> xml.DataPropertyAssertion { yield! contents })
+                Xml.Annotated(
+                    annotated.map (fun _ -> assertion),
+                    Xml.DataPropertyAssertionContent,
+                    fun contents -> xml.DataPropertyAssertion { yield! contents }
+                )
 
             | Assertion.NegativeDataPropertyAssertion assertion ->
                 Xml.Annotated(
@@ -9232,56 +9879,68 @@ module Owl =
                     fun contents -> xml.NegativeDataPropertyAssertion { yield! contents }
                 )
 
-        static member SubClassContent(axiom: SubClass) : XmlPart list = [
-            Xml.ClassExpression axiom.subClassExpression
-            Xml.ClassExpression axiom.superClassExpression
-        ]
+        static member SubClassContent(axiom: SubClass) : XmlPart list =
+            [ Xml.ClassExpression axiom.subClassExpression
+              Xml.ClassExpression axiom.superClassExpression ]
 
-        static member EquivalentClassesContent(axiom: EquivalentClasses) : XmlPart list = [
-            for expression in axiom.equivalentClasses.elements do
-                Xml.ClassExpression expression
-        ]
+        static member EquivalentClassesContent(axiom: EquivalentClasses) : XmlPart list =
+            [ for expression in axiom.equivalentClasses.elements do
+                  Xml.ClassExpression expression ]
 
-        static member DisjointClassesContent(axiom: DisjointClasses) : XmlPart list = [
-            for expression in axiom.disjointClasses.elements do
-                Xml.ClassExpression expression
-        ]
+        static member DisjointClassesContent(axiom: DisjointClasses) : XmlPart list =
+            [ for expression in axiom.disjointClasses.elements do
+                  Xml.ClassExpression expression ]
 
-        static member DisjointUnionContent(axiom: DisjointUnion) : XmlPart list = [
-            Xml.Class axiom.disjointClass
+        static member DisjointUnionContent(axiom: DisjointUnion) : XmlPart list =
+            [ Xml.Class axiom.disjointClass
 
-            for expression in axiom.disjointClassExpressions.elements do
-                Xml.ClassExpression expression
-        ]
+              for expression in axiom.disjointClassExpressions.elements do
+                  Xml.ClassExpression expression ]
 
         static member ClassAxiom(annotated: Annotated<ClassAxiom>) : XmlPart =
 
             match annotated.value with
 
-            | SubClassAxiom axiom -> Xml.Annotated(annotated.map (fun _ -> axiom), Xml.SubClassContent, fun contents -> xml.SubClassOf { yield! contents })
+            | SubClassAxiom axiom ->
+                Xml.Annotated(
+                    annotated.map (fun _ -> axiom),
+                    Xml.SubClassContent,
+                    fun contents -> xml.SubClassOf { yield! contents }
+                )
 
             | EquivalentClassesAxiom axiom ->
-                Xml.Annotated(annotated.map (fun _ -> axiom), Xml.EquivalentClassesContent, fun contents -> xml.EquivalentClasses { yield! contents })
+                Xml.Annotated(
+                    annotated.map (fun _ -> axiom),
+                    Xml.EquivalentClassesContent,
+                    fun contents -> xml.EquivalentClasses { yield! contents }
+                )
 
             | DisjointClassesAxiom axiom ->
-                Xml.Annotated(annotated.map (fun _ -> axiom), Xml.DisjointClassesContent, fun contents -> xml.DisjointClasses { yield! contents })
+                Xml.Annotated(
+                    annotated.map (fun _ -> axiom),
+                    Xml.DisjointClassesContent,
+                    fun contents -> xml.DisjointClasses { yield! contents }
+                )
 
-            | DisjointUnionAxiom axiom -> Xml.Annotated(annotated.map (fun _ -> axiom), Xml.DisjointUnionContent, fun contents -> xml.DisjointUnion { yield! contents })
+            | DisjointUnionAxiom axiom ->
+                Xml.Annotated(
+                    annotated.map (fun _ -> axiom),
+                    Xml.DisjointUnionContent,
+                    fun contents -> xml.DisjointUnion { yield! contents }
+                )
 
         static member SubObjectPropertyContent(axiom: SubObjectProperty) : XmlPart list =
 
-            [
-                match axiom.subObjectPropertyExpression with
-                | SubObjectPropertyExpression expression -> Xml.ObjectPropertyExpression expression
+            [ match axiom.subObjectPropertyExpression with
+              | SubObjectPropertyExpression expression -> Xml.ObjectPropertyExpression expression
 
-                | PropertyExpressionChain chain ->
-                    xml.ObjectPropertyChain {
-                        for property in chain.objectPropertyChain.items do
-                            Xml.ObjectPropertyExpression property
-                    }
+              | PropertyExpressionChain chain ->
+                  xml.ObjectPropertyChain {
+                      for property in chain.objectPropertyChain.items do
+                          Xml.ObjectPropertyExpression property
+                  }
 
-                Xml.ObjectPropertyExpression axiom.superObjectPropertyExpression
-            ]
+              Xml.ObjectPropertyExpression axiom.superObjectPropertyExpression ]
 
         static member ObjectPropertyAxiom(annotated: Annotated<ObjectPropertyAxiom>) : XmlPart =
 
@@ -9290,65 +9949,66 @@ module Owl =
 
             match annotated.value with
 
-            | ObjectPropertyAxiom.SubObjectProperty axiom -> emit (Xml.SubObjectPropertyContent axiom) (fun contents -> xml.SubObjectPropertyOf { yield! contents })
+            | ObjectPropertyAxiom.SubObjectProperty axiom ->
+                emit (Xml.SubObjectPropertyContent axiom) (fun contents -> xml.SubObjectPropertyOf { yield! contents })
 
             | ObjectPropertyAxiom.EquivalentObjectProperties axiom ->
                 emit
-                    [
-                        for property in axiom.equivalentObjectPropertyExpressions.elements do
-                            Xml.ObjectPropertyExpression property
-                    ]
+                    [ for property in axiom.equivalentObjectPropertyExpressions.elements do
+                          Xml.ObjectPropertyExpression property ]
                     (fun contents -> xml.EquivalentObjectProperties { yield! contents })
 
             | ObjectPropertyAxiom.DisjointObjectProperties axiom ->
                 emit
-                    [
-                        for property in axiom.disjointObjectPropertyExpressions.elements do
-                            Xml.ObjectPropertyExpression property
-                    ]
+                    [ for property in axiom.disjointObjectPropertyExpressions.elements do
+                          Xml.ObjectPropertyExpression property ]
                     (fun contents -> xml.DisjointObjectProperties { yield! contents })
 
             | ObjectPropertyAxiom.InverseObjectProperties axiom ->
                 let first, second = axiom.inverseObjectProperties
 
-                emit [ Xml.ObjectPropertyExpression first; Xml.ObjectPropertyExpression second ] (fun contents -> xml.InverseObjectProperties { yield! contents })
+                emit [ Xml.ObjectPropertyExpression first; Xml.ObjectPropertyExpression second ] (fun contents ->
+                    xml.InverseObjectProperties { yield! contents })
 
             | ObjectPropertyAxiom.ObjectPropertyDomain axiom ->
                 emit
-                    [
-                        Xml.ObjectPropertyExpression axiom.objectPropertyExpression
-                        Xml.ClassExpression axiom.objectPropertyDomain
-                    ]
+                    [ Xml.ObjectPropertyExpression axiom.objectPropertyExpression
+                      Xml.ClassExpression axiom.objectPropertyDomain ]
                     (fun contents -> xml.ObjectPropertyDomain { yield! contents })
 
             | ObjectPropertyAxiom.ObjectPropertyRange axiom ->
                 emit
-                    [
-                        Xml.ObjectPropertyExpression axiom.objectPropertyExpression
-                        Xml.ClassExpression axiom.objectPropertyRange
-                    ]
+                    [ Xml.ObjectPropertyExpression axiom.objectPropertyExpression
+                      Xml.ClassExpression axiom.objectPropertyRange ]
                     (fun contents -> xml.ObjectPropertyRange { yield! contents })
 
             | ObjectPropertyAxiom.FunctionalObjectProperty axiom ->
-                emit [ Xml.ObjectPropertyExpression axiom.functionalObjectProperty ] (fun contents -> xml.FunctionalObjectProperty { yield! contents })
+                emit [ Xml.ObjectPropertyExpression axiom.functionalObjectProperty ] (fun contents ->
+                    xml.FunctionalObjectProperty { yield! contents })
 
             | ObjectPropertyAxiom.InverseFunctionalObjectProperty axiom ->
-                emit [ Xml.ObjectPropertyExpression axiom.inverseFunctionalObjectProperty ] (fun contents -> xml.InverseFunctionalObjectProperty { yield! contents })
+                emit [ Xml.ObjectPropertyExpression axiom.inverseFunctionalObjectProperty ] (fun contents ->
+                    xml.InverseFunctionalObjectProperty { yield! contents })
 
             | ObjectPropertyAxiom.ReflexiveObjectProperty axiom ->
-                emit [ Xml.ObjectPropertyExpression axiom.reflexiveObjectProperty ] (fun contents -> xml.ReflexiveObjectProperty { yield! contents })
+                emit [ Xml.ObjectPropertyExpression axiom.reflexiveObjectProperty ] (fun contents ->
+                    xml.ReflexiveObjectProperty { yield! contents })
 
             | ObjectPropertyAxiom.IrreflexiveObjectProperty axiom ->
-                emit [ Xml.ObjectPropertyExpression axiom.irreflexiveObjectProperty ] (fun contents -> xml.IrreflexiveObjectProperty { yield! contents })
+                emit [ Xml.ObjectPropertyExpression axiom.irreflexiveObjectProperty ] (fun contents ->
+                    xml.IrreflexiveObjectProperty { yield! contents })
 
             | ObjectPropertyAxiom.SymmetricObjectProperty axiom ->
-                emit [ Xml.ObjectPropertyExpression axiom.symmetricObjectProperty ] (fun contents -> xml.SymmetricObjectProperty { yield! contents })
+                emit [ Xml.ObjectPropertyExpression axiom.symmetricObjectProperty ] (fun contents ->
+                    xml.SymmetricObjectProperty { yield! contents })
 
             | ObjectPropertyAxiom.AsymmetricObjectProperty axiom ->
-                emit [ Xml.ObjectPropertyExpression axiom.asymmetricObjectProperty ] (fun contents -> xml.AsymmetricObjectProperty { yield! contents })
+                emit [ Xml.ObjectPropertyExpression axiom.asymmetricObjectProperty ] (fun contents ->
+                    xml.AsymmetricObjectProperty { yield! contents })
 
             | ObjectPropertyAxiom.TransitiveObjectProperty axiom ->
-                emit [ Xml.ObjectPropertyExpression axiom.transitiveObjectProperty ] (fun contents -> xml.TransitiveObjectProperty { yield! contents })
+                emit [ Xml.ObjectPropertyExpression axiom.transitiveObjectProperty ] (fun contents ->
+                    xml.TransitiveObjectProperty { yield! contents })
 
         static member DataPropertyAxiom(annotated: Annotated<DataPropertyAxiom>) : XmlPart =
 
@@ -9359,41 +10019,35 @@ module Owl =
 
             | DataPropertyAxiom.SubDataProperty axiom ->
                 emit
-                    [
-                        Xml.DataProperty axiom.subDataProperty
-                        Xml.DataProperty axiom.superDataProperty
-                    ]
+                    [ Xml.DataProperty axiom.subDataProperty
+                      Xml.DataProperty axiom.superDataProperty ]
                     (fun contents -> xml.SubDataPropertyOf { yield! contents })
 
             | DataPropertyAxiom.EquivalentDataProperties axiom ->
                 emit
-                    [
-                        for property in axiom.equivalentDataProperties.elements do
-                            Xml.DataProperty property
-                    ]
+                    [ for property in axiom.equivalentDataProperties.elements do
+                          Xml.DataProperty property ]
                     (fun contents -> xml.EquivalentDataProperties { yield! contents })
 
             | DataPropertyAxiom.DisjointDataProperties axiom ->
                 emit
-                    [
-                        for property in axiom.disjointDataProperties.elements do
-                            Xml.DataProperty property
-                    ]
+                    [ for property in axiom.disjointDataProperties.elements do
+                          Xml.DataProperty property ]
                     (fun contents -> xml.DisjointDataProperties { yield! contents })
 
             | DataPropertyAxiom.DataPropertyDomain axiom ->
                 emit
-                    [
-                        Xml.DataProperty axiom.dataProperty
-                        Xml.ClassExpression axiom.dataPropertyDomain
-                    ]
+                    [ Xml.DataProperty axiom.dataProperty
+                      Xml.ClassExpression axiom.dataPropertyDomain ]
                     (fun contents -> xml.DataPropertyDomain { yield! contents })
 
             | DataPropertyAxiom.DataPropertyRange axiom ->
-                emit [ Xml.DataProperty axiom.dataProperty; Xml.DataRange axiom.dataPropertyRange ] (fun contents -> xml.DataPropertyRange { yield! contents })
+                emit [ Xml.DataProperty axiom.dataProperty; Xml.DataRange axiom.dataPropertyRange ] (fun contents ->
+                    xml.DataPropertyRange { yield! contents })
 
             | DataPropertyAxiom.FunctionalDataProperty axiom ->
-                emit [ Xml.DataProperty axiom.functionalDataProperty ] (fun contents -> xml.FunctionalDataProperty { yield! contents })
+                emit [ Xml.DataProperty axiom.functionalDataProperty ] (fun contents ->
+                    xml.FunctionalDataProperty { yield! contents })
 
         static member Entity(entity: Entity) : XmlPart =
             match entity with
@@ -9411,7 +10065,11 @@ module Owl =
 
         static member Declaration(annotated: Annotated<Declaration>) : XmlPart =
 
-            Xml.Annotated(annotated, (fun declaration -> [ Xml.Entity declaration.entity ]), (fun contents -> xml.Declaration { yield! contents }))
+            Xml.Annotated(
+                annotated,
+                (fun declaration -> [ Xml.Entity declaration.entity ]),
+                (fun contents -> xml.Declaration { yield! contents })
+            )
 
         static member DatatypeDefinition(annotated: Annotated<DatatypeDefinition>) : XmlPart =
 
@@ -9424,32 +10082,28 @@ module Owl =
         static member KeyProperties(keyProperties: KeyProperties) : XmlPart list =
             match keyProperties with
 
-            | ObjectDataKeyProperties(objectProperties, dataProperties) -> [
-                for property in objectProperties.elements do
-                    Xml.ObjectPropertyExpression property
+            | ObjectDataKeyProperties(objectProperties, dataProperties) ->
+                [ for property in objectProperties.elements do
+                      Xml.ObjectPropertyExpression property
 
-                for property in dataProperties.elements do
-                    Xml.DataProperty property
-              ]
+                  for property in dataProperties.elements do
+                      Xml.DataProperty property ]
 
-            | ObjectKeyProperties objectProperties -> [
-                for property in objectProperties.elements do
-                    Xml.ObjectPropertyExpression property
-              ]
+            | ObjectKeyProperties objectProperties ->
+                [ for property in objectProperties.elements do
+                      Xml.ObjectPropertyExpression property ]
 
-            | DataKeyProperties dataProperties -> [
-                for property in dataProperties.elements do
-                    Xml.DataProperty property
-              ]
+            | DataKeyProperties dataProperties ->
+                [ for property in dataProperties.elements do
+                      Xml.DataProperty property ]
 
         static member HasKey(annotated: Annotated<HasKey>) : XmlPart =
 
             Xml.Annotated(
                 annotated,
-                (fun hasKey -> [
-                    Xml.ClassExpression hasKey.classExpression
-                    yield! Xml.KeyProperties hasKey.keyProperties
-                ]),
+                (fun hasKey ->
+                    [ Xml.ClassExpression hasKey.classExpression
+                      yield! Xml.KeyProperties hasKey.keyProperties ]),
                 (fun contents -> xml.HasKey { yield! contents })
             )
 
@@ -9469,37 +10123,29 @@ module Owl =
 
             | AnnotationAxiom.AnnotationAssertion axiom ->
                 emit
-                    [
-                        Xml.AnnotationProperty axiom.annotationProperty
-                        Xml.AnnotationSubject axiom.annotationSubject
-                        Xml.AnnotationValue axiom.annotationValue
-                    ]
+                    [ Xml.AnnotationProperty axiom.annotationProperty
+                      Xml.AnnotationSubject axiom.annotationSubject
+                      Xml.AnnotationValue axiom.annotationValue ]
                     (fun contents -> xml.AnnotationAssertion { yield! contents })
 
             | AnnotationAxiom.SubAnnotationProperty axiom ->
                 emit
-                    [
-                        Xml.AnnotationProperty axiom.subAnnotationProperty
-                        Xml.AnnotationProperty axiom.superAnnotationProperty
-                    ]
+                    [ Xml.AnnotationProperty axiom.subAnnotationProperty
+                      Xml.AnnotationProperty axiom.superAnnotationProperty ]
                     (fun contents -> xml.SubAnnotationPropertyOf { yield! contents })
 
             | AnnotationAxiom.AnnotationPropertyDomain axiom ->
                 emit
-                    [
-                        Xml.AnnotationProperty axiom.annotationProperty
+                    [ Xml.AnnotationProperty axiom.annotationProperty
 
-                        xml.IRI { value axiom.domainIri.identity }
-                    ]
+                      xml.IRI { value axiom.domainIri.identity } ]
                     (fun contents -> xml.AnnotationPropertyDomain { yield! contents })
 
             | AnnotationAxiom.AnnotationPropertyRange axiom ->
                 emit
-                    [
-                        Xml.AnnotationProperty axiom.annotationProperty
+                    [ Xml.AnnotationProperty axiom.annotationProperty
 
-                        xml.IRI { value axiom.rangeIri.identity }
-                    ]
+                      xml.IRI { value axiom.rangeIri.identity } ]
                     (fun contents -> xml.AnnotationPropertyRange { yield! contents })
 
         static member Axiom(annotated: Annotated<Axiom>) : XmlPart =
@@ -9509,11 +10155,14 @@ module Owl =
 
             | Axiom.ClassAxiom classAxiom -> Xml.ClassAxiom(annotated.map (fun _ -> classAxiom))
 
-            | Axiom.ObjectPropertyAxiom objectPropertyAxiom -> Xml.ObjectPropertyAxiom(annotated.map (fun _ -> objectPropertyAxiom))
+            | Axiom.ObjectPropertyAxiom objectPropertyAxiom ->
+                Xml.ObjectPropertyAxiom(annotated.map (fun _ -> objectPropertyAxiom))
 
-            | Axiom.DataPropertyAxiom dataPropertyAxiom -> Xml.DataPropertyAxiom(annotated.map (fun _ -> dataPropertyAxiom))
+            | Axiom.DataPropertyAxiom dataPropertyAxiom ->
+                Xml.DataPropertyAxiom(annotated.map (fun _ -> dataPropertyAxiom))
 
-            | Axiom.DatatypeDefinition datatypeDefinition -> Xml.DatatypeDefinition(annotated.map (fun _ -> datatypeDefinition))
+            | Axiom.DatatypeDefinition datatypeDefinition ->
+                Xml.DatatypeDefinition(annotated.map (fun _ -> datatypeDefinition))
 
             | Axiom.HasKey hasKey -> Xml.HasKey(annotated.map (fun _ -> hasKey))
 
@@ -9580,6 +10229,9 @@ module Owl =
 // ----
 
 type RDFNamespace with
+    static member toVocabulary(rdfNamespace: RDFNamespace) =
+        RdfVocabulary.PREFIX(rdfNamespace.NamespacePrefix, rdfNamespace.NamespaceUri.OriginalString)
+
     member this.NamespaceIri = Iri.op_Implicit this.NamespaceUri
 
 type RDFNamespaceRegister with
@@ -9615,7 +10267,10 @@ type RDFNamespaceRegister with
             ->
             Ok registeredNamespace
         | _ ->
-            match RDFNamespaceRegister.tryFindIri rdfNamespace.NamespaceIri, RDFNamespaceRegister.tryFindPrefix rdfNamespace.NamespacePrefix with
+            match
+                RDFNamespaceRegister.tryFindIri rdfNamespace.NamespaceIri,
+                RDFNamespaceRegister.tryFindPrefix rdfNamespace.NamespacePrefix
+            with
             | Some iriCollision, _ -> Error iriCollision
             | _, Some prefixCollision -> Error prefixCollision
             | _, _ -> Error rdfNamespace
@@ -9663,16 +10318,14 @@ type UriNode with
 type BlankNode with
     member this.asBNode(scope: string) =
         match Guid.TryParse this.InternalID with
-        | true, guid -> {
-            sinsignId = guid
-            scope = scope
-            localIdentifier = None
-          }
-        | false, _ -> {
-            sinsignId = Guid.ensure this.InternalID
-            scope = scope
-            localIdentifier = Some this.InternalID
-          }
+        | true, guid ->
+            { sinsignId = guid
+              scope = scope
+              localIdentifier = None }
+        | false, _ ->
+            { sinsignId = Guid.ensure this.InternalID
+              scope = scope
+              localIdentifier = Some this.InternalID }
 
 type INode with
     member this.tryUriNode =
@@ -9729,11 +10382,9 @@ type LiteralNode with
         | Some language, _ ->
             match language.LastIndexOf("--") with
             | -1 ->
-                {
-                    lexicalForm = this.Value
-                    languageTag = NLanguageTag.LanguageTag.Parse language
-                    baseDirection = None
-                }
+                { lexicalForm = this.Value
+                  languageTag = NLanguageTag.LanguageTag.Parse language
+                  baseDirection = None }
                 |> LanguageString
                 |> StringLiteral
 
@@ -9742,27 +10393,22 @@ type LiteralNode with
                 | Some direction ->
                     let rawTag = language[.. delimiterIndex - 1]
 
-                    {
-                        lexicalForm = this.Value
-                        languageTag = LanguageTag.Parse rawTag
-                        baseDirection = Some direction
-                    }
+                    { lexicalForm = this.Value
+                      languageTag = LanguageTag.Parse rawTag
+                      baseDirection = Some direction }
                     |> LanguageString
                     |> StringLiteral
                 | None ->
-                    {
-                        lexicalForm = this.Value
-                        languageTag = LanguageTag.Parse language
-                        baseDirection = None
-                    }
+                    { lexicalForm = this.Value
+                      languageTag = LanguageTag.Parse language
+                      baseDirection = None }
                     |> LanguageString
                     |> StringLiteral
 
         | None, Some datatypeUri ->
-            TypedLiteral {
-                lexicalForm = this.Value
-                datatypeIri = Iri.ofUri datatypeUri |> DatatypeIri
-            }
+            TypedLiteral
+                { lexicalForm = this.Value
+                  datatypeIri = Iri.ofUri datatypeUri |> DatatypeIri }
 
         | _, _ -> Literal.string this.Value
 
@@ -9787,7 +10433,7 @@ type OntologyGraph with
 
     member this.Literals = this.LiteralNodes |> Seq.map _.asLiteral
 
-    member this.ClassByIri =
+    member this.ClassMap =
         this.AllClasses
         |> Seq.choose (fun ontologyResource ->
             match ontologyResource.tryUriNode with
@@ -9795,7 +10441,7 @@ type OntologyGraph with
             | _ -> None)
         |> Map.ofSeq
 
-    member this.PropertyByIri =
+    member this.PropertyMap =
         this.AllProperties
         |> Seq.choose (fun ontologyResource ->
             match ontologyResource.tryUriNode with
@@ -9803,7 +10449,7 @@ type OntologyGraph with
             | _ -> None)
         |> Map.ofSeq
 
-    member this.InstancesByIri =
+    member this.InstanceMap =
         this.AllClasses
         |> Seq.collect (fun ontologyResource ->
             ontologyResource.Instances
@@ -9813,7 +10459,7 @@ type OntologyGraph with
                 | _ -> None))
         |> Map.ofSeq
 
-    member this.OwlClassByIri =
+    member this.OwlClassMap =
         this.OwlClasses
         |> Seq.choose (fun ontologyResource ->
             match ontologyResource.tryUriNode with
@@ -9821,7 +10467,7 @@ type OntologyGraph with
             | _ -> None)
         |> Map.ofSeq
 
-    member this.RdfClassByIri =
+    member this.RdfClassMap =
         this.RdfClasses
         |> Seq.choose (fun ontologyResource ->
             match ontologyResource.tryUriNode with
@@ -9829,7 +10475,7 @@ type OntologyGraph with
             | _ -> None)
         |> Map.ofSeq
 
-    member this.RdfPropertyByIri =
+    member this.RdfPropertyMap =
         this.RdfProperties
         |> Seq.choose (fun ontologyResource ->
             match ontologyResource.tryUriNode with
@@ -9837,7 +10483,7 @@ type OntologyGraph with
             | _ -> None)
         |> Map.ofSeq
 
-    member this.OwlAnnotationPropertyByIri =
+    member this.OwlAnnotationPropertyMap =
         this.OwlAnnotationProperties
         |> Seq.choose (fun ontologyResource ->
             match ontologyResource.tryUriNode with
@@ -9845,7 +10491,7 @@ type OntologyGraph with
             | _ -> None)
         |> Map.ofSeq
 
-    member this.OwlDatatypePropertyByIri =
+    member this.OwlDatatypePropertyMap =
         this.OwlDatatypeProperties
         |> Seq.choose (fun ontologyResource ->
             match ontologyResource.tryUriNode with
@@ -9853,82 +10499,83 @@ type OntologyGraph with
             | _ -> None)
         |> Map.ofSeq
 
-    member this.OwlObjectPropertyByIri =
+    member this.OwlObjectPropertyMap =
         this.OwlObjectProperties
         |> Seq.choose (fun ontologyResource ->
             match ontologyResource.tryUriNode with
             | Some uriNode -> Some(uriNode.asIri, ontologyResource)
             | _ -> None)
         |> Map.ofSeq
+type RdfVocabulary with 
+    member this.ClassMap(ontologyGraph:OntologyGraph) =
 
-    member this.vocabularyClassByPrefixedName(vocabulary: RdfVocabulary) =
-        this.ClassByIri
+        ontologyGraph.ClassMap
         |> Map.toSeq
         |> Seq.choose (fun (iri, ontologyResource) ->
-            match iri.tryPrefixedName vocabulary with
+            match iri.tryPrefixedName this with
             | Some prefixedName -> Some(prefixedName, ontologyResource)
             | None -> None)
         |> Map.ofSeq
 
-    member this.vocabularyPropertyByPrefixedName(vocabulary: RdfVocabulary) =
-        this.PropertyByIri
+    member this.PropertyMap(ontologyGraph:OntologyGraph) =
+        ontologyGraph.PropertyMap
         |> Map.toSeq
         |> Seq.choose (fun (iri, ontologyResource) ->
-            match iri.tryPrefixedName vocabulary with
+            match iri.tryPrefixedName this with
             | Some prefixedName -> Some(prefixedName, ontologyResource)
             | None -> None)
         |> Map.ofSeq
 
-    member this.vocabularyOwlClassByPrefixedName(vocabulary: RdfVocabulary) =
-        this.OwlClassByIri
+    member this.OwlClassMap(ontologyGraph:OntologyGraph) =
+        ontologyGraph.OwlClassMap
         |> Map.toSeq
         |> Seq.choose (fun (iri, ontologyResource) ->
-            match iri.tryPrefixedName vocabulary with
+            match iri.tryPrefixedName this with
             | Some prefixedName -> Some(prefixedName, ontologyResource)
             | None -> None)
         |> Map.ofSeq
 
-    member this.vocabularyRdfClassByPrefixedName(vocabulary: RdfVocabulary) =
-        this.RdfClassByIri
+    member this.RdfClassMap(ontologyGraph:OntologyGraph) =
+        ontologyGraph.RdfClassMap
         |> Map.toSeq
         |> Seq.choose (fun (iri, ontologyResource) ->
-            match iri.tryPrefixedName vocabulary with
+            match iri.tryPrefixedName this with
             | Some prefixedName -> Some(prefixedName, ontologyResource)
             | None -> None)
         |> Map.ofSeq
 
-    member this.vocabularyRdfPropertyByPrefixedName(vocabulary: RdfVocabulary) =
-        this.RdfPropertyByIri
+    member this.RdfPropertyMap(ontologyGraph:OntologyGraph) =
+        ontologyGraph.RdfPropertyMap
         |> Map.toSeq
         |> Seq.choose (fun (iri, ontologyResource) ->
-            match iri.tryPrefixedName vocabulary with
+            match iri.tryPrefixedName this with
             | Some prefixedName -> Some(prefixedName, ontologyResource)
             | None -> None)
         |> Map.ofSeq
 
-    member this.vocabularyOwlAnnotationPropertyByPrefixedName(vocabulary: RdfVocabulary) =
-        this.OwlAnnotationPropertyByIri
+    member this.OwlAnnotationPropertyMap(ontologyGraph:OntologyGraph) =
+        ontologyGraph.OwlAnnotationPropertyMap
         |> Map.toSeq
         |> Seq.choose (fun (iri, ontologyResource) ->
-            match iri.tryPrefixedName vocabulary with
+            match iri.tryPrefixedName this with
             | Some prefixedName -> Some(prefixedName, ontologyResource)
             | None -> None)
         |> Map.ofSeq
 
-    member this.vocabularyOwlDatatypePropertyByPrefixedName(vocabulary: RdfVocabulary) =
-        this.OwlDatatypePropertyByIri
+    member this.OwlDatatypePropertyMap(ontologyGraph:OntologyGraph) =
+        ontologyGraph.OwlDatatypePropertyMap
         |> Map.toSeq
         |> Seq.choose (fun (iri, ontologyResource) ->
-            match iri.tryPrefixedName vocabulary with
+            match iri.tryPrefixedName this with
             | Some prefixedName -> Some(prefixedName, ontologyResource)
             | None -> None)
         |> Map.ofSeq
 
-    member this.vocabularyOwlObjectPropertyByPrefixedName(vocabulary: RdfVocabulary) =
-        this.OwlObjectPropertyByIri
+    member this.OwlObjectPropertyMap(ontologyGraph:OntologyGraph) =
+        ontologyGraph.OwlObjectPropertyMap
         |> Map.toSeq
         |> Seq.choose (fun (iri, ontologyResource) ->
-            match iri.tryPrefixedName vocabulary with
+            match iri.tryPrefixedName this with
             | Some prefixedName -> Some(prefixedName, ontologyResource)
             | None -> None)
         |> Map.ofSeq
@@ -9993,7 +10640,8 @@ type OWLSharp.Ontology.OWLOntology with
         for element in document.Descendants() do
             let declarations =
                 element.Attributes()
-                |> Seq.filter (fun attribute -> attribute.IsNamespaceDeclaration && attribute.Value = RdfVocabulary.owl.identity)
+                |> Seq.filter (fun attribute ->
+                    attribute.IsNamespaceDeclaration && attribute.Value = RdfVocabulary.owl.identity)
                 |> Seq.toArray
 
             for declaration in declarations do
@@ -10021,21 +10669,2568 @@ type OWLSharp.Ontology.OWLOntology with
 type Iana.ProtocolScheme with
     member this.host(domain: Domain) = { scheme = this; host = domain }
 
+    member this.site(domain: Domain) =
+        { site = { scheme = this; host = domain }
+          port = None
+          template = None
+          pattern = None
+          pathSegments = List.empty
+          hashFragment = None
+          searchQuery = None }
+
     member this.host(subdomain: string) =
-        fun (domain: Domain) -> {
-            scheme = this
-            host = subdomain .+ domain
-        }
+        fun (domain: Domain) ->
+            { scheme = this
+              host = subdomain .+ domain }
 
 type String with
-    member this.dot(domain: Domain) = {
-        domain with
-            subdomainLabels = domain.subdomainLabels @ [ this ]
-    }
+    member this.dot(domain: Domain) =
+        { domain with
+            subdomainLabels = domain.subdomainLabels @ [ this ] }
+
+    member this.asLiteral = Literal.string this
 
 type ITrieNode<'Key, 'Value when 'Value: not struct> with
     member this.values = this.Values |> Seq.toArray
     member this.children = this.Children |> Seq.toArray
+
+type SourceRepository with
+    member this.ResourceTypes =
+        Repository.Provider.GetCoreV3()
+        |> Seq.map (fun provider -> provider.Value.ResourceType)
+        |> Seq.distinct
+        |> Seq.choose (fun resourceType ->
+
+            let GetResourceAsync =
+                typeof<SourceRepository>.GetMethods()
+                |> Array.find (fun methodInfo -> methodInfo.Name = "GetResourceAsync")
+
+            let methodInfo = GetResourceAsync.MakeGenericMethod([| resourceType |])
+
+            let task = methodInfo.Invoke(this, [||]) :?> System.Threading.Tasks.Task
+
+            task.GetAwaiter().GetResult()
+
+            let resource = task.GetType().GetProperty("Result").GetValue(task)
+
+            if isNull resource then None else Some resourceType)
+        |> Seq.sortBy (fun resourceType -> resourceType.Name)
+        |> Seq.toArray
+
+type Quotation =
+    static member ofMember<'T> (memberShape: IShapeMember<'T>) (value: 'T) : Expr =
+
+        memberShape.Accept
+            { new IMemberVisitor<'T, Expr> with
+
+                member _.Visit<'Field>(shape: ShapeMember<'T, 'Field>) =
+
+                    let fieldValue = shape.Get value
+                    Quotation.ofValue fieldValue :> Expr }
+
+    static member ofNuGetResource<'ResourceType when 'ResourceType: not struct and 'ResourceType :> INuGetResource>
+        (serviceIndex: string)
+        : Expr<'ResourceType> =
+
+        <@ Repository.Factory.GetCoreV3(serviceIndex).GetResource<'ResourceType>() @>
+
+    static member ofNuGetResource(serviceIndex: string, resourceType: Type) : Expr =
+        match resourceType with
+        | resource when resource = typeof<AutoCompleteResource> ->
+            Quotation.ofNuGetResource<AutoCompleteResource> (serviceIndex)
+        | resource when resource = typeof<DependencyInfoResource> ->
+            Quotation.ofNuGetResource<DependencyInfoResource> (serviceIndex)
+        | resource when resource = typeof<DownloadResource> ->
+            Quotation.ofNuGetResource<DownloadResource> (serviceIndex)
+        | resource when resource = typeof<FeedTypeResource> ->
+            Quotation.ofNuGetResource<FeedTypeResource> (serviceIndex)
+        | resource when resource = typeof<FindPackageByIdResource> ->
+            Quotation.ofNuGetResource<FindPackageByIdResource> (serviceIndex)
+        | resource when resource = typeof<HttpHandlerResource> ->
+            Quotation.ofNuGetResource<HttpHandlerResource> (serviceIndex)
+        | resource when resource = typeof<HttpSourceResource> ->
+            Quotation.ofNuGetResource<HttpSourceResource> (serviceIndex)
+        | resource when resource = typeof<IVulnerabilityInfoResource> ->
+            Quotation.ofNuGetResource<IVulnerabilityInfoResource> (serviceIndex)
+        | resource when resource = typeof<ListResource> -> Quotation.ofNuGetResource<ListResource> (serviceIndex)
+        | resource when resource = typeof<MetadataResource> ->
+            Quotation.ofNuGetResource<MetadataResource> (serviceIndex)
+        | resource when resource = typeof<ODataServiceDocumentResourceV2> ->
+            Quotation.ofNuGetResource<ODataServiceDocumentResourceV2> (serviceIndex)
+        | resource when resource = typeof<OwnerDetailsUriTemplateResourceV3> ->
+            Quotation.ofNuGetResource<OwnerDetailsUriTemplateResourceV3> (serviceIndex)
+        | resource when resource = typeof<PackageDetailsUriResourceV3> ->
+            Quotation.ofNuGetResource<PackageDetailsUriResourceV3> (serviceIndex)
+        | resource when resource = typeof<PackageMetadataResource> ->
+            Quotation.ofNuGetResource<PackageMetadataResource> (serviceIndex)
+        | resource when resource = typeof<PackageSearchResource> ->
+            Quotation.ofNuGetResource<PackageSearchResource> (serviceIndex)
+        | resource when resource = typeof<PackageUpdateResource> ->
+            Quotation.ofNuGetResource<PackageUpdateResource> (serviceIndex)
+        | resource when resource = typeof<RegistrationResourceV3> ->
+            Quotation.ofNuGetResource<RegistrationResourceV3> (serviceIndex)
+        | resource when resource = typeof<ReportAbuseResourceV3> ->
+            Quotation.ofNuGetResource<ReportAbuseResourceV3> (serviceIndex)
+        | resource when resource = typeof<RepositorySignatureResource> ->
+            Quotation.ofNuGetResource<RepositorySignatureResource> (serviceIndex)
+        | resource when resource = typeof<ServiceIndexResourceV3> ->
+            Quotation.ofNuGetResource<ServiceIndexResourceV3> (serviceIndex)
+        | resource when resource = typeof<SymbolPackageUpdateResourceV3> ->
+            Quotation.ofNuGetResource<SymbolPackageUpdateResourceV3> (serviceIndex)
+        | _ -> invalidArg (nameof resourceType) $"No quotation defined for {resourceType.FullName}"
+
+    static member ofDateTime(value: DateTime) : Expr<DateTime> =
+        let ticks = value.Ticks
+        let kind = value.Kind
+
+        <@ DateTime(ticks, kind) @>
+
+    static member ofTldRule(value: TldRule) : Expr<TldRule> =
+        let rule = value.Name
+
+        <@ TldRuleParser(TldRuleDivisionFilter.All).ParseRules rule |> Seq.head @>
+
+    static member ofMimeType(value: MimeType) : Expr<MimeType> =
+        let contentType = value.ToString()
+
+        <@ MimeType.Parse contentType @>
+
+    static member ofIriReference(value: IriReference) : Expr<IriReference> =
+        let stringValue = value.ToString()
+
+        <@ IriReference stringValue @>
+
+    static member ofValue<'Value>(value: 'Value) : Expr<'Value> =
+
+        let expression: Expr =
+            match shapeof<'Value> with
+            | _ when typeof<'Value> = typeof<IriReference> -> Quotation.ofIriReference (unbox<IriReference> (box value))
+            | _ when typeof<'Value> = typeof<IriReference> -> Quotation.ofIriReference (unbox<IriReference> (box value))
+            | _ when typeof<'Value> = typeof<MimeType> -> Quotation.ofMimeType (unbox<MimeType> (box value))
+            | _ when typeof<'Value> = typeof<TldRule> -> Quotation.ofTldRule (unbox<TldRule> (box value))
+            | _ when typeof<'Value> = typeof<DateTime> -> Quotation.ofDateTime (unbox<DateTime> (box value))
+            | Shape.FSharpRecord(:? ShapeFSharpRecord<'Value> as shape) ->
+
+                let fields =
+                    shape.Fields
+                    |> Array.map (fun field -> Quotation.ofMember field value)
+                    |> Array.toList
+
+                Expr.NewRecord(typeof<'Value>, fields)
+
+            | Shape.FSharpUnion(:? ShapeFSharpUnion<'Value> as shape) ->
+
+                let tag = shape.GetTag value
+                let unionCase = shape.UnionCases[tag]
+
+                let fields =
+                    unionCase.Fields
+                    |> Array.map (fun field -> Quotation.ofMember field value)
+                    |> Array.toList
+
+                Expr.NewUnionCase(unionCase.CaseInfo, fields)
+
+            | Shape.Tuple(:? ShapeTuple<'Value> as shape) ->
+
+                let elements =
+                    shape.Elements
+                    |> Array.map (fun element -> Quotation.ofMember element value)
+                    |> Array.toList
+
+                Expr.NewTuple(elements)
+
+            | Shape.Array shape when shape.Rank = 1 ->
+
+                shape.Element.Accept
+                    { new ITypeVisitor<Expr> with
+
+                        member _.Visit<'Element>() =
+
+                            let elements =
+                                unbox<'Element array> (box value)
+                                |> Array.map Quotation.ofValue
+                                |> Array.map (fun expression -> expression :> Expr)
+                                |> Array.toList
+
+                            Expr.NewArray(typeof<'Element>, elements) }
+
+            | Shape.Unit
+            | Shape.Bool
+            | Shape.Byte
+            | Shape.Int32
+            | Shape.Int64
+            | Shape.String ->
+
+                Expr.Value(value, typeof<'Value>)
+
+            | _ -> invalidOp $"Quotation.ofValue does not yet support {typeof<'Value>.FullName}"
+
+        Expr.Cast<'Value> expression
+
+// -----------------------------------------------------------------------------
+// Additional type patterns
+// -----------------------------------------------------------------------------
+type TType<'ValueType> = ShapeSifter.Patterns.TType<'ValueType>
+let tType<'ValueType> = ShapeSifter.Patterns.tType<'ValueType>
+module TType = ShapeSifter.Patterns
+type ShapeSifter.Patterns.TType<'ValueType> with 
+    static member TldRule = tType<TldRule>
+    static member MimeType = tType<MimeType>
+    static member IriReference = tType<IriReference>
+    static member Url = tType<Url>
+let inline (|TType'Enum|_|) (_ : TType<'ValueType>) =
+    if typeof<'ValueType>.IsEnum then
+        Some ()
+    else
+        None
+
+let (|TType'Byte|_|) (_ : 'a TType) : Teq<'a, byte> option = Teq.tryRefl<'a, byte>
+type ProjectionContext =
+    {
+        references : (obj * int) list
+        nextReferenceId : int
+    }
+
+    static member empty =
+        {
+            references = []
+            nextReferenceId = 1
+        }
+type SemiStatic<'ValueType> =
+
+    | StaticObject of 'ValueType
+    | DynamicObject of ImmutableDynamicObj
+
+    member this.tryStaticObject =
+        match this with
+        | StaticObject value ->
+            Some value
+
+        | DynamicObject _ ->
+            None
+
+    member this.tryDynamicObject =
+        match this with
+        | StaticObject _ ->
+            None
+
+        | DynamicObject value ->
+            Some value
+type ProjectionReference =
+    | Untracked
+    | FirstOccurrence of _referenceId : int
+    | RepeatedOccurrence of _referenceId : int
+module ProjectionContext =
+
+    let classify<'ValueType>
+        (value : 'ValueType)
+        (context : ProjectionContext)
+        : ProjectionReference * ProjectionContext
+        =
+
+        if typeof<'ValueType>.IsValueType then
+            ProjectionReference.Untracked,
+            context
+
+        else
+
+            let valueObject =
+                box value
+
+            if isNull valueObject then
+                ProjectionReference.Untracked,
+                context
+
+            else
+
+                match
+                    context.references
+                    |> List.tryFind (fun (knownObject, _) ->
+                        obj.ReferenceEquals(
+                            knownObject,
+                            valueObject
+                        )
+                    )
+                with
+
+                | Some (_, referenceId) ->
+
+                    ProjectionReference.RepeatedOccurrence referenceId,
+                    context
+
+                | None ->
+
+                    let referenceId =
+                        context.nextReferenceId
+
+                    ProjectionReference.FirstOccurrence referenceId,
+                    {
+                        references =
+                            (valueObject, referenceId)
+                            :: context.references
+
+                        nextReferenceId =
+                            referenceId + 1
+                    }
+  
+// -----------------------------------------------------------------------------
+// Projection
+//
+// This is the result context used when an exact quotation of 'ValueType cannot
+// be constructed.
+//
+// -----------------------------------------------------------------------------
+type Projection<'ValueType> =
+    | NullProduct of
+        projectionSource : 'ValueType
+    /// An F# record whose original nominal value could not be reconstructed.
+    | RecordProduct of
+        projectionSource : 'ValueType
+
+    /// An ordinary CLR class or struct whose original nominal value could not
+    /// be reconstructed.
+    | PocoProduct of
+        projectionSource : 'ValueType
+
+    /// A tuple whose original tuple could not be reconstructed because one or
+    /// more of its elements required projection.
+    | TupleProduct of
+        projectionSource : 'ValueType
+
+    /// An F# discriminated union whose original nominal value could not be
+    /// reconstructed.
+    | UnionProduct of
+        projectionSource : 'ValueType
+
+    /// An enumerable whose original container could not be reconstructed.
+    | EnumerableProduct of
+        projectionSource : 'ValueType
+    | RuntimeProduct of
+        projectionSource : 'ValueType
+    static member projectionSourceType =
+        typeof<'ValueType>
+
+    member this.projectionSource =
+        match this with
+        | NullProduct projectionSource
+        | RecordProduct projectionSource
+        | PocoProduct projectionSource
+        | TupleProduct projectionSource
+        | UnionProduct projectionSource
+        | EnumerableProduct projectionSource -> projectionSource
+        | RuntimeProduct projectionSource -> projectionSource
+
+    static member private namedValue
+        (name : string)
+        (valueExpression : Expr)
+        : Expr
+        =
+
+        Expr.NewTuple [
+            Expr.Value name
+            valueExpression
+        ]
+
+    /// Represents one structural level as one heterogeneous product.
+    ///
+    /// Zero values become unit.
+    /// One value remains that value.
+    /// Multiple values become one n-ary tuple.
+    static member private projectedValues
+        (expressions : Expr list)
+        : Expr
+        =
+
+        match expressions with
+        | [] ->
+            Expr.Value(())
+
+        | [expression] ->
+            expression
+
+        | expressions ->
+            Expr.NewTuple expressions
+
+    static member private referenceExpression
+        (referenceId : int)
+        : Expr
+        =
+
+        Projection<'ValueType>.namedValue
+            "$ref"
+            (Expr.Value referenceId)
+
+    static member private identifiedProjectedValues
+        (referenceId : int option)
+        (expressions : Expr list)
+        : Expr
+        =
+
+        let expressions =
+            match referenceId with
+            | Some referenceId ->
+                Projection<'ValueType>.namedValue
+                    "$id"
+                    (Expr.Value referenceId)
+                :: expressions
+
+            | None ->
+                expressions
+
+        Projection<'ValueType>.projectedValues
+            expressions
+
+    static member usableMember
+        (memberShape : IShapeReadOnlyMember<'SourceType>)
+        : bool
+        =
+
+        memberShape.IsPublic
+        &&
+        match memberShape.MemberInfo with
+        | :? PropertyInfo as propertyInfo ->
+            propertyInfo.GetIndexParameters().Length = 0
+
+        | _ ->
+            true
+
+    static member private projectMemberValue
+        (context : ProjectionContext)
+        (projectionSource : 'SourceType)
+        (memberShape : IShapeReadOnlyMember<'SourceType>)
+        : Expr * ProjectionContext
+        =
+
+        memberShape.Accept {
+            new IReadOnlyMemberVisitor<'SourceType, Expr * ProjectionContext> with
+
+                member _.Visit<'MemberType>
+                    (memberShape : ReadOnlyMember<'SourceType, 'MemberType>)
+                    =
+
+                    let memberValueResult : Result<'MemberType, exn> =
+                        try
+                            memberShape.Get projectionSource
+                            |> Ok
+
+                        with exception_ ->
+                            Error exception_
+
+                    match memberValueResult with
+
+                    | Error _ ->
+
+                        let noneExpression : Expr<'MemberType option> =
+                            <@ None @>
+
+                        noneExpression :> Expr,
+                        context
+
+                    | Ok memberValue
+                        when obj.ReferenceEquals(box memberValue, null) ->
+
+                        let noneExpression : Expr<'MemberType option> =
+                            <@ None @>
+
+                        noneExpression :> Expr,
+                        context
+
+                    | Ok memberValue ->
+
+                        CodeQuotation<'MemberType>.expressionWithProjectionContext
+                            context
+                            memberValue
+        }
+    static member private projectMember
+        (context : ProjectionContext)
+        (projectionSource : 'SourceType)
+        (memberShape : IShapeReadOnlyMember<'SourceType>)
+        : Expr * ProjectionContext
+        =
+
+        let memberExpression, context =
+            Projection<'ValueType>.projectMemberValue
+                context
+                projectionSource
+                memberShape
+
+        Projection<'ValueType>.namedValue
+            memberShape.Label
+            memberExpression,
+        context
+    static member private projectMembers
+        (context : ProjectionContext)
+        (referenceId : int option)
+        (projectionSource : 'SourceType)
+        (members : IShapeReadOnlyMember<'SourceType> array)
+        : Expr * ProjectionContext
+        =
+
+        let expressions, context =
+            members
+            |> Array.filter Projection<'ValueType>.usableMember
+            |> Array.fold
+                (fun (expressions, context) memberShape ->
+
+                    let memberExpression, context =
+                        Projection<'ValueType>.projectMember
+                            context
+                            projectionSource
+                            memberShape
+
+                    memberExpression :: expressions,
+                    context
+                )
+                ([], context)
+
+        let expression =
+            expressions
+            |> List.rev
+            |> Projection<'ValueType>.identifiedProjectedValues
+                referenceId
+
+        expression,
+        context
+    static member private projectTupleElements
+        (context : ProjectionContext)
+        (referenceId : int option)
+        (projectionSource : 'SourceType)
+        (elements : IShapeReadOnlyMember<'SourceType> array)
+        : Expr * ProjectionContext
+        =
+
+        let expressions, context =
+            elements
+            |> Array.fold
+                (fun (expressions, context) elementShape ->
+
+                    let elementExpression, context =
+                        Projection<'ValueType>.projectMemberValue
+                            context
+                            projectionSource
+                            elementShape
+
+                    elementExpression :: expressions,
+                    context
+                )
+                ([], context)
+
+        let expression =
+            expressions
+            |> List.rev
+            |> Projection<'ValueType>.identifiedProjectedValues
+                referenceId
+
+        expression,
+        context
+
+    static member private tryNamedPathExpression<'SourceType>
+        (projectionSource : 'SourceType)
+        (path : string list)
+        : Expr option
+        =
+
+        if obj.ReferenceEquals(box projectionSource, null) then
+
+            match path with
+            | [] ->
+
+                let noneExpression : Expr<'SourceType option> =
+                    <@ None @>
+
+                noneExpression :> Expr
+                |> Some
+
+            | _ ->
+                None
+
+        else
+
+            match path with
+
+            | [] ->
+
+                projectionSource
+                |> CodeQuotation<'SourceType>.lift
+                |> CodeQuotation<'SourceType>.lower
+                |> Some
+
+            | memberName :: remainingPath ->
+
+                let tryMember
+                    (members : IShapeReadOnlyMember<'SourceType> array)
+                    =
+
+                    members
+                    |> Array.filter Projection<'SourceType>.usableMember
+                    |> Array.tryFind (fun memberShape ->
+                        memberShape.Label = memberName
+                    )
+                    |> Option.bind (fun memberShape ->
+
+                        memberShape.Accept {
+                            new IReadOnlyMemberVisitor<'SourceType, Expr option> with
+
+                                member _.Visit<'MemberType>
+                                    (memberShape : ReadOnlyMember<'SourceType, 'MemberType>)
+                                    =
+                                    let memberValueResult : Result<'MemberType, exn> =
+                                        try
+                                            memberShape.Get projectionSource
+                                            |> Ok
+
+                                        with exception_ ->
+                                            Error exception_
+
+                                    match memberValueResult with
+
+                                    | Error _ ->
+
+                                        match remainingPath with
+                                        | [] ->
+
+                                            let noneExpression : Expr<'MemberType option> =
+                                                <@ None @>
+
+                                            noneExpression :> Expr
+                                            |> Some
+
+                                        | _ ->
+                                            None
+
+                                    | Ok memberValue
+                                        when obj.ReferenceEquals(box memberValue, null) ->
+
+                                        match remainingPath with
+                                        | [] ->
+
+                                            let noneExpression : Expr<'MemberType option> =
+                                                <@ None @>
+
+                                            noneExpression :> Expr
+                                            |> Some
+
+                                        | _ ->
+                                            None
+
+                                    | Ok memberValue ->
+
+                                        Projection<'MemberType>.tryNamedPathExpression
+                                            memberValue
+                                            remainingPath
+                        }
+                    )
+
+                match shapeof<'SourceType> with
+
+                | Shape.FSharpRecord
+                    (:? ShapeFSharpRecord<'SourceType> as recordShape) ->
+
+                    recordShape.Fields
+                    |> Array.map (fun field ->
+                        field :> IShapeReadOnlyMember<'SourceType>
+                    )
+                    |> tryMember
+
+                | Shape.Poco
+                    (:? ShapePoco<'SourceType> as pocoShape) ->
+
+                    let publicFields : IShapeReadOnlyMember<'SourceType> array =
+                        pocoShape.Fields
+                        |> Array.map (fun field ->
+                            field :> IShapeReadOnlyMember<'SourceType>
+                        )
+
+                    let properties : IShapeReadOnlyMember<'SourceType> array =
+                        pocoShape.Properties
+
+                    Array.append
+                        publicFields
+                        properties
+                    |> tryMember
+
+                | Shape.FSharpUnion
+                    (:? ShapeFSharpUnion<'SourceType> as unionShape) ->
+
+                    let caseIndex =
+                        unionShape.GetTag projectionSource
+
+                    let activeCase =
+                        unionShape.UnionCases.[caseIndex]
+
+                    if memberName = "$case" then
+
+                        match remainingPath with
+
+                        | [] ->
+                            Expr.Value activeCase.CaseInfo.Name
+                            |> Some
+
+                        | _ ->
+                            None
+
+                    else
+
+                        activeCase.Fields
+                        |> Array.map (fun field ->
+                            field :> IShapeReadOnlyMember<'SourceType>
+                        )
+                        |> tryMember
+
+                | _ ->
+
+                    let valueObject =
+                        box projectionSource
+
+                    let runtimeType =
+                        valueObject.GetType()
+
+                    if runtimeType <> typeof<'SourceType> then
+
+                        TypeShape.FromValue(valueObject).Accept {
+                            new ITypeVisitor<Expr option> with
+
+                                member _.Visit<'RuntimeType>() =
+
+                                    let runtimeValue : 'RuntimeType =
+                                        valueObject
+                                        |> unbox<'RuntimeType>
+
+                                    Projection<'RuntimeType>.tryNamedPathExpression
+                                        runtimeValue
+                                        path
+                        }
+
+                    else
+                        None
+
+    member internal this.expressionWithContext
+        (context : ProjectionContext)
+        : Expr * ProjectionContext
+        =
+        match this with
+
+        | NullProduct _ ->
+
+            let noneExpression : Expr<'ValueType option> =
+                <@ None @>
+
+            noneExpression :> Expr,
+            context
+
+        | RuntimeProduct projectionSource ->
+
+            TypeShape.FromValue(box projectionSource).Accept {
+                new ITypeVisitor<Expr * ProjectionContext> with
+
+                    member _.Visit<'RuntimeType>() =
+
+                        let runtimeValue : 'RuntimeType =
+                            projectionSource
+                            |> box
+                            |> unbox<'RuntimeType>
+
+                        CodeQuotation<'RuntimeType>.expressionWithProjectionContext
+                            context
+                            runtimeValue
+            }
+
+        | _ ->
+
+            let projectionSource =
+                this.projectionSource
+
+            let projectionReference, context =
+                ProjectionContext.classify
+                    projectionSource
+                    context
+
+            match projectionReference with
+
+            | ProjectionReference.RepeatedOccurrence referenceId ->
+
+                Projection<'ValueType>.referenceExpression referenceId,
+                context
+
+            | ProjectionReference.Untracked
+            | ProjectionReference.FirstOccurrence _ ->
+
+                let referenceId =
+                    match projectionReference with
+
+                    | ProjectionReference.FirstOccurrence referenceId ->
+                        Some referenceId
+
+                    | ProjectionReference.Untracked ->
+                        None
+
+                    | ProjectionReference.RepeatedOccurrence _ ->
+                        None
+                match this with
+
+                | RecordProduct _ ->
+
+                    match shapeof<'ValueType> with
+
+                    | Shape.FSharpRecord (:? ShapeFSharpRecord<'ValueType> as recordShape) ->
+
+                        recordShape.Fields
+                        |> Array.map (fun field ->
+                            field :> IShapeReadOnlyMember<'ValueType>
+                        )
+                        |> Projection<'ValueType>.projectMembers
+                            context
+                            referenceId
+                            projectionSource
+
+                    | _ ->
+                        invalidOp
+                            $"Projection expected {typeof<'ValueType>.FullName} to be an F# record."
+
+                | PocoProduct _ ->
+
+                    match shapeof<'ValueType> with
+
+                    | Shape.Poco (:? ShapePoco<'ValueType> as pocoShape) ->
+
+                        let publicFields : IShapeReadOnlyMember<'ValueType> array =
+                            pocoShape.Fields
+                            |> Array.map (fun field ->
+                                field :> IShapeReadOnlyMember<'ValueType>
+                            )
+
+                        let properties : IShapeReadOnlyMember<'ValueType> array =
+                            pocoShape.Properties
+
+                        Array.append
+                            publicFields
+                            properties
+                        |> Projection<'ValueType>.projectMembers
+                            context
+                            referenceId
+                            projectionSource
+
+                    | _ ->
+                        invalidOp
+                            $"Projection expected {typeof<'ValueType>.FullName} to be a POCO."
+
+                | TupleProduct _ ->
+
+                    match shapeof<'ValueType> with
+
+                    | Shape.Tuple (:? ShapeTuple<'ValueType> as tupleShape) ->
+
+                        tupleShape.Elements
+                        |> Array.map (fun element ->
+                            element :> IShapeReadOnlyMember<'ValueType>
+                        )
+                        |> Projection<'ValueType>.projectTupleElements
+                            context
+                            referenceId
+                            projectionSource
+
+                    | _ ->
+                        invalidOp
+                            $"Projection expected {typeof<'ValueType>.FullName} to be a tuple."
+
+                | UnionProduct _ ->
+
+                    match shapeof<'ValueType> with
+
+                    | Shape.FSharpUnion (:? ShapeFSharpUnion<'ValueType> as unionShape) ->
+
+                        let caseIndex =
+                            unionShape.GetTag projectionSource
+
+                        let activeCase =
+                            unionShape.UnionCases.[caseIndex]
+
+                        let caseExpression =
+                            Projection<'ValueType>.namedValue
+                                "$case"
+                                (Expr.Value activeCase.CaseInfo.Name)
+
+                        let fieldExpressions, context =
+                            activeCase.Fields
+                            |> Array.map (fun field ->
+                                field :> IShapeReadOnlyMember<'ValueType>
+                            )
+                            |> Array.filter Projection<'ValueType>.usableMember
+                            |> Array.fold
+                                (fun (expressions, context) fieldShape ->
+
+                                    let fieldExpression, context =
+                                        Projection<'ValueType>.projectMember
+                                            context
+                                            projectionSource
+                                            fieldShape
+
+                                    fieldExpression :: expressions,
+                                    context
+                                )
+                                ([], context)
+
+                        let expression =
+                            caseExpression
+                            :: List.rev fieldExpressions
+                            |> Projection<'ValueType>.identifiedProjectedValues
+                                referenceId
+
+                        expression,
+                        context
+
+                    | _ ->
+                        invalidOp
+                            $"Projection expected {typeof<'ValueType>.FullName} to be an F# union."
+
+                | EnumerableProduct _ ->
+
+                    match shapeof<'ValueType> with
+
+                    | Shape.Enumerable enumerableShape ->
+
+                        enumerableShape.Accept {
+                            new IEnumerableVisitor<Expr * ProjectionContext> with
+
+                                member _.Visit<'Enumerable, 'Element when 'Enumerable :> seq<'Element>>() =
+
+                                    let enumerableValue : 'Enumerable =
+                                        projectionSource
+                                        |> box
+                                        |> unbox<'Enumerable>
+
+                                    let expressions, context =
+                                        enumerableValue
+                                        |> Seq.fold
+                                            (fun (expressions, context) element ->
+
+                                                let elementExpression, context =
+                                                    CodeQuotation<'Element>.expressionWithProjectionContext
+                                                        context
+                                                        element
+
+                                                elementExpression :: expressions,
+                                                context
+                                            )
+                                            ([], context)
+
+                                    let expression =
+                                        expressions
+                                        |> List.rev
+                                        |> Projection<'ValueType>.identifiedProjectedValues
+                                            referenceId
+
+                                    expression,
+                                    context
+                        }
+
+                    | _ ->
+                        invalidOp
+                            $"Projection expected {typeof<'ValueType>.FullName} to be enumerable."
+                | NullProduct _
+                | RuntimeProduct _ ->
+                    invalidOp "Projection case was expected to be handled before reference classification."
+    member this.projectionExpression : Expr =
+
+        let expression, _ =
+            this.expressionWithContext
+                ProjectionContext.empty
+
+        expression
+    member this.projectionType =
+        this.projectionExpression.Type
+
+    /// Names of the immediate named members represented by this projection.
+    ///
+    /// Positional projections such as tuples and enumerables have no member
+    /// names and therefore return an empty list.
+    member this.projectionMemberNames : string list =
+
+        let projectionSource =
+            this.projectionSource
+
+        match this with
+        | RuntimeProduct projectionSource ->
+
+            TypeShape.FromValue(box projectionSource).Accept {
+                new ITypeVisitor<string list> with
+
+                    member _.Visit<'RuntimeType>() =
+
+                        let runtimeValue : 'RuntimeType =
+                            projectionSource
+                            |> box
+                            |> unbox<'RuntimeType>
+
+                        runtimeValue
+                        |> Projection<'RuntimeType>.ofValue
+                        |> fun projection ->
+                            projection.projectionMemberNames
+            }
+        | RecordProduct _ ->
+
+            match shapeof<'ValueType> with
+            | Shape.FSharpRecord (:? ShapeFSharpRecord<'ValueType> as recordShape) ->
+
+                recordShape.Fields
+                |> Array.map (fun field ->
+                    field :> IShapeReadOnlyMember<'ValueType>
+                )
+                |> Array.filter Projection<'ValueType>.usableMember
+                |> Array.map _.Label
+                |> Array.toList
+
+            | _ ->
+                []
+
+        | PocoProduct _ ->
+
+            match shapeof<'ValueType> with
+            | Shape.Poco (:? ShapePoco<'ValueType> as pocoShape) ->
+
+                let publicFields : IShapeReadOnlyMember<'ValueType> array =
+                    pocoShape.Fields
+                    |> Array.map (fun field ->
+                        field :> IShapeReadOnlyMember<'ValueType>
+                    )
+
+                Array.append
+                    publicFields
+                    pocoShape.Properties
+                |> Array.filter Projection<'ValueType>.usableMember
+                |> Array.map _.Label
+                |> Array.toList
+
+            | _ ->
+                []
+
+        | UnionProduct _ ->
+
+            match shapeof<'ValueType> with
+            | Shape.FSharpUnion (:? ShapeFSharpUnion<'ValueType> as unionShape) ->
+
+                let activeCase =
+                    unionShape.UnionCases.[unionShape.GetTag projectionSource]
+
+                "$case"
+                ::
+                (
+                    activeCase.Fields
+                    |> Array.map (fun field ->
+                        field :> IShapeReadOnlyMember<'ValueType>
+                    )
+                    |> Array.filter Projection<'ValueType>.usableMember
+                    |> Array.map _.Label
+                    |> Array.toList
+                )
+
+            | _ ->
+                []
+
+        | NullProduct _ 
+        | TupleProduct _
+        | EnumerableProduct _ ->
+            []
+
+    /// Retrieves a lowered expression by following named members of the
+    /// original structural value.
+    ///
+    /// This does not inspect or reverse-engineer the evaluated tuple
+    /// representation. It traverses the original typed source.
+    member this.tryPathExpression
+        (path : string list)
+        : Expr option
+        =
+
+        match path with
+        | [] ->
+            Some this.projectionExpression
+
+        | path ->
+            Projection<'ValueType>.tryNamedPathExpression
+                this.projectionSource
+                path
+
+    member this.tryMemberExpression
+        (memberName : string)
+        : Expr option
+        =
+
+        this.tryPathExpression [memberName]
+
+    member this.tryPathValueObject
+        (path : string list)
+        : obj option
+        =
+
+        this.tryPathExpression path
+        |> Option.map LeafExpressionConverter.EvaluateQuotation
+
+    member this.tryMemberValueObject
+        (memberName : string)
+        : obj option
+        =
+
+        this.tryPathValueObject [memberName]
+
+    static member ofValue
+        (projectionSource : 'ValueType)
+        : Projection<'ValueType>
+        =
+
+        let valueObject =
+            box projectionSource
+
+        if isNull valueObject then
+
+            NullProduct projectionSource
+
+        else
+
+            match shapeof<'ValueType> with
+
+            | Shape.FSharpRecord (:? ShapeFSharpRecord<'ValueType>) ->
+                RecordProduct projectionSource
+
+            | Shape.Poco (:? ShapePoco<'ValueType>) ->
+                PocoProduct projectionSource
+
+            | Shape.Tuple (:? ShapeTuple<'ValueType>) ->
+                TupleProduct projectionSource
+
+            | Shape.FSharpUnion (:? ShapeFSharpUnion<'ValueType>) ->
+                UnionProduct projectionSource
+
+            | Shape.Enumerable _ ->
+                EnumerableProduct projectionSource
+
+            | shape ->
+
+                let runtimeType =
+                    valueObject.GetType()
+
+                if runtimeType <> typeof<'ValueType> then
+
+                    RuntimeProduct projectionSource
+
+                else
+
+                    invalidOp
+                        $"Projection does not yet support {shape.Type.FullName}"
+    member internal this.dynamicValueObjectWithContext
+        (context : ProjectionContext)
+        : obj * ProjectionContext
+        =
+
+        match this with
+
+        | NullProduct _ ->
+
+            null,
+            context
+
+        | RuntimeProduct projectionSource ->
+
+            TypeShape.FromValue(box projectionSource).Accept {
+                new ITypeVisitor<obj * ProjectionContext> with
+
+                    member _.Visit<'RuntimeType>() =
+
+                        let runtimeValue : 'RuntimeType =
+                            projectionSource
+                            |> box
+                            |> unbox<'RuntimeType>
+
+                        CodeQuotation<'RuntimeType>.valueObjectWithProjectionContext
+                            context
+                            runtimeValue
+            }
+
+        | _ ->
+
+            let projectionSource =
+                this.projectionSource
+
+            let projectionReference, context =
+                ProjectionContext.classify
+                    projectionSource
+                    context
+
+            match projectionReference with
+
+            | ProjectionReference.RepeatedOccurrence referenceId ->
+
+                ImmutableDynamicObj(
+                    Map [
+                        ("$ref", box referenceId)
+                    ]
+                )
+                |> box,
+                context
+
+            | ProjectionReference.Untracked
+            | ProjectionReference.FirstOccurrence _ ->
+
+                let referenceId =
+                    match projectionReference with
+                    | ProjectionReference.FirstOccurrence referenceId ->
+                        Some referenceId
+
+                    | ProjectionReference.Untracked ->
+                        None
+
+                    | ProjectionReference.RepeatedOccurrence _ ->
+                        None
+
+                match this with
+
+                | RecordProduct _ ->
+
+                    match shapeof<'ValueType> with
+
+                    | Shape.FSharpRecord
+                        (:? ShapeFSharpRecord<'ValueType> as recordShape) ->
+
+                        let dynamicObject, context =
+                            recordShape.Fields
+                            |> Array.map (fun field ->
+                                field :> IShapeReadOnlyMember<'ValueType>
+                            )
+                            |> Projection<'ValueType>.dynamicMembers context referenceId projectionSource
+
+                        box dynamicObject,
+                        context
+
+                    | _ ->
+                        invalidOp
+                            $"Projection expected {typeof<'ValueType>.FullName} to be an F# record."
+
+                | PocoProduct _ ->
+
+                    match shapeof<'ValueType> with
+
+                    | Shape.Poco
+                        (:? ShapePoco<'ValueType> as pocoShape) ->
+
+                        let publicFields : IShapeReadOnlyMember<'ValueType> array =
+                            pocoShape.Fields
+                            |> Array.map (fun field ->
+                                field :> IShapeReadOnlyMember<'ValueType>
+                            )
+
+                        let properties : IShapeReadOnlyMember<'ValueType> array =
+                            pocoShape.Properties
+
+                        let dynamicObject, context =
+                            Array.append
+                                publicFields
+                                properties
+                            |> Projection<'ValueType>.dynamicMembers
+                                context
+                                referenceId
+                                projectionSource
+
+                        box dynamicObject,
+                        context
+
+                    | _ ->
+                        invalidOp
+                            $"Projection expected {typeof<'ValueType>.FullName} to be a POCO."
+
+                // TupleProduct, UnionProduct, EnumerableProduct follow
+                // the same pattern.
+
+                | NullProduct _
+                | RuntimeProduct _ ->
+
+                    invalidOp
+                        "Projection case should already have been handled."
+
+    member internal this.dynamicObjectWithContext
+        (context : ProjectionContext)
+        : ImmutableDynamicObj * ProjectionContext
+        =
+
+        let valueObject, context =
+            this.dynamicValueObjectWithContext context
+
+        unbox<ImmutableDynamicObj> valueObject,
+        context
+    static member private dynamicMemberValue
+        (context : ProjectionContext)
+        (projectionSource : 'SourceType)
+        (memberShape : IShapeReadOnlyMember<'SourceType>)
+        : (string * obj) * ProjectionContext
+        =
+
+        memberShape.Accept {
+            new IReadOnlyMemberVisitor< 'SourceType, (string * obj) * ProjectionContext > with
+
+                member _.Visit<'MemberType>
+                    (memberShape : ReadOnlyMember<'SourceType, 'MemberType>)
+                    =
+
+                    let memberValueResult : Result<'MemberType, exn> =
+                        try
+                            memberShape.Get projectionSource
+                            |> Ok
+
+                        with exception_ ->
+                            Error exception_
+
+                    match memberValueResult with
+
+                    | Error _ ->
+
+                        (memberShape.Label, null),
+                        context
+
+                    | Ok memberValue
+                        when obj.ReferenceEquals(box memberValue, null) ->
+
+                        (memberShape.Label, null),
+                        context
+
+                    | Ok memberValue ->
+
+                        let valueObject, context =
+                            CodeQuotation<'MemberType>.valueObjectWithProjectionContext context memberValue
+
+                        (memberShape.Label, valueObject),
+                        context
+        }
+    static member private dynamicMembers
+        (context : ProjectionContext)
+        (referenceId : int option)
+        (projectionSource : 'SourceType)
+        (members : IShapeReadOnlyMember<'SourceType> array)
+        : ImmutableDynamicObj * ProjectionContext
+        =
+
+        let properties, context =
+            members
+            |> Array.filter Projection<'ValueType>.usableMember
+            |> Array.fold
+                (fun (properties, context) memberShape ->
+
+                    let property, context =
+                        Projection<'ValueType>.dynamicMemberValue
+                            context
+                            projectionSource
+                            memberShape
+
+                    property :: properties,
+                    context
+                )
+                ([], context)
+
+        let properties =
+            properties
+            |> List.rev
+            |> fun properties ->
+
+                match referenceId with
+                | Some referenceId ->
+                    ("$id", box referenceId)
+                    :: properties
+
+                | None ->
+                    properties
+
+        ImmutableDynamicObj(
+            properties
+            |> Map.ofList
+        ),
+        context
+// -----------------------------------------------------------------------------
+// CodeQuotation
+// -----------------------------------------------------------------------------
+
+and CodeQuotation<'ValueType> =
+
+    /// The original type can be reconstructed exactly.
+    | DirectQuote of Expr<'ValueType>
+
+    /// The original type cannot be reconstructed exactly and therefore needs
+    /// to be structurally projected.
+    | IndirectQuote of Projection<'ValueType>
+    member this.fsharpTypeName = FSharpLiteral.stringifyType<'ValueType>
+
+    static member  lift
+        (value : 'ValueType)
+        : CodeQuotation<'ValueType>
+        =
+
+        CodeQuotation<'ValueType>.ofValue
+            value
+
+    static member  lower (quote:CodeQuotation<'ValueType>) : Expr = 
+            match quote with 
+
+            | DirectQuote expression -> expression :> Expr
+
+            | IndirectQuote projection -> projection.projectionExpression
+    static member expression (value : 'ValueType) : Expr = CodeQuotation.lift value |> CodeQuotation.lower 
+
+    static member internal expressionWithProjectionContext
+        (context : ProjectionContext)
+        (value : 'ValueType)
+        : Expr * ProjectionContext
+        =
+        if obj.ReferenceEquals(box value, null) then
+
+            let noneExpression : Expr<'ValueType option> =
+                <@ None @>
+
+            noneExpression :> Expr,
+            context
+        else
+            match CodeQuotation<'ValueType>.tryDirect value with
+
+            | Some expression ->
+                expression :> Expr,
+                context
+
+            | None ->
+
+                let projection =
+                    Projection<'ValueType>.ofValue value
+
+                projection.expressionWithContext
+                    context
+    static member inline tryValue
+        (quote : CodeQuotation<'ValueType>)
+        : 'ValueType option
+        =
+            match quote with 
+
+            | DirectQuote expression -> 
+                LeafExpressionConverter.EvaluateQuotation( expression )
+                    :?> 'ValueType
+                    |> Some
+                
+            | _ -> None
+    static member inline project
+        (quote : CodeQuotation<'ValueType>)
+        : Projection<'ValueType>
+        =
+            match quote with 
+
+            | DirectQuote expression -> 
+                LeafExpressionConverter.EvaluateQuotation( expression )
+                    :?> 'ValueType
+                    |> Projection<'ValueType>.ofValue
+                
+            | IndirectQuote projection -> projection
+    static member valueObject
+        (quote : CodeQuotation<'ValueType>)
+        : SemiStatic<'ValueType>
+        =
+
+        match quote with
+
+        | DirectQuote expression ->
+
+            expression
+            |> LeafExpressionConverter.EvaluateQuotation
+            :?> 'ValueType
+            |> StaticObject
+
+        | IndirectQuote projection ->
+
+            let dynamicObject, _ =
+                projection.dynamicObjectWithContext
+                    ProjectionContext.empty
+
+            DynamicObject dynamicObject
+    member this.lowered = CodeQuotation.lower this
+    member this.tryEvaluate = CodeQuotation.tryValue this
+    member this.evaluated = CodeQuotation.valueObject this
+    member this.projected = CodeQuotation.project this
+
+    // Generic option traversal
+    //
+    // This is used whenever every constituent must be directly quotable for
+    // the enclosing value itself to be directly quotable.
+    // -------------------------------------------------------------------------
+
+    static member private traverse<'Input, 'Output>
+        (values : seq<'Input>)
+        (mapping : 'Input -> 'Output option)
+        : 'Output list option
+        =
+
+        values
+        |> Seq.fold
+            (fun state value ->
+
+                match state with
+                | None ->
+                    None
+
+                | Some results ->
+                    match mapping value with
+                    | Some result ->
+                        Some (result :: results)
+
+                    | None ->
+                        None
+            )
+            (Some [])
+        |> Option.map List.rev
+
+    // -------------------------------------------------------------------------
+    // Homogeneous structural values
+    // -------------------------------------------------------------------------
+
+    static member private ofHomogeneousElements<'Element>
+        (elements : seq<'Element>)
+        : Expr<'Element array> option
+        =
+
+        CodeQuotation<'ValueType>.traverse
+            elements
+            (fun element ->
+
+                CodeQuotation<'Element>.tryDirect element
+                |> Option.map (fun expression ->
+                    expression :> Expr
+                )
+            )
+        |> Option.map (fun elementExpressions ->
+
+            Expr.NewArray(
+                typeof<'Element>,
+                elementExpressions
+            )
+            |> Expr.Cast<'Element array>
+        )
+
+    // -------------------------------------------------------------------------
+    // HList
+    //
+    // Some Expr list means:
+    //     every heterogeneous field could be reconstructed exactly.
+    //
+    // None means:
+    //     at least one field requires projection, so anything containing this
+    //     HList cannot itself be a DirectQuote.
+    // -------------------------------------------------------------------------
+
+    static member private ofHeterogenousList<'Fields>
+        (fieldValues : 'Fields HList)
+        : Expr list option
+        =
+
+        let folder =
+            {
+                new HListFolder<Expr list option> with
+
+                    member _.Folder<'FieldType>
+                        (expressions : Expr list option)
+                        (fieldValue : 'FieldType)
+                        =
+
+                        match expressions with
+                        | None ->
+                            None
+
+                        | Some expressions ->
+
+                            match
+                                CodeQuotation<'FieldType>.tryDirect
+                                    fieldValue
+                            with
+                            | Some fieldExpression ->
+                                Some (
+                                    (fieldExpression :> Expr)
+                                    :: expressions
+                                )
+
+                            | None ->
+                                None
+            }
+
+        fieldValues
+        |> HList.fold folder (Some [])
+        |> Option.map List.rev
+
+    // -------------------------------------------------------------------------
+    // Union case arguments
+    // -------------------------------------------------------------------------
+
+    static member private unionCaseArguments<'Payload>
+        (caseInfo : UnionCaseInfo)
+        (payload : 'Payload)
+        : Expr list option
+        =
+
+        let fields =
+            caseInfo.GetFields()
+
+        match fields.Length with
+
+        // ShapeSifter represents a zero-field union case with unit,
+        // but Expr.NewUnionCase needs no argument expressions.
+        | 0 ->
+            Some []
+
+        // ShapeSifter represents a one-field union case directly by the
+        // field's type.
+        | 1 ->
+
+            CodeQuotation<'Payload>.tryDirect payload
+            |> Option.map (fun expression ->
+                [
+                    expression :> Expr
+                ]
+            )
+
+        // ShapeSifter represents multiple union-case fields as a tuple.
+        // Break that tuple back into its individual field expressions.
+        | _ ->
+
+            match tType<'Payload> with
+
+            | TType.Tuple tuple ->
+
+                {
+                    new TupleConvEvaluator< 'Payload, Expr list option > with
+
+                        member _.Eval<'UnionCaseFields>
+                            (
+                                _fieldTypes :
+                                    TypeList<'UnionCaseFields>
+                            )
+                            (
+                                conversion :
+                                    Conv<
+                                        'Payload,
+                                        'UnionCaseFields HList
+                                    >
+                            )
+                            =
+
+                            let fieldValues :
+                                'UnionCaseFields HList
+                                =
+                                conversion.To payload
+
+                            CodeQuotation<'Payload>
+                                .ofHeterogenousList
+                                    fieldValues
+                }
+                |> tuple.Apply
+
+            | _ ->
+
+                invalidOp
+                    $"Expected the payload of union case {caseInfo.Name} to be a tuple."
+
+    // -------------------------------------------------------------------------
+    // HUnion
+    // -------------------------------------------------------------------------
+
+    static member private ofHeterogenousUnion<'Cases>
+        (caseIndex : int)
+        (caseData : UnionTypeField list)
+        (unionValue : 'Cases HUnion)
+        : Expr option
+        =
+
+        match
+            unionValue
+            |> HUnion.toTypeList
+            |> TypeList.split
+        with
+
+        | Choice1Of2 _ ->
+
+            invalidOp
+                "A discriminated union cannot have zero cases."
+
+        | Choice2Of2 cons ->
+
+            {
+                new TypeListConsEvaluator< 'Cases, Expr option > with
+
+                    member _.Eval<'Payload, 'Tail>
+                        (
+                            _tailTypes :
+                                'Tail TypeList
+                        )
+                        (
+                            typeEquality :
+                                Teq<
+                                    'Cases,
+                                    'Payload -> 'Tail
+                                >
+                        )
+                        =
+
+                        let expandedUnion :
+                            ('Payload -> 'Tail) HUnion
+                            =
+                            unionValue
+                            |> Teq.castTo
+                                (
+                                    HUnion.cong
+                                        typeEquality
+                                )
+
+                        match HUnion.split expandedUnion with
+
+                        | Choice1Of2 payload ->
+
+                            let caseInfo =
+                                caseData
+                                |> List.item caseIndex
+                                |> fun case ->
+                                    case.RawCase
+
+                            CodeQuotation<'ValueType>
+                                .unionCaseArguments
+                                    caseInfo
+                                    payload
+                            |> Option.map
+                                (fun arguments ->
+
+                                    Expr.NewUnionCase(
+                                        caseInfo,
+                                        arguments
+                                    )
+                                )
+
+                        | Choice2Of2 tail ->
+
+                            CodeQuotation<'ValueType>
+                                .ofHeterogenousUnion
+                                    (caseIndex + 1)
+                                    caseData
+                                    tail
+            }
+            |> cons.Apply
+
+    // -------------------------------------------------------------------------
+    // Direct quotation
+    //
+    // This contains the existing ShapeSifter quotation machinery.
+    //
+    // Crucially:
+    //
+    //     Some Expr<'ValueType>
+    //
+    // means the exact nominal type could be reconstructed.
+    //
+    //     None
+    //
+    // means exact reconstruction is impossible somewhere in this value's
+    // structure and the public operation must return IndirectQuote.
+    // -------------------------------------------------------------------------
+    
+    static member private tryDirect
+        (value : 'ValueType)
+        : Expr<'ValueType> option
+        =
+
+        let expression : Expr option =
+
+            match tType<'ValueType> with
+
+            // -----------------------------------------------------------------
+            // Explicit external-type reconstruction
+            // -----------------------------------------------------------------
+
+            | TType.Teq TType.Url typeEquality ->
+
+                let typeValue : Url =
+                    value
+                    |> Teq.castTo typeEquality
+
+                match CodeQuotation<string>.tryDirect (typeValue.ToString()) with
+
+                | Some stringExpression ->
+
+                    <@ Url.Parse %stringExpression @>
+                    :> Expr
+                    |> Some
+
+                | None ->
+                    None
+            | TType.Teq TType.IriReference typeEquality ->
+
+                let typeValue : IriReference =
+                    value
+                    |> Teq.castTo typeEquality
+
+                match CodeQuotation<string>.tryDirect (typeValue.ToString()) with
+
+                | Some stringExpression ->
+
+                    <@ IriReference %stringExpression @>
+                    :> Expr
+                    |> Some
+
+                | None ->
+                    None
+            | TType.Teq TType.MimeType typeEquality ->
+
+                let typeValue : MimeType =
+                    value
+                    |> Teq.castTo typeEquality
+
+                match CodeQuotation<string>.tryDirect (typeValue.ToString()) with
+
+                | Some stringExpression ->
+
+                    <@ MimeType.Parse %stringExpression @>
+                    :> Expr
+                    |> Some
+
+                | None ->
+                    None
+
+            | TType.Teq TType.TldRule typeEquality ->
+
+                let typeValue : TldRule =
+                    value
+                    |> Teq.castTo typeEquality
+
+                let valueString =
+                    match typeValue.Type with
+
+                    | TldRuleType.WildcardException ->
+                        "!" + typeValue.Name
+
+                    | _ ->
+                        typeValue.Name
+
+                match
+                    CodeQuotation<string>.tryDirect valueString,
+                    CodeQuotation<TldRuleDivision>.tryDirect typeValue.Division
+                with
+
+                | Some ruleDataExpression,
+                  Some divisionExpression ->
+
+                    <@
+                        TldRule(
+                            %ruleDataExpression,
+                            %divisionExpression
+                        )
+                    @>
+                    :> Expr
+                    |> Some
+
+                | _ ->
+                    None
+
+            // -----------------------------------------------------------------
+            // CLR enums
+            // -----------------------------------------------------------------
+
+            | TType'Enum ->
+
+                Expr.Value(
+                    box value,
+                    typeof<'ValueType>
+                )
+                |> Some
+
+            // -----------------------------------------------------------------
+            // Primitive/direct values
+            // -----------------------------------------------------------------
+            | TType'Byte typeEquality ->
+
+                value
+                |> Teq.castTo typeEquality
+                |> Expr.Value
+                |> Some
+            | TType.Bool typeEquality ->
+
+                value
+                |> Teq.castTo typeEquality
+                |> Expr.Value
+                |> Some
+
+            | TType.Int typeEquality ->
+
+                value
+                |> Teq.castTo typeEquality
+                |> Expr.Value
+                |> Some
+
+            | TType.Int64 typeEquality ->
+
+                value
+                |> Teq.castTo typeEquality
+                |> Expr.Value
+                |> Some
+
+            | TType.Float typeEquality ->
+
+                value
+                |> Teq.castTo typeEquality
+                |> Expr.Value
+                |> Some
+
+            | TType.String typeEquality ->
+
+                value
+                |> Teq.castTo typeEquality
+                |> Expr.Value
+                |> Some
+
+            | TType.Unit typeEquality ->
+
+                value
+                |> Teq.castTo typeEquality
+                |> Expr.Value
+                |> Some
+
+            | TType.DateTime typeEquality ->
+
+                value
+                |> Teq.castTo typeEquality
+                |> Expr.Value
+                |> Some
+
+            | TType.TimeSpan typeEquality ->
+
+                value
+                |> Teq.castTo typeEquality
+                |> Expr.Value
+                |> Some
+
+            // -----------------------------------------------------------------
+            // Array
+            // -----------------------------------------------------------------
+
+            | TType.Array array ->
+
+                {
+                    new ArrayTeqEvaluator< 'ValueType, Expr option > with
+
+                        member _.Eval<'Element>
+                            (
+                                typeEquality :
+                                    Teq<
+                                        'ValueType,
+                                        'Element array
+                                    >
+                            )
+                            =
+
+                            let arrayValue :
+                                'Element array
+                                =
+                                value
+                                |> Teq.castTo
+                                    typeEquality
+
+                            CodeQuotation<'ValueType>
+                                .ofHomogeneousElements
+                                    arrayValue
+                            |> Option.map
+                                (fun expression ->
+                                    expression :> Expr
+                                )
+                }
+                |> array.Apply
+
+            // -----------------------------------------------------------------
+            // Seq
+            //
+            // A seq is materialized into an array expression and then coerced
+            // back to seq<'Element>.
+            // -----------------------------------------------------------------
+
+            | TType.Seq sequence ->
+
+                {
+                    new SeqTeqEvaluator< 'ValueType, Expr option > with
+
+                        member _.Eval<'Element>
+                            (
+                                typeEquality :
+                                    Teq<
+                                        'ValueType,
+                                        'Element seq
+                                    >
+                            )
+                            =
+
+                            let sequenceValue :
+                                'Element seq
+                                =
+                                value
+                                |> Teq.castTo
+                                    typeEquality
+
+                            CodeQuotation<'ValueType>
+                                .ofHomogeneousElements
+                                    sequenceValue
+                            |> Option.map
+                                (fun arrayExpression ->
+
+                                    Expr.Coerce(
+                                        arrayExpression,
+                                        typeof<'Element seq>
+                                    )
+                                )
+                }
+                |> sequence.Apply
+
+            // -----------------------------------------------------------------
+            // ResizeArray
+            // -----------------------------------------------------------------
+
+            | TType.ResizeArray resizeArray ->
+
+                {
+                    new ResizeArrayTeqEvaluator< 'ValueType, Expr option > with
+
+                        member _.Eval<'Element>
+                            (
+                                typeEquality :
+                                    Teq<
+                                        'ValueType,
+                                        'Element ResizeArray
+                                    >
+                            )
+                            =
+
+                            let resizeArrayValue :
+                                'Element ResizeArray
+                                =
+                                value
+                                |> Teq.castTo
+                                    typeEquality
+
+                            CodeQuotation<'ValueType>
+                                .ofHomogeneousElements
+                                    resizeArrayValue
+                            |> Option.map
+                                (fun arrayExpression ->
+
+                                    let sequenceExpression :
+                                        Expr
+                                        =
+                                        Expr.Coerce(
+                                            arrayExpression,
+                                            typeof<'Element seq>
+                                        )
+
+                                    let constructor =
+                                        typeof< ResizeArray<'Element> > .GetConstructor(
+                                                [|
+                                                    typeof<
+                                                        'Element seq
+                                                    >
+                                                |]
+                                            )
+
+                                    Expr.NewObject(
+                                        constructor,
+                                        [
+                                            sequenceExpression
+                                        ]
+                                    )
+                                )
+                }
+                |> resizeArray.Apply
+
+            // -----------------------------------------------------------------
+            // Set
+            // -----------------------------------------------------------------
+
+            | TType.Set set ->
+
+                {
+                    new SetTeqEvaluator< 'ValueType, Expr option > with
+
+                        member _.Eval<
+                            'Element
+                                when 'Element : comparison
+                        >
+                            (
+                                typeEquality :
+                                    Teq<
+                                        'ValueType,
+                                        'Element Set
+                                    >
+                            )
+                            =
+
+                            let setValue :
+                                'Element Set
+                                =
+                                value
+                                |> Teq.castTo
+                                    typeEquality
+
+                            CodeQuotation<'ValueType>
+                                .ofHomogeneousElements
+                                    setValue
+                            |> Option.map
+                                (fun arrayExpression ->
+
+                                    let sequenceExpression :
+                                        Expr
+                                        =
+                                        Expr.Coerce(
+                                            arrayExpression,
+                                            typeof<'Element seq>
+                                        )
+
+                                    let constructor =
+                                        typeof< Set<'Element> >
+                                            .GetConstructor(
+                                                [|
+                                                    typeof<
+                                                        'Element seq
+                                                    >
+                                                |]
+                                            )
+
+                                    Expr.NewObject(
+                                        constructor,
+                                        [
+                                            sequenceExpression
+                                        ]
+                                    )
+                                )
+                }
+                |> set.Apply
+
+            // -----------------------------------------------------------------
+            // Map
+            // -----------------------------------------------------------------
+
+            | TType.Map map ->
+
+                {
+                    new MapTeqEvaluator< 'ValueType, Expr option > with
+
+                        member _.Eval<
+                            'Key,
+                            'Value
+                                when 'Key : comparison
+                        >
+                            (
+                                typeEquality :
+                                    Teq<
+                                        'ValueType,
+                                        Map<'Key, 'Value>
+                                    >
+                            )
+                            =
+
+                            let mapValue :
+                                Map<'Key, 'Value>
+                                =
+                                value
+                                |> Teq.castTo
+                                    typeEquality
+
+                            let pairExpressions =
+                                CodeQuotation<'ValueType>
+                                    .traverse
+                                        mapValue
+                                        (fun pair ->
+
+                                            match
+                                                CodeQuotation<'Key>
+                                                    .tryDirect
+                                                        pair.Key,
+                                                CodeQuotation<'Value>
+                                                    .tryDirect
+                                                        pair.Value
+                                            with
+
+                                            | Some keyExpression,
+                                              Some valueExpression ->
+
+                                                Expr.NewTuple(
+                                                    [
+                                                        keyExpression
+                                                        :> Expr
+
+                                                        valueExpression
+                                                        :> Expr
+                                                    ]
+                                                )
+                                                |> Some
+
+                                            | _ ->
+                                                None
+                                        )
+
+                            pairExpressions
+                            |> Option.map
+                                (fun pairExpressions ->
+
+                                    let pairType =
+                                        typeof<
+                                            'Key * 'Value
+                                        >
+
+                                    let arrayExpression =
+                                        Expr.NewArray(
+                                            pairType,
+                                            pairExpressions
+                                        )
+
+                                    let sequenceExpression =
+                                        Expr.Coerce(
+                                            arrayExpression,
+                                            typeof<
+                                                seq<'Key * 'Value>
+                                            >
+                                        )
+
+                                    let constructor =
+                                        typeof< Map<'Key, 'Value> >
+                                            .GetConstructor(
+                                                [|
+                                                    typeof< seq< 'Key * 'Value > >
+                                                |]
+                                            )
+
+                                    Expr.NewObject(
+                                        constructor,
+                                        [
+                                            sequenceExpression
+                                        ]
+                                    )
+                                )
+                }
+                |> map.Apply
+
+            // -----------------------------------------------------------------
+            // Dictionary
+            // -----------------------------------------------------------------
+
+            | TType.Dictionary dictionary ->
+
+                {
+                    new DictionaryTeqEvaluator< 'ValueType, Expr option > with
+
+                        member _.Eval<'Key, 'Value>
+                            (
+                                typeEquality :
+                                    Teq<
+                                        'ValueType,
+                                        Generic.Dictionary< 'Key, 'Value > 
+                                        >
+                            )
+                            =
+
+                            let dictionaryValue :
+                                Generic.Dictionary<'Key, 'Value>
+                                =
+                                value
+                                |> Teq.castTo
+                                    typeEquality
+
+                            if
+                                not (
+                                    obj.ReferenceEquals(
+                                        dictionaryValue.Comparer,
+                                        Generic.EqualityComparer< 'Key >.Default
+                                    )
+                                )
+                            then
+
+                                invalidOp
+                                    $"CodeQuotation of Dictionary<{typeof<'Key>.FullName}, {typeof<'Value>.FullName}> with a custom comparer is not yet supported."
+
+                            let keyValuePairConstructor =
+                                typeof< Generic.KeyValuePair< 'Key, 'Value > >
+                                    .GetConstructor(
+                                        [|
+                                            typeof<'Key>
+                                            typeof<'Value>
+                                        |]
+                                    )
+
+                            let pairExpressions =
+                                CodeQuotation<'ValueType>
+                                    .traverse
+                                        dictionaryValue
+                                        (fun pair ->
+
+                                            match
+                                                CodeQuotation<'Key>
+                                                    .tryDirect
+                                                        pair.Key,
+                                                CodeQuotation<'Value>
+                                                    .tryDirect
+                                                        pair.Value
+                                            with
+
+                                            | Some keyExpression,
+                                              Some valueExpression ->
+
+                                                Expr.NewObject(
+                                                    keyValuePairConstructor,
+                                                    [
+                                                        keyExpression
+                                                        :> Expr
+
+                                                        valueExpression
+                                                        :> Expr
+                                                    ]
+                                                )
+                                                |> Some
+
+                                            | _ ->
+                                                None
+                                        )
+
+                            pairExpressions
+                            |> Option.map
+                                (fun pairExpressions ->
+
+                                    let pairType =
+                                        typeof< Generic.KeyValuePair< 'Key, 'Value > >
+
+                                    let arrayExpression =
+                                        Expr.NewArray(
+                                            pairType,
+                                            pairExpressions
+                                        )
+
+                                    let sequenceType =
+                                        typeof< seq< Generic.KeyValuePair< 'Key, 'Value > > >
+
+                                    let sequenceExpression =
+                                        Expr.Coerce(
+                                            arrayExpression,
+                                            sequenceType
+                                        )
+
+                                    let constructor =
+                                        typeof< Generic.Dictionary< 'Key, 'Value > >
+                                            .GetConstructor(
+                                                [|
+                                                    sequenceType
+                                                |]
+                                            )
+
+                                    Expr.NewObject(
+                                        constructor,
+                                        [
+                                            sequenceExpression
+                                        ]
+                                    )
+                                )
+                }
+                |> dictionary.Apply
+
+            // -----------------------------------------------------------------
+            // Fun
+            //
+            // Deliberately excluded for now.
+            // -----------------------------------------------------------------
+
+            // | Fun functionShape ->
+            //     ...
+
+            // -----------------------------------------------------------------
+            // Tuple
+            // -----------------------------------------------------------------
+
+            | TType.Tuple tuple ->
+
+                {
+                    new TupleConvEvaluator< 'ValueType, Expr option > with
+
+                        member _.Eval<'TupleFields>
+                            (
+                                _fieldTypes :
+                                    TypeList<'TupleFields>
+                            )
+                            (
+                                conversion :
+                                    Conv<
+                                        'ValueType,
+                                        'TupleFields HList
+                                    >
+                            )
+                            =
+
+                            let fieldValues :
+                                'TupleFields HList
+                                =
+                                conversion.To value
+
+                            CodeQuotation<'ValueType>
+                                .ofHeterogenousList
+                                    fieldValues
+                            |> Option.map
+                                Expr.NewTuple
+                }
+                |> tuple.Apply
+
+            // -----------------------------------------------------------------
+            // Record
+            // -----------------------------------------------------------------
+
+            | TType.Record record ->
+
+                {
+                    new RecordConvEvaluator< 'ValueType, Expr option > with
+
+                        member _.Eval<'RecordFields>
+                            (
+                                _fieldData :
+                                    RecordTypeField list
+                            )
+                            (
+                                _fieldTypes :
+                                    TypeList<'RecordFields>
+                            )
+                            (
+                                conversion :
+                                    Conv<
+                                        'ValueType,
+                                        'RecordFields HList
+                                    >
+                            )
+                            =
+
+                            let fieldValues :
+                                'RecordFields HList
+                                =
+                                conversion.To value
+
+                            CodeQuotation<'ValueType>
+                                .ofHeterogenousList
+                                    fieldValues
+                            |> Option.map
+                                (fun fieldExpressions ->
+
+                                    Expr.NewRecord(
+                                        typeof<'ValueType>,
+                                        fieldExpressions
+                                    )
+                                )
+                }
+                |> record.Apply
+
+            // -----------------------------------------------------------------
+            // Union
+            //
+            // This also accounts for Option, Choice and List.
+            // -----------------------------------------------------------------
+
+            | TType.Union union ->
+
+                {
+                    new UnionConvEvaluator< 'ValueType, Expr option > with
+
+                        member _.Eval<'Cases>
+                            (
+                                caseData :
+                                    UnionTypeField list
+                            )
+                            (
+                                _caseTypes :
+                                    TypeList<'Cases>
+                            )
+                            (
+                                conversion :
+                                    Conv<
+                                        'ValueType,
+                                        'Cases HUnion
+                                    >
+                            )
+                            =
+
+                            let unionValue :
+                                'Cases HUnion
+                                =
+                                conversion.To value
+
+                            CodeQuotation<'ValueType>
+                                .ofHeterogenousUnion
+                                    0
+                                    caseData
+                                    unionValue
+                }
+                |> union.Apply
+
+            // -----------------------------------------------------------------
+            // Exact quotation unavailable.
+            //
+            // This is no longer an exception.
+            // It propagates outward until CodeQuotation.ofValue turns it into
+            // IndirectQuote.
+            // -----------------------------------------------------------------
+
+            | _ ->
+                None
+
+        expression
+        |> Option.map
+            (fun expression ->
+                Expr.Cast<'ValueType>
+                    expression
+            )
+
+    // -------------------------------------------------------------------------
+    // Public quotation operation
+    // -------------------------------------------------------------------------
+
+    static member ofValue
+        (value : 'ValueType)
+        : CodeQuotation<'ValueType>
+        =
+
+        match
+            CodeQuotation<'ValueType>
+                .tryDirect value
+        with
+
+        | Some expression ->
+
+            DirectQuote expression
+
+        | None ->
+
+            value
+            |> Projection<'ValueType>.ofValue
+            |> IndirectQuote
+
+    static member internal valueObjectWithProjectionContext
+        (context : ProjectionContext)
+        (value : 'ValueType)
+        : obj * ProjectionContext
+        =
+
+        if obj.ReferenceEquals(box value, null) then
+
+            null,
+            context
+
+        else
+
+            match CodeQuotation<'ValueType>.tryDirect value with
+
+            | Some _ ->
+
+                box value,
+                context
+
+            | None ->
+
+                let projection =
+                    Projection<'ValueType>.ofValue value
+
+                projection.dynamicValueObjectWithContext context
+type Type with 
+    member this.fsharpName = FSharpLiteral.stringifyTypeDynamic this
 
 // Put the TypeProviderAssemblyAttribute in the runtime DLL, pointing to the design-time DLL
 [<assembly: CompilerServices.TypeProviderAssembly("DoxAletheia.DesignTime.dll")>]

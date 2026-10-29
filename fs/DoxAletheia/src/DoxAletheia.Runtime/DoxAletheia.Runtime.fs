@@ -47,7 +47,19 @@ open NuGet.Common
 open NuGet.Protocol
 open NuGet.Protocol.Core.Types
 open NuGet.Protocol.Resources
+open ShapeSifter
+open TypeShape.Core
+open System.Reflection
+open Microsoft.FSharp.Linq.RuntimeHelpers
+open HCollections
+open Microsoft.FSharp.Reflection
+open TypeEquality
+open FSharp.SystemTextJson
+open System.Text.Json
+open System.Text.Json.Serialization
+open DynamicObj
 
+module FSharpLiteral = FSharp.Literals.Literal
 let domainParser =
     lazy
         let ruleProvider = new SimpleHttpRuleProvider()
@@ -439,7 +451,92 @@ module Operators =
     /// Infix operator used for tagging, untagging, or casting units of measure
     let inline (~%) (x: string) : string<'DatatypeMeasure> =
         _cast<UMX, string, string<'DatatypeMeasure>> x
+type FSharpRecord<'RecordType> =
+    private
+    | FSharpRecord of 'RecordType
 
+    member this.value =
+        let (FSharpRecord value) = this
+        value
+    static member Parse
+        (value : 'RecordType)
+        : FSharpRecord<'RecordType>
+        =
+
+        match shapeof<'RecordType> with
+
+        | Shape.FSharpRecord
+            (:? ShapeFSharpRecord<'RecordType>) ->
+
+            FSharpRecord value
+
+        | _ ->
+
+            invalidArg
+                (nameof value)
+                $"{typeof<'RecordType>.FullName} is not an F# record."
+
+    member this.fieldStrings : (string * string) list =
+
+        let value =
+            this.value
+
+        match shapeof<'RecordType> with
+
+        | Shape.FSharpRecord
+            (:? ShapeFSharpRecord<'RecordType> as recordShape) ->
+
+            recordShape.Fields
+            |> Array.map (fun field ->
+
+                field.Accept {
+                    new IReadOnlyMemberVisitor<'RecordType, string * string> with
+
+                        member _.Visit<'FieldType>
+                            (field : ReadOnlyMember<'RecordType, 'FieldType>)
+                            =
+
+                            let fieldValue : 'FieldType =
+                                field.Get value
+
+                            let fieldString =
+                                if
+                                    typeof<'FieldType>.IsGenericType
+                                    &&
+                                    typeof<'FieldType>.GetGenericTypeDefinition()
+                                        = typedefof<list<_>>
+                                then
+
+                                    fieldValue
+                                    |> box
+                                    |> unbox<System.Collections.IEnumerable>
+                                    |> Seq.cast<obj>
+                                    |> Seq.map string
+                                    |> String.concat ","
+
+                                else
+                                    string fieldValue
+
+                            field.Label, fieldString
+                }
+            )
+            |> Array.toList
+
+        | _ ->
+            invalidOp
+                $"FSharpRecord<{typeof<'RecordType>.FullName}> contains a non-record value."
+
+    member this.jsonString =
+        let jsonSerializerOptions =
+            JsonFSharpOptions.Default()
+                .ToJsonSerializerOptions()
+        jsonSerializerOptions.NumberHandling  <- JsonNumberHandling.AllowNamedFloatingPointLiterals
+        jsonSerializerOptions.ReferenceHandler <- ReferenceHandler.Preserve
+
+        JsonSerializer.Serialize(
+            this.value,            
+            jsonSerializerOptions
+        )
 type LanguageTag with
     member this.identity = this.ToString().ToLowerInvariant()
 
@@ -1129,6 +1226,13 @@ and Irl =
         let parameterKey = fst queryStringParameter
         let parameterValue = string (snd queryStringParameter)
         irl.Url.SetQueryParam(parameterKey, parameterValue) |> Irl.ofUrl
+    static member (=?)
+        (
+            irl : Irl,
+            queryStringParameters : FSharpRecord<'RecordType>
+        )
+        =
+        irl =? queryStringParameters.fieldStrings
 
     member this.hash = this.DomUrl.Hash
     // member this.host = this.DomUrl.Host
@@ -1206,6 +1310,18 @@ and Site =
           pathSegments = List.empty
           hashFragment = None
           searchQuery = Some(queryString.TrimStart('?')) }
+
+    static member (=?)
+        (
+            site: Site,
+            queryStringParameters : FSharpRecord<'RecordType>
+        )
+        =
+        let queryString = 
+            queryStringParameters.fieldStrings
+            |> List.map (fun (parameter, value) -> $"{parameter}={value}")
+            |> String.concat "&"
+        site =? queryString
 
     static member (/=/)(site: Site, fragmentString: string) =
         { site = site
@@ -10317,7 +10433,7 @@ type OntologyGraph with
 
     member this.Literals = this.LiteralNodes |> Seq.map _.asLiteral
 
-    member this.ClassByIri =
+    member this.ClassMap =
         this.AllClasses
         |> Seq.choose (fun ontologyResource ->
             match ontologyResource.tryUriNode with
@@ -10325,7 +10441,7 @@ type OntologyGraph with
             | _ -> None)
         |> Map.ofSeq
 
-    member this.PropertyByIri =
+    member this.PropertyMap =
         this.AllProperties
         |> Seq.choose (fun ontologyResource ->
             match ontologyResource.tryUriNode with
@@ -10333,7 +10449,7 @@ type OntologyGraph with
             | _ -> None)
         |> Map.ofSeq
 
-    member this.InstancesByIri =
+    member this.InstanceMap =
         this.AllClasses
         |> Seq.collect (fun ontologyResource ->
             ontologyResource.Instances
@@ -10343,7 +10459,7 @@ type OntologyGraph with
                 | _ -> None))
         |> Map.ofSeq
 
-    member this.OwlClassByIri =
+    member this.OwlClassMap =
         this.OwlClasses
         |> Seq.choose (fun ontologyResource ->
             match ontologyResource.tryUriNode with
@@ -10351,7 +10467,7 @@ type OntologyGraph with
             | _ -> None)
         |> Map.ofSeq
 
-    member this.RdfClassByIri =
+    member this.RdfClassMap =
         this.RdfClasses
         |> Seq.choose (fun ontologyResource ->
             match ontologyResource.tryUriNode with
@@ -10359,7 +10475,7 @@ type OntologyGraph with
             | _ -> None)
         |> Map.ofSeq
 
-    member this.RdfPropertyByIri =
+    member this.RdfPropertyMap =
         this.RdfProperties
         |> Seq.choose (fun ontologyResource ->
             match ontologyResource.tryUriNode with
@@ -10367,7 +10483,7 @@ type OntologyGraph with
             | _ -> None)
         |> Map.ofSeq
 
-    member this.OwlAnnotationPropertyByIri =
+    member this.OwlAnnotationPropertyMap =
         this.OwlAnnotationProperties
         |> Seq.choose (fun ontologyResource ->
             match ontologyResource.tryUriNode with
@@ -10375,7 +10491,7 @@ type OntologyGraph with
             | _ -> None)
         |> Map.ofSeq
 
-    member this.OwlDatatypePropertyByIri =
+    member this.OwlDatatypePropertyMap =
         this.OwlDatatypeProperties
         |> Seq.choose (fun ontologyResource ->
             match ontologyResource.tryUriNode with
@@ -10383,82 +10499,83 @@ type OntologyGraph with
             | _ -> None)
         |> Map.ofSeq
 
-    member this.OwlObjectPropertyByIri =
+    member this.OwlObjectPropertyMap =
         this.OwlObjectProperties
         |> Seq.choose (fun ontologyResource ->
             match ontologyResource.tryUriNode with
             | Some uriNode -> Some(uriNode.asIri, ontologyResource)
             | _ -> None)
         |> Map.ofSeq
+type RdfVocabulary with 
+    member this.ClassMap(ontologyGraph:OntologyGraph) =
 
-    member this.vocabularyClassByPrefixedName(vocabulary: RdfVocabulary) =
-        this.ClassByIri
+        ontologyGraph.ClassMap
         |> Map.toSeq
         |> Seq.choose (fun (iri, ontologyResource) ->
-            match iri.tryPrefixedName vocabulary with
+            match iri.tryPrefixedName this with
             | Some prefixedName -> Some(prefixedName, ontologyResource)
             | None -> None)
         |> Map.ofSeq
 
-    member this.vocabularyPropertyByPrefixedName(vocabulary: RdfVocabulary) =
-        this.PropertyByIri
+    member this.PropertyMap(ontologyGraph:OntologyGraph) =
+        ontologyGraph.PropertyMap
         |> Map.toSeq
         |> Seq.choose (fun (iri, ontologyResource) ->
-            match iri.tryPrefixedName vocabulary with
+            match iri.tryPrefixedName this with
             | Some prefixedName -> Some(prefixedName, ontologyResource)
             | None -> None)
         |> Map.ofSeq
 
-    member this.vocabularyOwlClassByPrefixedName(vocabulary: RdfVocabulary) =
-        this.OwlClassByIri
+    member this.OwlClassMap(ontologyGraph:OntologyGraph) =
+        ontologyGraph.OwlClassMap
         |> Map.toSeq
         |> Seq.choose (fun (iri, ontologyResource) ->
-            match iri.tryPrefixedName vocabulary with
+            match iri.tryPrefixedName this with
             | Some prefixedName -> Some(prefixedName, ontologyResource)
             | None -> None)
         |> Map.ofSeq
 
-    member this.vocabularyRdfClassByPrefixedName(vocabulary: RdfVocabulary) =
-        this.RdfClassByIri
+    member this.RdfClassMap(ontologyGraph:OntologyGraph) =
+        ontologyGraph.RdfClassMap
         |> Map.toSeq
         |> Seq.choose (fun (iri, ontologyResource) ->
-            match iri.tryPrefixedName vocabulary with
+            match iri.tryPrefixedName this with
             | Some prefixedName -> Some(prefixedName, ontologyResource)
             | None -> None)
         |> Map.ofSeq
 
-    member this.vocabularyRdfPropertyByPrefixedName(vocabulary: RdfVocabulary) =
-        this.RdfPropertyByIri
+    member this.RdfPropertyMap(ontologyGraph:OntologyGraph) =
+        ontologyGraph.RdfPropertyMap
         |> Map.toSeq
         |> Seq.choose (fun (iri, ontologyResource) ->
-            match iri.tryPrefixedName vocabulary with
+            match iri.tryPrefixedName this with
             | Some prefixedName -> Some(prefixedName, ontologyResource)
             | None -> None)
         |> Map.ofSeq
 
-    member this.vocabularyOwlAnnotationPropertyByPrefixedName(vocabulary: RdfVocabulary) =
-        this.OwlAnnotationPropertyByIri
+    member this.OwlAnnotationPropertyMap(ontologyGraph:OntologyGraph) =
+        ontologyGraph.OwlAnnotationPropertyMap
         |> Map.toSeq
         |> Seq.choose (fun (iri, ontologyResource) ->
-            match iri.tryPrefixedName vocabulary with
+            match iri.tryPrefixedName this with
             | Some prefixedName -> Some(prefixedName, ontologyResource)
             | None -> None)
         |> Map.ofSeq
 
-    member this.vocabularyOwlDatatypePropertyByPrefixedName(vocabulary: RdfVocabulary) =
-        this.OwlDatatypePropertyByIri
+    member this.OwlDatatypePropertyMap(ontologyGraph:OntologyGraph) =
+        ontologyGraph.OwlDatatypePropertyMap
         |> Map.toSeq
         |> Seq.choose (fun (iri, ontologyResource) ->
-            match iri.tryPrefixedName vocabulary with
+            match iri.tryPrefixedName this with
             | Some prefixedName -> Some(prefixedName, ontologyResource)
             | None -> None)
         |> Map.ofSeq
 
-    member this.vocabularyOwlObjectPropertyByPrefixedName(vocabulary: RdfVocabulary) =
-        this.OwlObjectPropertyByIri
+    member this.OwlObjectPropertyMap(ontologyGraph:OntologyGraph) =
+        ontologyGraph.OwlObjectPropertyMap
         |> Map.toSeq
         |> Seq.choose (fun (iri, ontologyResource) ->
-            match iri.tryPrefixedName vocabulary with
+            match iri.tryPrefixedName this with
             | Some prefixedName -> Some(prefixedName, ontologyResource)
             | None -> None)
         |> Map.ofSeq
@@ -10749,6 +10866,2843 @@ type Quotation =
             | _ -> invalidOp $"Quotation.ofValue does not yet support {typeof<'Value>.FullName}"
 
         Expr.Cast<'Value> expression
-// Put the TypeProviderAssemblyAttribute in the runtime DLL, pointing to the design-time DLL
+// -----------------------------------------------------------------------------
+// Projected structural values
+//
+// These types package runtime-discovered heterogeneous structure without
+// erasing the constituent values to obj.
+//
+// A projected field is existential from the outside, but once Accept opens it,
+// the original declared 'FieldType is again available as a genuine generic
+// type parameter.
+// -----------------------------------------------------------------------------
+
+type IProjectedFieldVisitor<'Result> =
+
+    abstract Visit<'FieldType> :
+        name : string *
+        value : 'FieldType option
+            -> 'Result
+
+type IProjectedField =
+
+    abstract fieldName : string
+
+    abstract fieldType : Type
+
+    abstract Accept<'Result> :
+        visitor : IProjectedFieldVisitor<'Result>
+            -> 'Result
+
+type ProjectedField<'FieldType>
+    (
+        fieldName : string,
+        fieldOption : 'FieldType option
+    ) =
+
+    member this.name =
+        fieldName
+
+    member this.value =
+        fieldOption
+
+    interface IProjectedField with
+
+        member this.fieldName =
+            fieldName
+
+        member this.fieldType =
+            typeof<'FieldType>
+
+        member this.Accept<'Result>
+            (visitor : IProjectedFieldVisitor<'Result>)
+            =
+
+            visitor.Visit<'FieldType>(
+                fieldName,
+                fieldOption
+            )
+
+// -----------------------------------------------------------------------------
+// Named heterogeneous products
+//
+// Both F# records and ordinary CLR objects are products of named typed values.
+// The distinction is retained as metadata, but both use the same structural
+// representation.
+// -----------------------------------------------------------------------------
+
+[<RequireQualifiedAccess>]
+type ProjectedProductKind =
+    | FSharpRecord
+    | Poco
+
+type IProjectedProductVisitor<'Result> =
+
+    abstract Visit<'SourceType> :
+        source : 'SourceType *
+        kind : ProjectedProductKind *
+        fields : IProjectedField list
+            -> 'Result
+
+type IProjectedProduct =
+
+    abstract sourceType : Type
+
+    abstract kind : ProjectedProductKind
+
+    abstract fields : IProjectedField list
+
+    abstract Accept<'Result> :
+        visitor : IProjectedProductVisitor<'Result>
+            -> 'Result
+
+type ProjectedProduct<'SourceType>
+    (
+        source : 'SourceType,
+        kind : ProjectedProductKind,
+        fields : IProjectedField list
+    ) =
+
+    member this.source =
+        source
+
+    member this.kind =
+        kind
+
+    member this.fields =
+        fields
+
+    interface IProjectedProduct with
+
+        member this.sourceType =
+            typeof<'SourceType>
+
+        member this.kind =
+            kind
+
+        member this.fields =
+            fields
+
+        member this.Accept<'Result>
+            (visitor : IProjectedProductVisitor<'Result>)
+            =
+
+            visitor.Visit<'SourceType>(
+                source,
+                kind,
+                fields
+            )
+
+// -----------------------------------------------------------------------------
+// Heterogeneous tuples
+//
+// Tuple elements remain individually typed ProjectedField<'ElementType>
+// instances. Their TypeShape labels are retained, normally Item1, Item2, etc.
+// -----------------------------------------------------------------------------
+
+type IProjectedTupleVisitor<'Result> =
+
+    abstract Visit<'TupleType> :
+        source : 'TupleType *
+        elements : IProjectedField list
+            -> 'Result
+
+type IProjectedTuple =
+
+    abstract tupleType : Type
+
+    abstract elements : IProjectedField list
+
+    abstract Accept<'Result> :
+        visitor : IProjectedTupleVisitor<'Result>
+            -> 'Result
+
+type ProjectedTuple<'TupleType>
+    (
+        source : 'TupleType,
+        elements : IProjectedField list
+    ) =
+
+    member this.source =
+        source
+
+    member this.elements =
+        elements
+
+    interface IProjectedTuple with
+
+        member this.tupleType =
+            typeof<'TupleType>
+
+        member this.elements =
+            elements
+
+        member this.Accept<'Result>
+            (visitor : IProjectedTupleVisitor<'Result>)
+            =
+
+            visitor.Visit<'TupleType>(
+                source,
+                elements
+            )
+
+// -----------------------------------------------------------------------------
+// Discriminated unions
+//
+// The active case remains explicit and each payload field remains independently
+// typed.
+// -----------------------------------------------------------------------------
+
+type IProjectedUnionVisitor<'Result> =
+
+    abstract Visit<'UnionType> :
+        source : 'UnionType *
+        caseName : string *
+        fields : IProjectedField list
+            -> 'Result
+
+type IProjectedUnion =
+
+    abstract unionType : Type
+
+    abstract caseName : string
+
+    abstract fields : IProjectedField list
+
+    abstract Accept<'Result> :
+        visitor : IProjectedUnionVisitor<'Result>
+            -> 'Result
+
+type ProjectedUnion<'UnionType>
+    (
+        source : 'UnionType,
+        caseName : string,
+        fields : IProjectedField list
+    ) =
+
+    member this.source =
+        source
+
+    member this.caseName =
+        caseName
+
+    member this.fields =
+        fields
+
+    interface IProjectedUnion with
+
+        member this.unionType =
+            typeof<'UnionType>
+
+        member this.caseName =
+            caseName
+
+        member this.fields =
+            fields
+
+        member this.Accept<'Result>
+            (visitor : IProjectedUnionVisitor<'Result>)
+            =
+
+            visitor.Visit<'UnionType>(
+                source,
+                caseName,
+                fields
+            )
+
+// -----------------------------------------------------------------------------
+// Homogeneous enumerables
+//
+// Both the concrete enumerable type and its element type survive projection.
+// -----------------------------------------------------------------------------
+
+type IProjectedEnumerableVisitor<'Result> =
+
+    abstract Visit<'Enumerable, 'Element when 'Enumerable :> seq<'Element>> :
+        values : 'Enumerable
+            -> 'Result
+
+type IProjectedEnumerable =
+
+    abstract enumerableType : Type
+
+    abstract elementType : Type
+
+    abstract Accept<'Result> :
+        visitor : IProjectedEnumerableVisitor<'Result>
+            -> 'Result
+
+type ProjectedEnumerable<'Enumerable, 'Element when 'Enumerable :> seq<'Element>>
+    (
+        values : 'Enumerable
+    ) =
+
+    member this.values =
+        values
+
+    interface IProjectedEnumerable with
+
+        member this.enumerableType =
+            typeof<'Enumerable>
+
+        member this.elementType =
+            typeof<'Element>
+
+        member this.Accept<'Result>
+            (visitor : IProjectedEnumerableVisitor<'Result>)
+            =
+
+            visitor.Visit<'Enumerable, 'Element>(
+                values
+            )
+
+// -----------------------------------------------------------------------------
+// Additional type patterns
+// -----------------------------------------------------------------------------
+
+type TType<'ValueType> =
+    ShapeSifter.Patterns.TType<'ValueType>
+
+let tType<'ValueType> =
+    ShapeSifter.Patterns.tType<'ValueType>
+
+module TType =
+    ShapeSifter.Patterns
+
+type ShapeSifter.Patterns.TType<'ValueType> with
+
+    static member TldRule =
+        tType<TldRule>
+
+    static member MimeType =
+        tType<MimeType>
+
+    static member IriReference =
+        tType<IriReference>
+
+    static member Url =
+        tType<Url>
+
+let inline (|TType'Enum|_|) (_ : TType<'ValueType>) =
+
+    if typeof<'ValueType>.IsEnum then
+        Some ()
+    else
+        None
+
+let (|TType'Byte|_|) (_ : 'ValueType TType) : Teq<'ValueType, byte> option =
+    Teq.tryRefl<'ValueType, byte>
+
+// -----------------------------------------------------------------------------
+// Projection context
+//
+// obj is used here solely as a CLR reference-identity key. It is not used as
+// the stored representation of projected values.
+// -----------------------------------------------------------------------------
+
+type ProjectionContext =
+    {
+        references : (obj * int) list
+        nextReferenceId : int
+    }
+
+    static member empty =
+        {
+            references = []
+            nextReferenceId = 1
+        }
+
+// -----------------------------------------------------------------------------
+// Semi-static runtime values
+//
+// Directly reconstructable values retain their original 'ValueType.
+//
+// Indirect values retain their structural kind and the strongest generic type
+// information available for each constituent.
+// -----------------------------------------------------------------------------
+
+type SemiStatic<'ValueType> =
+
+    | StaticObject of 'ValueType option
+    | ProductObject of IProjectedProduct
+    | TupleObject of IProjectedTuple
+    | UnionObject of IProjectedUnion
+    | EnumerableObject of IProjectedEnumerable
+
+    member this.tryStaticObject : 'ValueType option =
+
+        match this with
+
+        | StaticObject value ->
+            value
+
+        | ProductObject _
+        | TupleObject _
+        | UnionObject _
+        | EnumerableObject _ ->
+            None
+
+    member this.tryProductObject : IProjectedProduct option =
+
+        match this with
+
+        | ProductObject value ->
+            Some value
+
+        | StaticObject _
+        | TupleObject _
+        | UnionObject _
+        | EnumerableObject _ ->
+            None
+
+    member this.tryTupleObject : IProjectedTuple option =
+
+        match this with
+
+        | TupleObject value ->
+            Some value
+
+        | StaticObject _
+        | ProductObject _
+        | UnionObject _
+        | EnumerableObject _ ->
+            None
+
+    member this.tryUnionObject : IProjectedUnion option =
+
+        match this with
+
+        | UnionObject value ->
+            Some value
+
+        | StaticObject _
+        | ProductObject _
+        | TupleObject _
+        | EnumerableObject _ ->
+            None
+
+    member this.tryEnumerableObject : IProjectedEnumerable option =
+
+        match this with
+
+        | EnumerableObject value ->
+            Some value
+
+        | StaticObject _
+        | ProductObject _
+        | TupleObject _
+        | UnionObject _ ->
+            None
+
+// -----------------------------------------------------------------------------
+// Projection references
+// -----------------------------------------------------------------------------
+
+type ProjectionReference =
+
+    | Untracked
+    | FirstOccurrence of referenceId : int
+    | RepeatedOccurrence of referenceId : int
+
+module ProjectionContext =
+
+    let classify<'ValueType>
+        (value : 'ValueType)
+        (context : ProjectionContext)
+        : ProjectionReference * ProjectionContext
+        =
+
+        if typeof<'ValueType>.IsValueType then
+
+            ProjectionReference.Untracked,
+            context
+
+        else
+
+            let valueObject =
+                box value
+
+            if isNull valueObject then
+
+                ProjectionReference.Untracked,
+                context
+
+            else
+
+                match
+                    context.references
+                    |> List.tryFind (fun (knownObject, _) ->
+                        obj.ReferenceEquals(
+                            knownObject,
+                            valueObject
+                        )
+                    )
+                with
+
+                | Some (_, referenceId) ->
+
+                    ProjectionReference.RepeatedOccurrence referenceId,
+                    context
+
+                | None ->
+
+                    let referenceId =
+                        context.nextReferenceId
+
+                    ProjectionReference.FirstOccurrence referenceId,
+                    {
+                        references =
+                            (valueObject, referenceId)
+                            :: context.references
+
+                        nextReferenceId =
+                            referenceId + 1
+                    }
+
+// -----------------------------------------------------------------------------
+// Projection
+//
+// This is the result context used when an exact quotation of 'ValueType cannot
+// be constructed.
+// -----------------------------------------------------------------------------
+
+type Projection<'ValueType> =
+
+    | NullProduct of
+        projectionSource : 'ValueType
+
+    /// An F# record whose original nominal value could not be reconstructed.
+    | RecordProduct of
+        projectionSource : 'ValueType
+
+    /// An ordinary CLR class or struct whose original nominal value could not
+    /// be reconstructed.
+    | PocoProduct of
+        projectionSource : 'ValueType
+
+    /// A tuple whose original tuple could not be reconstructed because one or
+    /// more of its elements required projection.
+    | TupleProduct of
+        projectionSource : 'ValueType
+
+    /// An F# discriminated union whose original nominal value could not be
+    /// reconstructed.
+    | UnionProduct of
+        projectionSource : 'ValueType
+
+    /// An enumerable whose original container could not be reconstructed.
+    | EnumerableProduct of
+        projectionSource : 'ValueType
+
+    /// The declared type does not expose the concrete runtime structure.
+    | RuntimeProduct of
+        projectionSource : 'ValueType
+
+    static member projectionSourceType =
+        typeof<'ValueType>
+
+    member this.projectionSource =
+
+        match this with
+
+        | NullProduct projectionSource
+        | RecordProduct projectionSource
+        | PocoProduct projectionSource
+        | TupleProduct projectionSource
+        | UnionProduct projectionSource
+        | EnumerableProduct projectionSource
+        | RuntimeProduct projectionSource ->
+            projectionSource
+
+    // -------------------------------------------------------------------------
+    // Expression representation
+    // -------------------------------------------------------------------------
+
+    static member private namedValue
+        (name : string)
+        (valueExpression : Expr)
+        : Expr
+        =
+
+        Expr.NewTuple [
+            Expr.Value name
+            valueExpression
+        ]
+
+    static member private projectedValues
+        (expressions : Expr list)
+        : Expr
+        =
+
+        match expressions with
+
+        | [] ->
+            Expr.Value(())
+
+        | [expression] ->
+            expression
+
+        | expressions ->
+            Expr.NewTuple expressions
+
+    static member private referenceExpression
+        (referenceId : int)
+        : Expr
+        =
+
+        Projection<'ValueType>.namedValue
+            "$ref"
+            (Expr.Value referenceId)
+
+    static member private identifiedProjectedValues
+        (referenceId : int option)
+        (expressions : Expr list)
+        : Expr
+        =
+
+        let expressions =
+
+            match referenceId with
+
+            | Some referenceId ->
+
+                Projection<'ValueType>.namedValue
+                    "$id"
+                    (Expr.Value referenceId)
+                :: expressions
+
+            | None ->
+                expressions
+
+        Projection<'ValueType>.projectedValues
+            expressions
+
+    // -------------------------------------------------------------------------
+    // Structural members
+    // -------------------------------------------------------------------------
+
+    static member usableMember
+        (memberShape : IShapeReadOnlyMember<'SourceType>)
+        : bool
+        =
+
+        memberShape.IsPublic
+        &&
+        match memberShape.MemberInfo with
+
+        | :? PropertyInfo as propertyInfo ->
+            propertyInfo.GetIndexParameters().Length = 0
+
+        | _ ->
+            true
+
+    // -------------------------------------------------------------------------
+    // Expression projection
+    // -------------------------------------------------------------------------
+
+    static member private projectMemberValue
+        (context : ProjectionContext)
+        (projectionSource : 'SourceType)
+        (memberShape : IShapeReadOnlyMember<'SourceType>)
+        : Expr * ProjectionContext
+        =
+
+        memberShape.Accept {
+            new IReadOnlyMemberVisitor<'SourceType, Expr * ProjectionContext> with
+
+                member _.Visit<'MemberType>
+                    (memberShape : ReadOnlyMember<'SourceType, 'MemberType>)
+                    =
+
+                    let memberValueResult : Result<'MemberType, exn> =
+
+                        try
+                            memberShape.Get projectionSource
+                            |> Ok
+
+                        with exception_ ->
+                            Error exception_
+
+                    match memberValueResult with
+
+                    | Error _ ->
+
+                        let noneExpression : Expr<'MemberType option> =
+                            <@ None @>
+
+                        noneExpression :> Expr,
+                        context
+
+                    | Ok memberValue
+                        when obj.ReferenceEquals(box memberValue, null) ->
+
+                        let noneExpression : Expr<'MemberType option> =
+                            <@ None @>
+
+                        noneExpression :> Expr,
+                        context
+
+                    | Ok memberValue ->
+
+                        CodeQuotation<'MemberType>.expressionWithProjectionContext
+                            context
+                            memberValue
+        }
+
+    static member private projectMember
+        (context : ProjectionContext)
+        (projectionSource : 'SourceType)
+        (memberShape : IShapeReadOnlyMember<'SourceType>)
+        : Expr * ProjectionContext
+        =
+
+        let memberExpression, context =
+
+            Projection<'ValueType>.projectMemberValue
+                context
+                projectionSource
+                memberShape
+
+        Projection<'ValueType>.namedValue
+            memberShape.Label
+            memberExpression,
+        context
+
+    static member private projectMembers
+        (context : ProjectionContext)
+        (referenceId : int option)
+        (projectionSource : 'SourceType)
+        (members : IShapeReadOnlyMember<'SourceType> array)
+        : Expr * ProjectionContext
+        =
+
+        let expressions, context =
+
+            members
+            |> Array.filter Projection<'ValueType>.usableMember
+            |> Array.fold
+                (fun (expressions, context) memberShape ->
+
+                    let memberExpression, context =
+
+                        Projection<'ValueType>.projectMember
+                            context
+                            projectionSource
+                            memberShape
+
+                    memberExpression :: expressions,
+                    context
+                )
+                ([], context)
+
+        let expression =
+
+            expressions
+            |> List.rev
+            |> Projection<'ValueType>.identifiedProjectedValues
+                referenceId
+
+        expression,
+        context
+
+    static member private projectTupleElements
+        (context : ProjectionContext)
+        (referenceId : int option)
+        (projectionSource : 'SourceType)
+        (elements : IShapeReadOnlyMember<'SourceType> array)
+        : Expr * ProjectionContext
+        =
+
+        let expressions, context =
+
+            elements
+            |> Array.fold
+                (fun (expressions, context) elementShape ->
+
+                    let elementExpression, context =
+
+                        Projection<'ValueType>.projectMemberValue
+                            context
+                            projectionSource
+                            elementShape
+
+                    elementExpression :: expressions,
+                    context
+                )
+                ([], context)
+
+        let expression =
+
+            expressions
+            |> List.rev
+            |> Projection<'ValueType>.identifiedProjectedValues
+                referenceId
+
+        expression,
+        context
+
+    // -------------------------------------------------------------------------
+    // Named path traversal
+    // -------------------------------------------------------------------------
+
+    static member private tryNamedPathExpression<'SourceType>
+        (projectionSource : 'SourceType)
+        (path : string list)
+        : Expr option
+        =
+
+        if obj.ReferenceEquals(box projectionSource, null) then
+
+            match path with
+
+            | [] ->
+
+                let noneExpression : Expr<'SourceType option> =
+                    <@ None @>
+
+                noneExpression :> Expr
+                |> Some
+
+            | _ ->
+                None
+
+        else
+
+            match path with
+
+            | [] ->
+
+                projectionSource
+                |> CodeQuotation<'SourceType>.lift
+                |> CodeQuotation<'SourceType>.lower
+                |> Some
+
+            | memberName :: remainingPath ->
+
+                let tryMember
+                    (members : IShapeReadOnlyMember<'SourceType> array)
+                    =
+
+                    members
+                    |> Array.filter Projection<'SourceType>.usableMember
+                    |> Array.tryFind (fun memberShape ->
+                        memberShape.Label = memberName
+                    )
+                    |> Option.bind (fun memberShape ->
+
+                        memberShape.Accept {
+                            new IReadOnlyMemberVisitor<'SourceType, Expr option> with
+
+                                member _.Visit<'MemberType>
+                                    (memberShape : ReadOnlyMember<'SourceType, 'MemberType>)
+                                    =
+
+                                    let memberValueResult : Result<'MemberType, exn> =
+
+                                        try
+                                            memberShape.Get projectionSource
+                                            |> Ok
+
+                                        with exception_ ->
+                                            Error exception_
+
+                                    match memberValueResult with
+
+                                    | Error _ ->
+
+                                        match remainingPath with
+
+                                        | [] ->
+
+                                            let noneExpression : Expr<'MemberType option> =
+                                                <@ None @>
+
+                                            noneExpression :> Expr
+                                            |> Some
+
+                                        | _ ->
+                                            None
+
+                                    | Ok memberValue
+                                        when obj.ReferenceEquals(box memberValue, null) ->
+
+                                        match remainingPath with
+
+                                        | [] ->
+
+                                            let noneExpression : Expr<'MemberType option> =
+                                                <@ None @>
+
+                                            noneExpression :> Expr
+                                            |> Some
+
+                                        | _ ->
+                                            None
+
+                                    | Ok memberValue ->
+
+                                        Projection<'MemberType>.tryNamedPathExpression
+                                            memberValue
+                                            remainingPath
+                        }
+                    )
+
+                match shapeof<'SourceType> with
+
+                | Shape.FSharpRecord
+                    (:? ShapeFSharpRecord<'SourceType> as recordShape) ->
+
+                    recordShape.Fields
+                    |> Array.map (fun field ->
+                        field :> IShapeReadOnlyMember<'SourceType>
+                    )
+                    |> tryMember
+
+                | Shape.Poco
+                    (:? ShapePoco<'SourceType> as pocoShape) ->
+
+                    let publicFields : IShapeReadOnlyMember<'SourceType> array =
+
+                        pocoShape.Fields
+                        |> Array.map (fun field ->
+                            field :> IShapeReadOnlyMember<'SourceType>
+                        )
+
+                    let properties : IShapeReadOnlyMember<'SourceType> array =
+                        pocoShape.Properties
+
+                    Array.append
+                        publicFields
+                        properties
+                    |> tryMember
+
+                | Shape.FSharpUnion
+                    (:? ShapeFSharpUnion<'SourceType> as unionShape) ->
+
+                    let caseIndex =
+                        unionShape.GetTag projectionSource
+
+                    let activeCase =
+                        unionShape.UnionCases.[caseIndex]
+
+                    if memberName = "$case" then
+
+                        match remainingPath with
+
+                        | [] ->
+
+                            Expr.Value activeCase.CaseInfo.Name
+                            |> Some
+
+                        | _ ->
+                            None
+
+                    else
+
+                        activeCase.Fields
+                        |> Array.map (fun field ->
+                            field :> IShapeReadOnlyMember<'SourceType>
+                        )
+                        |> tryMember
+
+                | _ ->
+
+                    let valueObject =
+                        box projectionSource
+
+                    let runtimeType =
+                        valueObject.GetType()
+
+                    if runtimeType <> typeof<'SourceType> then
+
+                        TypeShape.FromValue(valueObject).Accept {
+                            new ITypeVisitor<Expr option> with
+
+                                member _.Visit<'RuntimeType>() =
+
+                                    let runtimeValue : 'RuntimeType =
+
+                                        valueObject
+                                        |> unbox<'RuntimeType>
+
+                                    Projection<'RuntimeType>.tryNamedPathExpression
+                                        runtimeValue
+                                        path
+                        }
+
+                    else
+                        None
+
+    // -------------------------------------------------------------------------
+    // Expression materialization
+    // -------------------------------------------------------------------------
+
+    member internal this.expressionWithContext
+        (context : ProjectionContext)
+        : Expr * ProjectionContext
+        =
+
+        match this with
+
+        | NullProduct _ ->
+
+            let noneExpression : Expr<'ValueType option> =
+                <@ None @>
+
+            noneExpression :> Expr,
+            context
+
+        | RuntimeProduct projectionSource ->
+
+            TypeShape.FromValue(box projectionSource).Accept {
+                new ITypeVisitor<Expr * ProjectionContext> with
+
+                    member _.Visit<'RuntimeType>() =
+
+                        let runtimeValue : 'RuntimeType =
+
+                            projectionSource
+                            |> box
+                            |> unbox<'RuntimeType>
+
+                        CodeQuotation<'RuntimeType>.expressionWithProjectionContext
+                            context
+                            runtimeValue
+            }
+
+        | _ ->
+
+            let projectionSource =
+                this.projectionSource
+
+            let projectionReference, context =
+
+                ProjectionContext.classify
+                    projectionSource
+                    context
+
+            match projectionReference with
+
+            | ProjectionReference.RepeatedOccurrence referenceId ->
+
+                Projection<'ValueType>.referenceExpression referenceId,
+                context
+
+            | ProjectionReference.Untracked
+            | ProjectionReference.FirstOccurrence _ ->
+
+                let referenceId =
+
+                    match projectionReference with
+
+                    | ProjectionReference.FirstOccurrence referenceId ->
+                        Some referenceId
+
+                    | ProjectionReference.Untracked ->
+                        None
+
+                    | ProjectionReference.RepeatedOccurrence _ ->
+                        None
+
+                match this with
+
+                | RecordProduct _ ->
+
+                    match shapeof<'ValueType> with
+
+                    | Shape.FSharpRecord
+                        (:? ShapeFSharpRecord<'ValueType> as recordShape) ->
+
+                        recordShape.Fields
+                        |> Array.map (fun field ->
+                            field :> IShapeReadOnlyMember<'ValueType>
+                        )
+                        |> Projection<'ValueType>.projectMembers
+                            context
+                            referenceId
+                            projectionSource
+
+                    | _ ->
+
+                        invalidOp
+                            $"Projection expected {typeof<'ValueType>.FullName} to be an F# record."
+
+                | PocoProduct _ ->
+
+                    match shapeof<'ValueType> with
+
+                    | Shape.Poco
+                        (:? ShapePoco<'ValueType> as pocoShape) ->
+
+                        let publicFields : IShapeReadOnlyMember<'ValueType> array =
+
+                            pocoShape.Fields
+                            |> Array.map (fun field ->
+                                field :> IShapeReadOnlyMember<'ValueType>
+                            )
+
+                        let properties : IShapeReadOnlyMember<'ValueType> array =
+                            pocoShape.Properties
+
+                        Array.append
+                            publicFields
+                            properties
+                        |> Projection<'ValueType>.projectMembers
+                            context
+                            referenceId
+                            projectionSource
+
+                    | _ ->
+
+                        invalidOp
+                            $"Projection expected {typeof<'ValueType>.FullName} to be a POCO."
+
+                | TupleProduct _ ->
+
+                    match shapeof<'ValueType> with
+
+                    | Shape.Tuple
+                        (:? ShapeTuple<'ValueType> as tupleShape) ->
+
+                        tupleShape.Elements
+                        |> Array.map (fun element ->
+                            element :> IShapeReadOnlyMember<'ValueType>
+                        )
+                        |> Projection<'ValueType>.projectTupleElements
+                            context
+                            referenceId
+                            projectionSource
+
+                    | _ ->
+
+                        invalidOp
+                            $"Projection expected {typeof<'ValueType>.FullName} to be a tuple."
+
+                | UnionProduct _ ->
+
+                    match shapeof<'ValueType> with
+
+                    | Shape.FSharpUnion
+                        (:? ShapeFSharpUnion<'ValueType> as unionShape) ->
+
+                        let caseIndex =
+                            unionShape.GetTag projectionSource
+
+                        let activeCase =
+                            unionShape.UnionCases.[caseIndex]
+
+                        let caseExpression =
+
+                            Projection<'ValueType>.namedValue
+                                "$case"
+                                (Expr.Value activeCase.CaseInfo.Name)
+
+                        let fieldExpressions, context =
+
+                            activeCase.Fields
+                            |> Array.map (fun field ->
+                                field :> IShapeReadOnlyMember<'ValueType>
+                            )
+                            |> Array.filter Projection<'ValueType>.usableMember
+                            |> Array.fold
+                                (fun (expressions, context) fieldShape ->
+
+                                    let fieldExpression, context =
+
+                                        Projection<'ValueType>.projectMember
+                                            context
+                                            projectionSource
+                                            fieldShape
+
+                                    fieldExpression :: expressions,
+                                    context
+                                )
+                                ([], context)
+
+                        let expression =
+
+                            caseExpression
+                            :: List.rev fieldExpressions
+                            |> Projection<'ValueType>.identifiedProjectedValues
+                                referenceId
+
+                        expression,
+                        context
+
+                    | _ ->
+
+                        invalidOp
+                            $"Projection expected {typeof<'ValueType>.FullName} to be an F# union."
+
+                | EnumerableProduct _ ->
+
+                    match shapeof<'ValueType> with
+
+                    | Shape.Enumerable enumerableShape ->
+
+                        enumerableShape.Accept {
+                            new IEnumerableVisitor<Expr * ProjectionContext> with
+
+                                member _.Visit<'Enumerable, 'Element when 'Enumerable :> seq<'Element>>() =
+
+                                    let enumerableValue : 'Enumerable =
+
+                                        projectionSource
+                                        |> box
+                                        |> unbox<'Enumerable>
+
+                                    let expressions, context =
+
+                                        enumerableValue
+                                        |> Seq.fold
+                                            (fun (expressions, context) element ->
+
+                                                let elementExpression, context =
+
+                                                    CodeQuotation<'Element>.expressionWithProjectionContext
+                                                        context
+                                                        element
+
+                                                elementExpression :: expressions,
+                                                context
+                                            )
+                                            ([], context)
+
+                                    let expression =
+
+                                        expressions
+                                        |> List.rev
+                                        |> Projection<'ValueType>.identifiedProjectedValues
+                                            referenceId
+
+                                    expression,
+                                    context
+                        }
+
+                    | _ ->
+
+                        invalidOp
+                            $"Projection expected {typeof<'ValueType>.FullName} to be enumerable."
+
+                | NullProduct _
+                | RuntimeProduct _ ->
+
+                    invalidOp
+                        "Projection case was expected to be handled before reference classification."
+
+    member this.projectionExpression : Expr =
+
+        let expression, _ =
+
+            this.expressionWithContext
+                ProjectionContext.empty
+
+        expression
+
+    member this.projectionType =
+        this.projectionExpression.Type
+
+    // -------------------------------------------------------------------------
+    // Projection metadata
+    // -------------------------------------------------------------------------
+
+    member this.projectionMemberNames : string list =
+
+        let projectionSource =
+            this.projectionSource
+
+        match this with
+
+        | RuntimeProduct projectionSource ->
+
+            TypeShape.FromValue(box projectionSource).Accept {
+                new ITypeVisitor<string list> with
+
+                    member _.Visit<'RuntimeType>() =
+
+                        let runtimeValue : 'RuntimeType =
+
+                            projectionSource
+                            |> box
+                            |> unbox<'RuntimeType>
+
+                        runtimeValue
+                        |> Projection<'RuntimeType>.ofValue
+                        |> fun projection ->
+                            projection.projectionMemberNames
+            }
+
+        | RecordProduct _ ->
+
+            match shapeof<'ValueType> with
+
+            | Shape.FSharpRecord
+                (:? ShapeFSharpRecord<'ValueType> as recordShape) ->
+
+                recordShape.Fields
+                |> Array.map (fun field ->
+                    field :> IShapeReadOnlyMember<'ValueType>
+                )
+                |> Array.filter Projection<'ValueType>.usableMember
+                |> Array.map _.Label
+                |> Array.toList
+
+            | _ ->
+                []
+
+        | PocoProduct _ ->
+
+            match shapeof<'ValueType> with
+
+            | Shape.Poco
+                (:? ShapePoco<'ValueType> as pocoShape) ->
+
+                let publicFields : IShapeReadOnlyMember<'ValueType> array =
+
+                    pocoShape.Fields
+                    |> Array.map (fun field ->
+                        field :> IShapeReadOnlyMember<'ValueType>
+                    )
+
+                Array.append
+                    publicFields
+                    pocoShape.Properties
+                |> Array.filter Projection<'ValueType>.usableMember
+                |> Array.map _.Label
+                |> Array.toList
+
+            | _ ->
+                []
+
+        | UnionProduct _ ->
+
+            match shapeof<'ValueType> with
+
+            | Shape.FSharpUnion
+                (:? ShapeFSharpUnion<'ValueType> as unionShape) ->
+
+                let activeCase =
+
+                    unionShape.UnionCases.[
+                        unionShape.GetTag projectionSource
+                    ]
+
+                "$case"
+                ::
+                (
+                    activeCase.Fields
+                    |> Array.map (fun field ->
+                        field :> IShapeReadOnlyMember<'ValueType>
+                    )
+                    |> Array.filter Projection<'ValueType>.usableMember
+                    |> Array.map _.Label
+                    |> Array.toList
+                )
+
+            | _ ->
+                []
+
+        | NullProduct _
+        | TupleProduct _
+        | EnumerableProduct _ ->
+            []
+
+    // -------------------------------------------------------------------------
+    // Projection path access
+    //
+    // These operations remain intentionally dynamic because the requested path
+    // itself is a runtime string list. They are not the canonical value-object
+    // representation.
+    // -------------------------------------------------------------------------
+
+    member this.tryPathExpression
+        (path : string list)
+        : Expr option
+        =
+
+        match path with
+
+        | [] ->
+            Some this.projectionExpression
+
+        | path ->
+
+            Projection<'ValueType>.tryNamedPathExpression
+                this.projectionSource
+                path
+
+    member this.tryMemberExpression
+        (memberName : string)
+        : Expr option
+        =
+
+        this.tryPathExpression
+            [memberName]
+
+    member this.tryPathValueObject
+        (path : string list)
+        : obj option
+        =
+
+        this.tryPathExpression path
+        |> Option.bind (fun expression ->
+
+            expression
+            |> LeafExpressionConverter.EvaluateQuotation
+            |> Option.ofObj
+        )
+
+    member this.tryMemberValueObject
+        (memberName : string)
+        : obj option
+        =
+
+        this.tryPathValueObject
+            [memberName]
+
+    // -------------------------------------------------------------------------
+    // Projection construction
+    // -------------------------------------------------------------------------
+
+    static member ofValue
+        (projectionSource : 'ValueType)
+        : Projection<'ValueType>
+        =
+
+        let valueObject =
+            box projectionSource
+
+        if isNull valueObject then
+
+            NullProduct projectionSource
+
+        else
+
+            match shapeof<'ValueType> with
+
+            | Shape.FSharpRecord
+                (:? ShapeFSharpRecord<'ValueType>) ->
+
+                RecordProduct projectionSource
+
+            | Shape.Poco
+                (:? ShapePoco<'ValueType>) ->
+
+                PocoProduct projectionSource
+
+            | Shape.Tuple
+                (:? ShapeTuple<'ValueType>) ->
+
+                TupleProduct projectionSource
+
+            | Shape.FSharpUnion
+                (:? ShapeFSharpUnion<'ValueType>) ->
+
+                UnionProduct projectionSource
+
+            | Shape.Enumerable _ ->
+
+                EnumerableProduct projectionSource
+
+            | shape ->
+
+                let runtimeType =
+                    valueObject.GetType()
+
+                if runtimeType <> typeof<'ValueType> then
+
+                    RuntimeProduct projectionSource
+
+                else
+
+                    invalidOp
+                        $"Projection does not yet support {shape.Type.FullName}"
+
+    // -------------------------------------------------------------------------
+    // Typed structural materialization helpers
+    // -------------------------------------------------------------------------
+
+    static member private projectedField
+        (projectionSource : 'SourceType)
+        (memberShape : IShapeReadOnlyMember<'SourceType>)
+        : IProjectedField
+        =
+
+        memberShape.Accept {
+            new IReadOnlyMemberVisitor<'SourceType, IProjectedField> with
+
+                member _.Visit<'MemberType>
+                    (memberShape : ReadOnlyMember<'SourceType, 'MemberType>)
+                    =
+
+                    let memberValue : 'MemberType option =
+
+                        try
+
+                            let value =
+                                memberShape.Get projectionSource
+
+                            if obj.ReferenceEquals(box value, null) then
+                                None
+                            else
+                                Some value
+
+                        with _ ->
+                            None
+
+                    ProjectedField<'MemberType>(
+                        memberShape.Label,
+                        memberValue
+                    )
+                    :> IProjectedField
+        }
+
+    static member private projectedFields
+        (projectionSource : 'SourceType)
+        (members : IShapeReadOnlyMember<'SourceType> array)
+        : IProjectedField list
+        =
+
+        members
+        |> Array.filter Projection<'ValueType>.usableMember
+        |> Array.map (fun memberShape ->
+
+            Projection<'ValueType>.projectedField
+                projectionSource
+                memberShape
+        )
+        |> Array.toList
+
+    // -------------------------------------------------------------------------
+    // Semi-static runtime materialization
+    //
+    // Unlike the previous DynamicObj representation, the member values are not
+    // reduced to obj. Each field retains its actual declared generic type.
+    // -------------------------------------------------------------------------
+
+    member internal this.valueObjectWithContext
+        (context : ProjectionContext)
+        : SemiStatic<'ValueType> * ProjectionContext
+        =
+
+        match this with
+
+        | NullProduct _ ->
+
+            StaticObject None,
+            context
+
+        | RuntimeProduct projectionSource ->
+
+            TypeShape.FromValue(box projectionSource).Accept {
+                new ITypeVisitor<SemiStatic<'ValueType> * ProjectionContext> with
+
+                    member _.Visit<'RuntimeType>() =
+
+                        let runtimeValue : 'RuntimeType =
+
+                            projectionSource
+                            |> box
+                            |> unbox<'RuntimeType>
+
+                        let runtimeResult, context =
+
+                            CodeQuotation<'RuntimeType>.valueObjectWithProjectionContext
+                                context
+                                runtimeValue
+
+                        match runtimeResult with
+
+                        | StaticObject None ->
+
+                            StaticObject None,
+                            context
+
+                        | StaticObject (Some _) ->
+
+                            StaticObject (Some projectionSource),
+                            context
+
+                        | ProductObject product ->
+
+                            ProductObject product,
+                            context
+
+                        | TupleObject tuple ->
+
+                            TupleObject tuple,
+                            context
+
+                        | UnionObject union ->
+
+                            UnionObject union,
+                            context
+
+                        | EnumerableObject enumerable ->
+
+                            EnumerableObject enumerable,
+                            context
+            }
+
+        | RecordProduct projectionSource ->
+
+            match shapeof<'ValueType> with
+
+            | Shape.FSharpRecord
+                (:? ShapeFSharpRecord<'ValueType> as recordShape) ->
+
+                let fields =
+
+                    recordShape.Fields
+                    |> Array.map (fun field ->
+                        field :> IShapeReadOnlyMember<'ValueType>
+                    )
+                    |> Projection<'ValueType>.projectedFields
+                        projectionSource
+
+                let projectedProduct : IProjectedProduct =
+
+                    ProjectedProduct<'ValueType>(
+                        projectionSource,
+                        ProjectedProductKind.FSharpRecord,
+                        fields
+                    )
+
+                ProductObject projectedProduct,
+                context
+
+            | _ ->
+
+                invalidOp
+                    $"Projection expected {typeof<'ValueType>.FullName} to be an F# record."
+
+        | PocoProduct projectionSource ->
+
+            match shapeof<'ValueType> with
+
+            | Shape.Poco
+                (:? ShapePoco<'ValueType> as pocoShape) ->
+
+                let publicFields : IShapeReadOnlyMember<'ValueType> array =
+
+                    pocoShape.Fields
+                    |> Array.map (fun field ->
+                        field :> IShapeReadOnlyMember<'ValueType>
+                    )
+
+                let properties : IShapeReadOnlyMember<'ValueType> array =
+                    pocoShape.Properties
+
+                let fields =
+
+                    Array.append
+                        publicFields
+                        properties
+                    |> Projection<'ValueType>.projectedFields
+                        projectionSource
+
+                let projectedProduct : IProjectedProduct =
+
+                    ProjectedProduct<'ValueType>(
+                        projectionSource,
+                        ProjectedProductKind.Poco,
+                        fields
+                    )
+
+                ProductObject projectedProduct,
+                context
+
+            | _ ->
+
+                invalidOp
+                    $"Projection expected {typeof<'ValueType>.FullName} to be a POCO."
+
+        | TupleProduct projectionSource ->
+
+            match shapeof<'ValueType> with
+
+            | Shape.Tuple
+                (:? ShapeTuple<'ValueType> as tupleShape) ->
+
+                let elements =
+
+                    tupleShape.Elements
+                    |> Array.map (fun element ->
+                        element :> IShapeReadOnlyMember<'ValueType>
+                    )
+                    |> Projection<'ValueType>.projectedFields
+                        projectionSource
+
+                let projectedTuple : IProjectedTuple =
+
+                    ProjectedTuple<'ValueType>(
+                        projectionSource,
+                        elements
+                    )
+
+                TupleObject projectedTuple,
+                context
+
+            | _ ->
+
+                invalidOp
+                    $"Projection expected {typeof<'ValueType>.FullName} to be a tuple."
+
+        | UnionProduct projectionSource ->
+
+            match shapeof<'ValueType> with
+
+            | Shape.FSharpUnion
+                (:? ShapeFSharpUnion<'ValueType> as unionShape) ->
+
+                let caseIndex =
+                    unionShape.GetTag projectionSource
+
+                let activeCase =
+                    unionShape.UnionCases.[caseIndex]
+
+                let fields =
+
+                    activeCase.Fields
+                    |> Array.map (fun field ->
+                        field :> IShapeReadOnlyMember<'ValueType>
+                    )
+                    |> Projection<'ValueType>.projectedFields
+                        projectionSource
+
+                let projectedUnion : IProjectedUnion =
+
+                    ProjectedUnion<'ValueType>(
+                        projectionSource,
+                        activeCase.CaseInfo.Name,
+                        fields
+                    )
+
+                UnionObject projectedUnion,
+                context
+
+            | _ ->
+
+                invalidOp
+                    $"Projection expected {typeof<'ValueType>.FullName} to be an F# union."
+
+        | EnumerableProduct projectionSource ->
+
+            match shapeof<'ValueType> with
+
+            | Shape.Enumerable enumerableShape ->
+
+                enumerableShape.Accept {
+                    new IEnumerableVisitor<SemiStatic<'ValueType> * ProjectionContext> with
+
+                        member _.Visit<'Enumerable, 'Element when 'Enumerable :> seq<'Element>>() =
+
+                            let enumerableValue : 'Enumerable =
+
+                                projectionSource
+                                |> box
+                                |> unbox<'Enumerable>
+
+                            let projectedEnumerable : IProjectedEnumerable =
+
+                                ProjectedEnumerable<'Enumerable, 'Element>(
+                                    enumerableValue
+                                )
+
+                            EnumerableObject projectedEnumerable,
+                            context
+                }
+
+            | _ ->
+
+                invalidOp
+                    $"Projection expected {typeof<'ValueType>.FullName} to be enumerable."
+
+// -----------------------------------------------------------------------------
+// CodeQuotation
+// -----------------------------------------------------------------------------
+
+and CodeQuotation<'ValueType> =
+
+    /// The original type can be reconstructed exactly.
+    | DirectQuote of Expr<'ValueType>
+
+    /// The original type cannot be reconstructed exactly and therefore needs
+    /// to be structurally projected.
+    | IndirectQuote of Projection<'ValueType>
+
+    member this.fsharpTypeName =
+        FSharpLiteral.stringifyType<'ValueType>
+
+    static member lift
+        (value : 'ValueType)
+        : CodeQuotation<'ValueType>
+        =
+
+        CodeQuotation<'ValueType>.ofValue
+            value
+
+    static member lower
+        (quote : CodeQuotation<'ValueType>)
+        : Expr
+        =
+
+        match quote with
+
+        | DirectQuote expression ->
+            expression :> Expr
+
+        | IndirectQuote projection ->
+            projection.projectionExpression
+
+    static member expression
+        (value : 'ValueType)
+        : Expr
+        =
+
+        value
+        |> CodeQuotation<'ValueType>.lift
+        |> CodeQuotation<'ValueType>.lower
+
+    static member internal expressionWithProjectionContext
+        (context : ProjectionContext)
+        (value : 'ValueType)
+        : Expr * ProjectionContext
+        =
+
+        if obj.ReferenceEquals(box value, null) then
+
+            let noneExpression : Expr<'ValueType option> =
+                <@ None @>
+
+            noneExpression :> Expr,
+            context
+
+        else
+
+            match CodeQuotation<'ValueType>.tryDirect value with
+
+            | Some expression ->
+
+                expression :> Expr,
+                context
+
+            | None ->
+
+                let projection =
+                    Projection<'ValueType>.ofValue value
+
+                projection.expressionWithContext
+                    context
+
+    static member inline tryValue
+        (quote : CodeQuotation<'ValueType>)
+        : 'ValueType option
+        =
+
+        match quote with
+
+        | DirectQuote expression ->
+
+            let value =
+
+                LeafExpressionConverter.EvaluateQuotation(expression)
+                :?> 'ValueType
+
+            if obj.ReferenceEquals(box value, null) then
+                None
+            else
+                Some value
+
+        | IndirectQuote _ ->
+            None
+
+    static member inline project
+        (quote : CodeQuotation<'ValueType>)
+        : Projection<'ValueType>
+        =
+
+        match quote with
+
+        | DirectQuote expression ->
+
+            LeafExpressionConverter.EvaluateQuotation(expression)
+            :?> 'ValueType
+            |> Projection<'ValueType>.ofValue
+
+        | IndirectQuote projection ->
+            projection
+
+    static member valueObject
+        (quote : CodeQuotation<'ValueType>)
+        : SemiStatic<'ValueType>
+        =
+
+        match quote with
+
+        | DirectQuote expression ->
+
+            let value =
+
+                expression
+                |> LeafExpressionConverter.EvaluateQuotation
+                :?> 'ValueType
+
+            if obj.ReferenceEquals(box value, null) then
+
+                StaticObject None
+
+            else
+
+                StaticObject(
+                    Some value
+                )
+
+        | IndirectQuote projection ->
+
+            projection.valueObjectWithContext
+                ProjectionContext.empty
+            |> fst
+
+    member this.lowered =
+        CodeQuotation.lower this
+
+    member this.tryEvaluate =
+        CodeQuotation.tryValue this
+
+    member this.evaluated =
+        CodeQuotation.valueObject this
+
+    member this.projected =
+        CodeQuotation.project this
+
+    // -------------------------------------------------------------------------
+    // Generic option traversal
+    // -------------------------------------------------------------------------
+
+    static member private traverse<'Input, 'Output>
+        (values : seq<'Input>)
+        (mapping : 'Input -> 'Output option)
+        : 'Output list option
+        =
+
+        values
+        |> Seq.fold
+            (fun state value ->
+
+                match state with
+
+                | None ->
+                    None
+
+                | Some results ->
+
+                    match mapping value with
+
+                    | Some result ->
+
+                        Some (
+                            result :: results
+                        )
+
+                    | None ->
+                        None
+            )
+            (Some [])
+        |> Option.map List.rev
+
+    // -------------------------------------------------------------------------
+    // Homogeneous structural values
+    // -------------------------------------------------------------------------
+
+    static member private ofHomogeneousElements<'Element>
+        (elements : seq<'Element>)
+        : Expr<'Element array> option
+        =
+
+        CodeQuotation<'ValueType>.traverse
+            elements
+            (fun element ->
+
+                CodeQuotation<'Element>.tryDirect element
+                |> Option.map (fun expression ->
+                    expression :> Expr
+                )
+            )
+        |> Option.map (fun elementExpressions ->
+
+            Expr.NewArray(
+                typeof<'Element>,
+                elementExpressions
+            )
+            |> Expr.Cast<'Element array>
+        )
+
+    // -------------------------------------------------------------------------
+    // HList
+    // -------------------------------------------------------------------------
+
+    static member private ofHeterogenousList<'Fields>
+        (fieldValues : 'Fields HList)
+        : Expr list option
+        =
+
+        let folder =
+
+            {
+                new HListFolder<Expr list option> with
+
+                    member _.Folder<'FieldType>
+                        (expressions : Expr list option)
+                        (fieldValue : 'FieldType)
+                        =
+
+                        match expressions with
+
+                        | None ->
+                            None
+
+                        | Some expressions ->
+
+                            match CodeQuotation<'FieldType>.tryDirect fieldValue with
+
+                            | Some fieldExpression ->
+
+                                Some (
+                                    (fieldExpression :> Expr)
+                                    :: expressions
+                                )
+
+                            | None ->
+                                None
+            }
+
+        fieldValues
+        |> HList.fold folder (Some [])
+        |> Option.map List.rev
+
+    // -------------------------------------------------------------------------
+    // Union case arguments
+    // -------------------------------------------------------------------------
+
+    static member private unionCaseArguments<'Payload>
+        (caseInfo : UnionCaseInfo)
+        (payload : 'Payload)
+        : Expr list option
+        =
+
+        let fields =
+            caseInfo.GetFields()
+
+        match fields.Length with
+
+        | 0 ->
+            Some []
+
+        | 1 ->
+
+            CodeQuotation<'Payload>.tryDirect payload
+            |> Option.map (fun expression ->
+                [
+                    expression :> Expr
+                ]
+            )
+
+        | _ ->
+
+            match tType<'Payload> with
+
+            | TType.Tuple tuple ->
+
+                {
+                    new TupleConvEvaluator<'Payload, Expr list option> with
+
+                        member _.Eval<'UnionCaseFields>
+                            (_fieldTypes : TypeList<'UnionCaseFields>)
+                            (conversion : Conv<'Payload, 'UnionCaseFields HList>)
+                            =
+
+                            let fieldValues : 'UnionCaseFields HList =
+                                conversion.To payload
+
+                            CodeQuotation<'Payload>.ofHeterogenousList
+                                fieldValues
+                }
+                |> tuple.Apply
+
+            | _ ->
+
+                invalidOp
+                    $"Expected the payload of union case {caseInfo.Name} to be a tuple."
+
+    // -------------------------------------------------------------------------
+    // HUnion
+    // -------------------------------------------------------------------------
+
+    static member private ofHeterogenousUnion<'Cases>
+        (caseIndex : int)
+        (caseData : UnionTypeField list)
+        (unionValue : 'Cases HUnion)
+        : Expr option
+        =
+
+        match
+            unionValue
+            |> HUnion.toTypeList
+            |> TypeList.split
+        with
+
+        | Choice1Of2 _ ->
+
+            invalidOp
+                "A discriminated union cannot have zero cases."
+
+        | Choice2Of2 cons ->
+
+            {
+                new TypeListConsEvaluator<'Cases, Expr option> with
+
+                    member _.Eval<'Payload, 'Tail>
+                        (_tailTypes : 'Tail TypeList)
+                        (typeEquality : Teq<'Cases, 'Payload -> 'Tail>)
+                        =
+
+                        let expandedUnion : ('Payload -> 'Tail) HUnion =
+
+                            unionValue
+                            |> Teq.castTo (
+                                HUnion.cong typeEquality
+                            )
+
+                        match HUnion.split expandedUnion with
+
+                        | Choice1Of2 payload ->
+
+                            let caseInfo =
+
+                                caseData
+                                |> List.item caseIndex
+                                |> fun case ->
+                                    case.RawCase
+
+                            CodeQuotation<'ValueType>.unionCaseArguments
+                                caseInfo
+                                payload
+                            |> Option.map (fun arguments ->
+
+                                Expr.NewUnionCase(
+                                    caseInfo,
+                                    arguments
+                                )
+                            )
+
+                        | Choice2Of2 tail ->
+
+                            CodeQuotation<'ValueType>.ofHeterogenousUnion
+                                (caseIndex + 1)
+                                caseData
+                                tail
+            }
+            |> cons.Apply
+
+    // -------------------------------------------------------------------------
+    // Direct quotation
+    // -------------------------------------------------------------------------
+
+    static member private tryDirect
+        (value : 'ValueType)
+        : Expr<'ValueType> option
+        =
+
+        let expression : Expr option =
+
+            match tType<'ValueType> with
+
+            // -----------------------------------------------------------------
+            // Explicit external-type reconstruction
+            // -----------------------------------------------------------------
+
+            | TType.Teq TType.Url typeEquality ->
+
+                let typeValue : Url =
+
+                    value
+                    |> Teq.castTo typeEquality
+
+                match CodeQuotation<string>.tryDirect (typeValue.ToString()) with
+
+                | Some stringExpression ->
+
+                    <@ Url.Parse %stringExpression @>
+                    :> Expr
+                    |> Some
+
+                | None ->
+                    None
+
+            | TType.Teq TType.IriReference typeEquality ->
+
+                let typeValue : IriReference =
+
+                    value
+                    |> Teq.castTo typeEquality
+
+                match CodeQuotation<string>.tryDirect (typeValue.ToString()) with
+
+                | Some stringExpression ->
+
+                    <@ IriReference %stringExpression @>
+                    :> Expr
+                    |> Some
+
+                | None ->
+                    None
+
+            | TType.Teq TType.MimeType typeEquality ->
+
+                let typeValue : MimeType =
+
+                    value
+                    |> Teq.castTo typeEquality
+
+                match CodeQuotation<string>.tryDirect (typeValue.ToString()) with
+
+                | Some stringExpression ->
+
+                    <@ MimeType.Parse %stringExpression @>
+                    :> Expr
+                    |> Some
+
+                | None ->
+                    None
+
+            | TType.Teq TType.TldRule typeEquality ->
+
+                let typeValue : TldRule =
+
+                    value
+                    |> Teq.castTo typeEquality
+
+                let valueString =
+
+                    match typeValue.Type with
+
+                    | TldRuleType.WildcardException ->
+                        "!" + typeValue.Name
+
+                    | _ ->
+                        typeValue.Name
+
+                match
+                    CodeQuotation<string>.tryDirect valueString,
+                    CodeQuotation<TldRuleDivision>.tryDirect typeValue.Division
+                with
+
+                | Some ruleDataExpression,
+                  Some divisionExpression ->
+
+                    <@
+                        TldRule(
+                            %ruleDataExpression,
+                            %divisionExpression
+                        )
+                    @>
+                    :> Expr
+                    |> Some
+
+                | _ ->
+                    None
+
+            // -----------------------------------------------------------------
+            // CLR enums
+            // -----------------------------------------------------------------
+
+            | TType'Enum ->
+
+                Expr.Value(
+                    box value,
+                    typeof<'ValueType>
+                )
+                |> Some
+
+            // -----------------------------------------------------------------
+            // Primitive/direct values
+            // -----------------------------------------------------------------
+
+            | TType'Byte typeEquality ->
+
+                value
+                |> Teq.castTo typeEquality
+                |> Expr.Value
+                |> Some
+
+            | TType.Bool typeEquality ->
+
+                value
+                |> Teq.castTo typeEquality
+                |> Expr.Value
+                |> Some
+
+            | TType.Int typeEquality ->
+
+                value
+                |> Teq.castTo typeEquality
+                |> Expr.Value
+                |> Some
+
+            | TType.Int64 typeEquality ->
+
+                value
+                |> Teq.castTo typeEquality
+                |> Expr.Value
+                |> Some
+
+            | TType.Float typeEquality ->
+
+                value
+                |> Teq.castTo typeEquality
+                |> Expr.Value
+                |> Some
+
+            | TType.String typeEquality ->
+
+                value
+                |> Teq.castTo typeEquality
+                |> Expr.Value
+                |> Some
+
+            | TType.Unit typeEquality ->
+
+                value
+                |> Teq.castTo typeEquality
+                |> Expr.Value
+                |> Some
+
+            | TType.DateTime typeEquality ->
+
+                value
+                |> Teq.castTo typeEquality
+                |> Expr.Value
+                |> Some
+
+            | TType.TimeSpan typeEquality ->
+
+                value
+                |> Teq.castTo typeEquality
+                |> Expr.Value
+                |> Some
+
+            // -----------------------------------------------------------------
+            // Array
+            // -----------------------------------------------------------------
+
+            | TType.Array array ->
+
+                {
+                    new ArrayTeqEvaluator<'ValueType, Expr option> with
+
+                        member _.Eval<'Element>
+                            (typeEquality : Teq<'ValueType, 'Element array>)
+                            =
+
+                            let arrayValue : 'Element array =
+
+                                value
+                                |> Teq.castTo typeEquality
+
+                            CodeQuotation<'ValueType>.ofHomogeneousElements
+                                arrayValue
+                            |> Option.map (fun expression ->
+                                expression :> Expr
+                            )
+                }
+                |> array.Apply
+
+            // -----------------------------------------------------------------
+            // Seq
+            // -----------------------------------------------------------------
+
+            | TType.Seq sequence ->
+
+                {
+                    new SeqTeqEvaluator<'ValueType, Expr option> with
+
+                        member _.Eval<'Element>
+                            (typeEquality : Teq<'ValueType, 'Element seq>)
+                            =
+
+                            let sequenceValue : 'Element seq =
+
+                                value
+                                |> Teq.castTo typeEquality
+
+                            CodeQuotation<'ValueType>.ofHomogeneousElements
+                                sequenceValue
+                            |> Option.map (fun arrayExpression ->
+
+                                Expr.Coerce(
+                                    arrayExpression,
+                                    typeof<'Element seq>
+                                )
+                            )
+                }
+                |> sequence.Apply
+
+            // -----------------------------------------------------------------
+            // ResizeArray
+            // -----------------------------------------------------------------
+
+            | TType.ResizeArray resizeArray ->
+
+                {
+                    new ResizeArrayTeqEvaluator<'ValueType, Expr option> with
+
+                        member _.Eval<'Element>
+                            (typeEquality : Teq<'ValueType, 'Element ResizeArray>)
+                            =
+
+                            let resizeArrayValue : 'Element ResizeArray =
+
+                                value
+                                |> Teq.castTo typeEquality
+
+                            CodeQuotation<'ValueType>.ofHomogeneousElements
+                                resizeArrayValue
+                            |> Option.map (fun arrayExpression ->
+
+                                let sequenceExpression : Expr =
+
+                                    Expr.Coerce(
+                                        arrayExpression,
+                                        typeof<'Element seq>
+                                    )
+
+                                let constructor =
+
+                                    typeof<ResizeArray<'Element>>.GetConstructor(
+                                        [|
+                                            typeof<'Element seq>
+                                        |]
+                                    )
+
+                                Expr.NewObject(
+                                    constructor,
+                                    [
+                                        sequenceExpression
+                                    ]
+                                )
+                            )
+                }
+                |> resizeArray.Apply
+
+            // -----------------------------------------------------------------
+            // Set
+            // -----------------------------------------------------------------
+
+            | TType.Set set ->
+
+                {
+                    new SetTeqEvaluator<'ValueType, Expr option> with
+
+                        member _.Eval<'Element when 'Element : comparison>
+                            (typeEquality : Teq<'ValueType, 'Element Set>)
+                            =
+
+                            let setValue : 'Element Set =
+
+                                value
+                                |> Teq.castTo typeEquality
+
+                            CodeQuotation<'ValueType>.ofHomogeneousElements
+                                setValue
+                            |> Option.map (fun arrayExpression ->
+
+                                let sequenceExpression : Expr =
+
+                                    Expr.Coerce(
+                                        arrayExpression,
+                                        typeof<'Element seq>
+                                    )
+
+                                let constructor =
+
+                                    typeof<Set<'Element>>.GetConstructor(
+                                        [|
+                                            typeof<'Element seq>
+                                        |]
+                                    )
+
+                                Expr.NewObject(
+                                    constructor,
+                                    [
+                                        sequenceExpression
+                                    ]
+                                )
+                            )
+                }
+                |> set.Apply
+
+            // -----------------------------------------------------------------
+            // Map
+            // -----------------------------------------------------------------
+
+            | TType.Map map ->
+
+                {
+                    new MapTeqEvaluator<'ValueType, Expr option> with
+
+                        member _.Eval<'Key, 'Value when 'Key : comparison>
+                            (typeEquality : Teq<'ValueType, Map<'Key, 'Value>>)
+                            =
+
+                            let mapValue : Map<'Key, 'Value> =
+
+                                value
+                                |> Teq.castTo typeEquality
+
+                            let pairExpressions =
+
+                                CodeQuotation<'ValueType>.traverse
+                                    mapValue
+                                    (fun pair ->
+
+                                        match
+                                            CodeQuotation<'Key>.tryDirect pair.Key,
+                                            CodeQuotation<'Value>.tryDirect pair.Value
+                                        with
+
+                                        | Some keyExpression,
+                                          Some valueExpression ->
+
+                                            Expr.NewTuple(
+                                                [
+                                                    keyExpression :> Expr
+                                                    valueExpression :> Expr
+                                                ]
+                                            )
+                                            |> Some
+
+                                        | _ ->
+                                            None
+                                    )
+
+                            pairExpressions
+                            |> Option.map (fun pairExpressions ->
+
+                                let pairType =
+                                    typeof<'Key * 'Value>
+
+                                let arrayExpression =
+
+                                    Expr.NewArray(
+                                        pairType,
+                                        pairExpressions
+                                    )
+
+                                let sequenceExpression =
+
+                                    Expr.Coerce(
+                                        arrayExpression,
+                                        typeof<seq<'Key * 'Value>>
+                                    )
+
+                                let constructor =
+
+                                    typeof<Map<'Key, 'Value>>.GetConstructor(
+                                        [|
+                                            typeof<seq<'Key * 'Value>>
+                                        |]
+                                    )
+
+                                Expr.NewObject(
+                                    constructor,
+                                    [
+                                        sequenceExpression
+                                    ]
+                                )
+                            )
+                }
+                |> map.Apply
+
+            // -----------------------------------------------------------------
+            // Dictionary
+            // -----------------------------------------------------------------
+
+            | TType.Dictionary dictionary ->
+
+                {
+                    new DictionaryTeqEvaluator<'ValueType, Expr option> with
+
+                        member _.Eval<'Key, 'Value>
+                            (typeEquality : Teq<'ValueType, Generic.Dictionary<'Key, 'Value>>)
+                            =
+
+                            let dictionaryValue : Generic.Dictionary<'Key, 'Value> =
+
+                                value
+                                |> Teq.castTo typeEquality
+
+                            if
+                                not (
+                                    obj.ReferenceEquals(
+                                        dictionaryValue.Comparer,
+                                        Generic.EqualityComparer<'Key>.Default
+                                    )
+                                )
+                            then
+
+                                invalidOp
+                                    $"CodeQuotation of Dictionary<{typeof<'Key>.FullName}, {typeof<'Value>.FullName}> with a custom comparer is not yet supported."
+
+                            let keyValuePairConstructor =
+
+                                typeof<Generic.KeyValuePair<'Key, 'Value>>.GetConstructor(
+                                    [|
+                                        typeof<'Key>
+                                        typeof<'Value>
+                                    |]
+                                )
+
+                            let pairExpressions =
+
+                                CodeQuotation<'ValueType>.traverse
+                                    dictionaryValue
+                                    (fun pair ->
+
+                                        match
+                                            CodeQuotation<'Key>.tryDirect pair.Key,
+                                            CodeQuotation<'Value>.tryDirect pair.Value
+                                        with
+
+                                        | Some keyExpression,
+                                          Some valueExpression ->
+
+                                            Expr.NewObject(
+                                                keyValuePairConstructor,
+                                                [
+                                                    keyExpression :> Expr
+                                                    valueExpression :> Expr
+                                                ]
+                                            )
+                                            |> Some
+
+                                        | _ ->
+                                            None
+                                    )
+
+                            pairExpressions
+                            |> Option.map (fun pairExpressions ->
+
+                                let pairType =
+                                    typeof<Generic.KeyValuePair<'Key, 'Value>>
+
+                                let arrayExpression =
+
+                                    Expr.NewArray(
+                                        pairType,
+                                        pairExpressions
+                                    )
+
+                                let sequenceType =
+                                    typeof<seq<Generic.KeyValuePair<'Key, 'Value>>>
+
+                                let sequenceExpression =
+
+                                    Expr.Coerce(
+                                        arrayExpression,
+                                        sequenceType
+                                    )
+
+                                let constructor =
+
+                                    typeof<Generic.Dictionary<'Key, 'Value>>.GetConstructor(
+                                        [|
+                                            sequenceType
+                                        |]
+                                    )
+
+                                Expr.NewObject(
+                                    constructor,
+                                    [
+                                        sequenceExpression
+                                    ]
+                                )
+                            )
+                }
+                |> dictionary.Apply
+
+            // -----------------------------------------------------------------
+            // Tuple
+            // -----------------------------------------------------------------
+
+            | TType.Tuple tuple ->
+
+                {
+                    new TupleConvEvaluator<'ValueType, Expr option> with
+
+                        member _.Eval<'TupleFields>
+                            (_fieldTypes : TypeList<'TupleFields>)
+                            (conversion : Conv<'ValueType, 'TupleFields HList>)
+                            =
+
+                            let fieldValues : 'TupleFields HList =
+                                conversion.To value
+
+                            CodeQuotation<'ValueType>.ofHeterogenousList
+                                fieldValues
+                            |> Option.map Expr.NewTuple
+                }
+                |> tuple.Apply
+
+            // -----------------------------------------------------------------
+            // Record
+            // -----------------------------------------------------------------
+
+            | TType.Record record ->
+
+                {
+                    new RecordConvEvaluator<'ValueType, Expr option> with
+
+                        member _.Eval<'RecordFields>
+                            (_fieldData : RecordTypeField list)
+                            (_fieldTypes : TypeList<'RecordFields>)
+                            (conversion : Conv<'ValueType, 'RecordFields HList>)
+                            =
+
+                            let fieldValues : 'RecordFields HList =
+                                conversion.To value
+
+                            CodeQuotation<'ValueType>.ofHeterogenousList
+                                fieldValues
+                            |> Option.map (fun fieldExpressions ->
+
+                                Expr.NewRecord(
+                                    typeof<'ValueType>,
+                                    fieldExpressions
+                                )
+                            )
+                }
+                |> record.Apply
+
+            // -----------------------------------------------------------------
+            // Union
+            // -----------------------------------------------------------------
+
+            | TType.Union union ->
+
+                {
+                    new UnionConvEvaluator<'ValueType, Expr option> with
+
+                        member _.Eval<'Cases>
+                            (caseData : UnionTypeField list)
+                            (_caseTypes : TypeList<'Cases>)
+                            (conversion : Conv<'ValueType, 'Cases HUnion>)
+                            =
+
+                            let unionValue : 'Cases HUnion =
+                                conversion.To value
+
+                            CodeQuotation<'ValueType>.ofHeterogenousUnion
+                                0
+                                caseData
+                                unionValue
+                }
+                |> union.Apply
+
+            // -----------------------------------------------------------------
+            // Exact quotation unavailable
+            // -----------------------------------------------------------------
+
+            | _ ->
+                None
+
+        expression
+        |> Option.map (fun expression ->
+            Expr.Cast<'ValueType> expression
+        )
+
+    // -------------------------------------------------------------------------
+    // Public quotation operation
+    // -------------------------------------------------------------------------
+
+    static member ofValue
+        (value : 'ValueType)
+        : CodeQuotation<'ValueType>
+        =
+
+        match CodeQuotation<'ValueType>.tryDirect value with
+
+        | Some expression ->
+
+            DirectQuote expression
+
+        | None ->
+
+            value
+            |> Projection<'ValueType>.ofValue
+            |> IndirectQuote
+
+    // -------------------------------------------------------------------------
+    // Semi-static runtime materialization with shared projection context
+    // -------------------------------------------------------------------------
+
+    static member internal valueObjectWithProjectionContext
+        (context : ProjectionContext)
+        (value : 'ValueType)
+        : SemiStatic<'ValueType> * ProjectionContext
+        =
+
+        if obj.ReferenceEquals(box value, null) then
+
+            StaticObject None,
+            context
+
+        else
+
+            match CodeQuotation<'ValueType>.tryDirect value with
+
+            | Some _ ->
+
+                StaticObject(
+                    Some value
+                ),
+                context
+
+            | None ->
+
+                value
+                |> Projection<'ValueType>.ofValue
+                |> fun projection ->
+                    projection.valueObjectWithContext
+                        context
+
+type Type with
+
+    member this.fsharpName =
+        FSharpLiteral.stringifyTypeDynamic
+            this
+
+type TypeShape<'StaticType> with
+
+    member this.staticType =
+        this.Type
+
+    member this.runtimeShape
+        (value : 'StaticType)
+        =
+
+        TypeShape.FromValue(
+            box value
+        )
+
+    member this.runtimeType
+        (value : 'StaticType)
+        =
+
+        this.runtimeShape(value).Type
+
+// Put the TypeProviderAssemblyAttribute in the runtime DLL,
+// pointing to the design-time DLL.
+
 [<assembly: CompilerServices.TypeProviderAssembly("DoxAletheia.DesignTime.dll")>]
 do ()

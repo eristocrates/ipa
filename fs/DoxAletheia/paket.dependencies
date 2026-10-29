@@ -8,7 +8,6 @@ nuget Dubzer.WhatwgUrl
 nuget Flurl
 
 nuget FolkerKinzel.MimeTypes
-nuget FSharp.Core 8.0.403
 nuget FSharp.Data
 nuget FSharp.HashCollections
 nuget FSharp.ViewEngine
@@ -35,6 +34,11 @@ nuget Fabulous.AST.Build
 nuget NuGet.Protocol
 nuget Newtonsoft.Json >= 13.0.0
 nuget NuGet.CatalogReader
+nuget ShapeSifter
+nuget FSharp.Literals
+nuget FSharp.SystemTextJson
+nuget DynamicObj = 8.0.0
+nuget DynamicObj.Immutable = 8.0.0
 
 # These lines are used by Paket to get the latest version of the Type Provider SDK files
 github fsprojects/FSharp.TypeProviders.SDK src/ProvidedTypes.fsi
@@ -46,10 +50,3 @@ group Test
     nuget Microsoft.NET.Test.Sdk
     nuget NUnit
     nuget NUnit3TestAdapter version_in_path: true
-    member this.terminal = this.identity.ToCharArray() |> Array.last |> string
-
-    member this.terminalName =
-        match this.terminal with
-        | "/" -> '/'.tryHtmlEntity.Value
-        | "#" -> '#'.tryHtmlEntity.Value
-        | _ -> String.Empty
