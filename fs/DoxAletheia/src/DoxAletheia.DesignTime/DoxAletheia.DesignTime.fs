@@ -90,7 +90,11 @@ type CodeProvision =
 module CodeProvision =
 
     type ProvidedTypeDefinition with
-        member  this.addProjectionMembers<'ValueType> (projection : Projection<'ValueType>) : unit =
+
+        member this.addProjectionMembers<'ValueType>
+            (projection : Projection<'ValueType>)
+            : unit
+            =
 
             let addMember
                 (projectionSource : 'SourceType)
@@ -104,10 +108,7 @@ module CodeProvision =
                         new IReadOnlyMemberVisitor<'SourceType, bool> with
 
                             member _.Visit<'MemberType>
-                                (
-                                    memberShape :
-                                        ReadOnlyMember<'SourceType, 'MemberType>
-                                )
+                                (memberShape : ReadOnlyMember<'SourceType, 'MemberType>)
                                 =
 
                                 let memberValue : 'MemberType =
@@ -158,182 +159,232 @@ module CodeProvision =
 
             match projection with
 
-            | RecordProduct projectionSource ->
+            | NullProjection _ ->
 
-                match shapeof<'ValueType> with
+                ()
 
-                | Shape.FSharpRecord
-                    (:? ShapeFSharpRecord<'ValueType> as recordShape) ->
+            | RecordProjection recordProjection ->
 
-                    recordShape.Fields
-                    |> Array.map (fun field ->
-                        field :> IShapeReadOnlyMember<'ValueType>
-                    )
-                    |> Array.iter (
-                        addMember projectionSource
-                    )
+                recordProjection.Access {
+                    new RecordAccessor<bool> with
 
-                | _ ->
-                    invalidOp
-                        $"Expected {typeof<'ValueType>.FullName} to be an F# record."
+                        member _.Access<'RecordType, 'Fields>
+                            (projectedRecord : ProjectedRecord<'RecordType, 'Fields>)
+                            =
 
-            | PocoProduct projectionSource ->
+                            match shapeof<'RecordType> with
 
-                match shapeof<'ValueType> with
+                            | Shape.FSharpRecord
+                                (:? ShapeFSharpRecord<'RecordType> as recordShape) ->
 
-                | Shape.Poco
-                    (:? ShapePoco<'ValueType> as pocoShape) ->
-
-                    let publicFields :
-                        IShapeReadOnlyMember<'ValueType> array
-                        =
-
-                        pocoShape.Fields
-                        |> Array.map (fun field ->
-                            field :> IShapeReadOnlyMember<'ValueType>
-                        )
-
-                    Array.append
-                        publicFields
-                        pocoShape.Properties
-                    |> Array.iter (
-                        addMember projectionSource
-                    )
-
-                | _ ->
-                    invalidOp
-                        $"Expected {typeof<'ValueType>.FullName} to be a POCO."
-
-            | TupleProduct projectionSource ->
-
-                match shapeof<'ValueType> with
-
-                | Shape.Tuple
-                    (:? ShapeTuple<'ValueType> as tupleShape) ->
-
-                    tupleShape.Elements
-                    |> Array.map (fun element ->
-                        element :> IShapeReadOnlyMember<'ValueType>
-                    )
-                    |> Array.iter (
-                        addMember projectionSource
-                    )
-
-                | _ ->
-                    invalidOp
-                        $"Expected {typeof<'ValueType>.FullName} to be a tuple."
-
-            | UnionProduct projectionSource ->
-
-                match shapeof<'ValueType> with
-
-                | Shape.FSharpUnion
-                    (:? ShapeFSharpUnion<'ValueType> as unionShape) ->
-
-                    let caseIndex =
-                        unionShape.GetTag projectionSource
-
-                    let activeCase =
-                        unionShape.UnionCases.[caseIndex]
-
-                    this.AddMember(
-                        ProvidedProperty(
-                            propertyName = "Case",
-                            propertyType = typeof<string>,
-                            isStatic = false,
-                            getterCode =
-                                fun _ ->
-                                    Expr.Value activeCase.CaseInfo.Name
-                        )
-                    )
-
-                    activeCase.Fields
-                    |> Array.map (fun field ->
-                        field :> IShapeReadOnlyMember<'ValueType>
-                    )
-                    |> Array.iter (
-                        addMember projectionSource
-                    )
-
-                | _ ->
-                    invalidOp
-                        $"Expected {typeof<'ValueType>.FullName} to be an F# union."
-
-            | EnumerableProduct projectionSource ->
-
-                match shapeof<'ValueType> with
-
-                | Shape.Enumerable enumerableShape ->
-
-                    enumerableShape.Accept {
-                        new IEnumerableVisitor<bool> with
-
-                            member _.Visit<
-                                'Enumerable,
-                                'Element
-                                    when 'Enumerable :> seq<'Element>
-                            >() =
-
-                                let enumerableValue : 'Enumerable =
-                                    projectionSource
-                                    |> box
-                                    |> unbox<'Enumerable>
-
-                                enumerableValue
-                                |> Seq.iteri (fun index element ->
-
-                                    let propertyName =
-                                        $"Item{index}"
-
-                                    match CodeQuotation<'Element>.lift element with
-
-                                    | DirectQuote expression ->
-
-                                        this.AddMember(
-                                            ProvidedProperty(
-                                                propertyName = propertyName,
-                                                propertyType = typeof<'Element>,
-                                                isStatic = false,
-                                                getterCode =
-                                                    fun _ ->
-                                                        expression :> Expr
-                                            )
-                                        )
-
-                                    | IndirectQuote elementProjection ->
-
-                                        let ProjectionTypeDefinition =
-                                            ProvidedTypeDefinition(
-                                                propertyName + "'Projection",
-                                                Some typeof<obj>,
-                                                isErased = true
-                                            )
-
-                                        ProjectionTypeDefinition.addProjectionMembers
-                                            elementProjection
-
-                                        this.AddMember
-                                            ProjectionTypeDefinition
-
-                                        this.AddMember(
-                                            this.projectionProperty(
-                                                propertyName,
-                                                ProjectionTypeDefinition,
-                                                elementProjection,
-                                                false
-                                            )
-                                        )
+                                recordShape.Fields
+                                |> Array.map (fun field ->
+                                    field :> IShapeReadOnlyMember<'RecordType>
+                                )
+                                |> Array.iter (
+                                    addMember projectedRecord.source
                                 )
 
-                                true
-                    }
-                    |> ignore
+                            | _ ->
 
-                | _ ->
-                    invalidOp
-                        $"Expected {typeof<'ValueType>.FullName} to be enumerable."
+                                invalidOp
+                                    $"Expected {typeof<'RecordType>.FullName} to be an F# record."
 
-        member this.projectionProperty<'ValueType> ( (propertyName : string), (propertyType : Type), (projection : Projection<'ValueType>), (isStatic : bool) ) : ProvidedProperty =
+                            true
+                }
+                |> ignore
+
+            | PocoProjection pocoProjection ->
+
+                pocoProjection.Access {
+                    new PocoAccessor<bool> with
+
+                        member _.Access<'SourceType>
+                            (projectedPoco : ProjectedPoco<'SourceType>)
+                            =
+
+                            projectedPoco.members
+                            |> Array.iter (
+                                addMember projectedPoco.source
+                            )
+
+                            true
+                }
+                |> ignore
+
+            | TupleProjection tupleProjection ->
+
+                tupleProjection.Access {
+                    new TupleAccessor<bool> with
+
+                        member _.Access<'TupleType, 'Fields>
+                            (projectedTuple : ProjectedTuple<'TupleType, 'Fields>)
+                            =
+
+                            match shapeof<'TupleType> with
+
+                            | Shape.Tuple
+                                (:? ShapeTuple<'TupleType> as tupleShape) ->
+
+                                tupleShape.Elements
+                                |> Array.map (fun element ->
+                                    element :> IShapeReadOnlyMember<'TupleType>
+                                )
+                                |> Array.iter (
+                                    addMember projectedTuple.source
+                                )
+
+                            | _ ->
+
+                                invalidOp
+                                    $"Expected {typeof<'TupleType>.FullName} to be a tuple."
+
+                            true
+                }
+                |> ignore
+
+            | UnionProjection unionProjection ->
+
+                unionProjection.Access {
+                    new UnionAccessor<bool> with
+
+                        member _.Access<'UnionType, 'Cases>
+                            (projectedUnion : ProjectedUnion<'UnionType, 'Cases>)
+                            =
+
+                            match shapeof<'UnionType> with
+
+                            | Shape.FSharpUnion
+                                (:? ShapeFSharpUnion<'UnionType> as unionShape) ->
+
+                                let caseIndex =
+                                    unionShape.GetTag projectedUnion.source
+
+                                let activeCase =
+                                    unionShape.UnionCases.[caseIndex]
+
+                                this.AddMember(
+                                    ProvidedProperty(
+                                        propertyName = "Case",
+                                        propertyType = typeof<string>,
+                                        isStatic = false,
+                                        getterCode =
+                                            fun _ ->
+                                                Expr.Value activeCase.CaseInfo.Name
+                                    )
+                                )
+
+                                activeCase.Fields
+                                |> Array.map (fun field ->
+                                    field :> IShapeReadOnlyMember<'UnionType>
+                                )
+                                |> Array.iter (
+                                    addMember projectedUnion.source
+                                )
+
+                            | _ ->
+
+                                invalidOp
+                                    $"Expected {typeof<'UnionType>.FullName} to be an F# union."
+
+                            true
+                }
+                |> ignore
+
+            | EnumerableProjection enumerableProjection ->
+
+                enumerableProjection.Access {
+                    new EnumerableAccessor<bool> with
+
+                        member _.Access<'Enumerable, 'Element when 'Enumerable :> seq<'Element>>
+                            (projectedEnumerable : ProjectedEnumerable<'Enumerable, 'Element>)
+                            =
+
+                            projectedEnumerable.enumerableValue
+                            |> Seq.iteri (fun index element ->
+
+                                let propertyName =
+                                    $"Item{index}"
+
+                                match CodeQuotation<'Element>.lift element with
+
+                                | DirectQuote expression ->
+
+                                    this.AddMember(
+                                        ProvidedProperty(
+                                            propertyName = propertyName,
+                                            propertyType = typeof<'Element>,
+                                            isStatic = false,
+                                            getterCode =
+                                                fun _ ->
+                                                    expression :> Expr
+                                        )
+                                    )
+
+                                | IndirectQuote elementProjection ->
+
+                                    let ProjectionTypeDefinition =
+                                        ProvidedTypeDefinition(
+                                            propertyName + "'Projection",
+                                            Some typeof<obj>,
+                                            isErased = true
+                                        )
+
+                                    ProjectionTypeDefinition.addProjectionMembers
+                                        elementProjection
+
+                                    this.AddMember
+                                        ProjectionTypeDefinition
+
+                                    this.AddMember(
+                                        this.projectionProperty(
+                                            propertyName,
+                                            ProjectionTypeDefinition,
+                                            elementProjection,
+                                            false
+                                        )
+                                    )
+                            )
+
+                            true
+                }
+                |> ignore
+
+            | RuntimeProjection projectionSource ->
+
+                TypeShape.FromValue(box projectionSource).Accept {
+                    new ITypeVisitor<bool> with
+
+                        member _.Visit<'RuntimeType>() =
+
+                            let runtimeValue : 'RuntimeType =
+                                projectionSource
+                                |> box
+                                |> unbox<'RuntimeType>
+
+                            let runtimeProjection : Projection<'RuntimeType> =
+                                Projection<'RuntimeType>.ofValue runtimeValue
+
+                            this.addProjectionMembers
+                                runtimeProjection
+
+                            true
+                }
+                |> ignore
+
+        // ---------------------------------------------------------------------
+        // Property whose value is represented by an indirect projection.
+        // ---------------------------------------------------------------------
+
+        member this.projectionProperty<'ValueType>
+            (
+                propertyName : string,
+                propertyType : Type,
+                projection : Projection<'ValueType>,
+                isStatic : bool
+            )
+            : ProvidedProperty
+            =
 
             ProvidedProperty(
                 propertyName = propertyName,
@@ -347,7 +398,14 @@ module CodeProvision =
                         )
             )
 
-        member inline this.projectionProperty<'ValueType> ( (propertyName : string), (propertyType : Type), (projection : Projection<'ValueType>) ) : ProvidedProperty =
+        member inline this.projectionProperty<'ValueType>
+            (
+                propertyName : string,
+                propertyType : Type,
+                projection : Projection<'ValueType>
+            )
+            : ProvidedProperty
+            =
 
             this.projectionProperty(
                 propertyName,
@@ -356,7 +414,18 @@ module CodeProvision =
                 true
             )
 
-        member inline this.staticProperty<'ValueType> ( (propertyName : string), (propertyType : Type), (value : 'ValueType) ) : unit =
+        // ---------------------------------------------------------------------
+        // Static property
+        // ---------------------------------------------------------------------
+
+        member inline this.staticProperty<'ValueType>
+            (
+                propertyName : string,
+                propertyType : Type,
+                value : 'ValueType
+            )
+            : unit
+            =
 
             match CodeQuotation<'ValueType>.lift value with
 
@@ -396,7 +465,13 @@ module CodeProvision =
                     )
                 )
 
-        member inline this.staticProperty<'ValueType> ( (propertyName : string), (value : 'ValueType) ) : unit =
+        member inline this.staticProperty<'ValueType>
+            (
+                propertyName : string,
+                value : 'ValueType
+            )
+            : unit
+            =
 
             this.staticProperty(
                 propertyName,
@@ -404,25 +479,31 @@ module CodeProvision =
                 value
             )
 
-        member inline this.staticProperty<'ValueType> (propertyName : string)
+        member inline this.staticProperty<'ValueType>
+            (propertyName : string)
             =
 
             fun (value : 'ValueType) ->
+
                 this.staticProperty(
                     propertyName,
                     typeof<'ValueType>,
                     value
                 )
 
-        member inline this.staticProperty<'ValueType> (propertyType : Type) =
+        member inline this.staticProperty<'ValueType>
+            (propertyType : Type)
+            =
 
             fun (propertyName : string) ->
                 fun (value : 'ValueType) ->
+
                     this.staticProperty(
                         propertyName,
                         propertyType,
                         value
                     )
+
 open CodeProvision
 [<TypeProvider>]
 type VocabularyProvider(config: TypeProviderConfig) as this =
@@ -464,10 +545,15 @@ type VocabularyProvider(config: TypeProviderConfig) as this =
         let OwlObjectPropertyTypeDefinition = "OwlObjectProperty" |> CodeProvision.erasedType typeof<ObjectProperty> 
         let OwlDataPropertyTypeDefinition = "OwlDataProperty" |> CodeProvision.erasedType typeof<DataProperty> 
         let OwlAnnotationPropertyTypeDefinition = "OwlAnnotationProperty" |> CodeProvision.erasedType typeof<AnnotationProperty> 
-        let NamedIndividualTypeDefinition = "NamedIndividual_" |> CodeProvision.erasedType typeof<obj> 
-        let AnonymousIndividualTypeDefinition = "AnonymousIndividual'" |> CodeProvision.erasedType typeof<obj> 
-        let OfClassTypeDefinition = "OfClass" |> CodeProvision.erasedType typeof<obj> 
+        let NamedIndividualTypeDefinition = "NamedIndividual\'" |> CodeProvision.erasedType typeof<obj> 
+        let AnonymousIndividualTypeDefinition = "AnonymousIndividual\'" |> CodeProvision.erasedType typeof<obj> 
+        let NamedIndividualOfClassTypeDefinition =
+            "OfClass"
+            |> CodeProvision.erasedType typeof<obj>
 
+        let AnonymousIndividualOfClassTypeDefinition =
+            "OfClass"
+            |> CodeProvision.erasedType typeof<obj>
         let VocabularyTypeDefinition =
             ProvidedTypeDefinition(assembly, providedNamespace, typeName, Some typeof<obj>, isErased = true)
 
@@ -481,7 +567,7 @@ type VocabularyProvider(config: TypeProviderConfig) as this =
               OwlDataPropertyTypeDefinition
               OwlAnnotationPropertyTypeDefinition ])
 
-        VocabularyTypeDefinition.AddMember( vocabulary |> CodeProvision.staticProperty "vocabulary'")
+        VocabularyTypeDefinition.AddMember( vocabulary |> CodeProvision.staticProperty "vocabulary\'")
         
         VocabularyTypeDefinition.AddMembersDelayed(fun () ->
             [
@@ -519,13 +605,13 @@ type VocabularyProvider(config: TypeProviderConfig) as this =
 
         )
 
-        NamedIndividualTypeDefinition.AddMember OfClassTypeDefinition
+        NamedIndividualTypeDefinition.AddMember NamedIndividualOfClassTypeDefinition
 
         for KeyValue(prefixedName, ontologyClass) in classes do
 
             let TermTypeDefinition = prefixedName.localName |> CodeProvision.erasedType typeof<NamedIndividual>
 
-            OfClassTypeDefinition.AddMember TermTypeDefinition
+            NamedIndividualOfClassTypeDefinition.AddMember TermTypeDefinition
 
             NamedIndividualTypeDefinition.AddMemberDelayed(fun () ->
                 ProvidedMethod(
@@ -553,13 +639,13 @@ type VocabularyProvider(config: TypeProviderConfig) as this =
                 )
             )
 
-        AnonymousIndividualTypeDefinition.AddMember OfClassTypeDefinition
+        AnonymousIndividualTypeDefinition.AddMember AnonymousIndividualOfClassTypeDefinition
 
         for KeyValue(prefixedName, ontologyClass) in classes do
 
             let TermTypeDefinition = prefixedName.localName |> CodeProvision.erasedType typeof<AnonymousIndividual>
 
-            OfClassTypeDefinition.AddMember TermTypeDefinition
+            AnonymousIndividualOfClassTypeDefinition.AddMember TermTypeDefinition
 
             AnonymousIndividualTypeDefinition.AddMemberDelayed(fun () ->
                 ProvidedMethod(

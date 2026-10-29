@@ -10869,292 +10869,163 @@ type Quotation =
 // -----------------------------------------------------------------------------
 // Projected structural values
 //
-// These types package runtime-discovered heterogeneous structure without
-// erasing the constituent values to obj.
+// Projection<'ValueType> distinguishes the structural category.
 //
-// A projected field is existential from the outside, but once Accept opens it,
-// the original declared 'FieldType is again available as a genuine generic
-// type parameter.
+// Each structural category has:
+//
+//     ProjectedRecord<'RecordType, 'Fields>
+//         The actual typed structural representation.
+//
+//     RecordProjection
+//         The non-generic boundary through which an arbitrary
+//         ProjectedRecord<'RecordType, 'Fields> can be stored.
+//
+//     RecordAccessor<'OutputType>
+//         The mechanism through which code can access the actual projected
+//         record while recovering its hidden generic parameters.
+//
+// The same arrangement is used for POCOs, tuples, unions, and enumerables.
 // -----------------------------------------------------------------------------
 
-type IProjectedFieldVisitor<'Result> =
+type RecordAccessor<'OutputType> =
 
-    abstract Visit<'FieldType> :
-        name : string *
-        value : 'FieldType option
-            -> 'Result
+    abstract Access<'RecordType, 'Fields> :
+        ProjectedRecord<'RecordType, 'Fields> -> 'OutputType
 
-type IProjectedField =
+and RecordProjection =
 
-    abstract fieldName : string
+    abstract Access<'OutputType> :
+        RecordAccessor<'OutputType> -> 'OutputType
 
-    abstract fieldType : Type
+and ProjectedRecord<'RecordType, 'Fields> =
+    {
+        source : 'RecordType
+        fieldData : RecordTypeField list
+        fieldTypes : TypeList<'Fields>
+        fieldValues : 'Fields HList
+    }
 
-    abstract Accept<'Result> :
-        visitor : IProjectedFieldVisitor<'Result>
-            -> 'Result
+    interface RecordProjection with
 
-type ProjectedField<'FieldType>
-    (
-        fieldName : string,
-        fieldOption : 'FieldType option
-    ) =
-
-    member this.name =
-        fieldName
-
-    member this.value =
-        fieldOption
-
-    interface IProjectedField with
-
-        member this.fieldName =
-            fieldName
-
-        member this.fieldType =
-            typeof<'FieldType>
-
-        member this.Accept<'Result>
-            (visitor : IProjectedFieldVisitor<'Result>)
+        member this.Access<'OutputType>
+            (accessor : RecordAccessor<'OutputType>)
             =
 
-            visitor.Visit<'FieldType>(
-                fieldName,
-                fieldOption
-            )
+            accessor.Access<'RecordType, 'Fields> this
 
 // -----------------------------------------------------------------------------
-// Named heterogeneous products
-//
-// Both F# records and ordinary CLR objects are products of named typed values.
-// The distinction is retained as metadata, but both use the same structural
-// representation.
+// Projected POCOs
 // -----------------------------------------------------------------------------
 
-[<RequireQualifiedAccess>]
-type ProjectedProductKind =
-    | FSharpRecord
-    | Poco
+type PocoAccessor<'OutputType> =
 
-type IProjectedProductVisitor<'Result> =
+    abstract Access<'SourceType> :
+        ProjectedPoco<'SourceType> -> 'OutputType
 
-    abstract Visit<'SourceType> :
-        source : 'SourceType *
-        kind : ProjectedProductKind *
-        fields : IProjectedField list
-            -> 'Result
+and PocoProjection =
 
-type IProjectedProduct =
+    abstract Access<'OutputType> :
+        PocoAccessor<'OutputType> -> 'OutputType
 
-    abstract sourceType : Type
+and ProjectedPoco<'SourceType> =
+    {
+        source : 'SourceType
+        members : IShapeReadOnlyMember<'SourceType> array
+    }
 
-    abstract kind : ProjectedProductKind
+    interface PocoProjection with
 
-    abstract fields : IProjectedField list
-
-    abstract Accept<'Result> :
-        visitor : IProjectedProductVisitor<'Result>
-            -> 'Result
-
-type ProjectedProduct<'SourceType>
-    (
-        source : 'SourceType,
-        kind : ProjectedProductKind,
-        fields : IProjectedField list
-    ) =
-
-    member this.source =
-        source
-
-    member this.kind =
-        kind
-
-    member this.fields =
-        fields
-
-    interface IProjectedProduct with
-
-        member this.sourceType =
-            typeof<'SourceType>
-
-        member this.kind =
-            kind
-
-        member this.fields =
-            fields
-
-        member this.Accept<'Result>
-            (visitor : IProjectedProductVisitor<'Result>)
+        member this.Access<'OutputType>
+            (accessor : PocoAccessor<'OutputType>)
             =
 
-            visitor.Visit<'SourceType>(
-                source,
-                kind,
-                fields
-            )
+            accessor.Access<'SourceType> this
 
 // -----------------------------------------------------------------------------
-// Heterogeneous tuples
-//
-// Tuple elements remain individually typed ProjectedField<'ElementType>
-// instances. Their TypeShape labels are retained, normally Item1, Item2, etc.
+// Projected tuples
 // -----------------------------------------------------------------------------
 
-type IProjectedTupleVisitor<'Result> =
+type TupleAccessor<'OutputType> =
 
-    abstract Visit<'TupleType> :
-        source : 'TupleType *
-        elements : IProjectedField list
-            -> 'Result
+    abstract Access<'TupleType, 'Fields> :
+        ProjectedTuple<'TupleType, 'Fields> -> 'OutputType
 
-type IProjectedTuple =
+and TupleProjection =
 
-    abstract tupleType : Type
+    abstract Access<'OutputType> :
+        TupleAccessor<'OutputType> -> 'OutputType
 
-    abstract elements : IProjectedField list
+and ProjectedTuple<'TupleType, 'Fields> =
+    {
+        source : 'TupleType
+        fieldTypes : TypeList<'Fields>
+        fieldValues : 'Fields HList
+    }
 
-    abstract Accept<'Result> :
-        visitor : IProjectedTupleVisitor<'Result>
-            -> 'Result
+    interface TupleProjection with
 
-type ProjectedTuple<'TupleType>
-    (
-        source : 'TupleType,
-        elements : IProjectedField list
-    ) =
-
-    member this.source =
-        source
-
-    member this.elements =
-        elements
-
-    interface IProjectedTuple with
-
-        member this.tupleType =
-            typeof<'TupleType>
-
-        member this.elements =
-            elements
-
-        member this.Accept<'Result>
-            (visitor : IProjectedTupleVisitor<'Result>)
+        member this.Access<'OutputType>
+            (accessor : TupleAccessor<'OutputType>)
             =
 
-            visitor.Visit<'TupleType>(
-                source,
-                elements
-            )
+            accessor.Access<'TupleType, 'Fields> this
 
 // -----------------------------------------------------------------------------
-// Discriminated unions
-//
-// The active case remains explicit and each payload field remains independently
-// typed.
+// Projected discriminated unions
 // -----------------------------------------------------------------------------
 
-type IProjectedUnionVisitor<'Result> =
+type UnionAccessor<'OutputType> =
 
-    abstract Visit<'UnionType> :
-        source : 'UnionType *
-        caseName : string *
-        fields : IProjectedField list
-            -> 'Result
+    abstract Access<'UnionType, 'Cases> :
+        ProjectedUnion<'UnionType, 'Cases> -> 'OutputType
 
-type IProjectedUnion =
+and UnionProjection =
 
-    abstract unionType : Type
+    abstract Access<'OutputType> :
+        UnionAccessor<'OutputType> -> 'OutputType
 
-    abstract caseName : string
+and ProjectedUnion<'UnionType, 'Cases> =
+    {
+        source : 'UnionType
+        caseData : UnionTypeField list
+        caseTypes : TypeList<'Cases>
+        unionValue : 'Cases HUnion
+    }
 
-    abstract fields : IProjectedField list
+    interface UnionProjection with
 
-    abstract Accept<'Result> :
-        visitor : IProjectedUnionVisitor<'Result>
-            -> 'Result
-
-type ProjectedUnion<'UnionType>
-    (
-        source : 'UnionType,
-        caseName : string,
-        fields : IProjectedField list
-    ) =
-
-    member this.source =
-        source
-
-    member this.caseName =
-        caseName
-
-    member this.fields =
-        fields
-
-    interface IProjectedUnion with
-
-        member this.unionType =
-            typeof<'UnionType>
-
-        member this.caseName =
-            caseName
-
-        member this.fields =
-            fields
-
-        member this.Accept<'Result>
-            (visitor : IProjectedUnionVisitor<'Result>)
+        member this.Access<'OutputType>
+            (accessor : UnionAccessor<'OutputType>)
             =
 
-            visitor.Visit<'UnionType>(
-                source,
-                caseName,
-                fields
-            )
+            accessor.Access<'UnionType, 'Cases> this
 
 // -----------------------------------------------------------------------------
-// Homogeneous enumerables
-//
-// Both the concrete enumerable type and its element type survive projection.
+// Projected homogeneous enumerables
 // -----------------------------------------------------------------------------
 
-type IProjectedEnumerableVisitor<'Result> =
+type EnumerableAccessor<'OutputType> =
 
-    abstract Visit<'Enumerable, 'Element when 'Enumerable :> seq<'Element>> :
-        values : 'Enumerable
-            -> 'Result
+    abstract Access<'Enumerable, 'Element when 'Enumerable :> seq<'Element>> :
+        ProjectedEnumerable<'Enumerable, 'Element> -> 'OutputType
 
-type IProjectedEnumerable =
+and EnumerableProjection =
 
-    abstract enumerableType : Type
+    abstract Access<'OutputType> :
+        EnumerableAccessor<'OutputType> -> 'OutputType
 
-    abstract elementType : Type
+and ProjectedEnumerable<'Enumerable, 'Element when 'Enumerable :> seq<'Element>> =
+    {
+        enumerableValue : 'Enumerable
+    }
 
-    abstract Accept<'Result> :
-        visitor : IProjectedEnumerableVisitor<'Result>
-            -> 'Result
+    interface EnumerableProjection with
 
-type ProjectedEnumerable<'Enumerable, 'Element when 'Enumerable :> seq<'Element>>
-    (
-        values : 'Enumerable
-    ) =
-
-    member this.values =
-        values
-
-    interface IProjectedEnumerable with
-
-        member this.enumerableType =
-            typeof<'Enumerable>
-
-        member this.elementType =
-            typeof<'Element>
-
-        member this.Accept<'Result>
-            (visitor : IProjectedEnumerableVisitor<'Result>)
+        member this.Access<'OutputType>
+            (accessor : EnumerableAccessor<'OutputType>)
             =
 
-            visitor.Visit<'Enumerable, 'Element>(
-                values
-            )
+            accessor.Access<'Enumerable, 'Element> this
 
 // -----------------------------------------------------------------------------
 // Additional type patterns
@@ -11196,8 +11067,8 @@ let (|TType'Byte|_|) (_ : 'ValueType TType) : Teq<'ValueType, byte> option =
 // -----------------------------------------------------------------------------
 // Projection context
 //
-// obj is used here solely as a CLR reference-identity key. It is not used as
-// the stored representation of projected values.
+// obj is used only for CLR reference identity. It is not used as the stored
+// representation of projected values.
 // -----------------------------------------------------------------------------
 
 type ProjectionContext =
@@ -11211,88 +11082,6 @@ type ProjectionContext =
             references = []
             nextReferenceId = 1
         }
-
-// -----------------------------------------------------------------------------
-// Semi-static runtime values
-//
-// Directly reconstructable values retain their original 'ValueType.
-//
-// Indirect values retain their structural kind and the strongest generic type
-// information available for each constituent.
-// -----------------------------------------------------------------------------
-
-type SemiStatic<'ValueType> =
-
-    | StaticObject of 'ValueType option
-    | ProductObject of IProjectedProduct
-    | TupleObject of IProjectedTuple
-    | UnionObject of IProjectedUnion
-    | EnumerableObject of IProjectedEnumerable
-
-    member this.tryStaticObject : 'ValueType option =
-
-        match this with
-
-        | StaticObject value ->
-            value
-
-        | ProductObject _
-        | TupleObject _
-        | UnionObject _
-        | EnumerableObject _ ->
-            None
-
-    member this.tryProductObject : IProjectedProduct option =
-
-        match this with
-
-        | ProductObject value ->
-            Some value
-
-        | StaticObject _
-        | TupleObject _
-        | UnionObject _
-        | EnumerableObject _ ->
-            None
-
-    member this.tryTupleObject : IProjectedTuple option =
-
-        match this with
-
-        | TupleObject value ->
-            Some value
-
-        | StaticObject _
-        | ProductObject _
-        | UnionObject _
-        | EnumerableObject _ ->
-            None
-
-    member this.tryUnionObject : IProjectedUnion option =
-
-        match this with
-
-        | UnionObject value ->
-            Some value
-
-        | StaticObject _
-        | ProductObject _
-        | TupleObject _
-        | EnumerableObject _ ->
-            None
-
-    member this.tryEnumerableObject : IProjectedEnumerable option =
-
-        match this with
-
-        | EnumerableObject value ->
-            Some value
-
-        | StaticObject _
-        | ProductObject _
-        | TupleObject _
-        | UnionObject _ ->
-            None
 
 // -----------------------------------------------------------------------------
 // Projection references
@@ -11361,58 +11150,26 @@ module ProjectionContext =
 
 // -----------------------------------------------------------------------------
 // Projection
-//
-// This is the result context used when an exact quotation of 'ValueType cannot
-// be constructed.
 // -----------------------------------------------------------------------------
 
 type Projection<'ValueType> =
 
-    | NullProduct of
-        projectionSource : 'ValueType
+    | NullProjection of projectionSource : 'ValueType
 
-    /// An F# record whose original nominal value could not be reconstructed.
-    | RecordProduct of
-        projectionSource : 'ValueType
+    | RecordProjection of RecordProjection
 
-    /// An ordinary CLR class or struct whose original nominal value could not
-    /// be reconstructed.
-    | PocoProduct of
-        projectionSource : 'ValueType
+    | PocoProjection of PocoProjection
 
-    /// A tuple whose original tuple could not be reconstructed because one or
-    /// more of its elements required projection.
-    | TupleProduct of
-        projectionSource : 'ValueType
+    | TupleProjection of TupleProjection
 
-    /// An F# discriminated union whose original nominal value could not be
-    /// reconstructed.
-    | UnionProduct of
-        projectionSource : 'ValueType
+    | UnionProjection of UnionProjection
 
-    /// An enumerable whose original container could not be reconstructed.
-    | EnumerableProduct of
-        projectionSource : 'ValueType
+    | EnumerableProjection of EnumerableProjection
 
-    /// The declared type does not expose the concrete runtime structure.
-    | RuntimeProduct of
-        projectionSource : 'ValueType
+    | RuntimeProjection of projectionSource : 'ValueType
 
     static member projectionSourceType =
         typeof<'ValueType>
-
-    member this.projectionSource =
-
-        match this with
-
-        | NullProduct projectionSource
-        | RecordProduct projectionSource
-        | PocoProduct projectionSource
-        | TupleProduct projectionSource
-        | UnionProduct projectionSource
-        | EnumerableProduct projectionSource
-        | RuntimeProduct projectionSource ->
-            projectionSource
 
     // -------------------------------------------------------------------------
     // Expression representation
@@ -11478,6 +11235,45 @@ type Projection<'ValueType> =
             expressions
 
     // -------------------------------------------------------------------------
+    // Reference-aware projection
+    // -------------------------------------------------------------------------
+
+    static member private projectReference<'SourceType>
+        (context : ProjectionContext)
+        (projectionSource : 'SourceType)
+        (projection :
+            int option ->
+            ProjectionContext ->
+            Expr * ProjectionContext)
+        : Expr * ProjectionContext
+        =
+
+        let projectionReference, context =
+
+            ProjectionContext.classify
+                projectionSource
+                context
+
+        match projectionReference with
+
+        | ProjectionReference.RepeatedOccurrence referenceId ->
+
+            Projection<'ValueType>.referenceExpression referenceId,
+            context
+
+        | ProjectionReference.Untracked ->
+
+            projection
+                None
+                context
+
+        | ProjectionReference.FirstOccurrence referenceId ->
+
+            projection
+                (Some referenceId)
+                context
+
+    // -------------------------------------------------------------------------
     // Structural members
     // -------------------------------------------------------------------------
 
@@ -11511,7 +11307,10 @@ type Projection<'ValueType> =
             new IReadOnlyMemberVisitor<'SourceType, Expr * ProjectionContext> with
 
                 member _.Visit<'MemberType>
-                    (memberShape : ReadOnlyMember<'SourceType, 'MemberType>)
+                    (
+                        memberShape :
+                            ReadOnlyMember<'SourceType, 'MemberType>
+                    )
                     =
 
                     let memberValueResult : Result<'MemberType, exn> =
@@ -11694,7 +11493,10 @@ type Projection<'ValueType> =
                             new IReadOnlyMemberVisitor<'SourceType, Expr option> with
 
                                 member _.Visit<'MemberType>
-                                    (memberShape : ReadOnlyMember<'SourceType, 'MemberType>)
+                                    (
+                                        memberShape :
+                                            ReadOnlyMember<'SourceType, 'MemberType>
+                                    )
                                     =
 
                                     let memberValueResult : Result<'MemberType, exn> =
@@ -11761,19 +11563,33 @@ type Projection<'ValueType> =
                 | Shape.Poco
                     (:? ShapePoco<'SourceType> as pocoShape) ->
 
-                    let publicFields : IShapeReadOnlyMember<'SourceType> array =
+                    let publicFields :
+                        IShapeReadOnlyMember<'SourceType> array
+                        =
 
                         pocoShape.Fields
                         |> Array.map (fun field ->
                             field :> IShapeReadOnlyMember<'SourceType>
                         )
 
-                    let properties : IShapeReadOnlyMember<'SourceType> array =
+                    let properties :
+                        IShapeReadOnlyMember<'SourceType> array
+                        =
+
                         pocoShape.Properties
 
                     Array.append
                         publicFields
                         properties
+                    |> tryMember
+
+                | Shape.Tuple
+                    (:? ShapeTuple<'SourceType> as tupleShape) ->
+
+                    tupleShape.Elements
+                    |> Array.map (fun element ->
+                        element :> IShapeReadOnlyMember<'SourceType>
+                    )
                     |> tryMember
 
                 | Shape.FSharpUnion
@@ -11844,7 +11660,7 @@ type Projection<'ValueType> =
 
         match this with
 
-        | NullProduct _ ->
+        | NullProjection _ ->
 
             let noneExpression : Expr<'ValueType option> =
                 <@ None @>
@@ -11852,7 +11668,7 @@ type Projection<'ValueType> =
             noneExpression :> Expr,
             context
 
-        | RuntimeProduct projectionSource ->
+        | RuntimeProjection projectionSource ->
 
             TypeShape.FromValue(box projectionSource).Accept {
                 new ITypeVisitor<Expr * ProjectionContext> with
@@ -11870,225 +11686,225 @@ type Projection<'ValueType> =
                             runtimeValue
             }
 
-        | _ ->
+        | RecordProjection recordProjection ->
 
-            let projectionSource =
-                this.projectionSource
+            recordProjection.Access {
+                new RecordAccessor<Expr * ProjectionContext> with
 
-            let projectionReference, context =
-
-                ProjectionContext.classify
-                    projectionSource
-                    context
-
-            match projectionReference with
-
-            | ProjectionReference.RepeatedOccurrence referenceId ->
-
-                Projection<'ValueType>.referenceExpression referenceId,
-                context
-
-            | ProjectionReference.Untracked
-            | ProjectionReference.FirstOccurrence _ ->
-
-                let referenceId =
-
-                    match projectionReference with
-
-                    | ProjectionReference.FirstOccurrence referenceId ->
-                        Some referenceId
-
-                    | ProjectionReference.Untracked ->
-                        None
-
-                    | ProjectionReference.RepeatedOccurrence _ ->
-                        None
-
-                match this with
-
-                | RecordProduct _ ->
-
-                    match shapeof<'ValueType> with
-
-                    | Shape.FSharpRecord
-                        (:? ShapeFSharpRecord<'ValueType> as recordShape) ->
-
-                        recordShape.Fields
-                        |> Array.map (fun field ->
-                            field :> IShapeReadOnlyMember<'ValueType>
+                    member _.Access<'RecordType, 'Fields>
+                        (
+                            projectedRecord :
+                                ProjectedRecord<'RecordType, 'Fields>
                         )
-                        |> Projection<'ValueType>.projectMembers
+                        =
+
+                        Projection<'ValueType>.projectReference
                             context
-                            referenceId
-                            projectionSource
+                            projectedRecord.source
+                            (fun referenceId context ->
 
-                    | _ ->
+                                match shapeof<'RecordType> with
 
-                        invalidOp
-                            $"Projection expected {typeof<'ValueType>.FullName} to be an F# record."
+                                | Shape.FSharpRecord
+                                    (:? ShapeFSharpRecord<'RecordType> as recordShape) ->
 
-                | PocoProduct _ ->
+                                    recordShape.Fields
+                                    |> Array.map (fun field ->
+                                        field :> IShapeReadOnlyMember<'RecordType>
+                                    )
+                                    |> Projection<'ValueType>.projectMembers
+                                        context
+                                        referenceId
+                                        projectedRecord.source
 
-                    match shapeof<'ValueType> with
+                                | _ ->
 
-                    | Shape.Poco
-                        (:? ShapePoco<'ValueType> as pocoShape) ->
-
-                        let publicFields : IShapeReadOnlyMember<'ValueType> array =
-
-                            pocoShape.Fields
-                            |> Array.map (fun field ->
-                                field :> IShapeReadOnlyMember<'ValueType>
+                                    invalidOp
+                                        $"Projection expected {typeof<'RecordType>.FullName} to be an F# record."
                             )
+            }
 
-                        let properties : IShapeReadOnlyMember<'ValueType> array =
-                            pocoShape.Properties
+        | PocoProjection pocoProjection ->
 
-                        Array.append
-                            publicFields
-                            properties
-                        |> Projection<'ValueType>.projectMembers
-                            context
-                            referenceId
-                            projectionSource
+            pocoProjection.Access {
+                new PocoAccessor<Expr * ProjectionContext> with
 
-                    | _ ->
-
-                        invalidOp
-                            $"Projection expected {typeof<'ValueType>.FullName} to be a POCO."
-
-                | TupleProduct _ ->
-
-                    match shapeof<'ValueType> with
-
-                    | Shape.Tuple
-                        (:? ShapeTuple<'ValueType> as tupleShape) ->
-
-                        tupleShape.Elements
-                        |> Array.map (fun element ->
-                            element :> IShapeReadOnlyMember<'ValueType>
+                    member _.Access<'SourceType>
+                        (
+                            projectedPoco :
+                                ProjectedPoco<'SourceType>
                         )
-                        |> Projection<'ValueType>.projectTupleElements
+                        =
+
+                        Projection<'ValueType>.projectReference
                             context
-                            referenceId
-                            projectionSource
+                            projectedPoco.source
+                            (fun referenceId context ->
 
-                    | _ ->
-
-                        invalidOp
-                            $"Projection expected {typeof<'ValueType>.FullName} to be a tuple."
-
-                | UnionProduct _ ->
-
-                    match shapeof<'ValueType> with
-
-                    | Shape.FSharpUnion
-                        (:? ShapeFSharpUnion<'ValueType> as unionShape) ->
-
-                        let caseIndex =
-                            unionShape.GetTag projectionSource
-
-                        let activeCase =
-                            unionShape.UnionCases.[caseIndex]
-
-                        let caseExpression =
-
-                            Projection<'ValueType>.namedValue
-                                "$case"
-                                (Expr.Value activeCase.CaseInfo.Name)
-
-                        let fieldExpressions, context =
-
-                            activeCase.Fields
-                            |> Array.map (fun field ->
-                                field :> IShapeReadOnlyMember<'ValueType>
-                            )
-                            |> Array.filter Projection<'ValueType>.usableMember
-                            |> Array.fold
-                                (fun (expressions, context) fieldShape ->
-
-                                    let fieldExpression, context =
-
-                                        Projection<'ValueType>.projectMember
-                                            context
-                                            projectionSource
-                                            fieldShape
-
-                                    fieldExpression :: expressions,
+                                projectedPoco.members
+                                |> Projection<'ValueType>.projectMembers
                                     context
-                                )
-                                ([], context)
+                                    referenceId
+                                    projectedPoco.source
+                            )
+            }
 
-                        let expression =
+        | TupleProjection tupleProjection ->
 
-                            caseExpression
-                            :: List.rev fieldExpressions
-                            |> Projection<'ValueType>.identifiedProjectedValues
-                                referenceId
+            tupleProjection.Access {
+                new TupleAccessor<Expr * ProjectionContext> with
 
-                        expression,
-                        context
+                    member _.Access<'TupleType, 'Fields>
+                        (
+                            projectedTuple :
+                                ProjectedTuple<'TupleType, 'Fields>
+                        )
+                        =
 
-                    | _ ->
+                        Projection<'ValueType>.projectReference
+                            context
+                            projectedTuple.source
+                            (fun referenceId context ->
 
-                        invalidOp
-                            $"Projection expected {typeof<'ValueType>.FullName} to be an F# union."
+                                match shapeof<'TupleType> with
 
-                | EnumerableProduct _ ->
+                                | Shape.Tuple
+                                    (:? ShapeTuple<'TupleType> as tupleShape) ->
 
-                    match shapeof<'ValueType> with
+                                    tupleShape.Elements
+                                    |> Array.map (fun element ->
+                                        element :> IShapeReadOnlyMember<'TupleType>
+                                    )
+                                    |> Projection<'ValueType>.projectTupleElements
+                                        context
+                                        referenceId
+                                        projectedTuple.source
 
-                    | Shape.Enumerable enumerableShape ->
+                                | _ ->
 
-                        enumerableShape.Accept {
-                            new IEnumerableVisitor<Expr * ProjectionContext> with
+                                    invalidOp
+                                        $"Projection expected {typeof<'TupleType>.FullName} to be a tuple."
+                            )
+            }
 
-                                member _.Visit<'Enumerable, 'Element when 'Enumerable :> seq<'Element>>() =
+        | UnionProjection unionProjection ->
 
-                                    let enumerableValue : 'Enumerable =
+            unionProjection.Access {
+                new UnionAccessor<Expr * ProjectionContext> with
 
-                                        projectionSource
-                                        |> box
-                                        |> unbox<'Enumerable>
+                    member _.Access<'UnionType, 'Cases>
+                        (
+                            projectedUnion :
+                                ProjectedUnion<'UnionType, 'Cases>
+                        )
+                        =
 
-                                    let expressions, context =
+                        Projection<'ValueType>.projectReference
+                            context
+                            projectedUnion.source
+                            (fun referenceId context ->
 
-                                        enumerableValue
-                                        |> Seq.fold
-                                            (fun (expressions, context) element ->
+                                match shapeof<'UnionType> with
 
-                                                let elementExpression, context =
+                                | Shape.FSharpUnion
+                                    (:? ShapeFSharpUnion<'UnionType> as unionShape) ->
 
-                                                    CodeQuotation<'Element>.expressionWithProjectionContext
+                                    let caseIndex =
+                                        unionShape.GetTag projectedUnion.source
+
+                                    let activeCase =
+                                        unionShape.UnionCases.[caseIndex]
+
+                                    let caseExpression =
+
+                                        Projection<'ValueType>.namedValue
+                                            "$case"
+                                            (Expr.Value activeCase.CaseInfo.Name)
+
+                                    let fieldExpressions, context =
+
+                                        activeCase.Fields
+                                        |> Array.map (fun field ->
+                                            field :> IShapeReadOnlyMember<'UnionType>
+                                        )
+                                        |> Array.filter Projection<'ValueType>.usableMember
+                                        |> Array.fold
+                                            (fun (expressions, context) fieldShape ->
+
+                                                let fieldExpression, context =
+
+                                                    Projection<'ValueType>.projectMember
                                                         context
-                                                        element
+                                                        projectedUnion.source
+                                                        fieldShape
 
-                                                elementExpression :: expressions,
+                                                fieldExpression :: expressions,
                                                 context
                                             )
                                             ([], context)
 
                                     let expression =
 
-                                        expressions
-                                        |> List.rev
+                                        caseExpression
+                                        :: List.rev fieldExpressions
                                         |> Projection<'ValueType>.identifiedProjectedValues
                                             referenceId
 
                                     expression,
                                     context
-                        }
 
-                    | _ ->
+                                | _ ->
 
-                        invalidOp
-                            $"Projection expected {typeof<'ValueType>.FullName} to be enumerable."
+                                    invalidOp
+                                        $"Projection expected {typeof<'UnionType>.FullName} to be an F# union."
+                            )
+            }
 
-                | NullProduct _
-                | RuntimeProduct _ ->
+        | EnumerableProjection enumerableProjection ->
 
-                    invalidOp
-                        "Projection case was expected to be handled before reference classification."
+            enumerableProjection.Access {
+                new EnumerableAccessor<Expr * ProjectionContext> with
+
+                    member _.Access<'Enumerable, 'Element when 'Enumerable :> seq<'Element>>
+                        (
+                            projectedEnumerable :
+                                ProjectedEnumerable<'Enumerable, 'Element>
+                        )
+                        =
+
+                        Projection<'ValueType>.projectReference
+                            context
+                            projectedEnumerable.enumerableValue
+                            (fun referenceId context ->
+
+                                let expressions, context =
+
+                                    projectedEnumerable.enumerableValue
+                                    |> Seq.fold
+                                        (fun (expressions, context) element ->
+
+                                            let elementExpression, context =
+
+                                                CodeQuotation<'Element>.expressionWithProjectionContext
+                                                    context
+                                                    element
+
+                                            elementExpression :: expressions,
+                                            context
+                                        )
+                                        ([], context)
+
+                                let expression =
+
+                                    expressions
+                                    |> List.rev
+                                    |> Projection<'ValueType>.identifiedProjectedValues
+                                        referenceId
+
+                                expression,
+                                context
+                            )
+            }
 
     member this.projectionExpression : Expr =
 
@@ -12108,12 +11924,12 @@ type Projection<'ValueType> =
 
     member this.projectionMemberNames : string list =
 
-        let projectionSource =
-            this.projectionSource
-
         match this with
 
-        | RuntimeProduct projectionSource ->
+        | NullProjection _ ->
+            []
+
+        | RuntimeProjection projectionSource ->
 
             TypeShape.FromValue(box projectionSource).Accept {
                 new ITypeVisitor<string list> with
@@ -12126,93 +11942,109 @@ type Projection<'ValueType> =
                             |> box
                             |> unbox<'RuntimeType>
 
-                        runtimeValue
-                        |> Projection<'RuntimeType>.ofValue
-                        |> fun projection ->
+                        match CodeQuotation<'RuntimeType>.lift runtimeValue with
+
+                        | DirectQuote _ ->
+                            []
+
+                        | IndirectQuote projection ->
                             projection.projectionMemberNames
             }
 
-        | RecordProduct _ ->
+        | RecordProjection recordProjection ->
 
-            match shapeof<'ValueType> with
+            recordProjection.Access {
+                new RecordAccessor<string list> with
 
-            | Shape.FSharpRecord
-                (:? ShapeFSharpRecord<'ValueType> as recordShape) ->
+                    member _.Access<'RecordType, 'Fields>
+                        (
+                            _projectedRecord :
+                                ProjectedRecord<'RecordType, 'Fields>
+                        )
+                        =
 
-                recordShape.Fields
-                |> Array.map (fun field ->
-                    field :> IShapeReadOnlyMember<'ValueType>
-                )
-                |> Array.filter Projection<'ValueType>.usableMember
-                |> Array.map _.Label
-                |> Array.toList
+                        match shapeof<'RecordType> with
 
-            | _ ->
-                []
+                        | Shape.FSharpRecord
+                            (:? ShapeFSharpRecord<'RecordType> as recordShape) ->
 
-        | PocoProduct _ ->
+                            recordShape.Fields
+                            |> Array.map (fun field ->
+                                field :> IShapeReadOnlyMember<'RecordType>
+                            )
+                            |> Array.filter Projection<'ValueType>.usableMember
+                            |> Array.map _.Label
+                            |> Array.toList
 
-            match shapeof<'ValueType> with
+                        | _ ->
+                            []
+            }
 
-            | Shape.Poco
-                (:? ShapePoco<'ValueType> as pocoShape) ->
+        | PocoProjection pocoProjection ->
 
-                let publicFields : IShapeReadOnlyMember<'ValueType> array =
+            pocoProjection.Access {
+                new PocoAccessor<string list> with
 
-                    pocoShape.Fields
-                    |> Array.map (fun field ->
-                        field :> IShapeReadOnlyMember<'ValueType>
-                    )
+                    member _.Access<'SourceType>
+                        (
+                            projectedPoco :
+                                ProjectedPoco<'SourceType>
+                        )
+                        =
 
-                Array.append
-                    publicFields
-                    pocoShape.Properties
-                |> Array.filter Projection<'ValueType>.usableMember
-                |> Array.map _.Label
-                |> Array.toList
+                        projectedPoco.members
+                        |> Array.filter Projection<'ValueType>.usableMember
+                        |> Array.map _.Label
+                        |> Array.toList
+            }
 
-            | _ ->
-                []
+        | TupleProjection _ ->
+            []
 
-        | UnionProduct _ ->
+        | UnionProjection unionProjection ->
 
-            match shapeof<'ValueType> with
+            unionProjection.Access {
+                new UnionAccessor<string list> with
 
-            | Shape.FSharpUnion
-                (:? ShapeFSharpUnion<'ValueType> as unionShape) ->
+                    member _.Access<'UnionType, 'Cases>
+                        (
+                            projectedUnion :
+                                ProjectedUnion<'UnionType, 'Cases>
+                        )
+                        =
 
-                let activeCase =
+                        match shapeof<'UnionType> with
 
-                    unionShape.UnionCases.[
-                        unionShape.GetTag projectionSource
-                    ]
+                        | Shape.FSharpUnion
+                            (:? ShapeFSharpUnion<'UnionType> as unionShape) ->
 
-                "$case"
-                ::
-                (
-                    activeCase.Fields
-                    |> Array.map (fun field ->
-                        field :> IShapeReadOnlyMember<'ValueType>
-                    )
-                    |> Array.filter Projection<'ValueType>.usableMember
-                    |> Array.map _.Label
-                    |> Array.toList
-                )
+                            let activeCase =
 
-            | _ ->
-                []
+                                unionShape.UnionCases.[
+                                    unionShape.GetTag projectedUnion.source
+                                ]
 
-        | NullProduct _
-        | TupleProduct _
-        | EnumerableProduct _ ->
+                            "$case"
+                            ::
+                            (
+                                activeCase.Fields
+                                |> Array.map (fun field ->
+                                    field :> IShapeReadOnlyMember<'UnionType>
+                                )
+                                |> Array.filter Projection<'ValueType>.usableMember
+                                |> Array.map _.Label
+                                |> Array.toList
+                            )
+
+                        | _ ->
+                            []
+            }
+
+        | EnumerableProjection _ ->
             []
 
     // -------------------------------------------------------------------------
     // Projection path access
-    //
-    // These operations remain intentionally dynamic because the requested path
-    // itself is a runtime string list. They are not the canonical value-object
-    // representation.
     // -------------------------------------------------------------------------
 
     member this.tryPathExpression
@@ -12227,9 +12059,90 @@ type Projection<'ValueType> =
 
         | path ->
 
-            Projection<'ValueType>.tryNamedPathExpression
-                this.projectionSource
-                path
+            match this with
+
+            | NullProjection projectionSource ->
+
+                Projection<'ValueType>.tryNamedPathExpression
+                    projectionSource
+                    path
+
+            | RuntimeProjection projectionSource ->
+
+                Projection<'ValueType>.tryNamedPathExpression
+                    projectionSource
+                    path
+
+            | RecordProjection recordProjection ->
+
+                recordProjection.Access {
+                    new RecordAccessor<Expr option> with
+
+                        member _.Access<'RecordType, 'Fields>
+                            (
+                                projectedRecord :
+                                    ProjectedRecord<'RecordType, 'Fields>
+                            )
+                            =
+
+                            Projection<'RecordType>.tryNamedPathExpression
+                                projectedRecord.source
+                                path
+                }
+
+            | PocoProjection pocoProjection ->
+
+                pocoProjection.Access {
+                    new PocoAccessor<Expr option> with
+
+                        member _.Access<'SourceType>
+                            (
+                                projectedPoco :
+                                    ProjectedPoco<'SourceType>
+                            )
+                            =
+
+                            Projection<'SourceType>.tryNamedPathExpression
+                                projectedPoco.source
+                                path
+                }
+
+            | TupleProjection tupleProjection ->
+
+                tupleProjection.Access {
+                    new TupleAccessor<Expr option> with
+
+                        member _.Access<'TupleType, 'Fields>
+                            (
+                                projectedTuple :
+                                    ProjectedTuple<'TupleType, 'Fields>
+                            )
+                            =
+
+                            Projection<'TupleType>.tryNamedPathExpression
+                                projectedTuple.source
+                                path
+                }
+
+            | UnionProjection unionProjection ->
+
+                unionProjection.Access {
+                    new UnionAccessor<Expr option> with
+
+                        member _.Access<'UnionType, 'Cases>
+                            (
+                                projectedUnion :
+                                    ProjectedUnion<'UnionType, 'Cases>
+                            )
+                            =
+
+                            Projection<'UnionType>.tryNamedPathExpression
+                                projectedUnion.source
+                                path
+                }
+
+            | EnumerableProjection _ ->
+                None
 
     member this.tryMemberExpression
         (memberName : string)
@@ -12262,6 +12175,9 @@ type Projection<'ValueType> =
 
     // -------------------------------------------------------------------------
     // Projection construction
+    //
+    // The structural representation is created here. There is no later
+    // SemiStatic materialization pass.
     // -------------------------------------------------------------------------
 
     static member ofValue
@@ -12274,361 +12190,237 @@ type Projection<'ValueType> =
 
         if isNull valueObject then
 
-            NullProduct projectionSource
+            NullProjection projectionSource
 
         else
 
-            match shapeof<'ValueType> with
-
-            | Shape.FSharpRecord
-                (:? ShapeFSharpRecord<'ValueType>) ->
-
-                RecordProduct projectionSource
-
-            | Shape.Poco
-                (:? ShapePoco<'ValueType>) ->
-
-                PocoProduct projectionSource
-
-            | Shape.Tuple
-                (:? ShapeTuple<'ValueType>) ->
-
-                TupleProduct projectionSource
-
-            | Shape.FSharpUnion
-                (:? ShapeFSharpUnion<'ValueType>) ->
-
-                UnionProduct projectionSource
-
-            | Shape.Enumerable _ ->
-
-                EnumerableProduct projectionSource
-
-            | shape ->
-
-                let runtimeType =
-                    valueObject.GetType()
-
-                if runtimeType <> typeof<'ValueType> then
-
-                    RuntimeProduct projectionSource
-
-                else
-
-                    invalidOp
-                        $"Projection does not yet support {shape.Type.FullName}"
-
-    // -------------------------------------------------------------------------
-    // Typed structural materialization helpers
-    // -------------------------------------------------------------------------
-
-    static member private projectedField
-        (projectionSource : 'SourceType)
-        (memberShape : IShapeReadOnlyMember<'SourceType>)
-        : IProjectedField
-        =
-
-        memberShape.Accept {
-            new IReadOnlyMemberVisitor<'SourceType, IProjectedField> with
-
-                member _.Visit<'MemberType>
-                    (memberShape : ReadOnlyMember<'SourceType, 'MemberType>)
-                    =
-
-                    let memberValue : 'MemberType option =
-
-                        try
-
-                            let value =
-                                memberShape.Get projectionSource
-
-                            if obj.ReferenceEquals(box value, null) then
-                                None
-                            else
-                                Some value
-
-                        with _ ->
-                            None
-
-                    ProjectedField<'MemberType>(
-                        memberShape.Label,
-                        memberValue
-                    )
-                    :> IProjectedField
-        }
-
-    static member private projectedFields
-        (projectionSource : 'SourceType)
-        (members : IShapeReadOnlyMember<'SourceType> array)
-        : IProjectedField list
-        =
-
-        members
-        |> Array.filter Projection<'ValueType>.usableMember
-        |> Array.map (fun memberShape ->
-
-            Projection<'ValueType>.projectedField
-                projectionSource
-                memberShape
-        )
-        |> Array.toList
-
-    // -------------------------------------------------------------------------
-    // Semi-static runtime materialization
-    //
-    // Unlike the previous DynamicObj representation, the member values are not
-    // reduced to obj. Each field retains its actual declared generic type.
-    // -------------------------------------------------------------------------
-
-    member internal this.valueObjectWithContext
-        (context : ProjectionContext)
-        : SemiStatic<'ValueType> * ProjectionContext
-        =
-
-        match this with
-
-        | NullProduct _ ->
-
-            StaticObject None,
-            context
-
-        | RuntimeProduct projectionSource ->
-
-            TypeShape.FromValue(box projectionSource).Accept {
-                new ITypeVisitor<SemiStatic<'ValueType> * ProjectionContext> with
-
-                    member _.Visit<'RuntimeType>() =
-
-                        let runtimeValue : 'RuntimeType =
-
-                            projectionSource
-                            |> box
-                            |> unbox<'RuntimeType>
-
-                        let runtimeResult, context =
-
-                            CodeQuotation<'RuntimeType>.valueObjectWithProjectionContext
-                                context
-                                runtimeValue
-
-                        match runtimeResult with
-
-                        | StaticObject None ->
-
-                            StaticObject None,
-                            context
-
-                        | StaticObject (Some _) ->
-
-                            StaticObject (Some projectionSource),
-                            context
-
-                        | ProductObject product ->
-
-                            ProductObject product,
-                            context
-
-                        | TupleObject tuple ->
-
-                            TupleObject tuple,
-                            context
-
-                        | UnionObject union ->
-
-                            UnionObject union,
-                            context
-
-                        | EnumerableObject enumerable ->
-
-                            EnumerableObject enumerable,
-                            context
-            }
-
-        | RecordProduct projectionSource ->
-
-            match shapeof<'ValueType> with
-
-            | Shape.FSharpRecord
-                (:? ShapeFSharpRecord<'ValueType> as recordShape) ->
-
-                let fields =
-
-                    recordShape.Fields
-                    |> Array.map (fun field ->
-                        field :> IShapeReadOnlyMember<'ValueType>
-                    )
-                    |> Projection<'ValueType>.projectedFields
-                        projectionSource
-
-                let projectedProduct : IProjectedProduct =
-
-                    ProjectedProduct<'ValueType>(
-                        projectionSource,
-                        ProjectedProductKind.FSharpRecord,
-                        fields
-                    )
-
-                ProductObject projectedProduct,
-                context
-
-            | _ ->
-
-                invalidOp
-                    $"Projection expected {typeof<'ValueType>.FullName} to be an F# record."
-
-        | PocoProduct projectionSource ->
-
-            match shapeof<'ValueType> with
-
-            | Shape.Poco
-                (:? ShapePoco<'ValueType> as pocoShape) ->
-
-                let publicFields : IShapeReadOnlyMember<'ValueType> array =
-
-                    pocoShape.Fields
-                    |> Array.map (fun field ->
-                        field :> IShapeReadOnlyMember<'ValueType>
-                    )
-
-                let properties : IShapeReadOnlyMember<'ValueType> array =
-                    pocoShape.Properties
-
-                let fields =
-
-                    Array.append
-                        publicFields
-                        properties
-                    |> Projection<'ValueType>.projectedFields
-                        projectionSource
-
-                let projectedProduct : IProjectedProduct =
-
-                    ProjectedProduct<'ValueType>(
-                        projectionSource,
-                        ProjectedProductKind.Poco,
-                        fields
-                    )
-
-                ProductObject projectedProduct,
-                context
-
-            | _ ->
-
-                invalidOp
-                    $"Projection expected {typeof<'ValueType>.FullName} to be a POCO."
-
-        | TupleProduct projectionSource ->
-
-            match shapeof<'ValueType> with
-
-            | Shape.Tuple
-                (:? ShapeTuple<'ValueType> as tupleShape) ->
-
-                let elements =
-
-                    tupleShape.Elements
-                    |> Array.map (fun element ->
-                        element :> IShapeReadOnlyMember<'ValueType>
-                    )
-                    |> Projection<'ValueType>.projectedFields
-                        projectionSource
-
-                let projectedTuple : IProjectedTuple =
-
-                    ProjectedTuple<'ValueType>(
-                        projectionSource,
-                        elements
-                    )
-
-                TupleObject projectedTuple,
-                context
-
-            | _ ->
-
-                invalidOp
-                    $"Projection expected {typeof<'ValueType>.FullName} to be a tuple."
-
-        | UnionProduct projectionSource ->
-
-            match shapeof<'ValueType> with
-
-            | Shape.FSharpUnion
-                (:? ShapeFSharpUnion<'ValueType> as unionShape) ->
-
-                let caseIndex =
-                    unionShape.GetTag projectionSource
-
-                let activeCase =
-                    unionShape.UnionCases.[caseIndex]
-
-                let fields =
-
-                    activeCase.Fields
-                    |> Array.map (fun field ->
-                        field :> IShapeReadOnlyMember<'ValueType>
-                    )
-                    |> Projection<'ValueType>.projectedFields
-                        projectionSource
-
-                let projectedUnion : IProjectedUnion =
-
-                    ProjectedUnion<'ValueType>(
-                        projectionSource,
-                        activeCase.CaseInfo.Name,
-                        fields
-                    )
-
-                UnionObject projectedUnion,
-                context
-
-            | _ ->
-
-                invalidOp
-                    $"Projection expected {typeof<'ValueType>.FullName} to be an F# union."
-
-        | EnumerableProduct projectionSource ->
-
-            match shapeof<'ValueType> with
-
-            | Shape.Enumerable enumerableShape ->
-
-                enumerableShape.Accept {
-                    new IEnumerableVisitor<SemiStatic<'ValueType> * ProjectionContext> with
-
-                        member _.Visit<'Enumerable, 'Element when 'Enumerable :> seq<'Element>>() =
-
-                            let enumerableValue : 'Enumerable =
-
-                                projectionSource
-                                |> box
-                                |> unbox<'Enumerable>
-
-                            let projectedEnumerable : IProjectedEnumerable =
-
-                                ProjectedEnumerable<'Enumerable, 'Element>(
-                                    enumerableValue
+            match tType<'ValueType> with
+
+            | TType.Record record ->
+
+                {
+                    new RecordConvEvaluator<'ValueType, Projection<'ValueType>> with
+
+                        member _.Eval<'RecordFields>
+                            (fieldData : RecordTypeField list)
+                            (fieldTypes : TypeList<'RecordFields>)
+                            (conversion : Conv<'ValueType, 'RecordFields HList>)
+                            =
+
+                            let fieldValues : 'RecordFields HList =
+                                conversion.To projectionSource
+
+                            let projectedRecord : RecordProjection =
+
+                                (
+                                    {
+                                        source = projectionSource
+                                        fieldData = fieldData
+                                        fieldTypes = fieldTypes
+                                        fieldValues = fieldValues
+                                    }
+                                    : ProjectedRecord<'ValueType, 'RecordFields>
                                 )
+                                :> RecordProjection
 
-                            EnumerableObject projectedEnumerable,
-                            context
+                            RecordProjection projectedRecord
                 }
+                |> record.Apply
+
+            | TType.Tuple tuple ->
+
+                {
+                    new TupleConvEvaluator<'ValueType, Projection<'ValueType>> with
+
+                        member _.Eval<'TupleFields>
+                            (fieldTypes : TypeList<'TupleFields>)
+                            (conversion : Conv<'ValueType, 'TupleFields HList>)
+                            =
+
+                            let fieldValues : 'TupleFields HList =
+                                conversion.To projectionSource
+
+                            let projectedTuple : TupleProjection =
+
+                                (
+                                    {
+                                        source = projectionSource
+                                        fieldTypes = fieldTypes
+                                        fieldValues = fieldValues
+                                    }
+                                    : ProjectedTuple<'ValueType, 'TupleFields>
+                                )
+                                :> TupleProjection
+
+                            TupleProjection projectedTuple
+                }
+                |> tuple.Apply
+
+            | TType.Union union ->
+
+                {
+                    new UnionConvEvaluator<'ValueType, Projection<'ValueType>> with
+
+                        member _.Eval<'Cases>
+                            (caseData : UnionTypeField list)
+                            (caseTypes : TypeList<'Cases>)
+                            (conversion : Conv<'ValueType, 'Cases HUnion>)
+                            =
+
+                            let unionValue : 'Cases HUnion =
+                                conversion.To projectionSource
+
+                            let projectedUnion : UnionProjection =
+
+                                (
+                                    {
+                                        source = projectionSource
+                                        caseData = caseData
+                                        caseTypes = caseTypes
+                                        unionValue = unionValue
+                                    }
+                                    : ProjectedUnion<'ValueType, 'Cases>
+                                )
+                                :> UnionProjection
+
+                            UnionProjection projectedUnion
+                }
+                |> union.Apply
 
             | _ ->
 
-                invalidOp
-                    $"Projection expected {typeof<'ValueType>.FullName} to be enumerable."
+                match shapeof<'ValueType> with
 
+                | Shape.Poco
+                    (:? ShapePoco<'ValueType> as pocoShape) ->
+
+                    let publicFields :
+                        IShapeReadOnlyMember<'ValueType> array
+                        =
+
+                        pocoShape.Fields
+                        |> Array.map (fun field ->
+                            field :> IShapeReadOnlyMember<'ValueType>
+                        )
+
+                    let properties :
+                        IShapeReadOnlyMember<'ValueType> array
+                        =
+
+                        pocoShape.Properties
+
+                    let members =
+
+                        Array.append
+                            publicFields
+                            properties
+                        |> Array.filter Projection<'ValueType>.usableMember
+
+                    let projectedPoco : PocoProjection =
+
+                        (
+                            {
+                                source = projectionSource
+                                members = members
+                            }
+                            : ProjectedPoco<'ValueType>
+                        )
+                        :> PocoProjection
+
+                    PocoProjection projectedPoco
+
+                | Shape.Enumerable enumerableShape ->
+
+                    enumerableShape.Accept {
+                        new IEnumerableVisitor<Projection<'ValueType>> with
+
+                            member _.Visit<'Enumerable, 'Element when 'Enumerable :> seq<'Element>>() =
+
+                                let enumerableValue : 'Enumerable =
+
+                                    projectionSource
+                                    |> box
+                                    |> unbox<'Enumerable>
+
+                                let projectedEnumerable : EnumerableProjection =
+
+                                    (
+                                        {
+                                            enumerableValue = enumerableValue
+                                        }
+                                        : ProjectedEnumerable<'Enumerable, 'Element>
+                                    )
+                                    :> EnumerableProjection
+
+                                EnumerableProjection projectedEnumerable
+                    }
+
+                | shape ->
+
+                    let runtimeType =
+                        valueObject.GetType()
+
+                    if runtimeType <> typeof<'ValueType> then
+
+                        RuntimeProjection projectionSource
+
+                    else
+
+                        invalidOp
+                            $"Projection does not yet support {shape.Type.FullName}"
+
+    member this.tryAccessor<'OutputType>
+        (recordAccessor : RecordAccessor<'OutputType>)
+        : 'OutputType option =
+        match this with
+        | RecordProjection projection ->
+            Some (projection.Access recordAccessor)
+        | _ ->
+            None
+
+    member this.tryAccessor<'OutputType>
+        (pocoAccessor : PocoAccessor<'OutputType>)
+        : 'OutputType option =
+        match this with
+        | PocoProjection projection ->
+            Some (projection.Access pocoAccessor)
+        | _ ->
+            None
+
+    member this.tryAccessor<'OutputType>
+        (tupleAccessor : TupleAccessor<'OutputType>)
+        : 'OutputType option =
+        match this with
+        | TupleProjection projection ->
+            Some (projection.Access tupleAccessor)
+        | _ ->
+            None
+
+    member this.tryAccessor<'OutputType>
+        (unionAccessor : UnionAccessor<'OutputType>)
+        : 'OutputType option =
+        match this with
+        | UnionProjection projection ->
+            Some (projection.Access unionAccessor)
+        | _ ->
+            None
+
+    member this.tryAccessor<'OutputType>
+        (enumerableAccessor : EnumerableAccessor<'OutputType>)
+        : 'OutputType option =
+        match this with
+        | EnumerableProjection projection ->
+            Some (projection.Access enumerableAccessor)
+        | _ ->
+            None
 // -----------------------------------------------------------------------------
 // CodeQuotation
 // -----------------------------------------------------------------------------
 
 and CodeQuotation<'ValueType> =
 
-    /// The original type can be reconstructed exactly.
     | DirectQuote of Expr<'ValueType>
 
-    /// The original type cannot be reconstructed exactly and therefore needs
-    /// to be structurally projected.
     | IndirectQuote of Projection<'ValueType>
 
     member this.fsharpTypeName =
@@ -12717,52 +12509,33 @@ and CodeQuotation<'ValueType> =
         | IndirectQuote _ ->
             None
 
-    static member inline project
+    static member tryProject
+        (quote : CodeQuotation<'ValueType>)
+        : Projection<'ValueType> option
+        =
+
+        match quote with
+
+        | DirectQuote _ ->
+            None
+
+        | IndirectQuote projection ->
+            Some projection
+
+    static member project
         (quote : CodeQuotation<'ValueType>)
         : Projection<'ValueType>
         =
 
         match quote with
 
-        | DirectQuote expression ->
+        | DirectQuote _ ->
 
-            LeafExpressionConverter.EvaluateQuotation(expression)
-            :?> 'ValueType
-            |> Projection<'ValueType>.ofValue
+            invalidOp
+                $"CodeQuotation<{typeof<'ValueType>.FullName}> is direct and therefore has no structural projection."
 
         | IndirectQuote projection ->
             projection
-
-    static member valueObject
-        (quote : CodeQuotation<'ValueType>)
-        : SemiStatic<'ValueType>
-        =
-
-        match quote with
-
-        | DirectQuote expression ->
-
-            let value =
-
-                expression
-                |> LeafExpressionConverter.EvaluateQuotation
-                :?> 'ValueType
-
-            if obj.ReferenceEquals(box value, null) then
-
-                StaticObject None
-
-            else
-
-                StaticObject(
-                    Some value
-                )
-
-        | IndirectQuote projection ->
-
-            projection.valueObjectWithContext
-                ProjectionContext.empty
-            |> fst
 
     member this.lowered =
         CodeQuotation.lower this
@@ -12770,8 +12543,8 @@ and CodeQuotation<'ValueType> =
     member this.tryEvaluate =
         CodeQuotation.tryValue this
 
-    member this.evaluated =
-        CodeQuotation.valueObject this
+    member this.tryProjected =
+        CodeQuotation.tryProject this
 
     member this.projected =
         CodeQuotation.project this
@@ -13007,6 +12780,8 @@ and CodeQuotation<'ValueType> =
 
     // -------------------------------------------------------------------------
     // Direct quotation
+    //
+    // This remains the same logic you already had.
     // -------------------------------------------------------------------------
 
     static member private tryDirect
@@ -13017,10 +12792,6 @@ and CodeQuotation<'ValueType> =
         let expression : Expr option =
 
             match tType<'ValueType> with
-
-            // -----------------------------------------------------------------
-            // Explicit external-type reconstruction
-            // -----------------------------------------------------------------
 
             | TType.Teq TType.Url typeEquality ->
 
@@ -13113,10 +12884,6 @@ and CodeQuotation<'ValueType> =
                 | _ ->
                     None
 
-            // -----------------------------------------------------------------
-            // CLR enums
-            // -----------------------------------------------------------------
-
             | TType'Enum ->
 
                 Expr.Value(
@@ -13124,10 +12891,6 @@ and CodeQuotation<'ValueType> =
                     typeof<'ValueType>
                 )
                 |> Some
-
-            // -----------------------------------------------------------------
-            // Primitive/direct values
-            // -----------------------------------------------------------------
 
             | TType'Byte typeEquality ->
 
@@ -13192,10 +12955,6 @@ and CodeQuotation<'ValueType> =
                 |> Expr.Value
                 |> Some
 
-            // -----------------------------------------------------------------
-            // Array
-            // -----------------------------------------------------------------
-
             | TType.Array array ->
 
                 {
@@ -13217,10 +12976,6 @@ and CodeQuotation<'ValueType> =
                             )
                 }
                 |> array.Apply
-
-            // -----------------------------------------------------------------
-            // Seq
-            // -----------------------------------------------------------------
 
             | TType.Seq sequence ->
 
@@ -13247,10 +13002,6 @@ and CodeQuotation<'ValueType> =
                             )
                 }
                 |> sequence.Apply
-
-            // -----------------------------------------------------------------
-            // ResizeArray
-            // -----------------------------------------------------------------
 
             | TType.ResizeArray resizeArray ->
 
@@ -13295,10 +13046,6 @@ and CodeQuotation<'ValueType> =
                 }
                 |> resizeArray.Apply
 
-            // -----------------------------------------------------------------
-            // Set
-            // -----------------------------------------------------------------
-
             | TType.Set set ->
 
                 {
@@ -13341,10 +13088,6 @@ and CodeQuotation<'ValueType> =
                             )
                 }
                 |> set.Apply
-
-            // -----------------------------------------------------------------
-            // Map
-            // -----------------------------------------------------------------
 
             | TType.Map map ->
 
@@ -13423,10 +13166,6 @@ and CodeQuotation<'ValueType> =
                             )
                 }
                 |> map.Apply
-
-            // -----------------------------------------------------------------
-            // Dictionary
-            // -----------------------------------------------------------------
 
             | TType.Dictionary dictionary ->
 
@@ -13531,10 +13270,6 @@ and CodeQuotation<'ValueType> =
                 }
                 |> dictionary.Apply
 
-            // -----------------------------------------------------------------
-            // Tuple
-            // -----------------------------------------------------------------
-
             | TType.Tuple tuple ->
 
                 {
@@ -13553,10 +13288,6 @@ and CodeQuotation<'ValueType> =
                             |> Option.map Expr.NewTuple
                 }
                 |> tuple.Apply
-
-            // -----------------------------------------------------------------
-            // Record
-            // -----------------------------------------------------------------
 
             | TType.Record record ->
 
@@ -13584,10 +13315,6 @@ and CodeQuotation<'ValueType> =
                 }
                 |> record.Apply
 
-            // -----------------------------------------------------------------
-            // Union
-            // -----------------------------------------------------------------
-
             | TType.Union union ->
 
                 {
@@ -13608,10 +13335,6 @@ and CodeQuotation<'ValueType> =
                                 unionValue
                 }
                 |> union.Apply
-
-            // -----------------------------------------------------------------
-            // Exact quotation unavailable
-            // -----------------------------------------------------------------
 
             | _ ->
                 None
@@ -13642,40 +13365,6 @@ and CodeQuotation<'ValueType> =
             |> Projection<'ValueType>.ofValue
             |> IndirectQuote
 
-    // -------------------------------------------------------------------------
-    // Semi-static runtime materialization with shared projection context
-    // -------------------------------------------------------------------------
-
-    static member internal valueObjectWithProjectionContext
-        (context : ProjectionContext)
-        (value : 'ValueType)
-        : SemiStatic<'ValueType> * ProjectionContext
-        =
-
-        if obj.ReferenceEquals(box value, null) then
-
-            StaticObject None,
-            context
-
-        else
-
-            match CodeQuotation<'ValueType>.tryDirect value with
-
-            | Some _ ->
-
-                StaticObject(
-                    Some value
-                ),
-                context
-
-            | None ->
-
-                value
-                |> Projection<'ValueType>.ofValue
-                |> fun projection ->
-                    projection.valueObjectWithContext
-                        context
-
 type Type with
 
     member this.fsharpName =
@@ -13700,9 +13389,6 @@ type TypeShape<'StaticType> with
         =
 
         this.runtimeShape(value).Type
-
-// Put the TypeProviderAssemblyAttribute in the runtime DLL,
-// pointing to the design-time DLL.
 
 [<assembly: CompilerServices.TypeProviderAssembly("DoxAletheia.DesignTime.dll")>]
 do ()

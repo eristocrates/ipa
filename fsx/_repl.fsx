@@ -39,7 +39,7 @@ open FSharp.Json
 // open FSharpPlus
 // open FsHttp
 // open FsPublicSuffix
-// open HCollections
+open HCollections
 // open Iana
 // open IriTools
 // open Json.More
@@ -69,10 +69,10 @@ open ProviderImplementation.ProvidedTypes
 open PuppeteerSharp
 open PuppeteerSharp.Cdp
 // open RDFSharp.Model
-// open ShapeSifter
-// open ShapeSifter.Patterns
+open ShapeSifter
+open ShapeSifter.Patterns
 open System
-// open System.Collections
+open System.Collections
 // open System.Collections.Concurrent
 // open System.ComponentModel.DataAnnotations
 // open System.Diagnostics
@@ -95,14 +95,14 @@ open System.Text.Json
 // open System.Xml.Linq
 open System.Xml.XPath
 // open Tavis.UriTemplates
-// open TypeEquality
-// open TypeShape
-// open TypeShape.Core
+open TypeEquality
+open TypeShape
+open TypeShape.Core
 // open VDS.Common.Tries
 open VDS.RDF
 open WebSharper.Core 
-// #r "nuget: Esri.ArcGISRuntime, 300.0.0"
-// open Esri.ArcGISRuntime
+#r "nuget: Esri.ArcGISRuntime, 300.0.0"
+open Esri.ArcGISRuntime
 
 open Microsoft.FSharp.Linq.RuntimeHelpers
 open Microsoft.FSharp.Quotations
@@ -122,13 +122,61 @@ fsi.AddPrinter<ImmutableDynamicObj>(
         + ImmutableDynamicObj.format dynamicObject
 )
 
-(*
+type UriSchemes = Iana.RegistryProvider.``Uniform Resource Identifier (URI) Schemes``.``Uniform Resource Identifier (URI) Schemes``
+type PublicSuffixes = PublicSuffixList.PublicSuffixProvider
+type Mime = Iana.InternetMediaTypeProvider
+
+type foaf = VocabularyProvider<"foaf", "http://xmlns.com/foaf/0.1/", @"D:\http\com\xmlns\foaf\0.1&sol;\text\turtle.ttl">
+
+let memberAccessor = 
+    {
+        new PocoAccessor<bool> with
+
+            member _.Access<'SourceType>
+                (projectedPoco : ProjectedPoco<'SourceType>)
+                =
+
+                let source : 'SourceType =
+                    projectedPoco.source
+
+                projectedPoco.members
+                |> Array.iter (fun memberShape ->
+                            memberShape.Accept {
+                                new IReadOnlyMemberVisitor<'SourceType, bool> with
+
+                                    member _.Visit<'MemberType>
+                                        (memberShape : ReadOnlyMember<'SourceType, 'MemberType>)
+                                        =
+
+                                        let memberValue : 'MemberType =
+                                            memberShape.Get source
+
+                                        printfn
+                                            "%s : %s = %A"
+                                            memberShape.Label
+                                            typeof<'MemberType>.FullName
+                                            memberValue
+
+                                        true
+                            } |> ignore
+
+                )
+
+                true
+    }
+
+// projectedGraph.tryAccessor memberAccessor
+
 ArcGISRuntimeEnvironment.Initialize()
 let StormwaterInfrastructure = Mapping.ArcGISMapImageLayer(new Uri "https://interraster.leoncountyfl.gov/interraster/rest/services/MapServices/LCPW_OverlayStormwaterInfrastructure_D_WM/MapServer")
 StormwaterInfrastructure.LoadTablesAndLayersAsync() |> Async.AwaitTask |> Async.RunSynchronously
-let quote = CodeQuotation.lift StormwaterInfrastructure
+let value = StormwaterInfrastructure
+let quote = CodeQuotation.lift value
+
 let projection = quote.projected
-let valueObject = quote.evaluated
+projection.tryAccessor memberAccessor
+
+(*
 let inline (?)
     (valueObject : ImmutableDynamicObj option)
     (key : string)
@@ -143,23 +191,8 @@ let inline (?)
 // valueObject.tryDynamicObject.Value |> ImmutableDynamicObj.format |> String.Clipboard.clip
 let name :obj option = valueObject.tryDynamicObject?ServiceInfo
 name.Value.GetType()
-
 *)
 
-type UriSchemes = Iana.RegistryProvider.``Uniform Resource Identifier (URI) Schemes``.``Uniform Resource Identifier (URI) Schemes``
-type PublicSuffixes = PublicSuffixList.PublicSuffixProvider
-type Mime = Iana.InternetMediaTypeProvider
-
-type foaf = VocabularyProvider<"foaf", "http://xmlns.com/foaf/0.1/", @"D:\http\com\xmlns\foaf\0.1&sol;\text\turtle.ttl">
-let foafGraph = ThreadSafeGraph.ofRdfVocabulary foaf.vocabulary'
-
-let quote = CodeQuotation.lift foafGraph
-let projection = quote.projected
-let valueObject = quote.evaluated
-let (Some productObject) = valueObject.tryProductObject
-let projectedNodes = productObject.fields[3] :?> ProjectedField<seq<INode>> 
-let Nodes = projectedNodes.value.Value |> Seq.toList
-Nodes[1]
 type JavascriptBuilder() =
 
     let propertyName (propertyInfo: PropertyInfo) =
