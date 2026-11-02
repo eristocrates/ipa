@@ -2,6 +2,7 @@ namespace DoxAletheia.DesignTime
 
 open System
 open System.IO
+open System.Linq
 open System.Collections.Generic
 open System.Reflection
 open System.Text.RegularExpressions
@@ -503,7 +504,80 @@ module CodeProvision =
                         propertyType,
                         value
                     )
+    let providedMemberAccessor =
+        {
+            new PocoAccessor<MemberInfo array> with
 
+                member _.Access<'SourceType>
+                    (projectedPoco : ProjectedPoco<'SourceType>)
+                    =
+
+                    let source : 'SourceType =
+                        projectedPoco.source
+
+                    projectedPoco.members
+                    |> Array.collect (fun memberShape ->
+
+                        memberShape.Accept {
+                            new IReadOnlyMemberVisitor<'SourceType, MemberInfo array> with
+
+                                member _.Visit<'MemberType>
+                                    (memberShape : ReadOnlyMember<'SourceType, 'MemberType>)
+                                    =
+
+                                    let memberValue : 'MemberType =
+                                        memberShape.Get source
+
+                                    match CodeQuotation<'MemberType>.lift memberValue with
+
+                                    | DirectQuote expression ->
+
+                                        let property =
+                                            ProvidedProperty(
+                                                propertyName = memberShape.Label,
+                                                propertyType = typeof<'MemberType>,
+                                                isStatic = false,
+                                                getterCode =
+                                                    fun _ ->
+                                                        expression :> Expr
+                                            )
+
+                                        [|
+                                            property :> MemberInfo
+                                        |]
+
+                                    | IndirectQuote memberProjection ->
+
+                                        let projectionType =
+                                            ProvidedTypeDefinition(
+                                                memberShape.Label + "'Projection",
+                                                Some typeof<obj>,
+                                                isErased = true
+                                            )
+
+                                        projectionType.addProjectionMembers
+                                            memberProjection
+
+                                        let property =
+                                            ProvidedProperty(
+                                                propertyName = memberShape.Label,
+                                                propertyType = projectionType,
+                                                isStatic = false,
+                                                getterCode =
+                                                    fun _ ->
+                                                        Expr.Coerce(
+                                                            memberProjection.projectionExpression,
+                                                            typeof<obj>
+                                                        )
+                                            )
+
+                                        [|
+                                            projectionType :> MemberInfo
+                                            property :> MemberInfo
+                                        |]
+                        }
+                    )
+        }
 open CodeProvision
 [<TypeProvider>]
 type VocabularyProvider(config: TypeProviderConfig) as this =
@@ -528,6 +602,10 @@ type VocabularyProvider(config: TypeProviderConfig) as this =
         let vocabulary =
             { RdfVocabulary.PREFIX(namespacePrefix, namespaceName) with
                 documentIris = documentIris }
+        let shouldLabelName = 
+            match namespaceName with 
+            | obo when obo.Contains("obolibrary") -> true
+            | _ -> false
 
         let threadSafeGraph = ThreadSafeGraph.ofRdfVocabulary vocabulary
         let ontologyGraph = OntologyGraph.ofRdfVocabulary vocabulary
@@ -608,14 +686,23 @@ type VocabularyProvider(config: TypeProviderConfig) as this =
         NamedIndividualTypeDefinition.AddMember NamedIndividualOfClassTypeDefinition
 
         for KeyValue(prefixedName, ontologyClass) in classes do
+            let providedName = 
+                match shouldLabelName, ontologyClass.Label with 
+                | true, labels when labels.Count() > 0 -> 
+                    match labels |> Seq.tryFind (fun label -> label.Language.Contains("en")) with 
+                    | Some englishLabel -> $"{englishLabel.Value}'{prefixedName.localName}"
+                    | None -> 
+                        let label = labels |> Seq.head |> _.Value
+                        $"{label}'{prefixedName.localName}"
+                | _, _ -> prefixedName.localName
 
-            let TermTypeDefinition = prefixedName.localName |> CodeProvision.erasedType typeof<NamedIndividual>
+            let TermTypeDefinition = providedName |> CodeProvision.erasedType typeof<NamedIndividual>
 
             NamedIndividualOfClassTypeDefinition.AddMember TermTypeDefinition
 
             NamedIndividualTypeDefinition.AddMemberDelayed(fun () ->
                 ProvidedMethod(
-                    methodName = prefixedName.localName,
+                    methodName = providedName,
                     parameters = [ ProvidedParameter("iri", typeof<Iri>) ],
                     returnType = TermTypeDefinition,
                     isStatic = true,
@@ -643,13 +730,22 @@ type VocabularyProvider(config: TypeProviderConfig) as this =
 
         for KeyValue(prefixedName, ontologyClass) in classes do
 
-            let TermTypeDefinition = prefixedName.localName |> CodeProvision.erasedType typeof<AnonymousIndividual>
+            let providedName = 
+                match shouldLabelName, ontologyClass.Label with 
+                | true, labels when labels.Count() > 0 -> 
+                    match labels |> Seq.tryFind (fun label -> label.Language.Contains("en")) with 
+                    | Some englishLabel -> $"{englishLabel.Value}'{prefixedName.localName}"
+                    | None -> 
+                        let label = labels |> Seq.head |> _.Value
+                        $"{label}'{prefixedName.localName}"
+                | _, _ -> prefixedName.localName
+            let TermTypeDefinition = providedName |> CodeProvision.erasedType typeof<AnonymousIndividual>
 
             AnonymousIndividualOfClassTypeDefinition.AddMember TermTypeDefinition
 
             AnonymousIndividualTypeDefinition.AddMemberDelayed(fun () ->
                 ProvidedMethod(
-                    methodName = prefixedName.localName,
+                    methodName = providedName,
                     parameters = [ ProvidedParameter("bnode", typeof<BNode>) ],
                     returnType = TermTypeDefinition,
                     isStatic = true,
@@ -985,13 +1081,21 @@ type VocabularyProvider(config: TypeProviderConfig) as this =
 *)
 
         VocabularyTypeDefinition.AddMembersDelayed(fun () ->
-            [ for prefixedName, ontologyClass in classes |> Map.toSeq do
+            [ 
+                for prefixedName, ontologyClass in classes |> Map.toSeq do
 
-                  let identity = Expr.Value(prefixedName.identity, typeof<string>)
+                  let providedName = 
+                        ontologyClass.Label
+                        |> Seq.map (fun label -> label.Value)
+                        |> Seq.distinct
+                        |> Seq.sort
+                        |> Seq.filter (fun label -> label <> prefixedName.localName)
+                        |> Seq.insertAt 0 prefixedName.localName
+                        |> String.concat "'"
 
                   match owlClasses.TryFind prefixedName with
                   | Some owlClass ->
-                      yield ClassIri(PrefixedName prefixedName) |> CodeProvision.staticProperty OwlClassTypeDefinition prefixedName.localName
+                      yield ClassIri(PrefixedName prefixedName) |> CodeProvision.staticProperty OwlClassTypeDefinition providedName
                   | None ->
                       (*
                     RdfClassTypeDefinition.AddMemberDelayed(fun () ->
@@ -1019,7 +1123,7 @@ type VocabularyProvider(config: TypeProviderConfig) as this =
                         ))
 
     *)
-                      yield PrefixedName prefixedName |> CodeProvision.staticProperty RdfClassTypeDefinition prefixedName.localName
+                      yield PrefixedName prefixedName |> CodeProvision.staticProperty RdfClassTypeDefinition providedName
 
               ])
 
@@ -1537,10 +1641,10 @@ type InternetMediaTypeProvider(config: TypeProviderConfig) as this =
                         Quotation.ofValue (
                             PrefixedName
                                 { vocabulary =
-                                    RdfVocabulary.media_types.prefixedName mime.mimeType.MediaType
+                                    RdfVocabulary.media_types.prefixedName mime.mime.MediaType
                                     |> RdfVocabulary.ofPrefixedName
 
-                                  localName = mime.mimeType.SubType }
+                                  localName = mime.mime.SubType }
                         )
             )
 
@@ -1597,10 +1701,10 @@ type InternetMediaTypeProvider(config: TypeProviderConfig) as this =
                     fun _ ->
                         Quotation.ofValue (
                             { vocabulary =
-                                RdfVocabulary.spar_mediatype.prefixedName mime.mimeType.MediaType
+                                RdfVocabulary.spar_mediatype.prefixedName mime.mime.MediaType
                                 |> RdfVocabulary.ofPrefixedName
 
-                              localName = mime.mimeType.SubType }
+                              localName = mime.mime.SubType }
                             |> PrefixedName
                             |> NamedIndividualIri
                         )

@@ -92,6 +92,7 @@ open Meziantou.Framework.DnsClient.Query
 open Meziantou.Framework.DnsClient.Response
 
 type DomUrl with
+
     member this.HrefPattern =
         let init = new UrlPatternInit()
 

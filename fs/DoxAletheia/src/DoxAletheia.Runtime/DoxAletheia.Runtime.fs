@@ -12,6 +12,7 @@ open Microsoft.FSharp.Quotations
 open VDS.RDF
 open VDS.RDF.Ontology
 open VDS.RDF.Parsing
+open System.Text.RegularExpressions
 
 open Microsoft.FSharp.Quotations
 open IriTools
@@ -124,7 +125,15 @@ module String =
                 let to_delimiter = delimiterIndex - 1
                 let substring = superstring.[..to_delimiter]
                 Some(substring)
+        let firstBeforeOrdinal (delimiter: string) (source: string) =
+            match source.IndexOf(delimiter, StringComparison.Ordinal) with
+            | -1 -> None
+            | index -> Some source[.. index - 1]
 
+        let firstAfterOrdinal (delimiter: string) (source: string) =
+            match source.IndexOf(delimiter, StringComparison.Ordinal) with
+            | -1 -> None
+            | index -> Some source[index + delimiter.Length ..]
     let untilCharacter (delimiterCharacter: char) (superstring: string) =
         superstring.ToCharArray()
         |> Array.takeWhile (fun character -> character <> delimiterCharacter)
@@ -813,6 +822,20 @@ module Iana =
             | "text" -> text
             | "video" -> video
             | mediaType -> additional mediaType
+        member this.asString =
+            match this with
+            | TopLevelMediaType.application -> "application" 
+            | TopLevelMediaType.audio -> "audio" 
+            | TopLevelMediaType.example -> "example" 
+            | TopLevelMediaType.font -> "font" 
+            | TopLevelMediaType.haptics -> "haptics" 
+            | TopLevelMediaType.image -> "image" 
+            | TopLevelMediaType.message -> "message" 
+            | TopLevelMediaType.model -> "model" 
+            | TopLevelMediaType.multipart -> "multipart" 
+            | TopLevelMediaType.text -> "text" 
+            | TopLevelMediaType.video -> "video" 
+            | TopLevelMediaType.additional mediaType ->  mediaType
 
     /// https://www.rfc-editor.org/info/rfc6838/#section-3
     [<RequireQualifiedAccess>]
@@ -849,19 +872,20 @@ module Iana =
     and InternetMediaType =
         { topLevelMediaType: TopLevelMediaType
           registrationTree: RegistrationTree
-          mimeType: MimeType
+          mime: MimeType
           suffix: StructuredSyntaxNameSuffix option
           references: XRef array
+          extension : string
 
         }
 
         static member ofMimeType(mime: MimeType) =
             { topLevelMediaType = TopLevelMediaType.ofMimeType mime
               registrationTree = RegistrationTree.ofMimeType mime
-              mimeType = mime
+              mime = mime
               suffix = StructuredSyntaxNameSuffix.tryMimeType mime
               references = [||]
-
+              extension = mime.GetFileTypeExtension false 
             }
 
         static member ofExtension(extension: string) =
@@ -874,9 +898,8 @@ module Iana =
             { InternetMediaType.ofContentType contentType with
                 references = references }
 
-        member this.contentType = this.mimeType.ToString()
-        member this.extension = this.mimeType.GetFileTypeExtension(false)
-        member this.dotExtension = this.mimeType.GetFileTypeExtension(true)
+        member this.contentType = this.mime.ToString()
+        member this.dotExtension = "." + this.extension
 
         member this.tokens =
             let contentType = this.contentType
@@ -887,9 +910,13 @@ module Iana =
             | '+' -> Array.append tokens [| "plus" |]
             | terminal -> Array.append tokens [| $"U{int terminal:X4}" |]
 
+type Universal.Common.DataUri with 
+    member this.InternetMediaType = Iana.InternetMediaType.ofContentType <| this.MediaType.ToString()
+
 [<CustomEquality; CustomComparison>]
 type Iri =
     | IRIREF of IriReference
+    | DataIri of Universal.Common.DataUri
     | Irl of Irl
     | Irn of Irn
     | SkolemIri of BNode
@@ -898,6 +925,7 @@ type Iri =
     member this.asSubject = IriSubject this
     member this.asPredicate = IriPredicate this
     member this.asObject = IriObject this |> BasicNormativeObject
+    member this.asRdfTerm = IriTerm this |> BasicRdfTerm
 
     static member op_Implicit(iriReference: IriReference) = IRIREF iriReference
     static member op_Implicit(irl: Irl) = Irl irl
@@ -1029,13 +1057,13 @@ type Iri =
     member this.identity =
         match this with
         | IRIREF iriref -> iriref.uri.OriginalString
+        | DataIri dataUri -> dataUri.OriginalString
         | Irl irl -> irl.remoteReference
         | Irn irn -> irn.identity
         | SkolemIri bnode -> (RdfVocabulary.genid: RdfVocabulary).identity + bnode.sinsignId.ToString("N")
         | PrefixedName prefixedName -> prefixedName.identity
 
     member this.remoteReference = this.identity
-
     override this.Equals(other: obj) =
         match other with
         | :? Iri as other -> this.identity = other.identity
@@ -1093,13 +1121,10 @@ and Irl =
     member this.domainName = this.domain.domainName
     member this.reverseDomainName = this.domain.reverseDomainName
     member this.remotePath = this.pathSegments |> String.concat "/"
-    member this.localPath = this.remotePath.Replace("/", "\\").TrimEnd('\\')
-    member this.dotExtension = Path.GetExtension this.localPath
-    member this.extension = this.dotExtension.TrimStart('.')
-    member this.tryDotExtension = Option.ofNullOrWhiteSpace this.dotExtension
-
-    member this.tryExtension =
-        this.tryDotExtension |> Option.map (fun extension -> extension.TrimStart('.'))
+    member this.localPath : string= this.remotePath.Replace("/", "\\").TrimEnd('\\')
+    member this.tryDotExtension = Path.GetExtension this.localPath |> Option.ofNullOrWhiteSpace
+    member this.tryExtension = Option.map (fun (extension :string) -> extension.TrimStart('.'))
+    member this.tryInternetMediaType = this.tryDotExtension |> Option.map (fun dotExtension -> Iana.InternetMediaType.ofExtension dotExtension)
 
     static member ofUrl(url: Url) =
 
@@ -1147,6 +1172,8 @@ and Irl =
            | None -> String.Empty)
 
     member this.localReference = Path.Combine(this.site.localReference, this.localPath)
+    member this.stem = Path.GetFileNameWithoutExtension this.localReference
+    member this.stemPath = Path.Combine(Path.GetDirectoryName this.localReference, this.stem)
     member this.identity = this.remoteReference
     static member op_Implicit(irl: Irl) = irl.remoteReference
     member this.Iri = Irl this
@@ -1166,6 +1193,7 @@ and Irl =
     member this.asSubject = this.Iri.asSubject
     member this.asPredicate = this.Iri.asPredicate
     member this.asObject = this.Iri.asObject
+    member this.asRdfTerm = this.Iri.asRdfTerm
     member this.authority = this.Url.Authority
     member this.fragment = this.Url.Fragment
     member this.host = this.Url.Host
@@ -1270,9 +1298,9 @@ and Irl =
     // member this.port = this.AdaUrl.Port
     // member this.protocol = this.AdaUrl.Protocol
     member this.schemeType = this.AdaUrl.SchemeType
-// member this.search = this.AdaUrl.Search
-// member this.username = this.AdaUrl.Username
-
+    // member this.search = this.AdaUrl.Search
+    // member this.username = this.AdaUrl.Username
+    
 and Irn =
     { namespaceIdentifier: string
       namespaceSpecificString: string }
@@ -1285,6 +1313,7 @@ and Irn =
     member this.asSubject = this.Iri.asSubject
     member this.asPredicate = this.Iri.asPredicate
     member this.asObject = this.Iri.asObject
+    member this.asRdfTerm = this.Iri.asRdfTerm
 
 and Site =
     { scheme: Iana.ProtocolScheme
@@ -1375,12 +1404,19 @@ and Site =
     member this.asSubject = this.Iri.asSubject
     member this.asPredicate = this.Iri.asPredicate
     member this.asObject = this.Iri.asObject
+    member this.asRdfTerm = this.Iri.asRdfTerm
 
 and RdfVocabulary =
     { namespacePrefix: string
       namespaceIri: Iri
       distributionIris: Iri list
       documentIris: Iri list }
+
+    member this.namespaceName = this.namespaceIri.identity
+    member this.providerString =
+        sprintf "type %s = VocabularyProvider<\"%s\", \"%s\", @\"%s\">" this.namespacePrefix this.namespacePrefix this.namespaceName this.localTurtleReference
+    static member ofRDFNamespace(rdfNamespace: RDFSharp.Model.RDFNamespace) =
+        RdfVocabulary.PREFIX(rdfNamespace.NamespacePrefix, rdfNamespace.NamespaceUri.OriginalString)
 
     static member ofPrefixedName((prefixedName: PrefixedName), (suffix: string)) =
         RdfVocabulary.PREFIX(prefixedName.localName, prefixedName.identity + suffix)
@@ -1518,6 +1554,7 @@ and DatatypeIri =
     member this.Iri: Iri =
         match this with
         | DatatypeIri iri -> iri
+    member this.asRdfTerm = this.Iri.asRdfTerm
 
     static member op_Implicit(datatypeIri: DatatypeIri) = datatypeIri.Iri
     member this.identity: string = this.Iri.identity
@@ -1590,7 +1627,6 @@ and Datatype<[<Measure>] 'Datatype> =
 and StaticTypedLiteral<[<Measure>] 'Datatype> =
     { literal: string<'Datatype>
       datatype: Datatype<'Datatype> }
-
     static member toTypedLiteral(staticTypedLiteral: StaticTypedLiteral<'Datatype>) : TypedLiteral =
         { lexicalForm = UMX.untag staticTypedLiteral.literal
 
@@ -1607,6 +1643,7 @@ and StaticTypedLiteral<[<Measure>] 'Datatype> =
 
     member this.asObject =
         StaticTypedLiteral.toLiteral this |> LiteralObject |> BasicNormativeObject
+    member this.asRdfTerm = StaticTypedLiteral.toLiteral this  |> LiteralTerm |> BasicRdfTerm
 
     member this.identity: LiteralIdentity = (StaticTypedLiteral.toLiteral this).identity
 
@@ -1615,6 +1652,7 @@ and TypedLiteral =
       datatypeIri: DatatypeIri }
 
     member this.asObject = TypedLiteral this |> LiteralObject |> BasicNormativeObject
+    member this.asRdfTerm = TypedLiteral this |> LiteralTerm |> BasicRdfTerm
 
     static member nonNegativeInteger(nonNegativeInteger: uint32) : TypedLiteral =
         { lexicalForm = string nonNegativeInteger
@@ -1718,8 +1756,6 @@ and TypedLiteral =
         { lexicalForm = "true"
           datatypeIri = RdfVocabulary.xsi.curie "nil" |> DatatypeIri }
 
-    static member inline autotyped(value: ^ValueType) : TypedLiteral = FSharpPlus.Operators.implicit value
-
     member this.identity: LiteralIdentity =
         {
 
@@ -1753,14 +1789,17 @@ and [<CustomEquality; CustomComparison>] Literal =
         | StringLiteral stringLiteral -> stringLiteral.tryLanguageTag
         | TypedLiteral typedLiteral -> None
         | EmbeddedLiteral embeddedLiteral -> None
+    member this.tryBaseDirection =
+        match this with
+        | StringLiteral stringLiteral -> stringLiteral.tryBaseDirection
+        | TypedLiteral typedLiteral -> None
+        | EmbeddedLiteral embeddedLiteral -> None
 
     static member string(value: string) : Literal =
         SimpleString { simpleString = value } |> StringLiteral
 
-    static member inline autotyped(value: ^ValueType) : Literal =
-        TypedLiteral.autotyped value |> TypedLiteral
-
     member this.asObject = LiteralObject this |> BasicNormativeObject
+    member this.asRdfTerm = LiteralTerm this |> BasicRdfTerm
 
     static member (!>=)(restrictionValue: Literal) =
         { constrainingFacet = RdfVocabulary.xsd.curie "minInclusive" |> FacetIri
@@ -1823,18 +1862,44 @@ and [<CustomEquality; CustomComparison>] Literal =
             | :? Literal as other -> compare this.identity other.identity
 
             | _ -> invalidArg (nameof other) $"Cannot compare {typeof<Literal>.Name} with {other.GetType().Name}"
-
 and StringLiteral =
     | SimpleString of SimpleString
     | LanguageString of LanguageString
+    static member map
+        (source: StringLiteral)
+        =
+            fun (mapping: string -> string) -> 
 
+                match source with
+                | SimpleString literal ->
+                    SimpleString {
+                        literal with
+                            simpleString = mapping literal.simpleString
+                    }
+
+                | LanguageString literal ->
+                    LanguageString {
+                        literal with
+                            lexicalForm = mapping literal.lexicalForm
+                    }
     member this.tryLanguageTag =
         match this with
         | SimpleString stringLiteral -> None
         | LanguageString languageString -> Some languageString.languageTag
+    member this.tryBaseDirection =
+        match this with
+        | SimpleString stringLiteral -> None
+        | LanguageString languageString -> languageString.baseDirection
 
     member this.asObject = StringLiteral this |> LiteralObject |> BasicNormativeObject
+    member this.asRdfTerm = StringLiteral this |> LiteralTerm |> BasicRdfTerm
 
+    member this.isArgmentCompatibleWith (other:StringLiteral) = 
+        match this, other with 
+        | SimpleString string1, SimpleString string2 -> true
+        | LanguageString langString1, LanguageString langString2 
+            when langString1.languageTag = langString2.languageTag 
+            && langString1.baseDirection = langString2.baseDirection -> true
     member this.identity =
         match this with
         | SimpleString stringLiteral -> stringLiteral.identity
@@ -1858,6 +1923,8 @@ and SimpleString =
 
     member this.asObject =
         SimpleString this |> StringLiteral |> LiteralObject |> BasicNormativeObject
+    member this.asRdfTerm =
+        SimpleString this |> StringLiteral |> LiteralTerm |> BasicRdfTerm
 
     member this.identity: LiteralIdentity =
         { lexicalForm = this.simpleString
@@ -1886,6 +1953,8 @@ and LanguageString =
 
     member this.asObject =
         LanguageString this |> StringLiteral |> LiteralObject |> BasicNormativeObject
+    member this.asRdfTerm =
+        LanguageString this |> StringLiteral |> LiteralTerm |> BasicRdfTerm
 
 and EmbeddedLiteral =
     | EmbeddedHtml of HtmlLiteral
@@ -1894,6 +1963,7 @@ and EmbeddedLiteral =
     | EmbeddedJavascript of JavascriptLiteral
 
     member this.asObject = EmbeddedLiteral this |> LiteralObject |> BasicNormativeObject
+    member this.asRdfTerm = EmbeddedLiteral this |> LiteralTerm |> BasicRdfTerm
 
     member this.identity: LiteralIdentity =
         match this with
@@ -1930,6 +2000,7 @@ and HtmlLiteral =
 
     member this.asObject =
         EmbeddedHtml this |> EmbeddedLiteral |> LiteralObject |> BasicNormativeObject
+    member this.asRdfTerm = EmbeddedHtml this |> EmbeddedLiteral |> LiteralTerm |> BasicRdfTerm
 
     member this.lexicalForm = this.htmlString
 
@@ -1948,6 +2019,7 @@ and XmlLiteral =
 
     member this.asObject =
         EmbeddedXml this |> EmbeddedLiteral |> LiteralObject |> BasicNormativeObject
+    member this.asRdfTerm = EmbeddedXml this |> EmbeddedLiteral |> LiteralTerm |> BasicRdfTerm
 
     member this.datatypeIri = RdfVocabulary.rdf.curie "XMLLiteral" |> DatatypeIri
 
@@ -1964,6 +2036,7 @@ and JsonLiteral =
 
     member this.asObject =
         EmbeddedJson this |> EmbeddedLiteral |> LiteralObject |> BasicNormativeObject
+    member this.asRdfTerm = EmbeddedJson this |> EmbeddedLiteral |> LiteralTerm |> BasicRdfTerm
 
     member this.datatypeIri = RdfVocabulary.rdf.curie "JSON" |> DatatypeIri
 
@@ -1983,6 +2056,7 @@ and JavascriptLiteral =
         |> EmbeddedLiteral
         |> LiteralObject
         |> BasicNormativeObject
+        member this.asRdfTerm = EmbeddedJavascript this |> EmbeddedLiteral |> LiteralTerm |> BasicRdfTerm
 
     member this.datatypeIri =
         RdfVocabulary.spar_mediatype.curie "text/javascript" |> DatatypeIri
@@ -2198,6 +2272,7 @@ and BasicNormativeTriple =
           normativeObject = BasicNormativeObject basicNormativeTriple.basicNormativeObject }
 
     member this.asNormativeTriple = BasicNormativeTriple.toNormativeTriple this
+    member this.asRdfTerm = TripleTerm this.asNormativeTriple |> RdfTripleTerm
     static member op_Implicit(basicNormativeTriple: BasicNormativeTriple) = basicNormativeTriple.asNormativeTriple
 
     static member PropositionForm (subject: BNode) (predicate: Iri) (objectValue: BasicNormativeObject) =
@@ -2217,8 +2292,14 @@ and BasicNormativeTriple =
         | IriSubject iriSubject, IriObject iriObject -> [| iriSubject; this.normativePredicate.Iri; iriObject |]
         | IriSubject iriSubject, _ -> [| iriSubject; this.normativePredicate.Iri |]
         | _, IriObject iriObject -> [| this.normativePredicate.Iri; iriObject |]
+        | _, LiteralObject literalObject -> [| this.normativePredicate.Iri; literalObject.datatypeIri.Iri |]
         | _, _ -> [| this.normativePredicate.Iri |]
 
+    member this.PrefixedNames = this.Iris |> Array.choose (fun iri ->  
+        match iri with 
+        | PrefixedName prefixedName -> Some prefixedName 
+        | _ -> None
+        )
 and NormativeTriple =
     { normativeSubject: NormativeSubject
       normativePredicate: NormativePredicate
@@ -2269,6 +2350,7 @@ and NormativeTriple =
         let objectIris =
             match this.normativeObject with
             | BasicNormativeObject(IriObject iri) -> [| iri |]
+            | BasicNormativeObject(LiteralObject literal) -> [| literal.datatypeIri.Iri |]
 
             | TripleTermObject(TripleTerm triple) -> triple.Iris
 
@@ -2276,6 +2358,11 @@ and NormativeTriple =
 
         Array.concat [ subjectIris; [| this.normativePredicate.Iri |]; objectIris ]
 
+    member this.PrefixedNames = this.Iris |> Array.choose (fun iri ->  
+        match iri with 
+        | PrefixedName prefixedName -> Some prefixedName 
+        | _ -> None
+        )
     member this.isPropositionFormMarker =
         match this.normativeSubject, this.normativePredicate, this.normativeObject with
         | BNodeSubject _, IriPredicate predicate, BasicNormativeObject(IriObject objectIri) when
@@ -2290,10 +2377,14 @@ and NormativeSubject =
     | BNodeSubject of BNode
 
     member this.asBasicNormativeObject = BasicNormativeObject.ofNormativeSubject this
+    member this.asRdfTerm = 
+        match this with 
+        | IriSubject iri -> IriTerm iri |> BasicRdfTerm
+        | BNodeSubject bnode -> BNodeTerm bnode |> BasicRdfTerm
 
 and NormativePredicate =
     | IriPredicate of Iri
-
+    
     member inline this.Property((curSubject: NormativeSubject), (curObject: NormativeObject)) =
         NormativeTriple.PSO(this, curSubject, curObject)
 
@@ -2465,11 +2556,17 @@ and NormativePredicate =
         | IriPredicate iri -> iri
 
     member this.asBasicNormativeObject = BasicNormativeObject.ofNormativePredicate this
-
+    member this.asRdfTerm = this.Iri.asRdfTerm
+    
 and BasicNormativeObject =
     | IriObject of Iri
     | BNodeObject of BNode
     | LiteralObject of Literal
+    member this.asRdfTerm = 
+        match this with 
+        | IriObject iri -> IriTerm iri |> BasicRdfTerm
+        | BNodeObject bnode -> BNodeTerm bnode |> BasicRdfTerm
+        | LiteralObject literal -> LiteralTerm literal |> BasicRdfTerm
 
     static member ofNormativeSubject(normativeSubject: NormativeSubject) =
         match normativeSubject with
@@ -2659,11 +2756,419 @@ and PredicateObjectList =
 and BasicRdfTerm =
     | IriTerm of Iri
     | LiteralTerm of Literal
-    | BlankTerm of BNode
+    | BNodeTerm of BNode
 
 and RdfTerm =
     | BasicRdfTerm of BasicRdfTerm
     | RdfTripleTerm of TripleTerm
+    
+    static member inline sameTerm
+        (term1: ^Term1 when ^Term1: (member asRdfTerm: RdfTerm))
+        =
+        fun (term2: ^Term2 when ^Term2: (member asRdfTerm: RdfTerm)) -> 
+            match term1.asRdfTerm, term2.asRdfTerm with 
+            | RdfTripleTerm tripleTerm1, RdfTripleTerm tripleTerm2 -> tripleTerm1 = tripleTerm2
+            | BasicRdfTerm basic1, BasicRdfTerm basic2 ->
+                match basic1, basic2 with 
+                | IriTerm iri1, IriTerm iri2 -> iri1 = iri2
+                | LiteralTerm literal1, LiteralTerm literal2 -> literal1 = literal2
+                | BNodeTerm bnode1, BNodeTerm bnode2 -> bnode1 = bnode2
+                | _, _ -> false
+            | _, _ -> false
+    static member inline isIRI (term: ^Term when ^Term: (member asRdfTerm: RdfTerm)) = 
+        match term.asRdfTerm with 
+        | BasicRdfTerm(IriTerm _) -> true
+        | _ -> false
+    static member inline isBLANK (term: ^Term when ^Term: (member asRdfTerm: RdfTerm)) = 
+        match term.asRdfTerm with 
+        | BasicRdfTerm(BNodeTerm _) -> true
+        | _ -> false
+    static member inline isLITERAL (term: ^Term when ^Term: (member asRdfTerm: RdfTerm)) = 
+        match term.asRdfTerm with 
+        | BasicRdfTerm(LiteralTerm _) -> true
+        | _ -> false
+    static member inline isNumeric (term: ^Term when ^Term: (member asRdfTerm: RdfTerm)) = 
+
+        match term.asRdfTerm with 
+        | BasicRdfTerm(LiteralTerm literal) -> 
+                            set [
+                                RdfVocabulary.xsd.curie "integer" |> DatatypeIri 
+                                RdfVocabulary.xsd.curie "decimal" |> DatatypeIri 
+                                RdfVocabulary.xsd.curie "float" |> DatatypeIri 
+                                RdfVocabulary.xsd.curie "double" |> DatatypeIri 
+                            ] |> _.Contains(literal.datatypeIri) 
+        | _ -> false
+    static member STR (iri:Iri) = iri.identity
+    static member STR (literal:Literal) = literal.lexicalForm
+    static member LANG (literal:Literal)  = literal.tryLanguageTag
+    static member LANGDIR (literal:Literal)  = literal.tryBaseDirection
+    static member hasLANG (literal:Literal)  = literal.tryLanguageTag.IsSome
+    static member hasLANGDIR (literal:Literal)  = literal.tryBaseDirection.IsSome
+    static member DATATYPE (literal:Literal)  = literal.datatypeIri
+    static member IRI (iriString:string) = Iri.op_Implicit iriString
+    static member BNODE(scope:string) = BNode.Mint scope
+    static member STRDT((lexicalForm:string), (datatypeIri:DatatypeIri)) = 
+        if datatypeIri = RdfVocabulary.rdf'langString || datatypeIri = RdfVocabulary.rdf'dirLangString then 
+            invalidArg "datatypeIri" "STRDT should not be called with datatypeIRI argument rdf:langString or rdf:dirLangString. To create literals with these IRIs as datatype IRI, function STRLANG or STRLANGDIR should be used."
+        else 
+            TypedLiteral {
+                lexicalForm = lexicalForm
+                datatypeIri = datatypeIri
+            } 
+    static member STRDT(lexicalForm:string) = 
+        fun (datatypeIri:DatatypeIri) -> RdfTerm.STRDT(lexicalForm, datatypeIri)
+    static member STRLANG((lexicalForm:string), (languageTag:LanguageTag)) = 
+        LanguageString {
+            lexicalForm = lexicalForm
+            languageTag = languageTag
+            baseDirection = None
+        } |> StringLiteral
+
+    static member STRLANG(lexicalForm:string) = 
+        fun (languageTag:LanguageTag) -> RdfTerm.STRLANG(lexicalForm, languageTag)
+    static member STRLANGDIR((lexicalForm:string), (languageTag:LanguageTag), (baseDirection : InitialTextDirection)) = 
+        LanguageString {
+            lexicalForm = lexicalForm
+            languageTag = languageTag
+            baseDirection = Some baseDirection
+        } |> StringLiteral
+
+    static member STRLANGDIR(lexicalForm:string) = 
+        fun (languageTag:LanguageTag) ->
+            fun  (baseDirection : InitialTextDirection) ->  RdfTerm.STRLANGDIR(lexicalForm, languageTag, baseDirection)
+    static member UUID() =
+        Guid.NewGuid().asHyphenatedString
+        |> String.prefix "urn:uuid:"
+        |> Iri.op_Implicit
+
+    static member STRUUID() =
+        Guid.NewGuid().asHyphenatedString
+        |> Literal.string
+    static member STRLEN(source: StringLiteral) = source.lexicalForm.runes.Length
+    static member SUBSTR
+        (source: StringLiteral, startingLoc: int, ?length: int) =
+
+        let runes = source.lexicalForm.runes
+
+        let startPosition = int64 startingLoc
+
+        let selected =
+            runes
+            |> Array.mapi (fun index rune ->
+                int64 index + 1L, rune)
+            |> Array.choose (fun (position, rune) ->
+                let included =
+                    position >= startPosition
+                    && match length with
+                       | None -> true
+                       | Some count ->
+                           position < startPosition + int64 count
+
+                if included then Some rune
+                else None)
+
+        let lexicalForm =
+            selected
+            |> Array.map _.ToString()
+            |> String.concat ""
+
+        StringLiteral.map source (fun _ -> lexicalForm)
+    static member UCASE(source: StringLiteral) = StringLiteral.map source _.ToUpperInvariant()
+    static member LCASE(source: StringLiteral) = StringLiteral.map source _.ToLowerInvariant()
+    static member STRSTARTS(arg1: StringLiteral, arg2: StringLiteral) =
+        if not (arg1.isArgmentCompatibleWith arg2) then
+            invalidArg "arg2" "Arguments must be compatible."
+
+        arg1.lexicalForm.StartsWith(
+            arg2.lexicalForm,
+            StringComparison.Ordinal
+        )
+
+    static member STRENDS(arg1: StringLiteral, arg2: StringLiteral) =
+        if not (arg1.isArgmentCompatibleWith arg2) then
+            invalidArg "arg2" "Arguments must be compatible."
+
+        arg1.lexicalForm.EndsWith(
+            arg2.lexicalForm,
+            StringComparison.Ordinal
+        )
+
+    static member CONTAINS(arg1: StringLiteral, arg2: StringLiteral) =
+        if not (arg1.isArgmentCompatibleWith arg2) then
+            invalidArg "arg2" "Arguments must be compatible."
+
+        arg1.lexicalForm.Contains(
+            arg2.lexicalForm,
+            StringComparison.Ordinal
+        )
+    static member STRBEFORE(arg1: StringLiteral, arg2: StringLiteral) =
+        if not (arg1.isArgmentCompatibleWith arg2) then
+            invalidArg "arg2" "Arguments must be compatible."
+
+        match String.subString.firstBeforeOrdinal arg2.lexicalForm arg1.lexicalForm with
+        | Some lexicalForm ->
+            StringLiteral.map arg1 (fun _ -> lexicalForm)
+        | None ->
+            SimpleString { simpleString = "" }
+
+    static member STRAFTER(arg1: StringLiteral, arg2: StringLiteral) =
+        if not (arg1.isArgmentCompatibleWith arg2) then
+            invalidArg "arg2" "Arguments must be compatible."
+
+        match String.subString.firstAfterOrdinal arg2.lexicalForm arg1.lexicalForm with
+        | Some lexicalForm ->
+            StringLiteral.map arg1 (fun _ -> lexicalForm)
+        | None ->
+            SimpleString { simpleString = "" }
+    static member CONCAT([<ParamArray>] arguments: StringLiteral array) =
+
+        match arguments with
+        | [||] ->
+            SimpleString { simpleString = "" }
+
+        | [| single |] ->
+            single
+
+        | _ ->
+            let lexicalForm =
+                arguments
+                |> Array.map _.lexicalForm
+                |> String.concat ""
+
+            match arguments[0] with
+            | LanguageString first
+                when arguments
+                     |> Array.forall (function
+                         | LanguageString other ->
+                             other.languageTag = first.languageTag
+                             && other.baseDirection = first.baseDirection
+                         | _ -> false) ->
+
+                LanguageString {
+                    first with
+                        lexicalForm = lexicalForm
+                }
+
+            | _ ->
+                SimpleString { simpleString = lexicalForm }
+    static member langMATCHES
+        (languageTag: LanguageTag, languageRange: string) =
+
+        let tag = languageTag.identity
+
+        if languageRange = "*" then
+            not (String.IsNullOrEmpty tag)
+        else
+            tag.Equals(
+                languageRange,
+                StringComparison.OrdinalIgnoreCase
+            )
+            || tag.StartsWith(
+                languageRange + "-",
+                StringComparison.OrdinalIgnoreCase
+            )
+    static member private regexOptions(flags: string) =
+
+        flags
+        |> Seq.fold (fun options flag ->
+            match flag with
+            | 'i' ->
+                options ||| RegexOptions.IgnoreCase
+            | 'm' ->
+                options ||| RegexOptions.Multiline
+            | 's' ->
+                options ||| RegexOptions.Singleline
+            | 'x' ->
+                options ||| RegexOptions.IgnorePatternWhitespace
+            | 'q' ->
+                options
+            | _ ->
+                invalidArg "flags" $"Unsupported regex flag: {flag}"
+        ) RegexOptions.CultureInvariant
+    static member REGEX
+        (source: StringLiteral, pattern: string, ?flags: string) =
+
+        let flags = defaultArg flags ""
+
+        let pattern =
+            if flags.Contains('q') then
+                Regex.Escape(pattern)
+            else
+                pattern
+
+        Regex.IsMatch(
+            source.lexicalForm,
+            pattern,
+            RdfTerm.regexOptions flags
+        )
+    static member REPLACE
+        (source: StringLiteral,
+         pattern: string,
+         replacement: string,
+         ?flags: string) =
+
+        let flags = defaultArg flags ""
+
+        let quoted = flags.Contains('q')
+
+        let pattern =
+            if quoted then Regex.Escape(pattern)
+            else pattern
+
+        let regex =
+            Regex(pattern, RdfTerm.regexOptions flags)
+
+        if regex.IsMatch("") then
+            invalidArg "pattern" "Pattern must not match an empty string."
+
+        let lexicalForm =
+            if quoted then
+                regex.Replace(
+                    source.lexicalForm,
+                    MatchEvaluator(fun _ -> replacement)
+                )
+            else
+                regex.Replace(
+                    source.lexicalForm,
+                    MatchEvaluator(fun matched ->
+
+                        let result = StringBuilder()
+                        let mutable index = 0
+
+                        while index < replacement.Length do
+                            match replacement[index] with
+                            | '\\' ->
+                                if index + 1 >= replacement.Length then
+                                    invalidArg "replacement" "Invalid trailing escape."
+
+                                match replacement[index + 1] with
+                                | '\\' | '$' as escaped ->
+                                    result.Append(escaped) |> ignore
+                                    index <- index + 2
+                                | _ ->
+                                    invalidArg "replacement" "Invalid replacement escape."
+
+                            | '$' ->
+                                let start = index + 1
+                                let mutable finish = start
+
+                                while finish < replacement.Length
+                                      && replacement[finish] >= '0'
+                                      && replacement[finish] <= '9' do
+                                    finish <- finish + 1
+
+                                if finish = start then
+                                    invalidArg "replacement" "Expected a capture-group number."
+
+                                let groupNumber =
+                                    Int32.Parse(replacement[start .. finish - 1])
+
+                                if groupNumber >= matched.Groups.Count then
+                                    invalidArg "replacement" "Unknown capture group."
+
+                                result.Append(matched.Groups[groupNumber].Value)
+                                |> ignore
+
+                                index <- finish
+
+                            | character ->
+                                result.Append(character) |> ignore
+                                index <- index + 1
+
+                        result.ToString()
+                    )
+                )
+
+        StringLiteral.map source (fun _ -> lexicalForm)
+
+    static member REGEX(source: StringLiteral, pattern: Regex) =
+        pattern.IsMatch(source.lexicalForm)
+
+    static member REPLACE
+        (source: StringLiteral, pattern: Regex, replacement: string) =
+
+        StringLiteral.map source
+            (fun lexicalForm ->
+                pattern.Replace(lexicalForm, replacement)
+            )
+    static member REPLACE
+        (source: StringLiteral,
+         pattern: Regex,
+         evaluator: MatchEvaluator) =
+
+        StringLiteral.map source
+            (fun lexicalForm ->
+                pattern.Replace(lexicalForm, evaluator)
+            )
+    static member ENCODE_FOR_URI(source: StringLiteral) =
+        source.lexicalForm
+        |> Uri.EscapeDataString
+        |> Literal.string
+    static member TRIPLE (triple:NormativeTriple) : TripleTerm = TripleTerm triple
+    static member inline TRIPLE (curSubject: ^Subject when ^Subject: (member asSubject: NormativeSubject)) =
+        fun (curPredicate: ^Predicate when ^Predicate: (member asPredicate: NormativePredicate)) -> 
+            fun (curObject: ^Object when ^Object: (member asObject: NormativeObject)) -> 
+                NormativeTriple.SPO(curSubject.asSubject,curPredicate.asPredicate,curObject.asObject) |> TripleTerm
+    static member SUBJECT (tripleTerm:TripleTerm) = tripleTerm.ttSubject
+    static member SUBJECT (triple:NormativeTriple) = triple.normativeSubject
+    static member inline SUBJECT (rdfTerm: ^Term when ^Term : (member asRdfTerm: RdfTerm)) = 
+        match rdfTerm.asRdfTerm with 
+        | RdfTripleTerm tripleTerm -> Some tripleTerm.ttSubject
+        | _ -> None
+    static member PREDICATE (tripleTerm:TripleTerm) = tripleTerm.ttPredicate
+    static member PREDICATE (triple:NormativeTriple) = triple.normativePredicate
+    static member inline PREDICATE (rdfTerm: ^Term when ^Term : (member asRdfTerm: RdfTerm)) = 
+        match rdfTerm.asRdfTerm with 
+        | RdfTripleTerm tripleTerm -> Some tripleTerm.ttPredicate
+        | _ -> None
+    static member OBJECT (tripleTerm:TripleTerm) = tripleTerm.ttObject
+    static member OBJECT (triple:NormativeTriple) = triple.normativeObject
+    static member inline OBJECT (rdfTerm: ^Term when ^Term : (member asRdfTerm: RdfTerm)) = 
+        match rdfTerm.asRdfTerm with 
+        | RdfTripleTerm tripleTerm -> Some tripleTerm.ttObject
+        | _ -> None
+    static member inline isTRIPLE (rdfTerm: ^Term when ^Term : (member asRdfTerm: RdfTerm)) = 
+        match rdfTerm.asRdfTerm with 
+        | RdfTripleTerm tripleTerm -> true
+        | _ -> false
+    static member private HASH
+        (source: StringLiteral, algorithm: byte array -> byte array) =
+
+        source.lexicalForm.asUtf8
+        |> algorithm
+        |> Convert.ToHexString
+        |> _.ToLowerInvariant()
+        |> Literal.string
+
+    static member MD5(source: StringLiteral) =
+        RdfTerm.HASH(
+            source,
+            System.Security.Cryptography.MD5.HashData
+        )
+
+    static member SHA1(source: StringLiteral) =
+        RdfTerm.HASH(
+            source,
+            System.Security.Cryptography.SHA1.HashData
+        )
+
+    static member SHA256(source: StringLiteral) =
+        RdfTerm.HASH(
+            source,
+            System.Security.Cryptography.SHA256.HashData
+        )
+
+    static member SHA384(source: StringLiteral) =
+        RdfTerm.HASH(
+            source,
+            System.Security.Cryptography.SHA384.HashData
+        )
+
+    static member SHA512(source: StringLiteral) =
+        RdfTerm.HASH(
+            source,
+            System.Security.Cryptography.SHA512.HashData
+        )
 
 and TripleTerm =
     | TripleTerm of NormativeTriple
@@ -2677,6 +3182,7 @@ and TripleTerm =
     member this.ttObject = this.triple.normativeObject
 
     member this.asObject = TripleTermObject this
+    member this.asRdfTerm = RdfTripleTerm this
 
 and [<CustomEquality; CustomComparison>] BNode =
 
@@ -2693,6 +3199,7 @@ and [<CustomEquality; CustomComparison>] BNode =
 
     member this.asSubject = BNodeSubject this
     member this.asObject = BNodeObject this |> BasicNormativeObject
+    member this.asRdfTerm = BNodeTerm this |> BasicRdfTerm
     member this.identity = this.sinsignId.ToString("N")
 
     override this.Equals(other: obj) =
@@ -2766,6 +3273,7 @@ and AnnotationProperty =
 
     static member op_Implicit(annotationProperty: AnnotationProperty) = annotationProperty.Iri
     member this.asPredicate = IriPredicate this.Iri
+    member this.asRdfTerm = this.Iri.asRdfTerm
     static member op_Implicit(annotationProperty: AnnotationProperty) = annotationProperty.asPredicate
     member this.identity: string = this.Iri.identity
 
@@ -2960,6 +3468,7 @@ and Class =
 
     member this.asSubject = this.Iri.asSubject
     member this.asObject = this.Iri.asObject
+    member this.asRdfTerm = this.Iri.asRdfTerm
     static member op_Implicit(class_: Class) = class_.Iri
     member this.identity: string = this.Iri.identity
 
@@ -3010,6 +3519,7 @@ and ObjectProperty =
 
     static member op_Implicit(objectProperty: ObjectProperty) = objectProperty.Iri
     member this.asPredicate = IriPredicate this.Iri
+    member this.asRdfTerm = this.Iri.asRdfTerm
     static member op_Implicit(objectProperty: ObjectProperty) = objectProperty.asPredicate
     member this.identity: string = this.Iri.identity
 
@@ -3188,6 +3698,7 @@ and DataProperty =
 
     static member op_Implicit(objectProperty: DataProperty) = objectProperty.Iri
     member this.asPredicate = IriPredicate this.Iri
+    member this.asRdfTerm = this.Iri.asRdfTerm
     static member op_Implicit(objectProperty: DataProperty) = objectProperty.asPredicate
     member this.identity: string = this.Iri.identity
 
@@ -3528,6 +4039,8 @@ and NamedIndividual =
 
     member this.asSubject = this.Iri.asSubject
     member this.asObject = this.Iri.asObject
+    member this.asRdfTerm = this.Iri.asRdfTerm
+
     static member op_Implicit(namedIndividual: NamedIndividual) = namedIndividual.Iri
     member this.identity: string = this.Iri.identity
 
@@ -3638,6 +4151,8 @@ and AnonymousIndividual =
 
     member this.asSubject = this.BNode.asSubject
     member this.asObject = this.BNode.asObject
+    member this.asRdfTerm = this.BNode.asRdfTerm
+
     static member op_Implicit(namedIndividual: AnonymousIndividual) = namedIndividual.BNode
     member this.identity: string = this.BNode.identity
 
@@ -3743,6 +4258,10 @@ and Individual =
         match this with
         | Individual namedIndividual -> namedIndividual.asObject
         | AnonymousIndividual anonymousIndividual -> anonymousIndividual.asObject
+    member this.asRdfTerm =
+        match this with
+        | Individual namedIndividual -> namedIndividual.asRdfTerm
+        | AnonymousIndividual anonymousIndividual -> anonymousIndividual.asRdfTerm
 
     member this.SameAs(individual: Individual) =
         Functional.SameIndividual this individual
@@ -7488,7 +8007,7 @@ and NTriples =
         match normativePredicate with
         | IriPredicate iri -> NTriples.IRIREF iri
 
-    static member object_(basicNormativeObject: BasicNormativeObject) =
+    static member object'(basicNormativeObject: BasicNormativeObject) =
         match basicNormativeObject with
         | IriObject iri -> NTriples.IRIREF iri
         | BNodeObject bnode -> NTriples.BLANK_NODE_LABEL bnode
@@ -7496,7 +8015,7 @@ and NTriples =
 
     static member object_(normativeObject: NormativeObject) =
         match normativeObject with
-        | BasicNormativeObject basicNormativeObject -> NTriples.object_ basicNormativeObject
+        | BasicNormativeObject basicNormativeObject -> NTriples.object' basicNormativeObject
         | TripleTermObject tripleTerm -> NTriples.tripleTerm tripleTerm
 
     static member triple(triple: NormativeTriple) =
@@ -7508,21 +8027,102 @@ and NTriples =
     static member ntriplesDoc(triples: Set<NormativeTriple>) =
         triples |> Set.toSeq |> Seq.map NTriples.triple
 
+    static member ntriplesDoc(normativeGraph: NormativeGraph) =
+        normativeGraph.normativeTriples |> Set.toSeq |> Seq.map NTriples.triple
     static member ntriplesDoc(ontology: Ontology) =
         ontology.assertedTriples |> Set.toSeq |> Seq.map NTriples.triple
 
     static member ntriplesDoc(ontology: Annotated<Ontology>) =
         ontology.value.assertedTriples |> Set.toSeq |> Seq.map NTriples.triple
+and Turtle = 
+    static member IRIREF(iri: Iri) = NTriples.IRIREF iri
+    static member iri(iri: Iri) =
+        match iri with
+        | PrefixedName prefixedName when prefixedName.localName.Contains("#") ->
+            // $"@base <{prefixedName.vocabulary.namespaceName}> .\n<{prefixedName.localName}>"
+            // TODO figure out how to handle concrete @base
+            $"<{prefixedName.localName}>"
+        | PrefixedName prefixedName -> Turtle.PrefixedName prefixedName
+        | _ -> Turtle.IRIREF iri
+    static member PrefixedName(prefixedName: PrefixedName) =
+        $"{prefixedName.vocabulary.namespacePrefix}:{prefixedName.localName}"
+    static member prefixID(prefixedName: PrefixedName) =
+        $"@prefix {prefixedName.vocabulary.namespacePrefix} : {Turtle.IRIREF prefixedName.vocabulary.namespaceIri} ."
+    static member tryPrefixID(iri: Iri) =
+        match iri with
+        | PrefixedName prefixedName -> Some(Turtle.prefixID prefixedName)
+        | _ -> None
+    static member sparqlPrefix(prefixedName: PrefixedName) =
+        $"PREFIX {prefixedName.vocabulary.namespacePrefix} : {Turtle.IRIREF prefixedName.vocabulary.namespaceIri} ."
+    static member trySparqlPrefix(iri: Iri) =
+        match iri with
+        | PrefixedName prefixedName -> Some(Turtle.sparqlPrefix prefixedName)
+        | _ -> None
+    static member tryBase(prefixedName: PrefixedName) =
+        if prefixedName.localName.Contains("#") then
+            Some $"@base <{prefixedName.vocabulary.namespaceName}> ."
+        else
+            None
+    static member trySparqlBase(prefixedName: PrefixedName) =
+        if prefixedName.localName.Contains("#") then
+            Some $"BASE <{prefixedName.vocabulary.namespaceName}> ."
+        else
+            None
+    static member prefixID(normativeTriple: NormativeTriple) =
+        normativeTriple.PrefixedNames
+        |> Array.choose Turtle.tryPrefixID
+        |> Array.distinct
 
+    static member prefixID(normativeTriples: seq<NormativeTriple>) =
+        normativeTriples |> Seq.collect Turtle.prefixID |> Seq.distinct
+    static member literal(literal: Literal) =
+        match literal with
+        | booleanLiteral when RdfVocabulary.xsd.curie "boolean" |> RdfTerm.sameTerm literal.datatypeIri -> literal.lexicalForm
+        | intLiteral when RdfVocabulary.xsd.curie "int" |> RdfTerm.sameTerm  literal.datatypeIri -> literal.lexicalForm
+        | decimalLiteral when RdfVocabulary.xsd.curie "decimal" |> RdfTerm.sameTerm  literal.datatypeIri -> literal.lexicalForm
+        | doubleLiteral when RdfVocabulary.xsd.curie "double" |> RdfTerm.sameTerm  literal.datatypeIri -> literal.lexicalForm
+        | StringLiteral(SimpleString simpleString) -> NTriples.STRING_LITERAL_QUOTE literal
+        | StringLiteral(LanguageString languageString) -> $"{NTriples.STRING_LITERAL_QUOTE literal}{NTriples.LANG_DIR languageString}"
+        | TypedLiteral typedLiteral -> $"{NTriples.STRING_LITERAL_QUOTE literal}^^{Turtle.iri typedLiteral.datatypeIri}"
+        | EmbeddedLiteral embeddedLiteral -> $"{NTriples.STRING_LITERAL_QUOTE literal}^^{Turtle.iri embeddedLiteral.datatypeIri}"
+    static member subject(normativeSubject: NormativeSubject) =
+        match normativeSubject with
+        | IriSubject iri -> Turtle.iri iri
+        | BNodeSubject bnode -> Turtle.BLANK_NODE_LABEL bnode
+
+    static member BLANK_NODE_LABEL(bnode: BNode) =
+        match bnode.localIdentifier with
+        | Some identifier -> $"_:{identifier}"
+        | None -> $"_:{bnode.identity}"
+
+    static member verb(normativePredicate: NormativePredicate) =
+        match normativePredicate with
+        | IriPredicate iri when RdfVocabulary.rdf'type |> RdfTerm.sameTerm iri -> "a"
+        | IriPredicate iri -> Turtle.iri iri
+
+    static member object'(basicNormativeObject: BasicNormativeObject) =
+        match basicNormativeObject with
+        | IriObject iri -> Turtle.iri iri
+        | BNodeObject bnode -> Turtle.BLANK_NODE_LABEL bnode
+        | LiteralObject literal -> Turtle.literal literal
+    static member object'(normativeObject: NormativeObject) =
+        match normativeObject with
+        | BasicNormativeObject basicNormativeObject -> Turtle.object' basicNormativeObject
+        | TripleTermObject tripleTerm -> Turtle.tripleTerm tripleTerm
+    static member triple(triple: NormativeTriple) =
+        $"{Turtle.subject triple.normativeSubject} {Turtle.verb triple.normativePredicate} {Turtle.object' triple.normativeObject} ."
+
+    static member tripleTerm(tripleTerm: TripleTerm) =
+        $"<<( {Turtle.subject tripleTerm.triple.normativeSubject} {Turtle.verb tripleTerm.triple.normativePredicate} {Turtle.object' tripleTerm.triple.normativeObject} )>>"
 type Iana.ProtocolRegistryEntry with
     member this.Iri = RdfVocabulary.ianassignments.curie this.localName
 
 type Iana.InternetMediaType with
     member this.topLevelIri =
-        RdfVocabulary.ianassignments.prefixedName this.mimeType.MediaType
+        RdfVocabulary.ianassignments.prefixedName this.mime.MediaType
 
     member this.registryIri =
-        (RdfVocabulary.ofPrefixedName this.topLevelIri).prefixedName this.mimeType.SubType
+        (RdfVocabulary.ofPrefixedName this.topLevelIri).prefixedName this.mime.SubType
 
     member this.w3idDatatype =
         RdfVocabulary.w3id_mediatype.curie this.contentType |> DatatypeIri
@@ -7582,7 +8182,43 @@ module xml =
     let elemNS (namespaceIri: string) (localName: string) =
 
         NamespaceElementBuilder(namespaceIri, localName)
+let iriref (iriString: string) = Iri.op_Implicit iriString
+let irlref (irlString: string) = Url.Parse irlString |> Irl.ofUrl
 
+module BasicGraphActivePattern = 
+    /// Basic Graph Pattern
+    let (|BGP|) (triple: NormativeTriple) =
+        triple.normativeSubject,
+        triple.normativePredicate,
+        triple.normativeObject
+    /// Subject
+    let inline (|S|_|)
+        (expected: ^Subject when ^Subject: (member asSubject: NormativeSubject))
+        (actual: NormativeSubject)
+        =
+        if expected.asSubject = actual then Some ()
+        else None
+    /// Predicate
+    let inline (|P|_|) (expected: ^Predicate when ^Predicate: (member asPredicate: NormativePredicate))
+                (actual: NormativePredicate)
+                =
+                if expected.asPredicate = actual then Some ()
+                else None
+    /// Object
+    let inline (|O|_|)
+        (expected: ^Object when ^Object: (member asObject: NormativeObject))
+        (actual: NormativeObject)
+        =
+        if expected.asObject = actual then Some ()
+        else None
+    /// Literal Object
+    let inline (|LO|_|)
+        (object': NormativeObject)
+        =
+        match object' with 
+        | BasicNormativeObject (LiteralObject literal) -> Some()
+        | _ -> None
+        
 module xsd =
     let _namespace = RdfVocabulary.xsd
 
@@ -10296,6 +10932,13 @@ type RDFNamespaceRegister with
         RDFNamespaceRegister.RemoveByUri namespaceIri
         RDFNamespaceRegister.RemoveByPrefix namespacePrefix
         RDFNamespaceRegister.tryAddPrefix (namespacePrefix, namespaceIri) |> Result.get
+type RdfVocabulary with 
+    static member personal(namespacePrefix: string) =
+        RDFSharp.Model.RDFNamespaceRegister.ensurePrefix (namespacePrefix, $"https://eristocrates.dev/ontology/{namespacePrefix}/")
+        |> RdfVocabulary.ofRDFNamespace
+    static member ensurePrefix((namespacePrefix: string), (namespaceName: string)) =
+        RDFSharp.Model.RDFNamespaceRegister.ensurePrefix (namespacePrefix, namespaceName)
+        |> RdfVocabulary.ofRDFNamespace
 
 type Uri with
     member this.isInVocabulary(vocabulary: RdfVocabulary) =
@@ -10306,7 +10949,6 @@ type Uri with
             Some this.OriginalString[vocabulary.identity.Length ..]
         else
             None
-
 type UriNode with
     member this.isInVocabulary(vocabulary: RdfVocabulary) = this.Uri.isInVocabulary vocabulary
     member this.tryLocalName(vocabulary: RdfVocabulary) = this.Uri.tryLocalName vocabulary
@@ -10314,6 +10956,7 @@ type UriNode with
 
     static member ofIri(iri: Iri) = UriNode iri.asUri
     member this.asIri = Iri.op_Implicit this.Uri
+    member this.asRdfTerm = this.asIri.asRdfTerm
 
 type BlankNode with
     member this.asBNode(scope: string) =
@@ -10326,7 +10969,7 @@ type BlankNode with
             { sinsignId = Guid.ensure this.InternalID
               scope = scope
               localIdentifier = Some this.InternalID }
-
+    member this.asRdfTerm(scope:string) = this.asBNode(scope).asRdfTerm
 type INode with
     member this.tryUriNode =
         match this with
@@ -10411,6 +11054,7 @@ type LiteralNode with
                   datatypeIri = Iri.ofUri datatypeUri |> DatatypeIri }
 
         | _, _ -> Literal.string this.Value
+        member this.asRdfTerm = this.asLiteral.asRdfTerm
 
 type OntologyGraph with
     static member ofRdfVocabulary(vocabulary: RdfVocabulary) =
@@ -10593,16 +11237,49 @@ type OntologyClass with
 
 type RDFGraph with
 
+    member this.ToTurtle(turtlePath: string) =
+        this.ToFileAsync(RDFSharp.Model.RDFModelEnums.RDFFormats.Turtle, turtlePath)
+        |> Async.AwaitTask
+        |> Async.RunSynchronously
     static member ofNTriples(ntriples: seq<string>) =
         task {
-            let content = String.Join("\n", ntriples)
-            let bytes = Encoding.UTF8.GetBytes(content)
+            let path = Path.GetTempFileName()
 
-            use stream = new MemoryStream(bytes)
+            try
+                use stream =
+                    new FileStream(
+                        path,
+                        FileMode.Open,
+                        FileAccess.ReadWrite,
+                        FileShare.None,
+                        65536,
+                        FileOptions.Asynchronous
+                    )
 
-            return! RDFGraph.FromStreamAsync(RDFModelEnums.RDFFormats.NTriples, stream)
+                use writer =
+                    new StreamWriter(
+                        stream,
+                        new UTF8Encoding(false),
+                        65536,
+                        true
+                    )
+
+                for triple in ntriples do
+                    do! writer.WriteLineAsync(triple)
+
+                do! writer.FlushAsync()
+
+                stream.Position <- 0L
+
+                return!
+                    RDFGraph.FromStreamAsync(
+                        RDFModelEnums.RDFFormats.NTriples,
+                        stream
+                    )
+            finally
+                File.Delete(path)
         }
-        |> _.Result
+        |> fun operation -> operation.GetAwaiter().GetResult()
 
 type ThreadSafeGraph with
 
@@ -10688,7 +11365,8 @@ type String with
         { domain with
             subdomainLabels = domain.subdomainLabels @ [ this ] }
 
-    member this.asLiteral = Literal.string this
+    member this.literal = Literal.string this
+    member this.asRdfTerm = this.literal.asRdfTerm
 
 type ITrieNode<'Key, 'Value when 'Value: not struct> with
     member this.values = this.Values |> Seq.toArray
@@ -11061,8 +11739,93 @@ let inline (|TType'Enum|_|) (_ : TType<'ValueType>) =
     else
         None
 
-let (|TType'Byte|_|) (_ : 'ValueType TType) : Teq<'ValueType, byte> option =
-    Teq.tryRefl<'ValueType, byte>
+let inline (|TTeq|_|)
+    (_: 'TargetType TType)
+    (_: 'ValueType TType)
+    : Teq<'ValueType, 'TargetType> option =
+
+    Teq.tryRefl<'ValueType, 'TargetType>
+type ShapeSifter.Patterns.TType<'ValueType> with 
+    static member byte = tType<byte>
+    static member sbyte = tType<sbyte>
+    static member int16 = tType<int16>
+    static member uint16 = tType<uint16>
+    static member uint32 = tType<uint32>
+    static member uint64 = tType<uint64>
+    static member single = tType<single>
+    static member decimal = tType<decimal>
+    static member DateOnly = tType<DateOnly>
+    static member DateTimeOffset = tType<DateTimeOffset>
+    static member TimeOnly = tType<TimeOnly>
+type Literal with 
+    static member inline autotyped<'ValueType> (value: 'ValueType) : Literal =
+        match tType<'ValueType> with
+
+        | TType.Bool equality -> value |> Teq.castTo equality |> xsd.Measure.boolean.typedLiteral |> TypedLiteral
+
+        | TTeq TType.byte equality ->
+            value
+            |> Teq.castTo equality
+            |> xsd.Measure.unsignedByte.typedLiteral
+            |> TypedLiteral
+
+        | TTeq TType.sbyte equality -> value |> Teq.castTo equality |> xsd.Measure.byte.typedLiteral |> TypedLiteral
+
+        | TTeq TType.int16 equality -> value |> Teq.castTo equality |> xsd.Measure.short.typedLiteral |> TypedLiteral
+
+        | TType.Int equality -> value |> Teq.castTo equality |> xsd.Measure.int.typedLiteral |> TypedLiteral
+
+        | TType.Int64 equality -> value |> Teq.castTo equality |> xsd.Measure.long.typedLiteral |> TypedLiteral
+
+        | TTeq TType.uint16 equality ->
+            value
+            |> Teq.castTo equality
+            |> xsd.Measure.unsignedShort.typedLiteral
+            |> TypedLiteral
+
+        | TTeq TType.uint32 equality ->
+            value
+            |> Teq.castTo equality
+            |> xsd.Measure.unsignedInt.typedLiteral
+            |> TypedLiteral
+
+        | TTeq TType.uint64 equality ->
+            value
+            |> Teq.castTo equality
+            |> xsd.Measure.unsignedLong.typedLiteral
+            |> TypedLiteral
+
+        | TTeq TType.single equality -> value |> Teq.castTo equality |> xsd.Measure.float.typedLiteral |> TypedLiteral
+
+        | TType.Float equality -> value |> Teq.castTo equality |> xsd.Measure.double.typedLiteral |> TypedLiteral
+
+        | TTeq TType.decimal equality -> value |> Teq.castTo equality |> xsd.Measure.decimal.typedLiteral |> TypedLiteral
+
+        | TTeq TType.DateOnly equality -> value |> Teq.castTo equality |> xsd.Measure.date.typedLiteral |> TypedLiteral
+
+        | TType.DateTime equality ->
+            value
+            |> Teq.castTo equality
+            |> xsd.Measure.dateTime.typedLiteral
+            |> TypedLiteral
+
+        | TTeq TType.DateTimeOffset equality ->
+            value
+            |> Teq.castTo equality
+            |> xsd.Measure.dateTimeStamp.typedLiteral
+            |> TypedLiteral
+
+        | TTeq TType.TimeOnly equality -> value |> Teq.castTo equality |> xsd.Measure.time.typedLiteral |> TypedLiteral
+
+        | TType.TimeSpan equality ->
+            value
+            |> Teq.castTo equality
+            |> xsd.Measure.duration.typedLiteral
+            |> TypedLiteral
+
+        | TType.String equality -> value |> Teq.castTo equality |> Literal.string
+
+        | _ -> value.ToString() |> Literal.string
 
 // -----------------------------------------------------------------------------
 // Projection context
@@ -12892,8 +13655,73 @@ and CodeQuotation<'ValueType> =
                 )
                 |> Some
 
-            | TType'Byte typeEquality ->
+            | TTeq TType.byte typeEquality ->
 
+                value
+                |> Teq.castTo typeEquality
+                |> Expr.Value
+                |> Some
+            | TTeq TType.byte typeEquality ->
+                value
+                |> Teq.castTo typeEquality
+                |> Expr.Value
+                |> Some
+
+            | TTeq TType.sbyte typeEquality ->
+                value
+                |> Teq.castTo typeEquality
+                |> Expr.Value
+                |> Some
+
+            | TTeq TType.int16 typeEquality ->
+                value
+                |> Teq.castTo typeEquality
+                |> Expr.Value
+                |> Some
+
+            | TTeq TType.uint16 typeEquality ->
+                value
+                |> Teq.castTo typeEquality
+                |> Expr.Value
+                |> Some
+
+            | TTeq TType.uint32 typeEquality ->
+                value
+                |> Teq.castTo typeEquality
+                |> Expr.Value
+                |> Some
+
+            | TTeq TType.uint64 typeEquality ->
+                value
+                |> Teq.castTo typeEquality
+                |> Expr.Value
+                |> Some
+
+            | TTeq TType.single typeEquality ->
+                value
+                |> Teq.castTo typeEquality
+                |> Expr.Value
+                |> Some
+
+            | TTeq TType.decimal typeEquality ->
+                value
+                |> Teq.castTo typeEquality
+                |> Expr.Value
+                |> Some
+
+            | TTeq TType.DateOnly typeEquality ->
+                value
+                |> Teq.castTo typeEquality
+                |> Expr.Value
+                |> Some
+
+            | TTeq TType.DateTimeOffset typeEquality ->
+                value
+                |> Teq.castTo typeEquality
+                |> Expr.Value
+                |> Some
+
+            | TTeq TType.TimeOnly typeEquality ->
                 value
                 |> Teq.castTo typeEquality
                 |> Expr.Value

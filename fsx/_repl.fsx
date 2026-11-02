@@ -167,6 +167,45 @@ let memberAccessor =
 
 // projectedGraph.tryAccessor memberAccessor
 
+let quotationAccessor = 
+    {
+        new PocoAccessor<Expr array> with
+
+            member _.Access<'SourceType>
+                (projectedPoco : ProjectedPoco<'SourceType>)
+                =
+
+                let source : 'SourceType =
+                    projectedPoco.source
+
+                projectedPoco.members
+                |> Array.map (fun memberShape ->
+                            memberShape.Accept {
+                                new IReadOnlyMemberVisitor<'SourceType, Expr > with
+
+                                    member _.Visit<'MemberType>
+                                        (memberShape : ReadOnlyMember<'SourceType, 'MemberType>)
+                                        =
+
+                                        let memberValue : 'MemberType =
+                                            memberShape.Get source
+
+                                        printfn
+                                            "%s : %s = %A"
+                                            memberShape.Label
+                                            typeof<'MemberType>.FullName
+                                            memberValue
+
+                                        CodeQuotation<'MemberType>.expression memberValue
+                            } 
+
+                )
+
+    }
+
+let foafProjection = ThreadSafeGraph.ofRdfVocabulary foaf.vocabulary' |> CodeQuotation.lift |> CodeQuotation.project
+let (Some foafExpressions) = foafProjection.tryAccessor quotationAccessor
+foafExpressions[0]
 ArcGISRuntimeEnvironment.Initialize()
 let StormwaterInfrastructure = Mapping.ArcGISMapImageLayer(new Uri "https://interraster.leoncountyfl.gov/interraster/rest/services/MapServices/LCPW_OverlayStormwaterInfrastructure_D_WM/MapServer")
 StormwaterInfrastructure.LoadTablesAndLayersAsync() |> Async.AwaitTask |> Async.RunSynchronously
@@ -174,7 +213,6 @@ let value = StormwaterInfrastructure
 let quote = CodeQuotation.lift value
 
 let projection = quote.projected
-projection.tryAccessor memberAccessor
 
 (*
 let inline (?)

@@ -39,6 +39,26 @@ nuget FSharp.Literals
 nuget FSharp.SystemTextJson
 nuget DynamicObj = 8.0.0
 nuget DynamicObj.Immutable = 8.0.0
+nuget Universal.Common
+nuget Universal.Common.Audio
+nuget Universal.Common.Collections
+nuget Universal.Common.Css.Selectors
+nuget Universal.Common.Data
+nuget Universal.Common.Drawing
+nuget Universal.Common.Forms
+nuget Universal.Common.Image
+nuget Universal.Common.Json
+nuget Universal.Common.Language
+nuget Universal.Common.Logic
+nuget Universal.Common.Mathematics
+nuget Universal.Common.Net.Ftp
+nuget Universal.Common.Net.Http
+nuget Universal.Common.Net.WebSocket
+nuget Universal.Common.Pipelines
+nuget Universal.Common.Reflection
+nuget Universal.Common.Security
+nuget Universal.Common.Serialization
+nuget Universal.Common.Threading.Tasks
 
 # These lines are used by Paket to get the latest version of the Type Provider SDK files
 github fsprojects/FSharp.TypeProviders.SDK src/ProvidedTypes.fsi
