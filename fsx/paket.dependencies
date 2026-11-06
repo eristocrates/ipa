@@ -2,9 +2,7 @@ source https://api.nuget.org/v3/index.json
 
 generate_load_scripts: true
 framework: net10.0
-nuget CookLangNet
-nuget FSharp.Span.Utils
-nuget Tables.FSharp
+
 nuget Aardvark.Base 
 nuget Aardvark.Base.Essentials
 nuget Aardvark.Base.FSharp
@@ -15,12 +13,10 @@ nuget Acadian.FSharp
 nuget AccelaWebSDK.NET 
 nuget Ada.Url
 nuget Akkling
-nuget DynamicObj.Immutable
 nuget AngleSharp = 1.7.2
 nuget AngleSharp.Css
 nuget AngleSharp.Diffing
 nuget AngleSharp.Js
-nuget ExcelProvider
 nuget AngleSharp.Renderer
 nuget AngleSharp.Wasm
 nuget AngleSharp.Xml
@@ -29,12 +25,13 @@ nuget Argolis.Nancy
 nuget Argu
 nuget AssetCloudPublicAPI 
 nuget AW.Identifiers
-nuget Faqt
 nuget BaseXClient
 nuget Blake3 
 nuget BrightstarDB
 nuget BrowserApi = 0.1.0-preview.9
 nuget ByteDev.ResourceIdentifier
+nuget ByteSize
+nuget Microsoft.Data.SqlClient = 7.0.0.0
 nuget Cambia.UriExtensions
 nuget canopy
 nuget CaseConverter
@@ -43,6 +40,8 @@ nuget ChromeProtocol.Domains 2.1.1.1367902
 nuget ClosedXML
 nuget com.IvanMurzak.ReflectorNet
 nuget Community.OData.Linq
+nuget ControlledVocabulary >= 1.3.0-preview.2 (preview)
+nuget CookLangNet
 nuget CsvHelper
 nuget Cytoscape.NET
 nuget DagSemTools.AlcTableau
@@ -61,6 +60,7 @@ nuget DagSemTools.Rdf
 nuget DagSemTools.RdfOwlTranslator
 nuget DagSemTools.Sparql.Parser
 nuget DagSemTools.Turtle.Parser
+nuget Dapper.FSharp
 nuget Databasic.MsSql
 nuget dbarbashov.Elasticsearch.FSharp
 nuget Deedle
@@ -71,17 +71,21 @@ nuget dotNetRdf
 nuget Dramaturge
 nuget Dubzer.WhatwgUrl
 nuget DynamicObj
+nuget DynamicObj.Immutable
+nuget EasyCaching.LiteDB
 nuget Elmish
 nuget EnvironmentVariableProvider 
 nuget Esri.ArcGISRuntime = 300.0.0
 nuget Eto.Parse
 nuget ExcelFinancialFunctions
+nuget ExcelProvider
 nuget Eyu.Core
 nuget Eyu.Formbase
 nuget Eyu.Rdf
 nuget Fabulous.AST >= 2.0.0-pre01 (pre)
 nuget Fabulous.AST.Json
 nuget Fantomas.FCS
+nuget Faqt
 nuget Fare 
 nuget Felicity
 nuget Flattener
@@ -100,6 +104,7 @@ nuget FolkerKinzel.MimeTypes
 nuget FoxLearn.JsonLd
 nuget FPrimitive
 nuget FRange
+nuget Fs.Units
 nuget FsCheck
 nuget Fsdk
 nuget FsExcel
@@ -134,7 +139,6 @@ nuget FSharp.Data.JsonSchema.OpenApi
 nuget FSharp.Data.LiteralProviders
 nuget FSharp.Data.Mutator
 nuget FSharp.Data.Toolbox.Twitter
-nuget FSharp.Data.WsdlProvider
 nuget FSharp.DependentTypesProvider
 nuget FSharp.Domain.Validation
 nuget FSharp.FGL
@@ -152,7 +156,7 @@ nuget FSharp.OpenApi
 nuget FSharp.Quotations.Evaluator
 nuget FSharp.RDF 
 nuget FSharp.SourceDjinn
-nuget FSharp.SystemTextJson
+nuget FSharp.Span.Utils
 nuget FSharp.SystemTextJson 
 nuget FSharp.Text.Docker
 nuget FSharp.Text.Experimental.Transform
@@ -273,14 +277,14 @@ nuget libphonenumber-csharp
 nuget LicenseToCIL
 nuget LightningDB 
 nuget LiteDB
-nuget LiteDB.FSharp
 nuget LiteDB.Async 
-nuget LiteDB.Queryable
-nuget LiteDB.Identity
 nuget LiteDb.Extensions.Caching
-nuget EasyCaching.LiteDB
+nuget LiteDB.FSharp
+nuget LiteDB.Identity
+nuget LiteDB.Queryable
 nuget LITEQ.RDF
 nuget LitXml
+nuget LoxSmoke.DocXml
 nuget LSL.DataUri
 nuget Lucene.Net >= 4.8.0-beta00017
 nuget Lumoin.Base <= 0.0.12
@@ -386,7 +390,9 @@ nuget Microsoft.Graph
 nuget Microsoft.OpenApi
 nuget Microsoft.OpenApi.YamlReader
 nuget Microsoft.Playwright
+nuget Microsoft.SqlServer.ConnectionInfo 
 nuget Microsoft.SqlServer.DacFx = 162.5.57
+nuget Microsoft.SqlServer.Management.SqlParser
 nuget Microsoft.SqlServer.SqlManagementObjects
 nuget Microsoft.SqlServer.TransactSql.ScriptDom >= 180.102.0
 nuget Microsoft.Xml.SgmlReader
@@ -405,10 +411,10 @@ nuget Nerdbank.MessagePack
 nuget NestGen 
 nuget NetworkingPrimitivesCore
 nuget NetworkInspector.Values
-nuget Newtonsoft.Json
 nuget Newtonsoft.Json >= 13.0.0
 nuget NJsonSchema
 nuget NLanguageTag
+nuget NodaTime
 nuget NRules 
 nuget NuGet.CatalogReader
 nuget NuGet.Protocol
@@ -474,18 +480,23 @@ nuget SigmaGraph.NET
 nuget Simple.OData.V4.Client
 nuget SimpleCrawler.Puppeteer 
 nuget SimpleTemplateTypeProvider
+nuget SmartWsdlKit
 nuget Soenneker.Extensions.Char
 nuget Soenneker.Extensions.String
 nuget Soenneker.Utils.RegexCollection 
 nuget SolarWinds.Api
 nuget Spectre.Console
-nuget SQLProvider.MsSql = 1.5.18
+nuget SqlHydra.Query
 nuget SqlSharp 
 nuget Stardust.Paradox.Data.Linq 
 nuget StringToExpression 
 nuget Suave
 nuget System.DirectoryServices.AccountManagement >= 10.0.11
 nuget System.DirectoryServices.Protocols >= 10.0.11
+nuget System.ServiceModel.Http = 8.1.2
+nuget System.ServiceModel.Primitives = 8.1.2
+nuget System.Web.Services.Description
+nuget Tables.FSharp
 nuget Tavis.UriTemplates
 nuget Taynftmf.FglExtnsn
 nuget TextCopy
@@ -498,6 +509,7 @@ nuget TruePath >= 1.12.0
 nuget TruePath.SystemIo >= 1.12.0
 nuget TypeEquality
 nuget TypeShape
+nuget Uncapsulator
 nuget UnifiedConfig
 nuget Universal.Common
 nuget Universal.Common.Audio

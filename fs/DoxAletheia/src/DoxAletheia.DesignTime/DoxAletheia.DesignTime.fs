@@ -3,20 +3,19 @@ namespace DoxAletheia.DesignTime
 open System
 open System.IO
 open System.Linq
-open System.Collections.Generic
+open System.Web.Services.Description
 open System.Reflection
 open System.Text.RegularExpressions
-
+open System.Collections.Concurrent
+open VDS.Common.Tries
 open Microsoft.FSharp.Core.CompilerServices
 open Microsoft.FSharp.Quotations
 open ProviderImplementation.ProvidedTypes
-
+open System.Xml.Linq
 open VDS.RDF
-open VDS.Common.Tries
 open VDS.RDF.Ontology
 open DoxAletheia.Runtime
 open DoxAletheia.Runtime.Iana
-
 open AngleSharp
 open FSharp.Data
 open Microsoft.FSharp.Reflection
@@ -25,23 +24,17 @@ open AngleSharp.Xhtml
 open Nager.PublicSuffix
 open Nager.PublicSuffix.Models
 open Nager.PublicSuffix.RuleParsers
-
+open SmartWsdlKit
 open FolkerKinzel.MimeTypes
-open System
-open Microsoft.FSharp.Quotations
-open Microsoft.FSharp.Reflection
 open AngleSharp.Html
-
 open IriTools
 open TypeShape.Core
-
 open NuGet.Common
 open NuGet.Protocol
 open NuGet.Protocol.Core.Types
 open NuGet.Protocol.Resources
 open FSharpPlus
 open DynamicObj
-
 module FSharpLiteral = FSharp.Literals.Literal
 
 type CodeProvision = 
@@ -579,6 +572,116 @@ module CodeProvision =
                     )
         }
 open CodeProvision
+
+type private VocabularyOntologyMetadata(vocabulary: RdfVocabulary, ontologyGraph: OntologyGraph) =
+
+    let _classes = lazy (vocabulary.ClassMap ontologyGraph)
+    let _properties = lazy (vocabulary.PropertyMap ontologyGraph)
+    let _individuals =
+        lazy (
+            ontologyGraph.InstanceMap
+            |> Map.toSeq
+            |> Seq.choose (fun (iri, ontologyInstance) ->
+                match iri.tryPrefixedName vocabulary with
+                | Some prefixedName -> Some(prefixedName, iri, ontologyInstance)
+                | None -> None)
+            |> Seq.toArray
+        )
+    let _owlClasses = lazy (vocabulary.OwlClassMap ontologyGraph)
+    let _owlObjectProperties = lazy (vocabulary.OwlObjectPropertyMap ontologyGraph)
+    let _owlDataProperties = lazy (vocabulary.OwlDatatypePropertyMap ontologyGraph)
+    let _owlAnnotationProperties = lazy (vocabulary.OwlAnnotationPropertyMap ontologyGraph)
+
+    member _.vocabulary = vocabulary
+    member _.classes = _classes.Value
+    member _.properties = _properties.Value
+    member _.individuals = _individuals.Value
+    member _.owlClasses = _owlClasses.Value
+    member _.owlObjectProperties = _owlObjectProperties.Value
+    member _.owlDataProperties = _owlDataProperties.Value
+    member _.owlAnnotationProperties = _owlAnnotationProperties.Value
+
+module private VocabularyOntologyIndex =
+
+    let private cache =
+        ConcurrentDictionary<string * string * string, Lazy<VocabularyOntologyMetadata>>()
+
+    let get (namespacePrefix: string) (namespaceIriString: string) (documentIrisString: string) =
+        // Prefixes are case-sensitive. Do not lowercase the cache key.
+        let key = (namespacePrefix, namespaceIriString, documentIrisString)
+
+        cache.GetOrAdd(
+            key,
+            fun (prefix, namespaceIri, documentIrisText) ->
+                lazy (
+                    let documentIris =
+                        documentIrisText.Split(' ', StringSplitOptions.RemoveEmptyEntries ||| StringSplitOptions.TrimEntries)
+                        |> Array.map Uri
+                        |> Array.map Iri.ofUri
+                        |> Array.toList
+
+                    let vocabulary =
+                        { RdfVocabulary.PREFIX(prefix, namespaceIri) with
+                            documentIris = documentIris }
+
+                    VocabularyOntologyMetadata(vocabulary, OntologyGraph.ofRdfVocabulary vocabulary)
+                )
+        ).Value
+
+module private VocabularyXmlDocumentation =
+
+    let ofResource (fallbackName: string) (identity: string) (resource: OntologyResource) =
+        let labels =
+            resource.Label
+            |> Seq.filter (fun label -> not (String.IsNullOrWhiteSpace label.Value))
+            |> Seq.toArray
+
+        let comments =
+            resource.Comment
+            |> Seq.filter (fun comment -> not (String.IsNullOrWhiteSpace comment.Value))
+            |> Seq.toArray
+
+        let isEnglish (language: string) =
+            not (String.IsNullOrWhiteSpace language)
+            && (language.Equals("en", StringComparison.OrdinalIgnoreCase)
+                || language.StartsWith("en-", StringComparison.OrdinalIgnoreCase))
+
+        let primaryLabel =
+            labels
+            |> Array.tryFind (fun label -> isEnglish label.Language)
+            |> Option.orElseWith (fun () -> labels |> Array.tryHead)
+            |> Option.map _.Value
+            |> Option.defaultValue fallbackName
+
+        let xmlElement name (value: string) =
+            System.Xml.Linq.XElement(System.Xml.Linq.XName.Get name, value)
+
+        let summary = xmlElement "summary" primaryLabel
+        let remarks = System.Xml.Linq.XElement(System.Xml.Linq.XName.Get "remarks")
+
+        let languageSuffix (language: string) =
+            if String.IsNullOrWhiteSpace language then "" else $" [{language}]"
+
+        for label in labels do
+            if label.Value <> primaryLabel then
+                remarks.Add(xmlElement "para" $"Label{languageSuffix label.Language}: {label.Value}")
+
+        for comment in comments do
+            remarks.Add(xmlElement "para" $"{comment.Value}{languageSuffix comment.Language}")
+
+        remarks.Add(xmlElement "para" $"IRI: {identity}")
+
+        [ summary.ToString(System.Xml.Linq.SaveOptions.DisableFormatting)
+          remarks.ToString(System.Xml.Linq.SaveOptions.DisableFormatting) ]
+        |> String.concat "\n"
+
+    let forPrefixedName (prefixedName: PrefixedName) (resource: OntologyResource) =
+        ofResource prefixedName.localName prefixedName.identity resource
+
+    let attachProperty (prefixedName: PrefixedName) (resource: OntologyResource) (property: ProvidedProperty) =
+        property.AddXmlDocDelayed(fun () -> forPrefixedName prefixedName resource)
+        property
+
 [<TypeProvider>]
 type VocabularyProvider(config: TypeProviderConfig) as this =
 
@@ -593,38 +696,29 @@ type VocabularyProvider(config: TypeProviderConfig) as this =
     let assembly = Assembly.GetExecutingAssembly()
 
     let createType (typeName: string) (namespacePrefix: string)(namespaceName: string) (documentIrisString: string) =
-        let documentIris =
-            documentIrisString.Split(' ', StringSplitOptions.RemoveEmptyEntries ||| StringSplitOptions.TrimEntries)
-            |> Array.map Uri
-            |> Array.map Iri.ofUri
-            |> Array.toList
-
-        let vocabulary =
-            { RdfVocabulary.PREFIX(namespacePrefix, namespaceName) with
-                documentIris = documentIris }
-        let shouldLabelName = 
-            match namespaceName with 
+        let ontologyMetadata = VocabularyOntologyIndex.get namespacePrefix namespaceName documentIrisString
+        let vocabulary = ontologyMetadata.vocabulary
+        let shouldLabelName =
+            match namespaceName with
             | obo when obo.Contains("obolibrary") -> true
             | _ -> false
 
-        let threadSafeGraph = ThreadSafeGraph.ofRdfVocabulary vocabulary
-        let ontologyGraph = OntologyGraph.ofRdfVocabulary vocabulary
-        
-        let classes = vocabulary.ClassMap ontologyGraph 
-        let properties =  vocabulary.PropertyMap ontologyGraph
-        let owlClasses =  vocabulary.OwlClassMap ontologyGraph
-        let owlObjectProperties = vocabulary.OwlObjectPropertyMap ontologyGraph
-        let owlDataProperties = vocabulary.OwlDatatypePropertyMap ontologyGraph 
-        let owlAnnotationProperties = vocabulary.OwlAnnotationPropertyMap  ontologyGraph 
+        let classes = ontologyMetadata.classes
+        let properties = ontologyMetadata.properties
+        let individuals = ontologyMetadata.individuals
+        let owlClasses = ontologyMetadata.owlClasses
+        let owlObjectProperties = ontologyMetadata.owlObjectProperties
+        let owlDataProperties = ontologyMetadata.owlDataProperties
+        let owlAnnotationProperties = ontologyMetadata.owlAnnotationProperties
 
-        let RdfClassTypeDefinition = "RdfClass"  |> CodeProvision.erasedType typeof<Iri>
-        let RdfPropertyTypeDefinition = "RdfProperty" |> CodeProvision.erasedType typeof<NormativePredicate> 
-        let OwlClassTypeDefinition = "OwlClass" |> CodeProvision.erasedType typeof<Class> 
-        let OwlObjectPropertyTypeDefinition = "OwlObjectProperty" |> CodeProvision.erasedType typeof<ObjectProperty> 
-        let OwlDataPropertyTypeDefinition = "OwlDataProperty" |> CodeProvision.erasedType typeof<DataProperty> 
-        let OwlAnnotationPropertyTypeDefinition = "OwlAnnotationProperty" |> CodeProvision.erasedType typeof<AnnotationProperty> 
-        let NamedIndividualTypeDefinition = "NamedIndividual\'" |> CodeProvision.erasedType typeof<obj> 
-        let AnonymousIndividualTypeDefinition = "AnonymousIndividual\'" |> CodeProvision.erasedType typeof<obj> 
+        let RdfClassTypeDefinition = "RdfClass" |> CodeProvision.erasedType typeof<Iri>
+        let RdfPropertyTypeDefinition = "RdfProperty" |> CodeProvision.erasedType typeof<NormativePredicate>
+        let OwlClassTypeDefinition = "OwlClass" |> CodeProvision.erasedType typeof<Class>
+        let OwlObjectPropertyTypeDefinition = "OwlObjectProperty" |> CodeProvision.erasedType typeof<ObjectProperty>
+        let OwlDataPropertyTypeDefinition = "OwlDataProperty" |> CodeProvision.erasedType typeof<DataProperty>
+        let OwlAnnotationPropertyTypeDefinition = "OwlAnnotationProperty" |> CodeProvision.erasedType typeof<AnnotationProperty>
+        let NamedIndividualTypeDefinition = "NamedIndividual\'" |> CodeProvision.erasedType typeof<obj>
+        let AnonymousIndividualTypeDefinition = "AnonymousIndividual\'" |> CodeProvision.erasedType typeof<obj>
         let NamedIndividualOfClassTypeDefinition =
             "OfClass"
             |> CodeProvision.erasedType typeof<obj>
@@ -632,6 +726,7 @@ type VocabularyProvider(config: TypeProviderConfig) as this =
         let AnonymousIndividualOfClassTypeDefinition =
             "OfClass"
             |> CodeProvision.erasedType typeof<obj>
+
         let VocabularyTypeDefinition =
             ProvidedTypeDefinition(assembly, providedNamespace, typeName, Some typeof<obj>, isErased = true)
 
@@ -645,76 +740,82 @@ type VocabularyProvider(config: TypeProviderConfig) as this =
               OwlDataPropertyTypeDefinition
               OwlAnnotationPropertyTypeDefinition ])
 
-        VocabularyTypeDefinition.AddMember( vocabulary |> CodeProvision.staticProperty "vocabulary\'")
-        
+        VocabularyTypeDefinition.AddMember(vocabulary |> CodeProvision.staticProperty "vocabulary\'")
+
         VocabularyTypeDefinition.AddMembersDelayed(fun () ->
             [
-
-              for prefixedName, ontologyProperty in properties |> Map.toSeq do
-                  let identity = Expr.Value(prefixedName.identity, typeof<string>)
-
-                  let domainParameterName =
-                      ontologyProperty.Domains
-                      |> Seq.choose (fun domain -> domain.tryLocalPart)
-                      |> Seq.insertAt 0 "domain"
-                      |> String.concat "'"
-
-                  let rangeParameterName =
-                      ontologyProperty.Ranges
-                      |> Seq.choose (fun range -> range.tryLocalPart)
-                      |> Seq.insertAt 0 "range"
-                      |> String.concat "'"
-
-                  match
-                      owlObjectProperties.TryFind prefixedName,
-                      owlDataProperties.TryFind prefixedName,
-                      owlAnnotationProperties.TryFind prefixedName
-                  with
-                  | Some objectProperty, None, None ->
-                        yield ObjectPropertyIri(PrefixedName prefixedName)  |> CodeProvision.staticProperty OwlObjectPropertyTypeDefinition prefixedName.localName
-                    // TODO next rewrite the rest of these cases
-                  | None, Some dataProperty, None ->
-                      yield DataPropertyIri(PrefixedName prefixedName)  |> CodeProvision.staticProperty OwlDataPropertyTypeDefinition prefixedName.localName
-                  | None, None, Some annotationProperty ->
-                      yield AnnotationPropertyIri(PrefixedName prefixedName)  |> CodeProvision.staticProperty OwlAnnotationPropertyTypeDefinition prefixedName.localName
-                  | _, _, _ ->
-                      yield IriPredicate(PrefixedName prefixedName)  |> CodeProvision.staticProperty  prefixedName.localName
+                for prefixedName, ontologyProperty in properties |> Map.toSeq do
+                    match
+                        owlObjectProperties.TryFind prefixedName,
+                        owlDataProperties.TryFind prefixedName,
+                        owlAnnotationProperties.TryFind prefixedName
+                    with
+                    | Some objectProperty, None, None ->
+                        yield ObjectPropertyIri(PrefixedName prefixedName)
+                              |> CodeProvision.staticProperty OwlObjectPropertyTypeDefinition prefixedName.localName
+                              |> VocabularyXmlDocumentation.attachProperty prefixedName ontologyProperty
+                        // TODO next rewrite the rest of these cases
+                    | None, Some dataProperty, None ->
+                        yield DataPropertyIri(PrefixedName prefixedName)
+                              |> CodeProvision.staticProperty OwlDataPropertyTypeDefinition prefixedName.localName
+                              |> VocabularyXmlDocumentation.attachProperty prefixedName ontologyProperty
+                    | None, None, Some annotationProperty ->
+                        yield AnnotationPropertyIri(PrefixedName prefixedName)
+                              |> CodeProvision.staticProperty OwlAnnotationPropertyTypeDefinition prefixedName.localName
+                              |> VocabularyXmlDocumentation.attachProperty prefixedName ontologyProperty
+                    | _, _, _ ->
+                        yield IriPredicate(PrefixedName prefixedName)
+                              |> CodeProvision.staticProperty prefixedName.localName
+                              |> VocabularyXmlDocumentation.attachProperty prefixedName ontologyProperty
             ]
-
         )
 
         NamedIndividualTypeDefinition.AddMember NamedIndividualOfClassTypeDefinition
 
+        NamedIndividualTypeDefinition.AddMembersDelayed(fun () ->
+            [
+                for prefixedName, iri, ontologyInstance in individuals do
+                    yield
+                        NamedIndividualIri iri
+                        |> CodeProvision.staticProperty prefixedName.localName
+                        |> VocabularyXmlDocumentation.attachProperty prefixedName ontologyInstance
+            ])
+
         for KeyValue(prefixedName, ontologyClass) in classes do
-            let providedName = 
-                match shouldLabelName, ontologyClass.Label with 
-                | true, labels when labels.Count() > 0 -> 
-                    match labels |> Seq.tryFind (fun label -> label.Language.Contains("en")) with 
+            let providedName =
+                match shouldLabelName, ontologyClass.Label with
+                | true, labels when labels.Count() > 0 ->
+                    match labels |> Seq.tryFind (fun label -> label.Language.Contains("en")) with
                     | Some englishLabel -> $"{englishLabel.Value}'{prefixedName.localName}"
-                    | None -> 
+                    | None ->
                         let label = labels |> Seq.head |> _.Value
                         $"{label}'{prefixedName.localName}"
                 | _, _ -> prefixedName.localName
 
             let TermTypeDefinition = providedName |> CodeProvision.erasedType typeof<NamedIndividual>
 
+            TermTypeDefinition.AddXmlDocDelayed(fun () ->
+                VocabularyXmlDocumentation.forPrefixedName prefixedName ontologyClass)
+
             NamedIndividualOfClassTypeDefinition.AddMember TermTypeDefinition
 
             NamedIndividualTypeDefinition.AddMemberDelayed(fun () ->
-                ProvidedMethod(
+                let methodDefinition = ProvidedMethod(
                     methodName = providedName,
                     parameters = [ ProvidedParameter("iri", typeof<Iri>) ],
                     returnType = TermTypeDefinition,
                     isStatic = true,
                     invokeCode =
                         fun args ->
-                            let iri = Expr.Coerce(args[0], typeof<Iri>) 
-                            
-                            <@@ NamedIndividualIri (%%iri : Iri)  @@>
-                ))
+                            let iri = Expr.Coerce(args[0], typeof<Iri>)
+
+                            <@@ NamedIndividualIri (%%iri : Iri) @@>
+                )
+                methodDefinition.AddXmlDocDelayed(fun () ->
+                    VocabularyXmlDocumentation.forPrefixedName prefixedName ontologyClass)
+                methodDefinition)
 
             TermTypeDefinition.AddMember(
-
                 ProvidedProperty(
                     propertyName = "Individual",
                     propertyType = typeof<Individual>,
@@ -730,21 +831,25 @@ type VocabularyProvider(config: TypeProviderConfig) as this =
 
         for KeyValue(prefixedName, ontologyClass) in classes do
 
-            let providedName = 
-                match shouldLabelName, ontologyClass.Label with 
-                | true, labels when labels.Count() > 0 -> 
-                    match labels |> Seq.tryFind (fun label -> label.Language.Contains("en")) with 
+            let providedName =
+                match shouldLabelName, ontologyClass.Label with
+                | true, labels when labels.Count() > 0 ->
+                    match labels |> Seq.tryFind (fun label -> label.Language.Contains("en")) with
                     | Some englishLabel -> $"{englishLabel.Value}'{prefixedName.localName}"
-                    | None -> 
+                    | None ->
                         let label = labels |> Seq.head |> _.Value
                         $"{label}'{prefixedName.localName}"
                 | _, _ -> prefixedName.localName
+
             let TermTypeDefinition = providedName |> CodeProvision.erasedType typeof<AnonymousIndividual>
+
+            TermTypeDefinition.AddXmlDocDelayed(fun () ->
+                VocabularyXmlDocumentation.forPrefixedName prefixedName ontologyClass)
 
             AnonymousIndividualOfClassTypeDefinition.AddMember TermTypeDefinition
 
             AnonymousIndividualTypeDefinition.AddMemberDelayed(fun () ->
-                ProvidedMethod(
+                let methodDefinition = ProvidedMethod(
                     methodName = providedName,
                     parameters = [ ProvidedParameter("bnode", typeof<BNode>) ],
                     returnType = TermTypeDefinition,
@@ -753,10 +858,12 @@ type VocabularyProvider(config: TypeProviderConfig) as this =
                         fun args ->
                             let bnode = Expr.Coerce(args[0], typeof<BNode>)
                             <@@ AnonymousIndividualBNode(%%bnode: BNode) @@>
-                ))
+                )
+                methodDefinition.AddXmlDocDelayed(fun () ->
+                    VocabularyXmlDocumentation.forPrefixedName prefixedName ontologyClass)
+                methodDefinition)
 
             TermTypeDefinition.AddMember(
-
                 ProvidedProperty(
                     propertyName = "Individual",
                     propertyType = typeof<Individual>,
@@ -768,295 +875,304 @@ type VocabularyProvider(config: TypeProviderConfig) as this =
                 )
             )
 
-            for ontologyProperty in ontologyClass.Properties do
+            // Defer superclass/domain traversal and method construction until this type is expanded.
+            TermTypeDefinition.AddMembersDelayed(fun () ->
+                ontologyClass.Properties
+                |> Seq.collect (fun ontologyProperty ->
+                    match ontologyProperty.tryLocalPart, ontologyProperty.tryUriNode with
+                    | Some propertyName, Some propertyNode ->
+                        let identity = Expr.Value(propertyNode.Uri.OriginalString, typeof<string>)
 
-                match ontologyProperty.tryLocalPart, ontologyProperty.tryUriNode with
-                | Some propertyName, Some propertyNode ->
+                        [
+                            ProvidedMethod(
+                                methodName = propertyName,
+                                parameters = [ ProvidedParameter("object", typeof<NormativeObject>) ],
+                                returnType = typeof<NormativeTriple>,
+                                isStatic = false,
+                                invokeCode =
+                                    fun args ->
 
-                    let identity = Expr.Value(propertyNode.Uri.OriginalString, typeof<string>)
+                                        let subject = Expr.Coerce(args[0], typeof<NamedIndividual>)
+                                        let object_ = Expr.Coerce(args[1], typeof<NormativeObject>)
 
-                    TermTypeDefinition.AddMembersDelayed(fun () ->
-                        [ ProvidedMethod(
-                              methodName = propertyName,
-                              parameters = [ ProvidedParameter("object", typeof<NormativeObject>) ],
-                              returnType = typeof<NormativeTriple>,
-                              isStatic = false,
-                              invokeCode =
-                                  fun args ->
+                                        <@@
+                                            let predicate = IriPredicate(Iri.op_Implicit (%%identity: string))
 
-                                      let subject = Expr.Coerce(args[0], typeof<NamedIndividual>)
-                                      let object_ = Expr.Coerce(args[1], typeof<NormativeObject>)
+                                            let normativeSubject = IriSubject((%%subject: NamedIndividual).Iri)
 
-                                      <@@
-                                          let predicate = IriPredicate(Iri.op_Implicit (%%identity: string))
+                                            let normativeObject = (%%object_: NormativeObject)
 
-                                          let normativeSubject = IriSubject((%%subject: NamedIndividual).Iri)
+                                            NormativeTriple.PSO(predicate, normativeSubject, normativeObject)
+                                        @@>
+                            )
+                            ProvidedMethod(
+                                methodName = propertyName,
+                                parameters = [ ProvidedParameter("objects", typeof<NormativeObject list>) ],
+                                returnType = typeof<NormativeTriple list>,
+                                isStatic = false,
+                                invokeCode =
+                                    fun args ->
 
-                                          let normativeObject = (%%object_: NormativeObject)
+                                        let subject = Expr.Coerce(args[0], typeof<NamedIndividual>)
+                                        let objects = Expr.Coerce(args[1], typeof<NormativeObject list>)
 
-                                          NormativeTriple.PSO(predicate, normativeSubject, normativeObject)
-                                      @@>
-                          )
-                          ProvidedMethod(
-                              methodName = propertyName,
-                              parameters = [ ProvidedParameter("objects", typeof<NormativeObject list>) ],
-                              returnType = typeof<NormativeTriple list>,
-                              isStatic = false,
-                              invokeCode =
-                                  fun args ->
+                                        <@@
+                                            let predicate = IriPredicate(Iri.op_Implicit (%%identity: string))
 
-                                      let subject = Expr.Coerce(args[0], typeof<NamedIndividual>)
-                                      let objects = Expr.Coerce(args[1], typeof<NormativeObject list>)
+                                            let normativeSubject = IriSubject((%%subject: NamedIndividual).Iri)
 
-                                      <@@
-                                          let predicate = IriPredicate(Iri.op_Implicit (%%identity: string))
+                                            (%%objects: NormativeObject list)
+                                            |> List.map (fun object_ ->
+                                                NormativeTriple.PSO(predicate, normativeSubject, object_))
+                                        @@>
+                            )
+                            ProvidedMethod(
+                                methodName = propertyName,
+                                parameters = [ ProvidedParameter("object", typeof<Iri>) ],
+                                returnType = typeof<NormativeTriple>,
+                                isStatic = false,
+                                invokeCode =
+                                    fun args ->
 
-                                          let normativeSubject = IriSubject((%%subject: NamedIndividual).Iri)
+                                        let subject = Expr.Coerce(args[0], typeof<NamedIndividual>)
+                                        let object_ = Expr.Coerce(args[1], typeof<Iri>)
 
-                                          (%%objects: NormativeObject list)
-                                          |> List.map (fun object_ ->
-                                              NormativeTriple.PSO(predicate, normativeSubject, object_))
-                                      @@>
-                          )
-                          ProvidedMethod(
-                              methodName = propertyName,
-                              parameters = [ ProvidedParameter("object", typeof<Iri>) ],
-                              returnType = typeof<NormativeTriple>,
-                              isStatic = false,
-                              invokeCode =
-                                  fun args ->
+                                        <@@
+                                            let predicate = IriPredicate(Iri.op_Implicit (%%identity: string))
 
-                                      let subject = Expr.Coerce(args[0], typeof<NamedIndividual>)
-                                      let object_ = Expr.Coerce(args[1], typeof<Iri>)
+                                            let normativeSubject = IriSubject((%%subject: NamedIndividual).Iri)
 
-                                      <@@
-                                          let predicate = IriPredicate(Iri.op_Implicit (%%identity: string))
+                                            let normativeObject = IriObject(%%object_: Iri) |> BasicNormativeObject
 
-                                          let normativeSubject = IriSubject((%%subject: NamedIndividual).Iri)
+                                            NormativeTriple.PSO(predicate, normativeSubject, normativeObject)
+                                        @@>
+                            )
+                            ProvidedMethod(
+                                methodName = propertyName,
+                                parameters = [ ProvidedParameter("objects", typeof<Iri list>) ],
+                                returnType = typeof<NormativeTriple list>,
+                                isStatic = false,
+                                invokeCode =
+                                    fun args ->
 
-                                          let normativeObject = IriObject(%%object_: Iri) |> BasicNormativeObject
+                                        let subject = Expr.Coerce(args[0], typeof<NamedIndividual>)
+                                        let objects = Expr.Coerce(args[1], typeof<Iri list>)
 
-                                          NormativeTriple.PSO(predicate, normativeSubject, normativeObject)
-                                      @@>
-                          )
-                          ProvidedMethod(
-                              methodName = propertyName,
-                              parameters = [ ProvidedParameter("objects", typeof<Iri list>) ],
-                              returnType = typeof<NormativeTriple list>,
-                              isStatic = false,
-                              invokeCode =
-                                  fun args ->
+                                        <@@
+                                            let predicate = IriPredicate(Iri.op_Implicit (%%identity: string))
 
-                                      let subject = Expr.Coerce(args[0], typeof<NamedIndividual>)
-                                      let objects = Expr.Coerce(args[1], typeof<Iri list>)
+                                            let normativeSubject = IriSubject((%%subject: NamedIndividual).Iri)
 
-                                      <@@
-                                          let predicate = IriPredicate(Iri.op_Implicit (%%identity: string))
+                                            (%%objects: Iri list)
+                                            |> List.map (fun object_ ->
+                                                NormativeTriple.PSO(
+                                                    predicate,
+                                                    normativeSubject,
+                                                    IriObject object_ |> BasicNormativeObject
+                                                ))
+                                        @@>
+                            )
+                            ProvidedMethod(
+                                methodName = propertyName,
+                                parameters = [ ProvidedParameter("object", typeof<BNode>) ],
+                                returnType = typeof<NormativeTriple>,
+                                isStatic = false,
+                                invokeCode =
+                                    fun args ->
 
-                                          let normativeSubject = IriSubject((%%subject: NamedIndividual).Iri)
+                                        let subject = Expr.Coerce(args[0], typeof<NamedIndividual>)
+                                        let object_ = Expr.Coerce(args[1], typeof<BNode>)
 
-                                          (%%objects: Iri list)
-                                          |> List.map (fun object_ ->
-                                              NormativeTriple.PSO(
-                                                  predicate,
-                                                  normativeSubject,
-                                                  IriObject object_ |> BasicNormativeObject
-                                              ))
-                                      @@>
-                          )
-                          ProvidedMethod(
-                              methodName = propertyName,
-                              parameters = [ ProvidedParameter("object", typeof<BNode>) ],
-                              returnType = typeof<NormativeTriple>,
-                              isStatic = false,
-                              invokeCode =
-                                  fun args ->
+                                        <@@
+                                            let predicate = IriPredicate(Iri.op_Implicit (%%identity: string))
 
-                                      let subject = Expr.Coerce(args[0], typeof<NamedIndividual>)
-                                      let object_ = Expr.Coerce(args[1], typeof<BNode>)
+                                            let normativeSubject = IriSubject((%%subject: NamedIndividual).Iri)
 
-                                      <@@
-                                          let predicate = IriPredicate(Iri.op_Implicit (%%identity: string))
+                                            let normativeObject = BNodeObject(%%object_: BNode) |> BasicNormativeObject
 
-                                          let normativeSubject = IriSubject((%%subject: NamedIndividual).Iri)
+                                            NormativeTriple.PSO(predicate, normativeSubject, normativeObject)
+                                        @@>
+                            )
+                            ProvidedMethod(
+                                methodName = propertyName,
+                                parameters = [ ProvidedParameter("objects", typeof<BNode list>) ],
+                                returnType = typeof<NormativeTriple list>,
+                                isStatic = false,
+                                invokeCode =
+                                    fun args ->
 
-                                          let normativeObject = BNodeObject(%%object_: BNode) |> BasicNormativeObject
+                                        let subject = Expr.Coerce(args[0], typeof<NamedIndividual>)
+                                        let objects = Expr.Coerce(args[1], typeof<BNode list>)
 
-                                          NormativeTriple.PSO(predicate, normativeSubject, normativeObject)
-                                      @@>
-                          )
-                          ProvidedMethod(
-                              methodName = propertyName,
-                              parameters = [ ProvidedParameter("objects", typeof<BNode list>) ],
-                              returnType = typeof<NormativeTriple list>,
-                              isStatic = false,
-                              invokeCode =
-                                  fun args ->
+                                        <@@
+                                            let predicate = IriPredicate(Iri.op_Implicit (%%identity: string))
 
-                                      let subject = Expr.Coerce(args[0], typeof<NamedIndividual>)
-                                      let objects = Expr.Coerce(args[1], typeof<BNode list>)
+                                            let normativeSubject = IriSubject((%%subject: NamedIndividual).Iri)
 
-                                      <@@
-                                          let predicate = IriPredicate(Iri.op_Implicit (%%identity: string))
+                                            (%%objects: BNode list)
+                                            |> List.map (fun object_ ->
+                                                NormativeTriple.PSO(
+                                                    predicate,
+                                                    normativeSubject,
+                                                    BNodeObject object_ |> BasicNormativeObject
+                                                ))
+                                        @@>
+                            )
+                            ProvidedMethod(
+                                methodName = propertyName,
+                                parameters = [ ProvidedParameter("object", typeof<Literal>) ],
+                                returnType = typeof<NormativeTriple>,
+                                isStatic = false,
+                                invokeCode =
+                                    fun args ->
 
-                                          let normativeSubject = IriSubject((%%subject: NamedIndividual).Iri)
+                                        let subject = Expr.Coerce(args[0], typeof<NamedIndividual>)
+                                        let object_ = Expr.Coerce(args[1], typeof<Literal>)
 
-                                          (%%objects: BNode list)
-                                          |> List.map (fun object_ ->
-                                              NormativeTriple.PSO(
-                                                  predicate,
-                                                  normativeSubject,
-                                                  BNodeObject object_ |> BasicNormativeObject
-                                              ))
-                                      @@>
-                          )
-                          ProvidedMethod(
-                              methodName = propertyName,
-                              parameters = [ ProvidedParameter("object", typeof<Literal>) ],
-                              returnType = typeof<NormativeTriple>,
-                              isStatic = false,
-                              invokeCode =
-                                  fun args ->
+                                        <@@
+                                            let predicate = IriPredicate(Iri.op_Implicit (%%identity: string))
 
-                                      let subject = Expr.Coerce(args[0], typeof<NamedIndividual>)
-                                      let object_ = Expr.Coerce(args[1], typeof<Literal>)
+                                            let normativeSubject = IriSubject((%%subject: NamedIndividual).Iri)
 
-                                      <@@
-                                          let predicate = IriPredicate(Iri.op_Implicit (%%identity: string))
+                                            let normativeObject =
+                                                LiteralObject(%%object_: Literal) |> BasicNormativeObject
 
-                                          let normativeSubject = IriSubject((%%subject: NamedIndividual).Iri)
+                                            NormativeTriple.PSO(predicate, normativeSubject, normativeObject)
+                                        @@>
+                            )
+                            ProvidedMethod(
+                                methodName = propertyName,
+                                parameters = [ ProvidedParameter("objects", typeof<Literal list>) ],
+                                returnType = typeof<NormativeTriple list>,
+                                isStatic = false,
+                                invokeCode =
+                                    fun args ->
 
-                                          let normativeObject =
-                                              LiteralObject(%%object_: Literal) |> BasicNormativeObject
+                                        let subject = Expr.Coerce(args[0], typeof<NamedIndividual>)
+                                        let objects = Expr.Coerce(args[1], typeof<Literal list>)
 
-                                          NormativeTriple.PSO(predicate, normativeSubject, normativeObject)
-                                      @@>
-                          )
-                          ProvidedMethod(
-                              methodName = propertyName,
-                              parameters = [ ProvidedParameter("objects", typeof<Literal list>) ],
-                              returnType = typeof<NormativeTriple list>,
-                              isStatic = false,
-                              invokeCode =
-                                  fun args ->
+                                        <@@
+                                            let predicate = IriPredicate(Iri.op_Implicit (%%identity: string))
 
-                                      let subject = Expr.Coerce(args[0], typeof<NamedIndividual>)
-                                      let objects = Expr.Coerce(args[1], typeof<Literal list>)
+                                            let normativeSubject = IriSubject((%%subject: NamedIndividual).Iri)
 
-                                      <@@
-                                          let predicate = IriPredicate(Iri.op_Implicit (%%identity: string))
+                                            (%%objects: Literal list)
+                                            |> List.map (fun object_ ->
+                                                NormativeTriple.PSO(
+                                                    predicate,
+                                                    normativeSubject,
+                                                    LiteralObject object_ |> BasicNormativeObject
+                                                ))
+                                        @@>
+                            )
+                            ProvidedMethod(
+                                methodName = propertyName,
+                                parameters = [ ProvidedParameter("object", typeof<TripleTerm>) ],
+                                returnType = typeof<NormativeTriple>,
+                                isStatic = false,
+                                invokeCode =
+                                    fun args ->
 
-                                          let normativeSubject = IriSubject((%%subject: NamedIndividual).Iri)
+                                        let subject = Expr.Coerce(args[0], typeof<NamedIndividual>)
+                                        let object_ = Expr.Coerce(args[1], typeof<TripleTerm>)
 
-                                          (%%objects: Literal list)
-                                          |> List.map (fun object_ ->
-                                              NormativeTriple.PSO(
-                                                  predicate,
-                                                  normativeSubject,
-                                                  LiteralObject object_ |> BasicNormativeObject
-                                              ))
-                                      @@>
-                          )
-                          ProvidedMethod(
-                              methodName = propertyName,
-                              parameters = [ ProvidedParameter("object", typeof<TripleTerm>) ],
-                              returnType = typeof<NormativeTriple>,
-                              isStatic = false,
-                              invokeCode =
-                                  fun args ->
+                                        <@@
+                                            let predicate = IriPredicate(Iri.op_Implicit (%%identity: string))
 
-                                      let subject = Expr.Coerce(args[0], typeof<NamedIndividual>)
-                                      let object_ = Expr.Coerce(args[1], typeof<TripleTerm>)
+                                            let normativeSubject = IriSubject((%%subject: NamedIndividual).Iri)
 
-                                      <@@
-                                          let predicate = IriPredicate(Iri.op_Implicit (%%identity: string))
+                                            let normativeObject = TripleTermObject(%%object_: TripleTerm)
 
-                                          let normativeSubject = IriSubject((%%subject: NamedIndividual).Iri)
+                                            NormativeTriple.PSO(predicate, normativeSubject, normativeObject)
+                                        @@>
+                            )
+                            ProvidedMethod(
+                                methodName = propertyName,
+                                parameters = [ ProvidedParameter("objects", typeof<TripleTerm list>) ],
+                                returnType = typeof<NormativeTriple list>,
+                                isStatic = false,
+                                invokeCode =
+                                    fun args ->
 
-                                          let normativeObject = TripleTermObject(%%object_: TripleTerm)
+                                        let subject = Expr.Coerce(args[0], typeof<NamedIndividual>)
+                                        let objects = Expr.Coerce(args[1], typeof<TripleTerm list>)
 
-                                          NormativeTriple.PSO(predicate, normativeSubject, normativeObject)
-                                      @@>
-                          )
-                          ProvidedMethod(
-                              methodName = propertyName,
-                              parameters = [ ProvidedParameter("objects", typeof<TripleTerm list>) ],
-                              returnType = typeof<NormativeTriple list>,
-                              isStatic = false,
-                              invokeCode =
-                                  fun args ->
+                                        <@@
+                                            let predicate = IriPredicate(Iri.op_Implicit (%%identity: string))
 
-                                      let subject = Expr.Coerce(args[0], typeof<NamedIndividual>)
-                                      let objects = Expr.Coerce(args[1], typeof<TripleTerm list>)
+                                            let normativeSubject = IriSubject((%%subject: NamedIndividual).Iri)
 
-                                      <@@
-                                          let predicate = IriPredicate(Iri.op_Implicit (%%identity: string))
+                                            (%%objects: TripleTerm list)
+                                            |> List.map (fun object_ ->
+                                                NormativeTriple.PSO(
+                                                    predicate,
+                                                    normativeSubject,
+                                                    TripleTermObject object_
+                                                ))
+                                        @@>
+                            )
+                            ProvidedMethod(
+                                methodName = propertyName,
+                                parameters = [ ProvidedParameter("object", typeof<NamedIndividual>) ],
+                                returnType = typeof<NormativeTriple>,
+                                isStatic = false,
+                                invokeCode =
+                                    fun args ->
 
-                                          let normativeSubject = IriSubject((%%subject: NamedIndividual).Iri)
+                                        let subject = Expr.Coerce(args[0], typeof<NamedIndividual>)
+                                        let object_ = Expr.Coerce(args[1], typeof<NamedIndividual>)
 
-                                          (%%objects: TripleTerm list)
-                                          |> List.map (fun object_ ->
-                                              NormativeTriple.PSO(
-                                                  predicate,
-                                                  normativeSubject,
-                                                  TripleTermObject object_
-                                              ))
-                                      @@>
-                          )
-                          ProvidedMethod(
-                              methodName = propertyName,
-                              parameters = [ ProvidedParameter("object", typeof<NamedIndividual>) ],
-                              returnType = typeof<NormativeTriple>,
-                              isStatic = false,
-                              invokeCode =
-                                  fun args ->
+                                        <@@
+                                            let predicate = IriPredicate(Iri.op_Implicit (%%identity: string))
 
-                                      let subject = Expr.Coerce(args[0], typeof<NamedIndividual>)
-                                      let object_ = Expr.Coerce(args[1], typeof<NamedIndividual>)
+                                            let normativeSubject = IriSubject((%%subject: NamedIndividual).Iri)
 
-                                      <@@
-                                          let predicate = IriPredicate(Iri.op_Implicit (%%identity: string))
+                                            let normativeObject =
+                                                BasicNormativeObject(IriObject((%%object_: NamedIndividual).Iri))
 
-                                          let normativeSubject = IriSubject((%%subject: NamedIndividual).Iri)
+                                            NormativeTriple.PSO(predicate, normativeSubject, normativeObject)
+                                        @@>
+                            )
+                            ProvidedMethod(
+                                methodName = propertyName,
+                                parameters = [ ProvidedParameter("objects", typeof<NamedIndividual list>) ],
+                                returnType = typeof<NormativeTriple list>,
+                                isStatic = false,
+                                invokeCode =
+                                    fun args ->
 
-                                          let normativeObject =
-                                              BasicNormativeObject(IriObject((%%object_: NamedIndividual).Iri))
+                                        let subject = Expr.Coerce(args[0], typeof<NamedIndividual>)
+                                        let objects = Expr.Coerce(args[1], typeof<NamedIndividual list>)
 
-                                          NormativeTriple.PSO(predicate, normativeSubject, normativeObject)
-                                      @@>
-                          )
-                          ProvidedMethod(
-                              methodName = propertyName,
-                              parameters = [ ProvidedParameter("objects", typeof<NamedIndividual list>) ],
-                              returnType = typeof<NormativeTriple list>,
-                              isStatic = false,
-                              invokeCode =
-                                  fun args ->
+                                        <@@
+                                            let predicate = IriPredicate(Iri.op_Implicit (%%identity: string))
 
-                                      let subject = Expr.Coerce(args[0], typeof<NamedIndividual>)
-                                      let objects = Expr.Coerce(args[1], typeof<NamedIndividual list>)
+                                            let normativeSubject = IriSubject((%%subject: NamedIndividual).Iri)
 
-                                      <@@
-                                          let predicate = IriPredicate(Iri.op_Implicit (%%identity: string))
+                                            (%%objects: NamedIndividual list)
+                                            |> List.map (fun object_ ->
+                                                NormativeTriple.PSO(
+                                                    predicate,
+                                                    normativeSubject,
+                                                    IriObject object_.Iri |> BasicNormativeObject
+                                                ))
+                                        @@>
+                            )
+                        ]
+                        |> List.map (fun methodDefinition ->
+                            methodDefinition.AddXmlDocDelayed(fun () ->
+                                VocabularyXmlDocumentation.ofResource
+                                    propertyName
+                                    propertyNode.Uri.OriginalString
+                                    ontologyProperty)
+                            methodDefinition)
 
-                                          let normativeSubject = IriSubject((%%subject: NamedIndividual).Iri)
-
-                                          (%%objects: NamedIndividual list)
-                                          |> List.map (fun object_ ->
-                                              NormativeTriple.PSO(
-                                                  predicate,
-                                                  normativeSubject,
-                                                  IriObject object_.Iri |> BasicNormativeObject
-                                              ))
-                                      @@>
-                          ) ])
-
-                | _ -> ()
+                    | _ -> [])
+                |> Seq.toList)
 
         (*
             TermTypeDefinition.AddMembersDelayed(fun () ->
                 [
-
                   ProvidedProperty(
                       propertyName = "asSubject",
                       propertyType = typeof<NormativeSubject>,
@@ -1077,14 +1193,13 @@ type VocabularyProvider(config: TypeProviderConfig) as this =
 
                               <@@ BasicNormativeObject(IriObject((%%individual: NamedIndividual).Iri)) @@>
                   ) ])
-
-*)
+        *)
 
         VocabularyTypeDefinition.AddMembersDelayed(fun () ->
-            [ 
+            [
                 for prefixedName, ontologyClass in classes |> Map.toSeq do
 
-                  let providedName = 
+                    let providedName =
                         ontologyClass.Label
                         |> Seq.map (fun label -> label.Value)
                         |> Seq.distinct
@@ -1093,39 +1208,41 @@ type VocabularyProvider(config: TypeProviderConfig) as this =
                         |> Seq.insertAt 0 prefixedName.localName
                         |> String.concat "'"
 
-                  match owlClasses.TryFind prefixedName with
-                  | Some owlClass ->
-                      yield ClassIri(PrefixedName prefixedName) |> CodeProvision.staticProperty OwlClassTypeDefinition providedName
-                  | None ->
-                      (*
-                    RdfClassTypeDefinition.AddMemberDelayed(fun () ->
-                        ProvidedProperty(
-                            propertyName = "asObject",
-                            propertyType = typeof<NormativeObject>,
-                            isStatic = false,
-                            getterCode =
-                                fun args ->
-                                    let individual = Expr.Coerce(args[0], typeof<Iri>)
+                    match owlClasses.TryFind prefixedName with
+                    | Some owlClass ->
+                        yield ClassIri(PrefixedName prefixedName)
+                              |> CodeProvision.staticProperty OwlClassTypeDefinition providedName
+                              |> VocabularyXmlDocumentation.attachProperty prefixedName ontologyClass
+                    | None ->
+                        (*
+                          RdfClassTypeDefinition.AddMemberDelayed(fun () ->
+                              ProvidedProperty(
+                                  propertyName = "asObject",
+                                  propertyType = typeof<NormativeObject>,
+                                  isStatic = false,
+                                  getterCode =
+                                      fun args ->
+                                          let individual = Expr.Coerce(args[0], typeof<Iri>)
 
-                                    <@@ BasicNormativeObject(IriObject((%%individual: Iri))) @@>
-                        ))
+                                          <@@ BasicNormativeObject(IriObject((%%individual: Iri))) @@>
+                              ))
 
-                    RdfClassTypeDefinition.AddMemberDelayed(fun () ->
-                        ProvidedProperty(
-                            propertyName = "asSubject",
-                            propertyType = typeof<NormativeSubject>,
-                            isStatic = false,
-                            getterCode =
-                                fun args ->
-                                    let individual = Expr.Coerce(args[0], typeof<Iri>)
+                          RdfClassTypeDefinition.AddMemberDelayed(fun () ->
+                              ProvidedProperty(
+                                  propertyName = "asSubject",
+                                  propertyType = typeof<NormativeSubject>,
+                                  isStatic = false,
+                                  getterCode =
+                                      fun args ->
+                                          let individual = Expr.Coerce(args[0], typeof<Iri>)
 
-                                    <@@ IriSubject((%%individual: Iri)) @@>
-                        ))
-
-    *)
-                      yield PrefixedName prefixedName |> CodeProvision.staticProperty RdfClassTypeDefinition providedName
-
-              ])
+                                          <@@ IriSubject((%%individual: Iri)) @@>
+                              ))
+                        *)
+                        yield PrefixedName prefixedName
+                              |> CodeProvision.staticProperty RdfClassTypeDefinition providedName
+                              |> VocabularyXmlDocumentation.attachProperty prefixedName ontologyClass
+            ])
 
         VocabularyTypeDefinition
 
@@ -1180,6 +1297,116 @@ module index =
             XmlProvider<UseOriginalNames=true, Sample= @"D:\ftp\org\iana\assignments\uri-schemes\uri-schemes.xml">
 
         let xml = Xml.Load(xmlFilePath)
+module private ProtocolRegistryIndex =
+
+    let groupIndexes =
+
+        index.html.Tables.``Index of IANA Protocol Registries``.Rows
+        |> Array.mapi (fun currentIndex row ->
+            let tr = index.xhtml.body.table.tbody.trs[currentIndex]
+
+            match tr.``class`` with
+
+            | "iana-protocol-group" -> Group currentIndex
+            | "iana-protocol-registry" -> Registry currentIndex)
+        |> Array.choose (fun row ->
+            match row with
+            | Group length -> Some length
+            | _ -> None)
+        |> Array.distinct
+        |> Array.sort
+
+    let registryEntries =
+        groupIndexes
+        |> Array.mapi (fun groupOrdinal groupRowIndex ->
+
+            let registryIndexStart = groupRowIndex + 1
+
+            let registryIndexEnd =
+                if groupOrdinal + 1 < groupIndexes.Length then
+                    groupIndexes[groupOrdinal + 1] - 1
+                else
+                    index.html.Tables.``Index of IANA Protocol Registries``.Rows.Length - 1
+
+            let group =
+                index.html.Tables.``Index of IANA Protocol Registries``.Rows[groupRowIndex].Column1
+
+            [| for registryIndex = registryIndexStart to registryIndexEnd do
+                   yield
+                       { group = group
+                         name = index.html.Tables.``Index of IANA Protocol Registries``.Rows[registryIndex].Column1
+
+                         localName = index.xhtml.body.table.tbody.trs[registryIndex].tds[0].``as``[0].href
+
+                         documentation =
+                           index.html.Tables.``Index of IANA Protocol Registries``.Rows[registryIndex].Column2
+
+                         references =
+                           index.xhtml.body.table.tbody.trs[registryIndex].tds[1].``as``
+                           |> Array.map _.href
+
+                         comment = index.html.Tables.``Index of IANA Protocol Registries``.Rows[registryIndex].Column3 } |])
+        |> Array.concat
+
+    let protocolSchemes =
+        index.uri_schemes.xml.registries
+        |> Array.filter (fun registry -> registry.title = "Uniform Resource Identifier (URI) Schemes")
+        |> Array.collect (fun schemeRegistry ->
+
+            schemeRegistry.records
+            |> Array.distinctBy (fun scheme -> scheme.value.Value.XElement.Value)
+            // |> Array.Parallel.filter (fun scheme -> not (scheme.value.Value.XElement.Value.Contains("OBSOLETE")))
+            |> Array.map (fun record ->
+
+                let namespaceName = record.XElement.Name.NamespaceName
+                let value = record.value.Value.XElement.Value
+
+                let file =
+                    match record.file with
+                    | Some file -> file.Value
+                    | None -> None
+
+                let description =
+                    if record.description.Value.Value.Value = value then
+                        None
+                    else
+                        Some record.description.Value.Value.Value
+
+                let wellKnown =
+                    match record.``well-known`` with
+                    | Some wellKnown ->
+                        try
+                            Some(Iana.XRef.ofElement (wellKnown.xref.``type``, wellKnown.xref.data, None))
+                        with _ ->
+                            None
+                    | _ -> None
+
+                let references =
+                    match record.xrefs with
+                    | [||] -> [||]
+                    | xrefs ->
+                        xrefs
+                        |> Array.map (fun xref -> Iana.XRef.ofElement (xref.``type``, xref.data, xref.Value))
+
+                let notes =
+                    match record.notes with
+                    | Some notes when not (String.IsNullOrWhiteSpace notes.XElement.Value) ->
+                        Some notes.XElement.Value
+                    | _ -> None
+
+                { date = record.date
+                  updated = record.updated
+                  fileTemplate = file
+                  name = value
+                  description = description
+                  status = Iana.Status.ofString record.status.Value |> Some
+                  cri = Some record.cri.Value
+                  wellKnown = wellKnown
+                  references = references
+                  notes = notes }
+                : Iana.ProtocolScheme))
+
+    let groupedEntries = registryEntries |> Array.groupBy _.group
 
 [<TypeProvider>]
 type ProtocolRegistryProvider(config: TypeProviderConfig) as this =
@@ -1386,8 +1613,7 @@ type ProtocolRegistryProvider(config: TypeProviderConfig) as this =
     do
         provider.AddMembersDelayed(fun () ->
 
-            registryEntries
-            |> Array.groupBy _.group
+            ProtocolRegistryIndex.groupedEntries
             |> Array.map (fun (groupName, entries) ->
 
                 let groupType = ProvidedTypeDefinition(groupName, Some typeof<obj>)
@@ -1440,19 +1666,7 @@ type ProtocolRegistryProvider(config: TypeProviderConfig) as this =
 
         this.AddNamespace(namespaceName, [ provider ])
 
-[<TypeProvider>]
-type PublicSuffixProvider(config: TypeProviderConfig) as this =
-
-    inherit
-        TypeProviderForNamespaces(
-            config,
-            assemblyReplacementMap = [ ("DoxAletheia.DesignTime", "DoxAletheia.Runtime") ]
-        )
-
-    let namespaceName = "PublicSuffixList"
-
-    let provider =
-        ProvidedTypeDefinition(Assembly.GetExecutingAssembly(), namespaceName, "PublicSuffixProvider", Some typeof<obj>)
+module private PublicSuffixIndex =
 
     let publicSuffixes =
         let parser = TldRuleParser(TldRuleDivisionFilter.All)
@@ -1471,7 +1685,21 @@ type PublicSuffixProvider(config: TypeProviderConfig) as this =
         |> Array.iter (fun (suffix, reverseLabels) -> trie.Add(reverseLabels, suffix))
 
         trie
+[<TypeProvider>]
+type PublicSuffixProvider(config: TypeProviderConfig) as this =
 
+    inherit
+        TypeProviderForNamespaces(
+            config,
+            assemblyReplacementMap = [ ("DoxAletheia.DesignTime", "DoxAletheia.Runtime") ]
+        )
+
+    let namespaceName = "PublicSuffixList"
+
+    let provider =
+        ProvidedTypeDefinition(Assembly.GetExecutingAssembly(), namespaceName, "PublicSuffixProvider", Some typeof<obj>)
+
+    let publicSuffixTrie = PublicSuffixIndex.publicSuffixTrie
     let asSuffixProperty (suffix: PublicSuffix) =
 
         let property =
@@ -1523,31 +1751,8 @@ module media_types =
 
     type Xml = XmlProvider<UseOriginalNames=true, Sample= @"D:\ftp\org\iana\assignments\media-types\media-types.xml">
 
-    let xml = Xml.Load(xmlFilePath)
-
-[<TypeProvider>]
-type InternetMediaTypeProvider(config: TypeProviderConfig) as this =
-
-    inherit
-        TypeProviderForNamespaces(
-            config,
-            assemblyReplacementMap = [ ("DoxAletheia.DesignTime", "DoxAletheia.Runtime") ]
-        )
-
-    let namespaceName = "Iana"
-
-    let provider =
-        ProvidedTypeDefinition(
-            Assembly.GetExecutingAssembly(),
-            namespaceName,
-            "InternetMediaTypeProvider",
-            Some typeof<obj>
-        )
-
-    let RdfClassTypeDefinition =
-        ProvidedTypeDefinition("RdfClass", Some typeof<Iri>, isErased = true)
-
-    do provider.AddMember RdfClassTypeDefinition
+    let xml = Xml.Load xmlFilePath
+module private InternetMediaTypeIndex =
 
     let internetMediaTypes =
         media_types.xml.registries
@@ -1575,6 +1780,32 @@ type InternetMediaTypeProvider(config: TypeProviderConfig) as this =
             trie.Add(tokens, mime)
 
         trie
+
+[<TypeProvider>]
+type InternetMediaTypeProvider(config: TypeProviderConfig) as this =
+
+    inherit
+        TypeProviderForNamespaces(
+            config,
+            assemblyReplacementMap = [ ("DoxAletheia.DesignTime", "DoxAletheia.Runtime") ]
+        )
+
+    let namespaceName = "Iana"
+
+    let provider =
+        ProvidedTypeDefinition(
+            Assembly.GetExecutingAssembly(),
+            namespaceName,
+            "InternetMediaTypeProvider",
+            Some typeof<obj>
+        )
+
+    let RdfClassTypeDefinition =
+        ProvidedTypeDefinition("RdfClass", Some typeof<Iri>, isErased = true)
+
+    do provider.AddMember RdfClassTypeDefinition
+
+    let internetMediaTypeTrie = InternetMediaTypeIndex.internetMediaTypeTrie
 
     let rec asValueExpression (value: obj) (valueType: Type) : Expr =
 
@@ -1719,7 +1950,7 @@ type InternetMediaTypeProvider(config: TypeProviderConfig) as this =
                 propertyName = "spdxLiteral",
                 propertyType = typeof<TypedLiteral>,
                 isStatic = true,
-                getterCode = fun _ -> Quotation.ofValue (spdx.Measure.MediaType.typedLiteral mime)
+                getterCode = fun _ -> Quotation.ofValue (StaticTypedLiteral.toTypedLiteral mime.spdx'MediaType)
             )
 
         property
@@ -1835,5 +2066,482 @@ type NuGetProtocolProvider(config: TypeProviderConfig) as this =
 
         this.AddNamespace(namespaceName, [ provider ])
 
+module WebServiceDescriptionIndex =
+
+    let private cache =
+        ConcurrentDictionary< string, Lazy<Trie<string array, string, FileInfo>> >(StringComparer.OrdinalIgnoreCase)
+
+    let private create (directoryPath: string) =
+
+        let directory = DirectoryInfo(directoryPath)
+
+        if not directory.Exists then
+            invalidArg "directoryPath" directoryPath
+
+        let trie =
+            Trie<string array, string, FileInfo>(
+                fun tokens -> tokens :> seq<string>
+            )
+
+        for file in directory.EnumerateFiles(
+            "*.wsdl",
+            SearchOption.AllDirectories
+        ) do
+
+            let relativePath =
+                Path.GetRelativePath(directory.FullName, file.FullName)
+
+            let directorySegments =
+                match Path.GetDirectoryName(relativePath) with
+                | null | "" -> [||]
+                | path ->
+                    path.Split(
+                        [| Path.DirectorySeparatorChar; Path.AltDirectorySeparatorChar |],
+                        StringSplitOptions.RemoveEmptyEntries
+                    )
+
+            let monikerSegments =
+                Path.GetFileNameWithoutExtension(relativePath).Split('.')
+
+            let tokens =
+                Array.append directorySegments monikerSegments
+
+            if trie.ContainsKey(tokens, true) then
+                invalidOp $"Duplicate WSDL path: {relativePath}"
+
+            trie.Add(tokens, file)
+
+        trie
+
+    let get (directoryPath: string) =
+
+        let normalizedPath =
+            Path.GetFullPath(directoryPath)
+
+        cache.GetOrAdd(
+            normalizedPath,
+            fun path -> lazy (create path)
+        ).Value
+
+[<TypeProvider>]
+type WebServiceDescriptionProvider(config: TypeProviderConfig) as this =
+
+    inherit
+        TypeProviderForNamespaces(
+            config,
+            assemblyReplacementMap =
+                [ ("DoxAletheia.DesignTime", "DoxAletheia.Runtime") ],
+            addDefaultProbingLocation = true
+        )
+
+    let providedNamespace = "DoxAletheia"
+    let assembly = Assembly.GetExecutingAssembly()
+
+    // A named WSDL port, represented by the original Port object.
+    let asPortType (port: Port) =
+
+        let portType =
+            ProvidedTypeDefinition(
+                $"{port.Name}'Port",
+                Some typeof<obj>,
+                isErased = true
+            )
+
+        portType.AddMember(
+            ProvidedProperty(
+                propertyName = "Value",
+                propertyType = typeof<Port>,
+                isStatic = false,
+                getterCode = fun arguments ->
+                    let value =
+                        Expr.Coerce(arguments[0], typeof<obj>)
+
+                    <@@ (%%value : obj) :?> Port @@>
+            )
+        )
+
+        portType
+
+    let asOperationMethods (description: ServiceDescription) : MemberInfo list =
+
+        description.PortTypes
+        |> Seq.cast<PortType>
+        |> Seq.collect (fun portType ->
+            portType.Operations |> Seq.cast<Operation>
+        )
+        |> Seq.map (fun operation -> operation.Name)
+        |> Seq.distinct
+        |> Seq.map (fun operationName ->
+
+            ProvidedMethod(
+                methodName = operationName,
+                parameters = [],
+                returnType = typeof<unit>,
+                isStatic = false,
+                invokeCode = fun _ -> <@@ () @@>
+            ) :> MemberInfo
+
+        )
+        |> Seq.toList
+    // The collection of ports belonging to a particular service.
+    let asPortsType (service: Service) =
+
+        let portsType =
+            ProvidedTypeDefinition(
+                "Ports'Collection",
+                Some typeof<obj>,
+                isErased = true
+            )
+
+        portsType.AddMember(
+            ProvidedProperty(
+                propertyName = "Collection",
+                propertyType = typeof<PortCollection>,
+                isStatic = false,
+                getterCode = fun arguments ->
+                    let value =
+                        Expr.Coerce(arguments[0], typeof<obj>)
+
+                    <@@ (%%value : obj) :?> PortCollection @@>
+            )
+        )
+
+        portsType.AddMembersDelayed(fun () ->
+            [
+                for port in service.Ports |> Seq.cast<Port> do
+
+                    let providedPortType = asPortType port
+
+                    let portNameExpression =
+                        CodeQuotation<string>.expression port.Name
+                        |> Expr.Cast<string>
+
+                    yield providedPortType :> MemberInfo
+
+                    yield
+                        ProvidedProperty(
+                            propertyName = port.Name,
+                            propertyType = providedPortType,
+                            isStatic = false,
+                            getterCode = fun arguments ->
+
+                                let ports =
+                                    Expr.Coerce(arguments[0], typeof<obj>)
+
+                                <@@
+                                    box (
+                                        ((%%ports : obj) :?> PortCollection)
+                                            .[%portNameExpression]
+                                    )
+                                @@>
+                        ) :> MemberInfo
+            ]
+        )
+
+        portsType
+
+    // A named WSDL service, represented by the original Service object.
+    let asServiceType (service: Service) =
+
+        let serviceType =
+            ProvidedTypeDefinition(
+                $"{service.Name}'Service",
+                Some typeof<obj>,
+                isErased = true
+            )
+
+        serviceType.AddMember(
+            ProvidedProperty(
+                propertyName = "Value",
+                propertyType = typeof<Service>,
+                isStatic = false,
+                getterCode = fun arguments ->
+                    let value =
+                        Expr.Coerce(arguments[0], typeof<obj>)
+
+                    <@@ (%%value : obj) :?> Service @@>
+            )
+        )
+
+        serviceType.AddMembersDelayed(fun () ->
+
+            let portsType = asPortsType service
+
+            [
+                yield portsType :> MemberInfo
+
+                yield
+                    ProvidedProperty(
+                        propertyName = "Ports",
+                        propertyType = portsType,
+                        isStatic = false,
+                        getterCode = fun arguments ->
+
+                            let value =
+                                Expr.Coerce(arguments[0], typeof<obj>)
+
+                            <@@
+                                box (
+                                    ((%%value : obj) :?> Service).Ports
+                                )
+                            @@>
+                    ) :> MemberInfo
+            ]
+        )
+
+        serviceType
+
+    // The collection of services declared by a WSDL document.
+    let asServicesType (description: ServiceDescription) =
+
+        let servicesType =
+            ProvidedTypeDefinition(
+                "Services'Collection",
+                Some typeof<obj>,
+                isErased = true
+            )
+
+        servicesType.AddMember(
+            ProvidedProperty(
+                propertyName = "Collection",
+                propertyType = typeof<ServiceCollection>,
+                isStatic = false,
+                getterCode = fun arguments ->
+
+                    let value =
+                        Expr.Coerce(arguments[0], typeof<obj>)
+
+                    <@@ (%%value : obj) :?> ServiceCollection @@>
+            )
+        )
+
+        servicesType.AddMembersDelayed(fun () ->
+            [
+                for service in description.Services |> Seq.cast<Service> do
+
+                    let providedServiceType =
+                        asServiceType service
+
+                    let serviceNameExpression =
+                        CodeQuotation<string>.expression service.Name
+                        |> Expr.Cast<string>
+
+                    yield providedServiceType :> MemberInfo
+
+                    yield
+                        ProvidedProperty(
+                            propertyName = service.Name,
+                            propertyType = providedServiceType,
+                            isStatic = false,
+                            getterCode = fun arguments ->
+
+                                let services =
+                                    Expr.Coerce(arguments[0], typeof<obj>)
+
+                                <@@
+                                    box (
+                                        ((%%services : obj) :?> ServiceCollection)
+                                            .[%serviceNameExpression]
+                                    )
+                                @@>
+                        ) :> MemberInfo
+            ]
+        )
+
+        servicesType
+
+    // A WSDL document, represented by ServiceDescription.
+    let asServiceDescriptionType
+        (providedName: string)
+        (file: FileInfo) =
+
+        let descriptionType =
+            ProvidedTypeDefinition(
+                $"{providedName}'ServiceDescription",
+                Some typeof<ServiceDescription>,
+                isErased = true
+            )
+
+        let pathExpression =
+            CodeQuotation<string>.expression file.FullName
+            |> Expr.Cast<string>
+
+        descriptionType.AddMember(
+            ProvidedProperty(
+                propertyName = "wsdl",
+                propertyType = typeof<XDocument>,
+                isStatic = false,
+                getterCode = fun _ ->
+                    <@@ XDocument.Load(%pathExpression) @@>
+            )
+        )
+
+        descriptionType.AddMember(
+            ProvidedProperty(
+                propertyName = "FileInfo",
+                propertyType = typeof<FileInfo>,
+                isStatic = false,
+                getterCode = fun _ ->
+                    CodeQuotation<FileInfo>.expression file
+            )
+        )
+
+        descriptionType.AddMembersDelayed(fun () ->
+
+            let description =
+                ServiceDescription.Read(file.FullName)
+            asOperationMethods description
+(*
+            let servicesType =
+                asServicesType description
+            [
+                yield servicesType :> MemberInfo
+                
+                yield
+                    ProvidedProperty(
+                        propertyName = "Services",
+                        propertyType = servicesType,
+                        isStatic = false,
+                        getterCode = fun arguments ->
+
+                            let description =
+                                Expr.Coerce(
+                                    arguments[0],
+                                    typeof<ServiceDescription>
+                                )
+
+                            <@@
+                                box (
+                                    (%%description : ServiceDescription).Services
+                                )
+                            @@>
+                    ) :> MemberInfo
+
+            ]
+*)
+
+        )
+
+        descriptionType
+
+    // The terminal file becomes a static property, not a nested type
+    // bearing the same name as the WSDL file.
+    let asServiceDescriptionProperty
+        (providedName: string)
+        (providedDescriptionType: ProvidedTypeDefinition)
+        (file: FileInfo) =
+
+        let pathExpression =
+            CodeQuotation<string>.expression file.FullName
+            |> Expr.Cast<string>
+
+        ProvidedProperty(
+            propertyName = providedName,
+            propertyType = providedDescriptionType,
+            isStatic = true,
+            getterCode = fun _ ->
+                <@@ ServiceDescription.Read(%pathExpression) @@>
+        )
+
+    // Project directory/moniker nodes as types and terminal WSDLs
+    // as static properties.
+    let rec asProvidedMembers
+        (trieNode: ITrieNode<string, FileInfo>)
+        : MemberInfo list =
+
+        [
+            for child in trieNode.Children |> Seq.sortBy _.KeyBit do
+
+                if child.Children |> Seq.isEmpty |> not then
+
+                    let navigationType =
+                        ProvidedTypeDefinition(
+                            child.KeyBit,
+                            Some typeof<obj>,
+                            isErased = true
+                        )
+
+                    navigationType.AddMembersDelayed(fun () ->
+                        asProvidedMembers child
+                    )
+
+                    yield navigationType :> MemberInfo
+
+                if child.HasValue then
+
+                    let descriptionType =
+                        asServiceDescriptionType child.KeyBit child.Value
+
+                    let descriptionProperty =
+                        asServiceDescriptionProperty
+                            child.KeyBit
+                            descriptionType
+                            child.Value
+
+                    yield descriptionType :> MemberInfo
+                    yield descriptionProperty :> MemberInfo
+        ]
+
+    let createType
+        (typeName: string)
+        (directoryPath: string) =
+
+        let webservicesDirectory =
+            DirectoryInfo(directoryPath)
+
+        if not webservicesDirectory.Exists then
+            invalidArg
+                "directoryPath"
+                $"Directory not found: {directoryPath}"
+
+        let wsdlTrie =
+            WebServiceDescriptionIndex.get directoryPath
+
+        let provider =
+            ProvidedTypeDefinition(
+                assembly,
+                providedNamespace,
+                typeName,
+                Some typeof<obj>,
+                isErased = true
+            )
+
+        provider.AddMembersDelayed(fun () ->
+            asProvidedMembers wsdlTrie.Root
+        )
+
+        provider
+
+    do
+        let provider =
+            ProvidedTypeDefinition(
+                assembly,
+                providedNamespace,
+                "WebServiceDescriptionProvider",
+                Some typeof<obj>,
+                isErased = true
+            )
+
+        provider.DefineStaticParameters(
+            parameters =
+                [
+                    ProvidedStaticParameter(
+                        "DirectoryPath",
+                        typeof<string>
+                    )
+                ],
+            instantiationFunction =
+                fun typeName arguments ->
+
+                    let directoryPath =
+                        arguments[0] :?> string
+
+                    createType typeName directoryPath
+        )
+
+        this.AddNamespace(
+            providedNamespace,
+            [ provider ]
+        )
 [<assembly: TypeProviderAssembly>]
 do ()

@@ -1,4 +1,5 @@
 Ada.Url
+SmartWsdlKit
 AW.Identifiers
 BrowserApi
 dotNetRdf
@@ -19,6 +20,7 @@ FSharp.Literals
 Meziantou.Framework
 Meziantou.Framework.Uri
 Universal.Common
+System.Web.Services.Description
 Mime-Detective
 Mime-Detective.Definitions.Exhaustive
 Nager.PublicSuffix

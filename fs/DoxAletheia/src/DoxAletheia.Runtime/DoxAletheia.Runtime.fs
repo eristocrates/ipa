@@ -2,6 +2,7 @@ module DoxAletheia.Runtime
 
 open System
 open System.Text
+open System.Web.Services.Description
 open System.Xml
 open System.Xml.Linq
 open System.IO
@@ -14,6 +15,7 @@ open VDS.RDF.Ontology
 open VDS.RDF.Parsing
 open System.Text.RegularExpressions
 
+open SmartWsdlKit
 open Microsoft.FSharp.Quotations
 open IriTools
 open System.Globalization
@@ -39,6 +41,7 @@ open Tavis.UriTemplates
 open Meziantou.Framework
 open Nager.PublicSuffix
 open System.Threading.Tasks
+open System.Numerics
 open System.Text.RegularExpressions
 open Flurl
 open Ada.Url
@@ -921,12 +924,10 @@ type Iri =
     | Irn of Irn
     | SkolemIri of BNode
     | PrefixedName of PrefixedName
-
     member this.asSubject = IriSubject this
     member this.asPredicate = IriPredicate this
     member this.asObject = IriObject this |> BasicNormativeObject
     member this.asRdfTerm = IriTerm this |> BasicRdfTerm
-
     static member op_Implicit(iriReference: IriReference) = IRIREF iriReference
     static member op_Implicit(irl: Irl) = Irl irl
     static member op_Implicit(irn: Irn) = Irn irn
@@ -936,6 +937,11 @@ type Iri =
     static member op_Implicit(iriString: string) = Iri.ref iriString
     static member toUri(iri: Iri) = Uri iri.identity
     member this.asUri = Iri.toUri this
+    member this.tryIrl = 
+        try 
+            Url.Parse this.identity |> Irl.ofUrl |> Some
+        with 
+        | _ -> None
     member this.asIriReference = IriReference this.identity
     static member op_Implicit(iri: Iri) = iri.asUri
     static member ofUri(uri: Uri) = IriReference uri |> IRIREF
@@ -949,19 +955,14 @@ type Iri =
             Some(vocabulary.prefixedName this.identity[vocabulary.identity.Length ..])
         else
             None
-
     member this.localPart = this.asUri.localPart
-
     member this.Annotation((annotationProperty: AnnotationProperty), (annotationObject: Iri)) =
         Functional.AnnotationAssertion(annotationProperty, IriSubject this, IriObject annotationObject)
-
     member this.Annotation(annotationObject: Iri) =
         fun (annotationProperty: AnnotationProperty) ->
             Functional.AnnotationAssertion(annotationProperty, IriSubject this, IriObject annotationObject)
-
     member this.Annotation((annotationProperty: AnnotationProperty), (annotationObject: BNode)) =
         Functional.AnnotationAssertion(annotationProperty, IriSubject this, BNodeObject annotationObject)
-
     member this.Annotation(annotationObject: BNode) =
         fun (annotationProperty: AnnotationProperty) ->
             Functional.AnnotationAssertion(annotationProperty, IriSubject this, BNodeObject annotationObject)
@@ -1582,13 +1583,13 @@ and DatatypeIri =
 
     member this.pattern(pattern: string) =
         let facetValue: FacetValue =
-            RdfVocabulary.xsd'pattern |> Functional.FacetValue(Literal.string pattern)
+            RdfVocabulary.xsd'pattern |> Functional.FacetValue(Literal.rdfString pattern)
 
         this |> Functional.DatatypeRestriction(facetValue)
 
     member this.langRange(langRange: string) =
         let facetValue: FacetValue =
-            RdfVocabulary.rdf'langRange |> Functional.FacetValue(Literal.string langRange)
+            RdfVocabulary.rdf'langRange |> Functional.FacetValue(Literal.rdfString langRange)
 
         this |> Functional.DatatypeRestriction(facetValue)
 
@@ -1619,6 +1620,7 @@ and Datatype<[<Measure>] 'Datatype> =
     member this.datatypeIri = this._datatypeIri
 
     member this.Iri = this._datatypeIri.Iri
+    member this.asRdfTerm = this.Iri.asRdfTerm
 
     static member (^^)((lexicalForm: System.String), (datatype: Datatype<'Datatype>)) : StaticTypedLiteral<'Datatype> =
         { literal = UMX.tag lexicalForm
@@ -1795,7 +1797,7 @@ and [<CustomEquality; CustomComparison>] Literal =
         | TypedLiteral typedLiteral -> None
         | EmbeddedLiteral embeddedLiteral -> None
 
-    static member string(value: string) : Literal =
+    static member rdfString(value: string) : Literal =
         SimpleString { simpleString = value } |> StringLiteral
 
     member this.asObject = LiteralObject this |> BasicNormativeObject
@@ -1917,7 +1919,6 @@ and StringLiteral =
 
 and SimpleString =
     { simpleString: string }
-
     member this.datatypeIri = RdfVocabulary.xsd'string
     member this.lexicalForm = this.simpleString
 
@@ -2418,7 +2419,7 @@ and NormativePredicate =
         PredicateObject(predicate, literalObject.asObject)
 
     static member (/->)(predicate: NormativePredicate, literalValue: string) : PredicateObject =
-        let literalObject = Literal.string literalValue
+        let literalObject = Literal.rdfString literalValue
         PredicateObject(predicate, literalObject.asObject)
 
     static member (/->)(predicate: NormativePredicate, literalValue: bool) : PredicateObject =
@@ -2843,7 +2844,7 @@ and RdfTerm =
 
     static member STRUUID() =
         Guid.NewGuid().asHyphenatedString
-        |> Literal.string
+        |> Literal.rdfString
     static member STRLEN(source: StringLiteral) = source.lexicalForm.runes.Length
     static member SUBSTR
         (source: StringLiteral, startingLoc: int, ?length: int) =
@@ -3103,7 +3104,7 @@ and RdfTerm =
     static member ENCODE_FOR_URI(source: StringLiteral) =
         source.lexicalForm
         |> Uri.EscapeDataString
-        |> Literal.string
+        |> Literal.rdfString
     static member TRIPLE (triple:NormativeTriple) : TripleTerm = TripleTerm triple
     static member inline TRIPLE (curSubject: ^Subject when ^Subject: (member asSubject: NormativeSubject)) =
         fun (curPredicate: ^Predicate when ^Predicate: (member asPredicate: NormativePredicate)) -> 
@@ -3138,7 +3139,7 @@ and RdfTerm =
         |> algorithm
         |> Convert.ToHexString
         |> _.ToLowerInvariant()
-        |> Literal.string
+        |> Literal.rdfString
 
     static member MD5(source: StringLiteral) =
         RdfTerm.HASH(
@@ -3319,7 +3320,7 @@ and AnnotationProperty =
         PredicateObject(annotationProperty.asPredicate, literalObject.asObject)
 
     static member (/->)(annotationProperty: AnnotationProperty, literalValue: string) : PredicateObject =
-        let literalObject = Literal.string literalValue
+        let literalObject = Literal.rdfString literalValue
         PredicateObject(annotationProperty.asPredicate, literalObject.asObject)
 
     static member (/->)(annotationProperty: AnnotationProperty, literalValue: bool) : PredicateObject =
@@ -3554,7 +3555,7 @@ and ObjectProperty =
         PredicateObject(objectProperty.asPredicate, literalObject.asObject)
 
     static member (/->)(objectProperty: ObjectProperty, literalValue: string) : PredicateObject =
-        let literalObject = Literal.string literalValue
+        let literalObject = Literal.rdfString literalValue
         PredicateObject(objectProperty.asPredicate, literalObject.asObject)
 
     static member (/->)(objectProperty: ObjectProperty, literalValue: bool) : PredicateObject =
@@ -3764,7 +3765,7 @@ and DataProperty =
     member this.Fact(literal: StaticTypedLiteral<_>) =
         this.Fact(StaticTypedLiteral.toLiteral literal)
 
-    member this.Fact(value: string) = this.Fact(Literal.string value)
+    member this.Fact(value: string) = this.Fact(Literal.rdfString value)
 
     member this.Fact(value: bool) =
         this.Fact(TypedLiteral.op_Implicit value)
@@ -3897,7 +3898,7 @@ and DataProperty =
         PredicateObject(dataProperty.asPredicate, literalObject.asObject)
 
     static member (/->)(dataProperty: DataProperty, literalValue: string) : PredicateObject =
-        let literalObject = Literal.string literalValue
+        let literalObject = Literal.rdfString literalValue
         PredicateObject(dataProperty.asPredicate, literalObject.asObject)
 
     static member (/->)(dataProperty: DataProperty, literalValue: bool) : PredicateObject =
@@ -8038,36 +8039,38 @@ and Turtle =
     static member IRIREF(iri: Iri) = NTriples.IRIREF iri
     static member iri(iri: Iri) =
         match iri with
-        | PrefixedName prefixedName when prefixedName.localName.Contains("#") ->
-            // $"@base <{prefixedName.vocabulary.namespaceName}> .\n<{prefixedName.localName}>"
-            // TODO figure out how to handle concrete @base
-            $"<{prefixedName.localName}>"
+        | PrefixedName prefixedName when prefixedName.localName.Contains("#") -> $"<{prefixedName.localName}>"
+        | PrefixedName prefixedName when prefixedName.localName.Contains("/") -> $"<{prefixedName.localName}>"
+        | PrefixedName prefixedName when prefixedName.localName.Contains("?") -> $"<{prefixedName.localName}>"
         | PrefixedName prefixedName -> Turtle.PrefixedName prefixedName
         | _ -> Turtle.IRIREF iri
     static member PrefixedName(prefixedName: PrefixedName) =
         $"{prefixedName.vocabulary.namespacePrefix}:{prefixedName.localName}"
     static member prefixID(prefixedName: PrefixedName) =
-        $"@prefix {prefixedName.vocabulary.namespacePrefix} : {Turtle.IRIREF prefixedName.vocabulary.namespaceIri} ."
+        $"@prefix {prefixedName.vocabulary.namespacePrefix}: {Turtle.IRIREF prefixedName.vocabulary.namespaceIri} ."
     static member tryPrefixID(iri: Iri) =
         match iri with
         | PrefixedName prefixedName -> Some(Turtle.prefixID prefixedName)
         | _ -> None
     static member sparqlPrefix(prefixedName: PrefixedName) =
-        $"PREFIX {prefixedName.vocabulary.namespacePrefix} : {Turtle.IRIREF prefixedName.vocabulary.namespaceIri} ."
+        $"PREFIX {prefixedName.vocabulary.namespacePrefix}: {Turtle.IRIREF prefixedName.vocabulary.namespaceIri} ."
     static member trySparqlPrefix(iri: Iri) =
         match iri with
         | PrefixedName prefixedName -> Some(Turtle.sparqlPrefix prefixedName)
         | _ -> None
     static member tryBase(prefixedName: PrefixedName) =
-        if prefixedName.localName.Contains("#") then
-            Some $"@base <{prefixedName.vocabulary.namespaceName}> ."
-        else
-            None
+        match prefixedName.localName with 
+        | localName when localName.Contains("#") -> Some $"@base <{prefixedName.vocabulary.namespaceName}> ."
+        | localName when localName.Contains("/") -> Some $"@base <{prefixedName.vocabulary.namespaceName}> ."
+        | localName when localName.Contains("?") -> Some $"@base <{prefixedName.vocabulary.namespaceName}> ."
+        | _ -> None
+
     static member trySparqlBase(prefixedName: PrefixedName) =
-        if prefixedName.localName.Contains("#") then
-            Some $"BASE <{prefixedName.vocabulary.namespaceName}> ."
-        else
-            None
+        match prefixedName.localName with 
+        | localName when localName.Contains("#") -> Some $"BASE <{prefixedName.vocabulary.namespaceName}> ."
+        | localName when localName.Contains("/") -> Some $"BASE <{prefixedName.vocabulary.namespaceName}> ."
+        | localName when localName.Contains("?") -> Some $"BASE <{prefixedName.vocabulary.namespaceName}> ."
+        | _ -> None
     static member prefixID(normativeTriple: NormativeTriple) =
         normativeTriple.PrefixedNames
         |> Array.choose Turtle.tryPrefixID
@@ -8079,8 +8082,8 @@ and Turtle =
         match literal with
         | booleanLiteral when RdfVocabulary.xsd.curie "boolean" |> RdfTerm.sameTerm literal.datatypeIri -> literal.lexicalForm
         | intLiteral when RdfVocabulary.xsd.curie "int" |> RdfTerm.sameTerm  literal.datatypeIri -> literal.lexicalForm
-        | decimalLiteral when RdfVocabulary.xsd.curie "decimal" |> RdfTerm.sameTerm  literal.datatypeIri -> literal.lexicalForm
-        | doubleLiteral when RdfVocabulary.xsd.curie "double" |> RdfTerm.sameTerm  literal.datatypeIri -> literal.lexicalForm
+        | decimalLiteral when RdfVocabulary.xsd.curie "decimal" |> RdfTerm.sameTerm  literal.datatypeIri && literal.lexicalForm.Contains(".") -> literal.lexicalForm
+        | doubleLiteral when RdfVocabulary.xsd.curie "double" |> RdfTerm.sameTerm  literal.datatypeIri && literal.lexicalForm.Contains(".")  -> literal.lexicalForm
         | StringLiteral(SimpleString simpleString) -> NTriples.STRING_LITERAL_QUOTE literal
         | StringLiteral(LanguageString languageString) -> $"{NTriples.STRING_LITERAL_QUOTE literal}{NTriples.LANG_DIR languageString}"
         | TypedLiteral typedLiteral -> $"{NTriples.STRING_LITERAL_QUOTE literal}^^{Turtle.iri typedLiteral.datatypeIri}"
@@ -8218,78 +8221,15 @@ module BasicGraphActivePattern =
         match object' with 
         | BasicNormativeObject (LiteralObject literal) -> Some()
         | _ -> None
-        
+
 module xsd =
     let _namespace = RdfVocabulary.xsd
 
     module Measure =
         [<Measure>]
         type anyURI =
-
-            static member lexicalForm(literal: string<anyURI>) : System.String = UMX.untag literal
-
-            static member literal(lexicalForm: System.String) : string<anyURI> = UMX.tag lexicalForm
-            static member canonicalMapping(value: System.Uri) : System.String = value.OriginalString
-
-            static member literal(value: System.Uri) : string<anyURI> =
-                anyURI.canonicalMapping value |> anyURI.literal
-
-            static member uriValue(literal: string<anyURI>) : System.Uri =
-                literal |> anyURI.lexicalForm |> System.Uri
-
             static member datatype: Datatype<anyURI> =
                 { _datatypeIri = _namespace.curie "anyURI" |> DatatypeIri }
-
-            static member staticTypedLiteral(value: System.Uri) : StaticTypedLiteral<anyURI> =
-                { literal = anyURI.literal value
-                  datatype = anyURI.datatype }
-
-            static member typedLiteral(value: System.Uri) : TypedLiteral =
-                anyURI.staticTypedLiteral value |> StaticTypedLiteral.toTypedLiteral
-
-            static member canonicalMapping(value: Url) : System.String = anyURI.canonicalMapping (value.ToUri())
-
-            static member literal(value: Url) : string<anyURI> =
-                anyURI.canonicalMapping value |> anyURI.literal
-
-            static member urlValue(literal: string<anyURI>) : Url = literal |> anyURI.lexicalForm |> Url
-
-            static member staticTypedLiteral(value: Url) : StaticTypedLiteral<anyURI> =
-                { literal = anyURI.literal value
-                  datatype = anyURI.datatype }
-
-            static member typedLiteral(value: Url) : TypedLiteral =
-                anyURI.staticTypedLiteral value |> StaticTypedLiteral.toTypedLiteral
-
-            static member canonicalMapping(value: Irl) : System.String = anyURI.canonicalMapping (value.Url)
-
-            static member literal(value: Irl) : string<anyURI> =
-                anyURI.canonicalMapping value |> anyURI.literal
-
-            static member irlValue(literal: string<anyURI>) : Irl =
-                literal |> anyURI.lexicalForm |> Url |> Irl.ofUrl
-
-            static member staticTypedLiteral(value: Irl) : StaticTypedLiteral<anyURI> =
-                { literal = anyURI.literal value
-                  datatype = anyURI.datatype }
-
-            static member typedLiteral(value: Irl) : TypedLiteral =
-                anyURI.staticTypedLiteral value |> StaticTypedLiteral.toTypedLiteral
-
-            static member canonicalMapping(value: Iri) : System.String = anyURI.canonicalMapping (value.asUri)
-
-            static member literal(value: Iri) : string<anyURI> =
-                anyURI.canonicalMapping value |> anyURI.literal
-
-            static member iriValue(literal: string<anyURI>) : Iri =
-                literal |> anyURI.lexicalForm |> Iri.op_Implicit
-
-            static member staticTypedLiteral(value: Iri) : StaticTypedLiteral<anyURI> =
-                { literal = anyURI.literal value
-                  datatype = anyURI.datatype }
-
-            static member typedLiteral(value: Iri) : TypedLiteral =
-                anyURI.staticTypedLiteral value |> StaticTypedLiteral.toTypedLiteral
 
         // Generated declarations to paste inside module xsd.Measure.
         // Requires: open System; open System.Globalization
@@ -8299,938 +8239,231 @@ module xsd =
 
         [<Measure>]
         type base64Binary =
-            static member canonicalMapping(value: System.Byte array) : System.String = Convert.ToBase64String(value)
-
-            static member lexicalForm(literal: string<base64Binary>) : System.String = UMX.untag literal
-
-            static member literal(lexicalForm: System.String) : string<base64Binary> = UMX.tag lexicalForm
-
-            static member literal(value: System.Byte array) : string<base64Binary> =
-                base64Binary.canonicalMapping value |> base64Binary.literal
-
-            static member value(literal: string<base64Binary>) : System.Byte array =
-                let raw = base64Binary.lexicalForm literal
-                let value = Convert.FromBase64String(raw)
-                value
 
             static member datatype: Datatype<base64Binary> =
                 { _datatypeIri = _namespace.curie "base64Binary" |> DatatypeIri }
 
-            static member staticTypedLiteral(value: System.Byte array) : StaticTypedLiteral<base64Binary> =
-                { literal = base64Binary.literal value
-                  datatype = base64Binary.datatype }
-
-            static member typedLiteral(value: System.Byte array) : TypedLiteral =
-                base64Binary.staticTypedLiteral value |> StaticTypedLiteral.toTypedLiteral
-
         [<Measure>]
         type boolean =
-            static member canonicalMapping(value: System.Boolean) : System.String = if value then "true" else "false"
-
-            static member lexicalForm(literal: string<boolean>) : System.String = UMX.untag literal
-
-            static member literal(lexicalForm: System.String) : string<boolean> = UMX.tag lexicalForm
-
-            static member literal(value: System.Boolean) : string<boolean> =
-                boolean.canonicalMapping value |> boolean.literal
-
-            static member value(literal: string<boolean>) : System.Boolean =
-                let raw = boolean.lexicalForm literal
-
-                let value =
-                    match raw with
-                    | "true"
-                    | "1" -> true
-                    | "false"
-                    | "0" -> false
-                    | _ -> invalidArg "literal" "Invalid xsd:boolean lexical form"
-
-                value
 
             static member datatype: Datatype<boolean> =
                 { _datatypeIri = _namespace.curie "boolean" |> DatatypeIri }
 
-            static member staticTypedLiteral(value: System.Boolean) : StaticTypedLiteral<boolean> =
-                { literal = boolean.literal value
-                  datatype = boolean.datatype }
-
-            static member typedLiteral(value: System.Boolean) : TypedLiteral =
-                boolean.staticTypedLiteral value |> StaticTypedLiteral.toTypedLiteral
-
         [<Measure>]
         type date =
-            static member canonicalMapping(value: System.DateOnly) : System.String =
-                value.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture)
-
-            static member lexicalForm(literal: string<date>) : System.String = UMX.untag literal
-
-            static member literal(lexicalForm: System.String) : string<date> = UMX.tag lexicalForm
-
-            static member literal(value: System.DateOnly) : string<date> =
-                date.canonicalMapping value |> date.literal
-
-            static member value(literal: string<date>) : System.DateOnly =
-                let raw = date.lexicalForm literal
-
-                let value =
-                    System.DateOnly.ParseExact(raw, "yyyy-MM-dd", CultureInfo.InvariantCulture)
-
-                value
 
             static member datatype: Datatype<date> =
                 { _datatypeIri = _namespace.curie "date" |> DatatypeIri }
 
-            static member staticTypedLiteral(value: System.DateOnly) : StaticTypedLiteral<date> =
-                { literal = date.literal value
-                  datatype = date.datatype }
-
-            static member typedLiteral(value: System.DateOnly) : TypedLiteral =
-                date.staticTypedLiteral value |> StaticTypedLiteral.toTypedLiteral
-
         [<Measure>]
         type dateTime =
-            static member canonicalMapping(value: System.DateTime) : System.String =
-                value.ToString("o", CultureInfo.InvariantCulture)
-
-            static member lexicalForm(literal: string<dateTime>) : System.String = UMX.untag literal
-
-            static member literal(lexicalForm: System.String) : string<dateTime> = UMX.tag lexicalForm
-
-            static member literal(value: System.DateTime) : string<dateTime> =
-                dateTime.canonicalMapping value |> dateTime.literal
-
-            static member value(literal: string<dateTime>) : System.DateTime =
-                let raw = dateTime.lexicalForm literal
-
-                let value =
-                    System.DateTime.Parse(raw, CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind)
-
-                value
-
             static member datatype: Datatype<dateTime> =
                 { _datatypeIri = _namespace.curie "dateTime" |> DatatypeIri }
 
-            static member staticTypedLiteral(value: System.DateTime) : StaticTypedLiteral<dateTime> =
-                { literal = dateTime.literal value
-                  datatype = dateTime.datatype }
-
-            static member typedLiteral(value: System.DateTime) : TypedLiteral =
-                dateTime.staticTypedLiteral value |> StaticTypedLiteral.toTypedLiteral
-
         [<Measure>]
         type dateTimeStamp =
-            static member canonicalMapping(value: System.DateTimeOffset) : System.String =
-                value.ToString("o", CultureInfo.InvariantCulture)
-
-            static member literal(lexicalForm: System.String) : string<dateTimeStamp> = UMX.tag lexicalForm
-
-            static member literal(value: DateTimeOffset) : string<dateTimeStamp> =
-                dateTimeStamp.canonicalMapping value |> dateTimeStamp.literal
-
-            static member value(literal: string<dateTimeStamp>) : DateTimeOffset =
-                dateTimeStamp.lexicalForm literal |> DateTimeOffset.Parse
-
-            static member lexicalForm(literal: string<dateTimeStamp>) : System.String = UMX.untag literal
-
             static member datatype: Datatype<dateTimeStamp> =
                 { _datatypeIri = _namespace.curie "dateTimeStamp" |> DatatypeIri }
 
-            static member staticTypedLiteral(value: System.DateTimeOffset) : StaticTypedLiteral<dateTimeStamp> =
-
-                { literal = dateTimeStamp.canonicalMapping value |> dateTimeStamp.literal
-                  datatype = dateTimeStamp.datatype }
-
-            static member typedLiteral(value: System.DateTimeOffset) : TypedLiteral =
-
-                dateTimeStamp.staticTypedLiteral value |> StaticTypedLiteral.toTypedLiteral
-
         [<Measure>]
         type decimal =
-            static member canonicalMapping(value: System.Decimal) : System.String =
-                value.ToString(CultureInfo.InvariantCulture)
-
-            static member lexicalForm(literal: string<decimal>) : System.String = UMX.untag literal
-
-            static member literal(lexicalForm: System.String) : string<decimal> = UMX.tag lexicalForm
-
-            static member literal(value: System.Decimal) : string<decimal> =
-                decimal.canonicalMapping value |> decimal.literal
-
-            static member value(literal: string<decimal>) : System.Decimal =
-                let raw = decimal.lexicalForm literal
-
-                let value = literal |> decimal.lexicalForm |> System.Xml.XmlConvert.ToDecimal
-                value
 
             static member datatype: Datatype<decimal> =
                 { _datatypeIri = _namespace.curie "decimal" |> DatatypeIri }
+        [<Measure>]
+        type precisionDecimal =
 
-            static member staticTypedLiteral(value: System.Decimal) : StaticTypedLiteral<decimal> =
-                { literal = decimal.literal value
-                  datatype = decimal.datatype }
-
-            static member typedLiteral(value: System.Decimal) : TypedLiteral =
-                decimal.staticTypedLiteral value |> StaticTypedLiteral.toTypedLiteral
+            static member datatype: Datatype<precisionDecimal> =
+                { _datatypeIri = _namespace.curie "precisionDecimal" |> DatatypeIri }
 
         [<Measure>]
         type integer =
-            static member canonicalMapping(value: System.Numerics.BigInteger) : System.String =
-                value.ToString(CultureInfo.InvariantCulture)
-
-            static member lexicalForm(literal: string<integer>) : System.String = UMX.untag literal
-
-            static member literal(lexicalForm: System.String) : string<integer> = UMX.tag lexicalForm
-
-            static member literal(value: System.Numerics.BigInteger) : string<integer> =
-                integer.canonicalMapping value |> integer.literal
-
-            static member value(literal: string<integer>) : System.Numerics.BigInteger =
-                let raw = integer.lexicalForm literal
-                let value = System.Numerics.BigInteger.Parse(raw, CultureInfo.InvariantCulture)
-                value
-
             static member datatype: Datatype<integer> =
                 { _datatypeIri = _namespace.curie "integer" |> DatatypeIri }
 
-            static member staticTypedLiteral(value: System.Numerics.BigInteger) : StaticTypedLiteral<integer> =
-                { literal = integer.literal value
-                  datatype = integer.datatype }
-
-            static member typedLiteral(value: System.Numerics.BigInteger) : TypedLiteral =
-                integer.staticTypedLiteral value |> StaticTypedLiteral.toTypedLiteral
-
         [<Measure>]
         type long =
-            static member canonicalMapping(value: System.Int64) : System.String =
-                value.ToString(CultureInfo.InvariantCulture)
-
-            static member lexicalForm(literal: string<long>) : System.String = UMX.untag literal
-
-            static member literal(lexicalForm: System.String) : string<long> = UMX.tag lexicalForm
-
-            static member literal(value: System.Int64) : string<long> =
-                long.canonicalMapping value |> long.literal
-
-            static member value(literal: string<long>) : System.Int64 =
-                let raw = long.lexicalForm literal
-                let value = System.Int64.Parse(raw, CultureInfo.InvariantCulture)
-                value
 
             static member datatype: Datatype<long> =
                 { _datatypeIri = _namespace.curie "long" |> DatatypeIri }
 
-            static member staticTypedLiteral(value: System.Int64) : StaticTypedLiteral<long> =
-                { literal = long.literal value
-                  datatype = long.datatype }
-
-            static member typedLiteral(value: System.Int64) : TypedLiteral =
-                long.staticTypedLiteral value |> StaticTypedLiteral.toTypedLiteral
-
         [<Measure>]
         type int =
-            static member canonicalMapping(value: System.Int32) : System.String =
-                value.ToString(CultureInfo.InvariantCulture)
-
-            static member lexicalForm(literal: string<int>) : System.String = UMX.untag literal
-
-            static member literal(lexicalForm: System.String) : string<int> = UMX.tag lexicalForm
-
-            static member literal(value: System.Int32) : string<int> =
-                int.canonicalMapping value |> int.literal
-
-            static member value(literal: string<int>) : System.Int32 =
-                let raw = int.lexicalForm literal
-                let value = System.Int32.Parse(raw, CultureInfo.InvariantCulture)
-                value
 
             static member datatype: Datatype<int> =
                 { _datatypeIri = _namespace.curie "int" |> DatatypeIri }
 
-            static member staticTypedLiteral(value: System.Int32) : StaticTypedLiteral<int> =
-                { literal = int.literal value
-                  datatype = int.datatype }
-
-            static member typedLiteral(value: System.Int32) : TypedLiteral =
-                int.staticTypedLiteral value |> StaticTypedLiteral.toTypedLiteral
-
         [<Measure>]
         type short =
-            static member canonicalMapping(value: System.Int16) : System.String =
-                value.ToString(CultureInfo.InvariantCulture)
-
-            static member lexicalForm(literal: string<short>) : System.String = UMX.untag literal
-
-            static member literal(lexicalForm: System.String) : string<short> = UMX.tag lexicalForm
-
-            static member literal(value: System.Int16) : string<short> =
-                short.canonicalMapping value |> short.literal
-
-            static member value(literal: string<short>) : System.Int16 =
-                let raw = short.lexicalForm literal
-                let value = System.Int16.Parse(raw, CultureInfo.InvariantCulture)
-                value
 
             static member datatype: Datatype<short> =
                 { _datatypeIri = _namespace.curie "short" |> DatatypeIri }
 
-            static member staticTypedLiteral(value: System.Int16) : StaticTypedLiteral<short> =
-                { literal = short.literal value
-                  datatype = short.datatype }
-
-            static member typedLiteral(value: System.Int16) : TypedLiteral =
-                short.staticTypedLiteral value |> StaticTypedLiteral.toTypedLiteral
-
         [<Measure>]
         type byte =
-            static member canonicalMapping(value: System.SByte) : System.String =
-                value.ToString(CultureInfo.InvariantCulture)
-
-            static member lexicalForm(literal: string<byte>) : System.String = UMX.untag literal
-
-            static member literal(lexicalForm: System.String) : string<byte> = UMX.tag lexicalForm
-
-            static member literal(value: System.SByte) : string<byte> =
-                byte.canonicalMapping value |> byte.literal
-
-            static member value(literal: string<byte>) : System.SByte =
-                let raw = byte.lexicalForm literal
-                let value = System.SByte.Parse(raw, CultureInfo.InvariantCulture)
-                value
 
             static member datatype: Datatype<byte> =
                 { _datatypeIri = _namespace.curie "byte" |> DatatypeIri }
 
-            static member staticTypedLiteral(value: System.SByte) : StaticTypedLiteral<byte> =
-                { literal = byte.literal value
-                  datatype = byte.datatype }
-
-            static member typedLiteral(value: System.SByte) : TypedLiteral =
-                byte.staticTypedLiteral value |> StaticTypedLiteral.toTypedLiteral
-
         [<Measure>]
         type nonNegativeInteger =
-            static member canonicalMapping(value: System.Numerics.BigInteger) : System.String =
-                value.ToString(CultureInfo.InvariantCulture)
-
-            static member lexicalForm(literal: string<nonNegativeInteger>) : System.String = UMX.untag literal
-
-            static member literal(lexicalForm: System.String) : string<nonNegativeInteger> = UMX.tag lexicalForm
-
-            static member literal(value: System.Numerics.BigInteger) : string<nonNegativeInteger> =
-                if not (value >= System.Numerics.BigInteger.Zero) then
-                    invalidArg "value" "Value is outside the xsd:nonNegativeInteger value space"
-
-                nonNegativeInteger.canonicalMapping value |> nonNegativeInteger.literal
-
-            static member value(literal: string<nonNegativeInteger>) : System.Numerics.BigInteger =
-                let raw = nonNegativeInteger.lexicalForm literal
-                let value = System.Numerics.BigInteger.Parse(raw, CultureInfo.InvariantCulture)
-
-                if not (value >= System.Numerics.BigInteger.Zero) then
-                    invalidArg "literal" "Value is outside the xsd:nonNegativeInteger value space"
-
-                value
 
             static member datatype: Datatype<nonNegativeInteger> =
                 { _datatypeIri = _namespace.curie "nonNegativeInteger" |> DatatypeIri }
 
-            static member staticTypedLiteral
-                (value: System.Numerics.BigInteger)
-                : StaticTypedLiteral<nonNegativeInteger> =
-                { literal = nonNegativeInteger.literal value
-                  datatype = nonNegativeInteger.datatype }
-
-            static member typedLiteral(value: System.Numerics.BigInteger) : TypedLiteral =
-                nonNegativeInteger.staticTypedLiteral value |> StaticTypedLiteral.toTypedLiteral
-
         [<Measure>]
         type positiveInteger =
-            static member canonicalMapping(value: System.Numerics.BigInteger) : System.String =
-                value.ToString(CultureInfo.InvariantCulture)
-
-            static member lexicalForm(literal: string<positiveInteger>) : System.String = UMX.untag literal
-
-            static member literal(lexicalForm: System.String) : string<positiveInteger> = UMX.tag lexicalForm
-
-            static member literal(value: System.Numerics.BigInteger) : string<positiveInteger> =
-                if not (value > System.Numerics.BigInteger.Zero) then
-                    invalidArg "value" "Value is outside the xsd:positiveInteger value space"
-
-                positiveInteger.canonicalMapping value |> positiveInteger.literal
-
-            static member value(literal: string<positiveInteger>) : System.Numerics.BigInteger =
-                let raw = positiveInteger.lexicalForm literal
-                let value = System.Numerics.BigInteger.Parse(raw, CultureInfo.InvariantCulture)
-
-                if not (value > System.Numerics.BigInteger.Zero) then
-                    invalidArg "literal" "Value is outside the xsd:positiveInteger value space"
-
-                value
 
             static member datatype: Datatype<positiveInteger> =
                 { _datatypeIri = _namespace.curie "positiveInteger" |> DatatypeIri }
 
-            static member staticTypedLiteral(value: System.Numerics.BigInteger) : StaticTypedLiteral<positiveInteger> =
-                { literal = positiveInteger.literal value
-                  datatype = positiveInteger.datatype }
-
-            static member typedLiteral(value: System.Numerics.BigInteger) : TypedLiteral =
-                positiveInteger.staticTypedLiteral value |> StaticTypedLiteral.toTypedLiteral
-
         [<Measure>]
         type unsignedLong =
-            static member canonicalMapping(value: System.UInt64) : System.String =
-                value.ToString(CultureInfo.InvariantCulture)
-
-            static member lexicalForm(literal: string<unsignedLong>) : System.String = UMX.untag literal
-
-            static member literal(lexicalForm: System.String) : string<unsignedLong> = UMX.tag lexicalForm
-
-            static member literal(value: System.UInt64) : string<unsignedLong> =
-                unsignedLong.canonicalMapping value |> unsignedLong.literal
-
-            static member value(literal: string<unsignedLong>) : System.UInt64 =
-                let raw = unsignedLong.lexicalForm literal
-                let value = System.UInt64.Parse(raw, CultureInfo.InvariantCulture)
-                value
 
             static member datatype: Datatype<unsignedLong> =
                 { _datatypeIri = _namespace.curie "unsignedLong" |> DatatypeIri }
 
-            static member staticTypedLiteral(value: System.UInt64) : StaticTypedLiteral<unsignedLong> =
-                { literal = unsignedLong.literal value
-                  datatype = unsignedLong.datatype }
-
-            static member typedLiteral(value: System.UInt64) : TypedLiteral =
-                unsignedLong.staticTypedLiteral value |> StaticTypedLiteral.toTypedLiteral
-
         [<Measure>]
         type unsignedInt =
-            static member canonicalMapping(value: System.UInt32) : System.String =
-                value.ToString(CultureInfo.InvariantCulture)
-
-            static member lexicalForm(literal: string<unsignedInt>) : System.String = UMX.untag literal
-
-            static member literal(lexicalForm: System.String) : string<unsignedInt> = UMX.tag lexicalForm
-
-            static member literal(value: System.UInt32) : string<unsignedInt> =
-                unsignedInt.canonicalMapping value |> unsignedInt.literal
-
-            static member value(literal: string<unsignedInt>) : System.UInt32 =
-                let raw = unsignedInt.lexicalForm literal
-                let value = System.UInt32.Parse(raw, CultureInfo.InvariantCulture)
-                value
 
             static member datatype: Datatype<unsignedInt> =
                 { _datatypeIri = _namespace.curie "unsignedInt" |> DatatypeIri }
 
-            static member staticTypedLiteral(value: System.UInt32) : StaticTypedLiteral<unsignedInt> =
-                { literal = unsignedInt.literal value
-                  datatype = unsignedInt.datatype }
-
-            static member typedLiteral(value: System.UInt32) : TypedLiteral =
-                unsignedInt.staticTypedLiteral value |> StaticTypedLiteral.toTypedLiteral
-
         [<Measure>]
         type unsignedShort =
-            static member canonicalMapping(value: System.UInt16) : System.String =
-                value.ToString(CultureInfo.InvariantCulture)
-
-            static member lexicalForm(literal: string<unsignedShort>) : System.String = UMX.untag literal
-
-            static member literal(lexicalForm: System.String) : string<unsignedShort> = UMX.tag lexicalForm
-
-            static member literal(value: System.UInt16) : string<unsignedShort> =
-                unsignedShort.canonicalMapping value |> unsignedShort.literal
-
-            static member value(literal: string<unsignedShort>) : System.UInt16 =
-                let raw = unsignedShort.lexicalForm literal
-                let value = System.UInt16.Parse(raw, CultureInfo.InvariantCulture)
-                value
 
             static member datatype: Datatype<unsignedShort> =
                 { _datatypeIri = _namespace.curie "unsignedShort" |> DatatypeIri }
 
-            static member staticTypedLiteral(value: System.UInt16) : StaticTypedLiteral<unsignedShort> =
-                { literal = unsignedShort.literal value
-                  datatype = unsignedShort.datatype }
-
-            static member typedLiteral(value: System.UInt16) : TypedLiteral =
-                unsignedShort.staticTypedLiteral value |> StaticTypedLiteral.toTypedLiteral
-
         [<Measure>]
         type unsignedByte =
-            static member canonicalMapping(value: System.Byte) : System.String =
-                value.ToString(CultureInfo.InvariantCulture)
-
-            static member lexicalForm(literal: string<unsignedByte>) : System.String = UMX.untag literal
-
-            static member literal(lexicalForm: System.String) : string<unsignedByte> = UMX.tag lexicalForm
-
-            static member literal(value: System.Byte) : string<unsignedByte> =
-                unsignedByte.canonicalMapping value |> unsignedByte.literal
-
-            static member value(literal: string<unsignedByte>) : System.Byte =
-                let raw = unsignedByte.lexicalForm literal
-                let value = System.Byte.Parse(raw, CultureInfo.InvariantCulture)
-                value
 
             static member datatype: Datatype<unsignedByte> =
                 { _datatypeIri = _namespace.curie "unsignedByte" |> DatatypeIri }
 
-            static member staticTypedLiteral(value: System.Byte) : StaticTypedLiteral<unsignedByte> =
-                { literal = unsignedByte.literal value
-                  datatype = unsignedByte.datatype }
-
-            static member typedLiteral(value: System.Byte) : TypedLiteral =
-                unsignedByte.staticTypedLiteral value |> StaticTypedLiteral.toTypedLiteral
-
         [<Measure>]
         type nonPositiveInteger =
-            static member canonicalMapping(value: System.Numerics.BigInteger) : System.String =
-                value.ToString(CultureInfo.InvariantCulture)
-
-            static member lexicalForm(literal: string<nonPositiveInteger>) : System.String = UMX.untag literal
-
-            static member literal(lexicalForm: System.String) : string<nonPositiveInteger> = UMX.tag lexicalForm
-
-            static member literal(value: System.Numerics.BigInteger) : string<nonPositiveInteger> =
-                if not (value <= System.Numerics.BigInteger.Zero) then
-                    invalidArg "value" "Value is outside the xsd:nonPositiveInteger value space"
-
-                nonPositiveInteger.canonicalMapping value |> nonPositiveInteger.literal
-
-            static member value(literal: string<nonPositiveInteger>) : System.Numerics.BigInteger =
-                let raw = nonPositiveInteger.lexicalForm literal
-                let value = System.Numerics.BigInteger.Parse(raw, CultureInfo.InvariantCulture)
-
-                if not (value <= System.Numerics.BigInteger.Zero) then
-                    invalidArg "literal" "Value is outside the xsd:nonPositiveInteger value space"
-
-                value
 
             static member datatype: Datatype<nonPositiveInteger> =
                 { _datatypeIri = _namespace.curie "nonPositiveInteger" |> DatatypeIri }
 
-            static member staticTypedLiteral
-                (value: System.Numerics.BigInteger)
-                : StaticTypedLiteral<nonPositiveInteger> =
-                { literal = nonPositiveInteger.literal value
-                  datatype = nonPositiveInteger.datatype }
-
-            static member typedLiteral(value: System.Numerics.BigInteger) : TypedLiteral =
-                nonPositiveInteger.staticTypedLiteral value |> StaticTypedLiteral.toTypedLiteral
-
         [<Measure>]
         type negativeInteger =
-            static member canonicalMapping(value: System.Numerics.BigInteger) : System.String =
-                value.ToString(CultureInfo.InvariantCulture)
-
-            static member lexicalForm(literal: string<negativeInteger>) : System.String = UMX.untag literal
-
-            static member literal(lexicalForm: System.String) : string<negativeInteger> = UMX.tag lexicalForm
-
-            static member literal(value: System.Numerics.BigInteger) : string<negativeInteger> =
-                if not (value < System.Numerics.BigInteger.Zero) then
-                    invalidArg "value" "Value is outside the xsd:negativeInteger value space"
-
-                negativeInteger.canonicalMapping value |> negativeInteger.literal
-
-            static member value(literal: string<negativeInteger>) : System.Numerics.BigInteger =
-                let raw = negativeInteger.lexicalForm literal
-                let value = System.Numerics.BigInteger.Parse(raw, CultureInfo.InvariantCulture)
-
-                if not (value < System.Numerics.BigInteger.Zero) then
-                    invalidArg "literal" "Value is outside the xsd:negativeInteger value space"
-
-                value
 
             static member datatype: Datatype<negativeInteger> =
                 { _datatypeIri = _namespace.curie "negativeInteger" |> DatatypeIri }
 
-            static member staticTypedLiteral(value: System.Numerics.BigInteger) : StaticTypedLiteral<negativeInteger> =
-                { literal = negativeInteger.literal value
-                  datatype = negativeInteger.datatype }
-
-            static member typedLiteral(value: System.Numerics.BigInteger) : TypedLiteral =
-                negativeInteger.staticTypedLiteral value |> StaticTypedLiteral.toTypedLiteral
-
         [<Measure>]
         type double =
-            static member canonicalMapping(value: System.Double) : System.String =
-                match value.ToString("R", CultureInfo.InvariantCulture) with
-                | "Infinity" -> "INF"
-                | "-Infinity" -> "-INF"
-                | lexicalRepresentation -> lexicalRepresentation
-
-            static member lexicalForm(literal: string<double>) : System.String = UMX.untag literal
-
-            static member literal(lexicalForm: System.String) : string<double> = UMX.tag lexicalForm
-
-            static member literal(value: System.Double) : string<double> =
-                double.canonicalMapping value |> double.literal
-
-            static member value(literal: string<double>) : System.Double =
-                let raw = double.lexicalForm literal
-                let value = System.Xml.XmlConvert.ToDouble(raw)
-                value
 
             static member datatype: Datatype<double> =
                 { _datatypeIri = _namespace.curie "double" |> DatatypeIri }
 
-            static member staticTypedLiteral(value: System.Double) : StaticTypedLiteral<double> =
-                { literal = double.literal value
-                  datatype = double.datatype }
-
-            static member typedLiteral(value: System.Double) : TypedLiteral =
-                double.staticTypedLiteral value |> StaticTypedLiteral.toTypedLiteral
-
         [<Measure>]
         type duration =
-            static member canonicalMapping(value: System.TimeSpan) : System.String =
-                System.Xml.XmlConvert.ToString(value)
-
-            static member lexicalForm(literal: string<duration>) : System.String = UMX.untag literal
-
-            static member literal(lexicalForm: System.String) : string<duration> = UMX.tag lexicalForm
-
-            static member literal(value: System.TimeSpan) : string<duration> =
-                duration.canonicalMapping value |> duration.literal
-
-            static member value(literal: string<duration>) : System.TimeSpan =
-                let raw = duration.lexicalForm literal
-                let value = System.Xml.XmlConvert.ToTimeSpan(raw)
-                value
 
             static member datatype: Datatype<duration> =
                 { _datatypeIri = _namespace.curie "duration" |> DatatypeIri }
 
-            static member staticTypedLiteral(value: System.TimeSpan) : StaticTypedLiteral<duration> =
-                { literal = duration.literal value
-                  datatype = duration.datatype }
-
-            static member typedLiteral(value: System.TimeSpan) : TypedLiteral =
-                duration.staticTypedLiteral value |> StaticTypedLiteral.toTypedLiteral
-
         [<Measure>]
         type dayTimeDuration =
-            static member canonicalMapping(value: System.TimeSpan) : System.String =
-                System.Xml.XmlConvert.ToString(value)
-
-            static member lexicalForm(literal: string<dayTimeDuration>) : System.String = UMX.untag literal
-
-            static member literal(lexicalForm: System.String) : string<dayTimeDuration> = UMX.tag lexicalForm
-
-            static member literal(value: System.TimeSpan) : string<dayTimeDuration> =
-                dayTimeDuration.canonicalMapping value |> dayTimeDuration.literal
-
-            static member value(literal: string<dayTimeDuration>) : System.TimeSpan =
-                let raw = dayTimeDuration.lexicalForm literal
-                let value = System.Xml.XmlConvert.ToTimeSpan(raw)
-                value
 
             static member datatype: Datatype<dayTimeDuration> =
                 { _datatypeIri = _namespace.curie "dayTimeDuration" |> DatatypeIri }
 
-            static member staticTypedLiteral(value: System.TimeSpan) : StaticTypedLiteral<dayTimeDuration> =
-                { literal = dayTimeDuration.literal value
-                  datatype = dayTimeDuration.datatype }
-
-            static member typedLiteral(value: System.TimeSpan) : TypedLiteral =
-                dayTimeDuration.staticTypedLiteral value |> StaticTypedLiteral.toTypedLiteral
-
         [<Measure>]
         type float =
-            static member canonicalMapping(value: System.Single) : System.String =
-                match value.ToString("R", CultureInfo.InvariantCulture) with
-                | "Infinity" -> "INF"
-                | "-Infinity" -> "-INF"
-                | lexicalRepresentation -> lexicalRepresentation
-
-            static member lexicalForm(literal: string<float>) : System.String = UMX.untag literal
-
-            static member literal(lexicalForm: System.String) : string<float> = UMX.tag lexicalForm
-
-            static member literal(value: System.Single) : string<float> =
-                float.canonicalMapping value |> float.literal
-
-            static member value(literal: string<float>) : System.Single =
-                let raw = float.lexicalForm literal
-                let value = System.Xml.XmlConvert.ToSingle(raw)
-                value
 
             static member datatype: Datatype<float> =
                 { _datatypeIri = _namespace.curie "float" |> DatatypeIri }
 
-            static member staticTypedLiteral(value: System.Single) : StaticTypedLiteral<float> =
-                { literal = float.literal value
-                  datatype = float.datatype }
-
-            static member typedLiteral(value: System.Single) : TypedLiteral =
-                float.staticTypedLiteral value |> StaticTypedLiteral.toTypedLiteral
-
         [<Measure>]
         type hexBinary =
-            static member canonicalMapping(value: System.Byte array) : System.String = Convert.ToHexString(value)
-
-            static member lexicalForm(literal: string<hexBinary>) : System.String = UMX.untag literal
-
-            static member literal(lexicalForm: System.String) : string<hexBinary> = UMX.tag lexicalForm
-
-            static member literal(value: System.Byte array) : string<hexBinary> =
-                hexBinary.canonicalMapping value |> hexBinary.literal
-
-            static member value(literal: string<hexBinary>) : System.Byte array =
-                let raw = hexBinary.lexicalForm literal
-                let value = Convert.FromHexString(raw)
-                value
-
             static member datatype: Datatype<hexBinary> =
                 { _datatypeIri = _namespace.curie "hexBinary" |> DatatypeIri }
 
-            static member staticTypedLiteral(value: System.Byte array) : StaticTypedLiteral<hexBinary> =
-                { literal = hexBinary.literal value
-                  datatype = hexBinary.datatype }
-
-            static member typedLiteral(value: System.Byte array) : TypedLiteral =
-                hexBinary.staticTypedLiteral value |> StaticTypedLiteral.toTypedLiteral
-
         [<Measure>]
         type time =
-            static member canonicalMapping(value: System.TimeOnly) : System.String =
-                value.ToString("HH:mm:ss.fffffff", CultureInfo.InvariantCulture)
-
-            static member lexicalForm(literal: string<time>) : System.String = UMX.untag literal
-
-            static member literal(lexicalForm: System.String) : string<time> = UMX.tag lexicalForm
-
-            static member literal(value: System.TimeOnly) : string<time> =
-                time.canonicalMapping value |> time.literal
-
-            static member value(literal: string<time>) : System.TimeOnly =
-                let raw = time.lexicalForm literal
-                let value = System.TimeOnly.Parse(raw, CultureInfo.InvariantCulture)
-                value
 
             static member datatype: Datatype<time> =
                 { _datatypeIri = _namespace.curie "time" |> DatatypeIri }
 
-            static member staticTypedLiteral(value: System.TimeOnly) : StaticTypedLiteral<time> =
-                { literal = time.literal value
-                  datatype = time.datatype }
-
-            static member typedLiteral(value: System.TimeOnly) : TypedLiteral =
-                time.staticTypedLiteral value |> StaticTypedLiteral.toTypedLiteral
-
         [<Measure>]
         type yearMonthDuration =
-            static member lexicalForm(literal: string<yearMonthDuration>) : System.String = UMX.untag literal
-
-            static member literal(lexicalForm: System.String) : string<yearMonthDuration> = UMX.tag lexicalForm
 
             static member datatype: Datatype<yearMonthDuration> =
                 { _datatypeIri = _namespace.curie "yearMonthDuration" |> DatatypeIri }
 
-            static member staticTypedLiteral(lexicalForm: System.String) : StaticTypedLiteral<yearMonthDuration> =
-                { literal = yearMonthDuration.literal lexicalForm
-                  datatype = yearMonthDuration.datatype }
-
-            static member typedLiteral(lexicalForm: System.String) : TypedLiteral =
-                yearMonthDuration.staticTypedLiteral lexicalForm
-                |> StaticTypedLiteral.toTypedLiteral
-
         [<Measure>]
         type gDay =
-            static member lexicalForm(literal: string<gDay>) : System.String = UMX.untag literal
-
-            static member literal(lexicalForm: System.String) : string<gDay> = UMX.tag lexicalForm
 
             static member datatype: Datatype<gDay> =
                 { _datatypeIri = _namespace.curie "gDay" |> DatatypeIri }
 
-            static member staticTypedLiteral(lexicalForm: System.String) : StaticTypedLiteral<gDay> =
-                { literal = gDay.literal lexicalForm
-                  datatype = gDay.datatype }
-
-            static member typedLiteral(lexicalForm: System.String) : TypedLiteral =
-                gDay.staticTypedLiteral lexicalForm |> StaticTypedLiteral.toTypedLiteral
-
         [<Measure>]
         type gMonth =
-            static member lexicalForm(literal: string<gMonth>) : System.String = UMX.untag literal
-
-            static member literal(lexicalForm: System.String) : string<gMonth> = UMX.tag lexicalForm
 
             static member datatype: Datatype<gMonth> =
                 { _datatypeIri = _namespace.curie "gMonth" |> DatatypeIri }
 
-            static member staticTypedLiteral(lexicalForm: System.String) : StaticTypedLiteral<gMonth> =
-                { literal = gMonth.literal lexicalForm
-                  datatype = gMonth.datatype }
-
-            static member typedLiteral(lexicalForm: System.String) : TypedLiteral =
-                gMonth.staticTypedLiteral lexicalForm |> StaticTypedLiteral.toTypedLiteral
-
         [<Measure>]
         type gMonthDay =
-            static member lexicalForm(literal: string<gMonthDay>) : System.String = UMX.untag literal
-
-            static member literal(lexicalForm: System.String) : string<gMonthDay> = UMX.tag lexicalForm
 
             static member datatype: Datatype<gMonthDay> =
                 { _datatypeIri = _namespace.curie "gMonthDay" |> DatatypeIri }
 
-            static member staticTypedLiteral(lexicalForm: System.String) : StaticTypedLiteral<gMonthDay> =
-                { literal = gMonthDay.literal lexicalForm
-                  datatype = gMonthDay.datatype }
-
-            static member typedLiteral(lexicalForm: System.String) : TypedLiteral =
-                gMonthDay.staticTypedLiteral lexicalForm |> StaticTypedLiteral.toTypedLiteral
-
         [<Measure>]
         type gYear =
-            static member lexicalForm(literal: string<gYear>) : System.String = UMX.untag literal
-
-            static member literal(lexicalForm: System.String) : string<gYear> = UMX.tag lexicalForm
 
             static member datatype: Datatype<gYear> =
                 { _datatypeIri = _namespace.curie "gYear" |> DatatypeIri }
 
-            static member staticTypedLiteral(lexicalForm: System.String) : StaticTypedLiteral<gYear> =
-                { literal = gYear.literal lexicalForm
-                  datatype = gYear.datatype }
-
-            static member typedLiteral(lexicalForm: System.String) : TypedLiteral =
-                gYear.staticTypedLiteral lexicalForm |> StaticTypedLiteral.toTypedLiteral
-
         [<Measure>]
         type gYearMonth =
-            static member lexicalForm(literal: string<gYearMonth>) : System.String = UMX.untag literal
-
-            static member literal(lexicalForm: System.String) : string<gYearMonth> = UMX.tag lexicalForm
 
             static member datatype: Datatype<gYearMonth> =
                 { _datatypeIri = _namespace.curie "gYearMonth" |> DatatypeIri }
 
-            static member staticTypedLiteral(lexicalForm: System.String) : StaticTypedLiteral<gYearMonth> =
-                { literal = gYearMonth.literal lexicalForm
-                  datatype = gYearMonth.datatype }
-
-            static member typedLiteral(lexicalForm: System.String) : TypedLiteral =
-                gYearMonth.staticTypedLiteral lexicalForm |> StaticTypedLiteral.toTypedLiteral
-
         [<Measure>]
         type string =
-            static member lexicalForm(literal: string<string>) : System.String = UMX.untag literal
-
-            static member literal(lexicalForm: System.String) : string<string> = UMX.tag lexicalForm
-
             static member datatype: Datatype<string> =
                 { _datatypeIri = _namespace.curie "string" |> DatatypeIri }
 
-            static member staticTypedLiteral(lexicalForm: System.String) : StaticTypedLiteral<string> =
-                { literal = string.literal lexicalForm
-                  datatype = string.datatype }
-
-            static member typedLiteral(lexicalForm: System.String) : TypedLiteral =
-                string.staticTypedLiteral lexicalForm |> StaticTypedLiteral.toTypedLiteral
-
         [<Measure>]
         type normalizedString =
-            static member lexicalForm(literal: string<normalizedString>) : System.String = UMX.untag literal
-
-            static member literal(lexicalForm: System.String) : string<normalizedString> = UMX.tag lexicalForm
 
             static member datatype: Datatype<normalizedString> =
                 { _datatypeIri = _namespace.curie "normalizedString" |> DatatypeIri }
 
-            static member staticTypedLiteral(lexicalForm: System.String) : StaticTypedLiteral<normalizedString> =
-                { literal = normalizedString.literal lexicalForm
-                  datatype = normalizedString.datatype }
-
-            static member typedLiteral(lexicalForm: System.String) : TypedLiteral =
-                normalizedString.staticTypedLiteral lexicalForm
-                |> StaticTypedLiteral.toTypedLiteral
-
         [<Measure>]
         type token =
-            static member lexicalForm(literal: string<token>) : System.String = UMX.untag literal
-
-            static member literal(lexicalForm: System.String) : string<token> = UMX.tag lexicalForm
 
             static member datatype: Datatype<token> =
                 { _datatypeIri = _namespace.curie "token" |> DatatypeIri }
 
-            static member staticTypedLiteral(lexicalForm: System.String) : StaticTypedLiteral<token> =
-                { literal = token.literal lexicalForm
-                  datatype = token.datatype }
-
-            static member typedLiteral(lexicalForm: System.String) : TypedLiteral =
-                token.staticTypedLiteral lexicalForm |> StaticTypedLiteral.toTypedLiteral
-
         [<Measure>]
         type language =
-            static member lexicalForm(literal: string<language>) : System.String = UMX.untag literal
-
-            static member literal(lexicalForm: System.String) : string<language> = UMX.tag lexicalForm
 
             static member datatype: Datatype<language> =
                 { _datatypeIri = _namespace.curie "language" |> DatatypeIri }
 
-            static member staticTypedLiteral(lexicalForm: System.String) : StaticTypedLiteral<language> =
-                { literal = language.literal lexicalForm
-                  datatype = language.datatype }
-
-            static member typedLiteral(lexicalForm: System.String) : TypedLiteral =
-                language.staticTypedLiteral lexicalForm |> StaticTypedLiteral.toTypedLiteral
-
         [<Measure>]
         type Name =
-            static member lexicalForm(literal: string<Name>) : System.String = UMX.untag literal
-
-            static member literal(lexicalForm: System.String) : string<Name> = UMX.tag lexicalForm
 
             static member datatype: Datatype<Name> =
                 { _datatypeIri = _namespace.curie "Name" |> DatatypeIri }
 
-            static member staticTypedLiteral(lexicalForm: System.String) : StaticTypedLiteral<Name> =
-                { literal = Name.literal lexicalForm
-                  datatype = Name.datatype }
-
-            static member typedLiteral(lexicalForm: System.String) : TypedLiteral =
-                Name.staticTypedLiteral lexicalForm |> StaticTypedLiteral.toTypedLiteral
-
         [<Measure>]
         type NCName =
-            static member lexicalForm(literal: string<NCName>) : System.String = UMX.untag literal
-
-            static member literal(lexicalForm: System.String) : string<NCName> = UMX.tag lexicalForm
 
             static member datatype: Datatype<NCName> =
                 { _datatypeIri = _namespace.curie "NCName" |> DatatypeIri }
 
-            static member staticTypedLiteral(lexicalForm: System.String) : StaticTypedLiteral<NCName> =
-                { literal = NCName.literal lexicalForm
-                  datatype = NCName.datatype }
-
-            static member typedLiteral(lexicalForm: System.String) : TypedLiteral =
-                NCName.staticTypedLiteral lexicalForm |> StaticTypedLiteral.toTypedLiteral
-
         [<Measure>]
         type NMTOKEN =
-            static member lexicalForm(literal: string<NMTOKEN>) : System.String = UMX.untag literal
-
-            static member literal(lexicalForm: System.String) : string<NMTOKEN> = UMX.tag lexicalForm
 
             static member datatype: Datatype<NMTOKEN> =
                 { _datatypeIri = _namespace.curie "NMTOKEN" |> DatatypeIri }
-
-            static member staticTypedLiteral(lexicalForm: System.String) : StaticTypedLiteral<NMTOKEN> =
-                { literal = NMTOKEN.literal lexicalForm
-                  datatype = NMTOKEN.datatype }
-
-            static member typedLiteral(lexicalForm: System.String) : TypedLiteral =
-                NMTOKEN.staticTypedLiteral lexicalForm |> StaticTypedLiteral.toTypedLiteral
 
     let anyURI: Datatype<Measure.anyURI> = Measure.anyURI.datatype
     let base64Binary: Datatype<Measure.base64Binary> = Measure.base64Binary.datatype
@@ -9239,6 +8472,7 @@ module xsd =
     let dateTime: Datatype<Measure.dateTime> = Measure.dateTime.datatype
     let dateTimeStamp: Datatype<Measure.dateTimeStamp> = Measure.dateTimeStamp.datatype
     let decimal: Datatype<Measure.decimal> = Measure.decimal.datatype
+    let precisionDecimal: Datatype<Measure.precisionDecimal> = Measure.precisionDecimal.datatype
     let integer: Datatype<Measure.integer> = Measure.integer.datatype
     let long: Datatype<Measure.long> = Measure.long.datatype
     let int: Datatype<Measure.int> = Measure.int.datatype
@@ -9359,7 +8593,6 @@ module rdf =
         /// https://www.w3.org/TR/rdf-plain-literal-1/
         [<Measure>]
         type langString =
-            static member literal(value: string) : string<langString> = UMX.tag value
 
             /// https://www.w3.org/TR/rdf-plain-literal-1/
             static member Datatype: Datatype<langString> =
@@ -9367,7 +8600,6 @@ module rdf =
 
         [<Measure>]
         type dirLangString =
-            static member literal(value: string) : string<dirLangString> = UMX.tag value
 
             /// https://www.w3.org/TR/rdf-plain-literal-1/
             static member Datatype: Datatype<dirLangString> =
@@ -9375,7 +8607,6 @@ module rdf =
 
         [<Measure>]
         type PlainLiteral =
-            static member literal(value: string) : string<PlainLiteral> = UMX.tag value
 
             /// https://www.w3.org/TR/rdf-plain-literal-1/
             static member Datatype: Datatype<PlainLiteral> =
@@ -9383,21 +8614,18 @@ module rdf =
 
         [<Measure>]
         type HTML =
-            static member literal(value: string) : string<HTML> = UMX.tag value
 
             static member Datatype: Datatype<HTML> =
                 { _datatypeIri = _namespace.curie "HTML" |> DatatypeIri }
 
         [<Measure>]
         type JSON =
-            static member literal(value: string) : string<JSON> = UMX.tag value
 
             static member Datatype: Datatype<JSON> =
                 { _datatypeIri = _namespace.curie "JSON" |> DatatypeIri }
 
         [<Measure>]
         type XMLLiteral =
-            static member literal(value: string) : string<XMLLiteral> = UMX.tag value
 
             static member Datatype: Datatype<XMLLiteral> =
                 { _datatypeIri = _namespace.curie "XMLLiteral" |> DatatypeIri }
@@ -9455,7 +8683,6 @@ module rdfs =
     module Measure =
         [<Measure>]
         type Literal =
-            static member literal(value: string) : string<Literal> = UMX.tag value
 
             static member Datatype: Datatype<Literal> =
                 { _datatypeIri = _namespace.curie "Literal" |> DatatypeIri }
@@ -9484,280 +8711,240 @@ module xhtml =
     module Measure =
         [<Measure>]
         type Length =
-            static member literal(value: string) : string<Length> = UMX.tag value
 
             static member Datatype: Datatype<Length> =
                 { _datatypeIri = _namespace.curie "Length" |> DatatypeIri }
 
         [<Measure>]
         type LinkTypes =
-            static member literal(value: string) : string<LinkTypes> = UMX.tag value
 
             static member Datatype: Datatype<LinkTypes> =
                 { _datatypeIri = _namespace.curie "LinkTypes" |> DatatypeIri }
 
         [<Measure>]
         type MediaDesc =
-            static member literal(value: string) : string<MediaDesc> = UMX.tag value
 
             static member Datatype: Datatype<MediaDesc> =
                 { _datatypeIri = _namespace.curie "MediaDesc" |> DatatypeIri }
 
         [<Measure>]
         type MultiLength =
-            static member literal(value: string) : string<MultiLength> = UMX.tag value
 
             static member Datatype: Datatype<MultiLength> =
                 { _datatypeIri = _namespace.curie "MultiLength" |> DatatypeIri }
 
         [<Measure>]
         type Number =
-            static member literal(value: string) : string<Number> = UMX.tag value
 
             static member Datatype: Datatype<Number> =
                 { _datatypeIri = _namespace.curie "Number" |> DatatypeIri }
 
         [<Measure>]
         type Pixels =
-            static member literal(value: string) : string<Pixels> = UMX.tag value
 
             static member Datatype: Datatype<Pixels> =
                 { _datatypeIri = _namespace.curie "Pixels" |> DatatypeIri }
 
         [<Measure>]
         type Script =
-            static member literal(value: string) : string<Script> = UMX.tag value
 
             static member Datatype: Datatype<Script> =
                 { _datatypeIri = _namespace.curie "Script" |> DatatypeIri }
 
         [<Measure>]
         type Color =
-            static member literal(value: string) : string<Color> = UMX.tag value
 
             static member Datatype: Datatype<Color> =
                 { _datatypeIri = _namespace.curie "Color" |> DatatypeIri }
 
         [<Measure>]
         type Text =
-            static member literal(value: string) : string<Text> = UMX.tag value
 
             static member Datatype: Datatype<Text> =
                 { _datatypeIri = _namespace.curie "Text" |> DatatypeIri }
 
         [<Measure>]
         type Character =
-            static member literal(value: string) : string<Character> = UMX.tag value
 
             static member Datatype: Datatype<Character> =
                 { _datatypeIri = _namespace.curie "Character" |> DatatypeIri }
 
         [<Measure>]
         type Charset =
-            static member literal(value: string) : string<Charset> = UMX.tag value
 
             static member Datatype: Datatype<Charset> =
                 { _datatypeIri = _namespace.curie "Charset" |> DatatypeIri }
 
         [<Measure>]
         type Charsets =
-            static member literal(value: string) : string<Charsets> = UMX.tag value
 
             static member Datatype: Datatype<Charsets> =
                 { _datatypeIri = _namespace.curie "Charsets" |> DatatypeIri }
 
         [<Measure>]
         type ContentType =
-            static member literal(value: string) : string<ContentType> = UMX.tag value
 
             static member Datatype: Datatype<ContentType> =
                 { _datatypeIri = _namespace.curie "ContentType" |> DatatypeIri }
 
         [<Measure>]
         type ContentTypes =
-            static member literal(value: string) : string<ContentTypes> = UMX.tag value
 
             static member Datatype: Datatype<ContentTypes> =
                 { _datatypeIri = _namespace.curie "ContentTypes" |> DatatypeIri }
 
         [<Measure>]
         type Datetime =
-            static member literal(value: string) : string<Datetime> = UMX.tag value
 
             static member Datatype: Datatype<Datetime> =
                 { _datatypeIri = _namespace.curie "Datetime" |> DatatypeIri }
 
         [<Measure>]
         type FPI =
-            static member literal(value: string) : string<FPI> = UMX.tag value
 
             static member Datatype: Datatype<FPI> =
                 { _datatypeIri = _namespace.curie "FPI" |> DatatypeIri }
 
         [<Measure>]
         type FrameTarget =
-            static member literal(value: string) : string<FrameTarget> = UMX.tag value
 
             static member Datatype: Datatype<FrameTarget> =
                 { _datatypeIri = _namespace.curie "FrameTarget" |> DatatypeIri }
 
         [<Measure>]
         type LanguageCode =
-            static member literal(value: string) : string<LanguageCode> = UMX.tag value
 
             static member Datatype: Datatype<LanguageCode> =
                 { _datatypeIri = _namespace.curie "LanguageCode" |> DatatypeIri }
 
         [<Measure>]
         type LanguageCodes =
-            static member literal(value: string) : string<LanguageCodes> = UMX.tag value
 
             static member Datatype: Datatype<LanguageCodes> =
                 { _datatypeIri = _namespace.curie "LanguageCodes" |> DatatypeIri }
 
         [<Measure>]
         type URI =
-            static member literal(value: string) : string<URI> = UMX.tag value
 
             static member Datatype: Datatype<URI> =
                 { _datatypeIri = _namespace.curie "URI" |> DatatypeIri }
 
         [<Measure>]
         type URIs =
-            static member literal(value: string) : string<URIs> = UMX.tag value
 
             static member Datatype: Datatype<URIs> =
                 { _datatypeIri = _namespace.curie "URIs" |> DatatypeIri }
 
         [<Measure>]
         type URIREF =
-            static member literal(value: string) : string<URIREF> = UMX.tag value
 
             static member Datatype: Datatype<URIREF> =
                 { _datatypeIri = _namespace.curie "URIREF" |> DatatypeIri }
 
         [<Measure>]
         type MultiLengths =
-            static member literal(value: string) : string<MultiLengths> = UMX.tag value
 
             static member Datatype: Datatype<MultiLengths> =
                 { _datatypeIri = _namespace.curie "MultiLengths" |> DatatypeIri }
 
         [<Measure>]
         type CDATA =
-            static member literal(value: string) : string<CDATA> = UMX.tag value
 
             static member Datatype: Datatype<CDATA> =
                 { _datatypeIri = _namespace.curie "CDATA" |> DatatypeIri }
 
         [<Measure>]
         type CURIE =
-            static member literal(value: string) : string<CURIE> = UMX.tag value
 
             static member Datatype: Datatype<CURIE> =
                 { _datatypeIri = _namespace.curie "CURIE" |> DatatypeIri }
 
         [<Measure>]
         type CURIEs =
-            static member literal(value: string) : string<CURIEs> = UMX.tag value
 
             static member Datatype: Datatype<CURIEs> =
                 { _datatypeIri = _namespace.curie "CURIEs" |> DatatypeIri }
 
         [<Measure>]
         type SafeCURIE =
-            static member literal(value: string) : string<SafeCURIE> = UMX.tag value
 
             static member Datatype: Datatype<SafeCURIE> =
                 { _datatypeIri = _namespace.curie "SafeCURIE" |> DatatypeIri }
 
         [<Measure>]
         type SafeCURIEs =
-            static member literal(value: string) : string<SafeCURIEs> = UMX.tag value
 
             static member Datatype: Datatype<SafeCURIEs> =
                 { _datatypeIri = _namespace.curie "SafeCURIEs" |> DatatypeIri }
 
         [<Measure>]
         type URIorSafeCURIE =
-            static member literal(value: string) : string<URIorSafeCURIE> = UMX.tag value
 
             static member Datatype: Datatype<URIorSafeCURIE> =
                 { _datatypeIri = _namespace.curie "URIorSafeCURIE" |> DatatypeIri }
 
         [<Measure>]
         type URIorSafeCURIEs =
-            static member literal(value: string) : string<URIorSafeCURIEs> = UMX.tag value
 
             static member Datatype: Datatype<URIorSafeCURIEs> =
                 { _datatypeIri = _namespace.curie "URIorSafeCURIEs" |> DatatypeIri }
 
         [<Measure>]
         type PREFIX =
-            static member literal(value: string) : string<PREFIX> = UMX.tag value
 
             static member Datatype: Datatype<PREFIX> =
                 { _datatypeIri = _namespace.curie "PREFIX" |> DatatypeIri }
 
         [<Measure>]
         type PREFIXes =
-            static member literal(value: string) : string<PREFIXes> = UMX.tag value
 
             static member Datatype: Datatype<PREFIXes> =
                 { _datatypeIri = _namespace.curie "PREFIXes" |> DatatypeIri }
 
         [<Measure>]
         type TERM =
-            static member literal(value: string) : string<TERM> = UMX.tag value
 
             static member Datatype: Datatype<TERM> =
                 { _datatypeIri = _namespace.curie "TERM" |> DatatypeIri }
 
         [<Measure>]
         type CURIEorIri =
-            static member literal(value: string) : string<CURIEorIri> = UMX.tag value
 
             static member Datatype: Datatype<CURIEorIri> =
                 { _datatypeIri = _namespace.curie "CURIEorIri" |> DatatypeIri }
 
         [<Measure>]
         type CURIEorIris =
-            static member literal(value: string) : string<CURIEorIris> = UMX.tag value
 
             static member Datatype: Datatype<CURIEorIris> =
                 { _datatypeIri = _namespace.curie "CURIEorIris" |> DatatypeIri }
 
         [<Measure>]
         type SafeCURIEorCURIEorIri =
-            static member literal(value: string) : string<SafeCURIEorCURIEorIri> = UMX.tag value
 
             static member Datatype: Datatype<SafeCURIEorCURIEorIri> =
                 { _datatypeIri = _namespace.curie "SafeCURIEorCURIEorIri" |> DatatypeIri }
 
         [<Measure>]
         type SafeCURIEorCURIEorIris =
-            static member literal(value: string) : string<SafeCURIEorCURIEorIris> = UMX.tag value
 
             static member Datatype: Datatype<SafeCURIEorCURIEorIris> =
                 { _datatypeIri = _namespace.curie "SafeCURIEorCURIEorIris" |> DatatypeIri }
 
         [<Measure>]
         type AbsIri =
-            static member literal(value: string) : string<AbsIri> = UMX.tag value
 
             static member Datatype: Datatype<AbsIri> =
                 { _datatypeIri = _namespace.curie "AbsIri" |> DatatypeIri }
 
         [<Measure>]
         type TERMorCURIEorAbsIri =
-            static member literal(value: string) : string<TERMorCURIEorAbsIri> = UMX.tag value
 
             static member Datatype: Datatype<TERMorCURIEorAbsIri> =
                 { _datatypeIri = _namespace.curie "TERMorCURIEorAbsIri" |> DatatypeIri }
 
         [<Measure>]
         type TERMorCURIEorAbsIris =
-            static member literal(value: string) : string<TERMorCURIEorAbsIris> = UMX.tag value
 
             static member Datatype: Datatype<TERMorCURIEorAbsIris> =
                 { _datatypeIri = _namespace.curie "TERMorCURIEorAbsIris" |> DatatypeIri }
@@ -9865,29 +9052,8 @@ module spdx =
         [<Measure>]
         type MediaType =
 
-            static member canonicalMapping(value: Iana.InternetMediaType) : System.String = value.contentType
-
-            static member lexicalForm(literal: string<MediaType>) : System.String = UMX.untag literal
-
-            static member literal(lexicalForm: System.String) : string<MediaType> = UMX.tag lexicalForm
-
-            static member literal(value: Iana.InternetMediaType) : string<MediaType> =
-                MediaType.canonicalMapping value |> MediaType.literal
-
-            static member value(literal: string<MediaType>) : Iana.InternetMediaType =
-                let raw = MediaType.lexicalForm literal
-                let value = Iana.InternetMediaType.ofContentType raw
-                value
-
             static member datatype: Datatype<MediaType> =
                 { _datatypeIri = _namespace.curie "MediaType" |> DatatypeIri }
-
-            static member staticTypedLiteral(value: Iana.InternetMediaType) : StaticTypedLiteral<MediaType> =
-                { literal = MediaType.literal value
-                  datatype = MediaType.datatype }
-
-            static member typedLiteral(value: Iana.InternetMediaType) : TypedLiteral =
-                MediaType.staticTypedLiteral value |> StaticTypedLiteral.toTypedLiteral
 
     let MediaType = Measure.MediaType.datatype
 
@@ -9897,14 +9063,12 @@ module owl =
     module Measure =
         [<Measure>]
         type rational =
-            static member literal(value: string) : string<rational> = UMX.tag value
 
             static member Datatype: Datatype<rational> =
                 { _datatypeIri = _namespace.curie "rational" |> DatatypeIri }
 
         [<Measure>]
         type real =
-            static member literal(value: string) : string<real> = UMX.tag value
 
             static member Datatype: Datatype<real> =
                 { _datatypeIri = _namespace.curie "real" |> DatatypeIri }
@@ -10959,6 +10123,7 @@ type UriNode with
     member this.asRdfTerm = this.asIri.asRdfTerm
 
 type BlankNode with
+    static member ofBNode (bnode:BNode) = BlankNode(bnode.identity)
     member this.asBNode(scope: string) =
         match Guid.TryParse this.InternalID with
         | true, guid ->
@@ -11019,6 +10184,7 @@ type ThreadSafeGraph with
         |> Seq.toArray
 
 type LiteralNode with
+
     member this.asLiteral =
 
         match Option.ofNullOrWhiteSpace this.Language, Option.ofNullOrWhiteSpace this.DataType with
@@ -11053,7 +10219,7 @@ type LiteralNode with
                 { lexicalForm = this.Value
                   datatypeIri = Iri.ofUri datatypeUri |> DatatypeIri }
 
-        | _, _ -> Literal.string this.Value
+        | _, _ -> Literal.rdfString this.Value
         member this.asRdfTerm = this.asLiteral.asRdfTerm
 
 type OntologyGraph with
@@ -11365,7 +10531,8 @@ type String with
         { domain with
             subdomainLabels = domain.subdomainLabels @ [ this ] }
 
-    member this.literal = Literal.string this
+    member this.literal  = SimpleString {simpleString = this}
+    member this.rdfString = Literal.rdfString this
     member this.asRdfTerm = this.literal.asRdfTerm
 
 type ITrieNode<'Key, 'Value when 'Value: not struct> with
@@ -11395,6 +10562,34 @@ type SourceRepository with
         |> Seq.sortBy (fun resourceType -> resourceType.Name)
         |> Seq.toArray
 
+type ServiceDescription with 
+    member this.SoapAddress = 
+            this.Services
+            |> Seq.cast<Service>
+            |> Seq.collect (fun service ->
+                service.Ports |> Seq.cast<Port>)
+            |> Seq.collect (fun port ->
+                port.Extensions |> Seq.cast<obj>)
+            |> Seq.choose (function
+                | :? SoapAddressBinding as address ->
+                    Some address.Location
+                | _ ->
+                    None)
+            |> Seq.exactlyOne
+    member this.SoapClient = 
+                let options =
+                    SoapClientOptions(
+                        BaseAddress = Uri(this.SoapAddress),
+                        TargetNamespace = this.TargetNamespace
+                    )
+
+                new SoapClient(options)
+
+    member this.Document = WsdlDocument.Load $"{this.SoapAddress}?WSDL"
+    member this.ServiceInfo = WsdlExplorer.Explore $"{this.SoapAddress}?WSDL"
+open System.Web.Services.Description
+open System.Xml.Schema
+// TODO remove/replace with CodeQuotation
 type Quotation =
     static member ofMember<'T> (memberShape: IShapeMember<'T>) (value: 'T) : Expr =
 
@@ -11720,32 +10915,9 @@ module TType =
 
 type ShapeSifter.Patterns.TType<'ValueType> with
 
-    static member TldRule =
-        tType<TldRule>
-
-    static member MimeType =
-        tType<MimeType>
-
-    static member IriReference =
-        tType<IriReference>
-
-    static member Url =
-        tType<Url>
-
-let inline (|TType'Enum|_|) (_ : TType<'ValueType>) =
-
-    if typeof<'ValueType>.IsEnum then
-        Some ()
-    else
-        None
-
-let inline (|TTeq|_|)
-    (_: 'TargetType TType)
-    (_: 'ValueType TType)
-    : Teq<'ValueType, 'TargetType> option =
-
-    Teq.tryRefl<'ValueType, 'TargetType>
-type ShapeSifter.Patterns.TType<'ValueType> with 
+    static member TldRule = tType<TldRule> 
+    static member MimeType = tType<MimeType> 
+    static member IriReference = tType<IriReference> 
     static member byte = tType<byte>
     static member sbyte = tType<sbyte>
     static member int16 = tType<int16>
@@ -11757,76 +10929,467 @@ type ShapeSifter.Patterns.TType<'ValueType> with
     static member DateOnly = tType<DateOnly>
     static member DateTimeOffset = tType<DateTimeOffset>
     static member TimeOnly = tType<TimeOnly>
-type Literal with 
-    static member inline autotyped<'ValueType> (value: 'ValueType) : Literal =
+    static member Uri = tType<Uri>
+    static member byteArray = tType<byte array>
+    static member BigInteger = tType<System.Numerics.BigInteger>
+    static member Url = tType<Url>
+    static member Iri = tType<Iri>
+    static member Irl = tType<Irl>
+    static member InternetMediaType = tType<Iana.InternetMediaType>
+    static member FileInfo = tType<FileInfo>
+let inline (|TType'Enum|_|) (_ : TType<'ValueType>) =
+
+    if typeof<'ValueType>.IsEnum then
+        Some ()
+    else
+        None
+let inline (|TTeq|_|)
+    (_: 'TargetType TType)
+    (_: 'ValueType TType)
+    : Teq<'ValueType, 'TargetType> option =
+    Teq.tryRefl<'ValueType, 'TargetType>
+
+open System
+open System.Globalization
+open System.Numerics
+open System.Text.Json
+open System.Xml
+
+type Uri with
+    member this.xsd'anyURI =
+        this.OriginalString ^^ xsd.anyURI
+
+    static member literalValue(literal: string<xsd.Measure.anyURI>) : Uri =
+        UMX.untag literal |> Uri
+
+type Url with
+    member this.xsd'anyURI =
+        this.ToUri().xsd'anyURI
+
+    static member literalValue(literal: string<xsd.Measure.anyURI>) : Url =
+        UMX.untag literal |> Url
+
+type Iri with
+    member this.xsd'anyURI =
+        this.asUri.xsd'anyURI
+
+    static member literalValue(literal: string<xsd.Measure.anyURI>) : Iri =
+        UMX.untag literal |> iriref
+
+type Irl with
+    member this.xsd'anyURI =
+        this.Iri.xsd'anyURI
+
+    static member literalValue(literal: string<xsd.Measure.anyURI>) : Irl =
+        UMX.untag literal |> irlref
+
+type Int16 with
+    member this.xsd'short =
+        this.ToString(CultureInfo.InvariantCulture) ^^ xsd.short
+
+    static member literalValue(literal: string<xsd.Measure.short>) : Int16 =
+        UMX.untag literal |> XmlConvert.ToInt16
+
+type UInt16 with
+    member this.xsd'unsignedShort =
+        this.ToString(CultureInfo.InvariantCulture) ^^ xsd.unsignedShort
+
+    static member literalValue(literal: string<xsd.Measure.unsignedShort>) : UInt16 =
+        UMX.untag literal |> XmlConvert.ToUInt16
+
+type Int32 with
+    member this.xsd'int =
+        this.ToString(CultureInfo.InvariantCulture) ^^ xsd.int
+
+    static member literalValue(literal: string<xsd.Measure.int>) : Int32 =
+        UMX.untag literal |> XmlConvert.ToInt32
+
+type UInt32 with
+    member this.xsd'unsignedInt =
+        this.ToString(CultureInfo.InvariantCulture) ^^ xsd.unsignedInt
+
+    static member literalValue(literal: string<xsd.Measure.unsignedInt>) : UInt32 =
+        UMX.untag literal |> XmlConvert.ToUInt32
+
+type Int64 with
+    member this.xsd'long =
+        this.ToString(CultureInfo.InvariantCulture) ^^ xsd.long
+
+    static member literalValue(literal: string<xsd.Measure.long>) : Int64 =
+        UMX.untag literal |> XmlConvert.ToInt64
+
+type UInt64 with
+    member this.xsd'unsignedLong =
+        this.ToString(CultureInfo.InvariantCulture) ^^ xsd.unsignedLong
+
+    static member literalValue(literal: string<xsd.Measure.unsignedLong>) : UInt64 =
+        UMX.untag literal |> XmlConvert.ToUInt64
+
+type Decimal with
+    member this.xsd'decimal =
+        this.ToString(CultureInfo.InvariantCulture) ^^ xsd.decimal
+
+    static member literalValue(literal: string<xsd.Measure.decimal>) : Decimal =
+        UMX.untag literal |> XmlConvert.ToDecimal
+
+type Single with
+    member this.xsd'float =
+        let lexicalForm =
+            match this.ToString("R", CultureInfo.InvariantCulture) with
+            | "Infinity" -> "INF"
+            | "-Infinity" -> "-INF"
+            | value -> value
+
+        lexicalForm ^^ xsd.float
+
+    static member literalValue(literal: string<xsd.Measure.float>) : Single =
+        UMX.untag literal |> XmlConvert.ToSingle
+
+type Double with
+    member this.xsd'double =
+        let lexicalForm =
+            match this.ToString("R", CultureInfo.InvariantCulture) with
+            | "Infinity" -> "INF"
+            | "-Infinity" -> "-INF"
+            | value -> value
+
+        lexicalForm ^^ xsd.double
+
+    static member literalValue(literal: string<xsd.Measure.double>) : Double =
+        UMX.untag literal |> XmlConvert.ToDouble
+
+type DateOnly with
+    member this.xsd'date =
+        this.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture)
+        ^^ xsd.date
+
+    static member literalValue(literal: string<xsd.Measure.date>) : DateOnly =
+        DateOnly.ParseExact(
+            UMX.untag literal,
+            "yyyy-MM-dd",
+            CultureInfo.InvariantCulture
+        )
+
+type DateTime with
+    member this.xsd'dateTime =
+        this.ToString("o", CultureInfo.InvariantCulture)
+        ^^ xsd.dateTime
+
+    static member literalValue(literal: string<xsd.Measure.dateTime>) : DateTime =
+        DateTime.Parse(
+            UMX.untag literal,
+            CultureInfo.InvariantCulture,
+            DateTimeStyles.RoundtripKind
+        )
+
+type DateTimeOffset with
+    member this.xsd'dateTime =
+        this.ToString("o", CultureInfo.InvariantCulture)
+        ^^ xsd.dateTime
+
+    member this.xsd'dateTimeStamp =
+        this.ToString("o", CultureInfo.InvariantCulture)
+        ^^ xsd.dateTimeStamp
+
+    static member literalValue'dateTime(literal: string<xsd.Measure.dateTime>) : DateTimeOffset =
+        DateTimeOffset.Parse(
+            UMX.untag literal,
+            CultureInfo.InvariantCulture,
+            DateTimeStyles.RoundtripKind
+        )
+
+    static member literalValue'dateTimeStamp(literal: string<xsd.Measure.dateTimeStamp>) : DateTimeOffset =
+        DateTimeOffset.Parse(
+            UMX.untag literal,
+            CultureInfo.InvariantCulture,
+            DateTimeStyles.RoundtripKind
+        )
+
+type TimeOnly with
+    member this.xsd'time =
+        this.ToString("HH:mm:ss.fffffff", CultureInfo.InvariantCulture)
+        ^^ xsd.time
+
+    static member literalValue(literal: string<xsd.Measure.time>) : TimeOnly =
+        TimeOnly.Parse(
+            UMX.untag literal,
+            CultureInfo.InvariantCulture
+        )
+
+type Byte with
+    static member xsd'base64Binary(bytes: byte array) =
+        Convert.ToBase64String(bytes) ^^ xsd.base64Binary
+
+    static member xsd'hexBinary(bytes: byte array) =
+        Convert.ToHexString(bytes) ^^ xsd.hexBinary
+
+    member this.xsd'unsignedByte =
+        this.ToString(CultureInfo.InvariantCulture)
+        ^^ xsd.unsignedByte
+
+    static member literalValue(literal: string<xsd.Measure.unsignedByte>) : Byte =
+        UMX.untag literal |> XmlConvert.ToByte
+
+    static member literalValue'base64Binary(literal: string<xsd.Measure.base64Binary>) : byte array =
+        UMX.untag literal |> Convert.FromBase64String
+
+    static member literalValue'hexBinary(literal: string<xsd.Measure.hexBinary>) : byte array =
+        UMX.untag literal |> Convert.FromHexString
+
+type SByte with
+    member this.xsd'byte =
+        this.ToString(CultureInfo.InvariantCulture)
+        ^^ xsd.byte
+
+    static member literalValue(literal: string<xsd.Measure.byte>) : SByte =
+        SByte.Parse(UMX.untag literal, CultureInfo.InvariantCulture)
+
+type Boolean with
+    member this.xsd'boolean =
+        if this then
+            "true" ^^ xsd.boolean
+        else
+            "false" ^^ xsd.boolean
+
+    static member literalValue(literal: string<xsd.Measure.boolean>) : Boolean =
+        UMX.untag literal |> XmlConvert.ToBoolean
+
+type TimeSpan with
+    member this.xsd'duration =
+        XmlConvert.ToString(this) ^^ xsd.duration
+
+    member this.xsd'dayTimeDuration =
+        XmlConvert.ToString(this) ^^ xsd.dayTimeDuration
+
+    static member literalValue'duration(literal: string<xsd.Measure.duration>) : TimeSpan =
+        UMX.untag literal |> XmlConvert.ToTimeSpan
+
+    static member literalValue'dayTimeDuration(literal: string<xsd.Measure.dayTimeDuration>) : TimeSpan =
+        UMX.untag literal |> XmlConvert.ToTimeSpan
+
+type BigInteger with
+    member this.xsd'positiveInteger =
+        if this <= BigInteger.Zero then
+            invalidArg "value" "Expected a positive integer"
+
+        this.ToString(CultureInfo.InvariantCulture)
+        ^^ xsd.positiveInteger
+
+    member this.xsd'nonPositiveInteger =
+        if this > BigInteger.Zero then
+            invalidArg "value" "Expected a non-positive integer"
+
+        this.ToString(CultureInfo.InvariantCulture)
+        ^^ xsd.nonPositiveInteger
+
+    member this.xsd'negativeInteger =
+        if this >= BigInteger.Zero then
+            invalidArg "value" "Expected a negative integer"
+
+        this.ToString(CultureInfo.InvariantCulture)
+        ^^ xsd.negativeInteger
+
+    member this.xsd'integer =
+        this.ToString(CultureInfo.InvariantCulture)
+        ^^ xsd.integer
+
+    member this.xsd'nonNegativeInteger =
+        if this < BigInteger.Zero then
+            invalidArg "value" "Expected a non-negative integer"
+
+        this.ToString(CultureInfo.InvariantCulture)
+        ^^ xsd.nonNegativeInteger
+
+    static member literalValue(literal: string<xsd.Measure.integer>) : BigInteger =
+        BigInteger.Parse(
+            UMX.untag literal,
+            NumberStyles.Integer,
+            CultureInfo.InvariantCulture
+        )
+
+    static member literalValue'positiveInteger(literal: string<xsd.Measure.positiveInteger>) : BigInteger =
+        let value =
+            BigInteger.Parse(
+                UMX.untag literal,
+                NumberStyles.Integer,
+                CultureInfo.InvariantCulture
+            )
+
+        if value <= BigInteger.Zero then
+            invalidArg "literal" "Expected a positive integer"
+
+        value
+
+    static member literalValue'nonPositiveInteger(literal: string<xsd.Measure.nonPositiveInteger>) : BigInteger =
+        let value =
+            BigInteger.Parse(
+                UMX.untag literal,
+                NumberStyles.Integer,
+                CultureInfo.InvariantCulture
+            )
+
+        if value > BigInteger.Zero then
+            invalidArg "literal" "Expected a non-positive integer"
+
+        value
+
+    static member literalValue'negativeInteger(literal: string<xsd.Measure.negativeInteger>) : BigInteger =
+        let value =
+            BigInteger.Parse(
+                UMX.untag literal,
+                NumberStyles.Integer,
+                CultureInfo.InvariantCulture
+            )
+
+        if value >= BigInteger.Zero then
+            invalidArg "literal" "Expected a negative integer"
+
+        value
+
+    static member literalValue'nonNegativeInteger(literal: string<xsd.Measure.nonNegativeInteger>) : BigInteger =
+        let value =
+            BigInteger.Parse(
+                UMX.untag literal,
+                NumberStyles.Integer,
+                CultureInfo.InvariantCulture
+            )
+
+        if value < BigInteger.Zero then
+            invalidArg "literal" "Expected a non-negative integer"
+
+        value
+
+type JsonElement with
+    member this.rdf'JSON =
+        this.GetRawText() ^^ rdf.JSON
+
+    static member literalValue(literal: string<rdf.Measure.JSON>) : JsonElement =
+        use document = JsonDocument.Parse(UMX.untag literal)
+        document.RootElement.Clone()
+
+type Encoding with 
+    member this.charsetName = this.WebName.ToUpperInvariant()
+type Iana.InternetMediaType with
+    member this.spdx'MediaType =
+        this.contentType ^^ spdx.MediaType
+
+    static member literalValue(literal: string<spdx.Measure.MediaType>) : Iana.InternetMediaType =
+        UMX.untag literal
+        |> Iana.InternetMediaType.ofContentType
+    member this.dataIri (base64Data:byte array) =
+            Universal.Common.DataUriBuilder()
+                .SetBase64(true)
+                .SetData(base64Data)
+                .SetMediaType(this.contentType)
+                .DataUri
+            |> DataIri
+    member this.dataIri(stringData:string)  =
+            Universal.Common.DataUriBuilder()
+                .SetBase64(false)
+                .SetData(stringData)
+                .SetMediaType(this.contentType)
+                .DataUri
+            |> DataIri
+    member this.dataIri (charset:Encoding) =
+        fun (stringData:string) -> 
+            Universal.Common.DataUriBuilder()
+                .SetBase64(false)
+                .SetData(stringData)
+                .SetMediaType(this.contentType)
+                .AddParameter("charset", charset.charsetName)
+                .DataUri
+            |> DataIri
+
+type TypedLiteral with 
+
+    static member inline autotyped<'ValueType> (value: 'ValueType) : TypedLiteral =
         match tType<'ValueType> with
 
-        | TType.Bool equality -> value |> Teq.castTo equality |> xsd.Measure.boolean.typedLiteral |> TypedLiteral
+        | TType.Bool equality ->
+            (Teq.castTo equality value).xsd'boolean |> StaticTypedLiteral.toTypedLiteral
 
         | TTeq TType.byte equality ->
-            value
-            |> Teq.castTo equality
-            |> xsd.Measure.unsignedByte.typedLiteral
-            |> TypedLiteral
+            (Teq.castTo equality value).xsd'unsignedByte |> StaticTypedLiteral.toTypedLiteral
 
-        | TTeq TType.sbyte equality -> value |> Teq.castTo equality |> xsd.Measure.byte.typedLiteral |> TypedLiteral
+        | TTeq TType.sbyte equality ->
+            (Teq.castTo equality value).xsd'byte |> StaticTypedLiteral.toTypedLiteral
 
-        | TTeq TType.int16 equality -> value |> Teq.castTo equality |> xsd.Measure.short.typedLiteral |> TypedLiteral
+        | TTeq TType.int16 equality ->
+            (Teq.castTo equality value).xsd'short |> StaticTypedLiteral.toTypedLiteral
 
-        | TType.Int equality -> value |> Teq.castTo equality |> xsd.Measure.int.typedLiteral |> TypedLiteral
+        | TType.Int equality ->
+            (Teq.castTo equality value).xsd'int |> StaticTypedLiteral.toTypedLiteral
 
-        | TType.Int64 equality -> value |> Teq.castTo equality |> xsd.Measure.long.typedLiteral |> TypedLiteral
+        | TType.Int64 equality ->
+            (Teq.castTo equality value).xsd'long |> StaticTypedLiteral.toTypedLiteral
 
         | TTeq TType.uint16 equality ->
-            value
-            |> Teq.castTo equality
-            |> xsd.Measure.unsignedShort.typedLiteral
-            |> TypedLiteral
+            (Teq.castTo equality value).xsd'unsignedShort |> StaticTypedLiteral.toTypedLiteral
 
         | TTeq TType.uint32 equality ->
-            value
-            |> Teq.castTo equality
-            |> xsd.Measure.unsignedInt.typedLiteral
-            |> TypedLiteral
+            (Teq.castTo equality value).xsd'unsignedInt |> StaticTypedLiteral.toTypedLiteral
 
         | TTeq TType.uint64 equality ->
-            value
-            |> Teq.castTo equality
-            |> xsd.Measure.unsignedLong.typedLiteral
-            |> TypedLiteral
+            (Teq.castTo equality value).xsd'unsignedLong |> StaticTypedLiteral.toTypedLiteral
 
-        | TTeq TType.single equality -> value |> Teq.castTo equality |> xsd.Measure.float.typedLiteral |> TypedLiteral
+        | TTeq TType.single equality ->
+            (Teq.castTo equality value).xsd'float |> StaticTypedLiteral.toTypedLiteral
 
-        | TType.Float equality -> value |> Teq.castTo equality |> xsd.Measure.double.typedLiteral |> TypedLiteral
+        | TType.Float equality ->
+            (Teq.castTo equality value).xsd'double |> StaticTypedLiteral.toTypedLiteral
 
-        | TTeq TType.decimal equality -> value |> Teq.castTo equality |> xsd.Measure.decimal.typedLiteral |> TypedLiteral
+        | TTeq TType.decimal equality ->
+            (Teq.castTo equality value).xsd'decimal |> StaticTypedLiteral.toTypedLiteral
 
-        | TTeq TType.DateOnly equality -> value |> Teq.castTo equality |> xsd.Measure.date.typedLiteral |> TypedLiteral
+        | TTeq TType.DateOnly equality ->
+            (Teq.castTo equality value).xsd'date |> StaticTypedLiteral.toTypedLiteral
 
         | TType.DateTime equality ->
-            value
-            |> Teq.castTo equality
-            |> xsd.Measure.dateTime.typedLiteral
-            |> TypedLiteral
+            (Teq.castTo equality value).xsd'dateTime |> StaticTypedLiteral.toTypedLiteral
 
         | TTeq TType.DateTimeOffset equality ->
-            value
-            |> Teq.castTo equality
-            |> xsd.Measure.dateTimeStamp.typedLiteral
-            |> TypedLiteral
+            (Teq.castTo equality value).xsd'dateTimeStamp |> StaticTypedLiteral.toTypedLiteral
 
-        | TTeq TType.TimeOnly equality -> value |> Teq.castTo equality |> xsd.Measure.time.typedLiteral |> TypedLiteral
+        | TTeq TType.TimeOnly equality ->
+            (Teq.castTo equality value).xsd'time |> StaticTypedLiteral.toTypedLiteral
 
         | TType.TimeSpan equality ->
-            value
-            |> Teq.castTo equality
-            |> xsd.Measure.duration.typedLiteral
-            |> TypedLiteral
+            (Teq.castTo equality value).xsd'duration |> StaticTypedLiteral.toTypedLiteral
 
-        | TType.String equality -> value |> Teq.castTo equality |> Literal.string
+        | TTeq TType.BigInteger equality ->
+            (Teq.castTo equality value).xsd'integer |> StaticTypedLiteral.toTypedLiteral
 
-        | _ -> value.ToString() |> Literal.string
+        | TTeq TType.byteArray equality ->
+            Teq.castTo equality value
+            |> Byte.xsd'base64Binary
+            |> StaticTypedLiteral.toTypedLiteral
 
+        | TTeq TType.Uri equality ->
+            (Teq.castTo equality value).xsd'anyURI |> StaticTypedLiteral.toTypedLiteral
+
+        | TTeq TType.Url equality ->
+            (Teq.castTo equality value).xsd'anyURI |> StaticTypedLiteral.toTypedLiteral
+
+        | TTeq TType.Iri equality ->
+            (Teq.castTo equality value).xsd'anyURI |> StaticTypedLiteral.toTypedLiteral
+
+        | TTeq TType.Irl equality ->
+            (Teq.castTo equality value).xsd'anyURI |> StaticTypedLiteral.toTypedLiteral
+
+        | TTeq TType.InternetMediaType equality ->
+            (Teq.castTo equality value).spdx'MediaType |> StaticTypedLiteral.toTypedLiteral
+
+        | TType.String equality ->
+            (Teq.castTo equality value) ^^ xsd.string |> StaticTypedLiteral.toTypedLiteral
+
+        | _ ->
+            value.ToString() ^^ xsd.string |> StaticTypedLiteral.toTypedLiteral
+type Literal with 
+    static member inline autotyped<'ValueType> (value: 'ValueType) : Literal =
+        match TypedLiteral.autotyped value with
+        | typedLiteral when xsd.string |> RdfTerm.sameTerm typedLiteral.datatypeIri -> Literal.rdfString typedLiteral.lexicalForm
+        | typedLiteral -> TypedLiteral typedLiteral
+    
 // -----------------------------------------------------------------------------
 // Projection context
 //
@@ -13556,6 +13119,18 @@ and CodeQuotation<'ValueType> =
 
             match tType<'ValueType> with
 
+            | TType.Teq TType.FileInfo typeEquality ->
+
+                let typeValue : FileInfo =
+
+                    value
+                    |> Teq.castTo typeEquality
+                match CodeQuotation<string>.tryDirect (typeValue.FullName) with
+                | Some stringExpression ->
+
+                    <@ FileInfo( %stringExpression )  @> :> Expr |> Some
+
+                | None -> None
             | TType.Teq TType.Url typeEquality ->
 
                 let typeValue : Url =
@@ -13571,8 +13146,7 @@ and CodeQuotation<'ValueType> =
                     :> Expr
                     |> Some
 
-                | None ->
-                    None
+                | None -> None
 
             | TType.Teq TType.IriReference typeEquality ->
 

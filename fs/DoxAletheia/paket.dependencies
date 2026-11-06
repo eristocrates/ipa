@@ -27,11 +27,13 @@ nuget Tavis.UriTemplates
 nuget VDS.Common
 nuget System.Data.SqlClient
 nuget TypeShape
-nuget Microsoft.Extensions.Configuration = 10.0.8
-nuget Microsoft.Extensions.Configuration.Abstractions = 10.0.8
+nuget Microsoft.Extensions.Configuration  = 10.0.14
+nuget Microsoft.Extensions.DependencyInjection.Abstractions = 10.0.14
+nuget Microsoft.Extensions.Configuration.Abstractions  = 10.0.14
 nuget Fabulous.AST
 nuget Fabulous.AST.Build
 nuget NuGet.Protocol
+nuget SmartWsdlKit
 nuget Newtonsoft.Json >= 13.0.0
 nuget NuGet.CatalogReader
 nuget ShapeSifter
@@ -40,6 +42,7 @@ nuget FSharp.SystemTextJson
 nuget DynamicObj = 8.0.0
 nuget DynamicObj.Immutable = 8.0.0
 nuget Universal.Common
+nuget System.Web.Services.Description
 nuget Universal.Common.Audio
 nuget Universal.Common.Collections
 nuget Universal.Common.Css.Selectors

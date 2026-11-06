@@ -9,4 +9,4 @@ namespace PaketLoadScripts
 #load "Microsoft.SqlServer.Server.fsx" 
 #load "System.Configuration.ConfigurationManager.fsx" 
 #load "System.Security.Cryptography.Pkcs.fsx" 
-#r "../../packages/Microsoft.Data.SqlClient/lib/net9.0/Microsoft.Data.SqlClient.dll" 
+#r "../../packages/Microsoft.Data.SqlClient/runtimes/win/lib/net9.0/Microsoft.Data.SqlClient.dll" 
