@@ -105,7 +105,7 @@ open TypeShape
 open TypeShape.Core
 // open VDS.Common.Tries
 open VDS.RDF
-open WebSharper.Core 
+open WebSharper.Core
 open Dramaturge
 open Dramaturge.Browsers
 open Dramaturge.Network
@@ -144,9 +144,6 @@ type RdfVocabulary with
 type UriSchemes = Iana.RegistryProvider.``Uniform Resource Identifier (URI) Schemes``.``Uniform Resource Identifier (URI) Schemes``
 type PublicSuffixes = PublicSuffixList.PublicSuffixProvider
 type Mime = Iana.InternetMediaTypeProvider
-let iriref (iriString: string) = Iri.op_Implicit iriString
-
-let irlref (irlString:string) = Url.Parse irlString |> Irl.ofUrl
 
 module commonplace =
     let _namespace = RdfVocabulary.personal "commonplace"
@@ -156,24 +153,25 @@ module commonplace =
     let blake3Hash = _namespace.curie "blake3Hash" |> DataPropertyIri
 type Attr with
     static member Class = AttrSelector "Class"
-type String with 
+type String with
     member this.asBlake3 = Blake3.Hasher.Hash(this.asUtf8)
-type Hash with 
+type Hash with
     member this.asBytes = this.AsSpan().ToArray()
     member this.hashString = this.ToString()
-module CdpEndpoint = 
-    module json = 
+module CdpEndpoint =
+    module json =
         [<Literal>]
         let version = "http://127.0.0.1:9222/json/version"
 // RemoteWebDriver.download "156.0.4314.56"
-type CdpVersionProvider  = JsonProvider<UseOriginalNames = true, OmitNullFields = true, RootName = "version", Sample = CdpEndpoint.json.version>
-let cdpVersion = 
-    http {
-        GET CdpEndpoint.json.version
-    }
+type CdpVersionProvider = JsonProvider<UseOriginalNames=true, OmitNullFields=true, RootName="version", Sample=CdpEndpoint.json.version>
+let cdpVersion () =
+    http { GET CdpEndpoint.json.version }
     |> Request.send
     |> Response.toText
     |> CdpVersionProvider.Parse
+
+
+
 
 module BrowserApiReflection =
 
@@ -598,98 +596,64 @@ type JavascriptBuilder() =
     let propertyName (propertyInfo: PropertyInfo) =
         propertyInfo.GetCustomAttributes(typeof<DomNameAttribute>, true)
         |> Seq.tryPick (function
-            | :? DomNameAttribute as attribute ->
-                Some attribute.OfficialName
-            | _ ->
-                None
-        )
+            | :? DomNameAttribute as attribute -> Some attribute.OfficialName
+            | _ -> None)
         |> Option.defaultValue propertyInfo.Name
 
-    let rec  expression
-        (variables: Map<Var, JavaScript.Syntax.Id>)
-        (quotation: Expr)
-        : JavaScript.Syntax.Expression =
+    let rec expression (variables: Map<Var, JavaScript.Syntax.Id>) (quotation: Expr) : JavaScript.Syntax.Expression =
 
         match quotation with
 
         // fun element -> ...
         | Lambda(variable, body) ->
 
-            let identifier =
-                JavaScript.Syntax.Id.New variable.Name
+            let identifier = JavaScript.Syntax.Id.New variable.Name
 
-            let variables =
-                variables.Add(variable, identifier)
+            let variables = variables.Add(variable, identifier)
 
-            let body =
-                expression variables body
+            let body = expression variables body
 
-            JavaScript.Syntax.Lambda(
-                None,
-                [ identifier ],
-                [
-                    JavaScript.Syntax.Return(
-                        Some body
-                    )
-                ],
-                true
-            )
+            JavaScript.Syntax.Lambda(None, [ identifier ], [ JavaScript.Syntax.Return(Some body) ], true)
 
         // element
         | Var variable ->
 
             match variables.TryFind variable with
-            | Some identifier ->
-                JavaScript.Syntax.Var identifier
+            | Some identifier -> JavaScript.Syntax.Var identifier
 
-            | None ->
-                failwith $"Unknown variable: {variable.Name}"
+            | None -> failwith $"Unknown variable: {variable.Name}"
 
         // element.OuterHtml
         | PropertyGet(Some target, propertyInfo, []) ->
 
-            let target =
-                expression variables target
+            let target = expression variables target
 
-            let name =
-                propertyName propertyInfo
+            let name = propertyName propertyInfo
 
-            JavaScript.Syntax.Binary(
-                target,
-                JavaScript.Syntax.BinaryOperator.``.``,
-                JavaScript.Syntax.Constant(
-                    JavaScript.Syntax.Literal.String name
-                )
-            )
+            JavaScript.Syntax.Binary(target, JavaScript.Syntax.BinaryOperator.``.``, JavaScript.Syntax.Constant(JavaScript.Syntax.Literal.String name))
 
         // "hello"
         | Value(:? string as value, _) ->
 
-            JavaScript.Syntax.Constant(
-                JavaScript.Syntax.Literal.String value
-            )
+            JavaScript.Syntax.Constant(JavaScript.Syntax.Literal.String value)
 
         // true / false
         | Value(:? bool as value, _) ->
-                JavaScript.Syntax.Constant(
-                    if value then
-                        JavaScript.Syntax.Literal.True 
-                    else
-                        JavaScript.Syntax.Literal.False
-                )
-         
+            JavaScript.Syntax.Constant(
+                if value then
+                    JavaScript.Syntax.Literal.True
+                else
+                    JavaScript.Syntax.Literal.False
+            )
+
         // null
         | Value(null, _) ->
 
-            JavaScript.Syntax.Constant(
-                JavaScript.Syntax.Literal.Null
-            )
+            JavaScript.Syntax.Constant(JavaScript.Syntax.Literal.Null)
 
-        | unsupported ->
-            failwith
-                $"""Unsupported F# quotation: {unsupported}"""
+        | unsupported -> failwith $"""Unsupported F# quotation: {unsupported}"""
 
-    let  compileQuotation (quotation: Expr) =
+    let compileQuotation (quotation: Expr) =
 
         let quotation =
             match quotation with
@@ -698,37 +662,26 @@ type JavascriptBuilder() =
             //
             // The quoted computation expression contains the
             // generated call to JavascriptBuilder.Return.
-            | Call(_, methodInfo, [ value ])
-                when methodInfo.Name = "Return" ->
-                    value
+            | Call(_, methodInfo, [ value ]) when methodInfo.Name = "Return" -> value
 
-            | expression ->
-                expression
+            | expression -> expression
 
         quotation
         |> expression Map.empty
-        |> JavaScript.Writer.ExpressionToString
-            JavaScript.Preferences.Readable
-    member _.Return(value: 'T) : 'T =
-        value
+        |> JavaScript.Writer.ExpressionToString JavaScript.Preferences.Readable
+    member _.Return(value: 'T) : 'T = value
 
-    member _.Quote(expression: Expr<'T>) =
-        expression
+    member _.Quote(expression: Expr<'T>) = expression
 
-    member _.Run(expression: Expr<'T>)  =
-        {
-            javascriptString = compileQuotation expression
-        }
+    member _.Run(expression: Expr<'T>) = {
+        javascriptString = compileQuotation expression
+    }
 
 let javascript = JavascriptBuilder()
 
-let javascriptLiteral = 
-    javascript {
-        return fun (element: IElement) ->
-            element.OuterHtml
-    }
+let javascriptLiteral = javascript { return fun (element: IElement) -> element.OuterHtml }
 
-type SeleniumKey = 
+type SeleniumKey =
     | Add
     | Alt
     | ArrowDown
@@ -793,9 +746,10 @@ type SeleniumKey =
     | Tab
     | Up
     | ZenkakuHankaku
-    member this.asString  = 
-        match this with 
-        
+
+    member this.asString =
+        match this with
+
         | Add -> OpenQA.Selenium.Keys.Add
         | Alt -> OpenQA.Selenium.Keys.Alt
         | ArrowDown -> OpenQA.Selenium.Keys.ArrowDown
@@ -860,24 +814,21 @@ type SeleniumKey =
         | Tab -> OpenQA.Selenium.Keys.Tab
         | Up -> OpenQA.Selenium.Keys.Up
         | ZenkakuHankaku -> OpenQA.Selenium.Keys.ZenkakuHankaku
-        member this.press = canopy.classic.press this.asString
+    member this.press = canopy.classic.press this.asString
 
-type WebDriverWindow = 
-    {
-        index : int
-        handle: string
-        title:string
-        url:string
-    }
+type WebDriverWindow = {
+    index: int
+    handle: string
+    title: string
+    url: string
+}
 
-type RemoteWebDriver with 
-    static member download (version:string) = 
+type RemoteWebDriver with
+    static member download(version: string) =
         let directory = Directory.CreateDirectory @$"D:\Program_Files\Microsoft\Edge\Version{version}"
         let filePath = Path.Combine(directory.FullName, "edgedriver_win64.zip")
-    
-        http {
-            GET $"https://msedgedriver.microsoft.com/{version}/edgedriver_win64.zip"
-        }
+
+        http { GET $"https://msedgedriver.microsoft.com/{version}/edgedriver_win64.zip" }
         |> Request.send
         |> Response.saveFile filePath
         ZipFile.ExtractToDirectory(filePath, directory.FullName)
@@ -894,12 +845,10 @@ type RemoteWebDriver with
                     handle = handle
                     title = this.Title
                     url = this.Url
-                }
-            )
+                })
             |> Seq.toArray
         finally
-            this.SwitchTo().Window(originalHandle)
-            |> ignore
+            this.SwitchTo().Window(originalHandle) |> ignore
 
 type IBrowser with
     member this.asCdp = this :?> CdpBrowser
@@ -988,7 +937,13 @@ type CdpBrowser with
         this.pageTargets |> Array.tryFind pageTargetFinder
 
     member this.pages =
-        this.pageTargets |> Array.map (fun target -> target.AsPageAsync().await.asCdp)
+
+        this.pageTargets
+        |> Array.choose (fun target ->
+            try
+                Some <| target.AsPageAsync().await.asCdp
+            with _ ->
+                None)
 
 module HttpHeader =
     let Irn (requestId: string) (fieldName: string) = {
@@ -1030,7 +985,7 @@ type Iana.InternetMediaType with
             MimeType.TryParse(headerDictionary["content-type"])
             |> fun (wasParsed, mimeType) ->
                 match wasParsed with
-                | true -> Some (Iana.InternetMediaType.ofMimeType mimeType)
+                | true -> Some(Iana.InternetMediaType.ofMimeType mimeType)
                 | false -> None
         with _ ->
             None
@@ -1146,45 +1101,41 @@ type CdpFrame with
         this.tryFindFrameName frameName |> Option.get
     member this.Realm = CdpRealm this
 
-type EdgeFrame = 
-    {
-        dramaturge:Frame
-        puppeteer:CdpFrame
-        irl:Irl
-        title:string
-    }
+type EdgeFrame = {
+    dramaturge: Frame
+    puppeteer: CdpFrame
+    irl: Irl
+    title: string
+}
 
-type EdgePage = 
-    {
-        dramaturge:Page
-        puppeteer:CdpPage
-        irl:Irl
-        window:WebDriverWindow
-    }
-    member this.frames = 
-        Array.zip 
-            (this.dramaturge.Frames |> Seq.toArray)
-            (this.puppeteer.frames )
-        |> Array.map (fun (bidiFrame, cdpFrame) ->  
-            {
-                dramaturge = bidiFrame
-                puppeteer = cdpFrame
-                irl = irlref bidiFrame.Url
-                title = cdpFrame.GetTitleAsync().Result
-            })
-    static member BringToFront (page:EdgePage) = page.dramaturge.BringToFrontAsync() |> awaitUnit
+type EdgePage = {
+    dramaturge: Page
+    puppeteer: CdpPage
+    irl: Irl
+    window: WebDriverWindow
+} with
+
+    member this.frames =
+        Array.zip (this.dramaturge.Frames |> Seq.toArray) (this.puppeteer.frames)
+        |> Array.map (fun (bidiFrame, cdpFrame) -> {
+            dramaturge = bidiFrame
+            puppeteer = cdpFrame
+            irl = irlref bidiFrame.Url
+            title = cdpFrame.GetTitleAsync().Result
+        })
+    static member BringToFront(page: EdgePage) =
+        page.dramaturge.BringToFrontAsync() |> awaitUnit
     member this.front = EdgePage.BringToFront this
 
-type Browser with 
-    member this.pages = 
-        this.Pages |> Seq.toArray
-type EdgeBrowser = 
-    {
-        canopy:RemoteWebDriver
-        puppeteer:CdpBrowser
-        dramaturge: BrowserGroup
-    }
-    member this.urls = 
+type Browser with
+    member this.pages = this.Pages |> Seq.toArray
+type EdgeBrowser = {
+    canopy: RemoteWebDriver
+    puppeteer: CdpBrowser
+    dramaturge: BrowserGroup
+} with
+
+    member this.urls =
         Array.concat [|
             this.canopy.windows |> Array.map (fun window -> window.url)
             this.dramaturge.DefaultBrowser.pages |> Array.map (fun page -> page.Url)
@@ -1192,187 +1143,189 @@ type EdgeBrowser =
         |]
         |> Array.distinct
         |> Array.sort
-    member this.InventoryPages() = 
+    member this.InventoryPages() =
         let windows = this.canopy.windows
         let bidiPages = this.dramaturge.DefaultBrowser.pages
         let cdpPages = this.puppeteer.pages
         this.urls
-        |> Array.Parallel.choose (fun url -> 
+        |> Array.Parallel.choose (fun url ->
             let maybeWindow = windows |> Array.tryFind (fun window -> window.url = url)
             let maybeBidiPage = bidiPages |> Array.tryFind (fun page -> page.Url = url)
             let maybeCdpPage = cdpPages |> Array.tryFind (fun page -> page.Url = url)
-            match maybeWindow, maybeBidiPage, maybeCdpPage with 
-            | Some window, Some bidiPage, Some cdpPage -> 
+            match maybeWindow, maybeBidiPage, maybeCdpPage with
+            | Some window, Some bidiPage, Some cdpPage ->
 
-                    Some {
-                        dramaturge = bidiPage
-                        puppeteer = cdpPage
-                        irl = irlref url
-                        window = window
-                    }
-            | _, _, _ -> None
-        )
+                Some {
+                    dramaturge = bidiPage
+                    puppeteer = cdpPage
+                    irl = irlref url
+                    window = window
+                }
+            | _, _, _ -> None)
 
-    member this.canopyPage (pages:EdgePage array) = 
-        pages |> Array.find (fun page -> page.window.handle = this.canopy.CurrentWindowHandle)
-    static member op_Implicit(edge:EdgeBrowser) = edge.canopy
-    static member op_Implicit(edge:EdgeBrowser) : IWebDriver = edge.canopy :> IWebDriver
-    static member op_Implicit(edge:EdgeBrowser) = edge.puppeteer
-    static member exeFile = FileInfo $"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe" 
+    member this.canopyPage(pages: EdgePage array) =
+        pages
+        |> Array.find (fun page -> page.window.handle = this.canopy.CurrentWindowHandle)
+    static member op_Implicit(edge: EdgeBrowser) = edge.canopy
+    static member op_Implicit(edge: EdgeBrowser) : IWebDriver = edge.canopy :> IWebDriver
+    static member op_Implicit(edge: EdgeBrowser) = edge.puppeteer
+    static member exeFile = FileInfo $"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe"
     static member driverFile = FileInfo $"D:\Program_Files\Microsoft\Edge\Version156.0.4314.42\msedgedriver.exe"
     static member dataDirectory = DirectoryInfo $"D:\Program_Files\Microsoft\Edge\data_dir"
     static member startBrowserCommand = $"& '{EdgeBrowser.exeFile.FullName}' --remote-debugging-port=9222 --user-data-dir={EdgeBrowser.dataDirectory.FullName}"
     static member startDriverCommand = $"& '{EdgeBrowser.driverFile.FullName}' --port=9515"
     static member Connect() =
-            let remoteWebDriver = 
-                        let edgeOptions = EdgeOptions()
-                        edgeOptions.DebuggerAddress <- "127.0.0.1:9222"
-                        new RemoteWebDriver(Uri("http://127.0.0.1:9515"), edgeOptions)
-            let cdpBrowser = 
+        let remoteWebDriver =
+            let edgeOptions = EdgeOptions()
+            edgeOptions.DebuggerAddress <- "127.0.0.1:9222"
+            new RemoteWebDriver(Uri("http://127.0.0.1:9515"), edgeOptions)
+        let cdpBrowser =
 
-                    let options = ConnectOptions()
+            let options = ConnectOptions()
 
-                    options.BrowserURL <- "http://127.0.0.1:9222"
-                    options.DefaultViewport <- null
+            options.BrowserURL <- "http://127.0.0.1:9222"
+            options.DefaultViewport <- null
 
-                    Puppeteer.ConnectAsync(options).Result :?> CdpBrowser
-            let browserGroup = 
-                let browserLauncher =
-                    BrowserLauncher
-                        .Configure(BrowserKind.Edge)
-                        .ConnectToExisting(Uri cdpVersion.webSocketDebuggerUrl)
-                BrowserGroup.LaunchAsync(browserLauncher).Result
-            let edge = 
-                {
-                            canopy = remoteWebDriver
-                            puppeteer = cdpBrowser
-                            dramaturge = browserGroup
-                }
-            canopy.classic.browser <- edge.canopy
-            edge
-    member this.tryFindPage (subString:String) = 
-            fun (pages:EdgePage array) -> 
-                pages |> Array.tryFind (fun page -> 
-                    match subString.ToLowerInvariant(),  page.irl.remoteReference.ToLowerInvariant(), page.window.title.ToLowerInvariant() with 
-                    | substring, url, title when 
-                        (url.Contains substring || title.Contains substring) && page.window.handle <> this.canopy.CurrentWindowHandle -> true
-                    | _, _, _ -> false
-                )
-    member this.page (page:EdgePage) = 
-            canopy.classic.switchToTab page.window.index
-    member this.page (irl:Irl) = 
+            Puppeteer.ConnectAsync(options).Result :?> CdpBrowser
+        let browserGroup =
+            let browserLauncher = BrowserLauncher.Configure(BrowserKind.Edge).ConnectToExisting(Uri <| cdpVersion().webSocketDebuggerUrl)
+            BrowserGroup.LaunchAsync(browserLauncher).Result
+        let edge = {
+            canopy = remoteWebDriver
+            puppeteer = cdpBrowser
+            dramaturge = browserGroup
+        }
+        canopy.classic.browser <- edge.canopy
+        edge
+    member this.tryFindPage(subString: String) =
+        fun (pages: EdgePage array) ->
+            pages
+            |> Array.tryFind (fun page ->
+                match subString.ToLowerInvariant(), page.irl.remoteReference.ToLowerInvariant(), page.window.title.ToLowerInvariant() with
+                | substring, url, title when
+                    (url.Contains substring || title.Contains substring)
+                    && page.window.handle <> this.canopy.CurrentWindowHandle
+                    ->
+                    true
+                | _, _, _ -> false)
+    member this.page(page: EdgePage) =
+        canopy.classic.switchToTab page.window.index
+    member this.page(irl: Irl) =
         fun (pages: EdgePage array) -> pages |> this.page irl.remoteReference
-    member this.page (site:Site) = 
+    member this.page(site: Site) =
         fun (pages: EdgePage array) -> pages |> this.page site.remoteReference
-    member this.page (domain:Domain) = 
+    member this.page(domain: Domain) =
         fun (pages: EdgePage array) -> pages |> this.page (UriSchemes.http.host domain)
-    member this.page (subString:string) = 
-        fun (pages:EdgePage array) -> 
-            match pages |> this.tryFindPage subString with 
+    member this.page(subString: string) =
+        fun (pages: EdgePage array) ->
+            match pages |> this.tryFindPage subString with
             | Some page -> this.page page
             | None -> ()
-    member this.closePage (page:EdgePage) = canopy.classic.closeTab page.window.index
-    member this.closePage (irl:Irl) = 
+    member this.closePage(page: EdgePage) =
+        canopy.classic.closeTab page.window.index
+    member this.closePage(irl: Irl) =
         fun (pages: EdgePage array) -> pages |> this.closePage irl.remoteReference
-    member this.closePage (site:Site) = 
+    member this.closePage(site: Site) =
         fun (pages: EdgePage array) -> pages |> this.closePage site.remoteReference
-    member this.closePage (domain:Domain) = 
+    member this.closePage(domain: Domain) =
         fun (pages: EdgePage array) -> pages |> this.closePage (UriSchemes.http.host domain)
-    member this.closePage (subString:string) =
-        fun (pages:EdgePage array) -> 
-            match pages |> this.tryFindPage subString with 
+    member this.closePage(subString: string) =
+        fun (pages: EdgePage array) ->
+            match pages |> this.tryFindPage subString with
             | Some page -> this.closePage page
             | None -> ()
     member this.driverIrl = canopy.classic.currentUrl () |> Url.Parse |> Irl.ofUrl
     member this.driverTitle = canopy.classic.title ()
-    member this.reload() =  
-        canopy.classic.reload()
-    member this.navigate(navigation:canopy.parallell.functions.Navigate) = 
-        canopy.classic.navigate navigation
+    member this.reload() = canopy.classic.reload ()
+    member this.navigate(navigation: canopy.parallell.functions.Navigate) = canopy.classic.navigate navigation
     member this.back = this.navigate canopy.parallell.functions.Navigate.Back
     member this.forward = this.navigate canopy.parallell.functions.Navigate.Forward
-    member this.irl (irl:Irl) = 
-        canopy.classic.url irl.remoteReference
-    member this.irl (site:Site) = 
-        canopy.classic.url site.remoteReference
-    member this.irl (domain:Domain) = 
-        this.irl (UriSchemes.https.host domain)
-    member this.write (text:string) = 
-        fun (selector:Selector) -> canopy.classic.(<<) selector.Css  text
-    member this.read (selector:Selector) = canopy.classic.read selector.Css
-    member this.drag (fromSelector:Selector) =
-        fun (ontoSelector:Selector) -> canopy.classic.drag fromSelector.Css ontoSelector.Css this
-    member this.click (text:string) = canopy.classic.click text
-    member this.click (selector:Selector) = canopy.classic.click selector.Css
-    member this.click (element:IWebElement) = canopy.classic.click element
-    member this.rightClick (text:string) = canopy.classic.rightClick text
-    member this.rightClick (selector:Selector) = canopy.classic.rightClick selector.Css
-    member this.rightClick (element:IWebElement) = canopy.classic.rightClick element
-    member this.doubleClick (text:string) = canopy.classic.doubleClick text
-    member this.doubleClick (selector:Selector) = canopy.classic.doubleClick selector.Css
-    member this.doubleClick (element:IWebElement) = canopy.classic.doubleClick element
-    member this.ctrlClick (text:string) = canopy.classic.ctrlClick text
-    member this.ctrlClick (selector:Selector) = canopy.classic.ctrlClick selector.Css
-    member this.ctrlClick (element:IWebElement) = canopy.classic.ctrlClick element
-    member this.shiftClick (text:string) = canopy.classic.shiftClick text
-    member this.shiftClick (selector:Selector) = canopy.classic.shiftClick selector.Css
-    member this.shiftClick (element:IWebElement) = canopy.classic.shiftClick element
-    member this.screenshot (file:FileInfo) = canopy.classic.screenshot file.DirectoryName file.Name
-    member this.check (text:string) = canopy.classic.check text
-    member this.check (selector:Selector) = canopy.classic.check selector.Css
-    member this.check (element:IWebElement) = canopy.classic.check element
-    member this.uncheck (text:string) = canopy.classic.uncheck text
-    member this.uncheck (selector:Selector) = canopy.classic.uncheck selector.Css
-    member this.uncheck (element:IWebElement) = canopy.classic.uncheck element
-    member this.hover (text:string) = canopy.classic.hover text
-    member this.hover (selector:Selector) = canopy.classic.hover selector.Css
-    member this.element (text:string) = canopy.classic.element text
-    member this.element (selector:Selector) = canopy.classic.element selector.Css
-    member this.elementWithText (text:string) (selector:Selector) = canopy.classic.elementWithText selector.Css text
-    member this.someElement (text:string) = canopy.classic.someElement text
-    member this.someElement (selector:Selector) = canopy.classic.someElement selector.Css
-    member this.someElementWithin (text:string) = canopy.classic.someElementWithin text
-    member this.someElementWithin (selector:Selector) = canopy.classic.someElementWithin selector.Css
-    member this.parent (webElement:IWebElement) = canopy.classic.parent webElement
-    member this.someParent (webElement:IWebElement) = canopy.classic.someParent webElement
-    member this.elements (text:string) = canopy.classic.elements text
-    member this.elements (selector:Selector) = canopy.classic.elements selector.Css
-    member this.elementsWithin (text:string) = canopy.classic.elementsWithin text
-    member this.elementsWithin (selector:Selector) = canopy.classic.elementsWithin selector.Css
-    member this.elementsWithText (text:string) (selector:Selector) = canopy.classic.elementsWithText selector.Css text
-    member this.nth (ordinal:int) = 
-        fun (selector:Selector) -> canopy.classic.nth ordinal selector.Css
-    member this.first (text:string) = canopy.classic.first text
-    member this.first (selector:Selector) = canopy.classic.first selector.Css
-    member this.last (text:string) = canopy.classic.last text
-    member this.last (selector:Selector) = canopy.classic.last selector.Css
-    member this.elementText (selector:Selector) = canopy.classic.fastTextFromCSS selector.Css
-    member this.resize(x:int) = 
-        fun (y:int) -> canopy.classic.resize(x, y)
-    member this.rotate() = canopy.classic.rotate()
-    member this.js (literal:JavascriptLiteral) = (this.canopy :> IJavaScriptExecutor).ExecuteScript(literal.javascriptString ) 
-    member this.sleep (seconds:int)= canopy.classic.sleep seconds
-    member this.highlight (selector:Selector) = canopy.classic.highlight selector.Css
-    member this.waitFor (predicate : unit -> bool) = canopy.classic.waitFor predicate
-    member this.waitFor (explanation:string) =
-        fun (predicate : unit -> bool) -> canopy.classic.waitFor2 explanation predicate
-    member this.waitFor (selector:Selector) = canopy.classic.waitForElement selector.Css
-    member this.clear (selector:Selector) = canopy.classic.clear selector.Css
-    member this.press (key:SeleniumKey) = canopy.classic.press key.asString
-    member this.alert = canopy.classic.alert()
-    member this.acceptAlert = canopy.classic.acceptAlert()
-    member this.dismissAlert = canopy.classic.dismissAlert()
-    member this.pin (direction:types.direction) = canopy.classic.pin direction
-    member this.positionBrowser (leftPercentage:int) = 
-        fun (topPercentage:int) ->
-            fun (widthPercentage:int) ->
-                fun (heightPercentage:int) -> canopy.classic.positionBrowser leftPercentage topPercentage widthPercentage heightPercentage
-    member this.css (selector:Selector) = canopy.classic.css selector.Css
-    member this.xpath(xpath:XPathExpression) = canopy.classic.xpath xpath.Expression
+    member this.irl(irl: Irl) = canopy.classic.url irl.remoteReference
+    member this.irl(site: Site) = canopy.classic.url site.remoteReference
+    member this.irl(domain: Domain) = this.irl (UriSchemes.https.host domain)
+    member this.write(text: string) =
+        fun (selector: Selector) -> canopy.classic.(<<) selector.Css text
+    member this.read(selector: Selector) = canopy.classic.read selector.Css
+    member this.drag(fromSelector: Selector) =
+        fun (ontoSelector: Selector) -> canopy.classic.drag fromSelector.Css ontoSelector.Css this
+    member this.click(text: string) = canopy.classic.click text
+    member this.click(selector: Selector) = canopy.classic.click selector.Css
+    member this.click(element: IWebElement) = canopy.classic.click element
+    member this.rightClick(text: string) = canopy.classic.rightClick text
+    member this.rightClick(selector: Selector) = canopy.classic.rightClick selector.Css
+    member this.rightClick(element: IWebElement) = canopy.classic.rightClick element
+    member this.doubleClick(text: string) = canopy.classic.doubleClick text
+    member this.doubleClick(selector: Selector) = canopy.classic.doubleClick selector.Css
+    member this.doubleClick(element: IWebElement) = canopy.classic.doubleClick element
+    member this.ctrlClick(text: string) = canopy.classic.ctrlClick text
+    member this.ctrlClick(selector: Selector) = canopy.classic.ctrlClick selector.Css
+    member this.ctrlClick(element: IWebElement) = canopy.classic.ctrlClick element
+    member this.shiftClick(text: string) = canopy.classic.shiftClick text
+    member this.shiftClick(selector: Selector) = canopy.classic.shiftClick selector.Css
+    member this.shiftClick(element: IWebElement) = canopy.classic.shiftClick element
+    member this.screenshot(file: FileInfo) =
+        canopy.classic.screenshot file.DirectoryName file.Name
+    member this.check(text: string) = canopy.classic.check text
+    member this.check(selector: Selector) = canopy.classic.check selector.Css
+    member this.check(element: IWebElement) = canopy.classic.check element
+    member this.uncheck(text: string) = canopy.classic.uncheck text
+    member this.uncheck(selector: Selector) = canopy.classic.uncheck selector.Css
+    member this.uncheck(element: IWebElement) = canopy.classic.uncheck element
+    member this.hover(text: string) = canopy.classic.hover text
+    member this.hover(selector: Selector) = canopy.classic.hover selector.Css
+    member this.element(text: string) = canopy.classic.element text
+    member this.element(selector: Selector) = canopy.classic.element selector.Css
+    member this.elementWithText (text: string) (selector: Selector) =
+        canopy.classic.elementWithText selector.Css text
+    member this.someElement(text: string) = canopy.classic.someElement text
+    member this.someElement(selector: Selector) = canopy.classic.someElement selector.Css
+    member this.someElementWithin(text: string) = canopy.classic.someElementWithin text
+    member this.someElementWithin(selector: Selector) =
+        canopy.classic.someElementWithin selector.Css
+    member this.parent(webElement: IWebElement) = canopy.classic.parent webElement
+    member this.someParent(webElement: IWebElement) = canopy.classic.someParent webElement
+    member this.elements(text: string) = canopy.classic.elements text
+    member this.elements(selector: Selector) = canopy.classic.elements selector.Css
+    member this.elementsWithin(text: string) = canopy.classic.elementsWithin text
+    member this.elementsWithin(selector: Selector) =
+        canopy.classic.elementsWithin selector.Css
+    member this.elementsWithText (text: string) (selector: Selector) =
+        canopy.classic.elementsWithText selector.Css text
+    member this.nth(ordinal: int) =
+        fun (selector: Selector) -> canopy.classic.nth ordinal selector.Css
+    member this.first(text: string) = canopy.classic.first text
+    member this.first(selector: Selector) = canopy.classic.first selector.Css
+    member this.last(text: string) = canopy.classic.last text
+    member this.last(selector: Selector) = canopy.classic.last selector.Css
+    member this.elementText(selector: Selector) =
+        canopy.classic.fastTextFromCSS selector.Css
+    member this.resize(x: int) =
+        fun (y: int) -> canopy.classic.resize (x, y)
+    member this.rotate() = canopy.classic.rotate ()
+    member this.js(literal: JavascriptLiteral) =
+        (this.canopy :> IJavaScriptExecutor).ExecuteScript(literal.javascriptString)
+    member this.sleep(seconds: int) = canopy.classic.sleep seconds
+    member this.highlight(selector: Selector) = canopy.classic.highlight selector.Css
+    member this.waitFor(predicate: unit -> bool) = canopy.classic.waitFor predicate
+    member this.waitFor(explanation: string) =
+        fun (predicate: unit -> bool) -> canopy.classic.waitFor2 explanation predicate
+    member this.waitFor(selector: Selector) =
+        canopy.classic.waitForElement selector.Css
+    member this.clear(selector: Selector) = canopy.classic.clear selector.Css
+    member this.press(key: SeleniumKey) = canopy.classic.press key.asString
+    member this.alert = canopy.classic.alert ()
+    member this.acceptAlert = canopy.classic.acceptAlert ()
+    member this.dismissAlert = canopy.classic.dismissAlert ()
+    member this.pin(direction: types.direction) = canopy.classic.pin direction
+    member this.positionBrowser(leftPercentage: int) =
+        fun (topPercentage: int) ->
+            fun (widthPercentage: int) -> fun (heightPercentage: int) -> canopy.classic.positionBrowser leftPercentage topPercentage widthPercentage heightPercentage
+    member this.css(selector: Selector) = canopy.classic.css selector.Css
+    member this.xpath(xpath: XPathExpression) = canopy.classic.xpath xpath.Expression
     member this.jquery jquerySelector = canopy.classic.jquery jquerySelector
-    member this.label (label:string) = canopy.classic.label label
-    member this.text (text:string) = canopy.classic.text text
-    member this.value = canopy.classic.value 
+    member this.label(label: string) = canopy.classic.label label
+    member this.text(text: string) = canopy.classic.text text
+    member this.value = canopy.classic.value
 
 type String with
     member this.com = PublicSuffixes.com.tld.domain this
@@ -1380,65 +1333,65 @@ type String with
     member this.gov = PublicSuffixes.gov.tld.domain this
     member this.net = PublicSuffixes.net.tld.domain this
 
-type FSharp.Data.HtmlDocument with 
-    static member ofWebDriver (webDriver:RemoteWebDriver) = HtmlDocument.Parse webDriver.PageSource
-type AngleSharp.Html.Dom.IHtmlDocument with 
-    static member ofWebDriver (webDriver:RemoteWebDriver) = HtmlParser().ParseDocument(File.ReadAllText(webDriver.PageSource))
+type FSharp.Data.HtmlDocument with
+    static member ofWebDriver(webDriver: RemoteWebDriver) = HtmlDocument.Parse webDriver.PageSource
+type AngleSharp.Html.Dom.IHtmlDocument with
+    static member ofWebDriver(webDriver: RemoteWebDriver) =
+        HtmlParser().ParseDocument(File.ReadAllText(webDriver.PageSource))
 
-type EdgeBrowser with 
+type EdgeBrowser with
     member this.FSharpHtmlDocument = FSharp.Data.HtmlDocument.ofWebDriver this.canopy
     member this.AngleSharpHtmlDocument = AngleSharp.Html.Dom.IHtmlDocument.ofWebDriver this.canopy
-    member this.https (domain:Domain) = UriSchemes.https.site domain |> this.irl
-    member this.http (domain:Domain) = UriSchemes.http.site domain |> this.irl
-    member this.www (label:string) =
-        fun (suffix:PublicSuffix) -> 
+    member this.https(domain: Domain) =
+        UriSchemes.https.site domain |> this.irl
+    member this.http(domain: Domain) = UriSchemes.http.site domain |> this.irl
+    member this.www(label: string) =
+        fun (suffix: PublicSuffix) ->
             {
                 topLevelDomain = suffix
                 secondLevelDomain = label
-                subdomainLabels = [ "www" ] 
+                subdomainLabels = [ "www" ]
             }
             |> UriSchemes.https.site
             |> this.irl
-    member this.www (domain:Domain) =
-            { domain with 
-                subdomainLabels = [ "www" ] 
-            }
-            |> UriSchemes.https.site
-            |> this.irl
-    member this.google (searchQuery:string) = 
-        let queryString = FSharpRecord.Parse {|
-            q = searchQuery 
-            udm = 14
-            |} 
-        UriSchemes.https.host "www" "google".com / "search"  =? queryString |> this.irl
-    member this.googleImages (searchQuery:string) = 
-        let queryString = 
-            FSharpRecord.Parse {| 
-                q = searchQuery 
-                udm = 14 
+    member this.www(domain: Domain) =
+        {
+            domain with
+                subdomainLabels = [ "www" ]
+        }
+        |> UriSchemes.https.site
+        |> this.irl
+    member this.google(searchQuery: string) =
+        let queryString = FSharpRecord.Parse {| q = searchQuery; udm = 14 |}
+        UriSchemes.https.host "www" "google".com / "search" =? queryString |> this.irl
+    member this.googleImages(searchQuery: string) =
+        let queryString =
+            FSharpRecord.Parse {|
+                q = searchQuery
+                udm = 14
                 tbm = "isch"
-                |} 
-        UriSchemes.https.host "www" "google".com / "search"  =? queryString |> this.irl
-    member this.googleNews (searchQuery:string) = 
-        let queryString = 
-            FSharpRecord.Parse {| 
-                q = searchQuery 
-                udm = 14 
+            |}
+        UriSchemes.https.host "www" "google".com / "search" =? queryString |> this.irl
+    member this.googleNews(searchQuery: string) =
+        let queryString =
+            FSharpRecord.Parse {|
+                q = searchQuery
+                udm = 14
                 tbm = "nws"
-                |} 
-        UriSchemes.https.host "www" "google".com / "search"  =? queryString |> this.irl
+            |}
+        UriSchemes.https.host "www" "google".com / "search" =? queryString |> this.irl
 
-type NetworkRequest with 
-    member this.Iri = 
-        match this.Url with 
+type NetworkRequest with
+    member this.Iri =
+        match this.Url with
         | dataUrl when dataUrl.StartsWith "data:" -> Universal.Common.DataUri dataUrl |> DataIri
         | url -> irlref url |> Irl
-    member this.tryIrl = 
-        match this.Iri with 
+    member this.tryIrl =
+        match this.Iri with
         | Irl irl -> Some irl
         | _ -> None
 
-module NetworkTraffic = 
+module NetworkTraffic =
 
     type Message =
         | Capture of NetworkRequest array
@@ -1456,11 +1409,7 @@ module NetworkTraffic =
                         match message with
                         | Capture requests ->
 
-                            let updated =
-                                requests
-                                |> Array.fold
-                                    (fun state request -> request :: state)
-                                    captured
+                            let updated = requests |> Array.fold (fun state request -> request :: state) captured
 
                             return! loop updated
 
@@ -1471,49 +1420,36 @@ module NetworkTraffic =
                             return! loop captured
                     }
 
-                loop []
-            )
+                loop [])
 
-        member _.Capture(requests: NetworkRequest array) =
-            mailbox.Post(Capture requests)
+        member _.Capture(requests: NetworkRequest array) = mailbox.Post(Capture requests)
 
-        member _.Requests =
-            mailbox.PostAndReply Snapshot
+        member _.Requests = mailbox.PostAndReply Snapshot
 
-        member this.byOrigin = 
+        member this.byOrigin =
             this.Requests
-            |> Array.choose (fun request -> 
+            |> Array.choose (fun request ->
                 try
-                    match request.tryIrl with 
-                    | Some irl -> Some (irlref irl.origin, request)
-                    | _ -> None 
-                with
-                | _ -> None
-            )
+                    match request.tryIrl with
+                    | Some irl -> Some(irlref irl.origin, request)
+                    | _ -> None
+                with _ ->
+                    None)
             |> Array.sortBy (fun (origin, request) -> origin.remoteReference, request.Url)
-        member this.RequestOrigins = 
+        member this.RequestOrigins =
             this.byOrigin
-            |> Array.map fst 
+            |> Array.map fst
             |> Array.distinct
             |> Array.sortBy (fun origin -> origin.remoteReference)
-    let rec collect
-        (monitor: NetworkTrafficMonitor)
-        (store: Mailbox)
-        (cancellationToken: CancellationToken) =
+    let rec collect (monitor: NetworkTrafficMonitor) (store: Mailbox) (cancellationToken: CancellationToken) =
 
         async {
             while not cancellationToken.IsCancellationRequested do
 
-                let! captured =
-                    monitor.GetCapturedTrafficAsync(
-                        TimeSpan.FromSeconds(1.0)
-                    )
-                    |> Async.AwaitTask
+                let! captured = monitor.GetCapturedTrafficAsync(TimeSpan.FromSeconds(1.0)) |> Async.AwaitTask
 
                 if captured.Count > 0 then
-                    captured
-                    |> Seq.toArray
-                    |> store.Capture
+                    captured |> Seq.toArray |> store.Capture
         }
 
 let networkMailbox = NetworkTraffic.Mailbox()
@@ -1521,23 +1457,22 @@ let cancellation = new CancellationTokenSource()
 
 let edge = EdgeBrowser.Connect()
 
-let networkTrafficMonitor = 
+let networkTrafficMonitor =
     let options = new NetworkTrafficMonitorOptions()
     options.MaxBodySize <- 200000000UL
     new NetworkTrafficMonitor(edge.dramaturge.Driver, options)
 networkTrafficMonitor.StartMonitoringAsync() |> awaitUnit
-let networkTrafficCollector =
-    NetworkTraffic.collect networkTrafficMonitor networkMailbox cancellation.Token
+let networkTrafficCollector = NetworkTraffic.collect networkTrafficMonitor networkMailbox cancellation.Token
 Async.Start(networkTrafficCollector, cancellation.Token)
 // TODO look into opensearch https://github.com/dewitt/opensearch/blob/master/opensearch-1-1-draft-6.md#opensearch-description-document
 let pages = edge.InventoryPages()
-
-module com = 
+let browser = edge.dramaturge.DefaultBrowser
+module com =
     let tld = PublicSuffixes.com.tld
-    module samanage = 
+    module samanage =
         let secondLevelDomain = "samanage"
         let domain = tld.domain secondLevelDomain
-        module leoncountyfl = 
+        module leoncountyfl =
             let subdomain = "leoncountyfl"
             let https = UriSchemes.https.host subdomain domain
 
@@ -1546,28 +1481,27 @@ com.samanage.leoncountyfl.https / "incidents" |> edge.irl
 
 pages |> edge.page com.samanage.leoncountyfl.https
 
-let requestResponses = 
+let requestResponses =
     networkMailbox.byOrigin
-    |> Array.filter (fun (origin, request) -> origin.remoteReference = com.samanage.leoncountyfl.https.remoteReference )
+    |> Array.filter (fun (origin, request) -> origin.remoteReference = com.samanage.leoncountyfl.https.remoteReference)
     |> Array.map snd
-    |> Array.choose (fun request -> 
-        match request.tryIrl with 
-        | Some irl when request.ResponseMimeType = Mime.application.json.mime.contentType -> Some(request, irl )
-        | _ -> None 
-        )
-    
+    |> Array.choose (fun request ->
+        match request.tryIrl with
+        | Some irl when request.ResponseMimeType = Mime.application.json.mime.contentType -> Some(request, irl)
+        | _ -> None)
+
 requestResponses.Length
 let request, responseIrl = requestResponses[10]
-type String with 
-    static member percentDecoded (stringValue : string) = 
-        if stringValue.Contains("%") then 
+type String with
+    static member percentDecoded(stringValue: string) =
+        if stringValue.Contains("%") then
             System.Uri.UnescapeDataString stringValue |> String.percentDecoded
-        else 
+        else
             stringValue
-type Irl with 
-    member this.queryString = 
-        match this.searchQuery with 
-        | Some  searchQuery -> String.percentDecoded searchQuery
+type Irl with
+    member this.queryString =
+        match this.searchQuery with
+        | Some searchQuery -> String.percentDecoded searchQuery
         | None -> String.Empty
 let queryString = System.Web.HttpUtility.ParseQueryString responseIrl.searchQuery.Value
 
@@ -1590,59 +1524,43 @@ type QueryParameter =
         | ParameterKeyValue(parameterKey, parameterValue) -> [| parameterValue |]
         | ParameterKeyValues(parameterKey, parameterValues) -> parameterValues
 
-// TODO make strongly typed query string and fragment string 
-type QueryString = QueryString of  Microsoft.AspNetCore.Http.QueryString
+// TODO make strongly typed query string and fragment string
+type QueryString = QueryString of Microsoft.AspNetCore.Http.QueryString
 type FragmentString = FragmentString of Microsoft.AspNetCore.Http.FragmentString
-let responseIndividuals =   
+let responseIndividuals =
     requestResponses
-    |> Array.map (fun (request, response) -> 
-        let responseFile = 
-            let textDirectory = Path.Combine( response.stemPath, "text") |> Directory.CreateDirectory  
-            match response.tryInternetMediaType, response.searchQuery with 
-            | Some internetMediaType, Some searchQuery -> 
+    |> Array.map (fun (request, response) ->
+        let responseFile =
+            let textDirectory = Path.Combine(response.stemPath, "text") |> Directory.CreateDirectory
+            match response.tryInternetMediaType, response.searchQuery with
+            | Some internetMediaType, Some searchQuery ->
                 File.WriteAllText(Path.Combine(textDirectory.FullName, $"{response.queryString.asBlake3.hashString}.blake3.txt"), response.queryString)
-                Path.Combine(
-                    response.stemPath,
-                    internetMediaType.mime.MediaType,
-                    $"{response.queryString.asBlake3.hashString}.{internetMediaType.extension}")
-                    |> FileInfo
-            | Some internetMediaType, None -> 
-                Path.Combine(
-                    response.stemPath, 
-                    internetMediaType.mime.MediaType, 
-                    $"{internetMediaType.mime.SubType}.{internetMediaType.extension}")
-                    |> FileInfo
-            | None , Some searchQuery ->
-                File.WriteAllText(Path.Combine( response.stemPath, $"{response.queryString.asBlake3.hashString}.blake3.txt"), response.queryString)
-                Path.Combine(
-                    response.stemPath, 
-                    "unknown-media-type", 
-                    $"{response.queryString.asBlake3.hashString}")
-                    |> FileInfo
-            | None , None ->
-                Path.Combine(
-                    response.stemPath, 
-                    "unknown-media-type", 
-                    $"unknown-sub-type")
-                    |> FileInfo
+                Path.Combine(response.stemPath, internetMediaType.mime.MediaType, $"{response.queryString.asBlake3.hashString}.{internetMediaType.extension}")
+                |> FileInfo
+            | Some internetMediaType, None ->
+                Path.Combine(response.stemPath, internetMediaType.mime.MediaType, $"{internetMediaType.mime.SubType}.{internetMediaType.extension}")
+                |> FileInfo
+            | None, Some searchQuery ->
+                File.WriteAllText(Path.Combine(response.stemPath, $"{response.queryString.asBlake3.hashString}.blake3.txt"), response.queryString)
+                Path.Combine(response.stemPath, "unknown-media-type", $"{response.queryString.asBlake3.hashString}")
+                |> FileInfo
+            | None, None ->
+                Path.Combine(response.stemPath, "unknown-media-type", $"unknown-sub-type")
+                |> FileInfo
 
         Directory.CreateDirectory responseFile.DirectoryName |> ignore
         File.WriteAllText(responseFile.FullName, request.ResponseBody)
-        NamedIndividualIri response |> Individual
-        )
+        NamedIndividualIri response |> Individual)
     |> Array.toList
 
-let originOntology =
-    OntologyBuilder com.samanage.leoncountyfl.https.Iri {
-        yield 
-            commonplace.RequestResponse |> Functional.ClassAssertion responseIndividuals
-}
+let originOntology = OntologyBuilder com.samanage.leoncountyfl.https.Iri { yield commonplace.RequestResponse |> Functional.ClassAssertion responseIndividuals }
 // TODO assert query strings to hashes
 let OWLOntology = OWLSharp.Ontology.OWLOntology.ofOntology originOntology
 let rdfGraph = OWLOntology.ToRDFGraphAsync().Result
 // RDFSharp.Model.RDFGraph.ofNTriples ntriples
 let turtlePath = Path.Combine(com.samanage.leoncountyfl.https.localReference, "origin.ttl")
-Directory.CreateDirectory com.samanage.leoncountyfl.https.localReference |> ignore
+Directory.CreateDirectory com.samanage.leoncountyfl.https.localReference
+|> ignore
 com.samanage.leoncountyfl.https.localReference.clip
 
 rdfGraph.ToTurtle turtlePath
@@ -1661,17 +1579,18 @@ origins
 |> Array.map (fun originIrl -> originIrl.remoteReference)
 |> String.Clipboard.clip
 // TODO look into reverse domain name to path trie of path tokens
-let failedIrls = 
+let failedIrls =
     networkMailbox.Requests
-    |> Array.choose (fun request -> 
-        try 
+    |> Array.choose (fun request ->
+        try
             request.Iri |> ignore
             None
-        with 
-        | _ -> Some request.Url)
+        with _ ->
+            Some request.Url)
 failedIrls.Length
 failedIrls
-Universal.Common.DataUri "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' aria-hidden='true'%3E%3Cpath fill='%23444' d='M12.278 13.604a6.875 6.875 0 1 1 1.326-1.326l3.621 3.622a.937.937 0 0 1-1.325 1.325zm.847-5.479a5 5 0 1 0-10 0 5 5 0 0 0 10 0'%3E%3C/path%3E%3C/svg%3E"
+Universal.Common.DataUri
+    "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' aria-hidden='true'%3E%3Cpath fill='%23444' d='M12.278 13.604a6.875 6.875 0 1 1 1.326-1.326l3.621 3.622a.937.937 0 0 1-1.325 1.325zm.847-5.479a5 5 0 1 0-10 0 5 5 0 0 0 10 0'%3E%3C/path%3E%3C/svg%3E"
 // |> String.Clipboard.clip
 iriref failedIrls[0]
 let dataUri = Universal.Common.DataUri failedIrls[0]
@@ -1682,8 +1601,6 @@ let request = networkMailbox.Requests[0]
 
 networkMailbox.Requests.Length
 
-let har =
-    networkMailbox.Requests
-    |> HarGenerator.Generate
+let har = networkMailbox.Requests |> HarGenerator.Generate
 
 File.WriteAllText("edge-session.har", har)

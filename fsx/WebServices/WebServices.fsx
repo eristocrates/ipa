@@ -2521,8 +2521,9 @@ outfall.NOTES |> Option.map (fun attribute -> complex.UnitDesc <- attribute)
 outfall.X |> Option.map (fun attribute -> complex.XCoordinate <- attribute)
 outfall.Y |> Option.map (fun attribute -> complex.YCoordinate <- attribute)
 
-let addResponse = ComplexSoapClient.Add <| ComplexProvider.Hansen_AssetManagement_UsageArea_Complex_Add_1B2M2Y8AsgTpgAmY7PhCfgAA(ticket, complex)
-addResponse.``Hansen.AssetManagement.UsageArea.Complex_Add_1B2M2Y8AsgTpgAmY7PhCfgAAResult``.
+let addResponse =
+    ComplexSoapClient.Add
+    <| ComplexProvider.Hansen_AssetManagement_UsageArea_Complex_Add_1B2M2Y8AsgTpgAmY7PhCfgAA(ticket, complex)
 (*
 type StormInletProvider = WsdlProvider<"""D:\webservices\AssetManagement\Storm\Hansen.AssetManagement.Storm.StormInlet.wsdl"""> 
 type StormInletCollection = WsdlProvider<"""D:\webservices\AssetManagement\Storm\Hansen.AssetManagement.Storm.StormInletCollection.wsdl"""> 

@@ -10,8 +10,15 @@ nuget Flurl
 nuget FolkerKinzel.MimeTypes
 nuget FSharp.Data
 nuget FSharp.HashCollections
+nuget Validus
 nuget FSharp.ViewEngine
+nuget FSharpLu
+nuget FSharpLu.Json
+nuget FSharpLu.Windows
+nuget FSharpLu.Azure
+
 nuget FSharpPlus
+nuget QuadStore.Core
 nuget IriTools
 nuget LitXml
 nuget Meziantou.Framework

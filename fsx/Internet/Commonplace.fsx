@@ -140,67 +140,71 @@ type UriSchemes = Iana.RegistryProvider.``Uniform Resource Identifier (URI) Sche
 type PublicSuffixes = PublicSuffixList.PublicSuffixProvider
 type MediaType = Iana.InternetMediaTypeProvider
 
-type Oxigraph.BlankNode with 
-    static member ofBNode(bnode:BNode) = Oxigraph.BlankNode bnode.identity
-type Oxigraph.NamedNode with 
-    static member ofIri(iri:Iri) = Oxigraph.NamedNode iri.identity
-    static member ofNormativePredicate(normativePredicate:NormativePredicate) = Oxigraph.NamedNode.ofIri normativePredicate.Iri
-type Oxigraph.BaseDirection with 
-    static member ofInitalTextDirection(baseDirection:InitialTextDirection) = 
-        match baseDirection with 
+type Oxigraph.BlankNode with
+    static member ofBNode(bnode: BNode) = Oxigraph.BlankNode bnode.identity
+type Oxigraph.NamedNode with
+    static member ofIri(iri: Iri) = Oxigraph.NamedNode iri.identity
+    static member ofNormativePredicate(normativePredicate: NormativePredicate) =
+        Oxigraph.NamedNode.ofIri normativePredicate.Iri
+type Oxigraph.BaseDirection with
+    static member ofInitalTextDirection(baseDirection: InitialTextDirection) =
+        match baseDirection with
         | Ltr -> Oxigraph.BaseDirection.Ltr
         | Rtl -> Oxigraph.BaseDirection.Rtl
-type Oxigraph.Literal with 
-    static member ofLiteral (literal:Literal) = 
-        match literal with 
+type Oxigraph.Literal with
+    static member ofLiteral(literal: Literal) =
+        match literal with
         | StringLiteral(SimpleString simpleLiteral) -> Oxigraph.Literal(simpleLiteral.simpleString)
-        | StringLiteral(LanguageString languageString) when languageString.baseDirection.IsSome -> 
+        | StringLiteral(LanguageString languageString) when languageString.baseDirection.IsSome ->
             Oxigraph.Literal(
-                Value = languageString.lexicalForm, 
+                Value = languageString.lexicalForm,
                 Language = languageString.languageTag.identity,
                 Direction = Oxigraph.BaseDirection.ofInitalTextDirection languageString.baseDirection.Value
-                )
-        | StringLiteral(LanguageString languageString)  -> 
-            Oxigraph.Literal(
-                Value = languageString.lexicalForm, 
-                Language = languageString.languageTag.identity
-                )
-        | TypedLiteral typedLiteral  -> 
-            Oxigraph.Literal(
-                Value = typedLiteral.lexicalForm, 
-                Datatype = Oxigraph.NamedNode.ofIri typedLiteral.datatypeIri
-                )
-        | EmbeddedLiteral embeddedLiteral  -> 
-            Oxigraph.Literal(
-                Value = embeddedLiteral.lexicalForm, 
-                Datatype = Oxigraph.NamedNode.ofIri embeddedLiteral.datatypeIri
-                )
-type Oxigraph.INamedOrBlankNode with 
-    static member ofNormativeSubject (normativeSubject:NormativeSubject) = 
-            match normativeSubject with 
-            | IriSubject iri -> Oxigraph.NamedNode.ofIri iri :> Oxigraph.INamedOrBlankNode
-            | BNodeSubject bnode -> Oxigraph.BlankNode.ofBNode  bnode:> Oxigraph.INamedOrBlankNode
-type Oxigraph.ITerm with 
-    static member ofNormativeObject (normativeObject:NormativeObject) = 
-        match normativeObject with 
+            )
+        | StringLiteral(LanguageString languageString) -> Oxigraph.Literal(Value = languageString.lexicalForm, Language = languageString.languageTag.identity)
+        | TypedLiteral typedLiteral -> Oxigraph.Literal(Value = typedLiteral.lexicalForm, Datatype = Oxigraph.NamedNode.ofIri typedLiteral.datatypeIri)
+        | EmbeddedLiteral embeddedLiteral -> Oxigraph.Literal(Value = embeddedLiteral.lexicalForm, Datatype = Oxigraph.NamedNode.ofIri embeddedLiteral.datatypeIri)
+type Oxigraph.INamedOrBlankNode with
+    static member ofNormativeSubject(normativeSubject: NormativeSubject) =
+        match normativeSubject with
+        | IriSubject iri -> Oxigraph.NamedNode.ofIri iri :> Oxigraph.INamedOrBlankNode
+        | BNodeSubject bnode -> Oxigraph.BlankNode.ofBNode bnode :> Oxigraph.INamedOrBlankNode
+type Oxigraph.ITerm with
+    static member ofNormativeObject(normativeObject: NormativeObject) =
+        match normativeObject with
         | BasicNormativeObject(IriObject iri) -> Oxigraph.NamedNode.ofIri iri :> Oxigraph.ITerm
         | BasicNormativeObject(BNodeObject bnode) -> Oxigraph.BlankNode.ofBNode bnode :> Oxigraph.ITerm
         | BasicNormativeObject(LiteralObject literal) -> Oxigraph.Literal.ofLiteral literal :> Oxigraph.ITerm
-        | TripleTermObject tripleTerm -> Oxigraph.Triple(Oxigraph.INamedOrBlankNode.ofNormativeSubject tripleTerm.ttSubject, Oxigraph.NamedNode.ofNormativePredicate tripleTerm.ttPredicate, Oxigraph.ITerm.ofNormativeObject tripleTerm.ttObject )  :> Oxigraph.ITerm
+        | TripleTermObject tripleTerm ->
+            Oxigraph.Triple(
+                Oxigraph.INamedOrBlankNode.ofNormativeSubject tripleTerm.ttSubject,
+                Oxigraph.NamedNode.ofNormativePredicate tripleTerm.ttPredicate,
+                Oxigraph.ITerm.ofNormativeObject tripleTerm.ttObject
+            )
+            :> Oxigraph.ITerm
 
-type Oxigraph.Triple with 
-    static member ofNormativeTriple(normativeTriple:NormativeTriple) = 
-        Oxigraph.Triple(Oxigraph.INamedOrBlankNode.ofNormativeSubject normativeTriple.normativeSubject,  Oxigraph.NamedNode.ofNormativePredicate normativeTriple.normativePredicate, Oxigraph.ITerm.ofNormativeObject normativeTriple.normativeObject )
-type Oxigraph.IGraphName with 
-    static member ofGraphName(graphName:GraphName) = 
-        match graphName with 
+type Oxigraph.Triple with
+    static member ofNormativeTriple(normativeTriple: NormativeTriple) =
+        Oxigraph.Triple(
+            Oxigraph.INamedOrBlankNode.ofNormativeSubject normativeTriple.normativeSubject,
+            Oxigraph.NamedNode.ofNormativePredicate normativeTriple.normativePredicate,
+            Oxigraph.ITerm.ofNormativeObject normativeTriple.normativeObject
+        )
+type Oxigraph.IGraphName with
+    static member ofGraphName(graphName: GraphName) =
+        match graphName with
         | GraphName(IriSubject iri) -> Oxigraph.NamedNode.ofIri iri :> Oxigraph.IGraphName
         | GraphName(BNodeSubject bnode) -> Oxigraph.BlankNode.ofBNode bnode :> Oxigraph.IGraphName
 
-type Oxigraph.Quad with 
-    static member ofNormativeTriple(normativeTriple:NormativeTriple) = 
-        fun (graphName:GraphName) -> 
-        Oxigraph.Quad(Oxigraph.INamedOrBlankNode.ofNormativeSubject normativeTriple.normativeSubject,  Oxigraph.NamedNode.ofNormativePredicate normativeTriple.normativePredicate, Oxigraph.ITerm.ofNormativeObject normativeTriple.normativeObject, Oxigraph.IGraphName.ofGraphName graphName )
+type Oxigraph.Quad with
+    static member ofNormativeTriple(normativeTriple: NormativeTriple) =
+        fun (graphName: GraphName) ->
+            Oxigraph.Quad(
+                Oxigraph.INamedOrBlankNode.ofNormativeSubject normativeTriple.normativeSubject,
+                Oxigraph.NamedNode.ofNormativePredicate normativeTriple.normativePredicate,
+                Oxigraph.ITerm.ofNormativeObject normativeTriple.normativeObject,
+                Oxigraph.IGraphName.ofGraphName graphName
+            )
 
 (*
 
@@ -604,8 +608,9 @@ and FxContainer = {
 and FxSlot =
     | NumberSlot of int
     | StringSlot of string
-    member this.segment = 
-        match this with 
+
+    member this.segment =
+        match this with
         | NumberSlot index -> string index
         | StringSlot name -> name
 and SlotFiller =
@@ -614,14 +619,13 @@ and SlotFiller =
 and FxValue = FxLiteral of Literal
 
 type RdfVocabulary with
-    member this.predicate (localName:string) = IriPredicate(this.curie localName)
     member this.curie(jsonPointer: JsonPointer) =
         fun (sourceName: string) ->
             let localName = $"{sourceName}{jsonPointer.ToString()}"
             this.curie localName
-    member this.curie(slot : FxSlot) = 
-        fun (jsonPointer: JsonPointer) -> 
-            fun (sourceName: string) -> 
+    member this.curie(slot: FxSlot) =
+        fun (jsonPointer: JsonPointer) ->
+            fun (sourceName: string) ->
                 let localName = $"{sourceName}{jsonPointer}?{slot.segment}"
                 this.curie localName
 
@@ -636,7 +640,7 @@ module fdc =
     let _namespace = RdfVocabulary.PREFIX("fdc", "https://fdc.nal.usda.gov/fdc-datasets/")
 
 type FxSlot with
-    member this.PrefixedName (vocabulary:RdfVocabulary) =
+    member this.PrefixedName(vocabulary: RdfVocabulary) =
         match this with
         | StringSlot localName -> vocabulary.curie localName |> IriPredicate
         | NumberSlot index -> rdf.vocabulary'.curie $"_{index + 1}" |> IriPredicate
@@ -644,16 +648,14 @@ type FxSlot with
     member this.nameLiteral =
         match this with
         | StringSlot localName -> localName.rdfString
-        | NumberSlot index -> Literal.autotyped  index 
+        | NumberSlot index -> Literal.autotyped index
 let souceName = "FoodData_Central_branded_food_json_2026-10-29.json"
 
 type System.Text.Json.Nodes.JsonNode with
-    member this.rdf'JSON =
-        this.ToJsonString() ^^ rdf.JSON
+    member this.rdf'JSON = this.ToJsonString() ^^ rdf.JSON
 
 type JToken with
-    member this.rdf'JSON =
-        this.ToString(Newtonsoft.Json.Formatting.None) ^^ rdf.JSON
+    member this.rdf'JSON = this.ToString(Newtonsoft.Json.Formatting.None) ^^ rdf.JSON
 type NodaTime.Period with
 
     member this.xsd'yearMonthDuration =
@@ -670,8 +672,7 @@ type NodaTime.Period with
         then
             invalidArg "value" "Expected a period containing only years and months"
 
-        let totalMonths =
-            int64 this.Years * 12L + int64 this.Months
+        let totalMonths = int64 this.Years * 12L + int64 this.Months
 
         let magnitude = abs totalMonths
         let years = magnitude / 12L
@@ -680,14 +681,10 @@ type NodaTime.Period with
         let sign = if totalMonths < 0L then "-" else ""
 
         let lexicalForm =
-            if magnitude = 0L then
-                "P0M"
-            elif months = 0L then
-                $"{sign}P{years}Y"
-            elif years = 0L then
-                $"{sign}P{months}M"
-            else
-                $"{sign}P{years}Y{months}M"
+            if magnitude = 0L then "P0M"
+            elif months = 0L then $"{sign}P{years}Y"
+            elif years = 0L then $"{sign}P{months}M"
+            else $"{sign}P{years}Y{months}M"
 
         lexicalForm ^^ xsd.yearMonthDuration
 
@@ -712,12 +709,7 @@ module JsonNumber =
 
     let decimalLexicalForm (lexicalForm: string) : string =
 
-        if not (
-            System.Text.RegularExpressions.Regex.IsMatch(
-                lexicalForm,
-                @"^-?(?:0|[1-9][0-9]*)(?:\.[0-9]+)?(?:[eE][+-]?[0-9]+)?$"
-            )
-        ) then
+        if not (System.Text.RegularExpressions.Regex.IsMatch(lexicalForm, @"^-?(?:0|[1-9][0-9]*)(?:\.[0-9]+)?(?:[eE][+-]?[0-9]+)?$")) then
             invalidArg (nameof lexicalForm) "Invalid JSON number"
 
         let exponentIndex = lexicalForm.IndexOfAny([| 'e'; 'E' |])
@@ -726,32 +718,30 @@ module JsonNumber =
             lexicalForm
         else
             let significand = lexicalForm[.. exponentIndex - 1]
-            let exponent =
-                Int64.Parse(
-                    lexicalForm[exponentIndex + 1 ..],
-                    Globalization.CultureInfo.InvariantCulture
-                )
+            let exponent = Int64.Parse(lexicalForm[exponentIndex + 1 ..], Globalization.CultureInfo.InvariantCulture)
 
             let negative = significand.StartsWith("-")
-            let unsigned =
-                if negative then significand[1..] else significand
+            let unsigned = if negative then significand[1..] else significand
 
             let decimalIndex = unsigned.IndexOf('.')
 
             let integerDigits =
-                if decimalIndex < 0 then unsigned
-                else unsigned[.. decimalIndex - 1]
+                if decimalIndex < 0 then
+                    unsigned
+                else
+                    unsigned[.. decimalIndex - 1]
 
             let fractionalDigits =
-                if decimalIndex < 0 then ""
-                else unsigned[decimalIndex + 1 ..]
+                if decimalIndex < 0 then
+                    ""
+                else
+                    unsigned[decimalIndex + 1 ..]
 
             let digits = integerDigits + fractionalDigits
             let position = int64 integerDigits.Length + exponent
 
             // Prevent unbounded allocation from extreme exponents.
-            let outputLength =
-                max (int64 digits.Length) (abs position) + 2L
+            let outputLength = max (int64 digits.Length) (abs position) + 2L
 
             if outputLength > 1_000_000L then
                 invalidArg (nameof lexicalForm) "Expanded decimal exceeds size limit"
@@ -762,32 +752,27 @@ module JsonNumber =
                 elif position >= int64 digits.Length then
                     digits + String('0', int (position - int64 digits.Length))
                 else
-                    digits[.. int position - 1]
-                    + "."
-                    + digits[int position ..]
+                    digits[.. int position - 1] + "." + digits[int position ..]
 
             (if negative then "-" else "") + expanded
 
 type JsonPointer with
 
-    member this.tryParent =
-        this.GetParent() |> Option.ofNullable
+    member this.tryParent = this.GetParent() |> Option.ofNullable
 
-    member this.parent =
-        this.tryParent.Value
+    member this.parent = this.tryParent.Value
 
     member this.isDescendantOf(ancestor: JsonPointer) =
         match this.tryParent with
         | None -> false
         | Some parent when parent = ancestor -> true
-        | Some parent -> parent.isDescendantOf(ancestor)
+        | Some parent -> parent.isDescendantOf (ancestor)
 type JsonSubtree = {
     startIndex: int64
     endIndex: int64
-}
-with
-    member this.lineCount =
-        this.endIndex - this.startIndex
+} with
+
+    member this.lineCount = this.endIndex - this.startIndex
 
 type JsonLine =
     | JsonObjectLine of pointer: JsonPointer * path: JsonPath
@@ -815,10 +800,7 @@ type JsonLine =
         | JsonBooleanLine(_, path, _)
         | JsonNullLine(_, path) -> path
 
-    static member subtrees
-        (containerPointer: JsonPointer)
-        (lines: seq<JsonLine>)
-        : JsonSubtree[] =
+    static member subtrees (containerPointer: JsonPointer) (lines: seq<JsonLine>) : JsonSubtree[] =
 
         let subtrees = ResizeArray<JsonSubtree>()
 
@@ -855,11 +837,9 @@ type JsonLine =
 
     member this.triplify(sourceName: string) : seq<NormativeTriple> =
         seq {
-            let subject =
-                sourceName |> fdc._namespace.curie this.pointer
+            let subject = sourceName |> fdc._namespace.curie this.pointer
 
-            let jsonNull =
-                jsonvalues.NamedIndividual'.``null``
+            let jsonNull = jsonvalues.NamedIndividual'.``null``
 
             let valueResource =
                 match this with
@@ -872,8 +852,7 @@ type JsonLine =
 
                 let parentPointer = this.pointer.parent
 
-                let parent =
-                    sourceName |> fdc._namespace.curie parentPointer
+                let parent = sourceName |> fdc._namespace.curie parentPointer
 
                 match this.path.FxSlot with
 
@@ -890,12 +869,14 @@ type JsonLine =
                     yield memberOccurrence --/ jsonvalues.memberName /-> name.literal
 
                     yield memberOccurrence --/ jsonvalues.memberValue /-> valueResource
-                    yield valueResource  --/ (jsonvalues.vocabulary'.predicate "valueOfMember") /-> memberOccurrence
+                    yield
+                        valueResource
+                        --/ (jsonvalues.vocabulary'.predicate "valueOfMember") /-> memberOccurrence
 
                 | NumberSlot index ->
 
                     let elementOccurrence = sourceName |> fdc._namespace.curie this.path.FxSlot parentPointer
-                        
+
                     yield elementOccurrence --/ a /-> (jsonvalues.vocabulary'.curie "Element")
 
                     yield parent --/ jsonvalues.hasElement /-> elementOccurrence
@@ -905,9 +886,11 @@ type JsonLine =
                     yield elementOccurrence --/ jsonvalues.elementIndex /-> Literal.autotyped index
 
                     yield elementOccurrence --/ jsonvalues.elementValue /-> valueResource
-                    yield valueResource  --/ (jsonvalues.vocabulary'.predicate "valueOfElement") /-> elementOccurrence
-                    
-(*
+                    yield
+                        valueResource
+                        --/ (jsonvalues.vocabulary'.predicate "valueOfElement") /-> elementOccurrence
+
+                (*
                 // Retain the independent Façade-X projection.
                 yield
                     parent
@@ -920,23 +903,18 @@ type JsonLine =
 
                 match this with
                 | JsonObjectLine _
-                | JsonArrayLine _ ->
-                    yield parent --/ slot /-> subject
+                | JsonArrayLine _ -> yield parent --/ slot /-> subject
 
-                | JsonStringLine(_, _, value) ->
-                    yield parent --/ slot /-> value.literal
+                | JsonStringLine(_, _, value) -> yield parent --/ slot /-> value.literal
 
                 | JsonNumberLine(_, _, value) ->
-                    let decimalLiteral =
-                        JsonNumber.decimalLexicalForm value ^^ xsd.decimal
+                    let decimalLiteral = JsonNumber.decimalLexicalForm value ^^ xsd.decimal
 
                     yield parent --/ slot /-> decimalLiteral
 
-                | JsonBooleanLine(_, _, value) ->
-                    yield parent --/ slot /-> Literal.autotyped value
+                | JsonBooleanLine(_, _, value) -> yield parent --/ slot /-> Literal.autotyped value
 
-                | JsonNullLine _ ->
-                    ()
+                | JsonNullLine _ -> ()
 
             // Describe the JSON value itself.
             match this with
@@ -944,13 +922,13 @@ type JsonLine =
             | JsonObjectLine(pointer, _) ->
 
                 if pointer = JsonPointer.Empty then
-                    yield subject --/ a /-> fx.Root.Iri 
+                    yield subject --/ a /-> fx.Root.Iri
                     yield subject --/ a /-> jsonvalues.``Object'JSON object``
 
             | JsonArrayLine(pointer, _) ->
 
                 if pointer = JsonPointer.Empty then
-                    yield subject --/ a /-> fx.Root.Iri 
+                    yield subject --/ a /-> fx.Root.Iri
                     yield subject --/ a /-> jsonvalues.``Array'JSON array``
 
             | JsonStringLine(_, _, value) ->
@@ -1129,15 +1107,9 @@ module JsonLine =
 
         text.ToString()
 
-    let saveSubtree
-        (subtree: seq<JsonLine>)
-        (sourceName: string)
-        (maxFileSize: int<MB>)
-        (anchorDirectory: string)
-        : unit =
+    let saveSubtree (subtree: seq<JsonLine>) (sourceName: string) (maxFileSize: int<MB>) (anchorDirectory: string) : unit =
 
-        let maxFileBytes =
-            int64 (maxFileSize / 1<MB>) * 1_000_000L
+        let maxFileBytes = int64 (maxFileSize / 1<MB>) * 1_000_000L
 
         if maxFileBytes <= 0L then
             invalidArg (nameof maxFileSize) "Maximum file size must be positive."
@@ -1148,16 +1120,11 @@ module JsonLine =
 
             let firstLine = enumerator.Current
 
-            let relativeDirectory =
-                firstLine.pointer.ToString()
-                    .TrimStart('/')
-                    .Replace('/', Path.DirectorySeparatorChar)
+            let relativeDirectory = firstLine.pointer.ToString().TrimStart('/').Replace('/', Path.DirectorySeparatorChar)
 
-            let subtreeDirectory =
-                Path.Combine(anchorDirectory, relativeDirectory)
+            let subtreeDirectory = Path.Combine(anchorDirectory, relativeDirectory)
 
-            let completionPath =
-                Path.Combine(subtreeDirectory, ".complete")
+            let completionPath = Path.Combine(subtreeDirectory, ".complete")
 
             if File.Exists(completionPath) then
                 // Consume remaining lines without generating output.
@@ -1174,11 +1141,7 @@ module JsonLine =
                     }
                     |> Seq.toArray
 
-                let prefixes =
-                    triples
-                    |> Seq.collect Turtle.prefixID
-                    |> Seq.distinct
-                    |> Seq.toArray
+                let prefixes = triples |> Seq.collect Turtle.prefixID |> Seq.distinct |> Seq.toArray
 
                 let baseDeclaration =
                     triples
@@ -1187,18 +1150,13 @@ module JsonLine =
                     |> Seq.distinct
                     |> Seq.exactlyOne
 
-                let header =
-                    Array.append prefixes [| baseDeclaration |]
+                let header = Array.append prefixes [| baseDeclaration |]
 
-                let encode (value: string) =
-                    Encoding.UTF8.GetBytes(value + "\n")
+                let encode (value: string) = Encoding.UTF8.GetBytes(value + "\n")
 
-                let headerBytes =
-                    header |> Array.map encode
+                let headerBytes = header |> Array.map encode
 
-                let headerSize =
-                    headerBytes
-                    |> Array.sumBy (fun bytes -> int64 bytes.Length)
+                let headerSize = headerBytes |> Array.sumBy (fun bytes -> int64 bytes.Length)
 
                 if headerSize >= maxFileBytes then
                     invalidOp "Turtle header exceeds maximum file size."
@@ -1206,25 +1164,18 @@ module JsonLine =
                 Directory.CreateDirectory(subtreeDirectory) |> ignore
 
                 // Remove output from any previous incomplete attempt.
-                Directory.EnumerateFiles(subtreeDirectory, "*.ttl")
-                |> Seq.iter File.Delete
+                Directory.EnumerateFiles(subtreeDirectory, "*.ttl") |> Seq.iter File.Delete
 
                 let mutable output: FileStream option = None
                 let mutable fileIndex = 0
                 let mutable bytesWritten = 0L
 
                 let openNextFile () =
-                    output
-                    |> Option.iter (fun stream -> stream.Dispose())
+                    output |> Option.iter (fun stream -> stream.Dispose())
 
-                    let path =
-                        Path.Combine(
-                            subtreeDirectory,
-                            fileIndex.ToString("D6") + ".ttl"
-                        )
+                    let path = Path.Combine(subtreeDirectory, fileIndex.ToString("D6") + ".ttl")
 
-                    let stream =
-                        new FileStream(path, FileMode.Create, FileAccess.Write)
+                    let stream = new FileStream(path, FileMode.Create, FileAccess.Write)
 
                     output <- Some stream
                     fileIndex <- fileIndex + 1
@@ -1235,10 +1186,7 @@ module JsonLine =
                         bytesWritten <- bytesWritten + int64 bytes.Length
 
                 try
-                    let statements =
-                        triples
-                        |> Seq.map Turtle.triple
-                        |> Seq.distinct
+                    let statements = triples |> Seq.map Turtle.triple |> Seq.distinct
 
                     for statement in statements do
 
@@ -1248,24 +1196,21 @@ module JsonLine =
                         if headerSize + statementSize > maxFileBytes then
                             invalidOp "A Turtle statement exceeds maximum file size."
 
-                        if output.IsNone
-                           || bytesWritten + statementSize > maxFileBytes then
+                        if output.IsNone || bytesWritten + statementSize > maxFileBytes then
                             openNextFile ()
 
                         match output with
                         | Some stream ->
                             stream.Write(bytes, 0, bytes.Length)
                             bytesWritten <- bytesWritten + statementSize
-                        | None ->
-                            invalidOp "Output stream was not initialized."
+                        | None -> invalidOp "Output stream was not initialized."
 
                     // Also create a valid header-only file if no triples exist.
                     if output.IsNone then
                         openNextFile ()
 
                 finally
-                    output
-                    |> Option.iter (fun stream -> stream.Dispose())
+                    output |> Option.iter (fun stream -> stream.Dispose())
 
                 // Only mark complete after all files were written successfully.
                 File.WriteAllText(completionPath, "")
@@ -1277,8 +1222,10 @@ module branded_food =
     // type Provider = JsonProvider<UseOriginalNames = true,  OmitNullFields = true, RootName = "PayStubSummaryList", Sample = jsonFilePath >
     // let json = Provider.Load jsonFilePath
     let jsonl = JsonLine.stream jsonFilePath
-    let graphName = (iriref "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_branded_food_json_2026-10-29.json/").asSubject |> GraphName
-    
+    let graphIri = iriref "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_branded_food_json_2026-10-29.json/"
+    let graphIrl = irlref "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_branded_food_json_2026-10-29.json/"
+    let graphName = GraphName graphIri.asSubject 
+
 (*
 module NTriples =
     let save
@@ -1293,37 +1240,27 @@ module NTriples =
         |> Seq.iter (NTriples.triple >> writer.WriteLine)
 *)
 
-let oxigraphNativePath = @"D:\https\com\github\eristocrates\ipa\fsx\packages\Oxigraph\runtimes\win-x64\native\oxigraph_dotnet.dll"
+NativeLibrary.Load(@"D:\https\com\github\eristocrates\ipa\fsx\packages\Oxigraph\runtimes\win-x64\native\oxigraph_dotnet.dll") |> ignore
 
-let oxigraphNativeHandle = NativeLibrary.Load(oxigraphNativePath)
-let BOCCHomeDrive = DirectoryInfo @"F:"
-BOCCHomeDrive
-let (IriSubject graphIri) = branded_food.graphName.normativeSubject
-
-type Iri with 
-    member this.tryIrl = 
-        try 
-            Url.Parse this.identity |> Irl.ofUrl |> Some
-        with 
-        | _ -> None
-let graphDirectory = Path.Combine(@"F:\", graphIri.tryIrl.Value.localReference[3..]) |> Directory.CreateDirectory
+let graphDirectory =
+    Path.Combine(@"F:\", branded_food.graphIrl.localReference[3..])
+    |> Directory.CreateDirectory
 
 let store = new Oxigraph.Store(graphDirectory.FullName)
 let normativeTriples =
     branded_food.jsonl
     |> Seq.collect (fun jsonline -> jsonline.triplify "FoodData_Central_branded_food_json_2026-10-29.json")
-let oxigraphQuads = 
+let oxigraphQuads =
     normativeTriples
     // |> Seq.take 10
     |> Seq.map (fun triple -> branded_food.graphName |> Oxigraph.Quad.ofNormativeTriple triple)
-(*
 let saveTask =
     Task.Run(fun () -> store.BulkExtend oxigraphQuads
     )
 
 saveTask.Status
 saveTask.Exception |> printfn "%A"
-*)
+
 (*
 typeof<Oxigraph.Store>.Assembly.Location.clip
 

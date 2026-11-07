@@ -1,7 +1,10 @@
 {
 	"folders": [
 		{
-			"path": "WebServices"
+			"path": "Internet"
+		},
+		{
+			"path": "../fs/DoxAletheia"
 		}
 	]
 }

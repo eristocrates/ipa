@@ -1455,6 +1455,7 @@ and RdfVocabulary =
 
     member this.curie(localName: string) : Iri =
         this.prefixedName localName |> PrefixedName
+    member this.predicate(localName: string) = IriPredicate(this.curie localName)
 
     static member PREFIX((namespacePrefix: string), (namespaceName: string)) =
         { namespacePrefix = namespacePrefix
